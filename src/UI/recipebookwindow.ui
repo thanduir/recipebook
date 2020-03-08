@@ -1,8 +1,8 @@
 <UI version="4.0" >
- <class>RecipeBookClass</class>
- <widget class="QMainWindow" name="RecipeBookClass" >
+ <class>RecipeBookWindowClass</class>
+ <widget class="QMainWindow" name="RecipeBookWindowClass" >
   <property name="objectName" >
-   <string notr="true">RecipeBookClass</string>
+   <string notr="true">RecipeBookWindowClass</string>
   </property>
   <property name="geometry" >
    <rect>
@@ -23,7 +23,7 @@
  <layoutDefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <resources>
-   <include location="recipebook.qrc"/>
+   <include location="recipebookwindow.qrc"/>
  </resources>
  <connections/>
 </UI>

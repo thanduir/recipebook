@@ -42,6 +42,10 @@
     <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
     <IntDir>Intermediate\$(Configuration) - $(Platform)\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
+    <IntDir>Intermediate\$(Configuration) - $(Platform)\</IntDir>
+  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
@@ -64,6 +68,8 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -77,6 +83,9 @@
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -86,16 +95,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="UI\recipebook.cpp" />
+    <ClCompile Include="Recipes\data\Amount.cpp" />
+    <ClCompile Include="Recipes\data\Ingredient.cpp" />
+    <ClCompile Include="Recipes\data\Recipe.cpp" />
+    <ClCompile Include="Recipes\data\RecipeBook.cpp" />
+    <ClCompile Include="Recipes\data\ShoppingRecipe.cpp" />
+    <ClCompile Include="Recipes\data\SortOrder.cpp" />
+    <ClCompile Include="Recipes\data\Unit.cpp" />
+    <ClCompile Include="UI\recipebookwindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="UI\recipebook.h" />
+    <QtMoc Include="UI\recipebookwindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="UI\recipebook.qrc" />
+    <QtRcc Include="UI\recipebookwindow.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="UI\recipebook.ui" />
+    <QtUic Include="UI\recipebookwindow.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Design.txt" />
+    <Text Include="..\TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Recipes\data\Amount.h" />
+    <ClInclude Include="Recipes\data\Category.h" />
+    <ClInclude Include="Recipes\data\Ingredient.h" />
+    <ClInclude Include="Recipes\data\Recipe.h" />
+    <ClInclude Include="Recipes\data\RecipeBook.h" />
+    <ClInclude Include="Recipes\data\ShoppingRecipe.h" />
+    <ClInclude Include="Recipes\data\SortOrder.h" />
+    <ClInclude Include="Recipes\data\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

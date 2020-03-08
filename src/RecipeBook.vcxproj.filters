@@ -26,29 +26,96 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Documents">
+      <UniqueIdentifier>{cd9f67cb-26dc-456b-aa2d-72c1c8bfb0c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes">
+      <UniqueIdentifier>{be2ab002-c13f-4663-9103-af45ea057f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\data">
+      <UniqueIdentifier>{abd3232f-22f1-4281-8b73-3cb25bd9cf9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\serialization">
+      <UniqueIdentifier>{6dd61d34-c29c-413b-893e-dba406baf179}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>
       </Filter>
     </ClCompile>
-    <ClCompile Include="UI\recipebook.cpp">
+    <ClCompile Include="Recipes\data\Amount.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\Unit.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\RecipeBook.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\SortOrder.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\recipebookwindow.cpp">
       <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\Ingredient.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\Recipe.cpp">
+      <Filter>Recipes\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\ShoppingRecipe.cpp">
+      <Filter>Recipes\data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="UI\recipebook.h">
+    <Text Include="..\Design.txt">
+      <Filter>Documents</Filter>
+    </Text>
+    <Text Include="..\TODO.txt">
+      <Filter>Documents</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Recipes\data\Amount.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Unit.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\RecipeBook.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Category.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Ingredient.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\SortOrder.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Recipe.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\ShoppingRecipe.h">
+      <Filter>Recipes\data</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="UI\recipebookwindow.h">
       <Filter>UI\Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="UI\recipebook.qrc">
-      <Filter>UI\Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="UI\recipebook.ui">
+    <QtUic Include="UI\recipebookwindow.ui">
       <Filter>UI\Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="UI\recipebookwindow.qrc">
+      <Filter>UI\Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

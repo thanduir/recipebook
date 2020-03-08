@@ -1,0 +1,31 @@
+RecipeBook
+==========
+
+Requirements
+------------
+
+- Manage recipes (name, short desc, cooking time, ingredients, description)
+- Manage ingredients and provenances equivalently to whats done in the app?
+- Sync functionality
+	* Import other file (app json and / or internal format including *all* the data)
+	* 3-way-merge by keeping the latest sync'd state with different devices, manuel conflict resolving
+		-> extend format with per device / instance GUID	
+- Import / Export of json files without merge?
+- Export to odt / pdf / ? in a style similar to current "Kochbuch Phil & Nicole.odt"
+- Possible long term goal: 
+	* Remove recipe management from app? 
+		-> app only as a shoppinglist tool with easy recipe sync from recipebook? 
+		-> would need a convenient data exchange method than copying files manually
+		-> this would mean less focus on mergeing, i think
+	* Or might it be possible to just base all on this code? I.e. build the app using C++ and Qt? (possibly just with a different UI?)
+
+
+Technology
+----------
+
+- Qt + c++
+	-> Which type of GUI? Qt Widget or Qt Quick + QML?
+	-> QML might be useful if I want a similar interface to the app
+- Internal file format: sql db? json? xml? something else?
+- book output: pdf generate with latex? something else?
+	-> does qt directly support other possibilities?

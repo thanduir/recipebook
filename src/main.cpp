@@ -1,10 +1,10 @@
-#include "UI\recipebook.h"
+#include "UI\recipebookwindow.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	RecipeBook w;
+	RecipeBookWindow w;
 	w.show();
 	return a.exec();
 }
