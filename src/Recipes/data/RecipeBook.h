@@ -22,17 +22,17 @@ namespace recipebook
 
         // Categories
 
-        const Category& addCategory(QString strName);
+        Category& addCategory(QString strName);
         bool existsCategory(QString strName) const;
-        void removeCategory(const Category& rCategory);        
+        bool removeCategory(const Category& rCategory);        
         const Category& getCategory(QString strName) const;
         const Category& getDefaultCategory() const;
                 
         // SortOrders
 
-        const SortOrder& addSortOrder(QString strName);
+        SortOrder& addSortOrder(QString strName);
         bool existsSortOrder(QString strName) const;
-        void removeSortOrder(const SortOrder& rOrder);
+        bool removeSortOrder(const SortOrder& rOrder);
         SortOrder& getSortOrder(QString strName);
         const SortOrder& getSortOrder(QString strName) const;
 
@@ -40,9 +40,9 @@ namespace recipebook
 
         // Ingredients
 
-        const Ingredient& addIngredient(QString strName, const Category& rCategory, Unit defaultUnit);
+        Ingredient& addIngredient(QString strName, const Category& rCategory, Unit defaultUnit);
         bool existsIngredient(QString strName) const;
-        void removeIngredient(const Ingredient& rIngredient);
+        bool removeIngredient(const Ingredient& rIngredient);
         Ingredient& getIngredient(QString strName);
         const Ingredient& getIngredient(QString strName) const;
 
@@ -50,21 +50,21 @@ namespace recipebook
 
         // Recipes
 
-        const Recipe& addRecipe(QString strName, quint32 iNrPersons);
+        Recipe& addRecipe(QString strName, quint32 uiNrPersons);
         bool existsRecipe(QString strName) const;
-        void removeRecipe(const Recipe& rRecipe);
+        bool removeRecipe(const Recipe& rRecipe);
         const Recipe& copyRecipe(const Recipe& rRecipe, QString strNewName);
         Recipe& getRecipe(QString strName);
         const Recipe& getRecipe(QString strName) const;
-
+        
         QStringList getAllRecipeNamesSorted() const;
 
         // ShoppingList
 
-        const ShoppingRecipe& addNewShoppingRecipe(QString strName);
-        const ShoppingRecipe& addShoppingRecipe(QString strName, const Recipe& rRecipe);
+        ShoppingRecipe& addNewShoppingRecipe(QString strName, float fScalingFactor);
+        ShoppingRecipe& addShoppingRecipe(QString strName, const Recipe& rRecipe);
         bool existsShoppingRecipe(QString strName) const;
-        void removeShoppingRecipe(const ShoppingRecipe& rRecipe);
+        bool removeShoppingRecipe(const ShoppingRecipe& rRecipe);
         ShoppingRecipe& getShoppingRecipe(QString strName);
         const ShoppingRecipe& getShoppingRecipe(QString strName) const;
 

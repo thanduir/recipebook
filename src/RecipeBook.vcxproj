@@ -99,6 +99,9 @@
     <ClCompile Include="Recipes\data\Ingredient.cpp" />
     <ClCompile Include="Recipes\data\Recipe.cpp" />
     <ClCompile Include="Recipes\data\RecipeBook.cpp" />
+    <ClCompile Include="Recipes\data\RecipeItem.cpp" />
+    <ClCompile Include="Recipes\data\RecipeItemGroup.cpp" />
+    <ClCompile Include="Recipes\data\ShoppingListItem.cpp" />
     <ClCompile Include="Recipes\data\ShoppingRecipe.cpp" />
     <ClCompile Include="Recipes\data\SortOrder.cpp" />
     <ClCompile Include="Recipes\data\Unit.cpp" />
@@ -123,9 +126,15 @@
     <ClInclude Include="Recipes\data\Ingredient.h" />
     <ClInclude Include="Recipes\data\Recipe.h" />
     <ClInclude Include="Recipes\data\RecipeBook.h" />
+    <ClInclude Include="Recipes\data\RecipeItem.h" />
+    <ClInclude Include="Recipes\data\RecipeItemGroup.h" />
+    <ClInclude Include="Recipes\data\ShoppingListItem.h" />
     <ClInclude Include="Recipes\data\ShoppingRecipe.h" />
+    <ClInclude Include="Recipes\data\Size.h" />
     <ClInclude Include="Recipes\data\SortOrder.h" />
+    <ClInclude Include="Recipes\data\Status.h" />
     <ClInclude Include="Recipes\data\Unit.h" />
+    <ClInclude Include="Recipes\data\util\ItemsUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

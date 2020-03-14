@@ -1,21 +1,54 @@
 #include "Recipe.h"
+#include "RecipeItem.h"
+#include "RecipeItemGroup.h"
+#include "util/ItemsUtil.h"
 
-recipebook::Recipe::Recipe(const Recipe& rOther)
+using namespace recipebook;
+
+Recipe::Recipe(QString strName, const Recipe& rOther)
+:   m_Name(strName),
+    m_NrPersons(rOther.getNumberOfPersons()),
+    m_RecipeItems(rOther.m_RecipeItems)
 {
-	/*recipe.m_NumberOfPersons = oldRecipe.m_NumberOfPersons;
-    for(RecipeItemFS item : oldRecipe.m_Items)
+    for(QSharedPointer<RecipeItemGroup> spGroup : qAsConst(rOther.m_ItemGroups))
     {
-        recipe.m_Items.add(new RecipeItemFS(item));
-    }
-    for(TreeMap.Entry<String, LinkedList<RecipeItemFS>> oldItem : oldRecipe.m_Groups.entrySet())
-    {
-        LinkedList<RecipeItemFS> items = new LinkedList<>();
-        for(RecipeItemFS item : oldItem.getValue())
+        internal::addItem(spGroup->getName(), m_ItemGroups, [&spGroup]()
         {
-            items.add(new RecipeItemFS(item));
-        }
-        recipe.m_Groups.put(oldItem.getKey(), items);
+            return new RecipeItemGroup(*spGroup.get());
+        });
     }
+}
 
-    m_Recipies.add(recipe);*/
+const RecipeItemGroup& Recipe::addAlternativesGroup(QString strName)
+{
+    return internal::addItem(strName, m_ItemGroups, [strName]()
+    {
+        return new RecipeItemGroup(strName);
+    });
+}
+
+bool Recipe::existsAlternativesGroup(QString strName) const
+{
+    return internal::exists<RecipeItemGroup>(strName, m_ItemGroups);
+}
+
+bool Recipe::removeAlternativesGroup(const RecipeItemGroup& rGroup)
+{
+    internal::remove(rGroup, m_ItemGroups);
+    return true;
+}
+
+RecipeItemGroup& Recipe::getAlternativesGroup(QString strName)
+{
+    return internal::getItem(strName, m_ItemGroups);
+}
+
+const RecipeItemGroup& Recipe::getAlternativesGroup(QString strName) const
+{
+    return internal::getItemConst(strName, m_ItemGroups);
+}
+
+QStringList Recipe::getAllAlternativesGroupsNamesSorted() const
+{
+    return internal::getAllNames(m_ItemGroups);
 }

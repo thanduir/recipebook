@@ -12,7 +12,7 @@ namespace recipebook
         void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
-        explicit Category(QString strName) { m_Name = strName; }      
+        explicit Category(QString strName) : m_Name(strName) {}      
 
         Category(const Category& rOther) = delete;
         void operator=(const Category& rOther) = delete;

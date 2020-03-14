@@ -38,35 +38,53 @@
     <Filter Include="Recipes\serialization">
       <UniqueIdentifier>{6dd61d34-c29c-413b-893e-dba406baf179}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Recipes\data\Header Files">
+      <UniqueIdentifier>{ee39f1ce-a6c6-4312-86ce-133786321a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\data\%24source Files">
+      <UniqueIdentifier>{69995bed-513c-4a4e-8f3a-f1849114e8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\data\util">
+      <UniqueIdentifier>{b77e2e73-85ee-49be-960b-86e94416c384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>
       </Filter>
     </ClCompile>
-    <ClCompile Include="Recipes\data\Amount.cpp">
-      <Filter>Recipes\data</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipes\data\Unit.cpp">
-      <Filter>Recipes\data</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipes\data\RecipeBook.cpp">
-      <Filter>Recipes\data</Filter>
-    </ClCompile>
-    <ClCompile Include="Recipes\data\SortOrder.cpp">
-      <Filter>Recipes\data</Filter>
-    </ClCompile>
     <ClCompile Include="UI\recipebookwindow.cpp">
       <Filter>UI\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Recipes\data\Amount.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Recipes\data\Ingredient.cpp">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\%24source Files</Filter>
     </ClCompile>
     <ClCompile Include="Recipes\data\Recipe.cpp">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\RecipeBook.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\RecipeItemGroup.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
     </ClCompile>
     <ClCompile Include="Recipes\data\ShoppingRecipe.cpp">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\SortOrder.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\Unit.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\ShoppingListItem.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\data\RecipeItem.cpp">
+      <Filter>Recipes\data\%24source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,28 +97,46 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Recipes\data\Amount.h">
-      <Filter>Recipes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipes\data\Unit.h">
-      <Filter>Recipes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipes\data\RecipeBook.h">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipes\data\Category.h">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipes\data\Ingredient.h">
-      <Filter>Recipes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="Recipes\data\SortOrder.h">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipes\data\Recipe.h">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\RecipeBook.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\RecipeItem.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\RecipeItemGroup.h">
+      <Filter>Recipes\data\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Recipes\data\ShoppingRecipe.h">
-      <Filter>Recipes\data</Filter>
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\SortOrder.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Unit.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\util\ItemsUtil.h">
+      <Filter>Recipes\data\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Size.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\ShoppingListItem.h">
+      <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\data\Status.h">
+      <Filter>Recipes\data\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

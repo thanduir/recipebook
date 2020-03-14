@@ -14,7 +14,7 @@ const recipebook::SortOrder& recipebook::Ingredient::getProvenance() const
 {
 	if(!m_bProvenanceEverywhere)
 	{
-		throw new QException();
+		throw QException();
 	}
 
 	return *m_pProvenance;

@@ -16,7 +16,7 @@ const recipebook::Category& recipebook::SortOrder::at(quint32 i) const
 {
 	if(i >= static_cast<quint32>(m_Categories.size()))
 	{
-		throw new QException();
+		throw QException();
 	}
 
 	return *m_Categories.at(i);

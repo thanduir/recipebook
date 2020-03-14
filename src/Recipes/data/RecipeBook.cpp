@@ -5,129 +5,47 @@
 #include "Recipe.h"
 #include "ShoppingRecipe.h"
 #include "SortOrder.h"
+#include "util/ItemsUtil.h"
 
 using namespace recipebook;
-
-namespace
-{
-    template<class T> bool exists(const QString strName, QVector<QSharedPointer<T>> allItems)
-    {
-        for(QSharedPointer<T> spItem : qAsConst(allItems))
-        {
-            if(spItem->getName() == strName)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    template<class T> void remove(const T& rItem, QVector<QSharedPointer<T>>& allItems)
-    {
-        for(int i = 0; i < allItems.size(); ++i)
-        {
-            if(allItems[i]->getName() == rItem.getName())
-            {
-                allItems.remove(i);
-                return;
-            }
-        }
-    }
-
-    template<class T> QStringList getAllNames(QVector<QSharedPointer<T>> allItems, bool bSorted = true)
-    {
-        QStringList list;
-        for(QSharedPointer<T> spItem : qAsConst(allItems))
-        {
-            list.append(spItem->getName());
-        }
-        if(bSorted)
-        {
-            // TODO: Collections.sort(vec, new Helper.SortStringIgnoreCase());
-        }
-        return list;
-    }
-
-    template<class T> const T& getItemConst(QString strName, const QVector<QSharedPointer<T>>& allItems)
-    {
-        for(QSharedPointer<T> spItem : qAsConst(allItems))
-        {
-            if(spItem->getName() == strName)
-            {
-                return *spItem.get();
-            }
-        }
-
-        throw new QException();
-    }
-
-    template<class T> T& getItem(QString strName, QVector<QSharedPointer<T>> allItems)
-    {
-        for(QSharedPointer<T> spItem : qAsConst(allItems))
-        {
-            if(spItem->getName() == strName)
-            {
-                return *spItem.get();
-            }
-        }
-
-        throw new QException();
-    }
-    
-    template<class T, typename Func> 
-    const T& addItem(QString strName, QVector<QSharedPointer<T>>& allItems, Func constructNewItem)
-    {
-        for(QSharedPointer<T> spItem : qAsConst(allItems))
-        {
-            if(spItem->getName() == strName)
-            {
-                return *spItem.get();
-            }
-        }
-
-        QSharedPointer<T> spNewItem(constructNewItem());
-        allItems.append(spNewItem);
-
-        return *spNewItem.get();
-    }
-}
 
 RecipeBook::RecipeBook()
 {
 }
 
-const Category& RecipeBook::addCategory(QString strName)
+Category& RecipeBook::addCategory(QString strName)
 {
-    // TODO: Can i bring this together with my add-template-method above?
-    for(QSharedPointer<Category> spCategory : qAsConst(m_Categories))
+    Category& rCategory = internal::addItem(strName, m_Categories, [strName, this]()
     {
-        if(spCategory->getName() == strName)
-        {
-            return *spCategory.get();
-        }
-    }
+        return new Category(strName);
+    });
 
-    QSharedPointer<Category> category(new Category(strName));
-    m_Categories.append(category);
-
+    // Also add to SortOrders
     for(QSharedPointer<SortOrder> spSortOrder : qAsConst(m_SortOrders))
     {
-        spSortOrder->m_Categories.append(category.get());
+        spSortOrder->m_Categories.append(&rCategory);
     }
 
-    return *category.get();
+    return rCategory;
 }
 
 bool RecipeBook::existsCategory(QString strName) const
 {
-    return exists<Category>(strName, m_Categories);
+    return internal::exists<Category>(strName, m_Categories);
 }
 
-void RecipeBook::removeCategory(const Category& rCategory)
+bool RecipeBook::removeCategory(const Category& rCategory)
 {
-    // TODO: TEST WHETHER IT IS STILL IN USE! (ingredients!)
+    // Removing is only allow if it's not in use anymore
+    for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
+    {
+        if(ingredient->getCategory().getName() == rCategory.getName())
+        {
+            return false;
+        }
+    }
 
-    remove(rCategory, m_Categories);
+    internal::remove(rCategory, m_Categories);
 
     // Remove Category also from all SortOrders
     for(QSharedPointer<SortOrder> spSortOrder : qAsConst(m_SortOrders))
@@ -137,15 +55,17 @@ void RecipeBook::removeCategory(const Category& rCategory)
             if(spSortOrder->m_Categories[i]->getName() == rCategory.getName())
             {
                 spSortOrder->m_Categories.removeAt(i);
-                return;
+                break;
             }
         }
     }
+
+    return true;
 }
 
 const Category& RecipeBook::getCategory(QString strName) const
 {
-    return getItemConst(strName, m_Categories);
+    return internal::getItemConst(strName, m_Categories);
 }
 
 const Category& RecipeBook::getDefaultCategory() const
@@ -154,12 +74,12 @@ const Category& RecipeBook::getDefaultCategory() const
     {
         return *m_Categories.front().get();
     }
-    throw new QException();
+    throw QException();
 }
 
-const SortOrder& RecipeBook::addSortOrder(QString strName)
+SortOrder& RecipeBook::addSortOrder(QString strName)
 {
-    return addItem(strName, m_SortOrders, [strName, this]()
+    return internal::addItem(strName, m_SortOrders, [strName, this]()
     {
         return new SortOrder(strName, m_Categories);
     });
@@ -167,34 +87,42 @@ const SortOrder& RecipeBook::addSortOrder(QString strName)
 
 bool RecipeBook::existsSortOrder(QString strName) const
 {
-    return exists<SortOrder>(strName, m_SortOrders);
+    return internal::exists<SortOrder>(strName, m_SortOrders);
 }
 
-void RecipeBook::removeSortOrder(const SortOrder& rOrder)
+bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
 {
-    // TODO: TEST WHETHER IT IS STILL IN USE! (ingredients!)
+    // Removing is only allow if it's not in use anymore
+    for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
+    {
+        if(ingredient->getProvenance().getName() == rOrder.getName())
+        {
+            return false;
+        }
+    }
 
-    remove(rOrder, m_SortOrders);
+    internal::remove(rOrder, m_SortOrders);
+    return true;
 }
 
 SortOrder& RecipeBook::getSortOrder(QString strName)
 {
-    return getItem(strName, m_SortOrders);
+    return internal::getItem(strName, m_SortOrders);
 }
 
 const SortOrder& RecipeBook::getSortOrder(QString strName) const
 {
-    return getItemConst(strName, m_SortOrders);
+    return internal::getItemConst(strName, m_SortOrders);
 }
 
 QStringList RecipeBook::getAllSortOrderNamesSorted() const
 {
-    return getAllNames(m_SortOrders);
+    return internal::getAllNames(m_SortOrders);
 }
 
-const Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
+Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
 {
-    return addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
+    return internal::addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
     {
         return new Ingredient(strName, rCategory, defaultUnit);
     });
@@ -202,83 +130,107 @@ const Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCa
 
 bool RecipeBook::existsIngredient(QString strName) const
 {
-    return exists<Ingredient>(strName, m_Ingredients);
+    return internal::exists<Ingredient>(strName, m_Ingredients);
 }
 
-void RecipeBook::removeIngredient(const Ingredient& rIngredient)
+bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
 {
-    // TODO: TEST WHETHER IT IS STILL IN USE! (recipes! shoppinglists!)
+    // Removing is only allow if it's not in use anymore
+    for(QSharedPointer<Recipe> spRecipe : qAsConst(m_Recipes))
+    {
+        if(spRecipe->getRecipeItems().existsItem(rIngredient))
+        {
+            return false;
+        }
 
-    remove(rIngredient, m_Ingredients);
+        for(QSharedPointer<RecipeItemGroup> spGroup : qAsConst(spRecipe->m_ItemGroups))
+        {
+            if(spGroup->existsItem(rIngredient))
+            {
+                return false;
+            }
+        }
+    }
+    for(QSharedPointer<ShoppingRecipe> spShoppingRecipe : qAsConst(m_ShoppingRecipes))
+    {
+        if(spShoppingRecipe->existsItem(rIngredient))
+        {
+            return false;
+        }
+    }
+
+    internal::remove(rIngredient, m_Ingredients);
+    return true;
 }
 
 Ingredient& RecipeBook::getIngredient(QString strName)
 {
-    return getItem(strName, m_Ingredients);
+    return internal::getItem(strName, m_Ingredients);
 }
 
 const Ingredient& RecipeBook::getIngredient(QString strName) const
 {
-    return getItemConst(strName, m_Ingredients);
+    return internal::getItemConst(strName, m_Ingredients);
 }
 
 QStringList RecipeBook::getAllIngredientNamesSorted() const
 {
-    return getAllNames(m_Ingredients);
+    return internal::getAllNames(m_Ingredients);
 }
 
-const Recipe& RecipeBook::addRecipe(QString strName, quint32 iNrPersons)
+Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
 {
-    return addItem(strName, m_Recipes, [strName]()
+    return internal::addItem(strName, m_Recipes, [strName, uiNrPersons]()
     {
-        return new Recipe(strName);
+        return new Recipe(strName, uiNrPersons);
     });
 }
 
 bool RecipeBook::existsRecipe(QString strName) const
 {
-    return exists<Recipe>(strName, m_Recipes);
+    return internal::exists<Recipe>(strName, m_Recipes);
 }
 
-void RecipeBook::removeRecipe(const Recipe& rRecipe)
+bool RecipeBook::removeRecipe(const Recipe& rRecipe)
 {
-    remove(rRecipe, m_Recipes);
+    internal::remove(rRecipe, m_Recipes);
+    return true;
 }
 
 const Recipe& RecipeBook::copyRecipe(const Recipe& rRecipe, QString strNewName)
 {
-    return addItem(strNewName, m_Recipes, [&rRecipe]()
+    return internal::addItem(strNewName, m_Recipes, [strNewName, &rRecipe]()
     {
-        return new Recipe(rRecipe);
+        return new Recipe(strNewName, rRecipe);
     });
 }
 
 Recipe& RecipeBook::getRecipe(QString strName)
 {
-    return getItem(strName, m_Recipes);
+    return internal::getItem(strName, m_Recipes);
 }
 
 const Recipe& RecipeBook::getRecipe(QString strName) const
 {
-    return getItemConst(strName, m_Recipes);
+    return internal::getItemConst(strName, m_Recipes);
 }
 
 QStringList RecipeBook::getAllRecipeNamesSorted() const
 {
-    return getAllNames(m_Recipes);
+    return internal::getAllNames(m_Recipes);
 }
 
-const ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName)
+ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScalingFactor)
 {
-    return addItem(strName, m_ShoppingRecipes, [strName]()
+    return internal::addItem(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
     {
-        return new ShoppingRecipe(strName);
+        return new ShoppingRecipe(strName, fScalingFactor);
     });
 }
 
-const ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRecipe)
+ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRecipe)
 {
-    return addItem(strName, m_ShoppingRecipes, [&rRecipe]()
+    return internal::addItem(strName, m_ShoppingRecipes, [&rRecipe]()
     {
         return new ShoppingRecipe(rRecipe);
     });
@@ -286,27 +238,28 @@ const ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recip
 
 bool RecipeBook::existsShoppingRecipe(QString strName) const
 {
-    return exists<ShoppingRecipe>(strName, m_ShoppingRecipes);
+    return internal::exists<ShoppingRecipe>(strName, m_ShoppingRecipes);
 }
 
-void RecipeBook::removeShoppingRecipe(const ShoppingRecipe& rRecipe)
+bool RecipeBook::removeShoppingRecipe(const ShoppingRecipe& rRecipe)
 {
-    remove(rRecipe, m_ShoppingRecipes);
+    internal::remove(rRecipe, m_ShoppingRecipes);
+    return true;
 }
 
 ShoppingRecipe& RecipeBook::getShoppingRecipe(QString strName)
 {
-    return getItem(strName, m_ShoppingRecipes);
+    return internal::getItem(strName, m_ShoppingRecipes);
 }
 
 const ShoppingRecipe& RecipeBook::getShoppingRecipe(QString strName) const
 {
-    return getItemConst(strName, m_ShoppingRecipes);
+    return internal::getItemConst(strName, m_ShoppingRecipes);
 }
 
 QStringList RecipeBook::getAllShoppingRecipeNames() const
 {
-    return getAllNames(m_ShoppingRecipes, false);
+    return internal::getAllNames(m_ShoppingRecipes, false);
 }
 
 void RecipeBook::clearShoppingList()
