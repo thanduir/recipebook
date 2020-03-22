@@ -41,10 +41,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
     <IntDir>Intermediate\$(Configuration) - $(Platform)\</IntDir>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
     <IntDir>Intermediate\$(Configuration) - $(Platform)\</IntDir>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
@@ -105,6 +109,12 @@
     <ClCompile Include="Recipes\data\ShoppingRecipe.cpp" />
     <ClCompile Include="Recipes\data\SortOrder.cpp" />
     <ClCompile Include="Recipes\data\Unit.cpp" />
+    <ClCompile Include="Recipes\serialization\helper\StringConverter.cpp" />
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReader.cpp" />
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReaderV1.cpp" />
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReaderV2.cpp" />
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonWriter.cpp" />
+    <ClCompile Include="Recipes\serialization\RecipeBookSerializerFactory.cpp" />
     <ClCompile Include="UI\recipebookwindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +145,16 @@
     <ClInclude Include="Recipes\data\Status.h" />
     <ClInclude Include="Recipes\data\Unit.h" />
     <ClInclude Include="Recipes\data\util\ItemsUtil.h" />
+    <ClInclude Include="Recipes\serialization\helper\StringConverter.h" />
+    <ClInclude Include="Recipes\serialization\IRecipeBookSerializer.h" />
+    <ClInclude Include="Recipes\serialization\json\JsonFormatConstantsV1.h" />
+    <ClInclude Include="Recipes\serialization\json\JsonFormatConstantsV2.h" />
+    <ClInclude Include="Recipes\serialization\json\JsonGlobalConstants.h" />
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReader.h" />
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReaderV1.h" />
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReaderV2.h" />
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonWriter.h" />
+    <ClInclude Include="Recipes\serialization\RecipeBookSerializerFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

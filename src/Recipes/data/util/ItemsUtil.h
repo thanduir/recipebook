@@ -40,7 +40,7 @@ namespace recipebook::internal
         }
         if(bSorted)
         {
-            // TODO: Does this sort the way i want it to?
+            // TODO(phiwid): Does this sort the way i want it to?
             // Otherwise: std::sort(entryList.begin(), entryList.end(), collator), where collator is a QCollator
             list.sort(Qt::CaseInsensitive);
         }

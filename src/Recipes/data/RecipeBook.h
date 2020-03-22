@@ -20,6 +20,8 @@ namespace recipebook
     public:
         RecipeBook();
 
+        void clearData();
+
         // Categories
 
         Category& addCategory(QString strName);
@@ -27,7 +29,9 @@ namespace recipebook
         bool removeCategory(const Category& rCategory);        
         const Category& getCategory(QString strName) const;
         const Category& getDefaultCategory() const;
-                
+        
+        QStringList getAllCategoryNamesSorted() const;
+
         // SortOrders
 
         SortOrder& addSortOrder(QString strName);

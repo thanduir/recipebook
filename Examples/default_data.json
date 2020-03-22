@@ -1,6 +1,10 @@
 [
   {
     "id": "ch.phwidmer.einkaufsliste",
+    "origin": [
+      "android",
+      "f9bc48bf-9053-4d2f-a15b-4df440ad0d01"
+    ],
     "version": 1
   },
   {
@@ -1204,13 +1208,13 @@
       "provenance": "*EVERYWHERE*",
       "default-unit": "Count"
     },
-    "Schoggiwürfeli": {
-      "category": "Backwaren",
+    "Schoggi Joghurt": {
+      "category": "Milchprodukte",
       "provenance": "*EVERYWHERE*",
       "default-unit": "Count"
     },
-    "Schoggi Joghurt": {
-      "category": "Milchprodukte",
+    "Schoggiwürfeli": {
+      "category": "Backwaren",
       "provenance": "*EVERYWHERE*",
       "default-unit": "Count"
     },
@@ -8442,7 +8446,6 @@
     }
   },
   {
-    "id": "Shoppinglist",
-    "currentSortOrder": ""
+    "id": "Shoppinglist"
   }
 ]

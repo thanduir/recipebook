@@ -33,7 +33,7 @@ void ShoppingRecipe::changeScalingFactor(float f)
     }
 }
 
-const ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
+ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 {
     return internal::addItem(rIngredient.getName(), m_Items, [&rIngredient]()
     {
@@ -41,7 +41,7 @@ const ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
     });
 }
 
-const ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
+ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
     return internal::addItem(rItem.getName(), m_Items, [&rItem]()
     {

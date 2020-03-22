@@ -21,7 +21,7 @@ namespace recipebook
 
         // Alternatives groups
 
-        const RecipeItemGroup& addAlternativesGroup(QString strName);
+        RecipeItemGroup& addAlternativesGroup(QString strName);
         bool existsAlternativesGroup(QString strName) const;
         bool removeAlternativesGroup(const RecipeItemGroup& rGroup);
         RecipeItemGroup& getAlternativesGroup(QString strName);

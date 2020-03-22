@@ -3,14 +3,12 @@ TODO
 
 - Regularly update Design.txt to keep it uptodate!
 
-1. I need some way to ensure data format stability, esp. with the enums (ensure the values are the same on win and android)!
-	-> also import for c_strProvenanceEverywhere in java!
-2. Internal format serialization -> Format: json? xml? custom binary format? At least allow several serialization methods in theory
-3. Define and implement extensions needed for json file format (per instance / device GUID. also decide on whether to add a date for shoppingrecipes)
-4. json-Importer / -Exporter (no merging)
-5. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
+1. Write unit test: import file (cmd line input?) and output it again (possibly in another format). Test that the two files are equal afterwards
+2. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
 	- https://doc.qt.io/qtvstools/qtvstools-getting-started.html
 	- https://doc.qt.io/qt-5/qtexamplesandtutorials.html
-6. Kochbuch-Exporter
-7. Merge functionality
-8. TODOs
+3. Kochbuch-Exporter
+4. Merge functionality
+5. TODOs
+6. Write json schema?
+7. Internal binary file format? (to speed up reading and writing)

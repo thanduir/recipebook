@@ -47,6 +47,18 @@
     <Filter Include="Recipes\data\util">
       <UniqueIdentifier>{b77e2e73-85ee-49be-960b-86e94416c384}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Recipes\serialization\json">
+      <UniqueIdentifier>{32991884-c3b8-447b-a157-f1c74d58fb92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\serialization\helper">
+      <UniqueIdentifier>{435d57d6-65d7-4d9b-9d64-c31106968779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\serialization\json\version1">
+      <UniqueIdentifier>{9cefc941-74dd-4a34-a486-c5a73e0ee7a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Recipes\serialization\json\version2">
+      <UniqueIdentifier>{d60bf1af-298b-4347-a821-c6a4d6218fe3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,6 +97,24 @@
     </ClCompile>
     <ClCompile Include="Recipes\data\RecipeItem.cpp">
       <Filter>Recipes\data\%24source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\helper\StringConverter.cpp">
+      <Filter>Recipes\serialization\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\RecipeBookSerializerFactory.cpp">
+      <Filter>Recipes\serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonWriter.cpp">
+      <Filter>Recipes\serialization\json</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReader.cpp">
+      <Filter>Recipes\serialization\json</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReaderV1.cpp">
+      <Filter>Recipes\serialization\json\version1</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipes\serialization\json\RecipeBookJsonReaderV2.cpp">
+      <Filter>Recipes\serialization\json\version2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +167,36 @@
     </ClInclude>
     <ClInclude Include="Recipes\data\Status.h">
       <Filter>Recipes\data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\helper\StringConverter.h">
+      <Filter>Recipes\serialization\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\IRecipeBookSerializer.h">
+      <Filter>Recipes\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\RecipeBookSerializerFactory.h">
+      <Filter>Recipes\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonWriter.h">
+      <Filter>Recipes\serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\JsonGlobalConstants.h">
+      <Filter>Recipes\serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReader.h">
+      <Filter>Recipes\serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\JsonFormatConstantsV1.h">
+      <Filter>Recipes\serialization\json\version1</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReaderV1.h">
+      <Filter>Recipes\serialization\json\version1</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\JsonFormatConstantsV2.h">
+      <Filter>Recipes\serialization\json\version2</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipes\serialization\json\RecipeBookJsonReaderV2.h">
+      <Filter>Recipes\serialization\json\version2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

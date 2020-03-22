@@ -13,6 +13,15 @@ RecipeBook::RecipeBook()
 {
 }
 
+void RecipeBook::clearData()
+{
+    m_Categories.clear();
+    m_SortOrders.clear();
+    m_Ingredients.clear();
+    m_Recipes.clear();
+    m_ShoppingRecipes.clear();
+}
+
 Category& RecipeBook::addCategory(QString strName)
 {
     Category& rCategory = internal::addItem(strName, m_Categories, [strName, this]()
@@ -75,6 +84,11 @@ const Category& RecipeBook::getDefaultCategory() const
         return *m_Categories.front().get();
     }
     throw QException();
+}
+
+QStringList RecipeBook::getAllCategoryNamesSorted() const
+{
+    return internal::getAllNames(m_Categories);
 }
 
 SortOrder& RecipeBook::addSortOrder(QString strName)

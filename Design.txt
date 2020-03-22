@@ -18,6 +18,7 @@ Requirements
 		-> would need a convenient data exchange method than copying files manually
 		-> this would mean less focus on mergeing, i think
 	* Or might it be possible to just base all on this code? I.e. build the app using C++ and Qt? (possibly just with a different UI?)
+		-> if so: also include things from apps todo list
 
 
 Technology

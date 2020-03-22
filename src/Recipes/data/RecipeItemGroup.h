@@ -15,7 +15,7 @@ namespace recipebook
         QString getName() const { return m_Name; }
         void rename(QString strNewName) { m_Name = strNewName; }
 
-        const RecipeItem& addItem(const Ingredient& rIngredient);
+        RecipeItem& addItem(const Ingredient& rIngredient);
         bool existsItem(const Ingredient& rIngredient) const;
         bool removeItem(const RecipeItem& rItem);
         RecipeItem& getItem(const Ingredient& rIngredient);

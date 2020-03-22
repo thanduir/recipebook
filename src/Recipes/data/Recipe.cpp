@@ -19,7 +19,7 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
     }
 }
 
-const RecipeItemGroup& Recipe::addAlternativesGroup(QString strName)
+RecipeItemGroup& Recipe::addAlternativesGroup(QString strName)
 {
     return internal::addItem(strName, m_ItemGroups, [strName]()
     {

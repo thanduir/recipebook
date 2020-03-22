@@ -17,7 +17,7 @@ RecipeItemGroup::RecipeItemGroup(const RecipeItemGroup& rOther)
     }
 }
 
-const RecipeItem& RecipeItemGroup::addItem(const Ingredient& rIngredient)
+RecipeItem& RecipeItemGroup::addItem(const Ingredient& rIngredient)
 {
 	return internal::addItem(rIngredient.getName(), m_Items, [&rIngredient]()
     {
