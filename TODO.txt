@@ -4,11 +4,19 @@ TODO
 - Regularly update Design.txt to keep it uptodate!
 
 1. Write unit test: import file (cmd line input?) and output it again (possibly in another format). Test that the two files are equal afterwards
-2. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
+	-> separate unittest project in this solution!
+	- https://doc.qt.io/qt-5/qtest-overview.html
+	- https://doc.qt.io/qt-5/qtest-tutorial.html
+	- or use builtin VS Google Test framework?
+2. Extend RecipeBook classes (i.e. the recipes) with everything that's needed for Kochbuch-Exporter (e.g. descriptions etc.)
+	-> add this to json format or have a separate output file? together would be better, but the exporter should allow to remove these extraneous data
+		for app performance reasons!
+	-> make a list of what needs to be added first, then decide!
+3. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
 	- https://doc.qt.io/qtvstools/qtvstools-getting-started.html
 	- https://doc.qt.io/qt-5/qtexamplesandtutorials.html
-3. Kochbuch-Exporter
-4. Merge functionality
-5. TODOs
-6. Write json schema?
-7. Internal binary file format? (to speed up reading and writing)
+4. Kochbuch-Exporter
+5. Merge functionality
+6. TODOs
+7. Write json schema?
+8. Internal binary file format? (to speed up reading and writing)

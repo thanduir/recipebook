@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="data">
+      <UniqueIdentifier>{720ef848-3362-4454-98fc-5aaf299deec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\Header Files">
+      <UniqueIdentifier>{d18914c1-b428-43c8-897c-05c68b8dcfcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\util">
+      <UniqueIdentifier>{9b0190ad-b2d6-4d49-8366-92956ef90fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization">
+      <UniqueIdentifier>{53a5f550-e591-43e8-bb7a-d955276e83cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization\json">
+      <UniqueIdentifier>{679cdc96-eb53-4704-8ce2-1506a06884c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization\json\version1">
+      <UniqueIdentifier>{2919add1-5af4-4a54-8b6c-c5bfea807c54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization\json\version2">
+      <UniqueIdentifier>{d9176499-06ac-49bc-8ed2-2cb8af95196f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization\helper">
+      <UniqueIdentifier>{716cf606-6d68-4059-a84b-3fe5a48cd46f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\Source Files">
+      <UniqueIdentifier>{ab21a695-7491-43a6-87bd-57501f181938}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Amount.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Category.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Ingredient.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Recipe.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBook.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItem.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItemGroup.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Size.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\SortOrder.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Status.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\Unit.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\util\ItemsUtil.h">
+      <Filter>data\util</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\IRecipeBookSerializer.h">
+      <Filter>serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\RecipeBookSerializerFactory.h">
+      <Filter>serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\JsonGlobalConstants.h">
+      <Filter>serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReader.h">
+      <Filter>serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonWriter.h">
+      <Filter>serialization\json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\JsonFormatConstantsV1.h">
+      <Filter>serialization\json\version1</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReaderV1.h">
+      <Filter>serialization\json\version1</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\JsonFormatConstantsV2.h">
+      <Filter>serialization\json\version2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReaderV2.h">
+      <Filter>serialization\json\version2</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.h">
+      <Filter>serialization\helper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+	<ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Recipe.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBook.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItem.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItemGroup.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\SortOrder.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Unit.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\RecipeBookSerializerFactory.cpp">
+      <Filter>serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReader.cpp">
+      <Filter>serialization\json</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonWriter.cpp">
+      <Filter>serialization\json</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReaderV1.cpp">
+      <Filter>serialization\json\version1</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReaderV2.cpp">
+      <Filter>serialization\json\version2</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.cpp">
+      <Filter>serialization\helper</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,6 +1,6 @@
-#include "Recipes/serialization/RecipeBookSerializerFactory.h"
-#include "Recipes/data/RecipeBook.h"
-#include "UI\recipebookwindow.h"
+#include "serialization/RecipeBookSerializerFactory.h"
+#include "data/RecipeBook.h"
+#include "recipebookwindow.h"
 #include <QtWidgets/QApplication>
 #include <QFile>
 
