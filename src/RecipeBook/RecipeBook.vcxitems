@@ -40,7 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)serialization\RecipeBookSerializerFactory.h" />
   </ItemGroup>
   <ItemGroup>
-	<ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Recipe.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBook.cpp" />

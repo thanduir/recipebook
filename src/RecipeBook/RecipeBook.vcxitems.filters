@@ -104,9 +104,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-	<ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp">
-      <Filter>data\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
@@ -151,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.cpp">
       <Filter>serialization\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp">
+      <Filter>data\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

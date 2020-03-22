@@ -13,10 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecipeBook", "src\RecipeBook\RecipeBook.vcxitems", "{0A7FAB30-8866-4865-AFEF-46B4E040CEFF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RBUnitTests", "src\RBUnitTests\RBUnitTests.vcxproj", "{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\RecipeBook\RecipeBook.vcxitems*{0a7fab30-8866-4865-afef-46b4e040ceff}*SharedItemsImports = 9
 		src\RecipeBook\RecipeBook.vcxitems*{5d73a279-74c6-47be-bd15-8cc4ee6991a6}*SharedItemsImports = 4
+		src\RecipeBook\RecipeBook.vcxitems*{9d7aad66-22b2-4e7c-b32b-4e9e2e001110}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +30,10 @@ Global
 		{5D73A279-74C6-47BE-BD15-8CC4EE6991A6}.Debug|x64.Build.0 = Debug|x64
 		{5D73A279-74C6-47BE-BD15-8CC4EE6991A6}.Release|x64.ActiveCfg = Release|x64
 		{5D73A279-74C6-47BE-BD15-8CC4EE6991A6}.Release|x64.Build.0 = Release|x64
+		{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}.Debug|x64.ActiveCfg = Debug|x64
+		{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}.Debug|x64.Build.0 = Debug|x64
+		{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}.Release|x64.ActiveCfg = Release|x64
+		{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

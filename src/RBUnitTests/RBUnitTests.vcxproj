@@ -10,12 +10,18 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="RBUnitTests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="RBUnitTests.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5D73A279-74C6-47BE-BD15-8CC4EE6991A6}</ProjectGuid>
+    <ProjectGuid>{9D7AAD66-22B2-4E7C-B32B-4E9E2E001110}</ProjectGuid>
     <Keyword>QtVS_v302</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
-    <ProjectName>RecipeBookWin</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -43,13 +49,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
-    <IntDir>..\Intermediate\RecipeBookWin\$(Configuration) - $(Platform)\</IntDir>
+    <IntDir>..\Intermediate\RBUnitTests\$(Configuration) - $(Platform)\</IntDir>
     <SourcePath>$(SourcePath)</SourcePath>
     <IncludePath>$(SolutionDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Configuration) - $(Platform)\</OutDir>
-    <IntDir>..\Intermediate\RecipeBookWin\$(Configuration) - $(Platform)\</IntDir>
+    <IntDir>..\Intermediate\RBUnitTests\$(Configuration) - $(Platform)\</IntDir>
     <SourcePath>$(SourcePath)</SourcePath>
     <IncludePath>$(SolutionDir)src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
@@ -58,11 +64,11 @@
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;testlib;widgets</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;testlib</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -79,7 +85,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
@@ -100,19 +106,6 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="recipebookwindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="recipebookwindow.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="recipebookwindow.qrc" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="recipebookwindow.ui" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
