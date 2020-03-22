@@ -33,8 +33,9 @@ namespace
     }
 }
 
-json::JsonWriter::JsonWriter(QString strUID)
-:   m_strUID(strUID)
+json::JsonWriter::JsonWriter(QString strUID, bool bStripDescriptions)
+:   m_strUID(strUID),
+    m_bStripDescriptions(bStripDescriptions)
 {
 }
 
@@ -142,6 +143,13 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
         const Recipe& rRecipe = rRecipeBook.getRecipe(recipeName);
         
         recipeObject[json::c_strRecipesNrPersons] = (int)rRecipe.getNumberOfPersons();
+
+        if(!m_bStripDescriptions)
+        {
+            recipeObject[json::c_strRecipesShortDesc] = rRecipe.getShortDescription();
+            recipeObject[json::c_strRecipesText] = rRecipe.getRecipeText();
+            recipeObject[json::c_strRecipesCookingTime] = rRecipe.getCookingTime().toString("HH:mm");
+        }
 
         QJsonObject recipeItemsObject;
         const RecipeItemGroup& rRecipeItems = rRecipe.getRecipeItems();

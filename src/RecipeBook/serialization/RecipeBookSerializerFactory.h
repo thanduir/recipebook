@@ -8,7 +8,8 @@ namespace recipebook::serialization
 {
     enum class FileFormat
     {
-        Json
+        Json,
+        JsonForApp      // Json format but with striped recipe descriptions to minimize space usage
     };
 
     class SerializerFactory

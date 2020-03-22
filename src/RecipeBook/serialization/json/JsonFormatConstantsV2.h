@@ -27,6 +27,11 @@ namespace recipebook::serialization::json
     
     // recipes
     constexpr char* c_strRecipesNrPersons               = "NrPersons";
+    constexpr char* c_strRecipesShortDesc               = "ShortDesc";
+    constexpr char* c_strRecipesText                    = "Text";
+    constexpr char* c_strRecipesCookingTime             = "CookingTime";
+
+    // recipe item lists
     constexpr char* c_strRecipesGroups                  = "groups";
     constexpr char* c_strRecipesItems                   = "items";
 

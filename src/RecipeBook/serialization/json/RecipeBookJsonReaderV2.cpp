@@ -181,6 +181,20 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 
         Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
 
+        if(recipe.find(json::c_strRecipesShortDesc) != recipe.end())
+        {
+            rRecipe.setShortDescrpition(recipe[json::c_strRecipesShortDesc].toString());
+        }
+        if(recipe.find(json::c_strRecipesText) != recipe.end())
+        {
+            rRecipe.setRecipeText(recipe[json::c_strRecipesText].toString());
+        }
+        if(recipe.find(json::c_strRecipesCookingTime) != recipe.end())
+        {
+            QString strTime = recipe[json::c_strRecipesCookingTime].toString();
+            rRecipe.setCookingTime(QTime::fromString(strTime, "HH:mm"));
+        }
+
         QJsonObject items = recipe[json::c_strRecipesItems].toObject();
         for(QString strRecipeItem : items.keys())
         {

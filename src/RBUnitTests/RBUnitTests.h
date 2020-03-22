@@ -6,4 +6,5 @@ class RBUnitTests : public QObject
 
 private slots:
     void serializeTest();
+    void serializeTestApp();
 };

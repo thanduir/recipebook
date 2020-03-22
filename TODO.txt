@@ -3,15 +3,6 @@ TODO
 
 - Regularly update Design.txt to keep it uptodate!
 
-1. Write unit test: import file (cmd line input?) and output it again (possibly in another format). 
-	-> Test that the two files are equal after the test!
-2. Extend RecipeBook classes (i.e. the recipes) with everything that's needed for Kochbuch-Exporter (e.g. descriptions etc.)
-	-> add to json, but also other "JsonForApp" enum value which removes these values from the output
-	- to be added:
-		* Recipe short description
-		* cooking duration
-		* Long description (incl. line breaks)
-		* picture? (how/where to save them though?)
 3. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
 	- https://doc.qt.io/qtvstools/qtvstools-getting-started.html
 	- https://doc.qt.io/qt-5/qtexamplesandtutorials.html
@@ -20,3 +11,4 @@ TODO
 6. TODOs
 7. Write json schema?
 8. Internal binary file format? (to speed up reading and writing)
+9. Add picture to Recipe (and json)?

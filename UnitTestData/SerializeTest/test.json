@@ -8446,6 +8446,392 @@
     }
   },
   {
-    "id": "Shoppinglist"
+    "id": "Shoppinglist",
+    "Blumenkohl-Wraps": {
+      "ScalingFactor": 2.0,
+      "DueDate": "2020-03-15",
+      "Blumenkohl": {
+        "status": "None",
+        "amountMinMax": [
+          450.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Kreuzkümmel": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Teaspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Sonnenblumenöl": {
+        "status": "None",
+        "amountMinMax": [
+          2.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Ricotta": {
+        "status": "None",
+        "amountMinMax": [
+          125.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Paprika": {
+        "status": "None",
+        "amountMinMax": [
+          2.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Chili-Schote (rot)": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Halbrahm": {
+        "status": "None",
+        "amountMinMax": [
+          275.0,
+          -1.0,
+          "Milliliter"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Limettensaft": {
+        "status": "None",
+        "amountMinMax": [
+          0.0,
+          -1.0,
+          "Unitless"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Cayenne-Pfeffer": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Teaspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Salat (Eisberg, Kopf)": {
+        "status": "None",
+        "amountMinMax": [
+          0.25,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Tortillas (Weizen)": {
+        "status": "None",
+        "amountMinMax": [
+          4.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Schalotten": {
+        "status": "None",
+        "amountMinMax": [
+          2.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      }
+    },
+    "Auberginen-Auflauf": {
+      "ScalingFactor": 2.0,
+      "DueDate": "2020-03-15",
+      "Aubergine": {
+        "status": "None",
+        "amountMinMax": [
+          500.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Kartoffeln": {
+        "status": "None",
+        "amountMinMax": [
+          450.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Olivenöl": {
+        "status": "None",
+        "amountMinMax": [
+          0.0,
+          -1.0,
+          "Unitless"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Mozzarella": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Large",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Pelati": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Tomatenpüree": {
+        "status": "None",
+        "amountMinMax": [
+          2.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Basilikum (getrocknet)": {
+        "status": "None",
+        "amountMinMax": [
+          0.0,
+          -1.0,
+          "Unitless"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Parmesan": {
+        "status": "None",
+        "amountMinMax": [
+          0.0,
+          -1.0,
+          "Unitless"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      }
+    },
+    "Bibimbap": {
+      "ScalingFactor": 2.0,
+      "DueDate": "2020-03-15",
+      "Reis (Jasmin)": {
+        "status": "None",
+        "amountMinMax": [
+          150.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Rindsschnitzel": {
+        "status": "None",
+        "amountMinMax": [
+          250.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Maizena": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Eier": {
+        "status": "None",
+        "amountMinMax": [
+          2.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Karotten": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Count"
+        ],
+        "size": "Large",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Mungosprossen": {
+        "status": "None",
+        "amountMinMax": [
+          50.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Shiitakepilze": {
+        "status": "None",
+        "amountMinMax": [
+          25.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Sesam-Samen": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Sesamöl": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Sriracha-Sauce": {
+        "status": "None",
+        "amountMinMax": [
+          1.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Reisessig": {
+        "status": "None",
+        "amountMinMax": [
+          0.5,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Zucker": {
+        "status": "None",
+        "amountMinMax": [
+          0.5,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Sojasauce": {
+        "status": "None",
+        "amountMinMax": [
+          3.0,
+          -1.0,
+          "Dessertspoon"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      },
+      "Pak Choi": {
+        "status": "None",
+        "amountMinMax": [
+          120.0,
+          -1.0,
+          "Gram"
+        ],
+        "size": "Normal",
+        "optional": false,
+        "additionalInfo": ""
+      }
+    }
   }
 ]
