@@ -1,6 +1,8 @@
 #ifndef RECIPEBOOK_SIZE_H
 #define RECIPEBOOK_SIZE_H
 
+#include <QStringList>
+
 namespace recipebook
 {
     enum class Size
@@ -9,6 +11,8 @@ namespace recipebook
         Normal,
         Large
     };
+
+    QStringList getAllSizeNamesUI();
 }
 
 #endif

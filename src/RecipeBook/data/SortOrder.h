@@ -11,7 +11,6 @@ namespace recipebook
     {
     public:
         QString getName() const { return m_Name; }
-        void rename(QString strNewName) { m_Name = strNewName; }
 
         quint32 getItemsCount() const { return m_Categories.size(); }
         const Category& at(quint32 i) const;
@@ -23,6 +22,8 @@ namespace recipebook
 
         SortOrder(const SortOrder& rOther) = delete;
         void operator=(const SortOrder& rOther) = delete;
+
+        void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
         QString m_Name;

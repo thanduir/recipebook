@@ -13,7 +13,6 @@ namespace recipebook
     {
     public:
         QString getName() const { return m_Name; }
-        void rename(QString strNewName) { m_Name = strNewName; }
 
         const Category& getCategory() const { return *m_pCategory; }
         void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }
@@ -31,6 +30,8 @@ namespace recipebook
 
         Ingredient(const Ingredient& rOther) = delete;
         void operator=(const Ingredient& rOther) = delete;
+
+        void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
         QString m_Name;

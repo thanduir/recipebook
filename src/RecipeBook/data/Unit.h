@@ -1,6 +1,8 @@
 #ifndef RECIPEBOOK_UNIT_H
 #define RECIPEBOOK_UNIT_H
 
+#include <QStringList>
+
 namespace recipebook
 {
     enum class Unit
@@ -21,6 +23,7 @@ namespace recipebook
     };
 
     float getDefaultQuantity(Unit unit);
+    QStringList getAllUnitNamesUI();
 }
 
 #endif

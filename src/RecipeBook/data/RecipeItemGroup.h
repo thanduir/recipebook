@@ -15,13 +15,17 @@ namespace recipebook
         QString getName() const { return m_Name; }
         void rename(QString strNewName) { m_Name = strNewName; }
 
-        RecipeItem& addItem(const Ingredient& rIngredient);
+        RecipeItem& addItem(const Ingredient& rIngredient, int pos = -1);
         bool existsItem(const Ingredient& rIngredient) const;
         bool removeItem(const RecipeItem& rItem);
         RecipeItem& getItem(const Ingredient& rIngredient);
         const RecipeItem& getItem(const Ingredient& rIngredient) const;
 
-        QStringList getAllItemNamesSorted() const;
+        
+        quint32 getItemsCount() const;
+        RecipeItem& getItemAt(quint32 i);
+        const RecipeItem& getItemAt(quint32 i) const;
+        void moveItem(const RecipeItem& rItem, quint32 newPos);
 
     private:
         explicit RecipeItemGroup(QString strName) : m_Name(strName) {}      

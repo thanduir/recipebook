@@ -25,6 +25,5 @@ const recipebook::Category& recipebook::SortOrder::at(quint32 i) const
 void recipebook::SortOrder::moveCategory(const Category& category, quint32 newPos)
 {
 	quint32 oldPos = m_Categories.indexOf(&category);
-	m_Categories.removeAt(oldPos);
-	m_Categories.insert(newPos, &category);
+	m_Categories.move(oldPos, newPos);
 }

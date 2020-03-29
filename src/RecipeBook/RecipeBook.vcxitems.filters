@@ -152,5 +152,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Size.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Status.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -16,8 +16,7 @@ namespace recipebook
     {
     public:
         QString getName() const { return m_Name; }
-        void rename(QString strNewName) { m_Name = strNewName; }
-
+        
         // Current scaling factor used for the items in the list.
         float getScalingFactor() const { return m_fScalingFactor; }
         // Changes the scaling factor without adjusting the amount of the items in this recipe.
@@ -28,14 +27,17 @@ namespace recipebook
         QDate getDueDate() const { return m_DueDate; }
         void setDueDate(QDate dueDate) { m_DueDate = dueDate; }
 
-        ShoppingListItem& addItem(const Ingredient& rIngredient);
-        ShoppingListItem& addItem(const RecipeItem& rItem);
+        ShoppingListItem& addItem(const Ingredient& rIngredient, int pos = -1);
+        ShoppingListItem& addItem(const RecipeItem& rItem, int pos = -1);
         bool existsItem(const Ingredient& rIngredient) const;
         bool removeItem(const ShoppingListItem& rItem);
         ShoppingListItem& getItem(const Ingredient& rIngredient);
         const ShoppingListItem& getItem(const Ingredient& rIngredient) const;
 
-        QStringList getAllItemNamesSorted() const;
+        quint32 getItemsCount() const;
+        ShoppingListItem& getItemAt(quint32 i);
+        const ShoppingListItem& getItemAt(quint32 i) const;
+        void moveItem(const ShoppingListItem& rItem, quint32 newPos);
 
     private:
         explicit ShoppingRecipe(QString strName, float fScalingFactor) 
@@ -44,6 +46,8 @@ namespace recipebook
 
         ShoppingRecipe(const ShoppingRecipe& rOther) = delete;
         void operator=(const ShoppingRecipe& rOther) = delete;
+
+        void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
         QString m_Name;

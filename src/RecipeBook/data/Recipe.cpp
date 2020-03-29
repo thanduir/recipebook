@@ -10,18 +10,19 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
     m_NrPersons(rOther.getNumberOfPersons()),
     m_RecipeItems(rOther.m_RecipeItems)
 {
-    for(QSharedPointer<RecipeItemGroup> spGroup : qAsConst(rOther.m_ItemGroups))
+    for(int i = 0; i < (int)rOther.getAlternativesGroupsCount(); ++i)
     {
-        internal::addItem(spGroup->getName(), m_ItemGroups, [&spGroup]()
+        const RecipeItemGroup& rGroup = rOther.getAlternativesGroupAt(i);
+        internal::unsorted::addItem(rGroup.getName(), i, m_ItemGroups, [&rGroup]()
         {
-            return new RecipeItemGroup(*spGroup.get());
+            return new RecipeItemGroup(rGroup);
         });
     }
 }
 
-RecipeItemGroup& Recipe::addAlternativesGroup(QString strName)
+RecipeItemGroup& Recipe::addAlternativesGroup(QString strName, int pos)
 {
-    return internal::addItem(strName, m_ItemGroups, [strName]()
+    return internal::unsorted::addItem(strName, pos, m_ItemGroups, [strName]()
     {
         return new RecipeItemGroup(strName);
     });
@@ -29,26 +30,54 @@ RecipeItemGroup& Recipe::addAlternativesGroup(QString strName)
 
 bool Recipe::existsAlternativesGroup(QString strName) const
 {
-    return internal::exists<RecipeItemGroup>(strName, m_ItemGroups);
+    return internal::unsorted::exists<RecipeItemGroup>(strName, m_ItemGroups);
 }
 
 bool Recipe::removeAlternativesGroup(const RecipeItemGroup& rGroup)
 {
-    internal::remove(rGroup, m_ItemGroups);
+    internal::unsorted::remove(rGroup, m_ItemGroups);
     return true;
 }
 
 RecipeItemGroup& Recipe::getAlternativesGroup(QString strName)
 {
-    return internal::getItem(strName, m_ItemGroups);
+    return internal::unsorted::getItem(strName, m_ItemGroups);
 }
 
 const RecipeItemGroup& Recipe::getAlternativesGroup(QString strName) const
 {
-    return internal::getItemConst(strName, m_ItemGroups);
+    return internal::unsorted::getItem(strName, m_ItemGroups);
 }
 
-QStringList Recipe::getAllAlternativesGroupsNamesSorted() const
+quint32 Recipe::getAlternativesGroupsCount() const
 {
-    return internal::getAllNames(m_ItemGroups);
+    return m_ItemGroups.size();
+}
+
+RecipeItemGroup& Recipe::getAlternativesGroupAt(quint32 i)
+{
+    if(i >= (quint32)m_ItemGroups.size())
+    {
+        throw QException();
+    }
+    return *m_ItemGroups.at(i).get();
+}
+
+const RecipeItemGroup& Recipe::getAlternativesGroupAt(quint32 i) const
+{
+    if(i >= (quint32)m_ItemGroups.size())
+    {
+        throw QException();
+    }
+    return *m_ItemGroups.at(i).get();
+}
+
+void Recipe::moveAlternativesGroup(const RecipeItemGroup& rItem, quint32 newPos)
+{
+    int oldPos = internal::unsorted::find(rItem.getName(), m_ItemGroups);
+    if(oldPos < 0)
+    {
+        throw QException();
+    }
+    m_ItemGroups.move(oldPos, newPos);
 }

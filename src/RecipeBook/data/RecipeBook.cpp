@@ -24,7 +24,7 @@ void RecipeBook::clearData()
 
 Category& RecipeBook::addCategory(QString strName)
 {
-    Category& rCategory = internal::addItem(strName, m_Categories, [strName, this]()
+    Category& rCategory = internal::sorted::addItem(strName, m_Categories, [strName, this]()
     {
         return new Category(strName);
     });
@@ -38,9 +38,15 @@ Category& RecipeBook::addCategory(QString strName)
     return rCategory;
 }
 
+void RecipeBook::renameCategory(Category& rCategory, QString strNewName)
+{
+    internal::sorted::moveForNewName(rCategory, strNewName, m_Categories);
+    rCategory.rename(strNewName);
+}
+
 bool RecipeBook::existsCategory(QString strName) const
 {
-    return internal::exists<Category>(strName, m_Categories);
+    return internal::sorted::exists<Category>(strName, m_Categories);
 }
 
 bool RecipeBook::removeCategory(const Category& rCategory)
@@ -54,7 +60,7 @@ bool RecipeBook::removeCategory(const Category& rCategory)
         }
     }
 
-    internal::remove(rCategory, m_Categories);
+    internal::sorted::remove(rCategory, m_Categories);
 
     // Remove Category also from all SortOrders
     for(QSharedPointer<SortOrder> spSortOrder : qAsConst(m_SortOrders))
@@ -74,7 +80,7 @@ bool RecipeBook::removeCategory(const Category& rCategory)
 
 const Category& RecipeBook::getCategory(QString strName) const
 {
-    return internal::getItemConst(strName, m_Categories);
+    return internal::sorted::getItem(strName, m_Categories);
 }
 
 const Category& RecipeBook::getDefaultCategory() const
@@ -86,22 +92,46 @@ const Category& RecipeBook::getDefaultCategory() const
     throw QException();
 }
 
-QStringList RecipeBook::getAllCategoryNamesSorted() const
+quint32 RecipeBook::getCategoriesCount() const 
+{ 
+    return m_Categories.size(); 
+}
+
+Category& RecipeBook::getCategoryAt(quint32 i)
 {
-    return internal::getAllNames(m_Categories);
+    if(i >= (quint32)m_Categories.size())
+    {
+        throw QException();
+    }
+    return *m_Categories.at(i).get();
+}
+
+const Category& RecipeBook::getCategoryAt(quint32 i) const
+{
+    if(i >= (quint32)m_Categories.size())
+    {
+        throw QException();
+    }
+    return *m_Categories.at(i).get();
 }
 
 SortOrder& RecipeBook::addSortOrder(QString strName)
 {
-    return internal::addItem(strName, m_SortOrders, [strName, this]()
+    return internal::sorted::addItem(strName, m_SortOrders, [strName, this]()
     {
         return new SortOrder(strName, m_Categories);
     });
 }
 
+void RecipeBook::renameSortOrder(SortOrder& rOrder, QString strNewName)
+{
+    internal::sorted::moveForNewName(rOrder, strNewName, m_SortOrders);
+    rOrder.rename(strNewName);
+}
+
 bool RecipeBook::existsSortOrder(QString strName) const
 {
-    return internal::exists<SortOrder>(strName, m_SortOrders);
+    return internal::sorted::exists<SortOrder>(strName, m_SortOrders);
 }
 
 bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
@@ -115,36 +145,60 @@ bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
         }
     }
 
-    internal::remove(rOrder, m_SortOrders);
+    internal::sorted::remove(rOrder, m_SortOrders);
     return true;
 }
 
 SortOrder& RecipeBook::getSortOrder(QString strName)
 {
-    return internal::getItem(strName, m_SortOrders);
+    return internal::sorted::getItem(strName, m_SortOrders);
 }
 
 const SortOrder& RecipeBook::getSortOrder(QString strName) const
 {
-    return internal::getItemConst(strName, m_SortOrders);
+    return internal::sorted::getItem(strName, m_SortOrders);
 }
 
-QStringList RecipeBook::getAllSortOrderNamesSorted() const
+quint32 RecipeBook::getSortOrdersCount() const 
+{ 
+    return m_SortOrders.size(); 
+}
+
+SortOrder& RecipeBook::getSortOrderAt(quint32 i)
 {
-    return internal::getAllNames(m_SortOrders);
+    if(i >= (quint32)m_SortOrders.size())
+    {
+        throw QException();
+    }
+    return *m_SortOrders.at(i).get();
+}
+
+const SortOrder& RecipeBook::getSortOrderAt(quint32 i) const
+{
+    if(i >= (quint32)m_SortOrders.size())
+    {
+        throw QException();
+    }
+    return *m_SortOrders.at(i).get();
 }
 
 Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
 {
-    return internal::addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
+    return internal::sorted::addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
     {
         return new Ingredient(strName, rCategory, defaultUnit);
     });
 }
 
+void RecipeBook::renameIngredient(Ingredient& rIngredient, QString strNewName)
+{
+    internal::sorted::moveForNewName(rIngredient, strNewName, m_Ingredients);
+    rIngredient.rename(strNewName);
+}
+
 bool RecipeBook::existsIngredient(QString strName) const
 {
-    return internal::exists<Ingredient>(strName, m_Ingredients);
+    return internal::sorted::exists<Ingredient>(strName, m_Ingredients);
 }
 
 bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
@@ -173,47 +227,71 @@ bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
         }
     }
 
-    internal::remove(rIngredient, m_Ingredients);
+    internal::sorted::remove(rIngredient, m_Ingredients);
     return true;
 }
 
 Ingredient& RecipeBook::getIngredient(QString strName)
 {
-    return internal::getItem(strName, m_Ingredients);
+    return internal::sorted::getItem(strName, m_Ingredients);
 }
 
 const Ingredient& RecipeBook::getIngredient(QString strName) const
 {
-    return internal::getItemConst(strName, m_Ingredients);
+    return internal::sorted::getItem(strName, m_Ingredients);
 }
 
-QStringList RecipeBook::getAllIngredientNamesSorted() const
+quint32 RecipeBook::getIngredientsCount() const 
+{ 
+    return m_Ingredients.size(); 
+}
+
+Ingredient& RecipeBook::getIngredientAt(quint32 i)
 {
-    return internal::getAllNames(m_Ingredients);
+    if(i >= (quint32)m_Ingredients.size())
+    {
+        throw QException();
+    }
+    return *m_Ingredients.at(i).get();
+}
+
+const Ingredient& RecipeBook::getIngredientAt(quint32 i) const
+{
+    if(i >= (quint32)m_Ingredients.size())
+    {
+        throw QException();
+    }
+    return *m_Ingredients.at(i).get();
 }
 
 Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
 {
-    return internal::addItem(strName, m_Recipes, [strName, uiNrPersons]()
+    return internal::sorted::addItem(strName, m_Recipes, [strName, uiNrPersons]()
     {
         return new Recipe(strName, uiNrPersons);
     });
 }
 
+void RecipeBook::renameRecipe(Recipe& rRecipe, QString strNewName)
+{
+    internal::sorted::moveForNewName(rRecipe, strNewName, m_Recipes);
+    rRecipe.rename(strNewName);
+}
+
 bool RecipeBook::existsRecipe(QString strName) const
 {
-    return internal::exists<Recipe>(strName, m_Recipes);
+    return internal::sorted::exists<Recipe>(strName, m_Recipes);
 }
 
 bool RecipeBook::removeRecipe(const Recipe& rRecipe)
 {
-    internal::remove(rRecipe, m_Recipes);
+    internal::sorted::remove(rRecipe, m_Recipes);
     return true;
 }
 
 const Recipe& RecipeBook::copyRecipe(const Recipe& rRecipe, QString strNewName)
 {
-    return internal::addItem(strNewName, m_Recipes, [strNewName, &rRecipe]()
+    return internal::sorted::addItem(strNewName, m_Recipes, [strNewName, &rRecipe]()
     {
         return new Recipe(strNewName, rRecipe);
     });
@@ -221,22 +299,40 @@ const Recipe& RecipeBook::copyRecipe(const Recipe& rRecipe, QString strNewName)
 
 Recipe& RecipeBook::getRecipe(QString strName)
 {
-    return internal::getItem(strName, m_Recipes);
+    return internal::sorted::getItem(strName, m_Recipes);
 }
 
 const Recipe& RecipeBook::getRecipe(QString strName) const
 {
-    return internal::getItemConst(strName, m_Recipes);
+    return internal::sorted::getItem(strName, m_Recipes);
 }
 
-QStringList RecipeBook::getAllRecipeNamesSorted() const
+quint32 RecipeBook::getRecipesCount() const 
+{ 
+    return m_Recipes.size(); 
+}
+
+Recipe& RecipeBook::getRecipeAt(quint32 i)
 {
-    return internal::getAllNames(m_Recipes);
+    if(i >= (quint32)m_Recipes.size())
+    {
+        throw QException();
+    }
+    return *m_Recipes.at(i).get();
+}
+
+const Recipe& RecipeBook::getRecipeAt(quint32 i) const
+{
+    if(i >= (quint32)m_Recipes.size())
+    {
+        throw QException();
+    }
+    return *m_Recipes.at(i).get();
 }
 
 ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScalingFactor)
 {
-    return internal::addItem(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
+    return internal::sorted::addItem(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
     {
         return new ShoppingRecipe(strName, fScalingFactor);
     });
@@ -244,36 +340,60 @@ ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScaling
 
 ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRecipe)
 {
-    return internal::addItem(strName, m_ShoppingRecipes, [&rRecipe]()
+    return internal::sorted::addItem(strName, m_ShoppingRecipes, [&rRecipe]()
     {
         return new ShoppingRecipe(rRecipe);
     });
 }
 
+void RecipeBook::renameShoppingRecipe(ShoppingRecipe& rRecipe, QString strNewName)
+{
+    internal::sorted::moveForNewName(rRecipe, strNewName, m_ShoppingRecipes);
+    rRecipe.rename(strNewName);
+}
+
 bool RecipeBook::existsShoppingRecipe(QString strName) const
 {
-    return internal::exists<ShoppingRecipe>(strName, m_ShoppingRecipes);
+    return internal::sorted::exists<ShoppingRecipe>(strName, m_ShoppingRecipes);
 }
 
 bool RecipeBook::removeShoppingRecipe(const ShoppingRecipe& rRecipe)
 {
-    internal::remove(rRecipe, m_ShoppingRecipes);
+    internal::sorted::remove(rRecipe, m_ShoppingRecipes);
     return true;
 }
 
 ShoppingRecipe& RecipeBook::getShoppingRecipe(QString strName)
 {
-    return internal::getItem(strName, m_ShoppingRecipes);
+    return internal::sorted::getItem(strName, m_ShoppingRecipes);
 }
 
 const ShoppingRecipe& RecipeBook::getShoppingRecipe(QString strName) const
 {
-    return internal::getItemConst(strName, m_ShoppingRecipes);
+    return internal::sorted::getItem(strName, m_ShoppingRecipes);
 }
 
-QStringList RecipeBook::getAllShoppingRecipeNames() const
+quint32 RecipeBook::getShoppingRecipesCount() const 
+{ 
+    return m_ShoppingRecipes.size(); 
+}
+
+ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i)
 {
-    return internal::getAllNames(m_ShoppingRecipes, false);
+    if(i >= (quint32)m_ShoppingRecipes.size())
+    {
+        throw QException();
+    }
+    return *m_ShoppingRecipes.at(i).get();
+}
+
+const ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i) const
+{
+    if(i >= (quint32)m_ShoppingRecipes.size())
+    {
+        throw QException();
+    }
+    return *m_ShoppingRecipes.at(i).get();
 }
 
 void RecipeBook::clearShoppingList()

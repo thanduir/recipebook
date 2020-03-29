@@ -8,14 +8,15 @@ namespace recipebook
     class Category
     {
     public:
-        QString getName() const { return m_Name; }
-        void rename(QString strNewName) { m_Name = strNewName; }
+        QString getName() const { return m_Name; }        
 
     private:
         explicit Category(QString strName) : m_Name(strName) {}      
 
         Category(const Category& rOther) = delete;
         void operator=(const Category& rOther) = delete;
+
+        void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
         QString m_Name;

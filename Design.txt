@@ -4,14 +4,15 @@ RecipeBook
 Requirements
 ------------
 
-- Manage recipes (name, short desc, cooking time, ingredients, description)
-- Manage ingredients and provenances equivalently to whats done in the app?
+- Manage recipes (incl. short desc, cooking time, description), ingredients and provenances equivalently to whats done in the app
+- Shopping-List functionality
 - Sync functionality
 	* Import other file (app json and / or internal format including *all* the data)
 	* 3-way-merge by keeping the latest sync'd state with different devices, manuel conflict resolving
 		-> extend format with per device / instance GUID	
-- Import / Export of json files without merge?
+- Import / Export of json files without merge
 - Export to odt / pdf / ? in a style similar to current "Kochbuch Phil & Nicole.odt"
+
 - Possible long term goal: 
 	* Remove recipe management from app? 
 		-> app only as a shoppinglist tool with easy recipe sync from recipebook? 

@@ -1610,6 +1610,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1620,6 +1621,7 @@
                     "size": "Normal"
                 },
                 "Chinakohl": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1630,6 +1632,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1640,6 +1643,7 @@
                     "size": "Normal"
                 },
                 "Schweinsschnitzel": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1650,6 +1654,7 @@
                     "size": "Normal"
                 },
                 "Shiitakepilze": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1660,6 +1665,7 @@
                     "size": "Normal"
                 },
                 "Sojasauce": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1670,6 +1676,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Chinanudeln)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1690,6 +1697,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1700,6 +1708,7 @@
                     "size": "Normal"
                 },
                 "Basilikum (getrocknet)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1710,6 +1719,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1720,6 +1730,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1730,6 +1741,7 @@
                     "size": "Large"
                 },
                 "Olivenöl": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1740,6 +1752,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1750,6 +1763,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1760,6 +1774,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1780,6 +1795,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1790,6 +1806,7 @@
                     "size": "Small"
                 },
                 "Bouillon (Gemüse)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1800,6 +1817,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1810,6 +1828,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1820,6 +1839,7 @@
                     "size": "Normal"
                 },
                 "Wein (weiss)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1830,6 +1850,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 5,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -1840,6 +1861,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1858,30 +1880,36 @@
             "Text": "",
             "groups": {
                 "Gemüse (grün)": {
-                    "Chinakohl": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 120,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Chinakohl": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 120,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Pak Choi": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 120,
-                            "unit": "Gram"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Pak Choi": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 120,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1892,6 +1920,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1902,6 +1931,7 @@
                     "size": "Large"
                 },
                 "Maizena": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1912,6 +1942,7 @@
                     "size": "Normal"
                 },
                 "Mungosprossen": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1922,6 +1953,7 @@
                     "size": "Normal"
                 },
                 "Reis (Jasmin)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1932,6 +1964,7 @@
                     "size": "Normal"
                 },
                 "Reisessig": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1942,6 +1975,7 @@
                     "size": "Normal"
                 },
                 "Rindsschnitzel": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1952,6 +1986,7 @@
                     "size": "Normal"
                 },
                 "Sesam-Samen": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1962,6 +1997,7 @@
                     "size": "Normal"
                 },
                 "Sesamöl": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1972,6 +2008,7 @@
                     "size": "Normal"
                 },
                 "Shiitakepilze": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1982,6 +2019,7 @@
                     "size": "Normal"
                 },
                 "Sojasauce": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -1992,6 +2030,7 @@
                     "size": "Normal"
                 },
                 "Sriracha-Sauce": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2002,6 +2041,7 @@
                     "size": "Normal"
                 },
                 "Zucker": {
+                    "_position": 12,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2020,30 +2060,36 @@
             "Text": "",
             "groups": {
                 "Teig": {
-                    "Kuchenteig": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
+                    "_position": 0,
+                    "items": {
+                        "Kuchenteig": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Mürbeteig": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Mürbeteig": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Birnen": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2054,6 +2100,7 @@
                     "size": "Normal"
                 },
                 "Haselnüsse (gemahlen)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2064,6 +2111,7 @@
                     "size": "Normal"
                 },
                 "Honig": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2074,6 +2122,7 @@
                     "size": "Normal"
                 },
                 "Puderzucker": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2084,6 +2133,7 @@
                     "size": "Normal"
                 },
                 "Schoggiwürfeli": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2094,6 +2144,7 @@
                     "size": "Normal"
                 },
                 "Zitronensaft": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2114,6 +2165,7 @@
             },
             "items": {
                 "Blumenkohl": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2124,6 +2176,7 @@
                     "size": "Normal"
                 },
                 "Cayenne-Pfeffer": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2134,6 +2187,7 @@
                     "size": "Normal"
                 },
                 "Chili-Schote (rot)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2144,6 +2198,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2154,6 +2209,7 @@
                     "size": "Normal"
                 },
                 "Kreuzkümmel": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2164,6 +2220,7 @@
                     "size": "Normal"
                 },
                 "Limettensaft": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2174,6 +2231,7 @@
                     "size": "Normal"
                 },
                 "Paprika": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2184,6 +2242,7 @@
                     "size": "Normal"
                 },
                 "Ricotta": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2194,6 +2253,7 @@
                     "size": "Normal"
                 },
                 "Salat (Eisberg, Kopf)": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2204,6 +2264,7 @@
                     "size": "Normal"
                 },
                 "Schalotten": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2214,6 +2275,7 @@
                     "size": "Normal"
                 },
                 "Sonnenblumenöl": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2224,6 +2286,7 @@
                     "size": "Normal"
                 },
                 "Tortillas (Weizen)": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2244,6 +2307,7 @@
             },
             "items": {
                 "Brokkoli": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2254,6 +2318,7 @@
                     "size": "Normal"
                 },
                 "Cashewnüsse ": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2264,6 +2329,7 @@
                     "size": "Normal"
                 },
                 "Currypaste (grün, Thai)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2274,6 +2340,7 @@
                     "size": "Normal"
                 },
                 "Falafel": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2284,6 +2351,7 @@
                     "size": "Normal"
                 },
                 "Kokosmilch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2294,6 +2362,7 @@
                     "size": "Normal"
                 },
                 "Reisnudeln": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2304,6 +2373,7 @@
                     "size": "Normal"
                 },
                 "Sesamöl": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2314,6 +2384,7 @@
                     "size": "Normal"
                 },
                 "Sojasauce": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2324,6 +2395,7 @@
                     "size": "Normal"
                 },
                 "Zitronensaft": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2342,30 +2414,36 @@
             "Text": "",
             "groups": {
                 "Orangen": {
-                    "Orangen": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
+                    "_position": 0,
+                    "items": {
+                        "Orangen": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Orangensaft": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 2.5,
-                            "unit": "Deciliter"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Orangensaft": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 2.5,
+                                "unit": "Deciliter"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2376,6 +2454,7 @@
                     "size": "Normal"
                 },
                 "Brokkoli": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2386,6 +2465,7 @@
                     "size": "Normal"
                 },
                 "Honig": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2396,6 +2476,7 @@
                     "size": "Normal"
                 },
                 "Ingwer": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2406,6 +2487,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2416,6 +2498,7 @@
                     "size": "Large"
                 },
                 "Sesamöl": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2426,6 +2509,7 @@
                     "size": "Normal"
                 },
                 "Sojasauce": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2436,6 +2520,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Chinanudeln)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2446,6 +2531,7 @@
                     "size": "Normal"
                 },
                 "Walnüsse": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2466,6 +2552,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2476,6 +2563,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2486,6 +2574,7 @@
                     "size": "Normal"
                 },
                 "Mozzarellaperlen": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2496,6 +2585,7 @@
                     "size": "Normal"
                 },
                 "Pizzateig": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2506,6 +2596,7 @@
                     "size": "Small"
                 },
                 "Salat": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2526,6 +2617,7 @@
             },
             "items": {
                 "Ahornsirup": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2536,6 +2628,7 @@
                     "size": "Normal"
                 },
                 "Brokkoli": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2546,6 +2639,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2556,6 +2650,7 @@
                     "size": "Small"
                 },
                 "Kefen (gefrohren)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2566,6 +2661,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2576,6 +2672,7 @@
                     "size": "Small"
                 },
                 "Reis": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2586,6 +2683,7 @@
                     "size": "Normal"
                 },
                 "Sweet Chilli Sauce": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2596,6 +2694,7 @@
                     "size": "Normal"
                 },
                 "Tofu": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2606,6 +2705,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2626,6 +2726,7 @@
             },
             "items": {
                 "Brot": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2636,6 +2737,7 @@
                     "size": "Normal"
                 },
                 "Butter": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2646,6 +2748,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2656,6 +2759,7 @@
                     "size": "Normal"
                 },
                 "Früchte": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2666,6 +2770,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (gemahlen)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2676,6 +2781,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2686,6 +2792,7 @@
                     "size": "Normal"
                 },
                 "Zimt": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2696,6 +2803,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 7,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -2714,30 +2822,36 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Pouletgeschnetzeltes": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 250,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Pouletgeschnetzeltes": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 250,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Tofu": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 250,
-                            "unit": "Gram"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Tofu": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 250,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Blumenkohl": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2748,6 +2862,7 @@
                     "size": "Normal"
                 },
                 "Currysauce": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2758,6 +2873,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2768,6 +2884,7 @@
                     "size": "Normal"
                 },
                 "Kichererbsen": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2778,6 +2895,7 @@
                     "size": "Small"
                 },
                 "Kokosmilch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2788,6 +2906,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2798,6 +2917,7 @@
                     "size": "Large"
                 },
                 "Reis": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2818,6 +2938,7 @@
             },
             "items": {
                 "Milch": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2828,6 +2949,7 @@
                     "size": "Normal"
                 },
                 "Mokka Joghurt": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2838,6 +2960,7 @@
                     "size": "Normal"
                 },
                 "YoQua (Mocca)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2858,6 +2981,7 @@
             },
             "items": {
                 "Chrömli": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2868,6 +2992,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2878,6 +3003,7 @@
                     "size": "Normal"
                 },
                 "Mokka Joghurt": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2898,6 +3024,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2908,6 +3035,7 @@
                     "size": "Small"
                 },
                 "Basilikum-Pesto": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2918,6 +3046,7 @@
                     "size": "Normal"
                 },
                 "Edamame-Noodles": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2928,6 +3057,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2938,6 +3068,7 @@
                     "size": "Normal"
                 },
                 "Olivenöl": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2948,6 +3079,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2958,6 +3090,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2978,6 +3111,7 @@
             },
             "items": {
                 "Aceto Balsamico": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2988,6 +3122,7 @@
                     "size": "Normal"
                 },
                 "Curry": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -2998,6 +3133,7 @@
                     "size": "Normal"
                 },
                 "Fenchel": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3008,6 +3144,7 @@
                     "size": "Normal"
                 },
                 "Fischsticks": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3018,6 +3155,7 @@
                     "size": "Normal"
                 },
                 "Magerquark": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3038,6 +3176,7 @@
             },
             "items": {
                 "Apfelmus": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3048,6 +3187,7 @@
                     "size": "Small"
                 },
                 "Brot": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3058,6 +3198,7 @@
                     "size": "Normal"
                 },
                 "Butter": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3068,6 +3209,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3078,6 +3220,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3088,6 +3231,7 @@
                     "size": "Normal"
                 },
                 "Zimt": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3108,6 +3252,7 @@
             },
             "items": {
                 "Ananas": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3118,6 +3263,7 @@
                     "size": "Normal"
                 },
                 "Apfel": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3128,6 +3274,7 @@
                     "size": "Normal"
                 },
                 "Banane": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3138,6 +3285,7 @@
                     "size": "Normal"
                 },
                 "Honig": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3148,6 +3296,7 @@
                     "size": "Normal"
                 },
                 "Kirschen": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3158,6 +3307,7 @@
                     "size": "Normal"
                 },
                 "Kiwi": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3168,6 +3318,7 @@
                     "size": "Normal"
                 },
                 "Mango": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3178,6 +3329,7 @@
                     "size": "Normal"
                 },
                 "Nektarinen": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3188,6 +3340,7 @@
                     "size": "Normal"
                 },
                 "Orangen": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3198,6 +3351,7 @@
                     "size": "Normal"
                 },
                 "Pfirsich": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3208,6 +3362,7 @@
                     "size": "Normal"
                 },
                 "Trauben (kernlos)": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3218,6 +3373,7 @@
                     "size": "Normal"
                 },
                 "Zitronensaft": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3228,6 +3384,7 @@
                     "size": "Normal"
                 },
                 "Zwetschgen": {
+                    "_position": 12,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3248,6 +3405,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3258,6 +3416,7 @@
                     "size": "Normal"
                 },
                 "Früchte": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3268,6 +3427,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3278,6 +3438,7 @@
                     "size": "Normal"
                 },
                 "Kuchenteig": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3288,6 +3449,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (gemahlen)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3298,6 +3460,7 @@
                     "size": "Normal"
                 },
                 "Zucker": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3318,6 +3481,7 @@
             },
             "items": {
                 "Frühlingszwiebeln": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3328,6 +3492,7 @@
                     "size": "Normal"
                 },
                 "Kohlrabi": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3338,6 +3503,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (Stifte)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3348,6 +3514,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3358,6 +3525,7 @@
                     "size": "Normal"
                 },
                 "Saucen-Halbrahm": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3368,6 +3536,7 @@
                     "size": "Normal"
                 },
                 "Spaghetti": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3378,6 +3547,7 @@
                     "size": "Normal"
                 },
                 "Spinat (frisch, jung)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3398,6 +3568,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3408,6 +3579,7 @@
                     "size": "Normal"
                 },
                 "Frischkäse": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3418,6 +3590,7 @@
                     "size": "Normal"
                 },
                 "Kresse": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3428,6 +3601,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3438,6 +3612,7 @@
                     "size": "Normal"
                 },
                 "Spinat (frisch, jung)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3448,6 +3623,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 5,
                     "additionalInfo": "(Bio) ",
                     "amount": {
                         "max": -1,
@@ -3468,6 +3644,7 @@
             },
             "items": {
                 "Datteltomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3478,6 +3655,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (Poulet)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3488,6 +3666,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3498,6 +3677,7 @@
                     "size": "Normal"
                 },
                 "Paprika": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3508,6 +3688,7 @@
                     "size": "Normal"
                 },
                 "Spinat (frisch, jung)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3518,6 +3699,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Fusilli)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3528,6 +3710,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3538,6 +3721,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3558,6 +3742,7 @@
             },
             "items": {
                 "Hackfleisch (gemischt)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3568,6 +3753,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3578,6 +3764,7 @@
                     "size": "Large"
                 },
                 "Pelati": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3588,6 +3775,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3598,6 +3786,7 @@
                     "size": "Normal"
                 },
                 "Reis": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3608,6 +3797,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3628,6 +3818,7 @@
             },
             "items": {
                 "Bündnerfleisch": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3638,6 +3829,7 @@
                     "size": "Normal"
                 },
                 "Gnocchi": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3648,6 +3840,7 @@
                     "size": "Normal"
                 },
                 "Krautstiel": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3658,6 +3851,7 @@
                     "size": "Normal"
                 },
                 "Saucen-Halbrahm": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3678,6 +3872,7 @@
             },
             "items": {
                 "Champignon": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3688,6 +3883,7 @@
                     "size": "Normal"
                 },
                 "Gnocchi": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3698,6 +3894,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3708,6 +3905,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3728,6 +3926,7 @@
             },
             "items": {
                 "Datteltomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3738,6 +3937,7 @@
                     "size": "Normal"
                 },
                 "Gnocchi": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3748,6 +3948,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (Rind)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3758,6 +3959,7 @@
                     "size": "Normal"
                 },
                 "Oliven": {
+                    "_position": 3,
                     "additionalInfo": "für 1 Person",
                     "amount": {
                         "max": -1,
@@ -3768,6 +3970,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3778,6 +3981,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3788,6 +3992,7 @@
                     "size": "Normal"
                 },
                 "Rucola": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3808,6 +4013,7 @@
             },
             "items": {
                 "Birchermüesli": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3818,6 +4024,7 @@
                     "size": "Normal"
                 },
                 "Himbeeren": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3828,6 +4035,7 @@
                     "size": "Normal"
                 },
                 "Magerquark": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3838,6 +4046,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (Stifte)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3858,6 +4067,7 @@
             },
             "items": {
                 "Apfel": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3868,6 +4078,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3878,6 +4089,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3888,6 +4100,7 @@
                     "size": "Normal"
                 },
                 "Honig": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3898,6 +4111,7 @@
                     "size": "Normal"
                 },
                 "Kuchenteig": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3908,6 +4122,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (gemahlen)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3918,6 +4133,7 @@
                     "size": "Normal"
                 },
                 "Sultaninen (Rosinen)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3928,6 +4144,7 @@
                     "size": "Normal"
                 },
                 "Zitronensaft": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3948,6 +4165,7 @@
             },
             "items": {
                 "Bratensauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3958,6 +4176,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3968,6 +4187,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Hörnli)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3988,6 +4208,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -3998,6 +4219,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4008,6 +4230,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4018,6 +4241,7 @@
                     "size": "Large"
                 },
                 "Milch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4028,6 +4252,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4038,6 +4263,7 @@
                     "size": "Normal"
                 },
                 "Petersilie": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4048,6 +4274,7 @@
                     "size": "Normal"
                 },
                 "Schinkenwürfelchen": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4058,6 +4285,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Hörnli)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4078,6 +4306,7 @@
             },
             "items": {
                 "Essiggürkchen": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4088,6 +4317,7 @@
                     "size": "Normal"
                 },
                 "Hüttenkäse": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4098,6 +4328,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4108,6 +4339,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4118,6 +4350,7 @@
                     "size": "Normal"
                 },
                 "Radieschen": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4128,6 +4361,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4148,6 +4382,7 @@
             },
             "items": {
                 "Apfelmus": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4158,6 +4393,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4168,6 +4404,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4178,6 +4415,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4188,6 +4426,7 @@
                     "size": "Normal"
                 },
                 "Sultaninen (Rosinen)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4198,6 +4437,7 @@
                     "size": "Normal"
                 },
                 "Zucker": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4218,6 +4458,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4228,6 +4469,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4238,6 +4480,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4248,6 +4491,7 @@
                     "size": "Normal"
                 },
                 "Kohlrabi": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4258,6 +4502,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4268,6 +4513,7 @@
                     "size": "Large"
                 },
                 "Petersilie": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4278,6 +4524,7 @@
                     "size": "Normal"
                 },
                 "Sonnenblumenkerne": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4298,6 +4545,7 @@
             },
             "items": {
                 "Halbrahm": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4308,6 +4556,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4318,6 +4567,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4328,6 +4578,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4338,6 +4589,7 @@
                     "size": "Normal"
                 },
                 "Petersilie": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4348,6 +4600,7 @@
                     "size": "Normal"
                 },
                 "Schinkenwürfelchen": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4358,6 +4611,7 @@
                     "size": "Normal"
                 },
                 "Toast": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4376,30 +4630,36 @@
             "Text": "",
             "groups": {
                 "Geschmack-Gemüse": {
-                    "Oliven": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 20,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Oliven": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 20,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Peperoni": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 0.5,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Peperoni": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 0.5,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Cherry-Tomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4410,6 +4670,7 @@
                     "size": "Normal"
                 },
                 "Curry": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4420,6 +4681,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4430,6 +4692,7 @@
                     "size": "Normal"
                 },
                 "Gurken (frisch, Snack)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4440,6 +4703,7 @@
                     "size": "Normal"
                 },
                 "Kichererbsen": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4458,30 +4722,36 @@
             "Text": "",
             "groups": {
                 "Gemüse": {
-                    "Krautstiel": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 400,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Krautstiel": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 400,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Pak Choi": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 400,
-                            "unit": "Gram"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Pak Choi": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 400,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4492,6 +4762,7 @@
                     "size": "Normal"
                 },
                 "Currypaste (grün, Thai)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4502,6 +4773,7 @@
                     "size": "Normal"
                 },
                 "Kokosmilch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4512,6 +4784,7 @@
                     "size": "Normal"
                 },
                 "Reis": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4522,6 +4795,7 @@
                     "size": "Normal"
                 },
                 "Rindsgeschnetzeltes": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4542,6 +4816,7 @@
             },
             "items": {
                 "Austernsauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4552,6 +4827,7 @@
                     "size": "Normal"
                 },
                 "Currypaste (rot)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4562,6 +4838,7 @@
                     "size": "Normal"
                 },
                 "Koriander": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4572,6 +4849,7 @@
                     "size": "Normal"
                 },
                 "Krautstiel": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4582,6 +4860,7 @@
                     "size": "Normal"
                 },
                 "Rindsgeschnetzeltes": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4592,6 +4871,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Tagliatelle)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4612,6 +4892,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4622,6 +4903,7 @@
                     "size": "Normal"
                 },
                 "Basilikum (getrocknet)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4632,6 +4914,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4642,6 +4925,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4652,6 +4936,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4662,6 +4947,7 @@
                     "size": "Normal"
                 },
                 "Reis": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4672,6 +4958,7 @@
                     "size": "Normal"
                 },
                 "Schnittlauch (getrocknet)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4692,6 +4979,7 @@
             },
             "items": {
                 "Halbrahm": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4702,6 +4990,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4712,6 +5001,7 @@
                     "size": "Normal"
                 },
                 "Lachs (frisch)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4722,6 +5012,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4742,6 +5033,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4752,6 +5044,7 @@
                     "size": "Normal"
                 },
                 "Frühlingszwiebeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4762,6 +5055,7 @@
                     "size": "Normal"
                 },
                 "Kerbel": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4772,6 +5066,7 @@
                     "size": "Normal"
                 },
                 "Kuchenteig": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4782,6 +5077,7 @@
                     "size": "Normal"
                 },
                 "Käsekuchenmischung": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4792,6 +5088,7 @@
                     "size": "Normal"
                 },
                 "Lachs (frisch)": {
+                    "_position": 5,
                     "additionalInfo": "Filet",
                     "amount": {
                         "max": -1,
@@ -4802,6 +5099,7 @@
                     "size": "Normal"
                 },
                 "Magerquark": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4812,6 +5110,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4822,6 +5121,7 @@
                     "size": "Normal"
                 },
                 "Salat": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4832,6 +5132,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4842,6 +5143,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 10,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -4862,6 +5164,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4872,6 +5175,7 @@
                     "size": "Large"
                 },
                 "Bouillon (Rind)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4882,6 +5186,7 @@
                     "size": "Normal"
                 },
                 "Béchamelsauce": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4892,6 +5197,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4902,6 +5208,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4912,6 +5219,7 @@
                     "size": "Large"
                 },
                 "Lasagneplatten": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4922,6 +5230,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4932,6 +5241,7 @@
                     "size": "Large"
                 },
                 "Parmesan": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4942,6 +5252,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4952,6 +5263,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4962,6 +5274,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4972,6 +5285,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -4992,6 +5306,7 @@
             },
             "items": {
                 "Béchamelsauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5002,6 +5317,7 @@
                     "size": "Normal"
                 },
                 "Champignon": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5012,6 +5328,7 @@
                     "size": "Normal"
                 },
                 "Lasagneplatten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5022,6 +5339,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5032,6 +5350,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5052,6 +5371,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5062,6 +5382,7 @@
                     "size": "Normal"
                 },
                 "Butter": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5072,6 +5393,7 @@
                     "size": "Normal"
                 },
                 "Fleisch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5082,6 +5404,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5092,6 +5415,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5102,6 +5426,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5122,6 +5447,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5132,6 +5458,7 @@
                     "size": "Small"
                 },
                 "Crème Fraiche": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5142,6 +5469,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5152,6 +5480,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5162,6 +5491,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (Rind)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5172,6 +5502,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5182,6 +5513,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5192,6 +5524,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5202,6 +5535,7 @@
                     "size": "Normal"
                 },
                 "Zimt": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5212,6 +5546,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5232,6 +5567,7 @@
             },
             "items": {
                 "Mozzarella": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5242,6 +5578,7 @@
                     "size": "Small"
                 },
                 "Steinofenbrötli": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5252,6 +5589,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5272,6 +5610,7 @@
             },
             "items": {
                 "Apfel": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5282,6 +5621,7 @@
                     "size": "Normal"
                 },
                 "Banane": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5292,6 +5632,7 @@
                     "size": "Normal"
                 },
                 "Frucht": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5302,6 +5643,7 @@
                     "size": "Normal"
                 },
                 "Nature Joghurt": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5322,6 +5664,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5332,6 +5675,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5342,6 +5686,7 @@
                     "size": "Normal"
                 },
                 "Kresse": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5352,6 +5697,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Tagliatelle)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5362,6 +5708,7 @@
                     "size": "Normal"
                 },
                 "Wirz": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5382,6 +5729,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5392,6 +5740,7 @@
                     "size": "Small"
                 },
                 "Cipollata": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5402,6 +5751,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln (früh, jung)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5412,6 +5762,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5422,6 +5773,7 @@
                     "size": "Normal"
                 },
                 "Rosmarin (Pulver) ": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5432,6 +5784,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5452,6 +5805,7 @@
             },
             "items": {
                 "Karotten": {
+                    "_position": 0,
                     "additionalInfo": "schlank",
                     "amount": {
                         "max": -1,
@@ -5462,6 +5816,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln (früh, jung)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5472,6 +5827,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5482,6 +5838,7 @@
                     "size": "Small"
                 },
                 "Pouletbrust": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5492,6 +5849,7 @@
                     "size": "Normal"
                 },
                 "Raclettekäse": {
+                    "_position": 4,
                     "additionalInfo": "Scheiben",
                     "amount": {
                         "max": -1,
@@ -5502,6 +5860,7 @@
                     "size": "Normal"
                 },
                 "Rohschinken": {
+                    "_position": 5,
                     "additionalInfo": "Tranchen",
                     "amount": {
                         "max": -1,
@@ -5512,6 +5871,7 @@
                     "size": "Normal"
                 },
                 "Salbei (frisch)": {
+                    "_position": 6,
                     "additionalInfo": "Blatt",
                     "amount": {
                         "max": -1,
@@ -5522,6 +5882,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 7,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -5532,6 +5893,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5550,30 +5912,36 @@
             "Text": "",
             "groups": {
                 "Zweit-Gemüse": {
-                    "Aubergine": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
+                    "_position": 0,
+                    "items": {
+                        "Aubergine": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Zucchetti": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Zucchetti": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Avocado": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5584,6 +5952,7 @@
                     "size": "Normal"
                 },
                 "Gruyère": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5594,6 +5963,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5604,6 +5974,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5614,6 +5985,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5624,6 +5996,7 @@
                     "size": "Normal"
                 },
                 "Speck": {
+                    "_position": 5,
                     "additionalInfo": "Tranchen",
                     "amount": {
                         "max": -1,
@@ -5634,6 +6007,7 @@
                     "size": "Normal"
                 },
                 "Tortillas (Weizen)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5644,6 +6018,7 @@
                     "size": "Normal"
                 },
                 "Tortillasauce (scharf)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5664,6 +6039,7 @@
             },
             "items": {
                 "Fleischtomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5674,6 +6050,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5684,6 +6061,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5704,6 +6082,7 @@
             },
             "items": {
                 "Confiture": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5714,6 +6093,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5724,6 +6104,7 @@
                     "size": "Normal"
                 },
                 "Erdnussöl": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5734,6 +6115,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5744,6 +6126,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5754,6 +6137,7 @@
                     "size": "Normal"
                 },
                 "Schinken": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5772,30 +6156,36 @@
             "Text": "",
             "groups": {
                 "2. Gemüse": {
-                    "Aubergine": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
+                    "_position": 0,
+                    "items": {
+                        "Aubergine": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Small"
                         },
-                        "optional": false,
-                        "size": "Small"
-                    },
-                    "Peperoni": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Peperoni": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Basilikum (getrocknet)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5806,6 +6196,7 @@
                     "size": "Normal"
                 },
                 "Datteltomaten": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5816,6 +6207,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5826,6 +6218,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 3,
                     "additionalInfo": "in Wasser",
                     "amount": {
                         "max": -1,
@@ -5836,6 +6229,7 @@
                     "size": "Large"
                 },
                 "Spinat (frisch, jung)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5846,6 +6240,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Penne)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5866,6 +6261,7 @@
             },
             "items": {
                 "Backpulver": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5876,6 +6272,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5886,6 +6283,7 @@
                     "size": "Normal"
                 },
                 "Magermilchpulver": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5896,6 +6294,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5906,6 +6305,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5916,6 +6316,7 @@
                     "size": "Normal"
                 },
                 "Zucker": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5936,6 +6337,7 @@
             },
             "items": {
                 "Cranberries": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5946,6 +6348,7 @@
                     "size": "Normal"
                 },
                 "Gurken (frisch, Snack)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5956,6 +6359,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5966,6 +6370,7 @@
                     "size": "Normal"
                 },
                 "Radieschen": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5976,6 +6381,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Kichererbsen)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -5986,6 +6392,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6006,6 +6413,7 @@
             },
             "items": {
                 "Béchamelsauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6016,6 +6424,7 @@
                     "size": "Normal"
                 },
                 "Champignon": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6026,6 +6435,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6036,6 +6446,7 @@
                     "size": "Normal"
                 },
                 "Pastetli": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6046,6 +6457,7 @@
                     "size": "Normal"
                 },
                 "Petersilie": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6056,6 +6468,7 @@
                     "size": "Normal"
                 },
                 "Tofu (geräuchert)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6066,6 +6479,7 @@
                     "size": "Normal"
                 },
                 "Wein (weiss)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6076,6 +6490,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6096,6 +6511,7 @@
             },
             "items": {
                 "Crème Fraiche": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6106,6 +6522,7 @@
                     "size": "Normal"
                 },
                 "Lachs (geräuchert)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6116,6 +6533,7 @@
                     "size": "Normal"
                 },
                 "Petersilie": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6126,6 +6544,7 @@
                     "size": "Normal"
                 },
                 "Spargeln": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6136,6 +6555,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Penne)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6156,6 +6576,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6166,6 +6587,7 @@
                     "size": "Normal"
                 },
                 "Champignon": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6176,6 +6598,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6186,6 +6609,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6196,6 +6620,7 @@
                     "size": "Normal"
                 },
                 "Wein (weiss)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6206,6 +6631,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6216,6 +6642,7 @@
                     "size": "Small"
                 },
                 "Zwiebel": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6234,50 +6661,58 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Champignon": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 150,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Champignon": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 150,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Salami (scharf) ": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 0,
-                            "unit": "Unitless"
+                        "Salami (scharf) ": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 0,
+                                "unit": "Unitless"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Thon": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 0,
-                            "unit": "Unitless"
+                        "Thon": {
+                            "_position": 2,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 0,
+                                "unit": "Unitless"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Toastschinken": {
-                        "additionalInfo": "dick (Rauchhamme)",
-                        "amount": {
-                            "max": -1,
-                            "min": 0,
-                            "unit": "Unitless"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Toastschinken": {
+                            "_position": 3,
+                            "additionalInfo": "dick (Rauchhamme)",
+                            "amount": {
+                                "max": -1,
+                                "min": 0,
+                                "unit": "Unitless"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Ananas": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6288,6 +6723,7 @@
                     "size": "Normal"
                 },
                 "Mozzarella": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6298,6 +6734,7 @@
                     "size": "Large"
                 },
                 "Pelati": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6308,6 +6745,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6318,6 +6756,7 @@
                     "size": "Large"
                 },
                 "Pizzateig": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6328,6 +6767,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6348,6 +6788,7 @@
             },
             "items": {
                 "Cordon Bleu": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6358,6 +6799,7 @@
                     "size": "Normal"
                 },
                 "Pommes Frites": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6378,6 +6820,7 @@
             },
             "items": {
                 "Cherry-Tomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6388,6 +6831,7 @@
                     "size": "Normal"
                 },
                 "Honig": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6398,6 +6842,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6408,6 +6853,7 @@
                     "size": "Normal"
                 },
                 "Kichererbsen": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6418,6 +6864,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (Stifte)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6428,6 +6875,7 @@
                     "size": "Normal"
                 },
                 "Olivenöl": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6438,6 +6886,7 @@
                     "size": "Normal"
                 },
                 "Pfefferminze (frisch)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6448,6 +6897,7 @@
                     "size": "Normal"
                 },
                 "Pouletflügel": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6458,6 +6908,7 @@
                     "size": "Normal"
                 },
                 "Ras el Hanout": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6468,6 +6919,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 9,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -6488,6 +6940,7 @@
             },
             "items": {
                 "Birnen (Dose)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6498,6 +6951,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6508,6 +6962,7 @@
                     "size": "Normal"
                 },
                 "Paprika": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6518,6 +6973,7 @@
                     "size": "Normal"
                 },
                 "Raclettekäse": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6536,30 +6992,36 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Hackfleisch (Rind)": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 300,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Hackfleisch (Rind)": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 300,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Rindsgeschnetzeltes": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 300,
-                            "unit": "Gram"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Rindsgeschnetzeltes": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 300,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6570,6 +7032,7 @@
                     "size": "Normal"
                 },
                 "Reis": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6580,6 +7043,7 @@
                     "size": "Normal"
                 },
                 "Thymian": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6590,6 +7054,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6600,6 +7065,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6620,6 +7086,7 @@
             },
             "items": {
                 "Basilikum (getrocknet)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6630,6 +7097,7 @@
                     "size": "Normal"
                 },
                 "Bouillon (Gemüse)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6640,6 +7108,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6650,6 +7119,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6660,6 +7130,7 @@
                     "size": "Normal"
                 },
                 "Muskatnuss": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6670,6 +7141,7 @@
                     "size": "Normal"
                 },
                 "Ricotta": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6680,6 +7152,7 @@
                     "size": "Normal"
                 },
                 "Spinat (Blatt, gefrohren)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6690,6 +7163,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Penne)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6700,6 +7174,7 @@
                     "size": "Normal"
                 },
                 "Tomaten (getrocknet)": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6720,6 +7195,7 @@
             },
             "items": {
                 "Champignon (getrocknet)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6730,6 +7206,7 @@
                     "size": "Normal"
                 },
                 "Chicorée": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6740,6 +7217,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6750,6 +7228,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6760,6 +7239,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6770,6 +7250,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6780,6 +7261,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6790,6 +7272,7 @@
                     "size": "Normal"
                 },
                 "Wein (weiss)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6808,30 +7291,36 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Pouletgeschnetzeltes": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 350,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Pouletgeschnetzeltes": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 350,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Tofu": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Tofu": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Ananas": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6842,6 +7331,7 @@
                     "size": "Small"
                 },
                 "Apfel": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6852,6 +7342,7 @@
                     "size": "Small"
                 },
                 "Banane": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6862,6 +7353,7 @@
                     "size": "Normal"
                 },
                 "Currysauce": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6872,6 +7364,7 @@
                     "size": "Normal"
                 },
                 "Früchte-Cocktail": {
+                    "_position": 4,
                     "additionalInfo": "ca. 400g",
                     "amount": {
                         "max": -1,
@@ -6882,6 +7375,7 @@
                     "size": "Small"
                 },
                 "Reis": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6902,6 +7396,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6912,6 +7407,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6922,6 +7418,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6932,6 +7429,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6942,6 +7440,7 @@
                     "size": "Normal"
                 },
                 "Rosenkohl": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6952,6 +7451,7 @@
                     "size": "Normal"
                 },
                 "Safran": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6962,6 +7462,7 @@
                     "size": "Normal"
                 },
                 "Speckwürfel": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6982,6 +7483,7 @@
             },
             "items": {
                 "Bratensauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -6992,6 +7494,7 @@
                     "size": "Normal"
                 },
                 "Bratwurst": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7002,6 +7505,7 @@
                     "size": "Normal"
                 },
                 "Rösti": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7022,6 +7526,7 @@
             },
             "items": {
                 "Peperoni": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7032,6 +7537,7 @@
                     "size": "Normal"
                 },
                 "Salat": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7042,6 +7548,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7062,6 +7569,7 @@
             },
             "items": {
                 "Fleisch": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7072,6 +7580,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7092,6 +7601,7 @@
             },
             "items": {
                 "Datteltomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7102,6 +7612,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7112,6 +7623,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7122,6 +7634,7 @@
                     "size": "Normal"
                 },
                 "Mehl (weiss)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7132,6 +7645,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7142,6 +7656,7 @@
                     "size": "Small"
                 },
                 "Peperoni (Mini)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7152,6 +7667,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7162,6 +7678,7 @@
                     "size": "Normal"
                 },
                 "Zwiebel": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7182,6 +7699,7 @@
             },
             "items": {
                 "Champignon": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7192,6 +7710,7 @@
                     "size": "Large"
                 },
                 "Kartoffeln": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7202,6 +7721,7 @@
                     "size": "Normal"
                 },
                 "Philadelphia": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7222,6 +7742,7 @@
             },
             "items": {
                 "Chili-Schote (rot)": {
+                    "_position": 0,
                     "additionalInfo": "rot",
                     "amount": {
                         "max": -1,
@@ -7232,6 +7753,7 @@
                     "size": "Normal"
                 },
                 "Datteltomaten": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7242,6 +7764,7 @@
                     "size": "Normal"
                 },
                 "Dill": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7252,6 +7775,7 @@
                     "size": "Normal"
                 },
                 "Dukkah": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7262,6 +7786,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7272,6 +7797,7 @@
                     "size": "Normal"
                 },
                 "Olivenöl": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7282,6 +7808,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7292,6 +7819,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 7,
                     "additionalInfo": "gelb",
                     "amount": {
                         "max": -1,
@@ -7302,6 +7830,7 @@
                     "size": "Large"
                 },
                 "Petersilie": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7312,6 +7841,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7322,6 +7852,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7332,6 +7863,7 @@
                     "size": "Normal"
                 },
                 "Schalotten": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7342,6 +7874,7 @@
                     "size": "Normal"
                 },
                 "Steinofenbrötli": {
+                    "_position": 12,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7352,6 +7885,7 @@
                     "size": "Normal"
                 },
                 "Zucker": {
+                    "_position": 13,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7370,30 +7904,36 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Rohschinken": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 150,
-                            "unit": "Gram"
+                    "_position": 0,
+                    "items": {
+                        "Rohschinken": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 150,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Speck": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 150,
-                            "unit": "Gram"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Speck": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 150,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Datteltomaten": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7404,6 +7944,7 @@
                     "size": "Normal"
                 },
                 "Flammkuchenteig": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7414,6 +7955,7 @@
                     "size": "Normal"
                 },
                 "Gruyère": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7424,6 +7966,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7434,6 +7977,7 @@
                     "size": "Small"
                 },
                 "Rosmarin (Pulver) ": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7444,6 +7988,7 @@
                     "size": "Normal"
                 },
                 "Saurer Halbrahm": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7464,6 +8009,7 @@
             },
             "items": {
                 "Curry": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7474,6 +8020,7 @@
                     "size": "Normal"
                 },
                 "Dill": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7484,6 +8031,7 @@
                     "size": "Normal"
                 },
                 "Eier": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7494,6 +8042,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7504,6 +8053,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7514,6 +8064,7 @@
                     "size": "Normal"
                 },
                 "Kuchenteig": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7524,6 +8075,7 @@
                     "size": "Normal"
                 },
                 "Magerquark": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7534,6 +8086,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7544,6 +8097,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7554,6 +8108,7 @@
                     "size": "Normal"
                 },
                 "Sonnenblumenkerne": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7564,6 +8119,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7584,6 +8140,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7594,6 +8151,7 @@
                     "size": "Large"
                 },
                 "Bouillon (Rind)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7604,6 +8162,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7614,6 +8173,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7624,6 +8184,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7634,6 +8195,7 @@
                     "size": "Normal"
                 },
                 "Pelati": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7644,6 +8206,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7654,6 +8217,7 @@
                     "size": "Normal"
                 },
                 "Spaghetti": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7664,6 +8228,7 @@
                     "size": "Normal"
                 },
                 "Tomatenpüree": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7674,6 +8239,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7694,6 +8260,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7704,6 +8271,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7714,6 +8282,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7724,6 +8293,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7734,6 +8304,7 @@
                     "size": "Normal"
                 },
                 "Schinkenwürfelchen": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7744,6 +8315,7 @@
                     "size": "Normal"
                 },
                 "Spaghetti": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7764,6 +8336,7 @@
             },
             "items": {
                 "Aceto Balsamico": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7774,6 +8347,7 @@
                     "size": "Normal"
                 },
                 "Acetocrème": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7784,6 +8358,7 @@
                     "size": "Normal"
                 },
                 "Erdbeeren": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7794,6 +8369,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7804,6 +8380,7 @@
                     "size": "Normal"
                 },
                 "Salat (Nüssler)": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7814,6 +8391,7 @@
                     "size": "Normal"
                 },
                 "Spargeln": {
+                    "_position": 5,
                     "additionalInfo": "weiss",
                     "amount": {
                         "max": -1,
@@ -7824,6 +8402,7 @@
                     "size": "Normal"
                 },
                 "Steinofenbrötli": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7844,6 +8423,7 @@
             },
             "items": {
                 "Rahmsauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7854,6 +8434,7 @@
                     "size": "Normal"
                 },
                 "Schweinsgeschnetzeltes": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7864,6 +8445,7 @@
                     "size": "Normal"
                 },
                 "Spätzli": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7884,6 +8466,7 @@
             },
             "items": {
                 "Bratensauce": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7894,6 +8477,7 @@
                     "size": "Normal"
                 },
                 "Butter": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7904,6 +8488,7 @@
                     "size": "Normal"
                 },
                 "Kartoffelstock": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7914,6 +8499,7 @@
                     "size": "Normal"
                 },
                 "Milch": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7924,6 +8510,7 @@
                     "size": "Normal"
                 },
                 "Muskatnuss": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7934,6 +8521,7 @@
                     "size": "Normal"
                 },
                 "Schweinsschnitzel": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -7952,50 +8540,58 @@
             "Text": "",
             "groups": {
                 "Eiweiss": {
-                    "Falafel": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 0,
-                            "unit": "Unitless"
+                    "_position": 0,
+                    "items": {
+                        "Falafel": {
+                            "_position": 0,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 0,
+                                "unit": "Unitless"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Pouletgeschnetzeltes": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 300,
-                            "unit": "Gram"
+                        "Pouletgeschnetzeltes": {
+                            "_position": 1,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 300,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Schweinsgeschnetzeltes": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 300,
-                            "unit": "Gram"
+                        "Schweinsgeschnetzeltes": {
+                            "_position": 2,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 300,
+                                "unit": "Gram"
+                            },
+                            "optional": false,
+                            "size": "Normal"
                         },
-                        "optional": false,
-                        "size": "Normal"
-                    },
-                    "Tofu": {
-                        "additionalInfo": "",
-                        "amount": {
-                            "max": -1,
-                            "min": 1,
-                            "unit": "Count"
-                        },
-                        "optional": false,
-                        "size": "Normal"
+                        "Tofu": {
+                            "_position": 3,
+                            "additionalInfo": "",
+                            "amount": {
+                                "max": -1,
+                                "min": 1,
+                                "unit": "Count"
+                            },
+                            "optional": false,
+                            "size": "Normal"
+                        }
                     }
                 }
             },
             "items": {
                 "Ananas": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8006,6 +8602,7 @@
                     "size": "Small"
                 },
                 "Peperoni": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8016,6 +8613,7 @@
                     "size": "Large"
                 },
                 "Reis": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8026,6 +8624,7 @@
                     "size": "Normal"
                 },
                 "Süss-Sauer-Sauce": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8036,6 +8635,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8056,6 +8656,7 @@
             },
             "items": {
                 "Couscous": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8066,6 +8667,7 @@
                     "size": "Normal"
                 },
                 "Cranberries": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8076,6 +8678,7 @@
                     "size": "Normal"
                 },
                 "Feta": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8086,6 +8689,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8096,6 +8700,7 @@
                     "size": "Large"
                 },
                 "Petersilie": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8106,6 +8711,7 @@
                     "size": "Normal"
                 },
                 "Pfefferminze (frisch)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8116,6 +8722,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8126,6 +8733,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 7,
                     "additionalInfo": "oder Zitronensaft",
                     "amount": {
                         "max": -1,
@@ -8146,6 +8754,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8156,6 +8765,7 @@
                     "size": "Normal"
                 },
                 "Brokkoli": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8166,6 +8776,7 @@
                     "size": "Normal"
                 },
                 "Currypaste (gelb)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8176,6 +8787,7 @@
                     "size": "Normal"
                 },
                 "Erdnussbutter": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8186,6 +8798,7 @@
                     "size": "Normal"
                 },
                 "Erdnüsse": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8196,6 +8809,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8206,6 +8820,7 @@
                     "size": "Large"
                 },
                 "Kokosmilch": {
+                    "_position": 6,
                     "additionalInfo": "Light",
                     "amount": {
                         "max": -1,
@@ -8216,6 +8831,7 @@
                     "size": "Normal"
                 },
                 "Lauch": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8226,6 +8842,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8236,6 +8853,7 @@
                     "size": "Normal"
                 },
                 "Sambal Oelek": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8246,6 +8864,7 @@
                     "size": "Normal"
                 },
                 "Sesamöl": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8256,6 +8875,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Penne)": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8276,6 +8896,7 @@
             },
             "items": {
                 "Blumenkohl": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8286,6 +8907,7 @@
                     "size": "Normal"
                 },
                 "Bouillon (Gemüse)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8296,6 +8918,7 @@
                     "size": "Normal"
                 },
                 "Chinakohl": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8306,6 +8929,7 @@
                     "size": "Normal"
                 },
                 "Currypaste (grün, Thai)": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8316,6 +8940,7 @@
                     "size": "Normal"
                 },
                 "Erdnussbutter": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8326,6 +8951,7 @@
                     "size": "Normal"
                 },
                 "Karotten": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8336,6 +8962,7 @@
                     "size": "Large"
                 },
                 "Kokosmilch": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8346,6 +8973,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8356,6 +8984,7 @@
                     "size": "Normal"
                 },
                 "Sesamöl": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8366,6 +8995,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Penne)": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8386,6 +9016,7 @@
             },
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8396,6 +9027,7 @@
                     "size": "Normal"
                 },
                 "Bohnen": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8406,6 +9038,7 @@
                     "size": "Normal"
                 },
                 "Bouillon (Gemüse)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8416,6 +9049,7 @@
                     "size": "Normal"
                 },
                 "Cayenne-Pfeffer": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8426,6 +9060,7 @@
                     "size": "Normal"
                 },
                 "Datteltomaten": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8436,6 +9071,7 @@
                     "size": "Normal"
                 },
                 "Hackfleisch (gemischt)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8446,6 +9082,7 @@
                     "size": "Normal"
                 },
                 "Ingwer": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8456,6 +9093,7 @@
                     "size": "Normal"
                 },
                 "Kokosmilch": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8466,6 +9104,7 @@
                     "size": "Normal"
                 },
                 "Koriander": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8476,6 +9115,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8486,6 +9126,7 @@
                     "size": "Normal"
                 },
                 "Reis": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8496,6 +9137,7 @@
                     "size": "Normal"
                 },
                 "Sojasauce": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8516,6 +9158,7 @@
             },
             "items": {
                 "Ananas": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8526,6 +9169,7 @@
                     "size": "Large"
                 },
                 "Gruyère": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8536,6 +9180,7 @@
                     "size": "Normal"
                 },
                 "Raclettekäse": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8546,6 +9191,7 @@
                     "size": "Normal"
                 },
                 "Schinken": {
+                    "_position": 3,
                     "additionalInfo": "= 1.33 Päckchen",
                     "amount": {
                         "max": -1,
@@ -8556,6 +9202,7 @@
                     "size": "Normal"
                 },
                 "Toast": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8576,6 +9223,7 @@
             },
             "items": {
                 "Bouillon (Gemüse)": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8586,6 +9234,7 @@
                     "size": "Normal"
                 },
                 "Butter": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8596,6 +9245,7 @@
                     "size": "Normal"
                 },
                 "Fleisch": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8606,6 +9256,7 @@
                     "size": "Normal"
                 },
                 "Olivenöl": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8616,6 +9267,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8626,6 +9278,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8636,6 +9289,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8646,6 +9300,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8656,6 +9311,7 @@
                     "size": "Large"
                 },
                 "Zwiebel": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8676,6 +9332,7 @@
             },
             "items": {
                 "Avocado": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8686,6 +9343,7 @@
                     "size": "Normal"
                 },
                 "Crème Fraiche": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8696,6 +9354,7 @@
                     "size": "Normal"
                 },
                 "Mais (Dose)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8706,6 +9365,7 @@
                     "size": "Small"
                 },
                 "Mozzarella": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8716,6 +9376,7 @@
                     "size": "Small"
                 },
                 "Peperoni": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8726,6 +9387,7 @@
                     "size": "Normal"
                 },
                 "Pouletgeschnetzeltes": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8736,6 +9398,7 @@
                     "size": "Normal"
                 },
                 "Salat (Eisberg)": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8746,6 +9409,7 @@
                     "size": "Normal"
                 },
                 "Tomaten": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8756,6 +9420,7 @@
                     "size": "Normal"
                 },
                 "Tortillas (Weizen)": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8766,6 +9431,7 @@
                     "size": "Normal"
                 },
                 "Tortillasauce (mild)": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8776,6 +9442,7 @@
                     "size": "Normal"
                 },
                 "Tortillasauce (scharf)": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8796,6 +9463,7 @@
             },
             "items": {
                 "Basilikum-Pesto": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8806,6 +9474,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8816,6 +9485,7 @@
                     "size": "Normal"
                 },
                 "Lasagneplatten": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8826,6 +9496,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8836,6 +9507,7 @@
                     "size": "Normal"
                 },
                 "Ricotta": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8846,6 +9518,7 @@
                     "size": "Normal"
                 },
                 "Zitrone": {
+                    "_position": 5,
                     "additionalInfo": "Bio",
                     "amount": {
                         "max": -1,
@@ -8856,6 +9529,7 @@
                     "size": "Normal"
                 },
                 "Zucchetti": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8876,6 +9550,7 @@
             },
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8886,6 +9561,7 @@
                     "size": "Normal"
                 },
                 "Frucht": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8896,6 +9572,7 @@
                     "size": "Normal"
                 },
                 "Speck": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8906,6 +9583,7 @@
                     "size": "Normal"
                 },
                 "Zopf": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8926,6 +9604,7 @@
             },
             "items": {
                 "Brie": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8936,6 +9615,7 @@
                     "size": "Normal"
                 },
                 "Confiture": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8946,6 +9626,7 @@
                     "size": "Normal"
                 },
                 "Frucht": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8956,6 +9637,7 @@
                     "size": "Normal"
                 },
                 "Zopf": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8976,6 +9658,7 @@
             },
             "items": {
                 "Apfel (rot) ": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8986,6 +9669,7 @@
                     "size": "Normal"
                 },
                 "Gruyère": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -8996,6 +9680,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9006,6 +9691,7 @@
                     "size": "Normal"
                 },
                 "Kartoffeln": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9016,6 +9702,7 @@
                     "size": "Normal"
                 },
                 "Speckwürfel": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9026,6 +9713,7 @@
                     "size": "Normal"
                 },
                 "Teigwaren (Älplermagronen)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9044,6 +9732,7 @@
             "ScalingFactor": 2,
             "items": {
                 "Aubergine": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9055,6 +9744,7 @@
                     "status": "None"
                 },
                 "Basilikum (getrocknet)": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9066,6 +9756,7 @@
                     "status": "None"
                 },
                 "Kartoffeln": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9077,6 +9768,7 @@
                     "status": "None"
                 },
                 "Mozzarella": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9088,6 +9780,7 @@
                     "status": "None"
                 },
                 "Olivenöl": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9099,6 +9792,7 @@
                     "status": "None"
                 },
                 "Parmesan": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9110,6 +9804,7 @@
                     "status": "None"
                 },
                 "Pelati": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9121,6 +9816,7 @@
                     "status": "None"
                 },
                 "Tomatenpüree": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9138,6 +9834,7 @@
             "ScalingFactor": 2,
             "items": {
                 "Eier": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9149,6 +9846,7 @@
                     "status": "None"
                 },
                 "Karotten": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9160,6 +9858,7 @@
                     "status": "None"
                 },
                 "Maizena": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9171,6 +9870,7 @@
                     "status": "None"
                 },
                 "Mungosprossen": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9182,6 +9882,7 @@
                     "status": "None"
                 },
                 "Pak Choi": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9193,6 +9894,7 @@
                     "status": "None"
                 },
                 "Reis (Jasmin)": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9204,6 +9906,7 @@
                     "status": "None"
                 },
                 "Reisessig": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9215,6 +9918,7 @@
                     "status": "None"
                 },
                 "Rindsschnitzel": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9226,6 +9930,7 @@
                     "status": "None"
                 },
                 "Sesam-Samen": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9237,6 +9942,7 @@
                     "status": "None"
                 },
                 "Sesamöl": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9248,6 +9954,7 @@
                     "status": "None"
                 },
                 "Shiitakepilze": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9259,6 +9966,7 @@
                     "status": "None"
                 },
                 "Sojasauce": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9270,6 +9978,7 @@
                     "status": "None"
                 },
                 "Sriracha-Sauce": {
+                    "_position": 12,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9281,6 +9990,7 @@
                     "status": "None"
                 },
                 "Zucker": {
+                    "_position": 13,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9298,6 +10008,7 @@
             "ScalingFactor": 2,
             "items": {
                 "Blumenkohl": {
+                    "_position": 0,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9309,6 +10020,7 @@
                     "status": "None"
                 },
                 "Cayenne-Pfeffer": {
+                    "_position": 1,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9320,6 +10032,7 @@
                     "status": "None"
                 },
                 "Chili-Schote (rot)": {
+                    "_position": 2,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9331,6 +10044,7 @@
                     "status": "None"
                 },
                 "Halbrahm": {
+                    "_position": 3,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9342,6 +10056,7 @@
                     "status": "None"
                 },
                 "Kreuzkümmel": {
+                    "_position": 4,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9353,6 +10068,7 @@
                     "status": "None"
                 },
                 "Limettensaft": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9364,6 +10080,7 @@
                     "status": "None"
                 },
                 "Paprika": {
+                    "_position": 6,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9375,6 +10092,7 @@
                     "status": "None"
                 },
                 "Ricotta": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9386,6 +10104,7 @@
                     "status": "None"
                 },
                 "Salat (Eisberg, Kopf)": {
+                    "_position": 8,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9397,6 +10116,7 @@
                     "status": "None"
                 },
                 "Schalotten": {
+                    "_position": 9,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9408,6 +10128,7 @@
                     "status": "None"
                 },
                 "Sonnenblumenöl": {
+                    "_position": 10,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,
@@ -9419,6 +10140,7 @@
                     "status": "None"
                 },
                 "Tortillas (Weizen)": {
+                    "_position": 11,
                     "additionalInfo": "",
                     "amount": {
                         "max": -1,

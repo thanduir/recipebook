@@ -198,8 +198,11 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
         QJsonObject items = recipe[json::c_strRecipesItems].toObject();
         for(QString strRecipeItem : items.keys())
         {
+            QJsonObject item = items[strRecipeItem].toObject();
+            int posItem = item[json::c_strRecipesPosition].toInt();
+
             const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-            RecipeItem& rItem = rRecipe.getRecipeItems().addItem(rIngredient);
+            RecipeItem& rItem = rRecipe.getRecipeItems().addItem(rIngredient, posItem);
             if(!readRecipeItem(items[strRecipeItem].toObject(), rItem))
             {
                 return false;
@@ -209,7 +212,10 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
         QJsonObject groups = recipe[json::c_strRecipesGroups].toObject();
         for(QString strGroupName : groups.keys())
         {
-            if(!readRecipeItemGroup(groups[strGroupName].toObject(), strGroupName, rRecipeBook, rRecipe))
+            QJsonObject group = groups[strGroupName].toObject();
+            int posGroup = group[json::c_strRecipesPosition].toInt();
+
+            if(!readRecipeItemGroup(group[json::c_strRecipesItems].toObject(), posGroup, strGroupName, rRecipeBook, rRecipe))
             {
                 return false;
             }
@@ -219,14 +225,17 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
     return true;
 }
 
-bool json::JsonReaderV2::readRecipeItemGroup(const QJsonObject& rObject, QString strGroupName, RecipeBook& rRecipeBook, Recipe& rRecipe)
+bool json::JsonReaderV2::readRecipeItemGroup(const QJsonObject& rObject, int posGroup, QString strGroupName, RecipeBook& rRecipeBook, Recipe& rRecipe)
 {
-    RecipeItemGroup& rGroup = rRecipe.addAlternativesGroup(strGroupName);
+    RecipeItemGroup& rGroup = rRecipe.addAlternativesGroup(strGroupName, posGroup);
     for(QString strItemName : rObject.keys())
     {
+        QJsonObject item = rObject[strItemName].toObject();
+        int posItem = item[json::c_strRecipesPosition].toInt();
+
         const Ingredient& rIngredient = rRecipeBook.getIngredient(strItemName);
-        RecipeItem& rItem = rGroup.addItem(rIngredient);
-        if(!readRecipeItem(rObject[strItemName].toObject(), rItem))
+        RecipeItem& rItem = rGroup.addItem(rIngredient, posItem);
+        if(!readRecipeItem(item, rItem))
         {
             return false;
         }
@@ -255,10 +264,11 @@ bool json::JsonReaderV2::readShoppongList(const QJsonObject& rObject, RecipeBook
                 continue;
             }
 
-            const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-            ShoppingListItem& rItem = rRecipe.addItem(rIngredient);
-
             QJsonObject item = items[strRecipeItem].toObject();
+
+            const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
+            int pos = item[json::c_strRecipesPosition].toInt();
+            ShoppingListItem& rItem = rRecipe.addItem(rIngredient, pos);
 
             QString strStatus = item[json::c_strRecipesStatus].toString();
             Status status = helper::convertStatus(strStatus);

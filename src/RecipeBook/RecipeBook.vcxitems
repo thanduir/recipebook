@@ -48,7 +48,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItemGroup.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Size.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\SortOrder.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\Status.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Unit.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)serialization\json\RecipeBookJsonReader.cpp" />

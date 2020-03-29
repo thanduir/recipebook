@@ -12,11 +12,12 @@ ShoppingRecipe::ShoppingRecipe(const Recipe& rRecipe)
     m_fScalingFactor(rRecipe.getNumberOfPersons())
 {
     const RecipeItemGroup& rGroup = rRecipe.getRecipeItems();
-    for(QSharedPointer<RecipeItem> spItem : qAsConst(rGroup.m_Items))
+    for(quint32 i = 0; i < rGroup.getItemsCount(); ++i)
     {
-        internal::addItem(spItem->getName(), m_Items, [&spItem]()
+        const RecipeItem& rItem = rGroup.getItemAt(i);
+        internal::unsorted::addItem(rItem.getName(), i, m_Items, [&rItem]()
         {
-            return new ShoppingListItem(*spItem.get());
+            return new ShoppingListItem(rItem);
         });
     }
 }
@@ -33,17 +34,17 @@ void ShoppingRecipe::changeScalingFactor(float f)
     }
 }
 
- ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
+ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient, int pos)
 {
-    return internal::addItem(rIngredient.getName(), m_Items, [&rIngredient]()
+    return internal::unsorted::addItem(rIngredient.getName(), pos, m_Items, [&rIngredient]()
     {
         return new ShoppingListItem(rIngredient);
     });
 }
 
-ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
+ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem, int pos)
 {
-    return internal::addItem(rItem.getName(), m_Items, [&rItem]()
+    return internal::unsorted::addItem(rItem.getName(), pos, m_Items, [&rItem]()
     {
         return new ShoppingListItem(rItem);
     });
@@ -51,26 +52,54 @@ ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 
 bool ShoppingRecipe::existsItem(const Ingredient& rIngredient) const
 {
-    return internal::exists<ShoppingListItem>(rIngredient.getName(), m_Items);
+    return internal::unsorted::exists<ShoppingListItem>(rIngredient.getName(), m_Items);
 }
 
 bool ShoppingRecipe::removeItem(const ShoppingListItem& rItem)
 {
-    internal::remove(rItem, m_Items);
+    internal::unsorted::remove(rItem, m_Items);
     return true;
 }
 
 ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient)
 {
-    return internal::getItem(rIngredient.getName(), m_Items);
+    return internal::unsorted::getItem(rIngredient.getName(), m_Items);
 }
 
 const ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient) const
 {
-    return internal::getItemConst(rIngredient.getName(), m_Items);
+    return internal::unsorted::getItem(rIngredient.getName(), m_Items);
 }
 
-QStringList ShoppingRecipe::getAllItemNamesSorted() const
+quint32 ShoppingRecipe::getItemsCount() const
 {
-    return internal::getAllNames(m_Items);
+    return m_Items.size();
+}
+
+ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i)
+{
+    if(i >= (quint32)m_Items.size())
+    {
+        throw QException();
+    }
+    return *m_Items.at(i).get();
+}
+
+const ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i) const
+{
+    if(i >= (quint32)m_Items.size())
+    {
+        throw QException();
+    }
+    return *m_Items.at(i).get();
+}
+
+void ShoppingRecipe::moveItem(const ShoppingListItem& rItem, quint32 newPos)
+{
+    int oldPos = internal::unsorted::find(rItem.getName(), m_Items);
+    if(oldPos < 0)
+    {
+        throw QException();
+    }
+    m_Items.move(oldPos, newPos);
 }

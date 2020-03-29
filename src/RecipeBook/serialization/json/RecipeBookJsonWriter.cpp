@@ -19,7 +19,7 @@ using namespace recipebook::serialization;
 
 namespace
 {
-    template<class T> void writeRecipeItem(const T& rItem, QJsonObject& rObject)
+    template<class T> void writeRecipeItem(const T& rItem, int pos, QJsonObject& rObject)
     {
         QJsonObject amountObject;
         amountObject[json::c_strRecipesAmountMin] = rItem.getAmount().getQuantityMin();
@@ -30,6 +30,8 @@ namespace
         rObject[json::c_strRecipesSize] = helper::convertSize(rItem.getSize());
         rObject[json::c_strRecipesOptional] = rItem.isOptional();
         rObject[json::c_strRecipesAdditionalInfo] = rItem.getAdditionalInfo();
+
+        rObject[json::c_strRecipesPosition] = (int)pos;
     }
 }
 
@@ -86,23 +88,23 @@ void json::JsonWriter::writeCategories(const RecipeBook& rRecipeBook, QJsonObjec
     QJsonObject object;
 
     QJsonArray arrayAllCategories;
-    for(QString categoryName : rRecipeBook.getAllCategoryNamesSorted())
+    for(quint32 i = 0; i < rRecipeBook.getCategoriesCount(); ++i)
     {
-        arrayAllCategories.append(categoryName);
+        arrayAllCategories.append(rRecipeBook.getCategoryAt(i).getName());
     }
     object[json::c_strCategoriesAll] = arrayAllCategories;
 
     QJsonObject objectSortOrders;
-    for(QString sortOrderName : rRecipeBook.getAllSortOrderNamesSorted())
+    for(quint32 i = 0; i < rRecipeBook.getSortOrdersCount(); ++i)
     {
         QJsonArray arraySortOrder;
-        const SortOrder& rSortOrder = rRecipeBook.getSortOrder(sortOrderName);
+        const SortOrder& rSortOrder = rRecipeBook.getSortOrderAt(i);
         for(uint32_t i = 0; i < rSortOrder.getItemsCount(); ++i)
         {
             arraySortOrder.append(rSortOrder.at(i).getName());
         }
 
-        objectSortOrders[sortOrderName] = arraySortOrder;
+        objectSortOrders[rSortOrder.getName()] = arraySortOrder;
     }
     object[json::c_strCategoriesSortOrders] = objectSortOrders;
 
@@ -112,10 +114,10 @@ void json::JsonWriter::writeCategories(const RecipeBook& rRecipeBook, QJsonObjec
 void json::JsonWriter::writeIngredients(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
 {
     QJsonObject objectIngredients;
-    for(QString ingredientName : rRecipeBook.getAllIngredientNamesSorted())
+    for(quint32 i = 0; i < rRecipeBook.getIngredientsCount(); ++i)
     {
         QJsonObject ingredientObject;
-        const Ingredient& rIngredient = rRecipeBook.getIngredient(ingredientName);
+        const Ingredient& rIngredient = rRecipeBook.getIngredientAt(i);
         
         ingredientObject[json::c_strIngredientsCategory] = rIngredient.getCategory().getName();
         if(rIngredient.hasProvenanceEverywhere())
@@ -128,7 +130,7 @@ void json::JsonWriter::writeIngredients(const RecipeBook& rRecipeBook, QJsonObje
         }
         ingredientObject[json::c_strIngredientsDefaultUnit] = helper::convertUnit(rIngredient.getDefaultUnit());
 
-        objectIngredients[ingredientName] = ingredientObject;
+        objectIngredients[rIngredient.getName()] = ingredientObject;
     }
     
     rRootObject[json::c_strIngredientsId] = objectIngredients;
@@ -137,13 +139,13 @@ void json::JsonWriter::writeIngredients(const RecipeBook& rRecipeBook, QJsonObje
 void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
 {
     QJsonObject objectRecipes;
-    for(QString recipeName : rRecipeBook.getAllRecipeNamesSorted())
+    for(quint32 i = 0; i < rRecipeBook.getRecipesCount(); ++i)
     {
         QJsonObject recipeObject;
-        const Recipe& rRecipe = rRecipeBook.getRecipe(recipeName);
+        const Recipe& rRecipe = rRecipeBook.getRecipeAt(i);
         
         recipeObject[json::c_strRecipesNrPersons] = (int)rRecipe.getNumberOfPersons();
-
+        
         if(!m_bStripDescriptions)
         {
             recipeObject[json::c_strRecipesShortDesc] = rRecipe.getShortDescription();
@@ -157,16 +159,20 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
         recipeObject[json::c_strRecipesItems] = recipeItemsObject;
 
         QJsonObject itemsGroupsObject;
-        for(QString groupName : rRecipe.getAllAlternativesGroupsNamesSorted())
+        for(quint32 i = 0; i < rRecipe.getAlternativesGroupsCount(); ++i)
         {
+            QJsonObject groupItemsObject;
+            const RecipeItemGroup& rRecipeItems = rRecipe.getAlternativesGroupAt(i);
+            writeRecipeItemGroup(rRecipeItems, rRecipeBook, groupItemsObject);
+
             QJsonObject groupObject;
-            const RecipeItemGroup& rRecipeItems = rRecipe.getAlternativesGroup(groupName);
-            writeRecipeItemGroup(rRecipeItems, rRecipeBook, groupObject);
-            itemsGroupsObject[groupName] = groupObject;
+            groupObject[json::c_strRecipesItems] = groupItemsObject;
+            groupObject[json::c_strRecipesGroupPosition] = (int)i;
+            itemsGroupsObject[rRecipeItems.getName()] = groupObject;
         }
         recipeObject[json::c_strRecipesGroups] = itemsGroupsObject;
 
-        objectRecipes[recipeName] = recipeObject;
+        objectRecipes[rRecipe.getName()] = recipeObject;
     }
     
     rRootObject[json::c_strRecipesId] = objectRecipes;
@@ -174,43 +180,42 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
 
 void json::JsonWriter::writeRecipeItemGroup(const RecipeItemGroup& rGroup, const RecipeBook& rRecipeBook, QJsonObject& rObject)
 {
-    for(QString recipeItemName : rGroup.getAllItemNamesSorted())
+    for(quint32 i = 0; i < rGroup.getItemsCount(); ++i)
     {
-        const Ingredient& rIngredient = rRecipeBook.getIngredient(recipeItemName);
-        const RecipeItem& rItem = rGroup.getItem(rIngredient);
+        const RecipeItem& rItem = rGroup.getItemAt(i);
+        
         QJsonObject recipeItemObject;
-        writeRecipeItem(rItem, recipeItemObject);
+        writeRecipeItem(rItem, i, recipeItemObject);
 
-        rObject[recipeItemName] = recipeItemObject;
+        rObject[rItem.getName()] = recipeItemObject;
     }
 }
 
 void json::JsonWriter::writeShoppongList(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
 {
     QJsonObject objectRecipes;
-    for(QString recipeName : rRecipeBook.getAllShoppingRecipeNames())
+    for(quint32 j = 0; j < rRecipeBook.getShoppingRecipesCount(); ++j)
     {
         QJsonObject recipeObject;
-        const ShoppingRecipe& rRecipe = rRecipeBook.getShoppingRecipe(recipeName);
+        const ShoppingRecipe& rRecipe = rRecipeBook.getShoppingRecipeAt(j);
         
         recipeObject[json::c_strShoppingRecipesScalingFactor] = rRecipe.getScalingFactor();
         recipeObject[json::c_strShoppingRecipesDueDate] = rRecipe.getDueDate().toString(Qt::ISODate);
 
         QJsonObject itemsGroupsObject;
-        for(QString recipeItemName : rRecipe.getAllItemNamesSorted())
+        for(quint32 i = 0; i < rRecipe.getItemsCount(); ++i)
         {
-            const Ingredient& rIngredient = rRecipeBook.getIngredient(recipeItemName);
-            const ShoppingListItem& rItem = rRecipe.getItem(rIngredient);
+            const ShoppingListItem& rItem = rRecipe.getItemAt(i);
             QJsonObject recipeItemObject;
 
             recipeItemObject[json::c_strRecipesStatus] = helper::convertStatus(rItem.getStatus());
-            writeRecipeItem(rItem, recipeItemObject);
+            writeRecipeItem(rItem, i, recipeItemObject);
 
-            itemsGroupsObject[recipeItemName] = recipeItemObject;
+            itemsGroupsObject[rItem.getName()] = recipeItemObject;
         }
         recipeObject[json::c_strRecipesItems] = itemsGroupsObject;
 
-        objectRecipes[recipeName] = recipeObject;
+        objectRecipes[rRecipe.getName()] = recipeObject;
     }
     
     rRootObject[json::c_strShoppinglistId] = objectRecipes;

@@ -12,8 +12,7 @@ namespace recipebook
     {
     public:
         QString getName() const { return m_Name; }
-        void rename(QString strNewName) { m_Name = strNewName; }
-
+        
         quint32 getNumberOfPersons() const { return m_NrPersons; }
         void setNumberOfPersons(quint32 number) { m_NrPersons = number; }
 
@@ -30,20 +29,25 @@ namespace recipebook
         void setCookingTime(QTime duration) { m_CookingTime = duration; }
 
         // Alternatives groups
-
-        RecipeItemGroup& addAlternativesGroup(QString strName);
+        
+        RecipeItemGroup& addAlternativesGroup(QString strName, int pos = -1);
         bool existsAlternativesGroup(QString strName) const;
         bool removeAlternativesGroup(const RecipeItemGroup& rGroup);
         RecipeItemGroup& getAlternativesGroup(QString strName);
         const RecipeItemGroup& getAlternativesGroup(QString strName) const;
 
-        QStringList getAllAlternativesGroupsNamesSorted() const;
+        quint32 getAlternativesGroupsCount() const;
+        RecipeItemGroup& getAlternativesGroupAt(quint32 i);
+        const RecipeItemGroup& getAlternativesGroupAt(quint32 i) const;
+        void moveAlternativesGroup(const RecipeItemGroup& rItem, quint32 newPos);
 
     private:
         explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 0) {}
         Recipe(QString strName, const Recipe& rOther);
 
         void operator=(const Recipe& rOther) = delete;
+
+        void rename(QString strNewName) { m_Name = strNewName; }
 
     private:
         QString m_Name;

@@ -30,10 +30,11 @@ namespace recipebook::serialization::json
     constexpr char* c_strRecipesShortDesc               = "ShortDesc";
     constexpr char* c_strRecipesText                    = "Text";
     constexpr char* c_strRecipesCookingTime             = "CookingTime";
-
+    
     // recipe item lists
     constexpr char* c_strRecipesGroups                  = "groups";
     constexpr char* c_strRecipesItems                   = "items";
+    constexpr char* c_strRecipesGroupPosition           = "_position";
 
     // shopping recipe
     constexpr char* c_strShoppingRecipesScalingFactor   = "ScalingFactor";
@@ -48,6 +49,7 @@ namespace recipebook::serialization::json
     constexpr char* c_strRecipesOptional                = "optional";
     constexpr char* c_strRecipesAdditionalInfo          = "additionalInfo";
     constexpr char* c_strRecipesStatus                  = "status";
+    constexpr char* c_strRecipesPosition                = "_position";
 }
 
 #endif

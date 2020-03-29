@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include <QSharedPointer>
 
 float recipebook::getDefaultQuantity(Unit unit)
 {
@@ -18,4 +19,26 @@ float recipebook::getDefaultQuantity(Unit unit)
         default:
             return 0.0f;
     }
+}
+
+QStringList recipebook::getAllUnitNamesUI()
+{
+    static QSharedPointer<QStringList> spList;
+    if(spList == nullptr)
+    {
+        spList = QSharedPointer<QStringList>::create();
+
+        // TODO: translations! -> Possibly move this somewhere else?
+        spList->append("Count");
+        spList->append("Kilogram");
+        spList->append("Gram");
+        spList->append("Liter");
+        spList->append("Deciliter");
+        spList->append("Milliliter");
+        spList->append("Dessertspoon");
+        spList->append("Teaspoon");
+        spList->append("Unitless");
+    }
+
+    return *spList.get();
 }
