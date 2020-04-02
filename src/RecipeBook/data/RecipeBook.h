@@ -27,29 +27,34 @@ namespace recipebook
         Category& addCategory(QString strName);
         void renameCategory(Category& rCategory, QString strNewName);
         bool existsCategory(QString strName) const;
-        bool removeCategory(const Category& rCategory);        
+        bool isCategoryInUse(const Category& rCategory) const;
+        bool removeCategory(const Category& rCategory);
         const Category& getCategory(QString strName) const;
         const Category& getDefaultCategory() const;
         quint32 getCategoriesCount() const;
         Category& getCategoryAt(quint32 i);
         const Category& getCategoryAt(quint32 i) const;
+        quint32 getCategoryIndex(QString strName) const;
 
         // SortOrders
         
         SortOrder& addSortOrder(QString strName);
         void renameSortOrder(SortOrder& rOrder, QString strNewName);
         bool existsSortOrder(QString strName) const;
+        bool isSortOrderInUse(const SortOrder& rCategory) const;
         bool removeSortOrder(const SortOrder& rOrder);
         SortOrder& getSortOrder(QString strName);
         const SortOrder& getSortOrder(QString strName) const;
         quint32 getSortOrdersCount() const;
         SortOrder& getSortOrderAt(quint32 i);
         const SortOrder& getSortOrderAt(quint32 i) const;
+        quint32 getSortOrderIndex(QString strName) const;
 
         // Ingredients
 
         Ingredient& addIngredient(QString strName, const Category& rCategory, Unit defaultUnit);
         void renameIngredient(Ingredient& rIngredient, QString strNewName);
+        bool isIngredientInUse(const Ingredient& rCategory) const;
         bool removeIngredient(const Ingredient& rIngredient);
         bool existsIngredient(QString strName) const;
         Ingredient& getIngredient(QString strName);
@@ -57,6 +62,7 @@ namespace recipebook
         quint32 getIngredientsCount() const;
         Ingredient& getIngredientAt(quint32 i);
         const Ingredient& getIngredientAt(quint32 i) const;
+        quint32 getIngredientIndex(QString strName) const;
 
         // Recipes
         
@@ -70,6 +76,7 @@ namespace recipebook
         quint32 getRecipesCount() const;
         Recipe& getRecipeAt(quint32 i);
         const Recipe& getRecipeAt(quint32 i) const;
+        quint32 getRecipeIndex(QString strName) const;
 
         // ShoppingList
         
@@ -83,6 +90,7 @@ namespace recipebook
         quint32 getShoppingRecipesCount() const;
         ShoppingRecipe& getShoppingRecipeAt(quint32 i);
         const ShoppingRecipe& getShoppingRecipeAt(quint32 i) const;
+        quint32 getShoppingRecipeIndex(QString strName) const;
 
         void clearShoppingList();
 

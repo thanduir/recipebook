@@ -20,7 +20,7 @@ namespace recipebook
         bool hasProvenanceEverywhere() const { return m_bProvenanceEverywhere; }
         const SortOrder& getProvenance() const;
         void setProvenanceEverywhere();
-        void setProvenance(const SortOrder* pProvenance);
+        void setProvenance(const SortOrder& rProvenance);
 
         Unit getDefaultUnit() const { return m_DefaultUnit; }
         void setDefaultUnit(Unit unit) { m_DefaultUnit = unit; }

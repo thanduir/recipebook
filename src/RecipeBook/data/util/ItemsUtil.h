@@ -31,6 +31,17 @@ namespace recipebook::internal
         }
 
         template<class T> 
+        typename QVector<QSharedPointer<T>>::const_iterator findItemSorted(QString strName, const QVector<QSharedPointer<T>>& allItems)
+        {
+            auto comp = [](const QSharedPointer<T>& rItem, const QString& strName) -> bool
+            {
+                return recipebook::internal::helper::lessThan(rItem->getName(), strName);
+            };
+
+            return std::lower_bound(allItems.begin(), allItems.end(), strName, comp);
+        }
+
+        template<class T> 
         typename QVector<QSharedPointer<T>>::iterator findItemSorted(QString strName, QVector<QSharedPointer<T>>& allItems)
         {
             auto comp = [](const QSharedPointer<T>& rItem, const QString& strName) -> bool
@@ -45,7 +56,7 @@ namespace recipebook::internal
     namespace sorted
     {
         template<class T> 
-        void moveForNewName(T& rItem, const QString strNewName, QVector<QSharedPointer<T>> allItems)
+        void moveForNewName(T& rItem, const QString strNewName, QVector<QSharedPointer<T>>& allItems)
         {
             auto iterOldPos = helper::findItemSorted(rItem.getName(), allItems);
             if(iterOldPos != allItems.end() && (*iterOldPos)->getName() == rItem.getName())

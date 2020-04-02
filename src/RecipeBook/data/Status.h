@@ -10,8 +10,6 @@ namespace recipebook
         None = 0,
         Taken
     };
-
-    QStringList getAllStatusNamesUI();
 }
 
 #endif

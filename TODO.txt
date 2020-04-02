@@ -4,8 +4,32 @@ TODO
 - Regularly update Design.txt to keep it uptodate!
 
 3. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
-	- https://doc.qt.io/qtvstools/qtvstools-getting-started.html
-	- https://doc.qt.io/qt-5/qtexamplesandtutorials.html
+	- https://doc.qt.io/qt-5/index.html
+		- https://doc.qt.io/qt-5/qtquick-controls2-qmlmodule.html
+		
+		- https://doc.qt.io/qt-5/qtquick-usecase-userinput.html
+		- https://doc.qt.io/qt-5/qtquick-usecase-layouts.html
+		- https://doc.qt.io/qt-5/qmlreference.html
+		- https://doc.qt.io/qt-5/qtquickhandlers-index.html
+		- https://doc.qt.io/qt-5/qtlabsplatform-index.html
+		- https://doc.qt.io/qt-5/qtquicklayouts-overview.html
+		- https://doc.qt.io/qt-5/qfileselector.html (or qqmlfileselector)
+
+		- https://doc.qt.io/archives/qt-5.11/qtquickcontrols2-chattutorial-example.html
+		- StackView on app UI?
+		- ListView + delegates + QAbstractiItemModel for lists? (swipeDelegate. other delegates?)
+			- https://doc.qt.io/archives/qt-5.11/qtquick-modelviewsdata-cppmodels.html
+			* should i do something similar to the app also on windows, i.e. one list with items that extend on click?
+			* Or would it be better to have a list on the left and then all available options to the right of it?
+
+		- https://doc.qt.io/qt-5/qtquick-bestpractices.html#interacting-with-qml-from-c
+		- https://doc.qt.io/qt-5/qtqml-cppintegration-interactqmlfromcpp.html
+
+	- Ingredients with all features from app
+	- Categories with all features from app
+	- Recipes with all features from app + additional fields
+	- (Relevant) settings from app?
+	- Refactor whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 4. Kochbuch-Exporter
 5. Merge functionality
 6. TODOs

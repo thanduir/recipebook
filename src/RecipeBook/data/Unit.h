@@ -23,7 +23,6 @@ namespace recipebook
     };
 
     float getDefaultQuantity(Unit unit);
-    QStringList getAllUnitNamesUI();
 }
 
 #endif

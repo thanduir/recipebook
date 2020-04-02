@@ -26,8 +26,8 @@ void recipebook::Ingredient::setProvenanceEverywhere()
 	m_pProvenance = nullptr;
 }
 
-void recipebook::Ingredient::setProvenance(const SortOrder* pProvenance)
+void recipebook::Ingredient::setProvenance(const SortOrder& rProvenance)
 {
 	m_bProvenanceEverywhere = false;
-	m_pProvenance = pProvenance;
+	m_pProvenance = &rProvenance;
 }

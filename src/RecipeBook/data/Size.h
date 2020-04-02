@@ -11,8 +11,6 @@ namespace recipebook
         Normal,
         Large
     };
-
-    QStringList getAllSizeNamesUI();
 }
 
 #endif

@@ -6,10 +6,6 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Form Files">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -18,28 +14,80 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="qml Files">
+      <UniqueIdentifier>{53f8bfcf-60bf-4689-b465-72265cc227ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qml Files\components">
+      <UniqueIdentifier>{a46440cc-fa9a-49d0-842c-b0c0a8381630}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="recipebookwindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="recipebookwindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="recipebookwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
+    <ClCompile Include="RecipeBookDataHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelIngredients.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uistringconverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelCategories.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelSortOrders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelProvenance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="qtquickcontrols2.conf" />
+    <None Include="recipebook.qml">
+      <Filter>qml Files</Filter>
+    </None>
+    <None Include="components\categoriesTab.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\ingredientsTab.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\recipesTab.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\textInputDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\textMessageDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ListModelIngredients.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="uistringconverter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelCategories.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelSortOrders.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelProvenance.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="RecipeBookDataHandler.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

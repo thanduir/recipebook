@@ -1,4 +1,18 @@
 <RCC>
     <qresource prefix="RecipeBookWindow">
     </qresource>
+	<qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+		<file>recipebook.qml</file>
+		<file alias="categoriesTab.qml">components/categoriesTab.qml</file>
+		<file alias="ingredientsTab.qml">components/ingredientsTab.qml</file>
+		<file alias="recipesTab.qml">components/recipesTab.qml</file>		
+    </qresource>
+	<qresource prefix="/components">
+        <file alias="CategoriesTab.qml">components/categoriesTab.qml</file>
+		<file alias="IngredientsTab.qml">components/ingredientsTab.qml</file>
+		<file alias="RecipesTab.qml">components/recipesTab.qml</file>		
+		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
+		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
+    </qresource>
 </RCC>

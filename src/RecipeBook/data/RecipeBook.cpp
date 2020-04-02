@@ -49,16 +49,25 @@ bool RecipeBook::existsCategory(QString strName) const
     return internal::sorted::exists<Category>(strName, m_Categories);
 }
 
-bool RecipeBook::removeCategory(const Category& rCategory)
+bool RecipeBook::isCategoryInUse(const Category& rCategory) const
 {
-    // Removing is only allow if it's not in use anymore
     for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
     {
         if(ingredient->getCategory().getName() == rCategory.getName())
         {
-            return false;
+            return true;
         }
     }
+
+    return false;
+}
+
+bool RecipeBook::removeCategory(const Category& rCategory)
+{
+    if(isCategoryInUse(rCategory))
+    {
+        return false;
+    }   
 
     internal::sorted::remove(rCategory, m_Categories);
 
@@ -115,6 +124,12 @@ const Category& RecipeBook::getCategoryAt(quint32 i) const
     return *m_Categories.at(i).get();
 }
 
+quint32 RecipeBook::getCategoryIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_Categories);
+    return iter - m_Categories.begin();
+}
+
 SortOrder& RecipeBook::addSortOrder(QString strName)
 {
     return internal::sorted::addItem(strName, m_SortOrders, [strName, this]()
@@ -134,15 +149,24 @@ bool RecipeBook::existsSortOrder(QString strName) const
     return internal::sorted::exists<SortOrder>(strName, m_SortOrders);
 }
 
-bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
+bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder) const
 {
-    // Removing is only allow if it's not in use anymore
     for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
     {
         if(ingredient->getProvenance().getName() == rOrder.getName())
         {
-            return false;
+            return true;
         }
+    }
+
+    return false;
+}
+
+bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
+{
+    if(isSortOrderInUse(rOrder))
+    {
+        return false;
     }
 
     internal::sorted::remove(rOrder, m_SortOrders);
@@ -182,6 +206,12 @@ const SortOrder& RecipeBook::getSortOrderAt(quint32 i) const
     return *m_SortOrders.at(i).get();
 }
 
+quint32 RecipeBook::getSortOrderIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_SortOrders);
+    return iter - m_SortOrders.begin();
+}
+
 Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
 {
     return internal::sorted::addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
@@ -201,21 +231,20 @@ bool RecipeBook::existsIngredient(QString strName) const
     return internal::sorted::exists<Ingredient>(strName, m_Ingredients);
 }
 
-bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
+bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient) const
 {
-    // Removing is only allow if it's not in use anymore
     for(QSharedPointer<Recipe> spRecipe : qAsConst(m_Recipes))
     {
         if(spRecipe->getRecipeItems().existsItem(rIngredient))
         {
-            return false;
+            return true;
         }
 
         for(QSharedPointer<RecipeItemGroup> spGroup : qAsConst(spRecipe->m_ItemGroups))
         {
             if(spGroup->existsItem(rIngredient))
             {
-                return false;
+                return true;
             }
         }
     }
@@ -223,8 +252,18 @@ bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
     {
         if(spShoppingRecipe->existsItem(rIngredient))
         {
-            return false;
+            return true;
         }
+    }
+
+    return false;
+}
+
+bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
+{
+    if(isIngredientInUse(rIngredient))
+    {
+        return false;
     }
 
     internal::sorted::remove(rIngredient, m_Ingredients);
@@ -262,6 +301,12 @@ const Ingredient& RecipeBook::getIngredientAt(quint32 i) const
         throw QException();
     }
     return *m_Ingredients.at(i).get();
+}
+
+quint32 RecipeBook::getIngredientIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_Ingredients);
+    return iter - m_Ingredients.begin();
 }
 
 Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
@@ -330,6 +375,12 @@ const Recipe& RecipeBook::getRecipeAt(quint32 i) const
     return *m_Recipes.at(i).get();
 }
 
+quint32 RecipeBook::getRecipeIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_Recipes);
+    return iter - m_Recipes.begin();
+}
+
 ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScalingFactor)
 {
     return internal::sorted::addItem(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
@@ -394,6 +445,12 @@ const ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i) const
         throw QException();
     }
     return *m_ShoppingRecipes.at(i).get();
+}
+
+quint32 RecipeBook::getShoppingRecipeIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_ShoppingRecipes);
+    return iter - m_ShoppingRecipes.begin();
 }
 
 void RecipeBook::clearShoppingList()

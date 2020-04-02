@@ -165,7 +165,7 @@ bool json::JsonReaderV2::readIngredients(const QJsonObject& rObject, RecipeBook&
         Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
         if(!strProvenance.isEmpty())
         {
-            rIngredient.setProvenance(&rRecipeBook.getSortOrder(strProvenance));
+            rIngredient.setProvenance(rRecipeBook.getSortOrder(strProvenance));
         }
     }
 

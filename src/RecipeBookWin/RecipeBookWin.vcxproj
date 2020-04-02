@@ -58,11 +58,11 @@
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;qml;quick;quickcontrols2</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;qml;quick;quickcontrols2</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -101,17 +101,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ListModelCategories.cpp" />
+    <ClCompile Include="ListModelIngredients.cpp" />
+    <ClCompile Include="ListModelProvenance.cpp" />
+    <ClCompile Include="ListModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="recipebookwindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="recipebookwindow.h" />
+    <ClCompile Include="RecipeBookDataHandler.cpp" />
+    <ClCompile Include="uistringconverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="recipebookwindow.ui" />
+    <None Include="components\categoriesTab.qml" />
+    <None Include="components\ingredientsTab.qml" />
+    <None Include="components\recipesTab.qml" />
+    <None Include="components\textInputDialog.qml" />
+    <None Include="components\textMessageDialog.qml" />
+    <None Include="qtquickcontrols2.conf" />
+    <None Include="recipebook.qml" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="uistringconverter.h" />
+    <QtMoc Include="ListModelIngredients.h" />
+    <QtMoc Include="ListModelCategories.h" />
+    <QtMoc Include="ListModelSortOrders.h" />
+    <QtMoc Include="ListModelProvenance.h" />
+    <QtMoc Include="RecipeBookDataHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
