@@ -27,7 +27,7 @@ namespace recipebook
         Category& addCategory(QString strName);
         void renameCategory(Category& rCategory, QString strNewName);
         bool existsCategory(QString strName) const;
-        bool isCategoryInUse(const Category& rCategory) const;
+        bool isCategoryInUse(const Category& rCategory, QList<Ingredient*>* pIngredients = nullptr) const;
         bool removeCategory(const Category& rCategory);
         const Category& getCategory(QString strName) const;
         const Category& getDefaultCategory() const;
@@ -41,7 +41,7 @@ namespace recipebook
         SortOrder& addSortOrder(QString strName);
         void renameSortOrder(SortOrder& rOrder, QString strNewName);
         bool existsSortOrder(QString strName) const;
-        bool isSortOrderInUse(const SortOrder& rCategory) const;
+        bool isSortOrderInUse(const SortOrder& rSortOrder, QList<Ingredient*>* pIngredients = nullptr) const;
         bool removeSortOrder(const SortOrder& rOrder);
         SortOrder& getSortOrder(QString strName);
         const SortOrder& getSortOrder(QString strName) const;
@@ -54,7 +54,7 @@ namespace recipebook
 
         Ingredient& addIngredient(QString strName, const Category& rCategory, Unit defaultUnit);
         void renameIngredient(Ingredient& rIngredient, QString strNewName);
-        bool isIngredientInUse(const Ingredient& rCategory) const;
+        bool isIngredientInUse(const Ingredient& rIngredient, QList<Recipe*>* pRecipes = nullptr, QList<ShoppingRecipe*>* pShoppingRecipes = nullptr) const;
         bool removeIngredient(const Ingredient& rIngredient);
         bool existsIngredient(QString strName) const;
         Ingredient& getIngredient(QString strName);

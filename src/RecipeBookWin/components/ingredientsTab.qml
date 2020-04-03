@@ -111,12 +111,9 @@ Item {
         anchors.rightMargin: 10
         anchors.bottomMargin: 10
 
-        // TODO: Wouldn't it be better if the button would be always active, but there would be a message box detailing why it can't be deleted? (similar to the app)
-        //      -> it might be better for performance reasons!
-        enabled: listView.count > 0 && modelIngredients.canIngredientBeRemoved(listView.currentIndex)
-
         // TODO: Icon instead of text?
         text: qsTr("Remove ingredient")
+        enabled: listView.count > 0 && modelIngredients.canIngredientBeRemoved(listView.currentIndex)
         onClicked: dlgRemoveIngredient.open()
     }
 
@@ -174,10 +171,37 @@ Item {
 
         Label { text: qsTr("Unit") }
         ComboBox {
+            id: cbxUnit
             Layout.fillWidth: true
             model: unitNames
             currentIndex: indexOfValue(modelIngredients.defaultUnit(listView.currentIndex))
             onActivated: modelIngredients.setDefaultUnit(listView.currentIndex, currentText)
         }
-    }    
+
+        Item { height: 10; Layout.columnSpan: 2 }
+
+        Label { 
+            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+
+            text: qsTr("Used in Recipes") 
+        }
+        Label {
+            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+            lineHeight: 1.25
+
+            text: modelIngredients.listUsedInRecipes(listView.currentIndex)
+        }
+
+        Label { 
+            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+
+            text: qsTr("Used in ShoppingRecipes") 
+        }
+        Label {
+            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+            lineHeight: 1.25
+
+            text: modelIngredients.listUsedInShoppingRecipes(listView.currentIndex)
+        }
+    }
 }

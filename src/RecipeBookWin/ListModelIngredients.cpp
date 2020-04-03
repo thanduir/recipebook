@@ -4,6 +4,8 @@
 #include <data/Category.h>
 #include <data/Ingredient.h>
 #include <data/SortOrder.h>
+#include <data/Recipe.h>
+#include <data/ShoppingRecipe.h>
 #include "uistringconverter.h"
 
 using namespace recipebook::UI;
@@ -84,6 +86,62 @@ QString ListModelIngredients::defaultUnit(int row) const
 
     const Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
     return  m_rConverter.convertUnit(rIngredient.getDefaultUnit());
+}
+
+QString ListModelIngredients::listUsedInRecipes(int row) const
+{
+    if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+        return "";
+
+    Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+
+    QList<Recipe*> recipes;
+    QList<ShoppingRecipe*> shoppingRecipes;
+    if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
+    {
+        return "";
+    }
+
+    QString text;
+    if(recipes.size() > 0)
+    {
+        text = "<ul>";
+        for(Recipe* pRecipe : qAsConst(recipes))
+        {
+            text += "<li>" + pRecipe->getName() + "</li>";
+        }
+        text += "</ul>";
+    }
+
+    return text;
+}
+
+QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
+{
+    if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+        return "";
+
+    Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+
+    QList<Recipe*> recipes;
+    QList<ShoppingRecipe*> shoppingRecipes;
+    if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
+    {
+        return "";
+    }
+
+    QString text;
+    if(recipes.size() > 0)
+    {
+        text = "<ul>";
+        for(ShoppingRecipe* pRecipe : qAsConst(shoppingRecipes))
+        {
+            text += "<li>" + pRecipe->getName() + "</li>";
+        }
+        text += "</ul>";
+    }
+
+    return text;
 }
 
 void ListModelIngredients::setCategory(int row, QString newCategory)

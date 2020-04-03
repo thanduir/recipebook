@@ -37,6 +37,9 @@ namespace recipebook::UI
         QString category(int row) const;
         QString provenance(int row) const;
         QString defaultUnit(int row) const;
+
+        QString listUsedInRecipes(int row) const;
+        QString listUsedInShoppingRecipes(int row) const;
                 
         void setCategory(int row, QString newCategory);
         void setProvenance(int row, QString newProvenance);

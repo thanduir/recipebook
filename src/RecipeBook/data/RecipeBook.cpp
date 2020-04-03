@@ -49,14 +49,31 @@ bool RecipeBook::existsCategory(QString strName) const
     return internal::sorted::exists<Category>(strName, m_Categories);
 }
 
-bool RecipeBook::isCategoryInUse(const Category& rCategory) const
+bool RecipeBook::isCategoryInUse(const Category& rCategory, QList<Ingredient*>* pIngredients) const
 {
+    if(pIngredients)
+    {
+        pIngredients->clear();
+    }
+
     for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
     {
         if(ingredient->getCategory().getName() == rCategory.getName())
         {
-            return true;
+            if(pIngredients)
+            {
+                pIngredients->append(ingredient.get());
+            }
+            else
+            {
+                return true;
+            }
         }
+    }
+
+    if(pIngredients)
+    {
+        return pIngredients->size() > 0;
     }
 
     return false;
@@ -149,14 +166,31 @@ bool RecipeBook::existsSortOrder(QString strName) const
     return internal::sorted::exists<SortOrder>(strName, m_SortOrders);
 }
 
-bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder) const
+bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder, QList<Ingredient*>* pIngredients) const
 {
+    if(pIngredients)
+    {
+        pIngredients->clear();
+    }
+
     for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
     {
         if(ingredient->getProvenance().getName() == rOrder.getName())
         {
-            return true;
+            if(pIngredients)
+            {
+                pIngredients->append(ingredient.get());
+            }
+            else
+            {
+                return true;
+            }
         }
+    }
+
+    if(pIngredients)
+    {
+        return pIngredients->size() > 0;
     }
 
     return false;
@@ -231,12 +265,23 @@ bool RecipeBook::existsIngredient(QString strName) const
     return internal::sorted::exists<Ingredient>(strName, m_Ingredients);
 }
 
-bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient) const
+bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient, QList<Recipe*>* pRecipes, QList<ShoppingRecipe*>* pShoppingRecipes) const
 {
+    if(pRecipes && pShoppingRecipes)
+    {
+        pRecipes->clear();
+    }
+
     for(QSharedPointer<Recipe> spRecipe : qAsConst(m_Recipes))
     {
         if(spRecipe->getRecipeItems().existsItem(rIngredient))
         {
+            if(pRecipes && pShoppingRecipes)
+            {
+                pRecipes->append(spRecipe.get());
+                continue;
+            }
+
             return true;
         }
 
@@ -244,16 +289,40 @@ bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient) const
         {
             if(spGroup->existsItem(rIngredient))
             {
+                if(pRecipes && pShoppingRecipes)
+                {
+                    pRecipes->append(spRecipe.get());
+                    break;
+                }
+
                 return true;
             }
         }
     }
+
+    if(pShoppingRecipes)
+    {
+        pShoppingRecipes->clear();
+    }
+
     for(QSharedPointer<ShoppingRecipe> spShoppingRecipe : qAsConst(m_ShoppingRecipes))
     {
         if(spShoppingRecipe->existsItem(rIngredient))
         {
-            return true;
+            if(pRecipes && pShoppingRecipes)
+            {
+                pShoppingRecipes->append(spShoppingRecipe.get());
+            }
+            else
+            {
+                return true;
+            }
         }
+    }
+
+    if(pRecipes && pShoppingRecipes)
+    {
+        return pRecipes->size() > 0 || pShoppingRecipes->size() > 0;
     }
 
     return false;
