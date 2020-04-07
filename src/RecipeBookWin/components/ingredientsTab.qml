@@ -16,7 +16,6 @@ Item {
     TextInputDialog {
         id: dlgRenameIngredient
         title: qsTr("Rename ingredient")
-        initialText: modelIngredients.name(listView.currentIndex)
         onAccepted: {
             listView.currentIndex = modelIngredients.renameIngredient(listView.currentIndex, outputText)
             listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
@@ -26,7 +25,6 @@ Item {
     TextMessageDialog {
         id: dlgRemoveIngredient
         title: qsTr("Remove ingredient")
-        msgText: qsTr("This will remove the ingredient \"" + modelIngredients.name(listView.currentIndex) + "\". Proceed?")
         onAccepted: {
             modelIngredients.removeIngredient(listView.currentIndex)
             listView.incrementCurrentIndex()
@@ -39,7 +37,7 @@ Item {
         id: scrollView
         anchors.left: parent.left
         anchors.top: parent.top 
-        anchors.bottom: labelAdd.top
+        anchors.bottom: paneIngredients.top
         anchors.topMargin: 48
         anchors.leftMargin: 48
         anchors.bottomMargin: 48
@@ -88,33 +86,46 @@ Item {
         }
     }
 
-    Button {
-        id: labelAdd
-            
-        anchors.top: listView.bottom
+    Pane {
+        id: paneIngredients
         anchors.bottom: parent.bottom
-        anchors.right: labelRemove.left
-        anchors.rightMargin: 10
-        anchors.bottomMargin: 10
-
-        // TODO: Icon instead of text?
-        text: qsTr("Add ingredient")
-        onClicked: dlgAddIngredient.open()
-    }
-
-    Button {
-        id: labelRemove
-            
-        anchors.top: listView.bottom
-        anchors.bottom: parent.bottom
+        anchors.left: scrollView.left
         anchors.right: scrollView.right
-        anchors.rightMargin: 10
+        anchors.leftMargin: 48
+        anchors.rightMargin: 48
         anchors.bottomMargin: 10
 
-        // TODO: Icon instead of text?
-        text: qsTr("Remove ingredient")
-        enabled: listView.count > 0 && modelIngredients.canIngredientBeRemoved(listView.currentIndex)
-        onClicked: dlgRemoveIngredient.open()
+        RowLayout {
+            anchors.fill: parent
+        
+            Button {
+                id: buttonAdd
+
+                text: qsTr("Add")
+                onClicked: dlgAddIngredient.open()
+            }
+
+            Button {
+                id: buttonRename
+
+                text: qsTr("Rename")
+                onClicked: {
+                    dlgRenameIngredient.initialText = modelIngredients.name(listView.currentIndex);
+                    dlgRenameIngredient.open();
+                }
+            }
+
+            Button {
+                id: buttonRemove
+
+                text: qsTr("Remove")
+                enabled: listView.count > 0 && modelIngredients.canIngredientBeRemoved(listView.currentIndex)
+                onClicked: {
+                    dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelIngredients.name(listView.currentIndex) + "\". Proceed?");
+                    dlgRemoveIngredient.open();
+                }
+            }
+        }
     }
 
     GridLayout {
@@ -133,19 +144,10 @@ Item {
         Label { 
             text: qsTr("Name") 
         }
-        RowLayout {
+        TextField { 
             Layout.fillWidth: true
-
-            TextField { 
-                Layout.fillWidth: true
-                readOnly: true
-                text: modelIngredients.name(listView.currentIndex)
-            }
-            Button {
-                // TODO: Icon instead of text?
-                text: "Edit"
-                onClicked: dlgRenameIngredient.open()
-            }
+            readOnly: true
+            text: modelIngredients.name(listView.currentIndex)
         }
 
         Label { 

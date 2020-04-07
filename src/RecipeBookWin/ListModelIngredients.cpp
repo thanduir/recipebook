@@ -208,7 +208,7 @@ void ListModelIngredients::setDataChanged(int row, IngredientRoles role)
 {
     QVector<int> rolesChanged;
     rolesChanged.append((int)IngredientRoles::CategoryRole);
-    dataChanged(index(row), index(row));
+    dataChanged(index(row), index(row), rolesChanged);
 }
 
 int ListModelIngredients::renameIngredient(int row, QString newName)
@@ -222,14 +222,14 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
     }
 
     qint32 newIndex = m_rRecipeBook.getIngredientIndex(newName);
-    if(newIndex > row)
-    {
-        newIndex -= 1;
-    }
-
     if(row != newIndex)
     {
         beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+    }
+
+    if(newIndex > row)
+    {
+        newIndex -= 1;
     }
 
     Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
@@ -271,7 +271,7 @@ int ListModelIngredients::addIngredient(QString strIngredient)
     return index;
 }
 
-bool ListModelIngredients::existsIngredient(QString strIngredient)
+bool ListModelIngredients::existsIngredient(QString strIngredient) const
 {
     return m_rRecipeBook.existsIngredient(strIngredient);
 }
@@ -307,4 +307,14 @@ bool ListModelIngredients::removeIngredient(int row)
     endRemoveRows();
 
     return bSuccess;
+}
+
+void ListModelIngredients::onCategoryRenamed(quint32 row)
+{
+    dataChanged(index(0), index(m_rRecipeBook.getIngredientsCount()-1));
+}
+
+void ListModelIngredients::onSortOrderRenamed(quint32 row)
+{
+    dataChanged(index(0), index(m_rRecipeBook.getIngredientsCount()-1));
 }

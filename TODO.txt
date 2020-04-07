@@ -3,23 +3,31 @@ TODO
 
 - Regularly update Design.txt to keep it uptodate!
 
-3. Design and write GUI to manage recipes (Qt Widget or Qt Quick?)
-	- https://doc.qt.io/qt-5/index.html
-		- https://doc.qt.io/qt-5/qmlreference.html
-		- https://doc.qt.io/qt-5/qtquick-controls2-qmlmodule.html
-		- ListView + delegates + QAbstractiItemModel for lists? (swipeDelegate. other delegates?)
-			- https://doc.qt.io/archives/qt-5.11/qtquick-modelviewsdata-cppmodels.html
-			* should i do something similar to the app also on windows, i.e. one list with items that extend on click?
-			* Or would it be better to have a list on the left and then all available options to the right of it?
-
-	- Ingredients with all features from app
+3. Design and write GUI to manage recipes (feature parity with the app)!
 	- Categories with all features from app
 	- Recipes with all features from app + additional fields
+		* Mark recipes with missing description etc. (make them red for example)?
+	- Define top-level layout concept
+	- ShoppingRecipe and ShoppingList dialogs with all features 
+		* new features from app todo:
+			- nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
+			- in go shopping: gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
+				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
+				darunter eine zeile "2 gross" und eine "1 klein")
 	- (Relevant) settings from app?
 	- Refactor whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
+	- Verify that every feature from the app is present!
+	- Test everything, esp. also that it works with empty data!
+3.5 Update Design.txt!
 4. Kochbuch-Exporter
+4.5 Update Design.txt!
 5. Merge functionality
+5.5 Update Design.txt!
 6. TODOs
-7. Write json schema?
-8. Internal binary file format? (to speed up reading and writing)
-9. Add picture to Recipe (and json)?
+7. Update and finalize Design.txt!
+
+
+Possibilities for later:
+a. Write json schema?
+b. Internal binary file format? (to speed up reading and writing)
+c. Add picture to Recipe (and json)?

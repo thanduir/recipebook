@@ -84,11 +84,9 @@ bool RecipeBook::removeCategory(const Category& rCategory)
     if(isCategoryInUse(rCategory))
     {
         return false;
-    }   
+    }
 
-    internal::sorted::remove(rCategory, m_Categories);
-
-    // Remove Category also from all SortOrders
+    // Remove Category from all SortOrders first
     for(QSharedPointer<SortOrder> spSortOrder : qAsConst(m_SortOrders))
     {
         for(int i = 0; i < spSortOrder->m_Categories.size(); ++i)
@@ -101,7 +99,14 @@ bool RecipeBook::removeCategory(const Category& rCategory)
         }
     }
 
+    internal::sorted::remove(rCategory, m_Categories);
+
     return true;
+}
+
+Category& RecipeBook::getCategory(QString strName)
+{
+    return internal::sorted::getItem(strName, m_Categories);
 }
 
 const Category& RecipeBook::getCategory(QString strName) const
@@ -175,7 +180,8 @@ bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder, QList<Ingredient*>* p
 
     for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
     {
-        if(ingredient->getProvenance().getName() == rOrder.getName())
+        if(!ingredient->hasProvenanceEverywhere()
+           && ingredient->getProvenance().getName() == rOrder.getName())
         {
             if(pIngredients)
             {

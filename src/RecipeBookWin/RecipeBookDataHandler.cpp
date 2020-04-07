@@ -14,10 +14,11 @@ constexpr char* c_strFileInput		= "..\\..\\UnitTestData\\SerializeTest\\test.jso
 constexpr char* c_strUID			= "AAAABBBBCCCC";
 
 RecipeBookDataHandler::RecipeBookDataHandler()
-	: m_RecipeBook(),
+:	m_RecipeBook(),
 	m_Converter(),
 	m_ModelCategories(m_RecipeBook),
-	m_ModelSortOrders(m_RecipeBook),
+	m_ModelSortOrder(m_RecipeBook),
+	m_ModelSortOrders(),
 	m_ModelProvenance(m_RecipeBook, m_Converter),
 	m_ModelIngredients(m_RecipeBook, m_Converter)
 {
@@ -25,6 +26,14 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	RBMetaData metaData;
 	QFile fileIn(c_strFileInput);
 	spReader->serialize(fileIn, metaData, m_RecipeBook);
+
+	m_ModelSortOrder.setSourceModel(&m_ModelCategories);
+	m_ModelSortOrders.setSourceModel(&m_ModelProvenance);
+
+	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
+			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
+	connect(&m_ModelProvenance, SIGNAL(provenanceRenamed(quint32)),
+			&m_ModelIngredients, SLOT(onSortOrderRenamed(quint32)));
 }
 
 void RecipeBookDataHandler::slotSaveAs(QString strFileURL)
@@ -55,6 +64,11 @@ QStringList RecipeBookDataHandler::getAllStatusNames() const
 ListModelCategories& RecipeBookDataHandler::getCategoriesModel()
 {
 	return m_ModelCategories;
+}
+
+ListModelSortOrder& RecipeBookDataHandler::getSortOrderModel()
+{
+	return m_ModelSortOrder;
 }
 
 ListModelSortOrders& RecipeBookDataHandler::getSortOrdersModel()

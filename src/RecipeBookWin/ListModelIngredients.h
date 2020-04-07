@@ -30,8 +30,6 @@ namespace recipebook::UI
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
-        // TODO: possibly also implement insertRows() and removeRows() or is this not suitable for my purposes?
-
     public slots:
         QString name(int row) const;
         QString category(int row) const;
@@ -48,10 +46,13 @@ namespace recipebook::UI
         int renameIngredient(int row, QString newName);
 
         int addIngredient(QString strIngredient);
-        bool existsIngredient(QString strIngredient);
+        bool existsIngredient(QString strIngredient) const;
 
         bool canIngredientBeRemoved(int row) const;
         bool removeIngredient(int row);
+
+        void onCategoryRenamed(quint32 index);
+        void onSortOrderRenamed(quint32 index);
 
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;

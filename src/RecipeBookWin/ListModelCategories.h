@@ -12,7 +12,6 @@ namespace recipebook
 
 namespace recipebook::UI
 {
-    // TODO(phiwid): Do I actually need this?
     class ListModelCategories : public QAbstractListModel
     {
         Q_OBJECT
@@ -28,8 +27,19 @@ namespace recipebook::UI
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
-        // TODO: FOR OVERRIDE: also implement setData() and flags(), cf. qabstractdatalistmodel doc!
-        // TODO: possibly also implement insertRows() and removeRows() or is this not suitable for my purposes?
+    public slots:
+        QString name(int row) const;
+        int renameCategory(int row, QString newName);
+
+        int addCategory(QString strCategory);
+        bool existsCategory(QString strCategory) const;
+
+        QString listUsedInIngredients(int row) const;
+        bool canCategoryBeRemoved(int row) const;
+        bool removeCategory(int row);
+
+    signals:
+        void categoryRenamed(quint32 index);
 
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;

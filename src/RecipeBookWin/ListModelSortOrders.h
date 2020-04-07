@@ -1,43 +1,29 @@
-#ifndef RECIPEBOOK_LISTMODEL_SORTORDER_H
-#define RECIPEBOOK_LISTMODEL_SORTORDER_H
+#ifndef RECIPEBOOK_LISTMODEL_SORTORDERS_H
+#define RECIPEBOOK_LISTMODEL_SORTORDERS_H
 
-#include <QAbstractListModel>
-
-class UIStringConverter;
-
-namespace recipebook
-{
-    class RecipeBook;
-}
+#include <QSortFilterProxyModel>
 
 namespace recipebook::UI
 {
-    class ListModelSortOrders : public QAbstractListModel
+    class ListModelSortOrders : public QSortFilterProxyModel
     {
         Q_OBJECT
     public:
-        enum class SortOrderRoles : int
-        {
-            NameRole = Qt::UserRole + 1,
-            /*CategoryRole,
-            ProvenanceRole,
-            DefaultUnitRole*/
-        };
+        ListModelSortOrders();
 
-    public:
-        ListModelSortOrders(RecipeBook& rRecipeBook);
+    public slots:
+        QString name(int row) const;
+        int renameSortOrder(int row, QString newName);
 
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int addSortOrder(QString strSortOrder);
+        bool existsSortOrder(QString strSortOrder) const;
 
-        // TODO: FOR OVERRIDE: also implement setData() and flags(), cf. qabstractdatalistmodel doc!
-        // TODO: possibly also implement insertRows() and removeRows() or is this not suitable for my purposes?
+        QString listUsedInIngredients(int row) const;
+        bool canSortOrderBeRemoved(int row) const;
+        bool removeSortOrder(int row);
 
     protected:
-        virtual QHash<int, QByteArray> roleNames() const override;
-
-    protected:
-        RecipeBook& m_rRecipeBook;
+        virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
     };
 }
 

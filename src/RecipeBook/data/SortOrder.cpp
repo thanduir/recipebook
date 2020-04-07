@@ -27,3 +27,16 @@ void recipebook::SortOrder::moveCategory(const Category& category, quint32 newPo
 	quint32 oldPos = m_Categories.indexOf(&category);
 	m_Categories.move(oldPos, newPos);
 }
+
+quint32 recipebook::SortOrder::getIndex(const Category& category) const
+{
+	for(quint32 i = 0; i < (quint32)m_Categories.size(); ++i)
+	{
+		if(m_Categories.at(i) == &category)
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}

@@ -43,6 +43,9 @@
     <ClCompile Include="ListModelProvenance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListModelSortOrder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RecipeBookDataHandler.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelSortOrder.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

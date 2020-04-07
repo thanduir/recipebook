@@ -29,6 +29,7 @@ namespace recipebook
         bool existsCategory(QString strName) const;
         bool isCategoryInUse(const Category& rCategory, QList<Ingredient*>* pIngredients = nullptr) const;
         bool removeCategory(const Category& rCategory);
+        Category& getCategory(QString strName);
         const Category& getCategory(QString strName) const;
         const Category& getDefaultCategory() const;
         quint32 getCategoriesCount() const;

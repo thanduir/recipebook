@@ -17,6 +17,8 @@ namespace recipebook
 
         void moveCategory(const Category& category, quint32 newPos);
 
+        quint32 getIndex(const Category& category) const;
+
     private:
         SortOrder(QString strName, const QVector<QSharedPointer<Category>>& rCategories);
 
