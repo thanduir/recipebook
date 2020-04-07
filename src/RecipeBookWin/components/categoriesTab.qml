@@ -1,17 +1,10 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
+import QtQml.Models 2.1
 
 Item {  
-    /* TODO: 
-            * move categories in sort order using:
-                - https://doc.qt.io/qt-5/qtquick-tutorials-dynamicview-dynamicview2-example.html
-                - https://doc.qt.io/qt-5/qtquick-tutorials-dynamicview-dynamicview3-example.html
-                - https://doc.qt.io/qt-5/qtquick-tutorials-dynamicview-dynamicview4-example.html
-            * show somewhere "used in" for categories and sortOrders!
-            * can i add something (effect) so that it's obvious that the sort order determines the categories list?
-            * do i need to add headers above the listviews?
-    */  
+    id: categoriesTab
 
     TextInputDialog {
         id: dlgAddSortOrder
@@ -71,10 +64,22 @@ Item {
         }
     }
 
+    Label {
+        id: labelSortOrders
+        
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: 48
+        anchors.leftMargin: 48
+        
+        text: "Sort orders"
+        font.bold: true
+    }
+
     ScrollView {
         id: scrollViewSortOrders
         anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.top: labelSortOrders.bottom
         anchors.topMargin: 48
         anchors.leftMargin: 48
         anchors.bottomMargin: 48
@@ -142,13 +147,94 @@ Item {
         }
     }
 
+    Component {
+        id: dragDelegate
+
+        // TODO: Change this so that the MouseArea is only a bar similar to what's in the app and then react to "onPressed" instead of onPressAndHold?
+        //      -> this might also solve the problem between highlighted and drag item color as i wouldn't need the later anymore
+        MouseArea {
+            id: dragArea
+
+            property bool held: false
+
+            anchors { left: parent.left; right: parent.right }
+            height: content.height
+
+            drag.target: held ? content : undefined
+            drag.axis: Drag.YAxis
+
+            onPressed: held = true
+            onDoubleClicked: held = true
+            onReleased: held = false
+            
+            Rectangle {
+                id: content
+
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+
+                width: dragArea.width; 
+                height: column.implicitHeight + 30
+
+                color: dragArea.held ? "lightgray" : "transparent"
+                Behavior on color { ColorAnimation { duration: 100 } }
+                
+                Drag.active: dragArea.held
+                Drag.source: dragArea
+                Drag.hotSpot.x: width / 2
+                Drag.hotSpot.y: height / 2
+
+                states: State {
+                    when: dragArea.held
+
+                    ParentChange { target: content; parent: categoriesTab }
+                    AnchorChanges {
+                        target: content
+                        anchors { horizontalCenter: undefined; verticalCenter: undefined }
+                    }
+                }
+
+                Label {
+                    id: column
+                    anchors { fill: parent; margins: 15 }
+                    verticalAlignment: Text.AlignVCenter
+
+                    text: modelData
+                }
+            }
+
+            DropArea {
+                anchors { fill: parent; margins: 15 }
+
+                onEntered: {
+                    modelSortOrder.moveCategory(drag.source.DelegateModel.itemsIndex,
+                                                dragArea.DelegateModel.itemsIndex);
+                    categoriesDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
+                                                       dragArea.DelegateModel.itemsIndex);
+                    // TODO: Also update current index?
+                }
+            }
+        }
+    }
+
+    Label {
+        id: labelCurrentSortOrder
+        
+        anchors.left: scrollViewCategories.left
+        anchors.top: parent.top
+        anchors.topMargin: 48
+        
+        text: qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
+        font.bold: true
+    }
+
     ScrollView {
         id: scrollViewCategories
         anchors.left: scrollViewSortOrders.right
-        anchors.top: parent.top
+        anchors.top: labelCurrentSortOrder.bottom
         anchors.bottom: groupCategories.top
         anchors.topMargin: 48
-        anchors.leftMargin: 48
+        anchors.leftMargin: 96
         anchors.bottomMargin: 48
         width: 400
 
@@ -162,14 +248,11 @@ Item {
             boundsBehavior: Flickable.StopAtBounds
 
             spacing: 5
-            model: modelSortOrder
-            delegate: ItemDelegate {                
-                highlighted: ListView.isCurrentItem
-                onClicked: lvCategories.currentIndex = index
-                width: lvCategories.width - lvCategories.leftMargin - lvCategories.rightMargin
+            model: DelegateModel {
+                id: categoriesDelegateModel
 
-                text: modelData
-                //DragHandler { }
+                model: modelSortOrder
+                delegate: dragDelegate
             }
         }
     }

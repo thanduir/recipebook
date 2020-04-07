@@ -86,3 +86,14 @@ bool ListModelSortOrder::removeCategory(int row)
     int rowSource = mapToSource(index(row, 0)).row();
     return pCategories->removeCategory(rowSource);
 }
+
+void ListModelSortOrder::moveCategory(int row, int target)
+{
+    if(row == target)
+    {
+        return;
+    }
+
+    m_pSortOrder->moveCategory( m_pSortOrder->at(row), target);
+    //sort(0, Qt::AscendingOrder);
+}

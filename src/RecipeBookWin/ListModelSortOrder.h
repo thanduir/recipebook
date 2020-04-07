@@ -33,6 +33,8 @@ namespace recipebook::UI
         bool canCategoryBeRemoved(int row) const;
         bool removeCategory(int row);
 
+        void moveCategory(int row, int target);
+
     protected:
         virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const override;
 
