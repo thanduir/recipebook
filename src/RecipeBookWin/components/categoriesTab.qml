@@ -150,8 +150,6 @@ Item {
     Component {
         id: dragDelegate
 
-        // TODO: Change this so that the MouseArea is only a bar similar to what's in the app and then react to "onPressed" instead of onPressAndHold?
-        //      -> this might also solve the problem between highlighted and drag item color as i wouldn't need the later anymore
         MouseArea {
             id: dragArea
 
@@ -163,9 +161,12 @@ Item {
             drag.target: held ? content : undefined
             drag.axis: Drag.YAxis
 
-            onPressed: held = true
-            onDoubleClicked: held = true
+            onPressed: {
+                held = true
+                lvCategories.currentIndex = -1
+            }
             onReleased: held = false
+            onClicked: lvCategories.currentIndex = index
             
             Rectangle {
                 id: content
@@ -174,10 +175,9 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
 
                 width: dragArea.width; 
-                height: column.implicitHeight + 30
+                height: column.implicitHeight + 50
 
-                color: dragArea.held ? "lightgray" : "transparent"
-                Behavior on color { ColorAnimation { duration: 100 } }
+                color: dragArea.held || lvCategories.currentIndex == index ? "lightgray" : "transparent"
                 
                 Drag.active: dragArea.held
                 Drag.source: dragArea
@@ -194,12 +194,35 @@ Item {
                     }
                 }
 
-                Label {
+                Item {
                     id: column
-                    anchors { fill: parent; margins: 15 }
-                    verticalAlignment: Text.AlignVCenter
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
 
-                    text: modelData
+                    Image {
+                        id: reorderImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        height: labelColumn.implicitHeight + 10
+                        verticalAlignment: Image.AlignVCenter
+                        anchors.margins: 15
+
+                        fillMode: Image.PreserveAspectFit
+                        source: "qrc:/images/reorder.svg"
+                    }
+
+                    Label {
+                        id: labelColumn
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: reorderImage.right
+
+                        anchors.margins: 15
+
+                        verticalAlignment: Text.AlignVCenter
+                        text: modelData
+
+                        
+                    }
                 }
             }
 
@@ -211,7 +234,6 @@ Item {
                                                 dragArea.DelegateModel.itemsIndex);
                     categoriesDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
                                                        dragArea.DelegateModel.itemsIndex);
-                    // TODO: Also update current index?
                 }
             }
         }
@@ -272,7 +294,7 @@ Item {
             }
             Button { 
                 text: qsTr("Rename") 
-                enabled: lvCategories.count > 0 && lvCategories.currentIndex >= 0
+                enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && lvCategories.currentIndex >= 0
                 onClicked: {
                     dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
                     dlgRenameCategory.open();
@@ -280,7 +302,7 @@ Item {
             }
             Button { 
                 text: qsTr("Remove") 
-                enabled: lvCategories.count > 0 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
+                enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
                 onClicked: {
                     dlgRemoveCategory.msgText = qsTr("This will remove the category \"" + modelSortOrder.name(lvCategories.currentIndex) + "\" from all sort orders. Proceed?");
                     dlgRemoveCategory.open();

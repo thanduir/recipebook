@@ -94,6 +94,5 @@ void ListModelSortOrder::moveCategory(int row, int target)
         return;
     }
 
-    m_pSortOrder->moveCategory( m_pSortOrder->at(row), target);
-    //sort(0, Qt::AscendingOrder);
+    m_pSortOrder->moveCategory(m_pSortOrder->at(row), target);
 }
