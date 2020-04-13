@@ -1632,7 +1632,7 @@
                     "_position": 2,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 2,
                         "min": 1,
                         "unit": "Count"
                     },
@@ -2077,7 +2077,7 @@
                     "_position": 0,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 6,
                         "min": 5,
                         "unit": "Count"
                     },
@@ -2840,7 +2840,7 @@
                     "_position": 2,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 2,
                         "min": 1,
                         "unit": "Count"
                     },
@@ -3362,7 +3362,7 @@
                     "_position": 1,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 600,
                         "min": 500,
                         "unit": "Gram"
                     },
@@ -3833,7 +3833,7 @@
                     "_position": 3,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 3,
                         "min": 2,
                         "unit": "Count"
                     },
@@ -4143,7 +4143,7 @@
                     "_position": 2,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 600,
                         "min": 550,
                         "unit": "Gram"
                     },
@@ -5794,7 +5794,7 @@
                     "_position": 0,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 2,
                         "min": 1,
                         "unit": "Count"
                     },
@@ -6014,7 +6014,7 @@
                             "_position": 1,
                             "additionalInfo": "",
                             "amount": {
-                                "max": -1,
+                                "max": 2,
                                 "min": 1,
                                 "unit": "Count"
                             },
@@ -7486,7 +7486,7 @@
                     "_position": 0,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 12,
                         "min": 10,
                         "unit": "Count"
                     },
@@ -9042,7 +9042,7 @@
                     "_position": 7,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 5,
                         "min": 4,
                         "unit": "Count"
                     },
@@ -9243,7 +9243,7 @@
                     "_position": 4,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 400,
                         "min": 250,
                         "unit": "Gram"
                     },
@@ -9385,7 +9385,7 @@
                     "_position": 0,
                     "additionalInfo": "",
                     "amount": {
-                        "max": -1,
+                        "max": 4,
                         "min": 3,
                         "unit": "Count"
                     },

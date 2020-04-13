@@ -11,7 +11,9 @@ Dialog {
     property string initialText: ""
     property alias outputText: dlgTextField.text
     property alias validator: dlgTextField.validator
-    
+    property bool currentTextAllowed: true
+    signal currentTextChanged
+
     TextField { 
         id: dlgTextField
         anchors.centerIn: parent
@@ -20,7 +22,8 @@ Dialog {
         validator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z‰ˆ¸ƒ÷‹ ()._-]+$/ }
 
         onTextEdited: {
-            buttons.standardButton(Dialog.Ok).enabled = text != "" && !modelIngredients.existsIngredient(text);
+            currentTextChanged();
+            buttons.standardButton(Dialog.Ok).enabled = text != "" && currentTextAllowed;
         }
     }
 

@@ -9,6 +9,7 @@ Item {
     TextInputDialog {
         id: dlgAddSortOrder
         title: qsTr("Add sort order")
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
         onAccepted: {
             lvSortOrders.currentIndex = modelSortOrders.addSortOrder(outputText)
             lvSortOrders.positionViewAtIndex(lvSortOrders.currentIndex, ListView.Center)
@@ -19,6 +20,7 @@ Item {
     TextInputDialog {
         id: dlgRenameSortOrder
         title: qsTr("Rename sort order")
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
         onAccepted: {
             lvSortOrders.currentIndex = modelSortOrders.renameSortOrder(lvSortOrders.currentIndex, outputText)
             lvSortOrders.positionViewAtIndex(lvSortOrders.currentIndex, ListView.Center)
@@ -40,6 +42,7 @@ Item {
     TextInputDialog {
         id: dlgAddCategory
         title: qsTr("Add category")
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrder.existsCategory(outputText)
         onAccepted: {
             lvCategories.currentIndex = modelSortOrder.addCategory(outputText)
             lvCategories.positionViewAtIndex(lvCategories.currentIndex, ListView.Center)
@@ -49,6 +52,7 @@ Item {
     TextInputDialog {
         id: dlgRenameCategory
         title: qsTr("Rename category")
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrder.existsCategory(outputText)
         onAccepted: {
             lvCategories.currentIndex = modelSortOrder.renameCategory(lvCategories.currentIndex, outputText)
         }
@@ -72,7 +76,7 @@ Item {
         anchors.topMargin: 48
         anchors.leftMargin: 48
         
-        text: "Sort orders"
+        text: qsTr("Sort orders")
         font.bold: true
     }
 

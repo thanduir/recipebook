@@ -46,6 +46,12 @@
     <ClCompile Include="ListModelSortOrder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListModelRecipes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelRecipeItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -77,9 +83,6 @@
     <QtMoc Include="ListModelIngredients.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="uistringconverter.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ListModelCategories.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -93,6 +96,15 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ListModelSortOrder.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelRecipes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelRecipeItems.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="uistringconverter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

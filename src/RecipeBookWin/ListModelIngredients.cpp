@@ -187,7 +187,7 @@ void ListModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)
     if (row < 0 || row >= (int)m_rRecipeBook.getIngredientsCount())
         return;
 
-    Unit unit = m_rConverter.convertUnit(newDefaultUnit);    
+    Unit unit = m_rConverter.convertUnit(newDefaultUnit);
     Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
     rIngredient.setDefaultUnit(unit);
 
@@ -207,7 +207,7 @@ QHash<int, QByteArray> ListModelIngredients::roleNames() const
 void ListModelIngredients::setDataChanged(int row, IngredientRoles role)
 {
     QVector<int> rolesChanged;
-    rolesChanged.append((int)IngredientRoles::CategoryRole);
+    rolesChanged.append((int)role);
     dataChanged(index(row), index(row), rolesChanged);
 }
 
@@ -241,6 +241,8 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
     }
 
     dataChanged(index(newIndex), index(newIndex));
+
+    emit ingredientRenamed(row);
 
     return newIndex;
 }

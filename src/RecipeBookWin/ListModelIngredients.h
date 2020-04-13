@@ -54,6 +54,9 @@ namespace recipebook::UI
         void onCategoryRenamed(quint32 index);
         void onSortOrderRenamed(quint32 index);
 
+    signals:
+        void ingredientRenamed(quint32 index);
+
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;
 

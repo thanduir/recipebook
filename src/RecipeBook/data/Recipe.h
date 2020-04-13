@@ -20,7 +20,7 @@ namespace recipebook
         RecipeItemGroup& getRecipeItems() { return m_RecipeItems; }
 
         QString getShortDescription() const { return m_ShortDescription; }
-        void setShortDescrpition(QString strText) { m_ShortDescription = strText; }
+        void setShortDescription(QString strText) { m_ShortDescription = strText; }
 
         QString getRecipeText() const { return m_RecipeText; }
         void setRecipeText(QString strText) { m_RecipeText = strText; }
@@ -42,7 +42,7 @@ namespace recipebook
         void moveAlternativesGroup(const RecipeItemGroup& rItem, quint32 newPos);
 
     private:
-        explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 0) {}
+        explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 30) {}
         Recipe(QString strName, const Recipe& rOther);
 
         void operator=(const Recipe& rOther) = delete;

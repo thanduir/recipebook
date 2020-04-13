@@ -8,6 +8,8 @@
 #include "ListModelSortOrders.h"
 #include "ListModelSortOrder.h"
 #include "ListModelProvenance.h"
+#include "ListModelRecipes.h"
+#include "ListModelRecipeItems.h"
 #include "uistringconverter.h"
 
 namespace recipebook::UI
@@ -21,15 +23,18 @@ namespace recipebook::UI
 
         // Namelists
         QStringList getAllUnitNames() const;
+        QStringList getAllUnitShortNames() const;
         QStringList getAllSizeNames() const;
         QStringList getAllStatusNames() const;
 
         // DataModels
         ListModelCategories& getCategoriesModel();
-        ListModelSortOrders& getSortOrdersModel();
         ListModelSortOrder& getSortOrderModel();
         ListModelProvenance& getProvenanceModel();
+        ListModelSortOrders& getSortOrdersModel();
         ListModelIngredients& getIngredientsModel();
+        ListModelRecipes& getRecipesModel();
+        ListModelRecipeItems& getRecipeItemsModel();
 
     public slots:
         void slotSaveAs(QString strFileURL);
@@ -38,11 +43,17 @@ namespace recipebook::UI
         RecipeBook m_RecipeBook;
         UIStringConverter m_Converter;
 
-        ListModelIngredients m_ModelIngredients;
         ListModelCategories m_ModelCategories;
         ListModelSortOrder m_ModelSortOrder;
+
         ListModelProvenance m_ModelProvenance;
         ListModelSortOrders m_ModelSortOrders;
+
+        ListModelIngredients m_ModelIngredients;
+
+        ListModelRecipes m_ModelRecipes;
+
+        ListModelRecipeItems m_ModelRecipeItems;
     };
 }
 

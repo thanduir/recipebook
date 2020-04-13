@@ -183,7 +183,7 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 
         if(recipe.find(json::c_strRecipesShortDesc) != recipe.end())
         {
-            rRecipe.setShortDescrpition(recipe[json::c_strRecipesShortDesc].toString());
+            rRecipe.setShortDescription(recipe[json::c_strRecipesShortDesc].toString());
         }
         if(recipe.find(json::c_strRecipesText) != recipe.end())
         {

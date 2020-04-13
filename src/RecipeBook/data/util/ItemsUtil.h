@@ -10,6 +10,7 @@ namespace recipebook::internal
 {
     namespace helper
     {
+        // TODO: I should probably use this (or something similar) also for the exist-Methods and other comparisons (where appropriate)!
         inline int lessThan(QString strFirst, QString strSecond)
         {
             // TODO(phiwid): Better compare method?

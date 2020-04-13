@@ -104,6 +104,8 @@
     <ClCompile Include="ListModelCategories.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
     <ClCompile Include="ListModelProvenance.cpp" />
+    <ClCompile Include="ListModelRecipeItems.cpp" />
+    <ClCompile Include="ListModelRecipes.cpp" />
     <ClCompile Include="ListModelSortOrder.cpp" />
     <ClCompile Include="ListModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
@@ -132,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelSortOrder.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ListModelRecipes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ListModelRecipeItems.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

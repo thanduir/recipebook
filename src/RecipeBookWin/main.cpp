@@ -10,9 +10,11 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
         return false;
     }
 
-    context->setContextProperty("unitNames", QVariant::fromValue(dataHandler.getAllUnitNames()));
-    context->setContextProperty("sizeNames", QVariant::fromValue(dataHandler.getAllSizeNames()));
-    context->setContextProperty("statusNames", QVariant::fromValue(dataHandler.getAllStatusNames()));
+    context->setContextProperty("unitNames", dataHandler.getAllUnitNames());
+    context->setContextProperty("unitNamesShort", dataHandler.getAllUnitShortNames());
+    
+    context->setContextProperty("sizeNames", dataHandler.getAllSizeNames());
+    context->setContextProperty("statusNames", dataHandler.getAllStatusNames());
 
     context->setContextProperty("modelCategories", &dataHandler.getCategoriesModel());
     context->setContextProperty("modelSortOrder", &dataHandler.getSortOrderModel());
@@ -21,6 +23,10 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
     context->setContextProperty("modelSortOrders", &dataHandler.getSortOrdersModel());
 
     context->setContextProperty("modelIngredients", &dataHandler.getIngredientsModel());
+
+    context->setContextProperty("modelRecipes", &dataHandler.getRecipesModel());
+
+    context->setContextProperty("modelRecipeItems", &dataHandler.getRecipeItemsModel());
 
     return true;
 }

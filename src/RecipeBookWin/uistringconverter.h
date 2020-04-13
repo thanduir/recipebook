@@ -2,7 +2,7 @@
 #define RECIPEBOOK_SERIALIZATION_HELPER_STRINGCONVERTER_H
 
 #include <QObject>
-#include <QHash>
+#include <QStringList>
 #include <data/Size.h>
 #include <data/Status.h>
 #include <data/Unit.h>
@@ -26,18 +26,15 @@ public:
     QString convertUnit(recipebook::Unit unit) const;
     recipebook::Unit convertUnit(QString strUnit) const;
     QStringList getAllUnitNames() const;
+    QStringList getAllUnitShortNames() const;
 
 private:
     QString m_strProvenanceEverywhere;
 
-    QHash<int, QString> m_StatusToName;
-    QHash<QString, int> m_NameToStatus;
-
-    QHash<int, QString> m_UnitToName;
-    QHash<QString, int> m_NameToUnit;
-
-    QHash<int, QString> m_SizeToName;
-    QHash<QString, int> m_NameToSize;
+    QStringList m_StatusToName;
+    QStringList m_UnitToName;
+    QStringList m_UnitToShortName;
+    QStringList m_SizeToName;
 };
 
 #endif

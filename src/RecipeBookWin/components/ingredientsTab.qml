@@ -7,6 +7,7 @@ Item {
     TextInputDialog {
         id: dlgAddIngredient
         title: qsTr("Add ingredient")
+        onCurrentTextChanged: currentTextAllowed = !modelIngredients.existsIngredient(outputText)
         onAccepted: {
             listView.currentIndex = modelIngredients.addIngredient(outputText)
             listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
@@ -16,6 +17,7 @@ Item {
     TextInputDialog {
         id: dlgRenameIngredient
         title: qsTr("Rename ingredient")
+        onCurrentTextChanged: currentTextAllowed = !modelIngredients.existsIngredient(outputText)
         onAccepted: {
             listView.currentIndex = modelIngredients.renameIngredient(listView.currentIndex, outputText)
             listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
@@ -32,11 +34,22 @@ Item {
         }
     }
 
+    Label {
+        id: labelIngredients
+        
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.topMargin: 48
+        anchors.leftMargin: 48
+        
+        text: qsTr("Ingredients")
+        font.bold: true
+    }
 
     ScrollView {
         id: scrollView
         anchors.left: parent.left
-        anchors.top: parent.top 
+        anchors.top: labelIngredients.bottom 
         anchors.bottom: paneIngredients.top
         anchors.topMargin: 48
         anchors.leftMargin: 48
@@ -128,10 +141,22 @@ Item {
         }
     }
 
+    Label {
+        id: labelCurrentSortOrder
+        
+        anchors.left: grid.left
+        anchors.top: parent.top
+        anchors.topMargin: 48
+        
+        visible: listView.count > 0
+        text: qsTr("Category \"" + modelIngredients.name(listView.currentIndex) + "\"")
+        font.bold: true
+    }
+
     GridLayout {
         id: grid
         anchors.left: scrollView.right
-        anchors.top: parent.top
+        anchors.top: labelCurrentSortOrder.bottom
         anchors.right: parent.right
         anchors.topMargin: 48
         anchors.leftMargin: 48
@@ -140,15 +165,6 @@ Item {
         
         visible: listView.count > 0
         columns: 2
-
-        Label { 
-            text: qsTr("Name") 
-        }
-        TextField { 
-            Layout.fillWidth: true
-            readOnly: true
-            text: modelIngredients.name(listView.currentIndex)
-        }
 
         Label { 
             text: qsTr("Category")
@@ -182,6 +198,7 @@ Item {
 
         Item { height: 10; Layout.columnSpan: 2 }
 
+        // TODO: Ausblenden wenn leer?
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
@@ -194,6 +211,7 @@ Item {
             text: modelIngredients.listUsedInRecipes(listView.currentIndex)
         }
 
+        // TODO: Ausblenden wenn leer?
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 

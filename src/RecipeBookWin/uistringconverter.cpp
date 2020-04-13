@@ -1,89 +1,68 @@
 #include "uistringconverter.h"
 
-static constexpr char* c_strProvenanceEverywhere = "Everywhere";
+static constexpr char* c_strProvenanceEverywhere	= "Everywhere";
 
-static constexpr char* c_strSizeSmall			= "Small";
-static constexpr char* c_strSizNormal			= "Normal";
-static constexpr char* c_strSizeLarge			= "Large";
+static constexpr char* c_strStatusNone				= "None";
+static constexpr char* c_strStatusTaken				= "Taken";
 
-static constexpr char* c_strStatusNone			= "None";
-static constexpr char* c_strStatusTaken			= "Taken";
+static constexpr char* c_strSizeSmall				= "Small";
+static constexpr char* c_strSizNormal				= "Normal";
+static constexpr char* c_strSizeLarge				= "Large";
 
-static constexpr char* c_strUnitCount			= "Count";
-static constexpr char* c_strUnitKilogram		= "Kilogram";
-static constexpr char* c_strUnitGram			= "Gram";
-static constexpr char* c_strUnitLiter			= "Liter";
-static constexpr char* c_strUnitDeciliter		= "Deciliter";
-static constexpr char* c_strUnitMilliliter		= "Milliliter";
-static constexpr char* c_strUnitDessertspoon	= "Dessertspoon";
-static constexpr char* c_strUnitTeaspoon		= "Teaspoon";
-static constexpr char* c_strUnitUnitless		= "Unitless";
+static constexpr char* c_strUnitCount				= "Count";
+static constexpr char* c_strUnitKilogram			= "Kilogram";
+static constexpr char* c_strUnitGram				= "Gram";
+static constexpr char* c_strUnitLiter				= "Liter";
+static constexpr char* c_strUnitDeciliter			= "Deciliter";
+static constexpr char* c_strUnitMilliliter			= "Milliliter";
+static constexpr char* c_strUnitDessertspoon		= "Dessertspoon";
+static constexpr char* c_strUnitTeaspoon			= "Teaspoon";
+static constexpr char* c_strUnitUnitless			= "Unitless";
+
+static constexpr char* c_strUnitCountShort			= "Piece";
+static constexpr char* c_strUnitKilogramShort		= "kg";
+static constexpr char* c_strUnitGramShort			= "g";
+static constexpr char* c_strUnitLiterShort			= "L";
+static constexpr char* c_strUnitDeciliterShort		= "dl";
+static constexpr char* c_strUnitMilliliterShort		= "ml";
+static constexpr char* c_strUnitDessertspoonShort	= "ds";
+static constexpr char* c_strUnitTeaspoonShort		= "ts";
+static constexpr char* c_strUnitUnitlessShort		= "";
 
 UIStringConverter::UIStringConverter()
 {
 	m_strProvenanceEverywhere = tr(c_strProvenanceEverywhere);
 
 	// Status
-
-	QString strStatusNone = tr(c_strStatusNone);
-	m_StatusToName[(int) recipebook::Status::None] = strStatusNone;
-	m_NameToStatus[strStatusNone] = (int)recipebook::Status::None;
-
-	QString strStatusTaken = tr(c_strStatusTaken);
-	m_StatusToName[(int) recipebook::Status::Taken] = strStatusTaken;
-	m_NameToStatus[strStatusTaken] = (int)recipebook::Status::Taken;
+	m_StatusToName.append(tr(c_strStatusNone));
+	m_StatusToName.append(tr(c_strStatusTaken));
 
 	// Size
-
-	QString strSizeSmall = tr(c_strStatusNone);
-	m_SizeToName[(int) recipebook::Size::Small] = strSizeSmall;
-	m_NameToSize[strSizeSmall] = (int)recipebook::Size::Small;
-
-	QString strSizeNormal = tr(c_strStatusNone);
-	m_SizeToName[(int) recipebook::Size::Normal] = strSizeNormal;
-	m_NameToSize[strSizeNormal] = (int)recipebook::Size::Normal;
-
-	QString strSizeLarge = tr(c_strStatusNone);
-	m_SizeToName[(int) recipebook::Size::Large] = strSizeLarge;
-	m_NameToSize[strSizeLarge] = (int)recipebook::Size::Large;
+	m_SizeToName.append(tr(c_strSizeSmall));
+	m_SizeToName.append(tr(c_strSizNormal));
+	m_SizeToName.append(tr(c_strSizeLarge));
 
 	// Unit
 
-	QString strUnitCount = tr(c_strUnitCount);
-	m_UnitToName[(int) recipebook::Unit::Count] = strUnitCount;
-	m_NameToUnit[strUnitCount] = (int)recipebook::Unit::Count;
+	m_UnitToName.append(tr(c_strUnitCount));
+	m_UnitToName.append(tr(c_strUnitKilogram));
+	m_UnitToName.append(tr(c_strUnitGram));
+	m_UnitToName.append(tr(c_strUnitLiter));
+	m_UnitToName.append(tr(c_strUnitDeciliter));
+	m_UnitToName.append(tr(c_strUnitMilliliter));
+	m_UnitToName.append(tr(c_strUnitDessertspoon));
+	m_UnitToName.append(tr(c_strUnitTeaspoon));
+	m_UnitToName.append(tr(c_strUnitUnitless));
 
-	QString strUnitKilogram = tr(c_strUnitKilogram);
-	m_UnitToName[(int) recipebook::Unit::Kilogram] = strUnitKilogram;
-	m_NameToUnit[strUnitKilogram] = (int)recipebook::Unit::Kilogram;
-
-	QString strUnitGram = tr(c_strUnitGram);
-	m_UnitToName[(int) recipebook::Unit::Gram] = strUnitGram;
-	m_NameToUnit[strUnitGram] = (int)recipebook::Unit::Gram;
-
-	QString strUnitLiter = tr(c_strUnitLiter);
-	m_UnitToName[(int) recipebook::Unit::Liter] = strUnitLiter;
-	m_NameToUnit[strUnitLiter] = (int)recipebook::Unit::Liter;
-
-	QString strUnitDeciliter = tr(c_strUnitDeciliter);
-	m_UnitToName[(int) recipebook::Unit::Deciliter] = strUnitDeciliter;
-	m_NameToUnit[strUnitDeciliter] = (int)recipebook::Unit::Deciliter;
-
-	QString strUnitMilliliter = tr(c_strUnitMilliliter);
-	m_UnitToName[(int) recipebook::Unit::Milliliter] = strUnitMilliliter;
-	m_NameToUnit[strUnitMilliliter] = (int)recipebook::Unit::Milliliter;
-
-	QString strUnitDessertspoon = tr(c_strUnitDessertspoon);
-	m_UnitToName[(int) recipebook::Unit::Dessertspoon] = strUnitDessertspoon;
-	m_NameToUnit[strUnitDessertspoon] = (int)recipebook::Unit::Dessertspoon;
-
-	QString strUnitTeaspoon = tr(c_strUnitTeaspoon);
-	m_UnitToName[(int) recipebook::Unit::Teaspoon] = strUnitTeaspoon;
-	m_NameToUnit[strUnitTeaspoon] = (int)recipebook::Unit::Teaspoon;
-
-	QString strUnitUnitless = tr(c_strUnitUnitless);
-	m_UnitToName[(int) recipebook::Unit::Unitless] = strUnitUnitless;
-	m_NameToUnit[strUnitUnitless] = (int)recipebook::Unit::Unitless;
+	m_UnitToShortName.append(tr(c_strUnitCountShort));
+	m_UnitToShortName.append(tr(c_strUnitKilogramShort));
+	m_UnitToShortName.append(tr(c_strUnitGramShort));
+	m_UnitToShortName.append(tr(c_strUnitLiterShort));
+	m_UnitToShortName.append(tr(c_strUnitDeciliterShort));
+	m_UnitToShortName.append(tr(c_strUnitMilliliterShort));
+	m_UnitToShortName.append(tr(c_strUnitDessertspoonShort));
+	m_UnitToShortName.append(tr(c_strUnitTeaspoonShort));
+	m_UnitToShortName.append(tr(c_strUnitUnitlessShort));
 }
 
 QString UIStringConverter::getProvenanceEverywhere() const
@@ -98,17 +77,20 @@ QString UIStringConverter::convertSize(recipebook::Size size) const
 
 recipebook::Size UIStringConverter::convertSize(QString strSize) const
 {
-	if(!m_NameToSize.contains(strSize))
+	for(int i = 0; i < m_SizeToName.size(); ++i)
 	{
-		return recipebook::Size::Normal;
+		if(m_SizeToName[i] == strSize)
+		{
+			return (recipebook::Size)i;
+		}
 	}
-
-	return (recipebook::Size)m_NameToSize[strSize];
+	
+	return recipebook::Size::Normal;
 }
 
 QStringList UIStringConverter::getAllSizeNames() const
 {
-	return m_NameToSize.keys();
+	return m_SizeToName;
 }
 
 QString UIStringConverter::convertStatus(recipebook::Status status) const
@@ -118,17 +100,20 @@ QString UIStringConverter::convertStatus(recipebook::Status status) const
 
 recipebook::Status UIStringConverter::convertStatus(QString strStatus) const
 {
-	if(!m_NameToStatus.contains(strStatus))
+	for(int i = 0; i < m_StatusToName.size(); ++i)
 	{
-		return recipebook::Status::None;
+		if(m_StatusToName[i] == strStatus)
+		{
+			return (recipebook::Status)i;
+		}
 	}
-
-	return (recipebook::Status)m_NameToStatus[strStatus];
+	
+	return recipebook::Status::None;
 }
 
 QStringList UIStringConverter::getAllStatusNames() const
 {
-	return m_NameToStatus.keys();
+	return m_StatusToName;
 }
 
 QString UIStringConverter::convertUnit(recipebook::Unit unit) const
@@ -138,15 +123,23 @@ QString UIStringConverter::convertUnit(recipebook::Unit unit) const
 
 recipebook::Unit UIStringConverter::convertUnit(QString strUnit) const
 {
-	if(!m_NameToUnit.contains(strUnit))
+	for(int i = 0; i < m_UnitToName.size(); ++i)
 	{
-		return recipebook::Unit::Count;
+		if(m_UnitToName[i] == strUnit)
+		{
+			return (recipebook::Unit)i;
+		}
 	}
-
-	return (recipebook::Unit)m_NameToUnit[strUnit];
+	
+	return recipebook::Unit::Count;
 }
 
 QStringList UIStringConverter::getAllUnitNames() const
 {
-	return m_NameToUnit.keys();
+	return m_UnitToName;
+}
+
+QStringList UIStringConverter::getAllUnitShortNames() const
+{
+	return m_UnitToShortName;
 }

@@ -10,8 +10,8 @@ import QtQuick.Dialogs 1.3
 import "components"
 
 ApplicationWindow {
-    width: 1024
-    height: 768
+    width: 1250
+    height: 825
     visible: true
     title: qsTr("RecipeBook")
     Component.onCompleted: {

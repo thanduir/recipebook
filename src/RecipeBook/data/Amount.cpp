@@ -8,6 +8,8 @@ void recipebook::Amount::setIsRange(bool bIsRange)
         return;
     }
 
+    m_bRange = bIsRange;
+
     if(bIsRange)
     {
         m_fQuantityMax = m_fQuantityMin;

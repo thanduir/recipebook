@@ -17,5 +17,8 @@
     </qresource>
 	<qresource prefix="/images">
         <file alias="reorder.svg">images/reorder.svg</file>
+		<file alias="add.svg">images/add-black.svg</file>
+		<file alias="delete.svg">images/delete.svg</file>
+		<file alias="edit.svg">images/edit.svg</file>
     </qresource>
 </RCC>

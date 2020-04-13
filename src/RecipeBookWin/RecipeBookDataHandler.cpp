@@ -18,9 +18,11 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_Converter(),
 	m_ModelCategories(m_RecipeBook),
 	m_ModelSortOrder(m_RecipeBook),
-	m_ModelSortOrders(),
 	m_ModelProvenance(m_RecipeBook, m_Converter),
-	m_ModelIngredients(m_RecipeBook, m_Converter)
+	m_ModelSortOrders(),
+	m_ModelIngredients(m_RecipeBook, m_Converter),
+	m_ModelRecipes(m_RecipeBook),
+	m_ModelRecipeItems(m_RecipeBook, m_Converter)
 {
 	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
 	RBMetaData metaData;
@@ -34,6 +36,8 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
 	connect(&m_ModelProvenance, SIGNAL(provenanceRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onSortOrderRenamed(quint32)));
+	connect(&m_ModelIngredients, SIGNAL(ingredientRenamed(quint32)),
+			&m_ModelRecipeItems, SLOT(onIngredientRenamed(quint32)));
 }
 
 void RecipeBookDataHandler::slotSaveAs(QString strFileURL)
@@ -49,6 +53,11 @@ void RecipeBookDataHandler::slotSaveAs(QString strFileURL)
 QStringList RecipeBookDataHandler::getAllUnitNames() const
 {
 	return m_Converter.getAllUnitNames();
+}
+
+QStringList RecipeBookDataHandler::getAllUnitShortNames() const
+{
+	return m_Converter.getAllUnitShortNames();
 }
 
 QStringList RecipeBookDataHandler::getAllSizeNames() const
@@ -84,4 +93,14 @@ ListModelProvenance& RecipeBookDataHandler::getProvenanceModel()
 ListModelIngredients& RecipeBookDataHandler::getIngredientsModel()
 {
 	return m_ModelIngredients;
+}
+
+ListModelRecipes& RecipeBookDataHandler::getRecipesModel()
+{
+	return m_ModelRecipes;
+}
+
+ListModelRecipeItems& RecipeBookDataHandler::getRecipeItemsModel()
+{
+	return m_ModelRecipeItems;
 }
