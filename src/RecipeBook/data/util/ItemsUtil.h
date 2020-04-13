@@ -10,11 +10,14 @@ namespace recipebook::internal
 {
     namespace helper
     {
-        // TODO: I should probably use this (or something similar) also for the exist-Methods and other comparisons (where appropriate)!
-        inline int lessThan(QString strFirst, QString strSecond)
+        inline int compare(QString strFirst, QString strSecond)
         {
-            // TODO(phiwid): Better compare method?
-            return strFirst.toLower().compare(strSecond.toLower(), Qt::CaseInsensitive) < 0;
+            return QString::localeAwareCompare(strFirst.toLower(), strSecond.toLower());
+        }
+
+        inline bool lessThan(QString strFirst, QString strSecond)
+        {
+            return compare(strFirst, strSecond) < 0;
         }
 
         template<class T> 
@@ -22,7 +25,7 @@ namespace recipebook::internal
         {
             for(int i = 0; i < allItems.size(); ++i)
             {
-                if(allItems[i]->getName() == strName)
+                if(compare(allItems[i]->getName(), strName) == 0)
                 {
                     return i;
                 }
@@ -60,13 +63,13 @@ namespace recipebook::internal
         void moveForNewName(T& rItem, const QString strNewName, QVector<QSharedPointer<T>>& allItems)
         {
             auto iterOldPos = helper::findItemSorted(rItem.getName(), allItems);
-            if(iterOldPos != allItems.end() && (*iterOldPos)->getName() == rItem.getName())
+            if(iterOldPos != allItems.end() && helper::compare((*iterOldPos)->getName(), rItem.getName()) == 0)
             {
                 QSharedPointer<T> savedItem = *iterOldPos;
                 allItems.erase(iterOldPos);
 
                 auto iterNewPos = helper::findItemSorted(strNewName, allItems);
-                if(iterNewPos != allItems.end() && (*iterNewPos)->getName() == rItem.getName())
+                if(iterNewPos != allItems.end() && helper::compare((*iterNewPos)->getName(), rItem.getName()) == 0)
                 {
                     throw QException();
                 }
@@ -78,14 +81,14 @@ namespace recipebook::internal
         bool exists(const QString strName, QVector<QSharedPointer<T>> allItems)
         {
             auto iter = helper::findItemSorted(strName, allItems);
-            return iter != allItems.end() && (*iter)->getName() == strName;
+            return iter != allItems.end() && helper::compare((*iter)->getName(), strName) == 0;
         }
 
         template<class T> 
         void remove(const T& rItem, QVector<QSharedPointer<T>>& allItems)
         {
             auto iter = helper::findItemSorted(rItem.getName(), allItems);
-            if(iter != allItems.end() && (*iter)->getName() == rItem.getName())
+            if(iter != allItems.end() && helper::compare((*iter)->getName(), rItem.getName()) == 0)
             {
                 allItems.erase(iter);
             }
@@ -95,7 +98,7 @@ namespace recipebook::internal
         T& getItem(QString strName, QVector<QSharedPointer<T>> allItems)
         {
             auto iter = helper::findItemSorted(strName, allItems);
-            if(iter != allItems.end() && (*iter)->getName() == strName)
+            if(iter != allItems.end() && helper::compare((*iter)->getName(), strName) == 0)
             {
                 return *(*iter).get();
             }
@@ -107,7 +110,7 @@ namespace recipebook::internal
         T& addItem(QString strName, QVector<QSharedPointer<T>>& allItems, Func constructNewItem)
         {
             auto iter = helper::findItemSorted(strName, allItems);
-            if(iter != allItems.end() && (*iter)->getName() == strName)
+            if(iter != allItems.end() && helper::compare((*iter)->getName(), strName) == 0)
             {
                 throw QException();
             }
