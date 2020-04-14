@@ -91,14 +91,14 @@ bool ListModelCategories::existsCategory(QString strCategory) const
 QString ListModelCategories::listUsedInIngredients(int row) const
 {
     if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
-        return "";
+        return " -";
 
     const Category& rCategory = m_rRecipeBook.getCategoryAt(row);
 
     QList<Ingredient*> ingredients;
     if(!m_rRecipeBook.isCategoryInUse(rCategory, &ingredients))
     {
-        return "";
+        return " -";
     }
 
     QString text;
@@ -110,6 +110,10 @@ QString ListModelCategories::listUsedInIngredients(int row) const
             text += "<li>" + pIngredient->getName() + "</li>";
         }
         text += "</ul>";
+    }
+    else
+    {
+        text = " -";
     }
 
     return text;

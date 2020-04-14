@@ -5,10 +5,7 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	- TODOs in:
-		* recipesTab.qml
-			- ListModelRecipeItems.h
-		* textInputDialog.qml
-		* ingredientsTab.qml
+		* recipesTab.qml: Add Ingredient variants!
 
 	- Define top-level layout concept
 	- ShoppingRecipe and ShoppingList dialogs with all features 
@@ -18,6 +15,7 @@ TODO
 				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
 				darunter eine zeile "2 gross" und eine "1 klein")
 	- (Relevant) settings from app, esp. the default values (cf. references in c++ models code)
+	- "Search as you type" like feature for (large) ListViews? (i could do this with a search box, but is there no direct way? maybe with a key pressed handler?)
 
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> in ListViews scroll to item with typing? (e.g. jump to first item starting with "m" when "m" is pressed while focused)

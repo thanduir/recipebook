@@ -78,6 +78,11 @@ Item {
         property int groupIndex: -1
         onAccepted: {
             // TODO: Need a new dialog for this as the user has to be able to choose from a list!
+            /*      Dialog features: 
+                        * flag "selectMultiple". If checked, the listitem are checkable
+                        * Ok and Cancel buttons
+                        * double click choses current item (discarding other selections or chosing the whole selection?)
+            */
             //lvCurrentRecipe.currentIndex = modelRecipeItems.addRecipeItem(outputText, groupIndex)
             //lvCurrentRecipe.positionViewAtIndex(lvCurrentRecipe.currentIndex, ListView.Center)
         }
@@ -249,7 +254,6 @@ Item {
             to: 359
             editable: true
             wheelEnabled: true
-            // TODO: Writing values on keyboard doesn't quite work yet -> reg ex wrong or something else?
             inputMethodHints: Qt.ImhTime
             validator: RegularExpressionValidator { regularExpression: /^([0][0-5]):([0-5][0-9])$/ }
             textFromValue: function(value, locale) {
@@ -261,8 +265,7 @@ Item {
             }
             valueFromText: function(text, locale) {
                 var cookingTime = new Date()
-                cookingTime = Date.fromLocaleString(locale, dateBoard, "HH:mm");
-
+                cookingTime = Date.fromLocaleString(locale, text, "HH:mm");
                 return cookingTime.getHours() * 60 + cookingTime.getMinutes();
             }
             value: modelRecipes.cookingTime(lvRecipes.currentIndex)
@@ -342,13 +345,14 @@ Item {
             bottomMargin: 5
             rightMargin: 5
             boundsBehavior: Flickable.StopAtBounds
-
+            keyNavigationEnabled: false
+            
             spacing: 5
             model: modelRecipeItems
             delegate: ItemDelegate {
                 id: listItemRecipeItem
                 highlighted: ListView.isCurrentItem && !modelRecipeItems.isGroupHeader(lvCurrentRecipe.currentIndex)
-                onClicked: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
+                onPressed: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
                 width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
                 height: listItemRecipeItemGroup.height
 
@@ -503,7 +507,6 @@ Item {
                         }
                     }
 
-                    // TODO: Space-key in textfield closes current item... (seems to be handle by listview)
                     // Extended information for active ingredient elements
                     GridLayout {
                         id: listItemGridRecipeItem
@@ -546,11 +549,6 @@ Item {
                             visible: amountUnit != modelRecipeItems.indexUnitUnitless()
                             text: " "
                         }
-                        /* TODO: 
-                            * How to ensure that min <= max? -> Need to test this in onEditingFinished, i guess. 
-                            * How to reset unacceptable values outside of this?
-                            * if has range and value set, disable range, enable range: textfield not updated!
-                        */
                         RowLayout {
                             visible: amountUnit != modelRecipeItems.indexUnitUnitless()
                             spacing: 20
@@ -567,11 +565,16 @@ Item {
                                     if(focus)
                                         selectAll()
                                 }
-                                
 
                                 text: amountMin
                                 validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-                                onEditingFinished: amountMin = text
+                                onEditingFinished: {
+                                    if(amountIsRange && text > amountMax)
+                                    {
+                                        text = amountMax;
+                                    }
+                                    amountMin = text;
+                                }
                             }
 
                             Label {
@@ -591,7 +594,13 @@ Item {
 
                                 validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
                                 text: amountMax
-                                onEditingFinished: amountMax = text
+                                onEditingFinished: {
+                                    if(amountIsRange && text < amountMin)
+                                    {
+                                        text = amountMin;
+                                    }
+                                    amountMax = text
+                                }
                             }
                         }
 

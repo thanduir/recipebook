@@ -198,7 +198,6 @@ Item {
 
         Item { height: 10; Layout.columnSpan: 2 }
 
-        // TODO: Ausblenden wenn leer?
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
@@ -211,7 +210,6 @@ Item {
             text: modelIngredients.listUsedInRecipes(listView.currentIndex)
         }
 
-        // TODO: Ausblenden wenn leer?
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 

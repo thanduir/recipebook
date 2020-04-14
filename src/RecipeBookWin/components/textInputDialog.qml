@@ -18,8 +18,7 @@ Dialog {
         id: dlgTextField
         anchors.centerIn: parent
         width: parent.width       
-        // TODO: This doesn't work for umlauts. Maybe replace with a negative regex (not ...). Also: 
-        validator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z‰ˆ¸ƒ÷‹ ()._-]+$/ }
+        validator: RegularExpressionValidator { regularExpression: /[0-9a-zA-Z√©√®√ß√†√§√∂√º√Ñ√ñ√ú ()._-]+$/ }
 
         onTextEdited: {
             currentTextChanged();

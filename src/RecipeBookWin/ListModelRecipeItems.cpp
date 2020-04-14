@@ -428,11 +428,13 @@ void ListModelRecipeItems::setAmountIsRange(int row, bool bRange)
     {
         m_pRecipe->getRecipeItems().getItemAt(info.itemIndex).getAmount().setIsRange(bRange);
         setDataChanged(row, RecipeItemsRoles::AmountIsRangeRole);
+        setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
     }
     else if(info.type == ItemType::GroupItem)
     {
         info.pGroup->getItemAt(info.itemIndex).getAmount().setIsRange(bRange);
         setDataChanged(row, RecipeItemsRoles::AmountIsRangeRole);
+        setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
     }
 }
 

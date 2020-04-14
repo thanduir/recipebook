@@ -91,7 +91,7 @@ QString ListModelIngredients::defaultUnit(int row) const
 QString ListModelIngredients::listUsedInRecipes(int row) const
 {
     if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
-        return "";
+        return " -";
 
     Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
 
@@ -99,7 +99,7 @@ QString ListModelIngredients::listUsedInRecipes(int row) const
     QList<ShoppingRecipe*> shoppingRecipes;
     if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
     {
-        return "";
+        return " -";
     }
 
     QString text;
@@ -112,6 +112,10 @@ QString ListModelIngredients::listUsedInRecipes(int row) const
         }
         text += "</ul>";
     }
+    else
+    {
+        text = " -";
+    }
 
     return text;
 }
@@ -119,7 +123,7 @@ QString ListModelIngredients::listUsedInRecipes(int row) const
 QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
 {
     if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
-        return "";
+        return " -";
 
     Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
 
@@ -127,11 +131,11 @@ QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
     QList<ShoppingRecipe*> shoppingRecipes;
     if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
     {
-        return "";
+        return " -";
     }
 
     QString text;
-    if(recipes.size() > 0)
+    if(shoppingRecipes.size() > 0)
     {
         text = "<ul>";
         for(ShoppingRecipe* pRecipe : qAsConst(shoppingRecipes))
@@ -139,6 +143,10 @@ QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
             text += "<li>" + pRecipe->getName() + "</li>";
         }
         text += "</ul>";
+    }
+    else
+    {
+        text = " -";
     }
 
     return text;

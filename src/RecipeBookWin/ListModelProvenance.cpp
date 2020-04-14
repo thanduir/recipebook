@@ -133,14 +133,14 @@ QString ListModelProvenance::listUsedInIngredients(int row) const
 {
     // Not implemented for provenance "Everywhere".
     if(row <= 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
-        return "";
+        return " -";
 
     SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
 
     QList<Ingredient*> ingredients;
     if(!m_rRecipeBook.isSortOrderInUse(rSortOrder, &ingredients))
     {
-        return "";
+        return " -";
     }
 
     QString text;
@@ -152,6 +152,10 @@ QString ListModelProvenance::listUsedInIngredients(int row) const
             text += "<li>" + pIngredient->getName() + "</li>";
         }
         text += "</ul>";
+    }
+    else
+    {
+        text = " -";
     }
 
     return text;

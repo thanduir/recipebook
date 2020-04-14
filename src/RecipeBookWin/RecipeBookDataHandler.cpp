@@ -8,9 +8,9 @@
 using namespace recipebook::UI;
 using namespace recipebook::serialization;
 
-// TODO(phiwid): Replace with non-temp. file!
+// TODO: Replace with non-temp. file!
 constexpr char* c_strFileInput		= "..\\..\\UnitTestData\\SerializeTest\\test.json";
-// TODO(phiwid): Replace with real UID!
+// TODO: Replace with real UID!
 constexpr char* c_strUID			= "AAAABBBBCCCC";
 
 RecipeBookDataHandler::RecipeBookDataHandler()
