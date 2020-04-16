@@ -28,7 +28,7 @@ namespace recipebook
         void setIsOptional(bool optional) { m_bOptional = optional; }
 
     private:
-        explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) {}
+        explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) { m_Amount.setUnit(rIngredient.getDefaultUnit()); }
         RecipeItem(const RecipeItem& rOther);
 
         void operator=(const RecipeItem& rOther) = delete;

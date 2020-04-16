@@ -83,6 +83,23 @@ void ListModelRecipeItems::getItemInfo(int row, ItemInfo& rInfo) const
     rInfo.type = ItemType::None;
 }
 
+int ListModelRecipeItems::getGroupItemsStartRow(int groupIndex) const
+{
+    if(groupIndex < 0 || groupIndex >= (int)m_pRecipe->getAlternativesGroupsCount())
+    {
+        return 0;
+    }
+
+    quint32 currentCount = m_pRecipe->getRecipeItems().getItemsCount();
+    for(quint32 i = 0; i < (quint32)groupIndex; ++i)
+    {
+        RecipeItemGroup& rGroup = m_pRecipe->getAlternativesGroupAt(i);
+        currentCount += rGroup.getItemsCount() + 1;
+    }
+
+    return currentCount + 1;
+}
+
 QVariant ListModelRecipeItems::data(const QModelIndex& index, int iRole) const
 {
     if(m_pRecipe == nullptr)
@@ -498,9 +515,35 @@ int ListModelRecipeItems::addRecipeGroup(QString strName)
     
     qint32 index = rowCount();
 
-    beginInsertRows(QModelIndex(),index, index);
+    beginInsertRows(QModelIndex(), index, index);
 
     m_pRecipe->addAlternativesGroup(strName);
+
+    endInsertRows();
+
+    return index;
+}
+
+int ListModelRecipeItems::addRecipeItem(QString strIngredient, int groupIndex)
+{
+    if(!m_rRecipeBook.existsIngredient(strIngredient))
+    {
+        return -1;
+    }
+
+    if(m_pRecipe == nullptr || groupIndex < -1 || groupIndex >= (int)m_pRecipe->getAlternativesGroupsCount())
+    {
+        return -1;
+    }
+
+    RecipeItemGroup& rGroup = groupIndex == -1 ? m_pRecipe->getRecipeItems() : m_pRecipe->getAlternativesGroupAt(groupIndex);
+    const Ingredient& rIngredient = m_rRecipeBook.getIngredient(strIngredient);
+
+    qint32 index = getGroupItemsStartRow(groupIndex) + rGroup.getItemsCount();
+
+    beginInsertRows(QModelIndex(), index, index);
+
+    RecipeItem& rItem = rGroup.addItem(rIngredient);
 
     endInsertRows();
 

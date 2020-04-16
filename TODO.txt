@@ -4,8 +4,7 @@ TODO
 - Regularly update Design.txt to keep it uptodate!
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- TODOs in:
-		* recipesTab.qml: Add Ingredient variants!
+	- recipesTab.qml: "Add Ingredient" variants!
 
 	- Define top-level layout concept
 	- ShoppingRecipe and ShoppingList dialogs with all features 

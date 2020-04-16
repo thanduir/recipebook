@@ -120,6 +120,7 @@
     <None Include="components\ingredientsTab.qml" />
     <None Include="components\recipesTab.qml" />
     <None Include="components\textInputDialog.qml" />
+    <None Include="components\textInputFromListDialog.qml" />
     <None Include="components\textMessageDialog.qml" />
     <None Include="qtquickcontrols2.conf" />
     <None Include="recipebook.qml" />

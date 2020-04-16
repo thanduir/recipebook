@@ -78,6 +78,9 @@
     <None Include="components\textMessageDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
+    <None Include="components\textInputFromListDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelIngredients.h">

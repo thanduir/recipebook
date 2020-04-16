@@ -65,8 +65,7 @@ namespace recipebook::UI
         void setOptional(int row, bool bOptional);
 
         int addRecipeGroup(QString strName);
-        // TODO: String or index for ingredient? index might make more sense, depending on how this is done in UI
-        //int addRecipeItem(QString strName, int groupIndex);
+        int addRecipeItem(QString strIngredient, int groupIndex);
         
         bool existsGroup(QString strGroup) const;
 
@@ -98,6 +97,7 @@ namespace recipebook::UI
     private:
         void setDataChanged(int row, RecipeItemsRoles role);
         void getItemInfo(int row, ItemInfo& rInfo) const;
+        int getGroupItemsStartRow(int groupIndex) const;
 
     private:
         RecipeBook& m_rRecipeBook;

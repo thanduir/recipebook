@@ -72,20 +72,18 @@ Item {
 
     // Common recipe group and item dialogs
     
-    TextInputDialog {
+    TextInputFromListDialog {
         id: dlgAddRecipeItem
         title: qsTr("Add ingredient")
+
+        allowedValues: modelIngredients
+
         property int groupIndex: -1
-        onAccepted: {
-            // TODO: Need a new dialog for this as the user has to be able to choose from a list!
-            /*      Dialog features: 
-                        * flag "selectMultiple". If checked, the listitem are checkable
-                        * Ok and Cancel buttons
-                        * double click choses current item (discarding other selections or chosing the whole selection?)
-            */
-            //lvCurrentRecipe.currentIndex = modelRecipeItems.addRecipeItem(outputText, groupIndex)
-            //lvCurrentRecipe.positionViewAtIndex(lvCurrentRecipe.currentIndex, ListView.Center)
-        }
+        // TODO: If it is a window, then i need to listen to "onClosing(CloseEvent)"
+        //onAccepted: {
+            /*lvCurrentRecipe.currentIndex = modelRecipeItems.addRecipeItem(outputText, groupIndex)
+            lvCurrentRecipe.positionViewAtIndex(lvCurrentRecipe.currentIndex, ListView.Center)*/
+        //}
     }
 
     TextMessageDialog {
@@ -662,7 +660,7 @@ Item {
                 onClicked: {
                     dlgAddRecipeItem.title = qsTr("Add ingredient");
                     dlgAddRecipeItem.groupIndex = -1
-                    dlgAddRecipeItem.open()
+                    dlgAddRecipeItem.show()
                 }
             }
             Button { 

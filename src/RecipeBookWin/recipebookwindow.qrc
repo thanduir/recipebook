@@ -13,6 +13,7 @@
 		<file alias="IngredientsTab.qml">components/ingredientsTab.qml</file>
 		<file alias="RecipesTab.qml">components/recipesTab.qml</file>		
 		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
+		<file alias="TextInputFromListDialog.qml">components/textInputFromListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
     </qresource>
 	<qresource prefix="/images">
