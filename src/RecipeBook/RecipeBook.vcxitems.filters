@@ -48,9 +48,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItem.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItemGroup.h">
-      <Filter>data\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
@@ -102,6 +99,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.h">
       <Filter>serialization\helper</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\AlternativesType.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
@@ -114,9 +114,6 @@
       <Filter>data\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItem.cpp">
-      <Filter>data\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItemGroup.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.cpp">

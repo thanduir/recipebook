@@ -57,7 +57,7 @@ QString ListModelProvenance::name(int row) const
     if(row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
         return "";
 
-    if(row == 0)
+    if(row == c_uiRowEverywhere)
     {
         return provenanceEverywhere();
     }
@@ -105,7 +105,7 @@ int ListModelProvenance::renameProvenance(int row, QString newName)
 
 int ListModelProvenance::addProvenance(QString strSortOrder)
 {
-    if(m_rRecipeBook.existsSortOrder(strSortOrder))
+    if(m_rRecipeBook.existsSortOrder(strSortOrder) || strSortOrder == provenanceEverywhere())
     {
         return -1;
     }

@@ -25,7 +25,7 @@ namespace recipebook::serialization::json
         bool readCategories(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         bool readIngredients(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         bool readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readShoppongList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+        bool readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
 
         bool readRecipeItemGroup(const QJsonObject& rObject, RecipeBook& rRecipeBook, Recipe& rRecipe);
         

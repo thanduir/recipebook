@@ -1,6 +1,6 @@
 #include "Recipe.h"
 #include "RecipeItem.h"
-#include "RecipeItemGroup.h"
+#include "Ingredient.h"
 #include "util/ItemsUtil.h"
 
 using namespace recipebook;
@@ -10,74 +10,74 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
     m_NrPersons(rOther.getNumberOfPersons()),
     m_RecipeItems(rOther.m_RecipeItems)
 {
-    for(int i = 0; i < (int)rOther.getAlternativesGroupsCount(); ++i)
+    for(int i = 0; i < rOther.m_RecipeItems.size(); ++i)
     {
-        const RecipeItemGroup& rGroup = rOther.getAlternativesGroupAt(i);
-        internal::unsorted::addItem(rGroup.getName(), i, m_ItemGroups, [&rGroup]()
+        const RecipeItem& rItem = rOther.getRecipeItemAt(i);
+        internal::unsorted::addItem(rItem.getName(), i, m_RecipeItems, [&rItem]()
         {
-            return new RecipeItemGroup(rGroup);
+            return new RecipeItem(rItem);
         });
     }
 }
 
-RecipeItemGroup& Recipe::addAlternativesGroup(QString strName, int pos)
+RecipeItem& Recipe::addRecipeItem(const Ingredient& rIngredient)
 {
-    return internal::unsorted::addItem(strName, pos, m_ItemGroups, [strName]()
+	return internal::unsorted::addItem(rIngredient.getName(), -1, m_RecipeItems, [&rIngredient]()
     {
-        return new RecipeItemGroup(strName);
+        return new RecipeItem(rIngredient);
     });
 }
 
-bool Recipe::existsAlternativesGroup(QString strName) const
+bool Recipe::existsRecipeItem(const Ingredient& rIngredient) const
 {
-    return internal::unsorted::exists<RecipeItemGroup>(strName, m_ItemGroups);
+    return internal::unsorted::exists<RecipeItem>(rIngredient.getName(), m_RecipeItems);
 }
 
-bool Recipe::removeAlternativesGroup(const RecipeItemGroup& rGroup)
+bool Recipe::removeRecipeItem(const RecipeItem& rItem)
 {
-    internal::unsorted::remove(rGroup, m_ItemGroups);
+    internal::unsorted::remove(rItem, m_RecipeItems);
     return true;
 }
 
-RecipeItemGroup& Recipe::getAlternativesGroup(QString strName)
+RecipeItem& Recipe::getRecipeItem(const Ingredient& rIngredient)
 {
-    return internal::unsorted::getItem(strName, m_ItemGroups);
+    return internal::unsorted::getItem(rIngredient.getName(), m_RecipeItems);
 }
 
-const RecipeItemGroup& Recipe::getAlternativesGroup(QString strName) const
+const RecipeItem& Recipe::getRecipeItem(const Ingredient& rIngredient) const
 {
-    return internal::unsorted::getItem(strName, m_ItemGroups);
+    return internal::unsorted::getItem(rIngredient.getName(), m_RecipeItems);
 }
 
-quint32 Recipe::getAlternativesGroupsCount() const
+quint32 Recipe::getRecipeItemsCount() const
 {
-    return m_ItemGroups.size();
+    return m_RecipeItems.size();
 }
 
-RecipeItemGroup& Recipe::getAlternativesGroupAt(quint32 i)
+RecipeItem& Recipe::getRecipeItemAt(quint32 i)
 {
-    if(i >= (quint32)m_ItemGroups.size())
+    if(i >= (quint32)m_RecipeItems.size())
     {
         throw QException();
     }
-    return *m_ItemGroups.at(i).get();
+    return *m_RecipeItems.at(i).get();
 }
 
-const RecipeItemGroup& Recipe::getAlternativesGroupAt(quint32 i) const
+const RecipeItem& Recipe::getRecipeItemAt(quint32 i) const
 {
-    if(i >= (quint32)m_ItemGroups.size())
+    if(i >= (quint32)m_RecipeItems.size())
     {
         throw QException();
     }
-    return *m_ItemGroups.at(i).get();
+    return *m_RecipeItems.at(i).get();
 }
 
-void Recipe::moveAlternativesGroup(const RecipeItemGroup& rItem, quint32 newPos)
+void Recipe::moveRecipeItem(const RecipeItem& rItem, quint32 newPos)
 {
-    int oldPos = internal::unsorted::find(rItem.getName(), m_ItemGroups);
+    int oldPos = internal::unsorted::find(rItem.getName(), m_RecipeItems);
     if(oldPos < 0)
     {
         throw QException();
     }
-    m_ItemGroups.move(oldPos, newPos);
+    m_RecipeItems.move(oldPos, newPos);
 }

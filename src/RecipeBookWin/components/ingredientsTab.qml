@@ -149,7 +149,7 @@ Item {
         anchors.topMargin: 48
         
         visible: listView.count > 0
-        text: qsTr("Category \"" + modelIngredients.name(listView.currentIndex) + "\"")
+        text: qsTr("Ingredient \"" + modelIngredients.name(listView.currentIndex) + "\"")
         font.bold: true
     }
 
@@ -201,7 +201,7 @@ Item {
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
-            text: qsTr("Used in Recipes") 
+            text: qsTr("Used in recipes") 
         }
         Label {
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
@@ -213,7 +213,7 @@ Item {
         Label { 
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
-            text: qsTr("Used in ShoppingRecipes") 
+            text: qsTr("Used in shopping list") 
         }
         Label {
             Layout.alignment: Qt.AlignTop | Qt.AlignLeft

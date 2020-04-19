@@ -2,7 +2,9 @@
 #include <QException>
 #include "Category.h"
 #include "Ingredient.h"
+#include "AlternativesType.h"
 #include "Recipe.h"
+#include "RecipeItem.h"
 #include "ShoppingRecipe.h"
 #include "SortOrder.h"
 #include "util/ItemsUtil.h"
@@ -280,7 +282,7 @@ bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient, QList<Recipe*>
 
     for(QSharedPointer<Recipe> spRecipe : qAsConst(m_Recipes))
     {
-        if(spRecipe->getRecipeItems().existsItem(rIngredient))
+        if(spRecipe->existsRecipeItem(rIngredient))
         {
             if(pRecipes && pShoppingRecipes)
             {
@@ -289,20 +291,6 @@ bool RecipeBook::isIngredientInUse(const Ingredient& rIngredient, QList<Recipe*>
             }
 
             return true;
-        }
-
-        for(QSharedPointer<RecipeItemGroup> spGroup : qAsConst(spRecipe->m_ItemGroups))
-        {
-            if(spGroup->existsItem(rIngredient))
-            {
-                if(pRecipes && pShoppingRecipes)
-                {
-                    pRecipes->append(spRecipe.get());
-                    break;
-                }
-
-                return true;
-            }
         }
     }
 
@@ -382,6 +370,111 @@ quint32 RecipeBook::getIngredientIndex(QString strName) const
 {
     auto iter = recipebook::internal::helper::findItemSorted(strName, m_Ingredients);
     return iter - m_Ingredients.begin();
+}
+
+AlternativesType& RecipeBook::addAlternativesType(QString strName)
+{
+    return internal::sorted::addItem(strName, m_AlternativesTypes, [strName, this]()
+    {
+        return new AlternativesType(strName);
+    });
+}
+
+void RecipeBook::renameAlternativesType(AlternativesType& rType, QString strNewName)
+{
+    internal::sorted::moveForNewName(rType, strNewName, m_AlternativesTypes);
+    rType.rename(strNewName);
+}
+
+bool RecipeBook::existsAlternativesType(QString strName) const
+{
+    return internal::sorted::exists<AlternativesType>(strName, m_AlternativesTypes);
+}
+
+bool RecipeBook::isAlternativesTypeInUse(const AlternativesType& rType, QList<Recipe*>* pRecipes) const
+{
+    if(pRecipes)
+    {
+        pRecipes->clear();
+    }
+
+    for(QSharedPointer<Recipe> recipe : qAsConst(m_Recipes))
+    {
+        for(quint32 i = 0; i < recipe->getRecipeItemsCount(); ++i)
+        {
+            const RecipeItem& rItem = recipe->getRecipeItemAt(i);
+            if(rItem.hasAlternativesGroup() && rItem.getAlternativesGroup().getName() == rType.getName())
+            {
+                if(pRecipes)
+                {
+                    pRecipes->append(recipe.get());
+                    continue;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    if(pRecipes)
+    {
+        return pRecipes->size() > 0;
+    }
+
+    return false;
+}
+
+bool RecipeBook::removeAlternativesType(const AlternativesType& rType)
+{
+    if(isAlternativesTypeInUse(rType))
+    {
+        return false;
+    }
+
+    internal::sorted::remove(rType, m_AlternativesTypes);
+
+    return true;
+}
+
+AlternativesType& RecipeBook::getAlternativesType(QString strName)
+{
+    return internal::sorted::getItem(strName, m_AlternativesTypes);
+}
+
+const AlternativesType& RecipeBook::getAlternativesType(QString strName) const
+{
+    return internal::sorted::getItem(strName, m_AlternativesTypes);
+}
+
+quint32 RecipeBook::getAlternativesTypesCount() const
+{
+    return m_AlternativesTypes.count();
+}
+
+AlternativesType& RecipeBook::getAlternatiesTypeAt(quint32 i)
+{
+    if(i >= (quint32)m_AlternativesTypes.size())
+    {
+        throw QException();
+    }
+    return *m_AlternativesTypes.at(i).get();
+}
+
+const AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i) const
+{
+    if(i >= (quint32)m_AlternativesTypes.size())
+    {
+        throw QException();
+    }
+    return *m_AlternativesTypes.at(i).get();
+}
+
+quint32 RecipeBook::getAlternativesTypeIndex(QString strName) const
+{
+    auto iter = recipebook::internal::helper::findItemSorted(strName, m_AlternativesTypes);
+    return iter - m_AlternativesTypes.begin();
 }
 
 Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)

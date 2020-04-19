@@ -22,12 +22,11 @@ namespace recipebook::serialization::json
 
         bool readMetadata(const QJsonObject& rObject, RBMetaData& rMetaData);
 
+        bool readAlternativesTypes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         bool readCategories(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         bool readIngredients(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         bool readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readShoppongList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-
-        bool readRecipeItemGroup(const QJsonObject& rObject, int posGroup, QString strGroupName, RecipeBook& rRecipeBook, Recipe& rRecipe);
+        bool readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         
         friend class JsonReader;
     };

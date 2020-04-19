@@ -47,6 +47,7 @@ namespace recipebook::UI
 
         int addIngredient(QString strIngredient);
         bool existsIngredient(QString strIngredient) const;
+        int indexOfIngredient(QString strIngredient) const;
 
         bool canIngredientBeRemoved(int row) const;
         bool removeIngredient(int row);

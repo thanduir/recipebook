@@ -8,6 +8,8 @@
 
 namespace recipebook
 {
+    class AlternativesType;
+
     class RecipeItem
     {
     public:
@@ -27,6 +29,11 @@ namespace recipebook
         bool isOptional() const { return m_bOptional; }
         void setIsOptional(bool optional) { m_bOptional = optional; }
 
+        bool hasAlternativesGroup() const { return m_pAlternativesGroup != nullptr; }
+        const AlternativesType& getAlternativesGroup() const { return *m_pAlternativesGroup; }
+        void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
+        void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
+
     private:
         explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) { m_Amount.setUnit(rIngredient.getDefaultUnit()); }
         RecipeItem(const RecipeItem& rOther);
@@ -39,8 +46,9 @@ namespace recipebook
         QString m_AdditionalInfo;
         Size m_Size = Size::Normal;
         bool m_bOptional = false;
+        const AlternativesType* m_pAlternativesGroup = nullptr;
 
-        friend class RecipeItemGroup;
+        friend class Recipe;
     };
 }
 

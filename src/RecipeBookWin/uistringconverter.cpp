@@ -1,6 +1,7 @@
 #include "uistringconverter.h"
 
 static constexpr char* c_strProvenanceEverywhere	= "Everywhere";
+static constexpr char* c_strNoAlternativesGroup		= "-";
 
 static constexpr char* c_strStatusNone				= "None";
 static constexpr char* c_strStatusTaken				= "Taken";
@@ -32,6 +33,8 @@ static constexpr char* c_strUnitUnitlessShort		= "";
 UIStringConverter::UIStringConverter()
 {
 	m_strProvenanceEverywhere = tr(c_strProvenanceEverywhere);
+
+	m_strNoAlternativesGroup = tr(c_strNoAlternativesGroup);
 
 	// Status
 	m_StatusToName.append(tr(c_strStatusNone));
@@ -68,6 +71,11 @@ UIStringConverter::UIStringConverter()
 QString UIStringConverter::getProvenanceEverywhere() const
 {
 	return m_strProvenanceEverywhere;
+}
+
+QString UIStringConverter::getStringNoAlternativesGroup() const
+{
+	return m_strNoAlternativesGroup;
 }
 
 QString UIStringConverter::convertSize(recipebook::Size size) const

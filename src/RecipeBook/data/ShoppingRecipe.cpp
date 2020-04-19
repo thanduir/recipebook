@@ -11,10 +11,9 @@ ShoppingRecipe::ShoppingRecipe(const Recipe& rRecipe)
 :   m_Name(rRecipe.getName()), 
     m_fScalingFactor(rRecipe.getNumberOfPersons())
 {
-    const RecipeItemGroup& rGroup = rRecipe.getRecipeItems();
-    for(quint32 i = 0; i < rGroup.getItemsCount(); ++i)
+    for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
     {
-        const RecipeItem& rItem = rGroup.getItemAt(i);
+        const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
         internal::unsorted::addItem(rItem.getName(), i, m_Items, [&rItem]()
         {
             return new ShoppingListItem(rItem);
@@ -34,17 +33,17 @@ void ShoppingRecipe::changeScalingFactor(float f)
     }
 }
 
- ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient, int pos)
+ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 {
-    return internal::unsorted::addItem(rIngredient.getName(), pos, m_Items, [&rIngredient]()
+    return internal::unsorted::addItem(rIngredient.getName(), -1, m_Items, [&rIngredient]()
     {
         return new ShoppingListItem(rIngredient);
     });
 }
 
-ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem, int pos)
+ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
-    return internal::unsorted::addItem(rItem.getName(), pos, m_Items, [&rItem]()
+    return internal::unsorted::addItem(rItem.getName(), -1, m_Items, [&rItem]()
     {
         return new ShoppingListItem(rItem);
     });

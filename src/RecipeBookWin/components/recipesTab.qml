@@ -46,53 +46,15 @@ Item {
         }
     }
 
-    // Recipe group dialogs
-
-    TextInputDialog {
-        id: dlgAddRecipeGroup
-        title: qsTr("Add recipe group")
-        onCurrentTextChanged: currentTextAllowed = !modelRecipeItems.existsGroup(outputText)
-        onAccepted: {
-            lvCurrentRecipe.positionViewAtIndex(modelRecipeItems.addRecipeGroup(outputText), ListView.Center)
-            lvCurrentRecipe.currentIndex = -1
-        }
-    }
-
-    TextInputDialog {
-        id: dlgRenameRecipeGroup
-        title: qsTr("Rename recipe group")
-        property int itemIndex: -1
-        onCurrentTextChanged: currentTextAllowed = !modelRecipeItems.existsGroup(outputText)
-        onAccepted: {
-            modelRecipeItems.renameGroup(itemIndex, outputText)
-            lvCurrentRecipe.currentIndex = -1
-            lvCurrentRecipe.positionViewAtIndex(itemIndex, ListView.Center)
-        }
-    }
-
-    // Common recipe group and item dialogs
+    // Recipe item dialog
     
-    TextInputFromListDialog {
-        id: dlgAddRecipeItem
-        title: qsTr("Add ingredient")
+    EditItemsListDialog {
+        id: dlgEditRecipeItemsList
+        title: qsTr("Edit ingredients list")
 
-        allowedValues: modelIngredients
-
-        property int groupIndex: -1
-        // TODO: If it is a window, then i need to listen to "onClosing(CloseEvent)"
-        //onAccepted: {
-            /*lvCurrentRecipe.currentIndex = modelRecipeItems.addRecipeItem(outputText, groupIndex)
-            lvCurrentRecipe.positionViewAtIndex(lvCurrentRecipe.currentIndex, ListView.Center)*/
-        //}
-    }
-
-    TextMessageDialog {
-        id: dlgRemoveRecipeGroupOrItem
-        title: qsTr("Remove item")
-        property int itemIndex: -1
-        onAccepted: {
-            modelRecipeItems.removeItem(itemIndex)
-            lvCurrentRecipe.currentIndex = -1
+        onListChanged: {
+            lvCurrentRecipe.currentIndex = -1;
+            modelRecipeItems.modelReset();
         }
     }
 
@@ -349,7 +311,7 @@ Item {
             model: modelRecipeItems
             delegate: ItemDelegate {
                 id: listItemRecipeItem
-                highlighted: ListView.isCurrentItem && !modelRecipeItems.isGroupHeader(lvCurrentRecipe.currentIndex)
+                highlighted: ListView.isCurrentItem
                 onPressed: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
                 width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
                 height: listItemRecipeItemGroup.height
@@ -361,7 +323,7 @@ Item {
                     anchors.top: parent.top
                     anchors.topMargin: 10
 
-                    height: listItemRecipeItemName.height + 30 + (highlighted && !modelRecipeItems.isGroupHeader(index) ? listItemGridRecipeItem.height : 0)
+                    height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
 
                     // Ingredient / group name
                     Label {
@@ -369,8 +331,7 @@ Item {
                         anchors.left: parent.left
                         anchors.leftMargin: 10
                         
-                        font.bold: !modelRecipeItems.isGroupItem(index)
-                        color: optional ? "gray" : "black"
+                        font.bold: !optional
                         font.italic: optional
                         text: name
                         verticalAlignment: Text.AlignVCenter
@@ -380,8 +341,16 @@ Item {
                     Label {
                         function recipeItemSmallDesc(n){
                             var text = "";
+                            if(group != alternativesGroups.stringNoAlternativesGroup())
+                            {
+                                text += group;
+                            }
                             if(amountUnit != modelRecipeItems.indexUnitUnitless())
                             {
+                                if(text != "")
+                                {
+                                    text = text + ", ";
+                                }
                                 text += amountMin;
                                 if(amountIsRange)
                                 {
@@ -420,95 +389,28 @@ Item {
                         font.italic: optional
                         width: parent.width - listItemRecipeItemName.width - 10
                         wrapMode: Label.WordWrap
-                        visible: !listItemRecipeItem.highlighted && !modelRecipeItems.isGroupHeader(index)
+                        visible: !listItemRecipeItem.highlighted
                     }
 
-                    // Action buttons for groups
-                    RowLayout {
+                    // Group symbol
+                    Rectangle {
                         id: rowGroupHeaderButtons
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.topMargin: 0
-                        width: 140
-                        spacing: 0
+                        anchors.rightMargin: 10
+                        width: 10
+                        height: width
+                        radius: 0.5 * width
 
-                        ToolButton {
-                            visible: modelRecipeItems.isGroupHeader(index)
-                            display: AbstractButton.IconOnly
-                            Layout.preferredHeight: listItemRecipeItemName.height + 5
-                            Layout.preferredWidth: listItemRecipeItemName.height + 5
-                            leftPadding: 0
-                            rightPadding: 0
-                            topPadding: 0
-                            bottomPadding: 0
-
-                            ToolTip.delay: 1000
-                            ToolTip.timeout: 5000
-                            ToolTip.visible: hovered
-                            ToolTip.text: qsTr("Add ingredient to group")
-
-                            icon.source: "qrc:/images/add.svg"
-                                                        
-                            onClicked: {
-                                dlgAddRecipeItem.title = qsTr("Add ingredient to group \"" + name + "\"");
-                                dlgAddRecipeItem.groupIndex = index
-                                dlgAddRecipeItem.open()
-                            }
-                        }
-
-                        ToolButton {
-                            visible: modelRecipeItems.isGroupHeader(index)
-                            display: AbstractButton.IconOnly
-                            Layout.preferredHeight: listItemRecipeItemName.height + 5
-                            Layout.preferredWidth: listItemRecipeItemName.height + 5
-                            leftPadding: 0
-                            rightPadding: 0
-                            topPadding: 0
-                            bottomPadding: 0
-
-                            ToolTip.delay: 1000
-                            ToolTip.timeout: 5000
-                            ToolTip.visible: hovered
-                            ToolTip.text: qsTr("Rename group")
-
-                            icon.source: "qrc:/images/edit.svg"
-                            
-                            onClicked: {
-                                dlgRenameRecipeGroup.initialText = name;
-                                dlgRenameRecipeGroup.itemIndex = index;
-                                dlgRenameRecipeGroup.open()
-                            }
-                        }
-
-                        ToolButton {
-                            visible: modelRecipeItems.isGroupHeader(index)
-                            display: AbstractButton.IconOnly
-                            Layout.preferredHeight: listItemRecipeItemName.height + 5
-                            Layout.preferredWidth: listItemRecipeItemName.height + 5
-                            leftPadding: 0
-                            rightPadding: 0
-                            topPadding: 0
-                            bottomPadding: 0
-
-                            ToolTip.delay: 1000
-                            ToolTip.timeout: 5000
-                            ToolTip.visible: hovered
-                            ToolTip.text: qsTr("Remove group")
-
-                            icon.source: "qrc:/images/delete.svg"
-                                                        
-                            onClicked: {
-                                dlgRemoveRecipeGroupOrItem.msgText = qsTr("This will remove the recipe group \"" + name + "\" with all its items. Proceed?");
-                                dlgRemoveRecipeGroupOrItem.itemIndex = index;
-                                dlgRemoveRecipeGroupOrItem.open()
-                            }
-                        }
+                        color: group != alternativesGroups.stringNoAlternativesGroup() ? alternativesGroups.color(alternativesGroups.indexOf(group)) : "black"
+                        visible: group != alternativesGroups.stringNoAlternativesGroup()
                     }
 
                     // Extended information for active ingredient elements
                     GridLayout {
                         id: listItemGridRecipeItem
-                        visible: listItemRecipeItem.highlighted && !modelRecipeItems.isGroupHeader(index)
+                        visible: listItemRecipeItem.highlighted
 
                         anchors.left: parent.left
                         anchors.right: parent.right
@@ -640,6 +542,28 @@ Item {
 
                             onClicked: optional = checked
                         }
+
+                        Label { text: qsTr("Group") }
+                        ComboBox {
+                            Layout.fillWidth: true
+                            
+                            model: alternativesGroups
+                            textRole: "name"
+                            valueRole: "name"
+
+                            currentIndex: indexOfValue(group)
+                            onActivated: group = currentText
+
+                            ToolTip.delay: 1000
+                            ToolTip.timeout: 5000
+                            ToolTip.visible: hovered
+                            ToolTip.text: qsTr("Alternatives group")                        
+
+                            onVisibleChanged: {
+                                if(visible)
+                                    currentIndex = indexOfValue(group)
+                            }
+                        }
                     }
                 }
             }
@@ -653,28 +577,18 @@ Item {
         anchors.bottom: parent.bottom
         anchors.topMargin: 48
 
-        RowLayout {
-            anchors.fill: parent
-            Button { 
-                text: qsTr("Add ingredient") 
-                onClicked: {
-                    dlgAddRecipeItem.title = qsTr("Add ingredient");
-                    dlgAddRecipeItem.groupIndex = -1
-                    dlgAddRecipeItem.show()
-                }
-            }
-            Button { 
-                text: qsTr("Add group") 
-                onClicked: dlgAddRecipeGroup.open()
-            }
-            Button { 
-                text: qsTr("Remove") 
-                enabled: lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1 && lvCurrentRecipe.currentIndex >= 0 && !modelRecipeItems.isGroupHeader(lvCurrentRecipe.currentIndex)
-                onClicked: {
-                    dlgRemoveRecipeGroupOrItem.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
-                    dlgRemoveRecipeGroupOrItem.itemIndex = lvCurrentRecipe.currentIndex;
-                    dlgRemoveRecipeGroupOrItem.open()
-                }
+        Button {
+            anchors.right: parent.right
+
+            text: qsTr("Edit list") 
+            icon.source: "qrc:/images/edit.svg"
+
+            onClicked: {
+                dlgEditRecipeItemsList.editListModel = modelRecipeItems;
+                dlgEditRecipeItemsList.allValues = modelIngredients;
+                dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
+
+                dlgEditRecipeItemsList.open();
             }
         }
     }

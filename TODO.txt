@@ -4,10 +4,19 @@ TODO
 - Regularly update Design.txt to keep it uptodate!
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- recipesTab.qml: "Add Ingredient" variants!
-
+	- qml: editing of Alternatives groups incl. color
+	- filtering (textbox + filter model)
+		* edit recipe item list
+		* ingredients
+		* recipes
+	- Should recipes have a bool value "(not) in recipe book" so that it is possible to ignore it for cooking book exports? Or should this be handled separately while exporting?
+		-> if so, then this should be marked in the recipes list (recipesTab) (and setable obviously)!
+	- sortable recipe items list
+		-> Separate mode or map it onto the same listview as well?
+	
 	- Define top-level layout concept
 	- ShoppingRecipe and ShoppingList dialogs with all features 
+		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?
 		* new features from app todo:
 			- nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
 			- in go shopping: gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)

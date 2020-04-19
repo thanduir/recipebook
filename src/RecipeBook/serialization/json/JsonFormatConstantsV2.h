@@ -5,6 +5,7 @@ namespace recipebook::serialization::json
 {
     // top level headers
     constexpr char* c_strMetadataId                     = "Metadata";
+    constexpr char* c_strAlternativesTypesId            = "alternativesTypes";
     constexpr char* c_strCategoriesId                   = "categories";
     constexpr char* c_strIngredientsId                  = "ingredients";
     constexpr char* c_strRecipesId                      = "recipes";
@@ -25,16 +26,15 @@ namespace recipebook::serialization::json
     constexpr char* c_strIngredientsProvenance          = "provenance";
     constexpr char* c_strIngredientsDefaultUnit         = "default-unit";
     
+    // alternatives types
+    constexpr char* c_strAlternativesColor              = "color";
+
     // recipes
     constexpr char* c_strRecipesNrPersons               = "NrPersons";
     constexpr char* c_strRecipesShortDesc               = "ShortDesc";
     constexpr char* c_strRecipesText                    = "Text";
     constexpr char* c_strRecipesCookingTime             = "CookingTime";
-    
-    // recipe item lists
-    constexpr char* c_strRecipesGroups                  = "groups";
     constexpr char* c_strRecipesItems                   = "items";
-    constexpr char* c_strRecipesGroupPosition           = "_position";
 
     // shopping recipe
     constexpr char* c_strShoppingRecipesScalingFactor   = "ScalingFactor";
@@ -49,6 +49,7 @@ namespace recipebook::serialization::json
     constexpr char* c_strRecipesOptional                = "optional";
     constexpr char* c_strRecipesAdditionalInfo          = "additionalInfo";
     constexpr char* c_strRecipesStatus                  = "status";
+    constexpr char* c_strRecipesGroup                   = "alternativesGroup";
     constexpr char* c_strRecipesPosition                = "_position";
 }
 

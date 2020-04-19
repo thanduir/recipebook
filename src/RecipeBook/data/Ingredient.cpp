@@ -4,7 +4,6 @@
 recipebook::Ingredient::Ingredient(QString strName, const Category& rCategory, Unit defaultUnit)
 :	m_Name(strName),
 	m_pCategory(&rCategory),
-	m_bProvenanceEverywhere(true),
 	m_pProvenance(nullptr),
 	m_DefaultUnit(defaultUnit)
 {
@@ -12,7 +11,7 @@ recipebook::Ingredient::Ingredient(QString strName, const Category& rCategory, U
 
 const recipebook::SortOrder& recipebook::Ingredient::getProvenance() const
 {
-	if(m_bProvenanceEverywhere)
+	if(m_pProvenance == nullptr)
 	{
 		throw QException();
 	}
@@ -22,12 +21,10 @@ const recipebook::SortOrder& recipebook::Ingredient::getProvenance() const
 
 void recipebook::Ingredient::setProvenanceEverywhere()
 {
-	m_bProvenanceEverywhere = true;
 	m_pProvenance = nullptr;
 }
 
 void recipebook::Ingredient::setProvenance(const SortOrder& rProvenance)
 {
-	m_bProvenanceEverywhere = false;
 	m_pProvenance = &rProvenance;
 }

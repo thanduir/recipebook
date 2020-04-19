@@ -4,10 +4,12 @@
 #include <QString>
 #include <QSharedPointer>
 #include <QTime>
-#include "RecipeItemGroup.h"
 
 namespace recipebook
 {
+    class RecipeItem;
+    class Ingredient;
+
     class Recipe
     {
     public:
@@ -15,9 +17,6 @@ namespace recipebook
         
         quint32 getNumberOfPersons() const { return m_NrPersons; }
         void setNumberOfPersons(quint32 number) { m_NrPersons = number; }
-
-        const RecipeItemGroup& getRecipeItems() const { return m_RecipeItems; }
-        RecipeItemGroup& getRecipeItems() { return m_RecipeItems; }
 
         QString getShortDescription() const { return m_ShortDescription; }
         void setShortDescription(QString strText) { m_ShortDescription = strText; }
@@ -28,18 +27,18 @@ namespace recipebook
         QTime getCookingTime() const { return m_CookingTime; }
         void setCookingTime(QTime duration) { m_CookingTime = duration; }
 
-        // Alternatives groups
+        // Recipe items
         
-        RecipeItemGroup& addAlternativesGroup(QString strName, int pos = -1);
-        bool existsAlternativesGroup(QString strName) const;
-        bool removeAlternativesGroup(const RecipeItemGroup& rGroup);
-        RecipeItemGroup& getAlternativesGroup(QString strName);
-        const RecipeItemGroup& getAlternativesGroup(QString strName) const;
-
-        quint32 getAlternativesGroupsCount() const;
-        RecipeItemGroup& getAlternativesGroupAt(quint32 i);
-        const RecipeItemGroup& getAlternativesGroupAt(quint32 i) const;
-        void moveAlternativesGroup(const RecipeItemGroup& rItem, quint32 newPos);
+        RecipeItem& addRecipeItem(const Ingredient& rIngredient);
+        bool existsRecipeItem(const Ingredient& rIngredient) const;
+        bool removeRecipeItem(const RecipeItem& rItem);
+        RecipeItem& getRecipeItem(const Ingredient& rIngredient);
+        const RecipeItem& getRecipeItem(const Ingredient& rIngredient) const;
+        
+        quint32 getRecipeItemsCount() const;
+        RecipeItem& getRecipeItemAt(quint32 i);
+        const RecipeItem& getRecipeItemAt(quint32 i) const;
+        void moveRecipeItem(const RecipeItem& rItem, quint32 newPos);
 
     private:
         explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 30) {}
@@ -56,8 +55,7 @@ namespace recipebook
         QString m_RecipeText;
         QTime m_CookingTime;
 
-        RecipeItemGroup m_RecipeItems = RecipeItemGroup("");
-        QVector<QSharedPointer<RecipeItemGroup>> m_ItemGroups;
+        QVector<QSharedPointer<RecipeItem>> m_RecipeItems;
 
         friend class RecipeBook;
     };

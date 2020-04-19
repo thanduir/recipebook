@@ -286,6 +286,11 @@ bool ListModelIngredients::existsIngredient(QString strIngredient) const
     return m_rRecipeBook.existsIngredient(strIngredient);
 }
 
+int ListModelIngredients::indexOfIngredient(QString strIngredient) const
+{
+    return m_rRecipeBook.getIngredientIndex(strIngredient);
+}
+
 bool ListModelIngredients::canIngredientBeRemoved(int row) const
 {
     if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())

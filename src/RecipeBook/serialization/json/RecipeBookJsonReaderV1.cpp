@@ -119,7 +119,7 @@ bool json::JsonReaderV1::read(const QJsonArray& rRootArray, RBMetaData& rMetaDat
         return false;
     }
 
-    if(!readShoppongList(rRootArray[4].toObject(), rRecipeBook))
+    if(!readShoppingList(rRootArray[4].toObject(), rRecipeBook))
     {
         qWarning("Invalid shoppinglist.");
         rRecipeBook.clearData();
@@ -260,7 +260,7 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
             else
             {
                 const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-                RecipeItem& rItem = rRecipe.getRecipeItems().addItem(rIngredient);
+                RecipeItem& rItem = rRecipe.addRecipeItem(rIngredient);
                 if(!readRecipeItem(recipe[strRecipeItem].toObject(), rItem))
                 {
                     return false;
@@ -276,7 +276,6 @@ bool json::JsonReaderV1::readRecipeItemGroup(const QJsonObject& rObject, RecipeB
 {
     QString groupName = rObject[json::c_strRecipesGroupName].toString();
 
-    RecipeItemGroup& rGroup = rRecipe.addAlternativesGroup(groupName);
     for(QString strItemName : rObject.keys())
     {
         if(strItemName == json::c_strRecipesGroupName)
@@ -285,7 +284,17 @@ bool json::JsonReaderV1::readRecipeItemGroup(const QJsonObject& rObject, RecipeB
         }
 
         const Ingredient& rIngredient = rRecipeBook.getIngredient(strItemName);
-        RecipeItem& rItem = rGroup.addItem(rIngredient);
+        RecipeItem& rItem = rRecipe.addRecipeItem(rIngredient);
+
+        if(groupName != "")
+        {
+            if(!rRecipeBook.existsAlternativesType(groupName))
+            {
+                rRecipeBook.addAlternativesType(groupName);
+            }
+            rItem.setAlternativesGroup(rRecipeBook.getAlternativesType(groupName));
+        }
+
         if(!readRecipeItem(rObject[strItemName].toObject(), rItem))
         {
             return false;
@@ -295,7 +304,7 @@ bool json::JsonReaderV1::readRecipeItemGroup(const QJsonObject& rObject, RecipeB
     return true;
 }
 
-bool json::JsonReaderV1::readShoppongList(const QJsonObject& rObject, RecipeBook& rRecipeBook)
+bool json::JsonReaderV1::readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
     QString id = rObject[json::c_strId].toString();
     if(id != json::c_strShoppinglistId)

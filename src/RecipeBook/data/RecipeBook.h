@@ -12,6 +12,7 @@ namespace recipebook
     class Category;
     class SortOrder;
     class Ingredient;
+    class AlternativesType;
     class Recipe;
     class ShoppingRecipe;
 
@@ -65,6 +66,20 @@ namespace recipebook
         const Ingredient& getIngredientAt(quint32 i) const;
         quint32 getIngredientIndex(QString strName) const;
 
+        // Alternatives types
+
+        AlternativesType& addAlternativesType(QString strName);
+        void renameAlternativesType(AlternativesType& rType, QString strNewName);
+        bool existsAlternativesType(QString strName) const;
+        bool isAlternativesTypeInUse(const AlternativesType& rType, QList<Recipe*>* pRecipes = nullptr) const;
+        bool removeAlternativesType(const AlternativesType& rType);
+        AlternativesType& getAlternativesType(QString strName);
+        const AlternativesType& getAlternativesType(QString strName) const;
+        quint32 getAlternativesTypesCount() const;
+        AlternativesType& getAlternatiesTypeAt(quint32 i);
+        const AlternativesType& getAlternativesTypeAt(quint32 i) const;
+        quint32 getAlternativesTypeIndex(QString strName) const;
+        
         // Recipes
         
         Recipe& addRecipe(QString strName, quint32 uiNrPersons);
@@ -96,11 +111,12 @@ namespace recipebook
         void clearShoppingList();
 
     private:
-        QVector<QSharedPointer<Category>>       m_Categories;
-        QVector<QSharedPointer<SortOrder>>      m_SortOrders;
-        QVector<QSharedPointer<Ingredient>>     m_Ingredients;
-        QVector<QSharedPointer<Recipe>>         m_Recipes;
-        QVector<QSharedPointer<ShoppingRecipe>> m_ShoppingRecipes;
+        QVector<QSharedPointer<Category>>           m_Categories;
+        QVector<QSharedPointer<SortOrder>>          m_SortOrders;
+        QVector<QSharedPointer<Ingredient>>         m_Ingredients;
+        QVector<QSharedPointer<AlternativesType>>   m_AlternativesTypes;
+        QVector<QSharedPointer<Recipe>>             m_Recipes;
+        QVector<QSharedPointer<ShoppingRecipe>>     m_ShoppingRecipes;
     };
 }
 

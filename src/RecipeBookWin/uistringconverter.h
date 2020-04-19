@@ -15,6 +15,8 @@ public:
 
     QString getProvenanceEverywhere() const;
 
+    QString getStringNoAlternativesGroup() const;
+
     QString convertSize(recipebook::Size size) const;
     recipebook::Size convertSize(QString strSize) const;
     QStringList getAllSizeNames() const;
@@ -30,6 +32,7 @@ public:
 
 private:
     QString m_strProvenanceEverywhere;
+    QString m_strNoAlternativesGroup;
 
     QStringList m_StatusToName;
     QStringList m_UnitToName;

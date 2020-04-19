@@ -86,7 +86,7 @@ bool ListModelRecipes::isEverythingSet(int row) const
            && rRecipe.getShortDescription() != "" 
            && rRecipe.getNumberOfPersons() > 0 
            && !rRecipe.getCookingTime().isNull()
-           && (rRecipe.getAlternativesGroupsCount() + rRecipe.getRecipeItems().getItemsCount()) > 0;
+           && rRecipe.getRecipeItemsCount() > 0;
 }
 
 quint32 ListModelRecipes::numberOfPersons(int row) const

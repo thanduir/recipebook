@@ -27,7 +27,8 @@ namespace recipebook::UI
             AmountMaxRole,
             AdditionalInfoRole,
             SizeRole,
-            OptionalRole
+            OptionalRole,
+            GroupRole
         };
 
     public:
@@ -44,10 +45,6 @@ namespace recipebook::UI
 
         QString name(int row) const;
 
-        bool isRegularItem(int row) const;
-        bool isGroupHeader(int row) const;
-        bool isGroupItem(int row) const;
-
         quint32 amountUnit(int row) const;
         bool amountIsRange(int row) const;
         float amountMin(int row) const;
@@ -55,6 +52,7 @@ namespace recipebook::UI
         QString additionalInfo(int row) const;
         quint32 sizeIndex(int row) const;
         bool optional(int row) const;
+        QString group(int row) const;
         
         void setAmountUnit(int row, quint32 uiUnit);
         void setAmountIsRange(int row, bool bRange);
@@ -63,46 +61,33 @@ namespace recipebook::UI
         void setAdditionalInfo(int row, QString text);
         void setSizeIndex(int row, quint32 index);
         void setOptional(int row, bool bOptional);
+        void setGroup(int row, QString group);
 
-        int addRecipeGroup(QString strName);
-        int addRecipeItem(QString strIngredient, int groupIndex);
-        
-        bool existsGroup(QString strGroup) const;
-
-        int renameGroup(int row, QString newName);
-
+        int addRecipeItem(QString strIngredient);
         bool removeItem(int row);
 
-        void onIngredientRenamed(quint32 index);
+        void onItemRenamed(quint32 index);
+
+        // edit list interface
+        void beginEditList();
+        bool itemSelected(QString itemName);
+        void changeState(QString itemName, bool selected);
+        void cancelEditList();
+        bool applyEditList();
 
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;
 
     private:
-        enum class ItemType
-        {
-            None,
-            RegularItem,
-            GroupHeader,
-            GroupItem
-        };
-
-        struct ItemInfo
-        {
-            ItemType type           = ItemType::None;
-            quint32 itemIndex       = 0;
-            RecipeItemGroup* pGroup = nullptr;
-        };
-
-    private:
         void setDataChanged(int row, RecipeItemsRoles role);
-        void getItemInfo(int row, ItemInfo& rInfo) const;
-        int getGroupItemsStartRow(int groupIndex) const;
 
     private:
         RecipeBook& m_rRecipeBook;
         const UIStringConverter& m_rConverter;
         Recipe* m_pRecipe;
+
+        QStringList m_EditListSelectedValues;
+        QStringList m_EditListDeselectedValues;
     };
 }
 

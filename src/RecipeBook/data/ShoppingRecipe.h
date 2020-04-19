@@ -27,8 +27,8 @@ namespace recipebook
         QDate getDueDate() const { return m_DueDate; }
         void setDueDate(QDate dueDate) { m_DueDate = dueDate; }
 
-        ShoppingListItem& addItem(const Ingredient& rIngredient, int pos = -1);
-        ShoppingListItem& addItem(const RecipeItem& rItem, int pos = -1);
+        ShoppingListItem& addItem(const Ingredient& rIngredient);
+        ShoppingListItem& addItem(const RecipeItem& rItem);
         bool existsItem(const Ingredient& rIngredient) const;
         bool removeItem(const ShoppingListItem& rItem);
         ShoppingListItem& getItem(const Ingredient& rIngredient);

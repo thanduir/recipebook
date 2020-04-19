@@ -5,7 +5,7 @@
 
 namespace recipebook
 {
-    class RecipeItemGroup;
+    class Recipe;
 }
 
 namespace recipebook::serialization::json
@@ -20,12 +20,13 @@ namespace recipebook::serialization::json
 
         void writeMetadata(const RBMetaData& rMetaData, QJsonObject& rRootArray);
 
-        void writeCategories(const RecipeBook& rRecipeBook, QJsonObject& rRootArray);
-        void writeIngredients(const RecipeBook& rRecipeBook, QJsonObject& rRootArray);
-        void writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& rRootArray);
-        void writeShoppongList(const RecipeBook& rRecipeBook, QJsonObject& rRootArray);
+        void writeAlternativesTypes(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
+        void writeCategories(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
+        void writeIngredients(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
+        void writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
+        void writeShoppongList(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
 
-        void writeRecipeItemGroup(const RecipeItemGroup& rGroup, const RecipeBook& rRecipeBook, QJsonObject& rObject);
+        void writeRecipeItems(const Recipe& rRecipe, const RecipeBook& rRecipeBook, QJsonObject& rObject);
 
         friend class QSharedPointer<JsonWriter>;
 

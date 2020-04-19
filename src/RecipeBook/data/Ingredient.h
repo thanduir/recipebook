@@ -17,7 +17,7 @@ namespace recipebook
         const Category& getCategory() const { return *m_pCategory; }
         void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }
 
-        bool hasProvenanceEverywhere() const { return m_bProvenanceEverywhere; }
+        bool hasProvenanceEverywhere() const { return m_pProvenance == nullptr; }
         const SortOrder& getProvenance() const;
         void setProvenanceEverywhere();
         void setProvenance(const SortOrder& rProvenance);
@@ -36,7 +36,6 @@ namespace recipebook
     private:
         QString m_Name;
         const Category* m_pCategory;
-        bool m_bProvenanceEverywhere;
         const SortOrder* m_pProvenance;
         Unit m_DefaultUnit;
 
