@@ -21,6 +21,7 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_ModelProvenance(m_RecipeBook, m_Converter),
 	m_ModelSortOrders(),
 	m_ModelIngredients(m_RecipeBook, m_Converter),
+	m_FilterModelIngredients(),
 	m_AlternativesGroups(m_RecipeBook, m_Converter),
 	m_AlternativesTypes(),
 	m_ModelRecipes(m_RecipeBook),
@@ -34,6 +35,7 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_ModelSortOrder.setSourceModel(&m_ModelCategories);
 	m_ModelSortOrders.setSourceModel(&m_ModelProvenance);
 	m_AlternativesTypes.setSourceModel(&m_AlternativesGroups);
+	m_FilterModelIngredients.setSourceModel(&m_ModelIngredients);
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
@@ -98,6 +100,11 @@ ListModelProvenance& RecipeBookDataHandler::getProvenanceModel()
 ListModelIngredients& RecipeBookDataHandler::getIngredientsModel()
 {
 	return m_ModelIngredients;
+}
+
+FilterModelIngredients& RecipeBookDataHandler::getIngredientsFilterModel()
+{
+	return m_FilterModelIngredients;
 }
 
 ListModelAlternativesGroups& RecipeBookDataHandler::getAlternativesGroups()

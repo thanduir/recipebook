@@ -595,7 +595,7 @@ Item {
 
                 onClicked: {
                     dlgEditRecipeItemsList.editListModel = modelRecipeItems;
-                    dlgEditRecipeItemsList.allValues = modelIngredients;
+                    dlgEditRecipeItemsList.allValuesFilterModel = filterModelIngredients;
                     dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
 
                     dlgEditRecipeItemsList.open();

@@ -8,35 +8,72 @@ Dialog {
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
 
-    property var allValues: []
+    property var allValuesFilterModel: []
     property var editListModel: []
     property int initialyHighlightedIndex: -1
     
     signal listChanged
 
-    ScrollView {
-        id: scrollViewValues
-        anchors.left: parent.left
-        anchors.top: parent.top
-        //anchors.bottom: paneRecipes.top
-        anchors.topMargin: 24
-        anchors.bottomMargin: 24
-        //anchors.leftMargin: 48
-
+    Item {
         implicitWidth: 300
-        implicitHeight: 500
+        implicitHeight: scrollViewValues.implicitHeight + textFilter.implicitHeight
 
-        ListView {
-            id: lvValues
-            anchors.fill: parent
+        TextField { 
+            id: textFilter
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            selectByMouse: true
 
-            model: allValues
-            delegate: CheckDelegate {
-                checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
-                onClicked: editListModel.changeState(name, checked)
-                width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
+            onTextEdited: {
+                allValuesFilterModel.setFilterString(text);
+                forceActiveFocus();
+            }
+
+            Image {
+                 anchors { top: parent.top; right: parent.right }
+                 id: clearText
+                 fillMode: Image.PreserveAspectFit
+                 visible: textFilter.text
+                 source: "qrc:/images/backspace.svg"
+                 height: parent.height - 5
+
+                 MouseArea {
+                     id: clear
+                     anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+                     height: textFilter.height; width: textFilter.height
+                     onClicked: {
+                         textFilter.text = ""
+                         allValuesFilterModel.setFilterString(textFilter.text);
+                         textFilter.forceActiveFocus()
+                     }
+                 }
+             }
+        }
+
+        ScrollView {
+            id: scrollViewValues
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: textFilter.bottom
+            anchors.topMargin: 24
+            anchors.bottomMargin: 24
+
+            implicitHeight: 400
+
+            ListView {
+                id: lvValues
+                anchors.fill: parent
+
+                model: allValuesFilterModel
+                delegate: CheckDelegate {
+                    checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
+                    onClicked: editListModel.changeState(name, checked)
+                    width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
                 
-                text: name
+                    text: name
+                }
             }
         }
     }
@@ -47,8 +84,10 @@ Dialog {
     }
 
     onAboutToShow: {
+        textFilter.text = "";
+        allValuesFilterModel.setFilterString("");
+
         editListModel.beginEditList();
-        //dlgTextField.forceActiveFocus();
 
         if(initialyHighlightedIndex != -1)
         {

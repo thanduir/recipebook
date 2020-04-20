@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FilterModelIngredients.cpp" />
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
     <ClCompile Include="FilterModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
@@ -150,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FilterModelAlternativesTypes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="FilterModelIngredients.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
