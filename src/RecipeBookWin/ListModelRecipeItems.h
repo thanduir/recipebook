@@ -28,7 +28,8 @@ namespace recipebook::UI
             AdditionalInfoRole,
             SizeRole,
             OptionalRole,
-            GroupRole
+            GroupRole,
+            GroupColorRole
         };
 
     public:
@@ -53,6 +54,7 @@ namespace recipebook::UI
         quint32 sizeIndex(int row) const;
         bool optional(int row) const;
         QString group(int row) const;
+        QString groupColor(int row) const;
         
         void setAmountUnit(int row, quint32 uiUnit);
         void setAmountIsRange(int row, bool bRange);
@@ -66,7 +68,7 @@ namespace recipebook::UI
         int addRecipeItem(QString strIngredient);
         bool removeItem(int row);
 
-        void onItemRenamed(quint32 index);
+        void onDependentItemChanged(quint32 index);
 
         // edit list interface
         void beginEditList();

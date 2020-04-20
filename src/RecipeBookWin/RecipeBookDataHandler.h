@@ -9,6 +9,7 @@
 #include "ListModelSortOrder.h"
 #include "ListModelProvenance.h"
 #include "ListModelAlternativesGroups.h"
+#include "ListModelAlternativesTypes.h"
 #include "ListModelRecipes.h"
 #include "ListModelRecipeItems.h"
 #include "uistringconverter.h"
@@ -35,6 +36,7 @@ namespace recipebook::UI
         ListModelSortOrders& getSortOrdersModel();
         ListModelIngredients& getIngredientsModel();
         ListModelAlternativesGroups& getAlternativesGroups();
+        ListModelAlternativesTypes& getAlternativesTypes();
         ListModelRecipes& getRecipesModel();
         ListModelRecipeItems& getRecipeItemsModel();
 
@@ -54,6 +56,7 @@ namespace recipebook::UI
         ListModelIngredients m_ModelIngredients;
 
         ListModelAlternativesGroups m_AlternativesGroups;
+        ListModelAlternativesTypes m_AlternativesTypes;
 
         ListModelRecipes m_ModelRecipes;
 

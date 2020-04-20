@@ -52,7 +52,7 @@ QHash<int, QByteArray> ListModelAlternativesGroups::roleNames() const
 {
 	QHash<int, QByteArray> roles;
     roles[(int)AlternativesGroupsRoles::NameRole] = "name";
-    roles[(int)AlternativesGroupsRoles::ColorRole] = "color";
+    roles[(int)AlternativesGroupsRoles::ColorRole] = "typeColor";
     return roles;
 }
 
@@ -87,7 +87,7 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
     rolesChanged.append((int)AlternativesGroupsRoles::NameRole);
     dataChanged(index(row), index(row), rolesChanged);
     
-    emit alternativesGroupRenamed(row);
+    emit alternativesGroupChanged(row);
 
     return row;
 }
@@ -112,6 +112,8 @@ void ListModelAlternativesGroups::setColor(int row, QString strColor)
     QVector<int> rolesChanged;
     rolesChanged.append((int)AlternativesGroupsRoles::ColorRole);
     dataChanged(index(row), index(row), rolesChanged);
+
+    emit alternativesGroupChanged(row);
 }
 
 int ListModelAlternativesGroups::addType(QString strType)
@@ -147,7 +149,7 @@ bool ListModelAlternativesGroups::canTypeBeRemoved(int row) const
         return false;
     }
 
-    const AlternativesType& rType = m_rRecipeBook.getAlternatiesTypeAt(row + 1);
+    const AlternativesType& rType = m_rRecipeBook.getAlternatiesTypeAt(row - 1);
     return !m_rRecipeBook.isAlternativesTypeInUse(rType);
 }
 
@@ -165,7 +167,7 @@ bool ListModelAlternativesGroups::removeType(int row)
 
     beginRemoveRows(QModelIndex(), row, row);
 
-    const AlternativesType& rType = m_rRecipeBook.getAlternatiesTypeAt(row + 1);
+    const AlternativesType& rType = m_rRecipeBook.getAlternatiesTypeAt(row - 1);
     bool bSuccess = m_rRecipeBook.removeAlternativesType(rType);
 
     endRemoveRows();

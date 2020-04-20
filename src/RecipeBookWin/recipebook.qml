@@ -1,11 +1,8 @@
+import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Window 2.14
 import QtQuick.Layouts 1.14
-
-// TODO: REPLACE WITH dialogs from Qt.labs.platform 1.1
-//  e.g. https://doc.qt.io/qt-5/qml-qt-labs-platform-filedialog.html
-import QtQuick.Dialogs 1.3
 
 import "components"
 

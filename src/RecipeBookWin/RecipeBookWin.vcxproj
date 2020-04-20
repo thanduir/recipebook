@@ -102,6 +102,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
+    <ClCompile Include="ListModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
     <ClCompile Include="ListModelProvenance.cpp" />
@@ -118,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="components\categoriesTab.qml" />
+    <None Include="components\editAlternativesGroupDialog.qml" />
     <None Include="components\ingredientsTab.qml" />
     <None Include="components\recipesTab.qml" />
     <None Include="components\textInputDialog.qml" />
@@ -145,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelAlternativesGroups.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ListModelAlternativesTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

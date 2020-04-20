@@ -4,7 +4,6 @@ TODO
 - Regularly update Design.txt to keep it uptodate!
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- qml: editing of Alternatives groups incl. color
 	- filtering (textbox + filter model)
 		* edit recipe item list
 		* ingredients

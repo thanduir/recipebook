@@ -47,7 +47,7 @@ namespace recipebook::UI
         int indexOf(QString strName) const;
 
     signals:
-        void alternativesGroupRenamed(quint32 index);
+        void alternativesGroupChanged(quint32 index);
 
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;

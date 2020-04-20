@@ -58,6 +58,13 @@ Item {
         }
     }
 
+    // Alternatives groups
+
+    EditAlternativesGroupDialog {
+        id: editAlternativesGroupDialog
+        title: qsTr("Edit alternatives groups")
+    }
+
     // Recipes list
 
     Label {
@@ -403,7 +410,7 @@ Item {
                         height: width
                         radius: 0.5 * width
 
-                        color: group != alternativesGroups.stringNoAlternativesGroup() ? alternativesGroups.color(alternativesGroups.indexOf(group)) : "black"
+                        color: groupColor
                         visible: group != alternativesGroups.stringNoAlternativesGroup()
                     }
 
@@ -577,18 +584,34 @@ Item {
         anchors.bottom: parent.bottom
         anchors.topMargin: 48
 
-        Button {
-            anchors.right: parent.right
+        RowLayout {
+            anchors.fill: parent
+        
+            Button {
+                //anchors.right: buttonEditAlternativesGroup.left
 
-            text: qsTr("Edit list") 
-            icon.source: "qrc:/images/edit.svg"
+                text: qsTr("Edit list") 
+                //icon.source: "qrc:/images/edit.svg"
 
-            onClicked: {
-                dlgEditRecipeItemsList.editListModel = modelRecipeItems;
-                dlgEditRecipeItemsList.allValues = modelIngredients;
-                dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
+                onClicked: {
+                    dlgEditRecipeItemsList.editListModel = modelRecipeItems;
+                    dlgEditRecipeItemsList.allValues = modelIngredients;
+                    dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
 
-                dlgEditRecipeItemsList.open();
+                    dlgEditRecipeItemsList.open();
+                }
+            }
+
+            Button {
+                id: buttonEditAlternativesGroup
+                //anchors.right: parent.right
+
+                text: qsTr("Edit alternatives groups") 
+                icon.source: "qrc:/images/edit.svg"
+
+                onClicked: {
+                    editAlternativesGroupDialog.open();
+                }
             }
         }
     }

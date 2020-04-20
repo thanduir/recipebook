@@ -22,6 +22,7 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_ModelSortOrders(),
 	m_ModelIngredients(m_RecipeBook, m_Converter),
 	m_AlternativesGroups(m_RecipeBook, m_Converter),
+	m_AlternativesTypes(),
 	m_ModelRecipes(m_RecipeBook),
 	m_ModelRecipeItems(m_RecipeBook, m_Converter)
 {
@@ -32,15 +33,16 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 
 	m_ModelSortOrder.setSourceModel(&m_ModelCategories);
 	m_ModelSortOrders.setSourceModel(&m_ModelProvenance);
+	m_AlternativesTypes.setSourceModel(&m_AlternativesGroups);
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
 	connect(&m_ModelProvenance, SIGNAL(provenanceRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onSortOrderRenamed(quint32)));
 	connect(&m_ModelIngredients, SIGNAL(ingredientRenamed(quint32)),
-			&m_ModelRecipeItems, SLOT(onItemRenamed(quint32)));
-	connect(&m_AlternativesGroups, SIGNAL(alternativesTypeRenamed(quint32)),
-			&m_ModelRecipeItems, SLOT(onItemRenamed(quint32)));
+			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
+	connect(&m_AlternativesGroups, SIGNAL(alternativesGroupChanged(quint32)),
+			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
 }
 
 void RecipeBookDataHandler::slotSaveAs(QString strFileURL)
@@ -101,6 +103,11 @@ ListModelIngredients& RecipeBookDataHandler::getIngredientsModel()
 ListModelAlternativesGroups& RecipeBookDataHandler::getAlternativesGroups()
 {
 	return m_AlternativesGroups;
+}
+
+ListModelAlternativesTypes& RecipeBookDataHandler::getAlternativesTypes()
+{
+	return m_AlternativesTypes;
 }
 
 ListModelRecipes& RecipeBookDataHandler::getRecipesModel()

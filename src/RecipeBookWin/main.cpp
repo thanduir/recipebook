@@ -25,6 +25,7 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
     context->setContextProperty("modelIngredients", &dataHandler.getIngredientsModel());
 
     context->setContextProperty("alternativesGroups", &dataHandler.getAlternativesGroups());
+    context->setContextProperty("alternativesTypes", &dataHandler.getAlternativesTypes());
 
     context->setContextProperty("modelRecipes", &dataHandler.getRecipesModel());
 

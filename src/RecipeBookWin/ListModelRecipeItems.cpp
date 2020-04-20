@@ -80,6 +80,10 @@ QVariant ListModelRecipeItems::data(const QModelIndex& index, int iRole) const
     {
         return group(index.row());
     }
+    else if(role == RecipeItemsRoles::GroupColorRole)
+    {
+        return groupColor(index.row());
+    }
 
     return QVariant();
 }
@@ -152,6 +156,7 @@ QHash<int, QByteArray> ListModelRecipeItems::roleNames() const
 	roles[(int)RecipeItemsRoles::SizeRole] = "sizeIndex";
 	roles[(int)RecipeItemsRoles::OptionalRole] = "optional";
     roles[(int)RecipeItemsRoles::GroupRole] = "group";
+    roles[(int)RecipeItemsRoles::GroupColorRole] = "groupColor";
     return roles;
 }
 
@@ -252,6 +257,21 @@ QString ListModelRecipeItems::group(int row) const
     }
 
     return m_rConverter.getStringNoAlternativesGroup();
+}
+
+QString ListModelRecipeItems::groupColor(int row) const
+{
+    if(!m_pRecipe || row < 0 || row >= (int)m_pRecipe->getRecipeItemsCount())
+        return "";
+
+    const RecipeItem& rItem = m_pRecipe->getRecipeItemAt(row);
+
+    if(rItem.hasAlternativesGroup())
+    {
+        return rItem.getAlternativesGroup().getColor().name();
+    }
+
+    return "";
 }
         
 void ListModelRecipeItems::setAmountUnit(int row, quint32 uiUnit)
@@ -377,7 +397,7 @@ bool ListModelRecipeItems::removeItem(int row)
     return bSuccess;
 }
 
-void ListModelRecipeItems::onItemRenamed(quint32 row)
+void ListModelRecipeItems::onDependentItemChanged(quint32 row)
 {
     if(m_pRecipe != nullptr)
     {

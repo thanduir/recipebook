@@ -55,6 +55,9 @@
     <ClCompile Include="ListModelAlternativesGroups.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListModelAlternativesTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -82,6 +85,9 @@
       <Filter>qml Files\components</Filter>
     </None>
     <None Include="components\editItemsListDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\editAlternativesGroupDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
   </ItemGroup>
@@ -114,6 +120,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ListModelAlternativesGroups.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelAlternativesTypes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
