@@ -14,11 +14,11 @@ namespace recipebook
 namespace recipebook::UI
 {
 
-    class ListModelSortOrder : public QSortFilterProxyModel
+    class SortModelSortOrder : public QSortFilterProxyModel
     {
         Q_OBJECT
     public:
-        ListModelSortOrder(RecipeBook& rRecipeBook);
+        SortModelSortOrder(RecipeBook& rRecipeBook);
 
     public slots:
         void setSortOrder(int row);

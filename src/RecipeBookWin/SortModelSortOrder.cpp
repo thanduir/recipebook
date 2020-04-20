@@ -1,4 +1,4 @@
-#include "ListModelSortOrder.h"
+#include "SortModelSortOrder.h"
 #include "ListModelCategories.h"
 #include <data/RecipeBook.h>
 #include <data/Category.h>
@@ -7,13 +7,13 @@
 
 using namespace recipebook::UI;
 
-ListModelSortOrder::ListModelSortOrder(recipebook::RecipeBook& rRecipeBook)
+SortModelSortOrder::SortModelSortOrder(recipebook::RecipeBook& rRecipeBook)
 :	m_rRecipeBook(rRecipeBook),
     m_pSortOrder(nullptr)
 {
 }
 
-void ListModelSortOrder::setSortOrder(int row)
+void SortModelSortOrder::setSortOrder(int row)
 {
     if (row < 0 || row >= (int)m_rRecipeBook.getSortOrdersCount())
         return;
@@ -25,7 +25,7 @@ void ListModelSortOrder::setSortOrder(int row)
     sort(0, Qt::AscendingOrder);
 }
 
-bool ListModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const
+bool SortModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
 
@@ -40,54 +40,54 @@ bool ListModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIn
     return m_pSortOrder->getIndex(rCategoryLeft) < m_pSortOrder->getIndex(rCategoryRight);
 }
 
-QString ListModelSortOrder::name(int row) const
+QString SortModelSortOrder::name(int row) const
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     int rowSource = mapToSource(index(row, 0)).row();
     return pCategories->name(rowSource);
 }
 
-int ListModelSortOrder::renameCategory(int row, QString newName)
+int SortModelSortOrder::renameCategory(int row, QString newName)
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     int rowSource = mapToSource(index(row, 0)).row();
     return mapFromSource(pCategories->index(pCategories->renameCategory(rowSource, newName), 0)).row();
 }
 
-int ListModelSortOrder::addCategory(QString strCategory)
+int SortModelSortOrder::addCategory(QString strCategory)
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     return mapFromSource(pCategories->index(pCategories->addCategory(strCategory), 0)).row();
 }
 
-bool ListModelSortOrder::existsCategory(QString strCategory) const
+bool SortModelSortOrder::existsCategory(QString strCategory) const
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     return pCategories->existsCategory(strCategory);
 }
 
-QString ListModelSortOrder::listUsedInIngredients(int row) const
+QString SortModelSortOrder::listUsedInIngredients(int row) const
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     int rowSource = mapToSource(index(row, 0)).row();
     return pCategories->listUsedInIngredients(rowSource);
 }
 
-bool ListModelSortOrder::canCategoryBeRemoved(int row) const
+bool SortModelSortOrder::canCategoryBeRemoved(int row) const
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     int rowSource = mapToSource(index(row, 0)).row();
     return pCategories->canCategoryBeRemoved(rowSource);
 }
 
-bool ListModelSortOrder::removeCategory(int row)
+bool SortModelSortOrder::removeCategory(int row)
 {
     ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
     int rowSource = mapToSource(index(row, 0)).row();
     return pCategories->removeCategory(rowSource);
 }
 
-void ListModelSortOrder::moveCategory(int row, int target)
+void SortModelSortOrder::moveCategory(int row, int target)
 {
     if(row == target)
     {

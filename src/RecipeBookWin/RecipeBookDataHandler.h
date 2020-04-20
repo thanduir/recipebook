@@ -5,11 +5,11 @@
 #include <data/RecipeBook.h>
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
-#include "ListModelSortOrders.h"
-#include "ListModelSortOrder.h"
+#include "FilterModelSortOrders.h"
+#include "SortModelSortOrder.h"
 #include "ListModelProvenance.h"
 #include "ListModelAlternativesGroups.h"
-#include "ListModelAlternativesTypes.h"
+#include "FilterModelAlternativesTypes.h"
 #include "ListModelRecipes.h"
 #include "ListModelRecipeItems.h"
 #include "uistringconverter.h"
@@ -31,12 +31,12 @@ namespace recipebook::UI
 
         // DataModels
         ListModelCategories& getCategoriesModel();
-        ListModelSortOrder& getSortOrderModel();
+        SortModelSortOrder& getSortOrderModel();
         ListModelProvenance& getProvenanceModel();
-        ListModelSortOrders& getSortOrdersModel();
+        FilterModelSortOrders& getSortOrdersModel();
         ListModelIngredients& getIngredientsModel();
         ListModelAlternativesGroups& getAlternativesGroups();
-        ListModelAlternativesTypes& getAlternativesTypes();
+        FilterModelAlternativesTypes& getAlternativesTypes();
         ListModelRecipes& getRecipesModel();
         ListModelRecipeItems& getRecipeItemsModel();
 
@@ -48,15 +48,15 @@ namespace recipebook::UI
         UIStringConverter m_Converter;
 
         ListModelCategories m_ModelCategories;
-        ListModelSortOrder m_ModelSortOrder;
+        SortModelSortOrder m_ModelSortOrder;
 
         ListModelProvenance m_ModelProvenance;
-        ListModelSortOrders m_ModelSortOrders;
+        FilterModelSortOrders m_ModelSortOrders;
 
         ListModelIngredients m_ModelIngredients;
 
         ListModelAlternativesGroups m_AlternativesGroups;
-        ListModelAlternativesTypes m_AlternativesTypes;
+        FilterModelAlternativesTypes m_AlternativesTypes;
 
         ListModelRecipes m_ModelRecipes;
 

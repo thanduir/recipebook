@@ -102,14 +102,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
-    <ClCompile Include="ListModelAlternativesTypes.cpp" />
+    <ClCompile Include="FilterModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
-    <ClCompile Include="ListModelSortOrder.cpp" />
-    <ClCompile Include="ListModelSortOrders.cpp" />
+    <ClCompile Include="SortModelSortOrder.cpp" />
+    <ClCompile Include="FilterModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RecipeBookDataHandler.cpp" />
     <ClCompile Include="uistringconverter.cpp" />
@@ -132,12 +132,12 @@
     <QtMoc Include="uistringconverter.h" />
     <QtMoc Include="ListModelIngredients.h" />
     <QtMoc Include="ListModelCategories.h" />
-    <QtMoc Include="ListModelSortOrders.h" />
+    <QtMoc Include="FilterModelSortOrders.h" />
     <QtMoc Include="ListModelProvenance.h" />
     <QtMoc Include="RecipeBookDataHandler.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ListModelSortOrder.h" />
+    <QtMoc Include="SortModelSortOrder.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelRecipes.h" />
@@ -149,7 +149,7 @@
     <QtMoc Include="ListModelAlternativesGroups.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ListModelAlternativesTypes.h" />
+    <QtMoc Include="FilterModelAlternativesTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

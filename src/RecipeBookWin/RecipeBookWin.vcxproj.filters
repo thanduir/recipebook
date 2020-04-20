@@ -37,13 +37,7 @@
     <ClCompile Include="ListModelCategories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListModelSortOrders.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ListModelProvenance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListModelSortOrder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListModelRecipes.cpp">
@@ -55,7 +49,13 @@
     <ClCompile Include="ListModelAlternativesGroups.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListModelAlternativesTypes.cpp">
+    <ClCompile Include="FilterModelAlternativesTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterModelSortOrders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortModelSortOrder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,16 +98,10 @@
     <QtMoc Include="ListModelCategories.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ListModelSortOrders.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ListModelProvenance.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RecipeBookDataHandler.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="ListModelSortOrder.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ListModelRecipes.h">
@@ -122,7 +116,13 @@
     <QtMoc Include="ListModelAlternativesGroups.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ListModelAlternativesTypes.h">
+    <QtMoc Include="FilterModelAlternativesTypes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilterModelSortOrders.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SortModelSortOrder.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

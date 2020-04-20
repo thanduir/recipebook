@@ -1,15 +1,15 @@
-#ifndef RECIPEBOOK_LISTMODEL_SORTORDERS_H
-#define RECIPEBOOK_LISTMODEL_SORTORDERS_H
+#ifndef RECIPEBOOK_FILTERMODEL_SORTORDERS_H
+#define RECIPEBOOK_FILTERMODEL_SORTORDERS_H
 
 #include <QSortFilterProxyModel>
 
 namespace recipebook::UI
 {
-    class ListModelSortOrders : public QSortFilterProxyModel
+    class FilterModelSortOrders : public QSortFilterProxyModel
     {
         Q_OBJECT
     public:
-        ListModelSortOrders();
+        FilterModelSortOrders();
 
     public slots:
         QString name(int row) const;

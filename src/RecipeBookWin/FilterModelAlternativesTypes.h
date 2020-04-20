@@ -1,15 +1,15 @@
-#ifndef RECIPEBOOK_LISTMODEL_ALTERNATIVES_TYPES_H
-#define RECIPEBOOK_LISTMODEL_ALTERNATIVES_TYPES_H
+#ifndef RECIPEBOOK_FILTERMODEL_ALTERNATIVES_TYPES_H
+#define RECIPEBOOK_FILTERMODEL_ALTERNATIVES_TYPES_H
 
 #include <QSortFilterProxyModel>
 
 namespace recipebook::UI
 {
-    class ListModelAlternativesTypes : public QSortFilterProxyModel
+    class FilterModelAlternativesTypes : public QSortFilterProxyModel
     {
         Q_OBJECT
     public:
-        ListModelAlternativesTypes();
+        FilterModelAlternativesTypes();
 
     public slots:
         QString name(int row) const;

@@ -80,12 +80,12 @@ ListModelCategories& RecipeBookDataHandler::getCategoriesModel()
 	return m_ModelCategories;
 }
 
-ListModelSortOrder& RecipeBookDataHandler::getSortOrderModel()
+SortModelSortOrder& RecipeBookDataHandler::getSortOrderModel()
 {
 	return m_ModelSortOrder;
 }
 
-ListModelSortOrders& RecipeBookDataHandler::getSortOrdersModel()
+FilterModelSortOrders& RecipeBookDataHandler::getSortOrdersModel()
 {
 	return m_ModelSortOrders;
 }
@@ -105,7 +105,7 @@ ListModelAlternativesGroups& RecipeBookDataHandler::getAlternativesGroups()
 	return m_AlternativesGroups;
 }
 
-ListModelAlternativesTypes& RecipeBookDataHandler::getAlternativesTypes()
+FilterModelAlternativesTypes& RecipeBookDataHandler::getAlternativesTypes()
 {
 	return m_AlternativesTypes;
 }
