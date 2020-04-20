@@ -9,9 +9,9 @@ Item {
     TextInputDialog {
         id: dlgAddRecipe
         title: qsTr("Add recipe")
-        onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
+        onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
         onAccepted: {
-            lvRecipes.currentIndex = modelRecipes.addRecipe(outputText)
+            lvRecipes.currentIndex = filterModelRecipes.addRecipe(outputText)
             lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
         }
     }
@@ -19,9 +19,9 @@ Item {
     TextInputDialog {
         id: dlgCopyRecipe
         title: qsTr("Copy recipe")
-        onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
+        onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
         onAccepted: {
-            lvRecipes.currentIndex = modelRecipes.copyRecipe(lvRecipes.currentIndex, outputText)
+            lvRecipes.currentIndex = filterModelRecipes.copyRecipe(lvRecipes.currentIndex, outputText)
             lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
         }
     }
@@ -29,9 +29,9 @@ Item {
     TextInputDialog {
         id: dlgRenameRecipe
         title: qsTr("Rename recipe")
-        onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
+        onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
         onAccepted: {
-            lvRecipes.currentIndex = modelRecipes.renameRecipe(lvRecipes.currentIndex, outputText)
+            lvRecipes.currentIndex = filterModelRecipes.renameRecipe(lvRecipes.currentIndex, outputText)
             lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
         }
     }
@@ -40,7 +40,7 @@ Item {
         id: dlgRemoveRecipe
         title: qsTr("Remove recipe")
         onAccepted: {
-            modelRecipes.removeRecipe(lvRecipes.currentIndex)
+            filterModelRecipes.removeRecipe(lvRecipes.currentIndex)
             lvRecipes.incrementCurrentIndex()
             lvRecipes.decrementCurrentIndex()
         }
@@ -79,10 +79,48 @@ Item {
         font.bold: true
     }
 
+    TextField { 
+        id: textFilterRecipes
+        anchors.left: scrollViewRecipes.left
+        anchors.right: scrollViewRecipes.right
+        anchors.top: labelRecipes.bottom
+        anchors.topMargin: 24
+        selectByMouse: true
+
+        onTextEdited: {
+            filterModelRecipes.setFilterString(text);
+            lvRecipes.currentIndex = -1
+            modelRecipeItems.setRecipe(-1)
+            forceActiveFocus();
+        }
+
+        Image {
+            anchors { top: parent.top; right: parent.right }
+            id: clearText
+            fillMode: Image.PreserveAspectFit
+            visible: textFilterRecipes.text
+            source: "qrc:/images/backspace.svg"
+            height: parent.height - 5
+
+            MouseArea {
+                id: clear
+                anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+                height: textFilterRecipes.height; width: textFilterRecipes.height
+                onClicked: {
+                    textFilterRecipes.text = ""
+                    filterModelRecipes.setFilterString(textFilterRecipes.text);
+                    lvRecipes.currentIndex = -1
+                    modelRecipeItems.setRecipe(-1)
+                    textFilterRecipes.forceActiveFocus()
+                }
+            }
+        }
+    }
+
     ScrollView {
         id: scrollViewRecipes
         anchors.left: parent.left
-        anchors.top: labelRecipes.bottom
+        anchors.top: textFilterRecipes.bottom 
         anchors.bottom: paneRecipes.top
         anchors.topMargin: 48
         anchors.leftMargin: 48
@@ -99,7 +137,7 @@ Item {
             boundsBehavior: Flickable.StopAtBounds
 
             spacing: 5
-            model: modelRecipes
+            model: filterModelRecipes
             delegate: ItemDelegate {
                 highlighted: ListView.isCurrentItem
                 onClicked: {
@@ -146,7 +184,7 @@ Item {
 
                 text: qsTr("Copy")
                 onClicked: {
-                    dlgCopyRecipe.initialText = modelRecipes.name(lvRecipes.currentIndex);
+                    dlgCopyRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
                     dlgCopyRecipe.open();
                 }
             }
@@ -156,7 +194,7 @@ Item {
 
                 text: qsTr("Rename")
                 onClicked: {
-                    dlgRenameRecipe.initialText = modelRecipes.name(lvRecipes.currentIndex);
+                    dlgRenameRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
                     dlgRenameRecipe.open();
                 }
             }
@@ -167,7 +205,7 @@ Item {
                 text: qsTr("Remove")
                 enabled: lvRecipes.currentIndex < lvRecipes.count && lvRecipes.currentIndex >= 0
                 onClicked: {
-                    dlgRemoveRecipe.msgText = qsTr("This will remove the recipe \"" + modelRecipes.name(lvRecipes.currentIndex) + "\". Proceed?");
+                    dlgRemoveRecipe.msgText = qsTr("This will remove the recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\". Proceed?");
                     dlgRemoveRecipe.open();
                 }
             }
@@ -181,7 +219,9 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 48
         
-        text: qsTr("Recipe \"" + modelRecipes.name(lvRecipes.currentIndex) + "\"")
+        visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
+
+        text: qsTr("Recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\"")
         font.bold: true
     }
 
@@ -196,7 +236,7 @@ Item {
         
         width: 375
 
-        visible: lvRecipes.count > 0
+        visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
         columns: 2
 
         Label { 
@@ -207,9 +247,9 @@ Item {
             to: 50
             editable: true
             wheelEnabled: true
-            value: modelRecipes.numberOfPersons(lvRecipes.currentIndex)
+            value: filterModelRecipes.numberOfPersons(lvRecipes.currentIndex)
 
-            onValueModified: modelRecipes.setNumberOfPersons(lvRecipes.currentIndex, value)
+            onValueModified: filterModelRecipes.setNumberOfPersons(lvRecipes.currentIndex, value)
         }
 
         Label { 
@@ -235,9 +275,9 @@ Item {
                 cookingTime = Date.fromLocaleString(locale, text, "HH:mm");
                 return cookingTime.getHours() * 60 + cookingTime.getMinutes();
             }
-            value: modelRecipes.cookingTime(lvRecipes.currentIndex)
+            value: filterModelRecipes.cookingTime(lvRecipes.currentIndex)
                         
-            onValueModified: modelRecipes.setCookingTime(lvRecipes.currentIndex, value)
+            onValueModified: filterModelRecipes.setCookingTime(lvRecipes.currentIndex, value)
 
             ToolTip.delay: 1000
             ToolTip.timeout: 5000
@@ -255,6 +295,8 @@ Item {
         anchors.bottomMargin: 48
         anchors.rightMargin: 24
 
+        visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
+
         selectByMouse: true
 
         ToolTip.delay: 1000
@@ -262,8 +304,8 @@ Item {
         ToolTip.visible: hovered
         ToolTip.text: qsTr("Short description")
 
-        text: modelRecipes.shortDescription(lvRecipes.currentIndex)
-        onEditingFinished: modelRecipes.setShortDescription(lvRecipes.currentIndex, text)
+        text: filterModelRecipes.shortDescription(lvRecipes.currentIndex)
+        onEditingFinished: filterModelRecipes.setShortDescription(lvRecipes.currentIndex, text)
     }
 
     ScrollView {
@@ -274,6 +316,8 @@ Item {
         anchors.leftMargin: 48
         anchors.bottomMargin: 48
         anchors.rightMargin: 24
+
+        visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
         
         TextArea { 
             anchors.top: parent.top
@@ -289,8 +333,8 @@ Item {
             ToolTip.visible: hovered
             ToolTip.text: qsTr("Recipe text")
 
-            text: modelRecipes.recipeText(lvRecipes.currentIndex)
-            onEditingFinished: modelRecipes.setRecipeText(lvRecipes.currentIndex, text)
+            text: filterModelRecipes.recipeText(lvRecipes.currentIndex)
+            onEditingFinished: filterModelRecipes.setRecipeText(lvRecipes.currentIndex, text)
         }
     }
 
@@ -588,6 +632,8 @@ Item {
             anchors.fill: parent
         
             Button {
+                enabled: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
+
                 text: qsTr("Edit list")
 
                 onClicked: {

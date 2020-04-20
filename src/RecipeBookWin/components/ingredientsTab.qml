@@ -61,25 +61,25 @@ Item {
         }
 
         Image {
-                anchors { top: parent.top; right: parent.right }
-                id: clearText
-                fillMode: Image.PreserveAspectFit
-                visible: textFilterIngredients.text
-                source: "qrc:/images/backspace.svg"
-                height: parent.height - 5
+            anchors { top: parent.top; right: parent.right }
+            id: clearText
+            fillMode: Image.PreserveAspectFit
+            visible: textFilterIngredients.text
+            source: "qrc:/images/backspace.svg"
+            height: parent.height - 5
 
-                MouseArea {
-                    id: clear
-                    anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
-                    height: textFilterIngredients.height; width: textFilterIngredients.height
-                    onClicked: {
-                        textFilterIngredients.text = ""
-                        filterModelIngredients.setFilterString(textFilterIngredients.text);
-                        lvIngredients.currentIndex = -1
-                        textFilterIngredients.forceActiveFocus()
-                    }
+            MouseArea {
+                id: clear
+                anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+                height: textFilterIngredients.height; width: textFilterIngredients.height
+                onClicked: {
+                    textFilterIngredients.text = ""
+                    filterModelIngredients.setFilterString(textFilterIngredients.text);
+                    lvIngredients.currentIndex = -1
+                    textFilterIngredients.forceActiveFocus()
                 }
             }
+        }
     }
 
     ScrollView {

@@ -17,8 +17,16 @@ ListModelRecipeItems::ListModelRecipeItems(recipebook::RecipeBook& rRecipeBook, 
 
 void ListModelRecipeItems::setRecipe(int row)
 {
-    if (row < 0 || row >= (int)m_rRecipeBook.getRecipesCount())
+    if(row < 0 || row >= (int) m_rRecipeBook.getRecipesCount())
+    {
+        if(m_pRecipe != nullptr)
+        {
+            beginResetModel();
+            m_pRecipe = nullptr;
+            endResetModel();
+        }
         return;
+    }
 
     beginResetModel();
     m_pRecipe = &m_rRecipeBook.getRecipeAt(row);

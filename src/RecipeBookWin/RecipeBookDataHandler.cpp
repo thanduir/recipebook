@@ -25,6 +25,7 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_AlternativesGroups(m_RecipeBook, m_Converter),
 	m_AlternativesTypes(),
 	m_ModelRecipes(m_RecipeBook),
+	m_FilterModelRecipes(),
 	m_ModelRecipeItems(m_RecipeBook, m_Converter)
 {
 	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
@@ -36,6 +37,7 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 	m_ModelSortOrders.setSourceModel(&m_ModelProvenance);
 	m_AlternativesTypes.setSourceModel(&m_AlternativesGroups);
 	m_FilterModelIngredients.setSourceModel(&m_ModelIngredients);
+	m_FilterModelRecipes.setSourceModel(&m_ModelRecipes);
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
@@ -120,6 +122,11 @@ FilterModelAlternativesTypes& RecipeBookDataHandler::getAlternativesTypes()
 ListModelRecipes& RecipeBookDataHandler::getRecipesModel()
 {
 	return m_ModelRecipes;
+}
+
+FilterModelRecipes& RecipeBookDataHandler::getRecipesFilterModel()
+{
+	return m_FilterModelRecipes;
 }
 
 ListModelRecipeItems& RecipeBookDataHandler::getRecipeItemsModel()

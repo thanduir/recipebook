@@ -61,6 +61,9 @@
     <ClCompile Include="FilterModelIngredients.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FilterModelRecipes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FilterModelIngredients.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilterModelRecipes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

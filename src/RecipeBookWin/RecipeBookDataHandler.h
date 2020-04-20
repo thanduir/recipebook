@@ -12,6 +12,7 @@
 #include "ListModelAlternativesGroups.h"
 #include "FilterModelAlternativesTypes.h"
 #include "ListModelRecipes.h"
+#include "FilterModelRecipes.h"
 #include "ListModelRecipeItems.h"
 #include "uistringconverter.h"
 
@@ -40,6 +41,7 @@ namespace recipebook::UI
         ListModelAlternativesGroups& getAlternativesGroups();
         FilterModelAlternativesTypes& getAlternativesTypes();
         ListModelRecipes& getRecipesModel();
+        FilterModelRecipes& getRecipesFilterModel();
         ListModelRecipeItems& getRecipeItemsModel();
 
     public slots:
@@ -62,6 +64,7 @@ namespace recipebook::UI
         FilterModelAlternativesTypes m_AlternativesTypes;
 
         ListModelRecipes m_ModelRecipes;
+        FilterModelRecipes m_FilterModelRecipes;
 
         ListModelRecipeItems m_ModelRecipeItems;
     };
