@@ -588,10 +588,7 @@ Item {
             anchors.fill: parent
         
             Button {
-                //anchors.right: buttonEditAlternativesGroup.left
-
-                text: qsTr("Edit list") 
-                //icon.source: "qrc:/images/edit.svg"
+                text: qsTr("Edit list")
 
                 onClicked: {
                     dlgEditRecipeItemsList.editListModel = modelRecipeItems;
@@ -604,7 +601,6 @@ Item {
 
             Button {
                 id: buttonEditAlternativesGroup
-                //anchors.right: parent.right
 
                 text: qsTr("Edit alternatives groups") 
                 icon.source: "qrc:/images/edit.svg"

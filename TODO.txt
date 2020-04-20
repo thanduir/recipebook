@@ -5,7 +5,6 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	- filtering (textbox + filter model)
-		* ingredients (ingredients filter)
 		* recipes (recipes filter)
 	- Should recipes have a bool value "(not) in recipe book" so that it is possible to ignore it for cooking book exports? Or should this be handled separately while exporting?
 		-> if so, then this should be marked in the recipes list (recipesTab) (and setable obviously)!
