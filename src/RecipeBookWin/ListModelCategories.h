@@ -38,6 +38,8 @@ namespace recipebook::UI
         bool canCategoryBeRemoved(int row) const;
         bool removeCategory(int row);
 
+        void onDataReset();
+
     signals:
         void categoryRenamed(quint32 index);
 

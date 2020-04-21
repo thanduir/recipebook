@@ -35,6 +35,8 @@ namespace recipebook::UI
 
         void moveCategory(int row, int target);
 
+        void onDataReset() { setSortOrder(-1); }
+
     protected:
         virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const override;
 

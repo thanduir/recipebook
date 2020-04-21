@@ -77,6 +77,8 @@ namespace recipebook::UI
         void cancelEditList();
         bool applyEditList();
 
+        void onDataReset() { setRecipe(-1); }
+
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;
 

@@ -6,6 +6,7 @@
 namespace recipebook
 {
     class RecipeBook;
+    class RecipeBookSettings;
 }
 
 namespace recipebook::UI
@@ -25,7 +26,7 @@ namespace recipebook::UI
         };
 
     public:
-        ListModelRecipes(RecipeBook& rRecipeBook);
+        ListModelRecipes(RecipeBook& rRecipeBook, const RecipeBookSettings& rSettings);
 
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -52,6 +53,8 @@ namespace recipebook::UI
 
         bool removeRecipe(int row);
 
+        void onDataReset();
+
     protected:
         virtual QHash<int, QByteArray> roleNames() const override;
 
@@ -60,6 +63,7 @@ namespace recipebook::UI
 
     private:
         RecipeBook& m_rRecipeBook;
+        const RecipeBookSettings& m_rSettings;
     };
 }
 

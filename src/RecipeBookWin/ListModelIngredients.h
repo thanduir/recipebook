@@ -8,6 +8,7 @@ class UIStringConverter;
 namespace recipebook
 {
     class RecipeBook;
+    class RecipeBookSettings;
 }
 
 namespace recipebook::UI
@@ -25,7 +26,7 @@ namespace recipebook::UI
         };
 
     public:
-        ListModelIngredients(RecipeBook& rRecipeBook, const UIStringConverter& rConverter);
+        ListModelIngredients(RecipeBook& rRecipeBook, const RecipeBookSettings& rSettings, const UIStringConverter& rConverter);
 
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -55,6 +56,8 @@ namespace recipebook::UI
         void onCategoryRenamed(quint32 index);
         void onSortOrderRenamed(quint32 index);
 
+        void onDataReset();
+
     signals:
         void ingredientRenamed(quint32 index);
 
@@ -66,6 +69,7 @@ namespace recipebook::UI
 
     private:
         RecipeBook& m_rRecipeBook;
+        const RecipeBookSettings& m_rSettings;
         const UIStringConverter& m_rConverter;
     };
 }

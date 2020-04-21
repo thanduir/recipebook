@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "RecipeBookDataHandler.h"
+#include "RecipeBookSettings.h"
 
 bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler& dataHandler)
 {
@@ -9,6 +10,8 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
     {
         return false;
     }
+
+    context->setContextProperty("recipeBookSettings", &dataHandler.getRecipeBookSettings());
 
     context->setContextProperty("unitNames", dataHandler.getAllUnitNames());
     context->setContextProperty("unitNamesShort", dataHandler.getAllUnitShortNames());
@@ -41,7 +44,6 @@ bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookDataHandler& dat
     QObject* fileDialogSaveAs = pRoot->findChild<QObject*>(QStringLiteral("fileDialogSaveAs"));
     QObject::connect(fileDialogSaveAs, SIGNAL(onSaveAs(QString)),
                      &dataHandler, SLOT(slotSaveAs(QString)));
-
     return true;
 }
 

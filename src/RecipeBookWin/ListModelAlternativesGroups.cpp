@@ -189,3 +189,9 @@ int ListModelAlternativesGroups::indexOf(QString strName) const
 
     return m_rRecipeBook.getAlternativesTypeIndex(strName) + 1;
 }
+
+void ListModelAlternativesGroups::onDataReset()
+{
+    beginResetModel();
+    endResetModel();
+}

@@ -10,21 +10,20 @@ using namespace recipebook::serialization;
 
 // TODO: Replace with non-temp. file!
 constexpr char* c_strFileInput		= "..\\..\\UnitTestData\\SerializeTest\\test.json";
-// TODO: Replace with real UID!
-constexpr char* c_strUID			= "AAAABBBBCCCC";
 
 RecipeBookDataHandler::RecipeBookDataHandler()
 :	m_RecipeBook(),
 	m_Converter(),
+	m_Settings(),
 	m_ModelCategories(m_RecipeBook),
 	m_ModelSortOrder(m_RecipeBook),
 	m_ModelProvenance(m_RecipeBook, m_Converter),
 	m_ModelSortOrders(),
-	m_ModelIngredients(m_RecipeBook, m_Converter),
+	m_ModelIngredients(m_RecipeBook, m_Settings, m_Converter),
 	m_FilterModelIngredients(),
 	m_AlternativesGroups(m_RecipeBook, m_Converter),
 	m_AlternativesTypes(),
-	m_ModelRecipes(m_RecipeBook),
+	m_ModelRecipes(m_RecipeBook, m_Settings),
 	m_FilterModelRecipes(),
 	m_ModelRecipeItems(m_RecipeBook, m_Converter)
 {
@@ -47,16 +46,48 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
 	connect(&m_AlternativesGroups, SIGNAL(alternativesGroupChanged(quint32)),
 			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
+
+	connect(&m_Settings, SIGNAL(resetAllData()),
+			this, SLOT(slotResetData()));
+
+	// onResetData
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelSortOrder, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelCategories, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelProvenance, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelIngredients, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_AlternativesGroups, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelRecipes, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelRecipeItems, SLOT(onDataReset()));
 }
 
 void RecipeBookDataHandler::slotSaveAs(QString strFileURL)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
-	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, c_strUID);
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
 	RBMetaData metaData;
 	QFile fileOut(localFileName);
 	spWriter->serialize(m_RecipeBook, fileOut);
+}
+
+void RecipeBookDataHandler::slotResetData()
+{
+	m_RecipeBook.clearData();
+	emit signalDataReset();
+	// TODO: Do i need to update all models as well? (how to do this in a better way than calling them all directly here?)
+	//		-> Add a signal that gets sent in this case and that's connected to all relevant models!
+}
+
+recipebook::RecipeBookSettings& RecipeBookDataHandler::getRecipeBookSettings()
+{
+	return m_Settings;
 }
 
 QStringList RecipeBookDataHandler::getAllUnitNames() const

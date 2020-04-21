@@ -64,6 +64,9 @@
     <ClCompile Include="FilterModelRecipes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RecipeBookSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -94,6 +97,9 @@
       <Filter>qml Files\components</Filter>
     </None>
     <None Include="components\editAlternativesGroupDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\settingsDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
   </ItemGroup>
@@ -135,6 +141,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FilterModelRecipes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="RecipeBookSettings.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

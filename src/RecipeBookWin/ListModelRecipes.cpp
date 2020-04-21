@@ -2,11 +2,13 @@
 #include <QException>
 #include <data/RecipeBook.h>
 #include <data/Recipe.h>
+#include "RecipeBookSettings.h"
 
 using namespace recipebook::UI;
 
-ListModelRecipes::ListModelRecipes(recipebook::RecipeBook& rRecipeBook)
-:	m_rRecipeBook(rRecipeBook)
+ListModelRecipes::ListModelRecipes(recipebook::RecipeBook& rRecipeBook, const recipebook::RecipeBookSettings& rSettings)
+:	m_rRecipeBook(rRecipeBook),
+    m_rSettings(rSettings)
 {
 }
 
@@ -220,9 +222,7 @@ int ListModelRecipes::addRecipe(QString strRecipe)
 
     beginInsertRows(QModelIndex(),index, index);
 
-    // TODO: Define sensible defaults!
-    quint32 uiNrPersons = 2;
-    m_rRecipeBook.addRecipe(strRecipe, uiNrPersons);
+    m_rRecipeBook.addRecipe(strRecipe, m_rSettings.getDefaultRecipeNrPersons());
 
     endInsertRows();
 
@@ -271,4 +271,10 @@ bool ListModelRecipes::removeRecipe(int row)
     endRemoveRows();
 
     return bSuccess;
+}
+
+void ListModelRecipes::onDataReset()
+{
+    beginResetModel();
+    endResetModel();
 }

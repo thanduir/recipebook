@@ -193,3 +193,9 @@ bool ListModelProvenance::removeProvenance(int row)
 
     return bSuccess;
 }
+
+void ListModelProvenance::onDataReset()
+{
+    beginResetModel();
+    endResetModel();
+}

@@ -48,7 +48,7 @@ ApplicationWindow {
                     selectFolder: false
                     folder: shortcuts.documents
                     signal onSaveAs(filename: string)
-                    onAccepted: fileDialogSaveAs.onSaveAs(fileDialogSaveAs.fileUrls)
+                    onAccepted: onSaveAs(fileDialogSaveAs.fileUrls)
                 }
             }
             
@@ -71,11 +71,15 @@ ApplicationWindow {
 
                 // TODO: Icon
                 text: qsTr("Settings")
-                // TODO: implementieren und enablen!
-                enabled: false
-                //onClicked: menu.open()
+                enabled: true
+                onClicked: dlgSettings.open()
             }
         }
+    }
+
+    SettingsDialog {
+        id: dlgSettings
+        title: qsTr("Settings")
     }
 
     TabBar {
@@ -84,7 +88,7 @@ ApplicationWindow {
         topPadding: 20
 
         TabButton {
-            text: qsTr("Categories")
+            text: qsTr("Sort orders and categories")
         }
         TabButton {
             text: qsTr("Ingredients")
@@ -95,7 +99,6 @@ ApplicationWindow {
     }
 
     StackLayout {
-        currentIndex: bar.currentIndex
         anchors.top: bar.bottom
         anchors.topMargin: 10
         anchors.bottom: parent.bottom
@@ -103,10 +106,12 @@ ApplicationWindow {
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.right: parent.right
-        anchors.rightMargin: 20
+        anchors.rightMargin: 10
+
+        currentIndex: bar.currentIndex
 
         CategoriesTab {
-            id: categoriesTab            
+            id: categoriesTab
         }
         IngredientsTab {
             id: ingredientsTab

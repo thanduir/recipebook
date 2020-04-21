@@ -151,3 +151,9 @@ bool ListModelCategories::removeCategory(int row)
 
     return bSuccess;
 }
+
+void ListModelCategories::onDataReset()
+{
+    beginResetModel();
+    endResetModel();
+}

@@ -39,6 +39,8 @@ namespace recipebook::UI
         QString listUsedInIngredients(int row) const;
         bool canProvenanceBeRemoved(int row) const;
         bool removeProvenance(int row);
+
+        void onDataReset();
         
     signals:
         void provenanceRenamed(quint32 index);

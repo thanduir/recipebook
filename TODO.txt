@@ -1,42 +1,38 @@
 TODO
 ====
 
-- Regularly update Design.txt to keep it uptodate!
-
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- Should recipes have a bool value "(not) in recipe book" so that it is possible to ignore it for cooking book exports? Or should this be handled separately while exporting?
-		-> if so, then this should be marked in the recipes list (recipesTab) (and setable obviously)!
 	- sortable recipe items list
 		-> Separate mode or map it onto the same listview as well?
-	
-	- Define top-level layout concept
-	- ShoppingRecipe and ShoppingList dialogs with all features 
+	- Binding loop in remove dlg somewhere!
+
+	- Define top-level layout concept (Features: recipes etc; shopping list; kochbuch-exporter; import / merge functionality)
+		-> add file loading capability and solve startup file todo in RecipeBookDataHandler.cpp. Possibly also move the data reset button out of settings?
+	- ShoppingRecipe and ShoppingList dialogs with all features
 		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?
 		* new features from app todo:
 			- nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
 			- in go shopping: gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
 				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
 				darunter eine zeile "2 gross" und eine "1 klein")
-	- (Relevant) settings from app, esp. the default values (cf. references in c++ models code)
-	- "Search as you type" like feature for (large) ListViews? (i could do this with a search box, but is there no direct way? maybe with a key pressed handler?)
-
+		
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> in ListViews scroll to item with typing? (e.g. jump to first item starting with "m" when "m" is pressed while focused)
 	
 	- Verify that every feature from the app is present!
 	- Test everything, esp. also that it works with empty data!
 	- Add a reasonable amount of unittests for everything not yet covered!
-3.5 Update Design.txt!
-4. Kochbuch-Exporter
-4.5 Update Design.txt!
-5. Merge functionality
-5.5 Update Design.txt!
-6. TODOs
-7. UnitTests!
-8. Update and finalize Design.txt!
+4. Update Design.txt!
+
+5. Kochbuch-Exporter
+	-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
+6. Merge functionality
+7. TODOs
+8. UnitTests!
+9. Update and finalize Design.txt!
 
 
 Possibilities for later:
 a. Write json schema?
-b. Internal binary file format? (to speed up reading and writing)
+b. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
 c. Add picture to Recipe (and json)?

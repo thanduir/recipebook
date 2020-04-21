@@ -15,8 +15,13 @@ SortModelSortOrder::SortModelSortOrder(recipebook::RecipeBook& rRecipeBook)
 
 void SortModelSortOrder::setSortOrder(int row)
 {
-    if (row < 0 || row >= (int)m_rRecipeBook.getSortOrdersCount())
+    if(row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount())
+    {
+        beginResetModel();
+        m_pSortOrder = nullptr;
+        endResetModel();
         return;
+    }
 
     beginResetModel();
     m_pSortOrder = &m_rRecipeBook.getSortOrderAt(row);

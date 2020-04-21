@@ -46,6 +46,8 @@ namespace recipebook::UI
 
         int indexOf(QString strName) const;
 
+        void onDataReset();
+
     signals:
         void alternativesGroupChanged(quint32 index);
 

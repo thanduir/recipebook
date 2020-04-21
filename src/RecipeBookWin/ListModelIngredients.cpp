@@ -7,11 +7,15 @@
 #include <data/Recipe.h>
 #include <data/ShoppingRecipe.h>
 #include "uistringconverter.h"
+#include "RecipeBookSettings.h"
 
 using namespace recipebook::UI;
 
-ListModelIngredients::ListModelIngredients(recipebook::RecipeBook& rRecipeBook, const UIStringConverter& rConverter)
+ListModelIngredients::ListModelIngredients(recipebook::RecipeBook& rRecipeBook, 
+                                           const recipebook::RecipeBookSettings& rSettings,
+                                           const UIStringConverter& rConverter)
 :	m_rRecipeBook(rRecipeBook),
+    m_rSettings(rSettings),
     m_rConverter(rConverter)
 {
 }
@@ -271,10 +275,13 @@ int ListModelIngredients::addIngredient(QString strIngredient)
 
     beginInsertRows(QModelIndex(),index, index);
 
-    // TODO: Define sensible defaults!
-    const Category& rCategory = m_rRecipeBook.getCategoryAt(0);
-    Unit unit = Unit::Count;
-    m_rRecipeBook.addIngredient(strIngredient, rCategory, unit);
+    const Category* pCategory = &m_rRecipeBook.getCategoryAt(0);
+    QString defaultCategory = m_rSettings.getDefaultCategory();
+    if(!defaultCategory.isEmpty() && m_rRecipeBook.existsCategory(defaultCategory))
+    {
+        pCategory = &m_rRecipeBook.getCategory(defaultCategory);
+    }    
+    m_rRecipeBook.addIngredient(strIngredient, *pCategory, (Unit)m_rSettings.getDefaultUnit());
 
     endInsertRows();
 
@@ -332,4 +339,10 @@ void ListModelIngredients::onCategoryRenamed(quint32 row)
 void ListModelIngredients::onSortOrderRenamed(quint32 row)
 {
     dataChanged(index(0), index(m_rRecipeBook.getIngredientsCount()-1));
+}
+
+void ListModelIngredients::onDataReset()
+{
+    beginResetModel();
+    endResetModel();
 }

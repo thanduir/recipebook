@@ -110,6 +110,7 @@
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
+    <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
     <ClCompile Include="FilterModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
@@ -124,6 +125,7 @@
     <None Include="components\editAlternativesGroupDialog.qml" />
     <None Include="components\ingredientsTab.qml" />
     <None Include="components\recipesTab.qml" />
+    <None Include="components\settingsDialog.qml" />
     <None Include="components\textInputDialog.qml" />
     <None Include="components\editItemsListDialog.qml" />
     <None Include="components\textMessageDialog.qml" />
@@ -158,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FilterModelRecipes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="RecipeBookSettings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

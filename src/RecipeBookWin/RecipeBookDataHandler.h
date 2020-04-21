@@ -3,6 +3,7 @@
 
 #include <QtGlobal>
 #include <data/RecipeBook.h>
+#include "RecipeBookSettings.h"
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
 #include "FilterModelIngredients.h"
@@ -25,6 +26,8 @@ namespace recipebook::UI
     public:
         RecipeBookDataHandler();
 
+        RecipeBookSettings& getRecipeBookSettings();
+
         // Namelists
         QStringList getAllUnitNames() const;
         QStringList getAllUnitShortNames() const;
@@ -46,10 +49,16 @@ namespace recipebook::UI
 
     public slots:
         void slotSaveAs(QString strFileURL);
+        void slotResetData();
+
+    signals:
+        void signalDataReset();
 
     private:
         RecipeBook m_RecipeBook;
         UIStringConverter m_Converter;
+
+        RecipeBookSettings m_Settings;
 
         ListModelCategories m_ModelCategories;
         SortModelSortOrder m_ModelSortOrder;

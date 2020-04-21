@@ -12,6 +12,7 @@
         <file alias="CategoriesTab.qml">components/categoriesTab.qml</file>
 		<file alias="IngredientsTab.qml">components/ingredientsTab.qml</file>
 		<file alias="RecipesTab.qml">components/recipesTab.qml</file>		
+		<file alias="SettingsDialog.qml">components/settingsDialog.qml</file>
 		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">components/editItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
