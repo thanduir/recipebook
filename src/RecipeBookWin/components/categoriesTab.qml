@@ -73,7 +73,7 @@ Item {
         
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         anchors.leftMargin: 48
         
         text: qsTr("Sort orders")
@@ -248,7 +248,7 @@ Item {
         
         anchors.left: scrollViewCategories.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         
         text: qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
         font.bold: true

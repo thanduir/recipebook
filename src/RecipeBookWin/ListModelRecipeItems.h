@@ -67,6 +67,7 @@ namespace recipebook::UI
 
         int addRecipeItem(QString strIngredient);
         bool removeItem(int row);
+        void moveItem(int row, int target);
 
         void onDependentItemChanged(quint32 index);
 

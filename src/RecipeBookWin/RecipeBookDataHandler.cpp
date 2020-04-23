@@ -81,8 +81,6 @@ void RecipeBookDataHandler::slotResetData()
 {
 	m_RecipeBook.clearData();
 	emit signalDataReset();
-	// TODO: Do i need to update all models as well? (how to do this in a better way than calling them all directly here?)
-	//		-> Add a signal that gets sent in this case and that's connected to all relevant models!
 }
 
 recipebook::RecipeBookSettings& RecipeBookDataHandler::getRecipeBookSettings()

@@ -39,7 +39,7 @@ Item {
         
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         anchors.leftMargin: 48
         
         text: qsTr("Ingredients")
@@ -182,7 +182,7 @@ Item {
         
         anchors.left: grid.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         
         visible: lvIngredients.count > 0 && lvIngredients.currentIndex != -1
         text: qsTr("Ingredient \"" + filterModelIngredients.name(lvIngredients.currentIndex) + "\"")

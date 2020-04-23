@@ -2,10 +2,6 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- sortable recipe items list
-		-> Separate mode or map it onto the same listview as well?
-	- Binding loop in remove dlg somewhere!
-
 	- Define top-level layout concept (Features: recipes etc; shopping list; kochbuch-exporter; import / merge functionality)
 		-> add file loading capability and solve startup file todo in RecipeBookDataHandler.cpp. Possibly also move the data reset button out of settings?
 	- ShoppingRecipe and ShoppingList dialogs with all features
@@ -17,7 +13,8 @@ TODO
 				darunter eine zeile "2 gross" und eine "1 klein")
 		
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
-		-> in ListViews scroll to item with typing? (e.g. jump to first item starting with "m" when "m" is pressed while focused)
+		-> simplify qml files by moving things out of files (and refactor common use cases)
+		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
 	
 	- Verify that every feature from the app is present!
 	- Test everything, esp. also that it works with empty data!

@@ -7,6 +7,7 @@ Dialog {
 
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
+    width: 360
 
     property alias msgText: dlgAskLabel.text
     
@@ -14,6 +15,7 @@ Dialog {
         id: dlgAskLabel
         anchors.centerIn: parent
         width: parent.width
+        wrapMode: Text.WordWrap
     }
 
     footer: DialogButtonBox {

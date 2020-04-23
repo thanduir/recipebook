@@ -405,6 +405,19 @@ bool ListModelRecipeItems::removeItem(int row)
     return bSuccess;
 }
 
+void ListModelRecipeItems::moveItem(int row, int target)
+{
+    if(!m_pRecipe 
+       || row < 0 || row >= (int)m_pRecipe->getRecipeItemsCount()
+       || target < 0 || target >= (int)m_pRecipe->getRecipeItemsCount()
+       || row == target)
+        return;
+
+    beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
+    m_pRecipe->moveRecipeItem(m_pRecipe->getRecipeItemAt(row), target);
+    endMoveRows();
+}
+
 void ListModelRecipeItems::onDependentItemChanged(quint32 row)
 {
     if(m_pRecipe != nullptr)

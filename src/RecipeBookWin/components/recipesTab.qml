@@ -1,6 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
+import QtQml.Models 2.1
 
 Item {
 
@@ -72,7 +73,7 @@ Item {
         
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         anchors.leftMargin: 48
         
         text: qsTr("Recipes")
@@ -217,7 +218,7 @@ Item {
         
         anchors.left: grid.left
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         
         visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
 
@@ -338,15 +339,26 @@ Item {
         }
     }
 
+    Switch {
+        id: idRearrangeCurrentItems
+        anchors.right: scrollViewCurrentRecipe.right
+        anchors.top: parent.top
+        anchors.topMargin: 24
+
+        text: "Rearrange recipe items"
+    }
+
+    // Edit recipe item list view
     ScrollView {
         id: scrollViewCurrentRecipe
         anchors.left: grid.right
-        anchors.top: labelCurrentRecipe.bottom
+        anchors.top: idRearrangeCurrentItems.bottom
         anchors.bottom: paneCurrentRecipe.top
-        anchors.topMargin: 48
+        anchors.topMargin: 24
         anchors.leftMargin: 24
         anchors.bottomMargin: 48
         width: 400
+        visible: !idRearrangeCurrentItems.checked
 
         ListView {
             id: lvCurrentRecipe
@@ -621,6 +633,146 @@ Item {
         }
     }
 
+    // Rearrange recipe item list moveable delegate
+    Component {
+        id: dragDelegate
+
+        MouseArea {
+            id: dragArea
+
+            property bool held: false
+
+            anchors { left: parent.left; right: parent.right }
+            height: content.height
+
+            drag.target: held ? content : undefined
+            drag.axis: Drag.YAxis
+
+            onPressed: {
+                held = true
+            }
+            onReleased: held = false
+            
+            Rectangle {
+                id: content
+
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+
+                width: dragArea.width; 
+                height: column.implicitHeight + 47
+
+                color: dragArea.held ? "lightgray" : "transparent"
+                
+                Drag.active: dragArea.held
+                Drag.source: dragArea
+                Drag.hotSpot.x: width / 2
+                Drag.hotSpot.y: height / 2
+
+                states: State {
+                    when: dragArea.held
+
+                    ParentChange { target: content; parent: recipesTab }
+                    AnchorChanges {
+                        target: content
+                        anchors { horizontalCenter: undefined; verticalCenter: undefined }
+                    }
+                }
+
+                Item {
+                    id: column
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    // Move image
+                    Image {
+                        id: reorderImage
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        height: labelColumn.implicitHeight + 10
+                        verticalAlignment: Image.AlignVCenter
+                        anchors.margins: 15
+
+                        fillMode: Image.PreserveAspectFit
+                        source: "qrc:/images/reorder.svg"
+                    }
+
+                    // Item name
+                    Label {
+                        id: labelColumn
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: reorderImage.right
+
+                        anchors.margins: 15
+
+                        verticalAlignment: Text.AlignVCenter
+                        font.bold: !optional
+                        font.italic: optional
+                        text: name
+                    }
+                    
+                    // Group symbol
+                    Rectangle {
+                        id: rowRearrangeGroupHeaderButtons
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.topMargin: -5
+                        anchors.rightMargin: 10
+                        width: 10
+                        height: width
+                        radius: 0.5 * width
+
+                        color: groupColor
+                        visible: group != alternativesGroups.stringNoAlternativesGroup()
+                    }
+                }
+            }
+
+            DropArea {
+                anchors { fill: parent; margins: 15 }
+
+                onEntered: {
+                    modelRecipeItems.moveItem(drag.source.DelegateModel.itemsIndex,
+                                              dragArea.DelegateModel.itemsIndex);
+                    rearrangeCurrentRecipeDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
+                                                                   dragArea.DelegateModel.itemsIndex);
+                }
+            }
+        }
+    }
+
+    // Rearrange recipe item list view
+    ScrollView {
+        id: scrollViewRearrangeCurrentRecipe
+        anchors.left: grid.right
+        anchors.top: idRearrangeCurrentItems.bottom
+        anchors.bottom: paneCurrentRecipe.top
+        anchors.topMargin: 24
+        anchors.leftMargin: 24
+        anchors.bottomMargin: 48
+        width: 400
+        visible: idRearrangeCurrentItems.checked
+
+        
+        ListView {
+            anchors.fill: parent
+            topMargin: 5
+            leftMargin: 5
+            bottomMargin: 5
+            rightMargin: 5
+            boundsBehavior: Flickable.StopAtBounds
+
+            spacing: 5
+            model: DelegateModel {
+                id: rearrangeCurrentRecipeDelegateModel
+
+                model: modelRecipeItems
+                delegate: dragDelegate
+            }
+        }
+    }
+
     Pane {
         id: paneCurrentRecipe
         anchors.left: scrollViewCurrentRecipe.left
@@ -639,7 +791,10 @@ Item {
                 onClicked: {
                     dlgEditRecipeItemsList.editListModel = modelRecipeItems;
                     dlgEditRecipeItemsList.allValuesFilterModel = filterModelIngredients;
-                    dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
+                    if(scrollViewCurrentRecipe.visible)
+                        dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
+                    else
+                        dlgEditRecipeItemsList.initialyHighlightedIndex = -1
 
                     dlgEditRecipeItemsList.open();
                 }
