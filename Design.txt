@@ -5,7 +5,7 @@ Requirements
 ------------
 
 - Manage recipes (incl. short desc, cooking time, description), ingredients and provenances equivalently to whats done in the app
-- Shopping-List functionality
+- Shopping-List functionality (create shopping list, go shopping)
 - Sync functionality
 	* Import other file (app json and / or internal format including *all* the data)
 	* 3-way-merge by keeping the latest sync'd state with different devices, manuel conflict resolving

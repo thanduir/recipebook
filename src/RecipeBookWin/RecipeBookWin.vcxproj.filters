@@ -20,6 +20,21 @@
     <Filter Include="qml Files\components">
       <UniqueIdentifier>{a46440cc-fa9a-49d0-842c-b0c0a8381630}</UniqueIdentifier>
     </Filter>
+    <Filter Include="qml Files\components\recipes tab">
+      <UniqueIdentifier>{10df5b80-62b7-4bc0-9ca4-dbfa44381f15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qml Files\components\helper">
+      <UniqueIdentifier>{b917fb4e-9e8d-4cbc-9b59-07ecd70d5073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qml Files\components\shopping tab">
+      <UniqueIdentifier>{8931d98d-978b-483d-bf61-a062f3298d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qml Files\components\cookbook">
+      <UniqueIdentifier>{bf12128d-77ea-413f-935f-422ac637407e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qml Files\components\overlays">
+      <UniqueIdentifier>{b1f9e5e2-4de5-496d-8de9-0ecdfeba835d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,15 +93,6 @@
     <None Include="recipebook.qml">
       <Filter>qml Files</Filter>
     </None>
-    <None Include="components\categoriesTab.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
-    <None Include="components\ingredientsTab.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
-    <None Include="components\recipesTab.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
     <None Include="components\textInputDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
@@ -99,8 +105,26 @@
     <None Include="components\editAlternativesGroupDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
+    <None Include="components\categoriesPage.qml">
+      <Filter>qml Files\components\recipes tab</Filter>
+    </None>
+    <None Include="components\ingredientsPage.qml">
+      <Filter>qml Files\components\recipes tab</Filter>
+    </None>
+    <None Include="components\recipesPage.qml">
+      <Filter>qml Files\components\recipes tab</Filter>
+    </None>
+    <None Include="components\recipesTab.qml">
+      <Filter>qml Files\components\recipes tab</Filter>
+    </None>
+    <None Include="components\shoppingTab.qml">
+      <Filter>qml Files\components\shopping tab</Filter>
+    </None>
+    <None Include="components\cookbookTab.qml">
+      <Filter>qml Files\components\cookbook</Filter>
+    </None>
     <None Include="components\settingsDialog.qml">
-      <Filter>qml Files\components</Filter>
+      <Filter>qml Files\components\overlays</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

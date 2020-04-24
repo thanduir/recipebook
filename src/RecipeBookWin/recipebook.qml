@@ -4,10 +4,8 @@ import QtQuick.Controls 2.14
 import QtQuick.Window 2.14
 import QtQuick.Layouts 1.14
 
-import "components"
-
 ApplicationWindow {
-    width: 1250
+    width: 1300
     height: 825
     visible: true
     title: qsTr("RecipeBook")
@@ -19,28 +17,42 @@ ApplicationWindow {
     header: ToolBar {
         RowLayout {
             ToolButton {
-                objectName: "toolBarButtonSave"
+                // TODO: Icon (instead of text?)
+                text: qsTr("Import file")
+                // TODO: implementieren und enablen!
+                enabled: false
+            }
 
-                // TODO: Icon
+            ToolSeparator {}
+
+            ToolButton {
+                // TODO: Icon (instead of text?)
+                text: qsTr("Merge file")
+                // TODO: implementieren und enablen!
+                enabled: false
+            }
+
+            ToolSeparator {}
+
+            ToolButton {
+                // TODO: Icon (instead of text?)
                 text: qsTr("Save")
                 // TODO: implementieren und enablen!
                 enabled: false
             }
-            
+
             ToolSeparator {}
 
             ToolButton {
-                objectName: "toolBarButtonSaveAs"
-
-                // TODO: Icon
-                text: qsTr("Save as")
-                onClicked: fileDialogSaveAs.open()
+                // TODO: Icon (instead of text?)
+                text: qsTr("Export")
+                onClicked: fileDialogExport.open()
 
                 FileDialog {
-                    id: fileDialogSaveAs
-                    objectName: "fileDialogSaveAs"
+                    id: fileDialogExport
+                    objectName: "fileDialogExport"
 
-                    title: qsTr("Save As")
+                    title: qsTr("Export data")
                     modality: Qt.WindowModal
                     nameFilters: [ qsTr("Json files (*.json)") ]
                     selectExisting: false
@@ -48,28 +60,14 @@ ApplicationWindow {
                     selectFolder: false
                     folder: shortcuts.documents
                     signal onSaveAs(filename: string)
-                    onAccepted: onSaveAs(fileDialogSaveAs.fileUrls)
+                    onAccepted: onSaveAs(fileDialogExport.fileUrls)
                 }
             }
-            
-            ToolSeparator {}
-
-            ToolButton {
-                objectName: "toolBarButtonExport"
-
-                // TODO: Icon
-                text: qsTr("Export")
-                // TODO: implementieren und enablen!
-                enabled: false
-                //onClicked: menu.open()
-            }
 
             ToolSeparator {}
 
             ToolButton {
-                objectName: "toolBarButtonSettings"
-
-                // TODO: Icon
+                // TODO: Icon (instead of text?)
                 text: qsTr("Settings")
                 enabled: true
                 onClicked: dlgSettings.open()
@@ -88,13 +86,13 @@ ApplicationWindow {
         topPadding: 20
 
         TabButton {
-            text: qsTr("Sort orders and categories")
-        }
-        TabButton {
-            text: qsTr("Ingredients")
-        }
-        TabButton {
             text: qsTr("Recipes")
+        }
+        TabButton {
+            text: qsTr("Shopping")
+        }
+        TabButton {
+            text: qsTr("Cookbook")
         }
     }
 
@@ -110,14 +108,14 @@ ApplicationWindow {
 
         currentIndex: bar.currentIndex
 
-        CategoriesTab {
-            id: categoriesTab
-        }
-        IngredientsTab {
-            id: ingredientsTab
-        }
         RecipesTab {
             id: recipesTab
+        }
+        ShoppingTab {
+            id: shoppingTab
+        }
+        CookbookTab {
+            id: cookbookTab
         }
     }
 }

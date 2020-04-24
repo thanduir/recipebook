@@ -121,11 +121,14 @@
     <QtRcc Include="recipebookwindow.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="components\categoriesTab.qml" />
+    <None Include="components\categoriesPage.qml" />
+    <None Include="components\cookbookTab.qml" />
     <None Include="components\editAlternativesGroupDialog.qml" />
-    <None Include="components\ingredientsTab.qml" />
+    <None Include="components\ingredientsPage.qml" />
+    <None Include="components\recipesPage.qml" />
     <None Include="components\recipesTab.qml" />
     <None Include="components\settingsDialog.qml" />
+    <None Include="components\shoppingTab.qml" />
     <None Include="components\textInputDialog.qml" />
     <None Include="components\editItemsListDialog.qml" />
     <None Include="components\textMessageDialog.qml" />

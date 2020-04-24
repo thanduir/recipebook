@@ -41,7 +41,7 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
 
 bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookDataHandler& dataHandler)
 {
-    QObject* fileDialogSaveAs = pRoot->findChild<QObject*>(QStringLiteral("fileDialogSaveAs"));
+    QObject* fileDialogSaveAs = pRoot->findChild<QObject*>(QStringLiteral("fileDialogExport"));
     QObject::connect(fileDialogSaveAs, SIGNAL(onSaveAs(QString)),
                      &dataHandler, SLOT(slotSaveAs(QString)));
     return true;

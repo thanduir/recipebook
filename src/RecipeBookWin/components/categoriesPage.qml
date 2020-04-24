@@ -3,7 +3,9 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQml.Models 2.1
 
-Item {  
+import "components"
+
+Item {
     id: categoriesTab
 
     TextInputDialog {
