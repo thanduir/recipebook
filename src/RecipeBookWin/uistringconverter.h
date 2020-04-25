@@ -9,35 +9,35 @@
 
 class UIStringConverter : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    UIStringConverter();
+	UIStringConverter();
 
-    QString getProvenanceEverywhere() const;
+	QString getProvenanceEverywhere() const;
 
-    QString getStringNoAlternativesGroup() const;
+	QString getStringNoAlternativesGroup() const;
 
-    QString convertSize(recipebook::Size size) const;
-    recipebook::Size convertSize(QString strSize) const;
-    QStringList getAllSizeNames() const;
+	QString convertSize(recipebook::Size size) const;
+	recipebook::Size convertSize(QString strSize) const;
+	QStringList getAllSizeNames() const;
 
-    QString convertStatus(recipebook::Status status) const;
-    recipebook::Status convertStatus(QString strStatus) const;
-    QStringList getAllStatusNames() const;
+	QString convertStatus(recipebook::Status status) const;
+	recipebook::Status convertStatus(QString strStatus) const;
+	QStringList getAllStatusNames() const;
 
-    QString convertUnit(recipebook::Unit unit) const;
-    recipebook::Unit convertUnit(QString strUnit) const;
-    QStringList getAllUnitNames() const;
-    QStringList getAllUnitShortNames() const;
+	QString convertUnit(recipebook::Unit unit) const;
+	recipebook::Unit convertUnit(QString strUnit) const;
+	QStringList getAllUnitNames() const;
+	QStringList getAllUnitShortNames() const;
 
 private:
-    QString m_strProvenanceEverywhere;
-    QString m_strNoAlternativesGroup;
+	QString m_strProvenanceEverywhere;
+	QString m_strNoAlternativesGroup;
 
-    QStringList m_StatusToName;
-    QStringList m_UnitToName;
-    QStringList m_UnitToShortName;
-    QStringList m_SizeToName;
+	QStringList m_StatusToName;
+	QStringList m_UnitToName;
+	QStringList m_UnitToShortName;
+	QStringList m_SizeToName;
 };
 
 #endif

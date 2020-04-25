@@ -6,42 +6,42 @@
 
 namespace recipebook
 {
-    class RecipeBookSettings : public QObject
-    {
+	class RecipeBookSettings : public QObject
+	{
 		Q_OBJECT
 
-    public:
-        RecipeBookSettings();
+	public:
+		RecipeBookSettings();
 
-    public slots:
+	public slots:
 		QString applicationRecipeBookSaveFile() const;
 		QString applicationRecipeBookAppsDataFolder() const;
-        QString getApplicationInstanceUID();
+		QString getApplicationInstanceUID();
 
-        quint32 getDefaultUnit() const;
-        void setDefaultUnit(quint32 defaultUnit);
+		quint32 getDefaultUnit() const;
+		void setDefaultUnit(quint32 defaultUnit);
 
-        quint32 getDefaultRecipeNrPersons() const;
-        void setDefaultRecipeNrPersons(quint32 nrPersons);
+		quint32 getDefaultRecipeNrPersons() const;
+		void setDefaultRecipeNrPersons(quint32 nrPersons);
 
-        QString getDefaultCategory() const;
-        void setDefaultCategory(QString strCategory);
+		QString getDefaultCategory() const;
+		void setDefaultCategory(QString strCategory);
 
-        QString getDefaultSortOrder() const;
-        void setDefaultSortOrder(QString strSortOrder);
+		QString getDefaultSortOrder() const;
+		void setDefaultSortOrder(QString strSortOrder);
 
 		QString lastUsedExportFolder() const;
 		void setLastUsedExportFolder(QString strFolder);
 
 		QString lastUsedImportFolder() const;
-        void setLastUsedImportFolder(QString strFolder);
+		void setLastUsedImportFolder(QString strFolder);
 
-    signals:
-        void resetAllData() const;
+	signals:
+		void resetAllData() const;
 
-    private:
-        QString m_AppRBFilePath;
-    };
+	private:
+		QString m_AppRBFilePath;
+	};
 }
 
 #endif

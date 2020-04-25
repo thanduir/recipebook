@@ -8,48 +8,48 @@
 
 namespace recipebook
 {
-    class AlternativesType;
+	class AlternativesType;
 
-    class RecipeItem
-    {
-    public:
-        QString getName() const { return m_pIngredient->getName(); }
-        const Ingredient& getIngredient() const { return *m_pIngredient; }
-        void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
+	class RecipeItem
+	{
+	public:
+		QString getName() const { return m_pIngredient->getName(); }
+		const Ingredient& getIngredient() const { return *m_pIngredient; }
+		void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
 
-        const Amount& getAmount() const { return m_Amount; }
-        Amount& getAmount() { return m_Amount; }
+		const Amount& getAmount() const { return m_Amount; }
+		Amount& getAmount() { return m_Amount; }
 
-        QString getAdditionalInfo() const { return m_AdditionalInfo; }
-        void setAdditionInfo(QString additionalInfo) { m_AdditionalInfo = additionalInfo; }
+		QString getAdditionalInfo() const { return m_AdditionalInfo; }
+		void setAdditionInfo(QString additionalInfo) { m_AdditionalInfo = additionalInfo; }
 
-        Size getSize() const { return m_Size; }
-        void setSize(Size size) { m_Size = size; }
+		Size getSize() const { return m_Size; }
+		void setSize(Size size) { m_Size = size; }
 
-        bool isOptional() const { return m_bOptional; }
-        void setIsOptional(bool optional) { m_bOptional = optional; }
+		bool isOptional() const { return m_bOptional; }
+		void setIsOptional(bool optional) { m_bOptional = optional; }
 
-        bool hasAlternativesGroup() const { return m_pAlternativesGroup != nullptr; }
-        const AlternativesType& getAlternativesGroup() const { return *m_pAlternativesGroup; }
-        void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
-        void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
+		bool hasAlternativesGroup() const { return m_pAlternativesGroup != nullptr; }
+		const AlternativesType& getAlternativesGroup() const { return *m_pAlternativesGroup; }
+		void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
+		void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
 
-    private:
-        explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) { m_Amount.setUnit(rIngredient.getDefaultUnit()); }
-        RecipeItem(const RecipeItem& rOther);
+	private:
+		explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) { m_Amount.setUnit(rIngredient.getDefaultUnit()); }
+		RecipeItem(const RecipeItem& rOther);
 
-        void operator=(const RecipeItem& rOther) = delete;
+		void operator=(const RecipeItem& rOther) = delete;
 
-    private:
-        const Ingredient* m_pIngredient;
-        Amount m_Amount;
-        QString m_AdditionalInfo;
-        Size m_Size = Size::Normal;
-        bool m_bOptional = false;
-        const AlternativesType* m_pAlternativesGroup = nullptr;
+	private:
+		const Ingredient* m_pIngredient;
+		Amount m_Amount;
+		QString m_AdditionalInfo;
+		Size m_Size = Size::Normal;
+		bool m_bOptional = false;
+		const AlternativesType* m_pAlternativesGroup = nullptr;
 
-        friend class Recipe;
-    };
+		friend class Recipe;
+	};
 }
 
 #endif

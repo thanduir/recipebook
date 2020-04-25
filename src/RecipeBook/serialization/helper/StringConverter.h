@@ -8,14 +8,14 @@
 
 namespace recipebook::serialization::helper
 {
-    QString convertSize(Size size);
-    Size convertSize(QString strSize);
+	QString convertSize(Size size);
+	Size convertSize(QString strSize);
 
-    QString convertStatus(Status status);
-    Status convertStatus(QString strStatus);
+	QString convertStatus(Status status);
+	Status convertStatus(QString strStatus);
 
-    QString convertUnit(Unit unit);
-    Unit convertUnit(QString strUnit);
+	QString convertUnit(Unit unit);
+	Unit convertUnit(QString strUnit);
 }
 
 #endif

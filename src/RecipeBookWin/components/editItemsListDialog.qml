@@ -3,103 +3,103 @@ import QtQuick.Controls 2.14
 import QtQuick.Window 2.14
 
 Dialog {
-    modal: true
+	modal: true
 
-    x: (parent.width - width) / 2
-    y: (parent.height - height) / 2
+	x: (parent.width - width) / 2
+	y: (parent.height - height) / 2
 
-    property var allValuesFilterModel: []
-    property var editListModel: []
-    property int initialyHighlightedIndex: -1
+	property var allValuesFilterModel: []
+	property var editListModel: []
+	property int initialyHighlightedIndex: -1
     
-    signal listChanged
+	signal listChanged
 
-    Item {
-        implicitWidth: 300
-        implicitHeight: scrollViewValues.implicitHeight + textFilter.implicitHeight
+	Item {
+		implicitWidth: 300
+		implicitHeight: scrollViewValues.implicitHeight + textFilter.implicitHeight
 
-        TextField { 
-            id: textFilter
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.topMargin: 0
-            selectByMouse: true
+		TextField { 
+			id: textFilter
+			anchors.left: parent.left
+			anchors.right: parent.right
+			anchors.top: parent.top
+			anchors.topMargin: 0
+			selectByMouse: true
 
-            onTextEdited: {
-                allValuesFilterModel.setFilterString(text);
-                forceActiveFocus();
-            }
+			onTextEdited: {
+				allValuesFilterModel.setFilterString(text);
+				forceActiveFocus();
+			}
 
-            Image {
-                 anchors { top: parent.top; right: parent.right }
-                 id: clearText
-                 fillMode: Image.PreserveAspectFit
-                 visible: textFilter.text
-                 source: "qrc:/images/backspace.svg"
-                 height: parent.height - 5
+			Image {
+					anchors { top: parent.top; right: parent.right }
+					id: clearText
+					fillMode: Image.PreserveAspectFit
+					visible: textFilter.text
+					source: "qrc:/images/backspace.svg"
+					height: parent.height - 5
 
-                 MouseArea {
-                     id: clear
-                     anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
-                     height: textFilter.height; width: textFilter.height
-                     onClicked: {
-                         textFilter.text = ""
-                         allValuesFilterModel.setFilterString(textFilter.text);
-                         textFilter.forceActiveFocus()
-                     }
-                 }
-             }
-        }
+					MouseArea {
+						id: clear
+						anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+						height: textFilter.height; width: textFilter.height
+						onClicked: {
+							textFilter.text = ""
+							allValuesFilterModel.setFilterString(textFilter.text);
+							textFilter.forceActiveFocus()
+						}
+					}
+				}
+		}
 
-        ScrollView {
-            id: scrollViewValues
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: textFilter.bottom
-            anchors.topMargin: 24
-            anchors.bottomMargin: 24
+		ScrollView {
+			id: scrollViewValues
+			anchors.left: parent.left
+			anchors.right: parent.right
+			anchors.top: textFilter.bottom
+			anchors.topMargin: 24
+			anchors.bottomMargin: 24
 
-            implicitHeight: 400
+			implicitHeight: 400
 
-            ListView {
-                id: lvValues
-                anchors.fill: parent
+			ListView {
+				id: lvValues
+				anchors.fill: parent
 
-                model: allValuesFilterModel
-                delegate: CheckDelegate {
-                    checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
-                    onClicked: editListModel.changeState(name, checked)
-                    width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
+				model: allValuesFilterModel
+				delegate: CheckDelegate {
+					checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
+					onClicked: editListModel.changeState(name, checked)
+					width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
                 
-                    text: name
-                }
-            }
-        }
-    }
+					text: name
+				}
+			}
+		}
+	}
 
-    footer: DialogButtonBox {
-        id: buttons
-        standardButtons: Dialog.Ok | Dialog.Cancel
-    }
+	footer: DialogButtonBox {
+		id: buttons
+		standardButtons: Dialog.Ok | Dialog.Cancel
+	}
 
-    onAboutToShow: {
-        textFilter.text = "";
-        allValuesFilterModel.setFilterString("");
+	onAboutToShow: {
+		textFilter.text = "";
+		allValuesFilterModel.setFilterString("");
 
-        editListModel.beginEditList();
+		editListModel.beginEditList();
 
-        if(initialyHighlightedIndex != -1)
-        {
-            lvValues.positionViewAtIndex(initialyHighlightedIndex, ListView.Center)
-        }
-    }
+		if(initialyHighlightedIndex != -1)
+		{
+			lvValues.positionViewAtIndex(initialyHighlightedIndex, ListView.Center)
+		}
+	}
 
-    onAccepted: {
-        if(editListModel.applyEditList())
-        {
-            listChanged();
-        }
-    }
-    onRejected: editListModel.cancelEditList()
+	onAccepted: {
+		if(editListModel.applyEditList())
+		{
+			listChanged();
+		}
+	}
+	onRejected: editListModel.cancelEditList()
 }

@@ -5,26 +5,26 @@
 
 namespace recipebook::UI
 {
-    class FilterModelSortOrders : public QSortFilterProxyModel
-    {
-        Q_OBJECT
-    public:
-        FilterModelSortOrders();
+	class FilterModelSortOrders : public QSortFilterProxyModel
+	{
+		Q_OBJECT
+	public:
+		FilterModelSortOrders();
 
-    public slots:
-        QString name(int row) const;
-        int renameSortOrder(int row, QString newName);
+	public slots:
+		QString name(int row) const;
+		int renameSortOrder(int row, QString newName);
 
-        int addSortOrder(QString strSortOrder);
-        bool existsSortOrder(QString strSortOrder) const;
+		int addSortOrder(QString strSortOrder);
+		bool existsSortOrder(QString strSortOrder) const;
 
-        QString listUsedInIngredients(int row) const;
-        bool canSortOrderBeRemoved(int row) const;
-        bool removeSortOrder(int row);
+		QString listUsedInIngredients(int row) const;
+		bool canSortOrderBeRemoved(int row) const;
+		bool removeSortOrder(int row);
 
-    protected:
-        virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
-    };
+	protected:
+		virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
+	};
 }
 
 #endif

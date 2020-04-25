@@ -7,43 +7,43 @@ class UIStringConverter;
 
 namespace recipebook
 {
-    class RecipeBook;
-    class SortOrder;
+	class RecipeBook;
+	class SortOrder;
 }
 
 namespace recipebook::UI
 {
 
-    class SortModelSortOrder : public QSortFilterProxyModel
-    {
-        Q_OBJECT
-    public:
-        SortModelSortOrder(RecipeBook& rRecipeBook);
+	class SortModelSortOrder : public QSortFilterProxyModel
+	{
+		Q_OBJECT
+	public:
+		SortModelSortOrder(RecipeBook& rRecipeBook);
 
-    public slots:
-        void setSortOrder(int row);
+	public slots:
+		void setSortOrder(int row);
 
-        QString name(int row) const;
-        int renameCategory(int row, QString newName);
+		QString name(int row) const;
+		int renameCategory(int row, QString newName);
 
-        int addCategory(QString strCategory);
-        bool existsCategory(QString strCategory) const;
+		int addCategory(QString strCategory);
+		bool existsCategory(QString strCategory) const;
 
-        QString listUsedInIngredients(int row) const;
-        bool canCategoryBeRemoved(int row) const;
-        bool removeCategory(int row);
+		QString listUsedInIngredients(int row) const;
+		bool canCategoryBeRemoved(int row) const;
+		bool removeCategory(int row);
 
-        void moveCategory(int row, int target);
+		void moveCategory(int row, int target);
 
-        void onDataReset() { setSortOrder(-1); }
+		void onDataReset() { setSortOrder(-1); }
 
-    protected:
-        virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const override;
+	protected:
+		virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const override;
 
-    private:
-        RecipeBook& m_rRecipeBook;
-        SortOrder* m_pSortOrder;
-    };
+	private:
+		RecipeBook& m_rRecipeBook;
+		SortOrder* m_pSortOrder;
+	};
 }
 
 #endif

@@ -2,12 +2,12 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- Go through the files and change spaces to tabs where appropriate...
-	- Implement standard features:
-		* I should add a "defaultfile" similar to whats done in the app that can be loaded under settings!
-			-> this file should reside in the resources!
-		* loading another file: Ask for confirmation / export current data / ignore if current data not empty?
-		* TODOs (most of them should be doable now)
+	- Thread-safe data handling!
+
+	- I should add a "defaultfile" similar to whats done in the app that can be loaded under settings!
+		-> this file should reside in the resources!
+	- loading another file: Ask for confirmation / export current data / ignore if current data not empty?
+	- TODOs (most of them should be doable now)
 	
 	- ShoppingRecipe and ShoppingList dialogs with all features
 		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?

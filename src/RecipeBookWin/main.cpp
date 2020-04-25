@@ -6,80 +6,80 @@
 
 bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler& dataHandler)
 {
-    if(context == nullptr)
-    {
-        return false;
-    }
+	if(context == nullptr)
+	{
+		return false;
+	}
 
-    context->setContextProperty("recipeBookSettings", &dataHandler.getRecipeBookSettings());
+	context->setContextProperty("recipeBookSettings", &dataHandler.getRecipeBookSettings());
 
-    context->setContextProperty("unitNames", dataHandler.getAllUnitNames());
-    context->setContextProperty("unitNamesShort", dataHandler.getAllUnitShortNames());
+	context->setContextProperty("unitNames", dataHandler.getAllUnitNames());
+	context->setContextProperty("unitNamesShort", dataHandler.getAllUnitShortNames());
     
-    context->setContextProperty("sizeNames", dataHandler.getAllSizeNames());
-    context->setContextProperty("statusNames", dataHandler.getAllStatusNames());
+	context->setContextProperty("sizeNames", dataHandler.getAllSizeNames());
+	context->setContextProperty("statusNames", dataHandler.getAllStatusNames());
 
-    context->setContextProperty("modelCategories", &dataHandler.getCategoriesModel());
-    context->setContextProperty("modelSortOrder", &dataHandler.getSortOrderModel());
+	context->setContextProperty("modelCategories", &dataHandler.getCategoriesModel());
+	context->setContextProperty("modelSortOrder", &dataHandler.getSortOrderModel());
 
-    context->setContextProperty("modelProvenance", &dataHandler.getProvenanceModel());
-    context->setContextProperty("modelSortOrders", &dataHandler.getSortOrdersModel());
+	context->setContextProperty("modelProvenance", &dataHandler.getProvenanceModel());
+	context->setContextProperty("modelSortOrders", &dataHandler.getSortOrdersModel());
 
-    context->setContextProperty("modelIngredients", &dataHandler.getIngredientsModel());
-    context->setContextProperty("filterModelIngredients", &dataHandler.getIngredientsFilterModel());
+	context->setContextProperty("modelIngredients", &dataHandler.getIngredientsModel());
+	context->setContextProperty("filterModelIngredients", &dataHandler.getIngredientsFilterModel());
 
-    context->setContextProperty("alternativesGroups", &dataHandler.getAlternativesGroups());
-    context->setContextProperty("alternativesTypes", &dataHandler.getAlternativesTypes());
+	context->setContextProperty("alternativesGroups", &dataHandler.getAlternativesGroups());
+	context->setContextProperty("alternativesTypes", &dataHandler.getAlternativesTypes());
 
-    context->setContextProperty("modelRecipes", &dataHandler.getRecipesModel());
-    context->setContextProperty("filterModelRecipes", &dataHandler.getRecipesFilterModel());
+	context->setContextProperty("modelRecipes", &dataHandler.getRecipesModel());
+	context->setContextProperty("filterModelRecipes", &dataHandler.getRecipesFilterModel());
 
-    context->setContextProperty("modelRecipeItems", &dataHandler.getRecipeItemsModel());
+	context->setContextProperty("modelRecipeItems", &dataHandler.getRecipeItemsModel());
 
-    return true;
+	return true;
 }
 
 bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookDataHandler& dataHandler)
 {
-    QObject* fileDialogExport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogExport"));
-    QObject::connect(fileDialogExport, SIGNAL(onExport(QString)),
-                     &dataHandler, SLOT(slotExport(QString)));
+	QObject* fileDialogExport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogExport"));
+	QObject::connect(fileDialogExport, SIGNAL(onExport(QString)),
+						&dataHandler, SLOT(slotExport(QString)));
 
-    QObject* fileDialogImport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogImport"));
-    QObject::connect(fileDialogImport, SIGNAL(onImport(QString)),
-                     &dataHandler, SLOT(slotImport(QString)));
+	QObject* fileDialogImport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogImport"));
+	QObject::connect(fileDialogImport, SIGNAL(onImport(QString)),
+						&dataHandler, SLOT(slotImport(QString)));
 
 	//QObject* mainWindow = pRoot->findChild<QObject*>(QStringLiteral("recipeBookMainWindow"));
-    QObject::connect(pRoot, SIGNAL(onClosingRecipeBook()),
-                     &dataHandler, SLOT(slotSave()));
-    return true;
+	QObject::connect(pRoot, SIGNAL(onClosingRecipeBook()),
+						&dataHandler, SLOT(slotSave()));
+	return true;
 }
 
 int main(int argc, char *argv[])
 {
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
+	QQmlApplicationEngine engine;
 
-    recipebook::UI::RecipeBookDataHandler dataHandler;
-    QQmlContext* ctxt = engine.rootContext();
-    if(!setupNameLists(ctxt, dataHandler))
-    {
-        return -1;
-    }
+	recipebook::UI::RecipeBookDataHandler dataHandler;
+	QQmlContext* ctxt = engine.rootContext();
+	if(!setupNameLists(ctxt, dataHandler))
+	{
+		return -1;
+	}
 
-    engine.load(QUrl(QStringLiteral("qrc:/recipebook.qml")));
-    if(engine.rootObjects().isEmpty())
-    {
-        return -1;
-    }
+	engine.load(QUrl(QStringLiteral("qrc:/recipebook.qml")));
+	if(engine.rootObjects().isEmpty())
+	{
+		return -1;
+	}
 
-    QObject* rootObject = engine.rootObjects().first();
-    if(!setupConnections(rootObject, dataHandler))
-    {
-        return -1;
-    }
+	QObject* rootObject = engine.rootObjects().first();
+	if(!setupConnections(rootObject, dataHandler))
+	{
+		return -1;
+	}
 
-    return app.exec();
+	return app.exec();
 }

@@ -5,31 +5,31 @@
 
 namespace recipebook
 {
-    class Ingredient;
-    class Recipe;
-    class RecipeItemGroup;
+	class Ingredient;
+	class Recipe;
+	class RecipeItemGroup;
 }
 
 namespace recipebook::serialization::json
 {
-    class JsonReaderV2 final
-    {
-    public:
-        bool read(QJsonObject& rRootObject, RBMetaData& rMetaData, RecipeBook& rRecipeBook);
+	class JsonReaderV2 final
+	{
+	public:
+		bool read(QJsonObject& rRootObject, RBMetaData& rMetaData, RecipeBook& rRecipeBook);
 
-    private:
-        JsonReaderV2();
+	private:
+		JsonReaderV2();
 
-        bool readMetadata(const QJsonObject& rObject, RBMetaData& rMetaData);
+		bool readMetadata(const QJsonObject& rObject, RBMetaData& rMetaData);
 
-        bool readAlternativesTypes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readCategories(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readIngredients(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
-        bool readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+		bool readAlternativesTypes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+		bool readCategories(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+		bool readIngredients(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+		bool readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
+		bool readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         
-        friend class JsonReader;
-    };
+		friend class JsonReader;
+	};
 }
 
 #endif

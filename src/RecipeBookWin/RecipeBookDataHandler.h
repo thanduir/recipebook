@@ -19,66 +19,66 @@
 
 namespace recipebook::UI
 {
-    class RecipeBookDataHandler : public QObject
-    {
-        Q_OBJECT
+	class RecipeBookDataHandler : public QObject
+	{
+		Q_OBJECT
 
-    public:
-        RecipeBookDataHandler();
+	public:
+		RecipeBookDataHandler();
 
-        RecipeBookSettings& getRecipeBookSettings();
+		RecipeBookSettings& getRecipeBookSettings();
 
-        // Namelists
-        QStringList getAllUnitNames() const;
-        QStringList getAllUnitShortNames() const;
-        QStringList getAllSizeNames() const;
-        QStringList getAllStatusNames() const;
+		// Namelists
+		QStringList getAllUnitNames() const;
+		QStringList getAllUnitShortNames() const;
+		QStringList getAllSizeNames() const;
+		QStringList getAllStatusNames() const;
 
-        // DataModels
-        ListModelCategories& getCategoriesModel();
-        SortModelSortOrder& getSortOrderModel();
-        ListModelProvenance& getProvenanceModel();
-        FilterModelSortOrders& getSortOrdersModel();
-        ListModelIngredients& getIngredientsModel();
-        FilterModelIngredients& getIngredientsFilterModel();
-        ListModelAlternativesGroups& getAlternativesGroups();
-        FilterModelAlternativesTypes& getAlternativesTypes();
-        ListModelRecipes& getRecipesModel();
-        FilterModelRecipes& getRecipesFilterModel();
-        ListModelRecipeItems& getRecipeItemsModel();
+		// DataModels
+		ListModelCategories& getCategoriesModel();
+		SortModelSortOrder& getSortOrderModel();
+		ListModelProvenance& getProvenanceModel();
+		FilterModelSortOrders& getSortOrdersModel();
+		ListModelIngredients& getIngredientsModel();
+		FilterModelIngredients& getIngredientsFilterModel();
+		ListModelAlternativesGroups& getAlternativesGroups();
+		FilterModelAlternativesTypes& getAlternativesTypes();
+		ListModelRecipes& getRecipesModel();
+		FilterModelRecipes& getRecipesFilterModel();
+		ListModelRecipeItems& getRecipeItemsModel();
 
-    public slots:
+	public slots:
 		void slotSave();
-        void slotExport(QString strFileURL);
-        void slotImport(QString strFileURL);
-        void slotResetData();
+		void slotExport(QString strFileURL);
+		void slotImport(QString strFileURL);
+		void slotResetData();
 
-    signals:
-        void signalDataReset();
+	signals:
+		void signalDataReset();
 
-    private:
-        RecipeBook m_RecipeBook;
-        UIStringConverter m_Converter;
+	private:
+		RecipeBook m_RecipeBook;
+		UIStringConverter m_Converter;
 
-        RecipeBookSettings m_Settings;
+		RecipeBookSettings m_Settings;
 
-        ListModelCategories m_ModelCategories;
-        SortModelSortOrder m_ModelSortOrder;
+		ListModelCategories m_ModelCategories;
+		SortModelSortOrder m_ModelSortOrder;
 
-        ListModelProvenance m_ModelProvenance;
-        FilterModelSortOrders m_ModelSortOrders;
+		ListModelProvenance m_ModelProvenance;
+		FilterModelSortOrders m_ModelSortOrders;
 
-        ListModelIngredients m_ModelIngredients;
-        FilterModelIngredients m_FilterModelIngredients;
+		ListModelIngredients m_ModelIngredients;
+		FilterModelIngredients m_FilterModelIngredients;
 
-        ListModelAlternativesGroups m_AlternativesGroups;
-        FilterModelAlternativesTypes m_AlternativesTypes;
+		ListModelAlternativesGroups m_AlternativesGroups;
+		FilterModelAlternativesTypes m_AlternativesTypes;
 
-        ListModelRecipes m_ModelRecipes;
-        FilterModelRecipes m_FilterModelRecipes;
+		ListModelRecipes m_ModelRecipes;
+		FilterModelRecipes m_FilterModelRecipes;
 
-        ListModelRecipeItems m_ModelRecipeItems;
-    };
+		ListModelRecipeItems m_ModelRecipeItems;
+	};
 }
 
 #endif

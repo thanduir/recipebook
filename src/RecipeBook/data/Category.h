@@ -5,24 +5,24 @@
 
 namespace recipebook
 {
-    class Category
-    {
-    public:
-        QString getName() const { return m_Name; }        
+	class Category
+	{
+	public:
+		QString getName() const { return m_Name; }        
 
-    private:
-        explicit Category(QString strName) : m_Name(strName) {}      
+	private:
+		explicit Category(QString strName) : m_Name(strName) {}      
 
-        Category(const Category& rOther) = delete;
-        void operator=(const Category& rOther) = delete;
+		Category(const Category& rOther) = delete;
+		void operator=(const Category& rOther) = delete;
 
-        void rename(QString strNewName) { m_Name = strNewName; }
+		void rename(QString strNewName) { m_Name = strNewName; }
 
-    private:
-        QString m_Name;
+	private:
+		QString m_Name;
 
-        friend class RecipeBook;
-    };
+		friend class RecipeBook;
+	};
 }
 
 #endif

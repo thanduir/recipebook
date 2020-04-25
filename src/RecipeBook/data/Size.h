@@ -5,12 +5,12 @@
 
 namespace recipebook
 {
-    enum class Size
-    {
-        Small = 0,
-        Normal,
-        Large
-    };
+	enum class Size
+	{
+		Small = 0,
+		Normal,
+		Large
+	};
 }
 
 #endif

@@ -19,39 +19,39 @@ using namespace recipebook::serialization;
 
 namespace
 {
-    template<class T> bool readRecipeItem(const QJsonObject& rObject, T& rItem)
-    {
-        // Amount
-        QJsonObject amountMinMax = rObject[json::c_strRecipesAmount].toObject();
-        double dMin = amountMinMax[json::c_strRecipesAmountMin].toDouble();
-        double dMax = amountMinMax[json::c_strRecipesAmountMax].toDouble();
-        QString strUnit = amountMinMax[json::c_strRecipesAmountUnit].toString();
+	template<class T> bool readRecipeItem(const QJsonObject& rObject, T& rItem)
+	{
+		// Amount
+		QJsonObject amountMinMax = rObject[json::c_strRecipesAmount].toObject();
+		double dMin = amountMinMax[json::c_strRecipesAmountMin].toDouble();
+		double dMax = amountMinMax[json::c_strRecipesAmountMax].toDouble();
+		QString strUnit = amountMinMax[json::c_strRecipesAmountUnit].toString();
 
-        bool bRange = dMax >= 0.0f;
-        rItem.getAmount().setIsRange(bRange);
-        rItem.getAmount().setQuantityMin(dMin);
-        if(bRange)
-        {
-            rItem.getAmount().setQuantityMax(dMax);
-        }
-        Unit unit = helper::convertUnit(strUnit);
-        rItem.getAmount().setUnit(unit);
+		bool bRange = dMax >= 0.0f;
+		rItem.getAmount().setIsRange(bRange);
+		rItem.getAmount().setQuantityMin(dMin);
+		if(bRange)
+		{
+			rItem.getAmount().setQuantityMax(dMax);
+		}
+		Unit unit = helper::convertUnit(strUnit);
+		rItem.getAmount().setUnit(unit);
 
-        // Size
-        QString strSize = rObject[json::c_strRecipesSize].toString();
-        Size size = helper::convertSize(strSize);
-        rItem.setSize(size);
+		// Size
+		QString strSize = rObject[json::c_strRecipesSize].toString();
+		Size size = helper::convertSize(strSize);
+		rItem.setSize(size);
 
-        // Optional
-        bool bOptional = rObject[json::c_strRecipesOptional].toBool();
-        rItem.setIsOptional(bOptional);
+		// Optional
+		bool bOptional = rObject[json::c_strRecipesOptional].toBool();
+		rItem.setIsOptional(bOptional);
 
-        // Additional info
-        QString strAdditionalInfo = rObject[json::c_strRecipesAdditionalInfo].toString();
-        rItem.setAdditionInfo(strAdditionalInfo);
+		// Additional info
+		QString strAdditionalInfo = rObject[json::c_strRecipesAdditionalInfo].toString();
+		rItem.setAdditionInfo(strAdditionalInfo);
 
-        return true;
-    }
+		return true;
+	}
 }
 
 json::JsonReaderV2::JsonReaderV2()
@@ -61,234 +61,234 @@ json::JsonReaderV2::JsonReaderV2()
 bool json::JsonReaderV2::read(QJsonObject& rRootObject, RBMetaData& rMetaData, RecipeBook& rRecipeBook)
 {
 	if(rRootObject.size() != 6)
-    {
-        qWarning("Invalid file format.");
-        return false;
-    }
+	{
+		qWarning("Invalid file format.");
+		return false;
+	}
 
-    if(!readMetadata(rRootObject[json::c_strMetadataId].toObject(), rMetaData))
-    {
-        qWarning("Invalid metadata.");
-        return false;
-    }
+	if(!readMetadata(rRootObject[json::c_strMetadataId].toObject(), rMetaData))
+	{
+		qWarning("Invalid metadata.");
+		return false;
+	}
 
-    rRecipeBook.clearData();
+	rRecipeBook.clearData();
     
-    if(!readCategories(rRootObject[json::c_strCategoriesId].toObject(), rRecipeBook))
-    {
-        qWarning("Invalid categories.");
-        rRecipeBook.clearData();
-        return false;
-    }
+	if(!readCategories(rRootObject[json::c_strCategoriesId].toObject(), rRecipeBook))
+	{
+		qWarning("Invalid categories.");
+		rRecipeBook.clearData();
+		return false;
+	}
 
-    if(!readIngredients(rRootObject[json::c_strIngredientsId].toObject(), rRecipeBook))
-    {
-        qWarning("Invalid ingredients.");
-        rRecipeBook.clearData();
-        return false;
-    }
+	if(!readIngredients(rRootObject[json::c_strIngredientsId].toObject(), rRecipeBook))
+	{
+		qWarning("Invalid ingredients.");
+		rRecipeBook.clearData();
+		return false;
+	}
 
-    if(!readAlternativesTypes(rRootObject[json::c_strAlternativesTypesId].toObject(), rRecipeBook))
-    {
-        qWarning("Invalid alternatives types.");
-        rRecipeBook.clearData();
-        return false;
-    }
+	if(!readAlternativesTypes(rRootObject[json::c_strAlternativesTypesId].toObject(), rRecipeBook))
+	{
+		qWarning("Invalid alternatives types.");
+		rRecipeBook.clearData();
+		return false;
+	}
 
-    if(!readRecipes(rRootObject[json::c_strRecipesId].toObject(), rRecipeBook))
-    {
-        qWarning("Invalid recipes.");
-        rRecipeBook.clearData();
-        return false;
-    }
+	if(!readRecipes(rRootObject[json::c_strRecipesId].toObject(), rRecipeBook))
+	{
+		qWarning("Invalid recipes.");
+		rRecipeBook.clearData();
+		return false;
+	}
 
-    if(!readShoppingList(rRootObject[json::c_strShoppinglistId].toObject(), rRecipeBook))
-    {
-        qWarning("Invalid shoppinglist.");
-        rRecipeBook.clearData();
-        return false;
-    }
+	if(!readShoppingList(rRootObject[json::c_strShoppinglistId].toObject(), rRecipeBook))
+	{
+		qWarning("Invalid shoppinglist.");
+		rRecipeBook.clearData();
+		return false;
+	}
 
 	return true;
 }
 
 bool json::JsonReaderV2::readMetadata(const QJsonObject& rObject, RBMetaData& rMetaData)
 {
-    QString strSerializerID = rObject[json::c_strMetaDataId].toString();
-    if(strSerializerID != c_strProgramId)
-    {
-        qWarning("Invalid id " + strSerializerID.toLatin1() + ".");
-        return false;
-    }
+	QString strSerializerID = rObject[json::c_strMetaDataId].toString();
+	if(strSerializerID != c_strProgramId)
+	{
+		qWarning("Invalid id " + strSerializerID.toLatin1() + ".");
+		return false;
+	}
 
-    rMetaData.strOrigin = rObject[json::c_strOriginSW].toString();
-    rMetaData.strUID = rObject[json::c_strOriginUID].toString();
+	rMetaData.strOrigin = rObject[json::c_strOriginSW].toString();
+	rMetaData.strUID = rObject[json::c_strOriginUID].toString();
 
-    int iVersion = rObject[json::c_strVersion].toInt();
-    if(iVersion > c_uiSerializerVersion || iVersion < 0)
-    {
-        qWarning("Invalid version.");
-        return false;
-    }
+	int iVersion = rObject[json::c_strVersion].toInt();
+	if(iVersion > c_uiSerializerVersion || iVersion < 0)
+	{
+		qWarning("Invalid version.");
+		return false;
+	}
 
-    return true;
+	return true;
 }
 
 bool json::JsonReaderV2::readAlternativesTypes(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
-    for(QString strAlternativesTypeName : rObject.keys())
-    {
-        QJsonObject alternativesType = rObject[strAlternativesTypeName].toObject();
-        QString strColor = alternativesType[json::c_strAlternativesColor].toString();
+	for(QString strAlternativesTypeName : rObject.keys())
+	{
+		QJsonObject alternativesType = rObject[strAlternativesTypeName].toObject();
+		QString strColor = alternativesType[json::c_strAlternativesColor].toString();
         
-        AlternativesType& rType = rRecipeBook.addAlternativesType(strAlternativesTypeName);
-        rType.setColor(strColor);
-    }
+		AlternativesType& rType = rRecipeBook.addAlternativesType(strAlternativesTypeName);
+		rType.setColor(strColor);
+	}
 
-    return true;
+	return true;
 }
 
 bool json::JsonReaderV2::readCategories(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
-    QJsonArray allCategories = rObject[json::c_strCategoriesAll].toArray();
-    for(auto category : qAsConst(allCategories))
-    {
-        rRecipeBook.addCategory(category.toString());
-    }
+	QJsonArray allCategories = rObject[json::c_strCategoriesAll].toArray();
+	for(auto category : qAsConst(allCategories))
+	{
+		rRecipeBook.addCategory(category.toString());
+	}
 
-    QJsonObject allSortOrders = rObject[json::c_strCategoriesSortOrders].toObject();
-    for(QString sortOrderName : allSortOrders.keys())
-    {
-        SortOrder& rSortOrder = rRecipeBook.addSortOrder(sortOrderName);
-        QJsonArray order = allSortOrders[sortOrderName].toArray();
-        for(int i = 0; i < order.size(); ++i)
-        {
-            QString categoryName = order[i].toString();
-            rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), i);
-        }
-    }
+	QJsonObject allSortOrders = rObject[json::c_strCategoriesSortOrders].toObject();
+	for(QString sortOrderName : allSortOrders.keys())
+	{
+		SortOrder& rSortOrder = rRecipeBook.addSortOrder(sortOrderName);
+		QJsonArray order = allSortOrders[sortOrderName].toArray();
+		for(int i = 0; i < order.size(); ++i)
+		{
+			QString categoryName = order[i].toString();
+			rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), i);
+		}
+	}
 
-    return true;
+	return true;
 }
 
 bool json::JsonReaderV2::readIngredients(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
-    for(QString strIngredientName : rObject.keys())
-    {
-        QJsonObject ingredient = rObject[strIngredientName].toObject();
-        QString strCategory = ingredient[json::c_strIngredientsCategory].toString();
-        QString strProvenance = ingredient[json::c_strIngredientsProvenance].toString();
-        QString strDefaultUnit = ingredient[json::c_strIngredientsDefaultUnit].toString();
+	for(QString strIngredientName : rObject.keys())
+	{
+		QJsonObject ingredient = rObject[strIngredientName].toObject();
+		QString strCategory = ingredient[json::c_strIngredientsCategory].toString();
+		QString strProvenance = ingredient[json::c_strIngredientsProvenance].toString();
+		QString strDefaultUnit = ingredient[json::c_strIngredientsDefaultUnit].toString();
 
-        const Category& rCategory = rRecipeBook.getCategory(strCategory);
-        Unit defaultUnit = helper::convertUnit(strDefaultUnit);
-        SortOrder* pProvenance = nullptr;
+		const Category& rCategory = rRecipeBook.getCategory(strCategory);
+		Unit defaultUnit = helper::convertUnit(strDefaultUnit);
+		SortOrder* pProvenance = nullptr;
 
-        Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
-        if(!strProvenance.isEmpty())
-        {
-            rIngredient.setProvenance(rRecipeBook.getSortOrder(strProvenance));
-        }
-    }
+		Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
+		if(!strProvenance.isEmpty())
+		{
+			rIngredient.setProvenance(rRecipeBook.getSortOrder(strProvenance));
+		}
+	}
 
-    return true;
+	return true;
 }
 
 bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
-    for(QString strRecipeName : rObject.keys())
-    {
-        QJsonObject recipe = rObject[strRecipeName].toObject();
-        uint32_t uiNrPersons = recipe[json::c_strRecipesNrPersons].toInt();
+	for(QString strRecipeName : rObject.keys())
+	{
+		QJsonObject recipe = rObject[strRecipeName].toObject();
+		uint32_t uiNrPersons = recipe[json::c_strRecipesNrPersons].toInt();
 
-        Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
+		Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
 
-        if(recipe.find(json::c_strRecipesShortDesc) != recipe.end())
-        {
-            rRecipe.setShortDescription(recipe[json::c_strRecipesShortDesc].toString());
-        }
-        if(recipe.find(json::c_strRecipesText) != recipe.end())
-        {
-            rRecipe.setRecipeText(recipe[json::c_strRecipesText].toString());
-        }
-        if(recipe.find(json::c_strRecipesCookingTime) != recipe.end())
-        {
-            QString strTime = recipe[json::c_strRecipesCookingTime].toString();
-            rRecipe.setCookingTime(QTime::fromString(strTime, "HH:mm"));
-        }
+		if(recipe.find(json::c_strRecipesShortDesc) != recipe.end())
+		{
+			rRecipe.setShortDescription(recipe[json::c_strRecipesShortDesc].toString());
+		}
+		if(recipe.find(json::c_strRecipesText) != recipe.end())
+		{
+			rRecipe.setRecipeText(recipe[json::c_strRecipesText].toString());
+		}
+		if(recipe.find(json::c_strRecipesCookingTime) != recipe.end())
+		{
+			QString strTime = recipe[json::c_strRecipesCookingTime].toString();
+			rRecipe.setCookingTime(QTime::fromString(strTime, "HH:mm"));
+		}
 
-        QJsonObject items = recipe[json::c_strRecipesItems].toObject();
-        QMap<int, RecipeItem*> indexMap;
-        for(QString strRecipeItem : items.keys())
-        {
-            QJsonObject item = items[strRecipeItem].toObject();
-            int posItem = item[json::c_strRecipesPosition].toInt();
+		QJsonObject items = recipe[json::c_strRecipesItems].toObject();
+		QMap<int, RecipeItem*> indexMap;
+		for(QString strRecipeItem : items.keys())
+		{
+			QJsonObject item = items[strRecipeItem].toObject();
+			int posItem = item[json::c_strRecipesPosition].toInt();
 
-            const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-            RecipeItem& rItem = rRecipe.addRecipeItem(rIngredient);
-            indexMap.insert(posItem, &rItem);
+			const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
+			RecipeItem& rItem = rRecipe.addRecipeItem(rIngredient);
+			indexMap.insert(posItem, &rItem);
 
-            QJsonObject itemObject = items[strRecipeItem].toObject();
-            QString groupName = itemObject[json::c_strRecipesGroup].toString();
-            if(groupName != "")
-            {
-                rItem.setAlternativesGroup(rRecipeBook.getAlternativesType(groupName));
-            }
+			QJsonObject itemObject = items[strRecipeItem].toObject();
+			QString groupName = itemObject[json::c_strRecipesGroup].toString();
+			if(groupName != "")
+			{
+				rItem.setAlternativesGroup(rRecipeBook.getAlternativesType(groupName));
+			}
 
-            if(!readRecipeItem(itemObject, rItem))
-            {
-                return false;
-            }
-        }
+			if(!readRecipeItem(itemObject, rItem))
+			{
+				return false;
+			}
+		}
 
-        // Sort items correctly
-        for(int i : indexMap.keys())
-        {
-            rRecipe.moveRecipeItem(*indexMap[i], i);
-        }
-    }
+		// Sort items correctly
+		for(int i : indexMap.keys())
+		{
+			rRecipe.moveRecipeItem(*indexMap[i], i);
+		}
+	}
 
-    return true;
+	return true;
 }
 
 bool json::JsonReaderV2::readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook)
 {
-    for(QString strRecipeName : rObject.keys())
-    {
-        QJsonObject recipe = rObject[strRecipeName].toObject();
-        float fScalingFactor = recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
-        QString strDueDate = recipe[json::c_strShoppingRecipesDueDate].toString();
+	for(QString strRecipeName : rObject.keys())
+	{
+		QJsonObject recipe = rObject[strRecipeName].toObject();
+		float fScalingFactor = recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
+		QString strDueDate = recipe[json::c_strShoppingRecipesDueDate].toString();
 
-        ShoppingRecipe& rRecipe = rRecipeBook.addNewShoppingRecipe(strRecipeName, fScalingFactor);
-        rRecipe.setDueDate(QDate::fromString(strDueDate, Qt::ISODate));
+		ShoppingRecipe& rRecipe = rRecipeBook.addNewShoppingRecipe(strRecipeName, fScalingFactor);
+		rRecipe.setDueDate(QDate::fromString(strDueDate, Qt::ISODate));
 
-        QJsonObject items = recipe[json::c_strRecipesItems].toObject();
-        QMap<int, ShoppingListItem*> indexMap;
-        for(QString strRecipeItem : items.keys())
-        {
-            QJsonObject item = items[strRecipeItem].toObject();
+		QJsonObject items = recipe[json::c_strRecipesItems].toObject();
+		QMap<int, ShoppingListItem*> indexMap;
+		for(QString strRecipeItem : items.keys())
+		{
+			QJsonObject item = items[strRecipeItem].toObject();
 
-            const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-            int pos = item[json::c_strRecipesPosition].toInt();
-            ShoppingListItem& rItem = rRecipe.addItem(rIngredient);
-            indexMap.insert(pos, &rItem);
+			const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
+			int pos = item[json::c_strRecipesPosition].toInt();
+			ShoppingListItem& rItem = rRecipe.addItem(rIngredient);
+			indexMap.insert(pos, &rItem);
 
-            QString strStatus = item[json::c_strRecipesStatus].toString();
-            Status status = helper::convertStatus(strStatus);
-            rItem.setStatus(status);
+			QString strStatus = item[json::c_strRecipesStatus].toString();
+			Status status = helper::convertStatus(strStatus);
+			rItem.setStatus(status);
 
-            if(!readRecipeItem(item, rItem))
-            {
-                return false;
-            }
-        }
+			if(!readRecipeItem(item, rItem))
+			{
+				return false;
+			}
+		}
 
-        // Sort items correctly
-        for(int i : indexMap.keys())
-        {
-            rRecipe.moveItem(*indexMap[i], i);
-        }
-    }
+		// Sort items correctly
+		for(int i : indexMap.keys())
+		{
+			rRecipe.moveItem(*indexMap[i], i);
+		}
+	}
 
-    return true;
+	return true;
 }

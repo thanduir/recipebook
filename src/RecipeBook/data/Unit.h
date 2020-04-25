@@ -5,24 +5,24 @@
 
 namespace recipebook
 {
-    enum class Unit
-    {
-        Count = 0,
+	enum class Unit
+	{
+		Count = 0,
 
-        Kilogram,
-        Gram,
+		Kilogram,
+		Gram,
 
-        Liter,
-        Deciliter,
-        Milliliter,
+		Liter,
+		Deciliter,
+		Milliliter,
 
-        Dessertspoon,
-        Teaspoon,
+		Dessertspoon,
+		Teaspoon,
 
-        Unitless
-    };
+		Unitless
+	};
 
-    float getDefaultQuantity(Unit unit);
+	float getDefaultQuantity(Unit unit);
 }
 
 #endif

@@ -6,18 +6,18 @@
 
 namespace recipebook::serialization
 {
-    enum class FileFormat
-    {
-        Json,
-        JsonForApp      // Json format but with striped recipe descriptions to minimize space usage
-    };
+	enum class FileFormat
+	{
+		Json,
+		JsonForApp      // Json format but with striped recipe descriptions to minimize space usage
+	};
 
-    class SerializerFactory
-    {
-    public:
-        static QSharedPointer<IRBWriter> getWriter(FileFormat format, QString strUID);
-        static QSharedPointer<IRBReader> getReader(FileFormat format);
-    };
+	class SerializerFactory
+	{
+	public:
+		static QSharedPointer<IRBWriter> getWriter(FileFormat format, QString strUID);
+		static QSharedPointer<IRBReader> getReader(FileFormat format);
+	};
 }
 
 #endif

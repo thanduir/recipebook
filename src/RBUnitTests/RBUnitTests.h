@@ -2,9 +2,9 @@
 
 class RBUnitTests : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 private slots:
-    void serializeTest();
-    void serializeTestApp();
+	void serializeTest();
+	void serializeTestApp();
 };

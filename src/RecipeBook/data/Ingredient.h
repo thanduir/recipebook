@@ -6,41 +6,41 @@
 
 namespace recipebook
 {
-    class Category;
-    class SortOrder;
+	class Category;
+	class SortOrder;
 
-    class Ingredient
-    {
-    public:
-        QString getName() const { return m_Name; }
+	class Ingredient
+	{
+	public:
+		QString getName() const { return m_Name; }
 
-        const Category& getCategory() const { return *m_pCategory; }
-        void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }
+		const Category& getCategory() const { return *m_pCategory; }
+		void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }
 
-        bool hasProvenanceEverywhere() const { return m_pProvenance == nullptr; }
-        const SortOrder& getProvenance() const;
-        void setProvenanceEverywhere();
-        void setProvenance(const SortOrder& rProvenance);
+		bool hasProvenanceEverywhere() const { return m_pProvenance == nullptr; }
+		const SortOrder& getProvenance() const;
+		void setProvenanceEverywhere();
+		void setProvenance(const SortOrder& rProvenance);
 
-        Unit getDefaultUnit() const { return m_DefaultUnit; }
-        void setDefaultUnit(Unit unit) { m_DefaultUnit = unit; }
+		Unit getDefaultUnit() const { return m_DefaultUnit; }
+		void setDefaultUnit(Unit unit) { m_DefaultUnit = unit; }
 
-    private:
-        Ingredient(QString strName, const Category& rCategory, Unit defaultUnit);
+	private:
+		Ingredient(QString strName, const Category& rCategory, Unit defaultUnit);
 
-        Ingredient(const Ingredient& rOther) = delete;
-        void operator=(const Ingredient& rOther) = delete;
+		Ingredient(const Ingredient& rOther) = delete;
+		void operator=(const Ingredient& rOther) = delete;
 
-        void rename(QString strNewName) { m_Name = strNewName; }
+		void rename(QString strNewName) { m_Name = strNewName; }
 
-    private:
-        QString m_Name;
-        const Category* m_pCategory;
-        const SortOrder* m_pProvenance;
-        Unit m_DefaultUnit;
+	private:
+		QString m_Name;
+		const Category* m_pCategory;
+		const SortOrder* m_pProvenance;
+		Unit m_DefaultUnit;
 
-        friend class RecipeBook;
-    };
+		friend class RecipeBook;
+	};
 }
 
 #endif

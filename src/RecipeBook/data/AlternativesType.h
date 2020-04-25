@@ -6,28 +6,28 @@
 
 namespace recipebook
 {
-    class AlternativesType
-    {
-    public:
-        QString getName() const { return m_Name; }
+	class AlternativesType
+	{
+	public:
+		QString getName() const { return m_Name; }
 
-        QColor getColor() const { return m_Color; }
-        void setColor(QColor color) { m_Color = color; }
+		QColor getColor() const { return m_Color; }
+		void setColor(QColor color) { m_Color = color; }
 
-    private:
-        explicit AlternativesType(QString strName) : m_Name(strName), m_Color(Qt::blue) {}      
+	private:
+		explicit AlternativesType(QString strName) : m_Name(strName), m_Color(Qt::blue) {}      
 
-        AlternativesType(const AlternativesType& rOther) = delete;
-        void operator=(const AlternativesType& rOther) = delete;
+		AlternativesType(const AlternativesType& rOther) = delete;
+		void operator=(const AlternativesType& rOther) = delete;
 
-        void rename(QString strNewName) { m_Name = strNewName; }
+		void rename(QString strNewName) { m_Name = strNewName; }
 
-    private:
-        QString m_Name;
-        QColor m_Color;
+	private:
+		QString m_Name;
+		QColor m_Color;
 
-        friend class RecipeBook;
-    };
+		friend class RecipeBook;
+	};
 }
 
 #endif
