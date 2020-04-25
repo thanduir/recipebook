@@ -28,7 +28,7 @@ namespace recipebook::serialization
         virtual bool serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook) = 0;
     };
 
-    /* TODO: Write concept similar to what's being done in the app? See below:
+    /* TODO: Write concept similar to what's being done in the app! See below:
 
         Concept if the file already exists:
             * write to filename.new

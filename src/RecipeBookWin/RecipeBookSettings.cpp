@@ -1,10 +1,13 @@
 #include "RecipeBookSettings.h"
 #include <QCoreApplication>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QUuid>
 #include "serialization/helper/StringConverter.h"
 
 using namespace recipebook;
+
+constexpr char* c_strAppRBSaveFilename  = "/RecipeBook.json";
 
 constexpr char* c_strAppInstanceUID     = "appInstanceUID";
 
@@ -13,9 +16,13 @@ constexpr char* c_strDefaultNrPersons   = "defaults/nrpersons";
 constexpr char* c_strDefaultCategory    = "defaults/category";
 constexpr char* c_strDefaultSortOrder   = "defaults/sortorder";
 
+constexpr char* c_strLastExportFolder   = "folders/lastexportfolder";
+constexpr char* c_strLastImportFolder   = "folders/lastimportfolder";
+
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
 RecipeBookSettings::RecipeBookSettings()
+:	m_AppRBFilePath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation))
 {
 	QCoreApplication::setOrganizationName("phwidmer.ch");
     QCoreApplication::setOrganizationDomain("phwidmer.ch");
@@ -31,6 +38,16 @@ QString RecipeBookSettings::getApplicationInstanceUID()
     }
 
     return settings.value(c_strAppInstanceUID).toString();
+}
+
+QString RecipeBookSettings::applicationRecipeBookSaveFile() const
+{
+    return m_AppRBFilePath + c_strAppRBSaveFilename;
+}
+
+QString RecipeBookSettings::applicationRecipeBookAppsDataFolder() const
+{
+	return m_AppRBFilePath;
 }
 
 quint32 RecipeBookSettings::getDefaultUnit() const
@@ -84,4 +101,30 @@ void RecipeBookSettings::setDefaultSortOrder(QString strSortOrder)
 {
     QSettings settings;
     settings.setValue(c_strDefaultSortOrder, strSortOrder);
+}
+
+QString RecipeBookSettings::lastUsedExportFolder() const
+{
+    QSettings settings;
+    QString defaultValue = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    return settings.value(c_strLastExportFolder, defaultValue).toString();
+}
+
+void RecipeBookSettings::setLastUsedExportFolder(QString strFolder)
+{
+    QSettings settings;
+    settings.setValue(c_strLastExportFolder, strFolder);
+}
+
+QString RecipeBookSettings::lastUsedImportFolder() const
+{
+    QSettings settings;
+    QString defaultValue = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    return settings.value(c_strLastImportFolder, defaultValue).toString();
+}
+
+void RecipeBookSettings::setLastUsedImportFolder(QString strFolder)
+{
+    QSettings settings;
+    settings.setValue(c_strLastImportFolder, strFolder);
 }

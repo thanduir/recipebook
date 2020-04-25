@@ -8,12 +8,14 @@ namespace recipebook
 {
     class RecipeBookSettings : public QObject
     {
-        Q_OBJECT
+		Q_OBJECT
 
     public:
         RecipeBookSettings();
 
     public slots:
+		QString applicationRecipeBookSaveFile() const;
+		QString applicationRecipeBookAppsDataFolder() const;
         QString getApplicationInstanceUID();
 
         quint32 getDefaultUnit() const;
@@ -28,8 +30,17 @@ namespace recipebook
         QString getDefaultSortOrder() const;
         void setDefaultSortOrder(QString strSortOrder);
 
+		QString lastUsedExportFolder() const;
+		void setLastUsedExportFolder(QString strFolder);
+
+		QString lastUsedImportFolder() const;
+        void setLastUsedImportFolder(QString strFolder);
+
     signals:
         void resetAllData() const;
+
+    private:
+        QString m_AppRBFilePath;
     };
 }
 

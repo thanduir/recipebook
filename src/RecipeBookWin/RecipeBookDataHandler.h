@@ -48,7 +48,9 @@ namespace recipebook::UI
         ListModelRecipeItems& getRecipeItemsModel();
 
     public slots:
-        void slotSaveAs(QString strFileURL);
+		void slotSave();
+        void slotExport(QString strFileURL);
+        void slotImport(QString strFileURL);
         void slotResetData();
 
     signals:

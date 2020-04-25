@@ -14,13 +14,32 @@ ApplicationWindow {
         y = Screen.height / 2 - height / 2
     }
 
+	signal onClosingRecipeBook()
+	onClosing: onClosingRecipeBook()
+
     header: ToolBar {
         RowLayout {
             ToolButton {
                 // TODO: Icon (instead of text?)
                 text: qsTr("Import file")
-                // TODO: implementieren und enablen!
-                enabled: false
+                onClicked: {
+                    fileDialogImport.folder = "file:///" + recipeBookSettings.lastUsedImportFolder()
+                    fileDialogImport.open()
+                }
+
+                FileDialog {
+                    id: fileDialogImport
+                    objectName: "fileDialogImport"
+
+                    title: qsTr("Export data")
+                    modality: Qt.WindowModal
+                    nameFilters: [ qsTr("Json files (*.json)") ]
+                    selectExisting: true
+                    selectMultiple: false
+                    selectFolder: false
+                    signal onImport(filename: string)
+                    onAccepted: onImport(fileDialogImport.fileUrls)
+                }
             }
 
             ToolSeparator {}
@@ -36,17 +55,11 @@ ApplicationWindow {
 
             ToolButton {
                 // TODO: Icon (instead of text?)
-                text: qsTr("Save")
-                // TODO: implementieren und enablen!
-                enabled: false
-            }
-
-            ToolSeparator {}
-
-            ToolButton {
-                // TODO: Icon (instead of text?)
                 text: qsTr("Export")
-                onClicked: fileDialogExport.open()
+                onClicked: {
+                    fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedExportFolder()
+                    fileDialogExport.open()
+                }
 
                 FileDialog {
                     id: fileDialogExport
@@ -58,9 +71,8 @@ ApplicationWindow {
                     selectExisting: false
                     selectMultiple: false
                     selectFolder: false
-                    folder: shortcuts.documents
-                    signal onSaveAs(filename: string)
-                    onAccepted: onSaveAs(fileDialogExport.fileUrls)
+                    signal onExport(filename: string)
+                    onAccepted: onExport(fileDialogExport.fileUrls)
                 }
             }
 
