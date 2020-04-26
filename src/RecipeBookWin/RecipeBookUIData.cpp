@@ -12,7 +12,7 @@
 using namespace recipebook::UI;
 using namespace recipebook::serialization;
 
-const int c_SaveIntervalSeconds = 300;
+const int c_SaveIntervalSeconds = 60;
 
 RecipeBookUIData::RecipeBookUIData()
 :	m_RBData(),
@@ -98,10 +98,14 @@ void RecipeBookUIData::slotSave()
 		return;
 	}
 
-	QString localFileName = m_Settings.applicationRecipeBookSaveFile();
-				
+	if(!m_RBData.hasDataChanged())
+	{
+		m_SaveLock = 0;
+		return;
+	}
+
 	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
-	QFile fileOut(localFileName);
+	QFile fileOut(m_Settings.applicationRecipeBookSaveFile());
 
 	recipebook::RBDataReadHandle handle(m_RBData);
 	if(!spWriter->serialize(handle.data(), fileOut))
@@ -109,6 +113,7 @@ void RecipeBookUIData::slotSave()
 		qCritical("Couldn't write recipe book file \"%s\"", qUtf8Printable(m_Settings.applicationRecipeBookAppsDataFolder()));
 	}
 
+	m_RBData.setDataUnchanged();
 	m_SaveLock = 0;
 }
 
@@ -149,6 +154,8 @@ void RecipeBookUIData::slotImport(QString strFileURL)
 		{
 			recipebook::RBDataWriteHandle handle(m_RBData);
 			handle.data() = recipeBook;
+
+			m_RBData.setDataUnchanged();
 		}
 		emit signalDataReset();
 	}
@@ -169,6 +176,8 @@ void RecipeBookUIData::slotLoadDefaultData()
 		{
 			recipebook::RBDataWriteHandle handle(m_RBData);
 			handle.data() = recipeBook;
+
+			m_RBData.setDataUnchanged();
 		}
 		emit signalDataReset();
 	}
@@ -179,6 +188,8 @@ void RecipeBookUIData::slotResetData()
 	{
 		recipebook::RBDataWriteHandle handle(m_RBData);
 		handle.data().clearData();
+
+		m_RBData.setDataUnchanged();
 	}
 
 	emit signalDataReset();

@@ -144,13 +144,15 @@ quint32 ListModelRecipes::cookingTime(int row) const
 
 void ListModelRecipes::setNumberOfPersons(int row, qint32 nrPersons)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if (row < 0 || row >= (int)handle.data().getRecipesCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return;
 
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	rRecipe.setNumberOfPersons(nrPersons);
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		rRecipe.setNumberOfPersons(nrPersons);
+	}
 
 	setDataChanged(row, RecipeRoles::NumberOfPersons);
 	setDataChanged(row, RecipeRoles::EverythingSet);
@@ -158,13 +160,15 @@ void ListModelRecipes::setNumberOfPersons(int row, qint32 nrPersons)
 
 void ListModelRecipes::setShortDescription(int row, QString desc)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if (row < 0 || row >= (int)handle.data().getRecipesCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return;
 
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	rRecipe.setShortDescription(desc);
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		rRecipe.setShortDescription(desc);
+	}
 
 	setDataChanged(row, RecipeRoles::ShortDescription);
 	setDataChanged(row, RecipeRoles::EverythingSet);
@@ -172,13 +176,15 @@ void ListModelRecipes::setShortDescription(int row, QString desc)
 
 void ListModelRecipes::setRecipeText(int row, QString text)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if (row < 0 || row >= (int)handle.data().getRecipesCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return;
 
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	rRecipe.setRecipeText(text);
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		rRecipe.setRecipeText(text);
+	}
 
 	setDataChanged(row, RecipeRoles::RecipeText);
 	setDataChanged(row, RecipeRoles::EverythingSet);
@@ -186,14 +192,16 @@ void ListModelRecipes::setRecipeText(int row, QString text)
 
 void ListModelRecipes::setCookingTime(int row, quint32 timeInMin)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if (row < 0 || row >= (int)handle.data().getRecipesCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return;
 
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	QTime time(timeInMin / 60, timeInMin % 60);
-	rRecipe.setCookingTime(time);
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		QTime time(timeInMin / 60, timeInMin % 60);
+		rRecipe.setCookingTime(time);
+	}
 
 	setDataChanged(row, RecipeRoles::CookingTimeInMin);
 	setDataChanged(row, RecipeRoles::EverythingSet);
@@ -201,29 +209,32 @@ void ListModelRecipes::setCookingTime(int row, quint32 timeInMin)
 
 int ListModelRecipes::renameRecipe(int row, QString newName)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int) handle.data().getRecipesCount())
-		return -1;
-
-	if(handle.data().existsRecipe(newName))
+	qint32 newIndex = -1;
 	{
-		return -1;
-	}
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	qint32 newIndex = handle.data().getRecipeIndex(newName);
-	if(row != newIndex)
-	{
-		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
-	}
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return -1;
 
-	if(newIndex > row)
-	{
-		newIndex -= 1;
-	}
+		if(handle.data().existsRecipe(newName))
+		{
+			return -1;
+		}
 
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	handle.data().renameRecipe(rRecipe, newName);
+		newIndex = handle.data().getRecipeIndex(newName);
+		if(row != newIndex)
+		{
+			beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+		}
+
+		if(newIndex > row)
+		{
+			newIndex -= 1;
+		}
+
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		handle.data().renameRecipe(rRecipe, newName);
+	}
 
 	if(row != newIndex)
 	{
@@ -237,18 +248,21 @@ int ListModelRecipes::renameRecipe(int row, QString newName)
 
 int ListModelRecipes::addRecipe(QString strRecipe)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(handle.data().existsRecipe(strRecipe))
+	qint32 index = -1;
 	{
-		return -1;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(handle.data().existsRecipe(strRecipe))
+		{
+			return -1;
+		}
+
+		index = handle.data().getRecipeIndex(strRecipe);
+
+		beginInsertRows(QModelIndex(), index, index);
+
+		handle.data().addRecipe(strRecipe, m_rSettings.getDefaultRecipeNrPersons());
 	}
-
-	qint32 index = handle.data().getRecipeIndex(strRecipe);
-
-	beginInsertRows(QModelIndex(),index, index);
-
-	handle.data().addRecipe(strRecipe, m_rSettings.getDefaultRecipeNrPersons());
 
 	endInsertRows();
 
@@ -287,17 +301,20 @@ bool ListModelRecipes::existsRecipe(QString strRecipe) const
 
 bool ListModelRecipes::removeRecipe(int row)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int) handle.data().getRecipesCount())
+	bool bSuccess = false;
 	{
-		return false;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+		{
+			return false;
+		}
+
+		beginRemoveRows(QModelIndex(), row, row);
+
+		Recipe& rRecipe = handle.data().getRecipeAt(row);
+		bSuccess = handle.data().removeRecipe(rRecipe);
 	}
-
-	beginRemoveRows(QModelIndex(), row, row);
-
-	Recipe& rRecipe = handle.data().getRecipeAt(row);
-	bool bSuccess = handle.data().removeRecipe(rRecipe);
 
 	endRemoveRows();
 

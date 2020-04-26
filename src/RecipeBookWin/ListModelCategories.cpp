@@ -55,18 +55,20 @@ QString ListModelCategories::name(int row) const
 
 int ListModelCategories::renameCategory(int row, QString newName)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
-		return -1;
-
-	if(handle.data().existsCategory(newName))
 	{
-		return -1;
-	}
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	Category& rCategory = handle.data().getCategoryAt(row);
-	handle.data().renameCategory(rCategory, newName);
+		if(row < 0 || row >= (int) handle.data().getCategoriesCount())
+			return -1;
+
+		if(handle.data().existsCategory(newName))
+		{
+			return -1;
+		}
+
+		Category& rCategory = handle.data().getCategoryAt(row);
+		handle.data().renameCategory(rCategory, newName);
+	}
 
 	dataChanged(index(row), index(row));
     
@@ -77,17 +79,20 @@ int ListModelCategories::renameCategory(int row, QString newName)
 
 int ListModelCategories::addCategory(QString strCategory)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(handle.data().existsCategory(strCategory))
+	qint32 index = -1;
 	{
-		return -1;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(handle.data().existsCategory(strCategory))
+		{
+			return -1;
+		}
+
+		index = handle.data().getCategoryIndex(strCategory);
+
+		beginInsertRows(QModelIndex(), index, index);
+		handle.data().addCategory(strCategory);
 	}
-
-	qint32 index = handle.data().getCategoryIndex(strCategory);
-
-	beginInsertRows(QModelIndex(),index, index);
-	handle.data().addCategory(strCategory);
 	endInsertRows();
 
 	return index;
@@ -147,22 +152,25 @@ bool ListModelCategories::canCategoryBeRemoved(int row) const
 
 bool ListModelCategories::removeCategory(int row)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
+	bool bSuccess = false;
 	{
-		return false;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(row < 0 || row >= (int) handle.data().getCategoriesCount())
+		{
+			return false;
+		}
+
+		if(!canCategoryBeRemoved(row))
+		{
+			return false;
+		}
+
+		beginRemoveRows(QModelIndex(), row, row);
+
+		const Category& rCategory = handle.data().getCategoryAt(row);
+		bSuccess = handle.data().removeCategory(rCategory);
 	}
-
-	if(!canCategoryBeRemoved(row))
-	{
-		return false;
-	}
-
-	beginRemoveRows(QModelIndex(), row, row);
-
-	const Category& rCategory = handle.data().getCategoryAt(row);
-	bool bSuccess = handle.data().removeCategory(rCategory);
 
 	endRemoveRows();
 

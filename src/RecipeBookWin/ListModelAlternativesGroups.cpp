@@ -78,18 +78,20 @@ QString ListModelAlternativesGroups::name(int row) const
 
 int ListModelAlternativesGroups::renameType(int row, QString newName)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row == c_uiRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
-		return -1;
-
-	if(handle.data().existsAlternativesType(newName))
 	{
-		return -1;
-	}
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
-	handle.data().renameAlternativesType(rType, newName);
+		if(row == c_uiRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
+			return -1;
+
+		if(handle.data().existsAlternativesType(newName))
+		{
+			return -1;
+		}
+
+		AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+		handle.data().renameAlternativesType(rType, newName);
+	}
 
 	QVector<int> rolesChanged;
 	rolesChanged.append((int)AlternativesGroupsRoles::NameRole);
@@ -113,13 +115,15 @@ QString ListModelAlternativesGroups::color(int row) const
 
 void ListModelAlternativesGroups::setColor(int row, QString strColor)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+			return;
 
-	AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
-	rType.setColor(strColor);
+		AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+		rType.setColor(strColor);
+	}
 
 	QVector<int> rolesChanged;
 	rolesChanged.append((int)AlternativesGroupsRoles::ColorRole);
@@ -130,17 +134,21 @@ void ListModelAlternativesGroups::setColor(int row, QString strColor)
 
 int ListModelAlternativesGroups::addType(QString strType)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(handle.data().existsAlternativesType(strType) || strType == stringNoAlternativesGroup())
+	qint32 index = -1;
 	{
-		return -1;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(handle.data().existsAlternativesType(strType) || strType == stringNoAlternativesGroup())
+		{
+			return -1;
+		}
+
+		index = handle.data().getAlternativesTypeIndex(strType) + 1;
+
+		beginInsertRows(QModelIndex(), index, index);
+		handle.data().addAlternativesType(strType);
 	}
 
-	qint32 index = handle.data().getAlternativesTypeIndex(strType) + 1;
-
-	beginInsertRows(QModelIndex(),index, index);
-	handle.data().addAlternativesType(strType);
 	endInsertRows();
 
 	return index;
@@ -172,22 +180,25 @@ bool ListModelAlternativesGroups::canTypeBeRemoved(int row) const
 
 bool ListModelAlternativesGroups::removeType(int row)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row == c_uiRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
+	bool bSuccess = false;
 	{
-		return false;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(row == c_uiRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
+		{
+			return false;
+		}
+
+		if(!canTypeBeRemoved(row))
+		{
+			return false;
+		}
+
+		beginRemoveRows(QModelIndex(), row, row);
+
+		const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+		bSuccess = handle.data().removeAlternativesType(rType);
 	}
-
-	if(!canTypeBeRemoved(row))
-	{
-		return false;
-	}
-
-	beginRemoveRows(QModelIndex(), row, row);
-
-	const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
-	bool bSuccess = handle.data().removeAlternativesType(rType);
 
 	endRemoveRows();
 

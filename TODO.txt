@@ -2,10 +2,8 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- Auto save: increase frequency but only save if something changed (i.e. if a WriteHandle was used somewhere)!
-
-	- TODOs in recipebook.qml and shoppingTab.qml (and verify that there are no other solvable TODOs atm)
 	- TEST EVERYTHING!
+	- TODOs in recipebook.qml and shoppingTab.qml
 	
 	- ShoppingRecipe and ShoppingList dialogs with all features
 		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?

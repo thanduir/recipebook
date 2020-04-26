@@ -35,9 +35,13 @@ namespace recipebook
 	public:
 		RBDataHandler();
 
+		bool hasDataChanged() { return m_bDataChanged; }
+		void setDataUnchanged() { m_bDataChanged = false; }
+
 	private:
 		mutable QReadWriteLock m_Lock;
 		RecipeBook m_RecipeBook;
+		bool m_bDataChanged;
 
 		friend class RBDataReadHandle;
 		friend class RBDataWriteHandle;

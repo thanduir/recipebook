@@ -331,53 +331,64 @@ QString ListModelRecipeItems::groupColor(int row) const
         
 void ListModelRecipeItems::setAmountUnit(int row, quint32 uiUnit)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.getAmount().setUnit((Unit)uiUnit);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.getAmount().setUnit((Unit) uiUnit);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::AmountUnitRole);
 }
 
 void ListModelRecipeItems::setAmountMin(int row, float amount)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.getAmount().setQuantityMin(amount);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.getAmount().setQuantityMin(amount);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::AmountMinRole);
 }
 
 void ListModelRecipeItems::setAmountMax(int row, float amount)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.getAmount().setQuantityMax(amount);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.getAmount().setQuantityMax(amount);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
 }
 
 void ListModelRecipeItems::setAmountIsRange(int row, bool bRange)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.getAmount().setIsRange(bRange);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.getAmount().setIsRange(bRange);
+	}
 
 	setDataChanged(row, RecipeItemsRoles::AmountIsRangeRole);
 	setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
@@ -385,80 +396,99 @@ void ListModelRecipeItems::setAmountIsRange(int row, bool bRange)
 
 void ListModelRecipeItems::setAdditionalInfo(int row, QString text)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.setAdditionInfo(text);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.setAdditionInfo(text);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::AdditionalInfoRole);
 }
 
 void ListModelRecipeItems::setSizeIndex(int row, quint32 index)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.setSize((Size)index);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.setSize((Size) index);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::SizeRole);
 }
 
 void ListModelRecipeItems::setOptional(int row, bool bOptional)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
 
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	rItem.setIsOptional(bOptional);
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		rItem.setIsOptional(bOptional);
+	}
+
 	setDataChanged(row, RecipeItemsRoles::OptionalRole);
 }
 
 void ListModelRecipeItems::setGroup(int row, QString group)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
-
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return;
-
-	RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	if(group == m_rConverter.getStringNoAlternativesGroup())
 	{
-		rItem.resetAlternativesGroup();
-		setDataChanged(row, RecipeItemsRoles::GroupRole);
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return;
+
+		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		if(group == m_rConverter.getStringNoAlternativesGroup())
+		{
+			rItem.resetAlternativesGroup();
+		}
+		else if(handle.data().existsAlternativesType(group))
+		{
+			rItem.setAlternativesGroup(handle.data().getAlternativesType(group));
+
+		}
+		else
+		{
+			return;
+		}
 	}
-	else if(handle.data().existsAlternativesType(group))
-	{
-		rItem.setAlternativesGroup(handle.data().getAlternativesType(group));
-		setDataChanged(row, RecipeItemsRoles::GroupRole);
-	}
+
+	setDataChanged(row, RecipeItemsRoles::GroupRole);
 }
 
 int ListModelRecipeItems::addRecipeItem(QString strIngredient)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
-
-	if(pRecipe == nullptr || !handle.data().existsIngredient(strIngredient))
+	qint32 index = -1;
 	{
-		return -1;
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || !handle.data().existsIngredient(strIngredient))
+		{
+			return -1;
+		}
+
+		const Ingredient& rIngredient = handle.data().getIngredient(strIngredient);
+		index = pRecipe->getRecipeItemsCount();
+
+		beginInsertRows(QModelIndex(), index, index);
+
+		pRecipe->addRecipeItem(rIngredient);
 	}
-
-	const Ingredient& rIngredient = handle.data().getIngredient(strIngredient);
-	qint32 index = pRecipe->getRecipeItemsCount();
-
-	beginInsertRows(QModelIndex(), index, index);
-
-	RecipeItem& rItem = pRecipe->addRecipeItem(rIngredient);
 
 	endInsertRows();
 
@@ -467,16 +497,19 @@ int ListModelRecipeItems::addRecipeItem(QString strIngredient)
 
 bool ListModelRecipeItems::removeItem(int row)
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
+	bool bSuccess = false;
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 
-	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return false;
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
+			return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+		const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
 
-	beginRemoveRows(QModelIndex(), row, row);
-	bool bSuccess = pRecipe->removeRecipeItem(rItem);
+		beginRemoveRows(QModelIndex(), row, row);
+		bSuccess = pRecipe->removeRecipeItem(rItem);
+	}
 	endRemoveRows();
 
 	return bSuccess;
@@ -494,7 +527,6 @@ void ListModelRecipeItems::moveItem(int row, int target)
 		   || row == target)
 			return;
 
-		// TODO: DEADLOCK BECAUSE endMoveRows NEEDS TO GET rowCount!
 		beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
 		pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt(row), target);
 	}

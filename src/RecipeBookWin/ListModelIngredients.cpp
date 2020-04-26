@@ -172,41 +172,45 @@ QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
 
 void ListModelIngredients::setCategory(int row, QString newCategory)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+			return;
 
-	if(!handle.data().existsCategory(newCategory))
-		return;
+		if(!handle.data().existsCategory(newCategory))
+			return;
 
-	const Category& rCategory = handle.data().getCategory(newCategory);
-	Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	rIngredient.setCategory(rCategory);
+		const Category& rCategory = handle.data().getCategory(newCategory);
+		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+		rIngredient.setCategory(rCategory);
+	}
 
 	setDataChanged(row, IngredientRoles::CategoryRole);
 }
 
 void ListModelIngredients::setProvenance(int row, QString newProvenance)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+			return;
 
-	Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	if(newProvenance == m_rConverter.getProvenanceEverywhere())
-	{
-		rIngredient.setProvenanceEverywhere();
-	}
-	else if(handle.data().existsSortOrder(newProvenance))
-	{
-		const SortOrder& rSortOrder = handle.data().getSortOrder(newProvenance);
-		rIngredient.setProvenance(rSortOrder);
-	}
-	else
-	{
-		return;
+		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+		if(newProvenance == m_rConverter.getProvenanceEverywhere())
+		{
+			rIngredient.setProvenanceEverywhere();
+		}
+		else if(handle.data().existsSortOrder(newProvenance))
+		{
+			const SortOrder& rSortOrder = handle.data().getSortOrder(newProvenance);
+			rIngredient.setProvenance(rSortOrder);
+		}
+		else
+		{
+			return;
+		}
 	}
 
 	setDataChanged(row, IngredientRoles::ProvenanceRole);
@@ -214,14 +218,16 @@ void ListModelIngredients::setProvenance(int row, QString newProvenance)
 
 void ListModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	if (row < 0 || row >= (int)handle.data().getIngredientsCount())
-		return;
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+			return;
 
-	Unit unit = m_rConverter.convertUnit(newDefaultUnit);
-	Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	rIngredient.setDefaultUnit(unit);
+		Unit unit = m_rConverter.convertUnit(newDefaultUnit);
+		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+		rIngredient.setDefaultUnit(unit);
+	}
 
 	setDataChanged(row, IngredientRoles::DefaultUnitRole);
 }
@@ -245,29 +251,32 @@ void ListModelIngredients::setDataChanged(int row, IngredientRoles role)
 
 int ListModelIngredients::renameIngredient(int row, QString newName)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return -1;
-
-	if(handle.data().existsIngredient(newName))
+	qint32 newIndex = -1;
 	{
-		return -1;
-	}
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
-	qint32 newIndex = handle.data().getIngredientIndex(newName);
-	if(row != newIndex)
-	{
-		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
-	}
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+			return -1;
 
-	if(newIndex > row)
-	{
-		newIndex -= 1;
-	}
+		if(handle.data().existsIngredient(newName))
+		{
+			return -1;
+		}
 
-	Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	handle.data().renameIngredient(rIngredient, newName);
+		newIndex = handle.data().getIngredientIndex(newName);
+		if(row != newIndex)
+		{
+			beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+		}
+
+		if(newIndex > row)
+		{
+			newIndex -= 1;
+		}
+
+		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+		handle.data().renameIngredient(rIngredient, newName);
+	}
 
 	if(row != newIndex)
 	{
@@ -283,29 +292,32 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 
 int ListModelIngredients::addIngredient(QString strIngredient)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(handle.data().existsIngredient(strIngredient))
+	qint32 index = -1;
 	{
-		return -1;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(handle.data().existsIngredient(strIngredient))
+		{
+			return -1;
+		}
+
+		if(handle.data().getCategoriesCount() == 0)
+		{
+			return -1;
+		}
+
+		index = handle.data().getIngredientIndex(strIngredient);
+
+		beginInsertRows(QModelIndex(), index, index);
+
+		const Category* pCategory = &handle.data().getCategoryAt(0);
+		QString defaultCategory = m_rSettings.getDefaultCategory();
+		if(!defaultCategory.isEmpty() && handle.data().existsCategory(defaultCategory))
+		{
+			pCategory = &handle.data().getCategory(defaultCategory);
+		}
+		handle.data().addIngredient(strIngredient, *pCategory, (Unit) m_rSettings.getDefaultUnit());
 	}
-
-	if(handle.data().getCategoriesCount() == 0)
-	{
-		return -1;
-	}
-
-	qint32 index = handle.data().getIngredientIndex(strIngredient);
-
-	beginInsertRows(QModelIndex(),index, index);
-
-	const Category* pCategory = &handle.data().getCategoryAt(0);
-	QString defaultCategory = m_rSettings.getDefaultCategory();
-	if(!defaultCategory.isEmpty() && handle.data().existsCategory(defaultCategory))
-	{
-		pCategory = &handle.data().getCategory(defaultCategory);
-	}    
-	handle.data().addIngredient(strIngredient, *pCategory, (Unit)m_rSettings.getDefaultUnit());
 
 	endInsertRows();
 
@@ -339,22 +351,25 @@ bool ListModelIngredients::canIngredientBeRemoved(int row) const
 
 bool ListModelIngredients::removeIngredient(int row)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+	bool bSuccess = false;
 	{
-		return false;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
+		{
+			return false;
+		}
+
+		if(!canIngredientBeRemoved(row))
+		{
+			return false;
+		}
+
+		beginRemoveRows(QModelIndex(), row, row);
+
+		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+		bool bSuccess = handle.data().removeIngredient(rIngredient);
 	}
-
-	if(!canIngredientBeRemoved(row))
-	{
-		return false;
-	}
-
-	beginRemoveRows(QModelIndex(), row, row);
-
-	Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	bool bSuccess = handle.data().removeIngredient(rIngredient);
 
 	endRemoveRows();
 
@@ -363,14 +378,22 @@ bool ListModelIngredients::removeIngredient(int row)
 
 void ListModelIngredients::onCategoryRenamed(quint32 row)
 {
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	dataChanged(index(0), index(handle.data().getIngredientsCount()-1));
+	int ingredientsCount = 0;
+	{
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+		int ingredientsCount = handle.data().getIngredientsCount();
+	}
+	dataChanged(index(0), index(ingredientsCount-1));
 }
 
 void ListModelIngredients::onSortOrderRenamed(quint32 row)
 {
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	dataChanged(index(0), index(handle.data().getIngredientsCount()-1));
+	int ingredientsCount = 0;
+	{
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+		int ingredientsCount = handle.data().getIngredientsCount();
+	}
+	dataChanged(index(0), index(ingredientsCount-1));
 }
 
 void ListModelIngredients::onDataReset()
