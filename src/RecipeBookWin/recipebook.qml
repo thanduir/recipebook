@@ -26,6 +26,7 @@ ApplicationWindow {
 	signal onClosingRecipeBook()
 	onClosing: onClosingRecipeBook()
 
+	// TODO: Icons rechts bündig?
 	header: ToolBar {
 		RowLayout {
 			ToolButton {

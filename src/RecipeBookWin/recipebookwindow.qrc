@@ -12,6 +12,9 @@
 		<file alias="IngredientsPage.qml">components/ingredientsPage.qml</file>
 		<file alias="RecipesPage.qml">components/recipesPage.qml</file>	
 		
+		<file alias="ShoppingListPage.qml">components/shoppingListPage.qml</file>
+		<file alias="GoShoppingPage.qml">components/goShoppingPage.qml</file>
+		
 		<file alias="SettingsDialog.qml">components/settingsDialog.qml</file>
     </qresource>
 	<qresource prefix="/files">

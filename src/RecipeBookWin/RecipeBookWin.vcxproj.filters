@@ -129,6 +129,12 @@
     <None Include="components\settingsDialog.qml">
       <Filter>qml Files\components\overlays</Filter>
     </None>
+    <None Include="components\shoppingListPage.qml">
+      <Filter>qml Files\components\shopping tab</Filter>
+    </None>
+    <None Include="components\goShoppingPage.qml">
+      <Filter>qml Files\components\shopping tab</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelIngredients.h">

@@ -3,7 +3,8 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	- TEST EVERYTHING!
-	- TODOs in recipebook.qml and shoppingTab.qml
+		-> also try to avoid unnecessairy save-triggers (setDataChanged updates)!
+	- TODOs in recipebook.qml
 	
 	- ShoppingRecipe and ShoppingList dialogs with all features
 		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?
@@ -12,12 +13,13 @@ TODO
 			- in go shopping: gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
 				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
 				darunter eine zeile "2 gross" und eine "1 klein")
+	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
 		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
 	
 	- Verify that every feature from the app is present!
-	- Test everything, esp. also that it works with empty data!
+	- Test everything, esp. also that it works correctly with empty data!
 	- Add a reasonable amount of unittests for everything not yet covered!
 4. Update Design.txt! (incl. code organization descriptions?)
 
