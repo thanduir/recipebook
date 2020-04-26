@@ -40,9 +40,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RecipeBookDataHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ListModelIngredients.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,6 +77,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RecipeBookSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RBDataHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RecipeBookUIData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,9 +140,6 @@
     <QtMoc Include="ListModelProvenance.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="RecipeBookDataHandler.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ListModelRecipes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -170,5 +170,13 @@
     <QtMoc Include="RecipeBookSettings.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="RecipeBookUIData.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RBDataHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,10 +1,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "RecipeBookDataHandler.h"
+#include "RecipeBookUIData.h"
 #include "RecipeBookSettings.h"
 
-bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler& dataHandler)
+bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookUIData& dataHandler)
 {
 	if(context == nullptr)
 	{
@@ -39,7 +39,7 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookDataHandler&
 	return true;
 }
 
-bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookDataHandler& dataHandler)
+bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookUIData& dataHandler)
 {
 	QObject* fileDialogExport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogExport"));
 	QObject::connect(fileDialogExport, SIGNAL(onExport(QString)),
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
 	QQmlApplicationEngine engine;
 
-	recipebook::UI::RecipeBookDataHandler dataHandler;
+	recipebook::UI::RecipeBookUIData dataHandler;
 	QQmlContext* ctxt = engine.rootContext();
 	if(!setupNameLists(ctxt, dataHandler))
 	{

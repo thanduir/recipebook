@@ -1,8 +1,8 @@
-#ifndef RECIPEBOOK_DATA_HANDLER_H
-#define RECIPEBOOK_DATA_HANDLER_H
+#ifndef RECIPEBOOK_UI_DATA_H
+#define RECIPEBOOK_UI_DATA_H
 
 #include <QtGlobal>
-#include <data/RecipeBook.h>
+#include "RBDataHandler.h"
 #include "RecipeBookSettings.h"
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
@@ -19,12 +19,12 @@
 
 namespace recipebook::UI
 {
-	class RecipeBookDataHandler : public QObject
+	class RecipeBookUIData : public QObject
 	{
 		Q_OBJECT
 
 	public:
-		RecipeBookDataHandler();
+		RecipeBookUIData();
 
 		RecipeBookSettings& getRecipeBookSettings();
 
@@ -57,7 +57,7 @@ namespace recipebook::UI
 		void signalDataReset();
 
 	private:
-		RecipeBook m_RecipeBook;
+		RBDataHandler m_RBData;
 		UIStringConverter m_Converter;
 
 		RecipeBookSettings m_Settings;
@@ -78,6 +78,8 @@ namespace recipebook::UI
 		FilterModelRecipes m_FilterModelRecipes;
 
 		ListModelRecipeItems m_ModelRecipeItems;
+
+		QAtomicInt m_SaveLock;
 	};
 }
 

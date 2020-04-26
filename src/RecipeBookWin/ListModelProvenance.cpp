@@ -3,13 +3,14 @@
 #include <data/Ingredient.h>
 #include <data/SortOrder.h>
 #include "uistringconverter.h"
+#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 
 const quint32 c_uiRowEverywhere = 0;
 
-ListModelProvenance::ListModelProvenance(recipebook::RecipeBook& rRecipeBook, const UIStringConverter& rConverter)
-:	m_rRecipeBook(rRecipeBook),
+ListModelProvenance::ListModelProvenance(recipebook::RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter)
+:	m_rRBDataHandler(rRBDataHandler),
 	m_rConverter(rConverter)
 {
 }
@@ -17,12 +18,15 @@ ListModelProvenance::ListModelProvenance(recipebook::RecipeBook& rRecipeBook, co
 int ListModelProvenance::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
-	return m_rRecipeBook.getSortOrdersCount() + 1;
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getSortOrdersCount() + 1;
 }
 
 QVariant ListModelProvenance::data(const QModelIndex& index, int iRole) const
 {
-	if (index.row() < 0 || index.row() >= (int)m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if (index.row() < 0 || index.row() >= (int)handle.data().getIngredientsCount())
 		return QVariant();
 
 	if(index.row() == c_uiRowEverywhere)
@@ -30,7 +34,7 @@ QVariant ListModelProvenance::data(const QModelIndex& index, int iRole) const
 		return m_rConverter.getProvenanceEverywhere();
 	}
 
-	const SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(index.row()-1);
+	const SortOrder& rSortOrder = handle.data().getSortOrderAt(index.row()-1);
 	ProvenanceRoles role = static_cast<ProvenanceRoles>(iRole);
 	if(role == ProvenanceRoles::NameRole)
 	{
@@ -54,7 +58,9 @@ QString ListModelProvenance::provenanceEverywhere() const
 
 QString ListModelProvenance::name(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
 		return "";
 
 	if(row == c_uiRowEverywhere)
@@ -62,22 +68,24 @@ QString ListModelProvenance::name(int row) const
 		return provenanceEverywhere();
 	}
 
-	SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
+	const SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
 	return rSortOrder.getName();
 }
 
 int ListModelProvenance::renameProvenance(int row, QString newName)
 {
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
 	// Provenance "Everywhere" can't be renamed.
-	if(row <= 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
+	if(row <= 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
 		return -1;
 
-	if(m_rRecipeBook.existsSortOrder(newName))
+	if(handle.data().existsSortOrder(newName))
 	{
 		return -1;
 	}
 
-	qint32 newIndex = m_rRecipeBook.getSortOrderIndex(newName) + 1;
+	qint32 newIndex = handle.data().getSortOrderIndex(newName) + 1;
 	if(row != newIndex)
 	{
 		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
@@ -88,8 +96,8 @@ int ListModelProvenance::renameProvenance(int row, QString newName)
 		newIndex -= 1;
 	}
 
-	SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
-	m_rRecipeBook.renameSortOrder(rSortOrder, newName);
+	SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
+	handle.data().renameSortOrder(rSortOrder, newName);
 
 	if(row != newIndex)
 	{
@@ -105,15 +113,17 @@ int ListModelProvenance::renameProvenance(int row, QString newName)
 
 int ListModelProvenance::addProvenance(QString strSortOrder)
 {
-	if(m_rRecipeBook.existsSortOrder(strSortOrder) || strSortOrder == provenanceEverywhere())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(handle.data().existsSortOrder(strSortOrder) || strSortOrder == provenanceEverywhere())
 	{
 		return -1;
 	}
 
-	qint32 index = m_rRecipeBook.getSortOrderIndex(strSortOrder) + 1;
+	qint32 index = handle.data().getSortOrderIndex(strSortOrder) + 1;
 
 	beginInsertRows(QModelIndex(), index, index);
-	m_rRecipeBook.addSortOrder(strSortOrder);
+	handle.data().addSortOrder(strSortOrder);
 	endInsertRows();
 
 	return index;
@@ -126,19 +136,22 @@ bool ListModelProvenance::existsProvenance(QString strSortOrder) const
 		return true;
 	}
 
-	return m_rRecipeBook.existsSortOrder(strSortOrder);
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().existsSortOrder(strSortOrder);
 }
 
 QString ListModelProvenance::listUsedInIngredients(int row) const
 {
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
 	// Not implemented for provenance "Everywhere".
-	if(row <= 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
+	if(row <= 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
 		return " -";
 
-	SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
+	const SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
 
 	QList<Ingredient*> ingredients;
-	if(!m_rRecipeBook.isSortOrderInUse(rSortOrder, &ingredients))
+	if(!handle.data().isSortOrderInUse(rSortOrder, &ingredients))
 	{
 		return " -";
 	}
@@ -163,18 +176,22 @@ QString ListModelProvenance::listUsedInIngredients(int row) const
 
 bool ListModelProvenance::canProvenanceBeRemoved(int row) const
 {
-	if(row == c_uiRowEverywhere || row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row == c_uiRowEverywhere || row < 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
 	{
 		return false;
 	}
 
-	SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
-	return !m_rRecipeBook.isSortOrderInUse(rSortOrder);
+	const SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
+	return !handle.data().isSortOrderInUse(rSortOrder);
 }
 
 bool ListModelProvenance::removeProvenance(int row)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount() + 1)
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
 	{
 		return false;
 	}
@@ -186,8 +203,8 @@ bool ListModelProvenance::removeProvenance(int row)
 
 	beginRemoveRows(QModelIndex(), row, row);
 
-	SortOrder& rSortOrder = m_rRecipeBook.getSortOrderAt(row - 1);
-	bool bSuccess = m_rRecipeBook.removeSortOrder(rSortOrder);
+	SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
+	bool bSuccess = handle.data().removeSortOrder(rSortOrder);
 
 	endRemoveRows();
 

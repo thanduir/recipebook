@@ -1,4 +1,5 @@
-#include "RecipeBookDataHandler.h"
+#include "RecipeBookUIData.h"
+#include <QtGlobal>
 #include <QDir>
 #include <QTimer>
 #include <QUrl>
@@ -13,28 +14,31 @@ using namespace recipebook::serialization;
 
 const int c_SaveIntervalSeconds = 300;
 
-RecipeBookDataHandler::RecipeBookDataHandler()
-:	m_RecipeBook(),
+RecipeBookUIData::RecipeBookUIData()
+:	m_RBData(),
 	m_Converter(),
 	m_Settings(),
-	m_ModelCategories(m_RecipeBook),
-	m_ModelSortOrder(m_RecipeBook),
-	m_ModelProvenance(m_RecipeBook, m_Converter),
+	m_ModelCategories(m_RBData),
+	m_ModelSortOrder(m_RBData),
+	m_ModelProvenance(m_RBData, m_Converter),
 	m_ModelSortOrders(),
-	m_ModelIngredients(m_RecipeBook, m_Settings, m_Converter),
+	m_ModelIngredients(m_RBData, m_Settings, m_Converter),
 	m_FilterModelIngredients(),
-	m_AlternativesGroups(m_RecipeBook, m_Converter),
+	m_AlternativesGroups(m_RBData, m_Converter),
 	m_AlternativesTypes(),
-	m_ModelRecipes(m_RecipeBook, m_Settings),
+	m_ModelRecipes(m_RBData, m_Settings),
 	m_FilterModelRecipes(),
-	m_ModelRecipeItems(m_RecipeBook, m_Converter)
+	m_ModelRecipeItems(m_RBData, m_Converter),
+	m_SaveLock()
 {
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
 	if(fileIn.exists())
 	{
 		QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
 		RBMetaData metaData;
-		spReader->serialize(fileIn, metaData, m_RecipeBook);
+
+		recipebook::RBDataWriteHandle handle(m_RBData);
+		spReader->serialize(fileIn, metaData, handle.data());
 	}
 
 	m_ModelSortOrder.setSourceModel(&m_ModelCategories);
@@ -72,18 +76,23 @@ RecipeBookDataHandler::RecipeBookDataHandler()
 			&m_ModelRecipeItems, SLOT(onDataReset()));
 
 	// Enable periodic saving routine
-	// TODO: Should this be configurable? (automatic save on/off? should the interval also be setable?)
-	//		-> Yes, make both configurable (so that the user can decide how much safety he needs)!
-	/*QTimer *pTimer = new QTimer(this);
+	QTimer *pTimer = new QTimer(this);
 	connect(pTimer, SIGNAL(timeout()), this, SLOT(slotSave()));
-	pTimer->start(c_SaveIntervalSeconds * 1000);*/
+	pTimer->start(c_SaveIntervalSeconds * 1000);
 }
 
-void RecipeBookDataHandler::slotSave()
+void RecipeBookUIData::slotSave()
 {
+	if(!m_SaveLock.testAndSetAcquire(0, 1))
+	{
+		// Another thread is already saving, so we don't need to.
+		return;
+	}
+
 	if(!QDir(m_Settings.applicationRecipeBookAppsDataFolder()).mkpath("."))
 	{
-		// TODO: Report error?
+		qCritical("Couldn't create path to recipe book file (%s)", qUtf8Printable(m_Settings.applicationRecipeBookAppsDataFolder()));
+		m_SaveLock = 0;
 		return;
 	}
 
@@ -92,18 +101,16 @@ void RecipeBookDataHandler::slotSave()
 	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
 	QFile fileOut(localFileName);
 
-	// TODO: Thread safety! (How to ensure that the data isn't changed in this period?)
-	//		-> Ensure no concurrent changes happen and make sure this method isn't called twice concurrently!
-	//		=> MAKE SURE THIS IS RESPECTED IN ALL OPERATIONS THAT CHANGE RecipeBook!
-	//		=> I might need to add a separation between the RecipeBook-objects and access to it by adding some kind of handle object in between 
-	//			(and keeping of pointers might not be allowed anymore)!
-	if(!spWriter->serialize(m_RecipeBook, fileOut))
+	recipebook::RBDataReadHandle handle(m_RBData);
+	if(!spWriter->serialize(handle.data(), fileOut))
 	{
-		// TODO: Report error?
+		qCritical("Couldn't write recipe book file \"%s\"", qUtf8Printable(m_Settings.applicationRecipeBookAppsDataFolder()));
 	}
+
+	m_SaveLock = 0;
 }
 
-void RecipeBookDataHandler::slotExport(QString strFileURL)
+void RecipeBookUIData::slotExport(QString strFileURL)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
@@ -112,13 +119,15 @@ void RecipeBookDataHandler::slotExport(QString strFileURL)
 
 	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
 	QFile fileOut(localFileName);
-	if(!spWriter->serialize(m_RecipeBook, fileOut))
+
+	recipebook::RBDataReadHandle handle(m_RBData);
+	if(!spWriter->serialize(handle.data(), fileOut))
 	{
-		// TODO: Error message!
+		qCritical("Couldn't export to file \"%s\"", qUtf8Printable(localFileName));
 	}
 }
 
-void RecipeBookDataHandler::slotImport(QString strFileURL)
+void RecipeBookUIData::slotImport(QString strFileURL)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
@@ -131,97 +140,102 @@ void RecipeBookDataHandler::slotImport(QString strFileURL)
 	QFile fileIn(localFileName);
 	if(!spReader->serialize(fileIn, metaData, recipeBook))
 	{
-		// TODO: Error message!
+		qCritical("Couldn't import file \"%s\"", qUtf8Printable(localFileName));
 	}
 	else
 	{
-		m_RecipeBook = recipeBook;
+		recipebook::RBDataWriteHandle handle(m_RBData);
+		handle.data() = recipeBook;
 		emit signalDataReset();
 	}
 }
 
-void RecipeBookDataHandler::slotResetData()
+void RecipeBookUIData::slotResetData()
 {
-	m_RecipeBook.clearData();
+	{
+		recipebook::RBDataWriteHandle handle(m_RBData);
+		handle.data().clearData();
+	}
+
 	emit signalDataReset();
 }
 
-recipebook::RecipeBookSettings& RecipeBookDataHandler::getRecipeBookSettings()
+recipebook::RecipeBookSettings& RecipeBookUIData::getRecipeBookSettings()
 {
 	return m_Settings;
 }
 
-QStringList RecipeBookDataHandler::getAllUnitNames() const
+QStringList RecipeBookUIData::getAllUnitNames() const
 {
 	return m_Converter.getAllUnitNames();
 }
 
-QStringList RecipeBookDataHandler::getAllUnitShortNames() const
+QStringList RecipeBookUIData::getAllUnitShortNames() const
 {
 	return m_Converter.getAllUnitShortNames();
 }
 
-QStringList RecipeBookDataHandler::getAllSizeNames() const
+QStringList RecipeBookUIData::getAllSizeNames() const
 {
 	return m_Converter.getAllSizeNames();
 }
 
-QStringList RecipeBookDataHandler::getAllStatusNames() const
+QStringList RecipeBookUIData::getAllStatusNames() const
 { 
 	return m_Converter.getAllStatusNames();
 }
 
-ListModelCategories& RecipeBookDataHandler::getCategoriesModel()
+ListModelCategories& RecipeBookUIData::getCategoriesModel()
 {
 	return m_ModelCategories;
 }
 
-SortModelSortOrder& RecipeBookDataHandler::getSortOrderModel()
+SortModelSortOrder& RecipeBookUIData::getSortOrderModel()
 {
 	return m_ModelSortOrder;
 }
 
-FilterModelSortOrders& RecipeBookDataHandler::getSortOrdersModel()
+FilterModelSortOrders& RecipeBookUIData::getSortOrdersModel()
 {
 	return m_ModelSortOrders;
 }
 
-ListModelProvenance& RecipeBookDataHandler::getProvenanceModel()
+ListModelProvenance& RecipeBookUIData::getProvenanceModel()
 {
 	return m_ModelProvenance;
 }
 
-ListModelIngredients& RecipeBookDataHandler::getIngredientsModel()
+ListModelIngredients& RecipeBookUIData::getIngredientsModel()
 {
 	return m_ModelIngredients;
 }
 
-FilterModelIngredients& RecipeBookDataHandler::getIngredientsFilterModel()
+FilterModelIngredients& RecipeBookUIData::getIngredientsFilterModel()
 {
 	return m_FilterModelIngredients;
 }
 
-ListModelAlternativesGroups& RecipeBookDataHandler::getAlternativesGroups()
+ListModelAlternativesGroups& RecipeBookUIData::getAlternativesGroups()
 {
 	return m_AlternativesGroups;
 }
 
-FilterModelAlternativesTypes& RecipeBookDataHandler::getAlternativesTypes()
+FilterModelAlternativesTypes& RecipeBookUIData::getAlternativesTypes()
 {
 	return m_AlternativesTypes;
 }
 
-ListModelRecipes& RecipeBookDataHandler::getRecipesModel()
+ListModelRecipes& RecipeBookUIData::getRecipesModel()
 {
 	return m_ModelRecipes;
 }
 
-FilterModelRecipes& RecipeBookDataHandler::getRecipesFilterModel()
+FilterModelRecipes& RecipeBookUIData::getRecipesFilterModel()
 {
 	return m_FilterModelRecipes;
 }
 
-ListModelRecipeItems& RecipeBookDataHandler::getRecipeItemsModel()
+ListModelRecipeItems& RecipeBookUIData::getRecipeItemsModel()
 {
 	return m_ModelRecipeItems;
 }

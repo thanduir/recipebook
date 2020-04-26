@@ -110,11 +110,12 @@
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
+    <ClCompile Include="RBDataHandler.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
     <ClCompile Include="FilterModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RecipeBookDataHandler.cpp" />
+    <ClCompile Include="RecipeBookUIData.cpp" />
     <ClCompile Include="uistringconverter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,7 +142,7 @@
     <QtMoc Include="ListModelCategories.h" />
     <QtMoc Include="FilterModelSortOrders.h" />
     <QtMoc Include="ListModelProvenance.h" />
-    <QtMoc Include="RecipeBookDataHandler.h" />
+    <QtMoc Include="RecipeBookUIData.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortModelSortOrder.h" />
@@ -166,6 +167,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="RecipeBookSettings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RBDataHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

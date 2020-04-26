@@ -7,6 +7,7 @@ namespace recipebook
 {
 	class RecipeBook;
 	class RecipeBookSettings;
+	class RBDataHandler;
 }
 
 namespace recipebook::UI
@@ -26,7 +27,7 @@ namespace recipebook::UI
 		};
 
 	public:
-		ListModelRecipes(RecipeBook& rRecipeBook, const RecipeBookSettings& rSettings);
+		ListModelRecipes(RBDataHandler& rRBDataHandler, const RecipeBookSettings& rSettings);
 
 		virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -62,7 +63,7 @@ namespace recipebook::UI
 		void setDataChanged(int row, RecipeRoles role);
 
 	private:
-		RecipeBook& m_rRecipeBook;
+		RBDataHandler& m_rRBDataHandler;
 		const RecipeBookSettings& m_rSettings;
 	};
 }

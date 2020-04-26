@@ -4,29 +4,27 @@
 #include <data/Category.h>
 #include <data/Ingredient.h>
 #include <data/SortOrder.h>
+#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 
-SortModelSortOrder::SortModelSortOrder(recipebook::RecipeBook& rRecipeBook)
-:	m_rRecipeBook(rRecipeBook),
-	m_pSortOrder(nullptr)
+SortModelSortOrder::SortModelSortOrder(recipebook::RBDataHandler& rRBDataHandler)
+:	m_rRBDataHandler(rRBDataHandler),
+	m_SortOrderIndex(-1)
 {
 }
 
 void SortModelSortOrder::setSortOrder(int row)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getSortOrdersCount())
+	if(m_SortOrderIndex == row)
 	{
-		beginResetModel();
-		m_pSortOrder = nullptr;
-		endResetModel();
 		return;
 	}
 
 	beginResetModel();
-	m_pSortOrder = &m_rRecipeBook.getSortOrderAt(row);
+	m_SortOrderIndex = row;
 	endResetModel();
-
+	
 	sort(0, Qt::AscendingOrder);
 }
 
@@ -34,15 +32,16 @@ bool SortModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIn
 {
 	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
 
-	const Category& rCategoryLeft = m_rRecipeBook.getCategoryAt(source_left.row()); 
-	const Category& rCategoryRight = m_rRecipeBook.getCategoryAt(source_right.row()); 
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	const Category& rCategoryLeft = handle.data().getCategoryAt(source_left.row()); 
+	const Category& rCategoryRight = handle.data().getCategoryAt(source_right.row()); 
 
-	if(m_pSortOrder == nullptr)
+	if(m_SortOrderIndex < 0 || m_SortOrderIndex >= (int) handle.data().getSortOrdersCount())
 	{
 		return source_left.row() < source_right.row();
 	}
-
-	return m_pSortOrder->getIndex(rCategoryLeft) < m_pSortOrder->getIndex(rCategoryRight);
+	const SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
+	return rOrder.getIndex(rCategoryLeft) < rOrder.getIndex(rCategoryRight);
 }
 
 QString SortModelSortOrder::name(int row) const
@@ -99,5 +98,10 @@ void SortModelSortOrder::moveCategory(int row, int target)
 		return;
 	}
 
-	m_pSortOrder->moveCategory(m_pSortOrder->at(row), target);
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	if(m_SortOrderIndex >= 0 && m_SortOrderIndex < (int) handle.data().getSortOrdersCount())
+	{
+		SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
+		rOrder.moveCategory(rOrder.at(row), target);
+	}
 }

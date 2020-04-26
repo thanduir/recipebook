@@ -9,7 +9,9 @@ namespace recipebook
 {
 	class RecipeBook;
 	class Recipe;
-	class RecipeItemGroup;
+	class RBDataHandler;
+	class RBDataReadHandle;
+	class RBDataWriteHandle;
 }
 
 namespace recipebook::UI
@@ -33,7 +35,7 @@ namespace recipebook::UI
 		};
 
 	public:
-		ListModelRecipeItems(RecipeBook& rRecipeBook, const UIStringConverter& rConverter);
+		ListModelRecipeItems(RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter);
 
 		virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -73,7 +75,7 @@ namespace recipebook::UI
 
 		// edit list interface
 		void beginEditList();
-		bool itemSelected(QString itemName);
+		bool itemSelected(QString itemName) const;
 		void changeState(QString itemName, bool selected);
 		void cancelEditList();
 		bool applyEditList();
@@ -86,10 +88,13 @@ namespace recipebook::UI
 	private:
 		void setDataChanged(int row, RecipeItemsRoles role);
 
+		Recipe* getRecipe(recipebook::RBDataWriteHandle& rHandle);
+		const Recipe* getRecipe(recipebook::RBDataReadHandle& rHandle) const;
+
 	private:
-		RecipeBook& m_rRecipeBook;
+		RBDataHandler& m_rRBDataHandler;
 		const UIStringConverter& m_rConverter;
-		Recipe* m_pRecipe;
+		int m_RecipeIndex;
 
 		QStringList m_EditListSelectedValues;
 		QStringList m_EditListDeselectedValues;

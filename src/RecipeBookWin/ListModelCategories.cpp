@@ -2,26 +2,30 @@
 #include <data/RecipeBook.h>
 #include <data/Category.h>
 #include <data/Ingredient.h>
+#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 
-ListModelCategories::ListModelCategories(recipebook::RecipeBook& rRecipeBook)
-:	m_rRecipeBook(rRecipeBook)
+ListModelCategories::ListModelCategories(recipebook::RBDataHandler& rRBDataHandler)
+:	m_rRBDataHandler(rRBDataHandler)
 {
 }
 
 int ListModelCategories::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
-	return m_rRecipeBook.getCategoriesCount();
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getCategoriesCount();
 }
 
 QVariant ListModelCategories::data(const QModelIndex& index, int iRole) const
 {
-	if (index.row() < 0 || index.row() >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if (index.row() < 0 || index.row() >= (int)handle.data().getCategoriesCount())
 		return QVariant();
 
-	const Category& rCategory = m_rRecipeBook.getCategoryAt(index.row());
+	const Category& rCategory = handle.data().getCategoryAt(index.row());
 	CategoryRoles role = static_cast<CategoryRoles>(iRole);
 	if(role == CategoryRoles::NameRole)
 	{
@@ -40,25 +44,29 @@ QHash<int, QByteArray> ListModelCategories::roleNames() const
 
 QString ListModelCategories::name(int row) const
 {
-	if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 		return "";
 
-	const Category& rCategory = m_rRecipeBook.getCategoryAt(row);
+	const Category& rCategory = handle.data().getCategoryAt(row);
 	return rCategory.getName();
 }
 
 int ListModelCategories::renameCategory(int row, QString newName)
 {
-	if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 		return -1;
 
-	if(m_rRecipeBook.existsCategory(newName))
+	if(handle.data().existsCategory(newName))
 	{
 		return -1;
 	}
 
-	Category& rCategory = m_rRecipeBook.getCategoryAt(row);
-	m_rRecipeBook.renameCategory(rCategory, newName);
+	Category& rCategory = handle.data().getCategoryAt(row);
+	handle.data().renameCategory(rCategory, newName);
 
 	dataChanged(index(row), index(row));
     
@@ -69,15 +77,17 @@ int ListModelCategories::renameCategory(int row, QString newName)
 
 int ListModelCategories::addCategory(QString strCategory)
 {
-	if(m_rRecipeBook.existsCategory(strCategory))
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(handle.data().existsCategory(strCategory))
 	{
 		return -1;
 	}
 
-	qint32 index = m_rRecipeBook.getCategoryIndex(strCategory);
+	qint32 index = handle.data().getCategoryIndex(strCategory);
 
 	beginInsertRows(QModelIndex(),index, index);
-	m_rRecipeBook.addCategory(strCategory);
+	handle.data().addCategory(strCategory);
 	endInsertRows();
 
 	return index;
@@ -85,18 +95,21 @@ int ListModelCategories::addCategory(QString strCategory)
 
 bool ListModelCategories::existsCategory(QString strCategory) const
 {
-	return m_rRecipeBook.existsCategory(strCategory);
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().existsCategory(strCategory);
 }
 
 QString ListModelCategories::listUsedInIngredients(int row) const
 {
-	if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 		return " -";
 
-	const Category& rCategory = m_rRecipeBook.getCategoryAt(row);
+	const Category& rCategory = handle.data().getCategoryAt(row);
 
 	QList<Ingredient*> ingredients;
-	if(!m_rRecipeBook.isCategoryInUse(rCategory, &ingredients))
+	if(!handle.data().isCategoryInUse(rCategory, &ingredients))
 	{
 		return " -";
 	}
@@ -121,18 +134,22 @@ QString ListModelCategories::listUsedInIngredients(int row) const
 
 bool ListModelCategories::canCategoryBeRemoved(int row) const
 {
-	if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 	{
 		return false;
 	}
 
-	const Category& rCategory = m_rRecipeBook.getCategoryAt(row);
-	return !m_rRecipeBook.isCategoryInUse(rCategory);
+	const Category& rCategory = handle.data().getCategoryAt(row);
+	return !handle.data().isCategoryInUse(rCategory);
 }
 
 bool ListModelCategories::removeCategory(int row)
 {
-	if(row < 0 || row >= (int)m_rRecipeBook.getCategoriesCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 	{
 		return false;
 	}
@@ -144,8 +161,8 @@ bool ListModelCategories::removeCategory(int row)
 
 	beginRemoveRows(QModelIndex(), row, row);
 
-	const Category& rCategory = m_rRecipeBook.getCategoryAt(row);
-	bool bSuccess = m_rRecipeBook.removeCategory(rCategory);
+	const Category& rCategory = handle.data().getCategoryAt(row);
+	bool bSuccess = handle.data().removeCategory(rCategory);
 
 	endRemoveRows();
 

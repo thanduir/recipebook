@@ -6,15 +6,16 @@
 #include <data/SortOrder.h>
 #include <data/Recipe.h>
 #include <data/ShoppingRecipe.h>
+#include "RBDataHandler.h"
 #include "uistringconverter.h"
 #include "RecipeBookSettings.h"
 
 using namespace recipebook::UI;
 
-ListModelIngredients::ListModelIngredients(recipebook::RecipeBook& rRecipeBook, 
-											const recipebook::RecipeBookSettings& rSettings,
-											const UIStringConverter& rConverter)
-:	m_rRecipeBook(rRecipeBook),
+ListModelIngredients::ListModelIngredients(recipebook::RBDataHandler& rRBDataHandler, 
+										   const recipebook::RecipeBookSettings& rSettings,
+										   const UIStringConverter& rConverter)
+:	m_rRBDataHandler(rRBDataHandler),
 	m_rSettings(rSettings),
 	m_rConverter(rConverter)
 {
@@ -23,7 +24,8 @@ ListModelIngredients::ListModelIngredients(recipebook::RecipeBook& rRecipeBook,
 int ListModelIngredients::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
-	return m_rRecipeBook.getIngredientsCount();
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getIngredientsCount();
 }
 
 QVariant ListModelIngredients::data(const QModelIndex& index, int iRole) const
@@ -51,28 +53,34 @@ QVariant ListModelIngredients::data(const QModelIndex& index, int iRole) const
 
 QString ListModelIngredients::name(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	return rIngredient.getName();
 }
 
 QString ListModelIngredients::category(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	return rIngredient.getCategory().getName();
 }
 
 QString ListModelIngredients::provenance(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	if(rIngredient.hasProvenanceEverywhere())
 	{
 		return m_rConverter.getProvenanceEverywhere();
@@ -85,23 +93,27 @@ QString ListModelIngredients::provenance(int row) const
 
 QString ListModelIngredients::defaultUnit(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	return  m_rConverter.convertUnit(rIngredient.getDefaultUnit());
 }
 
 QString ListModelIngredients::listUsedInRecipes(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return " -";
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 
 	QList<Recipe*> recipes;
 	QList<ShoppingRecipe*> shoppingRecipes;
-	if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
+	if(!handle.data().isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
 	{
 		return " -";
 	}
@@ -126,14 +138,16 @@ QString ListModelIngredients::listUsedInRecipes(int row) const
 
 QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return " -";
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 
 	QList<Recipe*> recipes;
 	QList<ShoppingRecipe*> shoppingRecipes;
-	if(!m_rRecipeBook.isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
+	if(!handle.data().isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
 	{
 		return " -";
 	}
@@ -158,14 +172,16 @@ QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
 
 void ListModelIngredients::setCategory(int row, QString newCategory)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return;
 
-	if(!m_rRecipeBook.existsCategory(newCategory))
+	if(!handle.data().existsCategory(newCategory))
 		return;
 
-	const Category& rCategory = m_rRecipeBook.getCategory(newCategory);
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	const Category& rCategory = handle.data().getCategory(newCategory);
+	Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	rIngredient.setCategory(rCategory);
 
 	setDataChanged(row, IngredientRoles::CategoryRole);
@@ -173,17 +189,19 @@ void ListModelIngredients::setCategory(int row, QString newCategory)
 
 void ListModelIngredients::setProvenance(int row, QString newProvenance)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return;
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	if(newProvenance == m_rConverter.getProvenanceEverywhere())
 	{
 		rIngredient.setProvenanceEverywhere();
 	}
-	else if(m_rRecipeBook.existsSortOrder(newProvenance))
+	else if(handle.data().existsSortOrder(newProvenance))
 	{
-		const SortOrder& rSortOrder = m_rRecipeBook.getSortOrder(newProvenance);
+		const SortOrder& rSortOrder = handle.data().getSortOrder(newProvenance);
 		rIngredient.setProvenance(rSortOrder);
 	}
 	else
@@ -196,11 +214,13 @@ void ListModelIngredients::setProvenance(int row, QString newProvenance)
 
 void ListModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)
 {
-	if (row < 0 || row >= (int)m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if (row < 0 || row >= (int)handle.data().getIngredientsCount())
 		return;
 
 	Unit unit = m_rConverter.convertUnit(newDefaultUnit);
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
+	Ingredient& rIngredient = handle.data().getIngredientAt(row);
 	rIngredient.setDefaultUnit(unit);
 
 	setDataChanged(row, IngredientRoles::DefaultUnitRole);
@@ -225,15 +245,17 @@ void ListModelIngredients::setDataChanged(int row, IngredientRoles role)
 
 int ListModelIngredients::renameIngredient(int row, QString newName)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return -1;
 
-	if(m_rRecipeBook.existsIngredient(newName))
+	if(handle.data().existsIngredient(newName))
 	{
 		return -1;
 	}
 
-	qint32 newIndex = m_rRecipeBook.getIngredientIndex(newName);
+	qint32 newIndex = handle.data().getIngredientIndex(newName);
 	if(row != newIndex)
 	{
 		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
@@ -244,8 +266,8 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 		newIndex -= 1;
 	}
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
-	m_rRecipeBook.renameIngredient(rIngredient, newName);
+	Ingredient& rIngredient = handle.data().getIngredientAt(row);
+	handle.data().renameIngredient(rIngredient, newName);
 
 	if(row != newIndex)
 	{
@@ -261,27 +283,29 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 
 int ListModelIngredients::addIngredient(QString strIngredient)
 {
-	if(m_rRecipeBook.existsIngredient(strIngredient))
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(handle.data().existsIngredient(strIngredient))
 	{
 		return -1;
 	}
 
-	if(m_rRecipeBook.getCategoriesCount() == 0)
+	if(handle.data().getCategoriesCount() == 0)
 	{
 		return -1;
 	}
 
-	qint32 index = m_rRecipeBook.getIngredientIndex(strIngredient);
+	qint32 index = handle.data().getIngredientIndex(strIngredient);
 
 	beginInsertRows(QModelIndex(),index, index);
 
-	const Category* pCategory = &m_rRecipeBook.getCategoryAt(0);
+	const Category* pCategory = &handle.data().getCategoryAt(0);
 	QString defaultCategory = m_rSettings.getDefaultCategory();
-	if(!defaultCategory.isEmpty() && m_rRecipeBook.existsCategory(defaultCategory))
+	if(!defaultCategory.isEmpty() && handle.data().existsCategory(defaultCategory))
 	{
-		pCategory = &m_rRecipeBook.getCategory(defaultCategory);
+		pCategory = &handle.data().getCategory(defaultCategory);
 	}    
-	m_rRecipeBook.addIngredient(strIngredient, *pCategory, (Unit)m_rSettings.getDefaultUnit());
+	handle.data().addIngredient(strIngredient, *pCategory, (Unit)m_rSettings.getDefaultUnit());
 
 	endInsertRows();
 
@@ -290,28 +314,34 @@ int ListModelIngredients::addIngredient(QString strIngredient)
 
 bool ListModelIngredients::existsIngredient(QString strIngredient) const
 {
-	return m_rRecipeBook.existsIngredient(strIngredient);
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().existsIngredient(strIngredient);
 }
 
 int ListModelIngredients::indexOfIngredient(QString strIngredient) const
 {
-	return m_rRecipeBook.getIngredientIndex(strIngredient);
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getIngredientIndex(strIngredient);
 }
 
 bool ListModelIngredients::canIngredientBeRemoved(int row) const
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 	{
 		return false;
 	}
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
-	return !m_rRecipeBook.isIngredientInUse(rIngredient);
+	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+	return !handle.data().isIngredientInUse(rIngredient);
 }
 
 bool ListModelIngredients::removeIngredient(int row)
 {
-	if(row < 0 || row >= (int) m_rRecipeBook.getIngredientsCount())
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 	{
 		return false;
 	}
@@ -323,8 +353,8 @@ bool ListModelIngredients::removeIngredient(int row)
 
 	beginRemoveRows(QModelIndex(), row, row);
 
-	Ingredient& rIngredient = m_rRecipeBook.getIngredientAt(row);
-	bool bSuccess = m_rRecipeBook.removeIngredient(rIngredient);
+	Ingredient& rIngredient = handle.data().getIngredientAt(row);
+	bool bSuccess = handle.data().removeIngredient(rIngredient);
 
 	endRemoveRows();
 
@@ -333,12 +363,14 @@ bool ListModelIngredients::removeIngredient(int row)
 
 void ListModelIngredients::onCategoryRenamed(quint32 row)
 {
-	dataChanged(index(0), index(m_rRecipeBook.getIngredientsCount()-1));
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	dataChanged(index(0), index(handle.data().getIngredientsCount()-1));
 }
 
 void ListModelIngredients::onSortOrderRenamed(quint32 row)
 {
-	dataChanged(index(0), index(m_rRecipeBook.getIngredientsCount()-1));
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	dataChanged(index(0), index(handle.data().getIngredientsCount()-1));
 }
 
 void ListModelIngredients::onDataReset()

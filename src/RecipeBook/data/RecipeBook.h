@@ -76,7 +76,7 @@ namespace recipebook
 		AlternativesType& getAlternativesType(QString strName);
 		const AlternativesType& getAlternativesType(QString strName) const;
 		quint32 getAlternativesTypesCount() const;
-		AlternativesType& getAlternatiesTypeAt(quint32 i);
+		AlternativesType& getAlternativesTypeAt(quint32 i);
 		const AlternativesType& getAlternativesTypeAt(quint32 i) const;
 		quint32 getAlternativesTypeIndex(QString strName) const;
         

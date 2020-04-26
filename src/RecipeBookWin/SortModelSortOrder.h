@@ -8,17 +8,16 @@ class UIStringConverter;
 namespace recipebook
 {
 	class RecipeBook;
-	class SortOrder;
+	class RBDataHandler;
 }
 
 namespace recipebook::UI
 {
-
 	class SortModelSortOrder : public QSortFilterProxyModel
 	{
 		Q_OBJECT
 	public:
-		SortModelSortOrder(RecipeBook& rRecipeBook);
+		SortModelSortOrder(RBDataHandler& rRBDataHandler);
 
 	public slots:
 		void setSortOrder(int row);
@@ -41,8 +40,8 @@ namespace recipebook::UI
 		virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const override;
 
 	private:
-		RecipeBook& m_rRecipeBook;
-		SortOrder* m_pSortOrder;
+		RBDataHandler& m_rRBDataHandler;
+		int m_SortOrderIndex;
 	};
 }
 

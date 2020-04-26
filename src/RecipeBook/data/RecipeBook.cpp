@@ -453,7 +453,7 @@ quint32 RecipeBook::getAlternativesTypesCount() const
 	return m_AlternativesTypes.count();
 }
 
-AlternativesType& RecipeBook::getAlternatiesTypeAt(quint32 i)
+AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i)
 {
 	if(i >= (quint32)m_AlternativesTypes.size())
 	{

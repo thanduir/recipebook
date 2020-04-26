@@ -6,6 +6,7 @@
 namespace recipebook
 {
 	class RecipeBook;
+	class RBDataHandler;
 }
 
 class UIStringConverter;
@@ -23,7 +24,7 @@ namespace recipebook::UI
 		};
 
 	public:
-		ListModelAlternativesGroups(RecipeBook& rRecipeBook, const UIStringConverter& rConverter);
+		ListModelAlternativesGroups(RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter);
 
 		virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -55,7 +56,7 @@ namespace recipebook::UI
 		virtual QHash<int, QByteArray> roleNames() const override;
 
 	private:
-		RecipeBook& m_rRecipeBook;
+		RBDataHandler& m_rRBDataHandler;
 		const UIStringConverter& m_rConverter;
 	};
 }
