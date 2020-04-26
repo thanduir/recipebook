@@ -2,6 +2,8 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 
+import "components"
+
 Dialog {
 	modal: true
 
@@ -10,6 +12,20 @@ Dialog {
 
 	width: 500
 	height: parent.height - 100
+
+	TextMessageDialog {
+		id: dlgLoadDefaultData
+		title: qsTr("Load default data")
+		msgText: qsTr("This will replace current data with the default data. Current data will be lost. Proceed?");
+		onAccepted: recipeBookSettings.loadDefaultData()
+	}
+
+	TextMessageDialog {
+		id: dlgResetData
+		title: qsTr("Reset all data")
+		msgText: qsTr("This will reset all data. Current data will be lost. Proceed?");
+		onAccepted: recipeBookSettings.resetAllData()
+	}
 
 	Pane {
 		id: paneSettings
@@ -86,11 +102,20 @@ Dialog {
 
 			title: qsTr("Data")
 
-			Button {
+			ColumnLayout {
 				anchors.centerIn: parent
-				text: qsTr("reset all data")
 
-				onClicked: recipeBookSettings.resetAllData();
+				Button {
+					text: qsTr("Load default data")
+					Layout.alignment: Qt.AlignHCenter
+					onClicked: dlgLoadDefaultData.open()
+				}
+
+				Button {
+					text: qsTr("Reset all data")
+					Layout.alignment: Qt.AlignHCenter
+					onClicked: dlgResetData.open()
+				}
 			}
 		}
 

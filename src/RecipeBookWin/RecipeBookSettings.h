@@ -37,6 +37,7 @@ namespace recipebook
 		void setLastUsedImportFolder(QString strFolder);
 
 	signals:
+		void loadDefaultData() const;
 		void resetAllData() const;
 
 	private:

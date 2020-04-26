@@ -2,12 +2,9 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- Make auto save configurable! (automatic save on/off? Interval?)
-	- I should add a "defaultfile" similar to whats done in the app that can be loaded under settings!
-		-> this file should reside in the resources!
-		-> QString fileName(":/new/prefix1/sampleText.txt");
-	- loading another file: Ask for confirmation / export current data / ignore if current data not empty?
-	- TODOs in recipebook.qml
+	- Auto save: increase frequency but only save if something changed (i.e. if a WriteHandle was used somewhere)!
+
+	- TODOs in recipebook.qml and shoppingTab.qml (and verify that there are no other solvable TODOs atm)
 	- TEST EVERYTHING!
 	
 	- ShoppingRecipe and ShoppingList dialogs with all features

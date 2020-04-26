@@ -58,7 +58,9 @@ RecipeBookUIData::RecipeBookUIData()
 
 	connect(&m_Settings, SIGNAL(resetAllData()),
 			this, SLOT(slotResetData()));
-
+	connect(&m_Settings, SIGNAL(loadDefaultData()),
+			this, SLOT(slotLoadDefaultData()));
+	
 	// onResetData
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelSortOrder, SLOT(onDataReset()));
@@ -144,8 +146,30 @@ void RecipeBookUIData::slotImport(QString strFileURL)
 	}
 	else
 	{
-		recipebook::RBDataWriteHandle handle(m_RBData);
-		handle.data() = recipeBook;
+		{
+			recipebook::RBDataWriteHandle handle(m_RBData);
+			handle.data() = recipeBook;
+		}
+		emit signalDataReset();
+	}
+}
+
+void RecipeBookUIData::slotLoadDefaultData()
+{
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	RBMetaData metaData;
+	RecipeBook recipeBook;
+	QFile fileIn(":/files/DefaultRecipeBook.json");
+	if(!spReader->serialize(fileIn, metaData, recipeBook))
+	{
+		qCritical("Couldn't load default data");
+	}
+	else
+	{
+		{
+			recipebook::RBDataWriteHandle handle(m_RBData);
+			handle.data() = recipeBook;
+		}
 		emit signalDataReset();
 	}
 }

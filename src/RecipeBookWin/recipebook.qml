@@ -4,6 +4,8 @@ import QtQuick.Controls 2.14
 import QtQuick.Window 2.14
 import QtQuick.Layouts 1.14
 
+import "components"
+
 ApplicationWindow {
 	width: 1300
 	height: 825
@@ -12,6 +14,13 @@ ApplicationWindow {
 	Component.onCompleted: {
 		x = Screen.width / 2 - width / 2
 		y = Screen.height / 2 - height / 2
+	}
+
+	TextMessageDialog {
+		id: dlgConfirmImportFile
+		title: qsTr("Import file")
+		msgText: qsTr("This will load the selected file, irrevocably replacing current data. Proceed?");
+		onAccepted: fileDialogImport.onImport(fileDialogImport.fileUrls)
 	}
 
 	signal onClosingRecipeBook()
@@ -38,7 +47,7 @@ ApplicationWindow {
 					selectMultiple: false
 					selectFolder: false
 					signal onImport(filename: string)
-					onAccepted: onImport(fileDialogImport.fileUrls)
+					onAccepted: dlgConfirmImportFile.open()
 				}
 			}
 
@@ -47,7 +56,6 @@ ApplicationWindow {
 			ToolButton {
 				// TODO: Icon (instead of text?)
 				text: qsTr("Merge file")
-				// TODO: implementieren und enablen!
 				enabled: false
 			}
 

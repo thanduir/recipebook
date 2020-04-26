@@ -52,6 +52,7 @@ namespace recipebook::UI
 		void slotExport(QString strFileURL);
 		void slotImport(QString strFileURL);
 		void slotResetData();
+		void slotLoadDefaultData();
 
 	signals:
 		void signalDataReset();
