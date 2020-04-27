@@ -474,19 +474,23 @@ int ListModelRecipeItems::addRecipeItem(QString strIngredient)
 {
 	qint32 index = -1;
 	{
-		RBDataWriteHandle handle(m_rRBDataHandler);
-		Recipe* pRecipe = getRecipe(handle);
+		RBDataReadHandle handle(m_rRBDataHandler);
+		const Recipe* pRecipe = getRecipe(handle);
 
 		if(pRecipe == nullptr || !handle.data().existsIngredient(strIngredient))
 		{
 			return -1;
 		}
 
-		const Ingredient& rIngredient = handle.data().getIngredient(strIngredient);
 		index = pRecipe->getRecipeItemsCount();
+	}
 
-		beginInsertRows(QModelIndex(), index, index);
+	beginInsertRows(QModelIndex(), index, index);
 
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+		const Ingredient& rIngredient = handle.data().getIngredient(strIngredient);
 		pRecipe->addRecipeItem(rIngredient);
 	}
 
@@ -499,17 +503,22 @@ bool ListModelRecipeItems::removeItem(int row)
 {
 	bool bSuccess = false;
 	{
-		RBDataWriteHandle handle(m_rRBDataHandler);
-		Recipe* pRecipe = getRecipe(handle);
+		RBDataReadHandle handle(m_rRBDataHandler);
+		const Recipe* pRecipe = getRecipe(handle);
 
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return false;
+	}
 
+	beginRemoveRows(QModelIndex(), row, row);
+
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 		const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-
-		beginRemoveRows(QModelIndex(), row, row);
 		bSuccess = pRecipe->removeRecipeItem(rItem);
 	}
+
 	endRemoveRows();
 
 	return bSuccess;
@@ -518,16 +527,21 @@ bool ListModelRecipeItems::removeItem(int row)
 void ListModelRecipeItems::moveItem(int row, int target)
 {
 	{
-		RBDataWriteHandle handle(m_rRBDataHandler);
-		Recipe* pRecipe = getRecipe(handle);
+		RBDataReadHandle handle(m_rRBDataHandler);
+		const Recipe* pRecipe = getRecipe(handle);
 
 		if(pRecipe == nullptr
 		   || row < 0 || row >= (int) pRecipe->getRecipeItemsCount()
 		   || target < 0 || target >= (int) pRecipe->getRecipeItemsCount()
 		   || row == target)
 			return;
+	}
 
-		beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
+	beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
+
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
 		pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt(row), target);
 	}
 

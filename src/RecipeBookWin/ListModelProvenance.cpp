@@ -76,7 +76,7 @@ int ListModelProvenance::renameProvenance(int row, QString newName)
 {
 	qint32 newIndex = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		// Provenance "Everywhere" can't be renamed.
 		if(row <= 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
@@ -88,15 +88,20 @@ int ListModelProvenance::renameProvenance(int row, QString newName)
 		}
 
 		newIndex = handle.data().getSortOrderIndex(newName) + 1;
-		if(row != newIndex)
-		{
-			beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
-		}
+	}
+
+	if(row != newIndex)
+	{
+		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+	}
+
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
 		if(newIndex > row)
 		{
 			newIndex -= 1;
-		}
+		}	
 
 		SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
 		handle.data().renameSortOrder(rSortOrder, newName);
@@ -118,7 +123,7 @@ int ListModelProvenance::addProvenance(QString strSortOrder)
 {
 	qint32 index = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(handle.data().existsSortOrder(strSortOrder) || strSortOrder == provenanceEverywhere())
 		{
@@ -126,10 +131,15 @@ int ListModelProvenance::addProvenance(QString strSortOrder)
 		}
 
 		index = handle.data().getSortOrderIndex(strSortOrder) + 1;
+	}
 
-		beginInsertRows(QModelIndex(), index, index);
+	beginInsertRows(QModelIndex(), index, index);
+	
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		handle.data().addSortOrder(strSortOrder);
 	}
+
 	endInsertRows();
 
 	return index;
@@ -195,26 +205,18 @@ bool ListModelProvenance::canProvenanceBeRemoved(int row) const
 
 bool ListModelProvenance::removeProvenance(int row)
 {
+	if(!canProvenanceBeRemoved(row))
+	{
+		return false;
+	}
+
+	beginRemoveRows(QModelIndex(), row, row);
 	bool bSuccess = false;
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-		if(row < 0 || row >= (int) handle.data().getSortOrdersCount() + 1)
-		{
-			return false;
-		}
-
-		if(!canProvenanceBeRemoved(row))
-		{
-			return false;
-		}
-
-		beginRemoveRows(QModelIndex(), row, row);
-
-		SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
+		const SortOrder& rSortOrder = handle.data().getSortOrderAt(row - 1);
 		bSuccess = handle.data().removeSortOrder(rSortOrder);
 	}
-
 	endRemoveRows();
 
 	return bSuccess;

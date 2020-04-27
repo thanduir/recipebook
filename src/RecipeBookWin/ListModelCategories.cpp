@@ -81,7 +81,7 @@ int ListModelCategories::addCategory(QString strCategory)
 {
 	qint32 index = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(handle.data().existsCategory(strCategory))
 		{
@@ -89,10 +89,15 @@ int ListModelCategories::addCategory(QString strCategory)
 		}
 
 		index = handle.data().getCategoryIndex(strCategory);
+	}
 
-		beginInsertRows(QModelIndex(), index, index);
+	beginInsertRows(QModelIndex(), index, index);
+
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		handle.data().addCategory(strCategory);
 	}
+
 	endInsertRows();
 
 	return index;
@@ -154,7 +159,7 @@ bool ListModelCategories::removeCategory(int row)
 {
 	bool bSuccess = false;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row < 0 || row >= (int) handle.data().getCategoriesCount())
 		{
@@ -165,9 +170,12 @@ bool ListModelCategories::removeCategory(int row)
 		{
 			return false;
 		}
+	}
 
-		beginRemoveRows(QModelIndex(), row, row);
+	beginRemoveRows(QModelIndex(), row, row);
 
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		const Category& rCategory = handle.data().getCategoryAt(row);
 		bSuccess = handle.data().removeCategory(rCategory);
 	}

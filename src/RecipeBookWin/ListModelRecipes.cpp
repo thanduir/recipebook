@@ -211,7 +211,7 @@ int ListModelRecipes::renameRecipe(int row, QString newName)
 {
 	qint32 newIndex = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row < 0 || row >= (int) handle.data().getRecipesCount())
 			return -1;
@@ -222,10 +222,15 @@ int ListModelRecipes::renameRecipe(int row, QString newName)
 		}
 
 		newIndex = handle.data().getRecipeIndex(newName);
-		if(row != newIndex)
-		{
-			beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
-		}
+	}
+
+	if(row != newIndex)
+	{
+		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+	}
+
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
 		if(newIndex > row)
 		{
@@ -250,7 +255,7 @@ int ListModelRecipes::addRecipe(QString strRecipe)
 {
 	qint32 index = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(handle.data().existsRecipe(strRecipe))
 		{
@@ -258,9 +263,12 @@ int ListModelRecipes::addRecipe(QString strRecipe)
 		}
 
 		index = handle.data().getRecipeIndex(strRecipe);
+	}
 
-		beginInsertRows(QModelIndex(), index, index);
+	beginInsertRows(QModelIndex(), index, index);
 
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		handle.data().addRecipe(strRecipe, m_rSettings.getDefaultRecipeNrPersons());
 	}
 
@@ -271,22 +279,28 @@ int ListModelRecipes::addRecipe(QString strRecipe)
 
 int ListModelRecipes::copyRecipe(int row, QString strRecipe)
 {
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int) handle.data().getRecipesCount())
-		return -1;
-
-	if(handle.data().existsRecipe(strRecipe))
+	qint32 index = -1;
 	{
-		return -1;
-	}
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
-	qint32 index = handle.data().getRecipeIndex(strRecipe);
+		if(row < 0 || row >= (int) handle.data().getRecipesCount())
+			return -1;
+
+		if(handle.data().existsRecipe(strRecipe))
+		{
+			return -1;
+		}
+
+		index = handle.data().getRecipeIndex(strRecipe);
+	}
 
 	beginInsertRows(QModelIndex(),index, index);
 
-	const Recipe& rRecipe = handle.data().getRecipeAt(row);
-	handle.data().copyRecipe(rRecipe, strRecipe);
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		const Recipe& rRecipe = handle.data().getRecipeAt(row);
+		handle.data().copyRecipe(rRecipe, strRecipe);
+	}
 
 	endInsertRows();
 
@@ -303,15 +317,18 @@ bool ListModelRecipes::removeRecipe(int row)
 {
 	bool bSuccess = false;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row < 0 || row >= (int) handle.data().getRecipesCount())
 		{
 			return false;
 		}
+	}
 
-		beginRemoveRows(QModelIndex(), row, row);
+	beginRemoveRows(QModelIndex(), row, row);
 
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		Recipe& rRecipe = handle.data().getRecipeAt(row);
 		bSuccess = handle.data().removeRecipe(rRecipe);
 	}

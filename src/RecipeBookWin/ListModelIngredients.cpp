@@ -253,7 +253,7 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 {
 	qint32 newIndex = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 			return -1;
@@ -264,10 +264,15 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 		}
 
 		newIndex = handle.data().getIngredientIndex(newName);
-		if(row != newIndex)
-		{
-			beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
-		}
+	}
+
+	if(row != newIndex)
+	{
+		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+	}
+
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 
 		if(newIndex > row)
 		{
@@ -294,7 +299,7 @@ int ListModelIngredients::addIngredient(QString strIngredient)
 {
 	qint32 index = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(handle.data().existsIngredient(strIngredient))
 		{
@@ -307,9 +312,12 @@ int ListModelIngredients::addIngredient(QString strIngredient)
 		}
 
 		index = handle.data().getIngredientIndex(strIngredient);
+	}
 
-		beginInsertRows(QModelIndex(), index, index);
+	beginInsertRows(QModelIndex(), index, index);
 
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		const Category* pCategory = &handle.data().getCategoryAt(0);
 		QString defaultCategory = m_rSettings.getDefaultCategory();
 		if(!defaultCategory.isEmpty() && handle.data().existsCategory(defaultCategory))
@@ -353,7 +361,7 @@ bool ListModelIngredients::removeIngredient(int row)
 {
 	bool bSuccess = false;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		{
@@ -364,9 +372,12 @@ bool ListModelIngredients::removeIngredient(int row)
 		{
 			return false;
 		}
+	}
 
-		beginRemoveRows(QModelIndex(), row, row);
+	beginRemoveRows(QModelIndex(), row, row);
 
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		Ingredient& rIngredient = handle.data().getIngredientAt(row);
 		bool bSuccess = handle.data().removeIngredient(rIngredient);
 	}
