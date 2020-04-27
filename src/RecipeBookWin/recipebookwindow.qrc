@@ -20,7 +20,6 @@
 	<qresource prefix="/files">
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>
     </qresource>
-	
 	<qresource prefix="/components">
 		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">components/editItemsListDialog.qml</file>
@@ -29,9 +28,11 @@
     </qresource>
 	<qresource prefix="/images">
         <file alias="reorder.svg">images/reorder.svg</file>
-		<file alias="add.svg">images/add-black.svg</file>
-		<file alias="delete.svg">images/delete.svg</file>
 		<file alias="edit.svg">images/edit.svg</file>
-		<file alias="backspace.svg">images/backspace.svg</file>
+		<file alias="backspace.svg">images/backspace.svg</file>		
+		<file alias="settings-white.svg">images/settings-white.svg</file>
+		<file alias="export-file.svg">images/export-file.svg</file>
+		<file alias="import-file.svg">images/import-file.svg</file>
+		<file alias="merge.svg">images/merge.svg</file>		
     </qresource>
 </RCC>

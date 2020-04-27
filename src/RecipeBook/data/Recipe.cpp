@@ -8,7 +8,9 @@ using namespace recipebook;
 Recipe::Recipe(QString strName, const Recipe& rOther)
 :	m_Name(strName),
 	m_NrPersons(rOther.getNumberOfPersons()),
-	m_RecipeItems(rOther.m_RecipeItems)
+	m_ShortDescription(rOther.getShortDescription()),
+	m_RecipeText(rOther.getRecipeText()),
+	m_CookingTime(rOther.getCookingTime())
 {
 	for(int i = 0; i < rOther.m_RecipeItems.size(); ++i)
 	{

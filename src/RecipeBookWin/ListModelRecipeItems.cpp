@@ -468,6 +468,7 @@ void ListModelRecipeItems::setGroup(int row, QString group)
 	}
 
 	setDataChanged(row, RecipeItemsRoles::GroupRole);
+	setDataChanged(row, RecipeItemsRoles::GroupColorRole);
 }
 
 int ListModelRecipeItems::addRecipeItem(QString strIngredient)
@@ -625,30 +626,32 @@ void ListModelRecipeItems::cancelEditList()
 
 bool ListModelRecipeItems::applyEditList()
 {
-	RBDataWriteHandle handle(m_rRBDataHandler);
-	Recipe* pRecipe = getRecipe(handle);
-
-	if(pRecipe != nullptr)
 	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr)
+		{
+			return false;
+		}
+
 		for(QString item : qAsConst(m_EditListDeselectedValues))
 		{
 			const Ingredient& rIngredient = handle.data().getIngredient(item);
 			const RecipeItem& rRecipeItem = pRecipe->getRecipeItem(rIngredient);
 			pRecipe->removeRecipeItem(rRecipeItem);
 		}
-
-		for(QString item : qAsConst(m_EditListSelectedValues))
-		{
-			addRecipeItem(item);
-		}
-
-		bool bListChanged = m_EditListSelectedValues.size() > 0 || m_EditListDeselectedValues.size() > 0;
-
-		m_EditListSelectedValues.clear();
-		m_EditListDeselectedValues.clear();
-
-		return bListChanged;
 	}
 
-	return false;
+	for(QString item : qAsConst(m_EditListSelectedValues))
+	{
+		addRecipeItem(item);
+	}
+
+	bool bListChanged = m_EditListSelectedValues.size() > 0 || m_EditListDeselectedValues.size() > 0;
+
+	m_EditListSelectedValues.clear();
+	m_EditListDeselectedValues.clear();
+
+	return bListChanged;
 }

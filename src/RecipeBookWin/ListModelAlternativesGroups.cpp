@@ -33,20 +33,14 @@ QVariant ListModelAlternativesGroups::data(const QModelIndex& index, int iRole) 
 	if (index.row() < 0 || index.row() >= (int)handle.data().getAlternativesTypesCount() + 1)
 		return QVariant();
 
-	if(index.row() == c_uiRowNoGroup)
-	{
-		return stringNoAlternativesGroup();
-	}
-
-	const AlternativesType& rType = handle.data().getAlternativesTypeAt(index.row() - 1);
 	AlternativesGroupsRoles role = static_cast<AlternativesGroupsRoles>(iRole);
 	if(role == AlternativesGroupsRoles::NameRole)
 	{
-		return rType.getName();
+		return name(index.row());
 	}
 	else if(role == AlternativesGroupsRoles::ColorRole)
 	{
-		return rType.getColor();
+		return color(index.row());
 	}
 
 	return QVariant();

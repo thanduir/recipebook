@@ -154,8 +154,6 @@ void RecipeBookUIData::slotImport(QString strFileURL)
 		{
 			recipebook::RBDataWriteHandle handle(m_RBData);
 			handle.data() = recipeBook;
-
-			m_RBData.setDataUnchanged();
 		}
 		emit signalDataReset();
 	}
@@ -176,8 +174,6 @@ void RecipeBookUIData::slotLoadDefaultData()
 		{
 			recipebook::RBDataWriteHandle handle(m_RBData);
 			handle.data() = recipeBook;
-
-			m_RBData.setDataUnchanged();
 		}
 		emit signalDataReset();
 	}
@@ -188,8 +184,6 @@ void RecipeBookUIData::slotResetData()
 	{
 		recipebook::RBDataWriteHandle handle(m_RBData);
 		handle.data().clearData();
-
-		m_RBData.setDataUnchanged();
 	}
 
 	emit signalDataReset();

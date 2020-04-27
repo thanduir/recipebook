@@ -26,12 +26,11 @@ ApplicationWindow {
 	signal onClosingRecipeBook()
 	onClosing: onClosingRecipeBook()
 
-	// TODO: Icons rechts bündig?
 	header: ToolBar {
 		RowLayout {
 			ToolButton {
-				// TODO: Icon (instead of text?)
 				text: qsTr("Import file")
+				icon.source: "qrc:/images/import-file.svg"
 				onClicked: {
 					fileDialogImport.folder = "file:///" + recipeBookSettings.lastUsedImportFolder()
 					fileDialogImport.open()
@@ -55,16 +54,16 @@ ApplicationWindow {
 			ToolSeparator {}
 
 			ToolButton {
-				// TODO: Icon (instead of text?)
 				text: qsTr("Merge file")
+				icon.source: "qrc:/images/merge.svg"
 				enabled: false
 			}
 
 			ToolSeparator {}
 
 			ToolButton {
-				// TODO: Icon (instead of text?)
 				text: qsTr("Export")
+				icon.source: "qrc:/images/export-file.svg"
 				onClicked: {
 					fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedExportFolder()
 					fileDialogExport.open()
@@ -88,9 +87,8 @@ ApplicationWindow {
 			ToolSeparator {}
 
 			ToolButton {
-				// TODO: Icon (instead of text?)
 				text: qsTr("Settings")
-				enabled: true
+				icon.source: "qrc:/images/settings-white.svg"
 				onClicked: dlgSettings.open()
 			}
 		}

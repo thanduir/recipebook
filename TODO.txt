@@ -2,14 +2,9 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
-	- TEST EVERYTHING!
-		* Sort orders tab
-		* Ingredients tab
-		* Recipes tab
 	- Try to avoid unnecessairy save-triggers (setDataChanged updates)!
 		-> break point where setDataChanged, then click around and see where these come from!
-	- TODOs in recipebook.qml
-	
+		
 	- ShoppingRecipe and ShoppingList dialogs with all features
 		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?
 		* new features from app todo:
@@ -25,7 +20,7 @@ TODO
 	- Verify that every feature from the app is present!
 	- Test everything, esp. also that it works correctly with empty data!
 		- Make sure to avoid unnecessairy save-triggers (setDataChanged updates)!
-			-> break point where setDataChanged, then click around and see where these come from!
+			-> break point where setDataChanged, then click around and see where these come from! (esp. test shopping tab)
 	- Add a reasonable amount of unittests for everything not yet covered!
 4. Update Design.txt! (incl. code organization descriptions?)
 
