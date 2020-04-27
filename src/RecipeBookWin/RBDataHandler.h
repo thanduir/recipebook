@@ -22,7 +22,7 @@ namespace recipebook
 	class RBDataWriteHandle
 	{
 	public:
-		RBDataWriteHandle(RBDataHandler& rDataHandler);
+		RBDataWriteHandle(RBDataHandler& rDataHandler, bool dontSetDataChanged = false);
 		RecipeBook& data() { return m_rRecipeBook; }
 
 	private:

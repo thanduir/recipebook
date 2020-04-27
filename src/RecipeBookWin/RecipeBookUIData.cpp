@@ -37,7 +37,7 @@ RecipeBookUIData::RecipeBookUIData()
 		QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
 		RBMetaData metaData;
 
-		recipebook::RBDataWriteHandle handle(m_RBData);
+		recipebook::RBDataWriteHandle handle(m_RBData, true);
 		spReader->serialize(fileIn, metaData, handle.data());
 	}
 

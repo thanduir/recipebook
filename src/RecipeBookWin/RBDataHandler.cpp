@@ -7,10 +7,13 @@ RBDataReadHandle::RBDataReadHandle(const RBDataHandler& rDataHandler)
 {
 }
 
-RBDataWriteHandle::RBDataWriteHandle(RBDataHandler& rDataHandler)
+RBDataWriteHandle::RBDataWriteHandle(RBDataHandler& rDataHandler, bool dontSetDataChanged)
 : m_Locker(&rDataHandler.m_Lock), m_rRecipeBook(rDataHandler.m_RecipeBook)
 {
-	rDataHandler.m_bDataChanged = true;
+	if(!dontSetDataChanged)
+	{
+		rDataHandler.m_bDataChanged = true;
+	}
 }
 
 RBDataHandler::RBDataHandler()
