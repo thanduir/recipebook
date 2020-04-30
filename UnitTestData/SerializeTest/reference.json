@@ -10158,8 +10158,8 @@
             "ScalingFactor": 2,
             "items": {
                 "Aubergine": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 500,
@@ -10170,8 +10170,8 @@
                     "status": "None"
                 },
                 "Basilikum (getrocknet)": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
@@ -10182,8 +10182,8 @@
                     "status": "None"
                 },
                 "Kartoffeln": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 450,
@@ -10194,8 +10194,8 @@
                     "status": "None"
                 },
                 "Mozzarella": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10206,8 +10206,8 @@
                     "status": "None"
                 },
                 "Olivenöl": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
@@ -10218,8 +10218,8 @@
                     "status": "None"
                 },
                 "Parmesan": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
@@ -10230,8 +10230,8 @@
                     "status": "None"
                 },
                 "Pelati": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10242,8 +10242,8 @@
                     "status": "None"
                 },
                 "Tomatenpüree": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -10260,8 +10260,8 @@
             "ScalingFactor": 2,
             "items": {
                 "Eier": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -10272,8 +10272,8 @@
                     "status": "None"
                 },
                 "Karotten": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10284,8 +10284,8 @@
                     "status": "None"
                 },
                 "Maizena": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10296,8 +10296,8 @@
                     "status": "None"
                 },
                 "Mungosprossen": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 50,
@@ -10308,8 +10308,8 @@
                     "status": "None"
                 },
                 "Pak Choi": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 120,
@@ -10320,8 +10320,8 @@
                     "status": "None"
                 },
                 "Reis (Jasmin)": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 150,
@@ -10332,8 +10332,8 @@
                     "status": "None"
                 },
                 "Reisessig": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.5,
@@ -10344,8 +10344,8 @@
                     "status": "None"
                 },
                 "Rindsschnitzel": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 250,
@@ -10356,8 +10356,8 @@
                     "status": "None"
                 },
                 "Sesam-Samen": {
-                    "_position": 8,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10368,8 +10368,8 @@
                     "status": "None"
                 },
                 "Sesamöl": {
-                    "_position": 9,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10380,8 +10380,8 @@
                     "status": "None"
                 },
                 "Shiitakepilze": {
-                    "_position": 10,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 25,
@@ -10392,8 +10392,8 @@
                     "status": "None"
                 },
                 "Sojasauce": {
-                    "_position": 11,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 3,
@@ -10404,8 +10404,8 @@
                     "status": "None"
                 },
                 "Sriracha-Sauce": {
-                    "_position": 12,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10416,8 +10416,8 @@
                     "status": "None"
                 },
                 "Zucker": {
-                    "_position": 13,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.5,
@@ -10434,8 +10434,8 @@
             "ScalingFactor": 2,
             "items": {
                 "Blumenkohl": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 450,
@@ -10446,8 +10446,8 @@
                     "status": "None"
                 },
                 "Cayenne-Pfeffer": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10458,8 +10458,8 @@
                     "status": "None"
                 },
                 "Chili-Schote (rot)": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10470,8 +10470,8 @@
                     "status": "None"
                 },
                 "Halbrahm": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 275,
@@ -10482,8 +10482,8 @@
                     "status": "None"
                 },
                 "Kreuzkümmel": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -10494,8 +10494,8 @@
                     "status": "None"
                 },
                 "Limettensaft": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
@@ -10506,8 +10506,8 @@
                     "status": "None"
                 },
                 "Paprika": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -10518,8 +10518,8 @@
                     "status": "None"
                 },
                 "Ricotta": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 125,
@@ -10530,8 +10530,8 @@
                     "status": "None"
                 },
                 "Salat (Eisberg, Kopf)": {
-                    "_position": 8,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.25,
@@ -10542,8 +10542,8 @@
                     "status": "None"
                 },
                 "Schalotten": {
-                    "_position": 9,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -10554,8 +10554,8 @@
                     "status": "None"
                 },
                 "Sonnenblumenöl": {
-                    "_position": 10,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -10566,8 +10566,8 @@
                     "status": "None"
                 },
                 "Tortillas (Weizen)": {
-                    "_position": 11,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 4,

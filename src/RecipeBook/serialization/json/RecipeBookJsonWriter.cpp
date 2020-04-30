@@ -20,7 +20,7 @@ using namespace recipebook::serialization;
 
 namespace
 {
-    template<class T> void writeRecipeItem(const T& rItem, int pos, QJsonObject& rObject)
+    template<class T> void writeRecipeItem(const T& rItem, QJsonObject& rObject)
     {
         QJsonObject amountObject;
         amountObject[json::c_strRecipesAmountMin] = rItem.getAmount().getQuantityMin();
@@ -32,7 +32,14 @@ namespace
         rObject[json::c_strRecipesOptional] = rItem.isOptional();
         rObject[json::c_strRecipesAdditionalInfo] = rItem.getAdditionalInfo();
 
-        rObject[json::c_strRecipesPosition] = (int)pos;
+        if(rItem.hasAlternativesGroup())
+        {
+            rObject[json::c_strRecipesGroup] = rItem.getAlternativesGroup().getName();
+        }
+        else
+        {
+            rObject[json::c_strRecipesGroup] = "";
+        }
     }
 }
 
@@ -188,16 +195,8 @@ void json::JsonWriter::writeRecipeItems(const Recipe& rRecipe, const RecipeBook&
         const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
         
         QJsonObject recipeItemObject;
-        if(rItem.hasAlternativesGroup())
-        {
-            recipeItemObject[json::c_strRecipesGroup] = rItem.getAlternativesGroup().getName();
-        }
-        else
-        {
-            recipeItemObject[json::c_strRecipesGroup] = "";
-        }
-        
-        writeRecipeItem(rItem, i, recipeItemObject);
+        recipeItemObject[json::c_strRecipesPosition] = (int)i;
+        writeRecipeItem(rItem, recipeItemObject);
 
         rObject[rItem.getName()] = recipeItemObject;
     }
@@ -221,7 +220,7 @@ void json::JsonWriter::writeShoppongList(const RecipeBook& rRecipeBook, QJsonObj
             QJsonObject recipeItemObject;
 
             recipeItemObject[json::c_strRecipesStatus] = helper::convertStatus(rItem.getStatus());
-            writeRecipeItem(rItem, i, recipeItemObject);
+            writeRecipeItem(rItem, recipeItemObject);
 
             itemsGroupsObject[rItem.getName()] = recipeItemObject;
         }

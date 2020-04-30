@@ -10,6 +10,7 @@
 namespace recipebook
 {
 	class RecipeItem;
+	class AlternativesType;
 
 	class ShoppingListItem
 	{
@@ -29,6 +30,11 @@ namespace recipebook
 
 		bool isOptional() const { return m_bOptional; }
 		void setIsOptional(bool optional) { m_bOptional = optional; }
+		
+		bool hasAlternativesGroup() const { return m_pAlternativesGroup != nullptr; }
+		const AlternativesType& getAlternativesGroup() const { return *m_pAlternativesGroup; }
+		void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
+		void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
 
 		Status getStatus() const { return m_Status; }
 		void setStatus(Status status) { m_Status = status; }
@@ -47,6 +53,7 @@ namespace recipebook
 		QString m_AdditionalInfo;
 		Size m_Size = Size::Normal;
 		bool m_bOptional = false;
+		const AlternativesType* m_pAlternativesGroup = nullptr;
 		Status m_Status = Status::None;
 
 		friend class ShoppingRecipe;

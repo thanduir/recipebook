@@ -14,7 +14,7 @@ ShoppingRecipe::ShoppingRecipe(const Recipe& rRecipe)
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
 		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
-		internal::unsorted::addItem(rItem.getName(), i, m_Items, [&rItem]()
+		internal::sorted::addItem(rItem.getName(), m_Items, [&rItem]()
 		{
 			return new ShoppingListItem(rItem);
 		});
@@ -35,7 +35,7 @@ void ShoppingRecipe::changeScalingFactor(float f)
 
 	ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::addItem(rIngredient.getName(), -1, m_Items, [&rIngredient]()
+	return internal::sorted::addItem(rIngredient.getName(), m_Items, [&rIngredient]()
 	{
 		return new ShoppingListItem(rIngredient);
 	});
@@ -43,7 +43,7 @@ void ShoppingRecipe::changeScalingFactor(float f)
 
 ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
-	return internal::unsorted::addItem(rItem.getName(), -1, m_Items, [&rItem]()
+	return internal::sorted::addItem(rItem.getName(), m_Items, [&rItem]()
 	{
 		return new ShoppingListItem(rItem);
 	});
@@ -51,23 +51,23 @@ ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 
 bool ShoppingRecipe::existsItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::exists<ShoppingListItem>(rIngredient.getName(), m_Items);
+	return internal::sorted::exists<ShoppingListItem>(rIngredient.getName(), m_Items);
 }
 
 bool ShoppingRecipe::removeItem(const ShoppingListItem& rItem)
 {
-	internal::unsorted::remove(rItem, m_Items);
+	internal::sorted::remove(rItem, m_Items);
 	return true;
 }
 
 ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::getItem(rIngredient.getName(), m_Items);
+	return internal::sorted::getItem(rIngredient.getName(), m_Items);
 }
 
 const ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::getItem(rIngredient.getName(), m_Items);
+	return internal::sorted::getItem(rIngredient.getName(), m_Items);
 }
 
 quint32 ShoppingRecipe::getItemsCount() const
@@ -93,12 +93,8 @@ const ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i) const
 	return *m_Items.at(i).get();
 }
 
-void ShoppingRecipe::moveItem(const ShoppingListItem& rItem, quint32 newPos)
+quint32 ShoppingRecipe::getItemIndex(const Ingredient& rIngredient) const
 {
-	int oldPos = internal::unsorted::find(rItem.getName(), m_Items);
-	if(oldPos < 0)
-	{
-		throw QException();
-	}
-	m_Items.move(oldPos, newPos);
+	auto iter = recipebook::internal::helper::findItemSorted(rIngredient.getName(), m_Items);
+	return iter - m_Items.begin();
 }

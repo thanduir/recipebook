@@ -205,12 +205,7 @@ Item {
 		}
 	}
 
-	// TODO: * Add alternatives groups to ShoppingListItems (for those that come from a recipe)!
-	//		 * Also change ShoppingRecipe class to be sorted by name (and remove the move-method)!
-	//		 To be changed: ShoppingListItem! SERIALIZATION (incl. UnitTest)! ListModel!
-
-	// TODO: Layout similar to recipesPage. Middle col with duedate and scaling factor
-	
+	// TODO: Layout similar to recipesPage. Middle col with duedate and scaling factor	
 	// TODO: Idea: Use empty space in middle column for alternatives groups (combo box with groups present + ListView with checkboxes below to select items to use?)
 	//		Or is there a better way to do this? Would it be better to use a button for this that opens a dialog with the checkboxes? 
 	//		Or add checkboxes to the list on the right?

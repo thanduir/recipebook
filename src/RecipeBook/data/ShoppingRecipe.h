@@ -37,7 +37,7 @@ namespace recipebook
 		quint32 getItemsCount() const;
 		ShoppingListItem& getItemAt(quint32 i);
 		const ShoppingListItem& getItemAt(quint32 i) const;
-		void moveItem(const ShoppingListItem& rItem, quint32 newPos);
+		quint32 getItemIndex(const Ingredient& rIngredient) const;
 
 	private:
 		explicit ShoppingRecipe(QString strName, float fScalingFactor) 

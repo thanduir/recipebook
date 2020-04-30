@@ -19,7 +19,7 @@ using namespace recipebook::serialization;
 
 namespace
 {
-	template<class T> bool readRecipeItem(const QJsonObject& rObject, T& rItem)
+	template<class T> bool readRecipeItem(const QJsonObject& rObject, const RecipeBook& rRecipeBook, T& rItem)
 	{
 		// Amount
 		QJsonObject amountMinMax = rObject[json::c_strRecipesAmount].toObject();
@@ -49,6 +49,13 @@ namespace
 		// Additional info
 		QString strAdditionalInfo = rObject[json::c_strRecipesAdditionalInfo].toString();
 		rItem.setAdditionInfo(strAdditionalInfo);
+
+		// Alternatives group
+		QString groupName = rObject[json::c_strRecipesGroup].toString();
+		if(groupName != "")
+		{
+			rItem.setAlternativesGroup(rRecipeBook.getAlternativesType(groupName));
+		}
 
 		return true;
 	}
@@ -229,13 +236,7 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 			indexMap.insert(posItem, &rItem);
 
 			QJsonObject itemObject = items[strRecipeItem].toObject();
-			QString groupName = itemObject[json::c_strRecipesGroup].toString();
-			if(groupName != "")
-			{
-				rItem.setAlternativesGroup(rRecipeBook.getAlternativesType(groupName));
-			}
-
-			if(!readRecipeItem(itemObject, rItem))
+			if(!readRecipeItem(itemObject, rRecipeBook, rItem))
 			{
 				return false;
 			}
@@ -269,24 +270,16 @@ bool json::JsonReaderV2::readShoppingList(const QJsonObject& rObject, RecipeBook
 			QJsonObject item = items[strRecipeItem].toObject();
 
 			const Ingredient& rIngredient = rRecipeBook.getIngredient(strRecipeItem);
-			int pos = item[json::c_strRecipesPosition].toInt();
 			ShoppingListItem& rItem = rRecipe.addItem(rIngredient);
-			indexMap.insert(pos, &rItem);
 
 			QString strStatus = item[json::c_strRecipesStatus].toString();
 			Status status = helper::convertStatus(strStatus);
 			rItem.setStatus(status);
 
-			if(!readRecipeItem(item, rItem))
+			if(!readRecipeItem(item, rRecipeBook, rItem))
 			{
 				return false;
 			}
-		}
-
-		// Sort items correctly
-		for(int i : indexMap.keys())
-		{
-			rRecipe.moveItem(*indexMap[i], i);
 		}
 	}
 
