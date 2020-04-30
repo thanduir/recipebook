@@ -2,14 +2,15 @@ TODO
 ====
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
+
 	- ShoppingRecipe and ShoppingList dialogs with all features
-		* how to handle new groups? Insert all and mark them somehow? Let user chose which to take (also allow choosing more than one!)? Let the user chose one per group?
-		* new features:
+		* finish shopping list page (TODOs)
+		* new features go shopping: 
 			- nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
-			- in go shopping: gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
+			- gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
 				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
 				darunter eine zeile "2 gross" und eine "1 klein")
-			- show somehow in "go shopping" from which recipe the items are coming?
+			- show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
 	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
@@ -23,6 +24,7 @@ TODO
 
 5. Kochbuch-Exporter
 	-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
+	-> the same is true for groupings of recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
 6. Merge functionality
 7. TODOs
 8. UnitTests!

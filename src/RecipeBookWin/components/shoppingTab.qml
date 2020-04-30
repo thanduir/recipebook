@@ -3,6 +3,10 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 
 Item {
+	Component.onCompleted: {
+		bar.currentIndex = 1
+	}
+
 	TabBar {
 		id: bar
 		width: (button1.implicitWidth + 20) * 3
@@ -23,7 +27,7 @@ Item {
 		TabButton {
 			id: button1
 			font.capitalization: Font.MixedCase
-			text: qsTr("Shopping list")            
+			text: qsTr("Shopping list")
 
 			background: Rectangle {
 				color: bar.currentIndex == 1 ? "lightgray" : "transparent"
@@ -36,12 +40,12 @@ Item {
 		anchors.fill: parent        
 		anchors.leftMargin: bar.height
 		currentIndex: bar.currentIndex
-                
-		ShoppingListPage {
-			id: shoppingListPage
-		}
+              		
 		GoShoppingPage {
 			id: goShoppingPage
+		}
+		ShoppingListPage {
+			id: shoppingListPage
 		}
 	}
 }

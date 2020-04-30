@@ -34,5 +34,9 @@
 		<file alias="export-file.svg">images/export-file.svg</file>
 		<file alias="import-file.svg">images/import-file.svg</file>
 		<file alias="merge.svg">images/merge.svg</file>		
+		<file alias="add-black.svg">images/add-black.svg</file>		
+		<file alias="remove.svg">images/remove.svg</file>
+		<file alias="clear-black.svg">images/clear-black.svg</file>
+		<file alias="copy-black.svg">images/copy-black.svg</file>
     </qresource>
 </RCC>

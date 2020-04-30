@@ -110,6 +110,7 @@
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
+    <ClCompile Include="ListModelShoppingRecipes.cpp" />
     <ClCompile Include="RBDataHandler.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
@@ -171,6 +172,7 @@
     <QtMoc Include="RecipeBookSettings.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ListModelShoppingRecipes.h" />
     <ClInclude Include="RBDataHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

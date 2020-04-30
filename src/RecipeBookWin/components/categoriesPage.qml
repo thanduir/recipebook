@@ -131,19 +131,40 @@ Item {
 
 		RowLayout {
 			anchors.fill: parent
-			Button { 
-				text: qsTr("Add") 
+			RoundButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add sort order")
+
 				onClicked: dlgAddSortOrder.open()
 			}
-			Button { 
-				text: qsTr("Rename") 
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/edit.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Rename sort order")
+
 				onClicked: {
 					dlgRenameSortOrder.initialText = modelSortOrders.name(lvSortOrders.currentIndex);
 					dlgRenameSortOrder.open();
 				}
 			}
-			Button { 
-				text: qsTr("Remove") 
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove sort order")
+
 				enabled: lvSortOrders.count > 0 && modelSortOrders.canSortOrderBeRemoved(lvSortOrders.currentIndex)
 				onClicked: {
 					dlgRemoveSortOrder.msgText = qsTr("This will remove the ingredient \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\". Proceed?");
@@ -294,20 +315,41 @@ Item {
 
 		RowLayout {
 			anchors.fill: parent
-			Button { 
-				text: qsTr("Add") 
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add category")
+
 				onClicked: dlgAddCategory.open()
 			}
-			Button { 
-				text: qsTr("Rename") 
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/edit.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Rename category")
+
 				enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && lvCategories.currentIndex >= 0
 				onClicked: {
 					dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
 					dlgRenameCategory.open();
 				}
 			}
-			Button { 
-				text: qsTr("Remove") 
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove category")
+
 				enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
 				onClicked: {
 					dlgRemoveCategory.msgText = qsTr("This will remove the category \"" + modelSortOrder.name(lvCategories.currentIndex) + "\" from all sort orders. Proceed?");

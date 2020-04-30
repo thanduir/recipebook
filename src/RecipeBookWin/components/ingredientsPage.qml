@@ -149,27 +149,48 @@ Item {
 		RowLayout {
 			anchors.fill: parent
         
-			Button {
+			RoundButton {
 				id: buttonAdd
 
-				text: qsTr("Add")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add ingredient")
+
 				onClicked: dlgAddIngredient.open()
 			}
 
-			Button {
+			RoundButton {
 				id: buttonRename
 
-				text: qsTr("Rename")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/edit.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Rename ingredient")
+
 				onClicked: {
 					dlgRenameIngredient.initialText = filterModelIngredients.name(lvIngredients.currentIndex);
 					dlgRenameIngredient.open();
 				}
 			}
 
-			Button {
+			RoundButton {
 				id: buttonRemove
 
-				text: qsTr("Remove")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove ingredient")
+
 				enabled: lvIngredients.count > 0 && filterModelIngredients.canIngredientBeRemoved(lvIngredients.currentIndex)
 				onClicked: {
 					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + filterModelIngredients.name(lvIngredients.currentIndex) + "\". Proceed?");

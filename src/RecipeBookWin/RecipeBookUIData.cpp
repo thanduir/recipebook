@@ -29,6 +29,7 @@ RecipeBookUIData::RecipeBookUIData()
 	m_ModelRecipes(m_RBData, m_Settings),
 	m_FilterModelRecipes(),
 	m_ModelRecipeItems(m_RBData, m_Converter),
+	m_ModelShoppingRecipes(m_RBData, m_Settings),
 	m_SaveLock()
 {
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
@@ -76,6 +77,8 @@ RecipeBookUIData::RecipeBookUIData()
 			&m_ModelRecipes, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelRecipeItems, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelShoppingRecipes, SLOT(onDataReset()));
 
 	// Enable periodic saving routine
 	QTimer *pTimer = new QTimer(this);
@@ -267,4 +270,9 @@ FilterModelRecipes& RecipeBookUIData::getRecipesFilterModel()
 ListModelRecipeItems& RecipeBookUIData::getRecipeItemsModel()
 {
 	return m_ModelRecipeItems;
+}
+
+ListModelShoppingRecipes& RecipeBookUIData::getShoppingRecipesModel()
+{
+	return m_ModelShoppingRecipes;
 }

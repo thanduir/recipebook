@@ -157,7 +157,7 @@ Item {
 			Component.onCompleted: {
 				if(lvRecipes.count > 0) {
 					lvRecipes.currentIndex = 0;
-						modelRecipeItems.setRecipe(0);
+					modelRecipeItems.setRecipe(0);
 				}
 			}
 		}
@@ -175,37 +175,65 @@ Item {
 		RowLayout {
 			anchors.fill: parent
         
-			Button {
+			RoundButton {
 				id: buttonAdd
 
-				text: qsTr("Add")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add recipe")
+
 				onClicked: dlgAddRecipe.open()
 			}
 
-			Button {
+			RoundButton {
 				id: buttonCopy
 
-				text: qsTr("Copy")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/copy-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Copy recipe")
+
 				onClicked: {
 					dlgCopyRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
 					dlgCopyRecipe.open();
 				}
 			}
 
-			Button {
+			RoundButton {
 				id: buttonRename
 
-				text: qsTr("Rename")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/edit.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Rename recipe")
+
 				onClicked: {
 					dlgRenameRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
 					dlgRenameRecipe.open();
 				}
 			}
 
-			Button {
+			RoundButton {
 				id: buttonRemove
 
-				text: qsTr("Remove")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove recipe")
+
 				enabled: lvRecipes.currentIndex < lvRecipes.count && lvRecipes.currentIndex >= 0
 				onClicked: {
 					dlgRemoveRecipe.msgText = qsTr("This will remove the recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\". Proceed?");

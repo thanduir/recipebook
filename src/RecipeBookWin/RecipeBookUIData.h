@@ -15,6 +15,7 @@
 #include "ListModelRecipes.h"
 #include "FilterModelRecipes.h"
 #include "ListModelRecipeItems.h"
+#include "ListModelShoppingRecipes.h"
 #include "uistringconverter.h"
 
 namespace recipebook::UI
@@ -46,6 +47,7 @@ namespace recipebook::UI
 		ListModelRecipes& getRecipesModel();
 		FilterModelRecipes& getRecipesFilterModel();
 		ListModelRecipeItems& getRecipeItemsModel();
+		ListModelShoppingRecipes& getShoppingRecipesModel();
 
 	public slots:
 		void slotSave();
@@ -79,6 +81,8 @@ namespace recipebook::UI
 		FilterModelRecipes m_FilterModelRecipes;
 
 		ListModelRecipeItems m_ModelRecipeItems;
+
+		ListModelShoppingRecipes m_ModelShoppingRecipes;
 
 		QAtomicInt m_SaveLock;
 	};
