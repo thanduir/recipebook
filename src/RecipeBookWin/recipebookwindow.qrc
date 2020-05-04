@@ -25,6 +25,7 @@
 		<file alias="EditItemsListDialog.qml">components/editItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
 		<file alias="EditAlternativesGroupDialog.qml">components/editAlternativesGroupDialog.qml</file>
+		<file alias="DateSelectionDialog.qml">components/dateSelectionDialog.qml</file>
     </qresource>
 	<qresource prefix="/images">
         <file alias="reorder.svg">images/reorder.svg</file>
@@ -38,5 +39,6 @@
 		<file alias="remove.svg">images/remove.svg</file>
 		<file alias="clear-black.svg">images/clear-black.svg</file>
 		<file alias="copy-black.svg">images/copy-black.svg</file>
+		<file alias="date-range.svg">images/date-range.svg</file>
     </qresource>
 </RCC>

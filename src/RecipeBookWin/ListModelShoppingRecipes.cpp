@@ -101,6 +101,7 @@ void ListModelShoppingRecipes::setScalingFactor(int row, float fFactor)
 	}
 
 	setDataChanged(row, ShoppingRecipeRoles::ScalingFactorRole);
+	emit recipeScalingChanged(row);
 }
 
 void ListModelShoppingRecipes::setDueDate(int row, QDate date)

@@ -5,12 +5,14 @@ TODO
 
 	- ShoppingRecipe and ShoppingList dialogs with all features
 		* finish shopping list page (TODOs)
-		* new features go shopping: 
-			- nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
-			- gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
-				trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
-				darunter eine zeile "2 gross" und eine "1 klein")
-			- show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
+
+		* Go shopping dialog! 
+			- New features: 
+				* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
+				* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
+					trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
+					darunter eine zeile "2 gross" und eine "1 klein")
+				* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
 	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)

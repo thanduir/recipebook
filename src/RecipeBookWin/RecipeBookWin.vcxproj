@@ -110,6 +110,7 @@
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
+    <ClCompile Include="ListModelShoppingListItems.cpp" />
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
     <ClCompile Include="RBDataHandler.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
@@ -125,6 +126,7 @@
   <ItemGroup>
     <None Include="components\categoriesPage.qml" />
     <None Include="components\cookbookTab.qml" />
+    <None Include="components\dateSelectionDialog.qml" />
     <None Include="components\editAlternativesGroupDialog.qml" />
     <None Include="components\goShoppingPage.qml" />
     <None Include="components\ingredientsPage.qml" />
@@ -173,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelShoppingRecipes.h" />
+    <QtMoc Include="ListModelShoppingListItems.h" />
     <ClInclude Include="RBDataHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

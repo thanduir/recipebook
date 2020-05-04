@@ -23,14 +23,14 @@ ShoppingRecipe::ShoppingRecipe(const Recipe& rRecipe)
 
 void ShoppingRecipe::changeScalingFactor(float f)
 {
-	setScalingFactor(f);
-
 	float fFactor = f / getScalingFactor();
 	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
 		Amount& amount = spItem->getAmount();
 		amount.scaleAmount(fFactor);
 	}
+
+	setScalingFactor(f);
 }
 
 	ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
