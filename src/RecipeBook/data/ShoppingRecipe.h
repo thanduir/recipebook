@@ -42,7 +42,7 @@ namespace recipebook
 	private:
 		explicit ShoppingRecipe(QString strName, float fScalingFactor) 
 			: m_Name(strName), m_fScalingFactor(fScalingFactor), m_DueDate(QDate::currentDate()) {}
-		explicit ShoppingRecipe(const Recipe& rRecipe);
+		explicit ShoppingRecipe(QString strName, const Recipe& rRecipe);
 
 		ShoppingRecipe(const ShoppingRecipe& rOther) = delete;
 		void operator=(const ShoppingRecipe& rOther) = delete;

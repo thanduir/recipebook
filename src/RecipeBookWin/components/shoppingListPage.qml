@@ -8,6 +8,16 @@ Item {
 
 	// Recipes dialogs
 
+	AddRecipesListDialog {
+		id: dlgAddExistingRecipes
+		title: qsTr("Add existing recipes")
+
+		onListChanged: {
+			lvRecipes.currentIndex = -1;
+			modelShoppingListItems.setShoppingRecipe(-1);
+		}
+	}
+
 	TextInputDialog {
 		id: dlgAddNewRecipe
 		title: qsTr("Add new recipe")
@@ -108,7 +118,7 @@ Item {
 		ToolTip.visible: hovered
 		ToolTip.text: qsTr("Clear all shopping recipe")
 
-		enabled: lvRecipes.currentIndex < lvRecipes.count && lvRecipes.currentIndex >= 0
+		enabled: lvRecipes.currentIndex < lvRecipes.count
 		onClicked: {
 			dlgClearShoppingList.msgText = qsTr("This will remove all recipes from the list. Proceed?");
 			dlgClearShoppingList.open();
@@ -179,8 +189,11 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add from recipe")
 
-				// TODO! (similar to edit recipe items list? But how to make it possible to add the same recipe several times? Only add here, no remove?)
-				//onClicked: dlgAddRecipe.open()
+				onClicked: {
+					dlgAddExistingRecipes.editListModel = modelShoppingRecipes;
+					dlgAddExistingRecipes.allValuesFilterModel = filterModelRecipes;
+					dlgAddExistingRecipes.open();
+				}
 			}
 
 			RoundButton {
@@ -238,7 +251,7 @@ Item {
         
 		visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
 
-		text: qsTr("Recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\"")
+		text: qsTr("Recipe \"" + modelShoppingRecipes.name(lvRecipes.currentIndex) + "\"")
 		font.bold: true
 	}
 
@@ -601,13 +614,11 @@ Item {
 		RowLayout {
 			anchors.fill: parent
         
-			// TODO: Would it make sense to have a remove button anyways here for convinience? It happens quite often that items need to be removed from the list...
-			//		-> Yes and possible replace "Edit list" button with icon-based button!
-
-			Button {
+			RoundButton {
 				enabled: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
 
-				text: qsTr("Edit list")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/list-black.svg"
 
 				onClicked: {
 					dlgEditShoppingListItemsList.editListModel = modelShoppingListItems;

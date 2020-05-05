@@ -144,6 +144,9 @@
     <None Include="components\dateSelectionDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
+    <None Include="components\addRecipesListDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelIngredients.h">

@@ -50,6 +50,12 @@ namespace recipebook::UI
 
 		void onDataReset();
 
+		void beginAddList();
+		quint32 getInsertionsCount(QString itemName) const;
+		void changeState(QString itemName, quint32 insertionsCount);
+		void cancelAddList();
+		bool applyAddList();
+
 	signals:
 		void recipeScalingChanged(quint32 index);
 
@@ -62,6 +68,8 @@ namespace recipebook::UI
 	private:
 		RBDataHandler& m_rRBDataHandler;
 		const RecipeBookSettings& m_rSettings;
+
+		QMap<QString, quint32> m_AddListValues;
 	};
 }
 

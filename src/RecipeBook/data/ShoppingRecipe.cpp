@@ -7,8 +7,8 @@
 
 using namespace recipebook;
 
-ShoppingRecipe::ShoppingRecipe(const Recipe& rRecipe)
-:	m_Name(rRecipe.getName()), 
+ShoppingRecipe::ShoppingRecipe(QString strName, const Recipe& rRecipe)
+:	m_Name(strName), 
 	m_fScalingFactor(rRecipe.getNumberOfPersons())
 {
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)

@@ -178,11 +178,11 @@ int ListModelShoppingRecipes::addFromRecipe(QString strRecipe)
 		int iNr = 2;
         while(handle.data().existsShoppingRecipe(strShoppingRecipe))
         {
-			strShoppingRecipe = strRecipe + QString("%1 (%2)").arg(strRecipe).arg(iNr);
+			strShoppingRecipe = QString("%1 (%2)").arg(strRecipe).arg(iNr);
             ++iNr;
         }
 
-		index = handle.data().getRecipeIndex(strShoppingRecipe);
+		index = handle.data().getShoppingRecipeIndex(strShoppingRecipe);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -269,4 +269,56 @@ void ListModelShoppingRecipes::onDataReset()
 {
 	beginResetModel();
 	endResetModel();
+}
+
+void ListModelShoppingRecipes::beginAddList()
+{
+	m_AddListValues.clear();
+}
+
+quint32 ListModelShoppingRecipes::getInsertionsCount(QString itemName) const
+{
+	if(!m_AddListValues.contains(itemName))
+	{
+		return 0;
+	}
+
+	return m_AddListValues[itemName];
+}
+
+void ListModelShoppingRecipes::changeState(QString itemName, quint32 insertionsCount)
+{
+	if(insertionsCount > 0)
+	{
+		m_AddListValues[itemName] = insertionsCount;
+	}
+	else
+	{
+		m_AddListValues.remove(itemName);
+	}
+}
+
+void ListModelShoppingRecipes::cancelAddList()
+{
+	m_AddListValues.clear();
+}
+
+bool ListModelShoppingRecipes::applyAddList()
+{
+	bool bSuccess = false;
+	for(QString recipe : m_AddListValues.keys())
+	{
+		for(quint32 i = 0; i < m_AddListValues[recipe]; ++i)
+		{
+			int retval = addFromRecipe(recipe);
+			if(retval != -1)
+			{
+				bSuccess = true;
+			}
+		}
+	}
+
+	bool bListChanged = bSuccess && m_AddListValues.size() > 0;
+	m_AddListValues.clear();
+	return bListChanged;
 }

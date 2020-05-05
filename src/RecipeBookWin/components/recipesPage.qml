@@ -813,10 +813,11 @@ Item {
 		RowLayout {
 			anchors.fill: parent
         
-			Button {
+			RoundButton {
 				enabled: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
 
-				text: qsTr("Edit list")
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/list-black.svg"
 
 				onClicked: {
 					dlgEditRecipeItemsList.editListModel = modelRecipeItems;

@@ -124,6 +124,7 @@
     <QtRcc Include="recipebookwindow.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="components\addRecipesListDialog.qml" />
     <None Include="components\categoriesPage.qml" />
     <None Include="components\cookbookTab.qml" />
     <None Include="components\dateSelectionDialog.qml" />

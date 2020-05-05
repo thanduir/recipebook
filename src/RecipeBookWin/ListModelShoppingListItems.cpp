@@ -57,6 +57,8 @@ int ListModelShoppingListItems::rowCount(const QModelIndex& parent) const
 
 	RBDataReadHandle handle(m_rRBDataHandler);
 	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+	if(pRecipe == nullptr)
+		return 0;
 
 	return pRecipe->getItemsCount();
 }

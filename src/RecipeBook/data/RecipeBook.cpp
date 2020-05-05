@@ -559,9 +559,9 @@ ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScaling
 
 ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRecipe)
 {
-	return internal::sorted::addItem(strName, m_ShoppingRecipes, [&rRecipe]()
+	return internal::sorted::addItem(strName, m_ShoppingRecipes, [strName, &rRecipe]()
 	{
-		return new ShoppingRecipe(rRecipe);
+		return new ShoppingRecipe(strName, rRecipe);
 	});
 }
 
