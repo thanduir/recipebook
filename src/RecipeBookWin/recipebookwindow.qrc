@@ -24,7 +24,7 @@
 		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">components/editItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
-		<file alias="EditAlternativesGroupDialog.qml">components/editAlternativesGroupDialog.qml</file>
+		<file alias="EditAlternativesGroupPane.qml">components/editAlternativesGroupPane.qml</file>
 		<file alias="AddRecipesListDialog.qml">components/addRecipesListDialog.qml</file>
 		<file alias="DateSelectionDialog.qml">components/dateSelectionDialog.qml</file>
     </qresource>

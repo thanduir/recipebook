@@ -111,9 +111,6 @@
     <None Include="components\editItemsListDialog.qml">
       <Filter>qml Files\components</Filter>
     </None>
-    <None Include="components\editAlternativesGroupDialog.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
     <None Include="components\categoriesPage.qml">
       <Filter>qml Files\components\recipes tab</Filter>
     </None>
@@ -145,6 +142,9 @@
       <Filter>qml Files\components</Filter>
     </None>
     <None Include="components\addRecipesListDialog.qml">
+      <Filter>qml Files\components</Filter>
+    </None>
+    <None Include="components\editAlternativesGroupPane.qml">
       <Filter>qml Files\components</Filter>
     </None>
   </ItemGroup>

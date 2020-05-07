@@ -128,7 +128,7 @@
     <None Include="components\categoriesPage.qml" />
     <None Include="components\cookbookTab.qml" />
     <None Include="components\dateSelectionDialog.qml" />
-    <None Include="components\editAlternativesGroupDialog.qml" />
+    <None Include="components\editAlternativesGroupPane.qml" />
     <None Include="components\goShoppingPage.qml" />
     <None Include="components\ingredientsPage.qml" />
     <None Include="components\recipesPage.qml" />

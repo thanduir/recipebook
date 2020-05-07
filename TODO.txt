@@ -5,7 +5,6 @@ TODO
 
 	- Improve groups in recipes:
 		* Improve UI: 
-			* Alternatives groups definitions should not be here -> move to categories or ingredients tab!			
 			* Visually mark groups somehow (show as groups)			
 			* items sorting: group items are not shown, only groups + non-group items (-> change view accordingly, then sort correctly)
 

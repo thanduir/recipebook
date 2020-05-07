@@ -70,13 +70,6 @@ Item {
 		}
 	}
 
-	// Alternatives groups
-
-	EditAlternativesGroupDialog {
-		id: editAlternativesGroupDialog
-		title: qsTr("Edit alternatives groups")
-	}
-
 	// Recipes list
 
 	Label {
@@ -860,17 +853,6 @@ Item {
 				onClicked: {
 					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
 					dlgRemoveIngredient.open();
-				}
-			}
-
-			Button {
-				id: buttonEditAlternativesGroup
-
-				text: qsTr("Edit alternatives groups") 
-				icon.source: "qrc:/images/edit.svg"
-
-				onClicked: {
-					editAlternativesGroupDialog.open();
 				}
 			}
 		}

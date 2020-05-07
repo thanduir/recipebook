@@ -283,7 +283,7 @@ Item {
 		anchors.top: labelCurrentSortOrder.bottom
 		anchors.bottom: groupCategories.top
 		anchors.topMargin: 48
-		anchors.leftMargin: 96
+		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
 		width: 400
 
@@ -315,6 +315,7 @@ Item {
 
 		RowLayout {
 			anchors.fill: parent
+
 			RoundButton { 
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/add-black.svg"
@@ -357,5 +358,28 @@ Item {
 				}
 			}
 		}
+	}
+
+	Label {
+		id: labelAlternativesGroups
+        
+		anchors.left: paneAlternativesGroups.left
+		anchors.top: parent.top
+		anchors.topMargin: 24
+        
+		text: qsTr("Alternatives types")
+		font.bold: true
+	}
+
+	EditAlternativesGroupPane {
+		id: paneAlternativesGroups
+		anchors.left: scrollViewCategories.right
+		anchors.top: labelAlternativesGroups.bottom
+		anchors.bottom: parent.bottom
+		anchors.right: parent.right
+		anchors.topMargin: 48
+		anchors.leftMargin: 48
+		anchors.bottomMargin: 0
+		anchors.rightMargin: 48
 	}
 }
