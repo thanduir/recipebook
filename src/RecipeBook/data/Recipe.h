@@ -40,6 +40,11 @@ namespace recipebook
 		const RecipeItem& getRecipeItemAt(quint32 i) const;
 		void moveRecipeItem(const RecipeItem& rItem, quint32 newPos);
 
+		quint32 getRecipeItemIndex(QString strName) const;
+
+		// Returns true if this is already the case
+		bool moveGroupItemsTogether();
+
 	private:
 		explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 30) {}
 		Recipe(QString strName, const Recipe& rOther);

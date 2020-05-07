@@ -38,6 +38,7 @@ bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook&
         // Version 2
         QJsonObject rootObject = jsonDoc.object();
         json::JsonReaderV2 reader;
+		reader.setUseAlternativesGroupsSorting(m_bUseAlternativesGroupsSorting);
         reader.read(rootObject, rMetaData, rRecipeBook);
     }
     

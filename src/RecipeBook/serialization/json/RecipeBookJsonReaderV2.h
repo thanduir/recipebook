@@ -17,6 +17,8 @@ namespace recipebook::serialization::json
 	public:
 		bool read(QJsonObject& rRootObject, RBMetaData& rMetaData, RecipeBook& rRecipeBook);
 
+		void setUseAlternativesGroupsSorting(bool bSorting) { m_bUseAlternativesGroupsSorting = bSorting; }
+
 	private:
 		JsonReaderV2();
 
@@ -28,6 +30,10 @@ namespace recipebook::serialization::json
 		bool readRecipes(const QJsonObject& rObject, RecipeBook& rRecipeBook);
 		bool readShoppingList(const QJsonObject& rObject, RecipeBook& rRecipeBook);
         
+	private:
+
+		bool m_bUseAlternativesGroupsSorting = true;
+
 		friend class JsonReader;
 	};
 }

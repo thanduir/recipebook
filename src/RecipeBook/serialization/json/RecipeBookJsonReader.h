@@ -17,9 +17,15 @@ namespace recipebook::serialization::json
     public:
         virtual bool serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook) override final;
 
+		virtual void enableAlternativesGroupsSorting() override final { m_bUseAlternativesGroupsSorting = true; }
+		virtual void disableAlternativesGroupsSorting() override final { m_bUseAlternativesGroupsSorting = false; }
+
     private:
         JsonReader();
         
+	private:
+		bool m_bUseAlternativesGroupsSorting = true;
+
         friend class QSharedPointer<JsonReader>;
     };
 }

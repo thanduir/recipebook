@@ -65,7 +65,7 @@ namespace recipebook::UI
 		void setAdditionalInfo(int row, QString text);
 		void setSizeIndex(int row, quint32 index);
 		void setOptional(int row, bool bOptional);
-		void setGroup(int row, QString group);
+		int setGroup(int row, QString group);
 
 		int addRecipeItem(QString strIngredient);
 		bool removeItem(int row);

@@ -8,7 +8,7 @@ import "components"
 
 ApplicationWindow {
 	width: 1300
-	height: 825
+	height: 875
 	visible: true
 	title: qsTr("RecipeBook")
 	Component.onCompleted: {

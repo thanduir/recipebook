@@ -85,8 +85,7 @@ Item {
 		title: qsTr("Remove ingredient")
 		onAccepted: {
 			modelShoppingListItems.removeItem(lvCurrentRecipe.currentIndex)
-			lvCurrentRecipe.incrementCurrentIndex()
-			lvCurrentRecipe.decrementCurrentIndex()
+			lvCurrentRecipe.currentIndex = -1
 		}
 	}
 
@@ -336,6 +335,9 @@ Item {
 	// TODO: Idea: Use this empty space in middle column for alternatives groups (combo box with groups present + ListView with checkboxes below to select items to use?)
 	//		Or is there a better way to do this? Would it be better to use a button for this that opens a dialog with the checkboxes? 
 	//		Or add checkboxes to the list on the right?
+	//		Idea: left/right buttons on item to switch between them.
+	//		Do i need a status "hidden" anyways (independent of how exactly i show these group items)?
+	//			=> YES!
 
 	// Edit recipe item list view
 	ScrollView {

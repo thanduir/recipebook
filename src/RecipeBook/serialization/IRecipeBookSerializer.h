@@ -26,6 +26,9 @@ namespace recipebook::serialization
 	{
 	public:
 		virtual bool serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook) = 0;
+		
+		virtual void enableAlternativesGroupsSorting() = 0;
+		virtual void disableAlternativesGroupsSorting() = 0;
 	};
 
 	/* TODO: Write concept similar to what's being done in the app! See below:

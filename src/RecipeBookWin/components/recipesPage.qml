@@ -61,6 +61,15 @@ Item {
 		}
 	}
 
+	TextMessageDialog {
+		id: dlgRemoveIngredient
+		title: qsTr("Remove ingredient")
+		onAccepted: {
+			modelRecipeItems.removeItem(lvCurrentRecipe.currentIndex)
+			lvCurrentRecipe.currentIndex = -1
+		}
+	}
+
 	// Alternatives groups
 
 	EditAlternativesGroupDialog {
@@ -645,7 +654,9 @@ Item {
 							valueRole: "name"
 
 							currentIndex: indexOfValue(group)
-							onActivated: group = currentText
+							onActivated: {
+								lvCurrentRecipe.currentIndex = modelRecipeItems.setGroup(lvCurrentRecipe.currentIndex, currentText)
+							}
 
 							ToolTip.delay: 1000
 							ToolTip.timeout: 5000
@@ -819,6 +830,11 @@ Item {
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/list-black.svg"
 
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Edit ingredients list")
+
 				onClicked: {
 					dlgEditRecipeItemsList.editListModel = modelRecipeItems;
 					dlgEditRecipeItemsList.allValuesFilterModel = filterModelIngredients;
@@ -828,6 +844,22 @@ Item {
 						dlgEditRecipeItemsList.initialyHighlightedIndex = -1
 
 					dlgEditRecipeItemsList.open();
+				}
+			}
+
+			RoundButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove ingredient")
+
+				enabled: lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
+				onClicked: {
+					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
+					dlgRemoveIngredient.open();
 				}
 			}
 

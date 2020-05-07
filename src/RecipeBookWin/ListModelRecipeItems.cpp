@@ -442,33 +442,50 @@ void ListModelRecipeItems::setOptional(int row, bool bOptional)
 	setDataChanged(row, RecipeItemsRoles::OptionalRole);
 }
 
-void ListModelRecipeItems::setGroup(int row, QString group)
+int ListModelRecipeItems::setGroup(int row, QString group)
 {
+	int newRow = row;
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		Recipe* pRecipe = getRecipe(handle);
 
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
-			return;
+			return -1;
 
 		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
 		if(group == m_rConverter.getStringNoAlternativesGroup())
 		{
 			rItem.resetAlternativesGroup();
+			if(!pRecipe->moveGroupItemsTogether())
+			{
+				newRow = pRecipe->getRecipeItemIndex(rItem.getName());
+			}
 		}
 		else if(handle.data().existsAlternativesType(group))
 		{
 			rItem.setAlternativesGroup(handle.data().getAlternativesType(group));
-
+			if(!pRecipe->moveGroupItemsTogether())
+			{
+				newRow = pRecipe->getRecipeItemIndex(rItem.getName());
+			}
 		}
 		else
 		{
-			return;
+			return row;
 		}
 	}
 
-	setDataChanged(row, RecipeItemsRoles::GroupRole);
-	setDataChanged(row, RecipeItemsRoles::GroupColorRole);
+	if(newRow != row)
+	{
+		dataChanged(index(0), index(rowCount(QModelIndex())-1));
+	}
+	else
+	{
+		setDataChanged(row, RecipeItemsRoles::GroupRole);
+		setDataChanged(row, RecipeItemsRoles::GroupColorRole);
+	}
+
+	return newRow;
 }
 
 int ListModelRecipeItems::addRecipeItem(QString strIngredient)

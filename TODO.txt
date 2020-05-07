@@ -3,19 +3,29 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 
-	- ShoppingRecipe and ShoppingList dialogs with all features
-		* finish shopping list page (TODOs)
-			- changeScalingFactor should round values if possible (and restrict to two digits after comma)!
+	- Improve groups in recipes:
+		* Improve UI: 
+			* Alternatives groups definitions should not be here -> move to categories or ingredients tab!			
+			* Visually mark groups somehow (show as groups)			
+			* items sorting: group items are not shown, only groups + non-group items (-> change view accordingly, then sort correctly)
 
-		* Go shopping dialog! 
-			- New features: 
-				* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
-				* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
-					trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
-					darunter eine zeile "2 gross" und eine "1 klein")
-				* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
-	- Thoroughly Test "shopping list" and "go shopping"
+	- shopping list page
+		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
+		* TODOs
+		* how to handle alternatives groups?
+			-> If they are still present here, then it should also be possible to change / create / remove them here!
+				-> probably similar UI than in recipes tab, maybe with a checkbox to disable group items?
+				-> How to sort? Could i use group name instead of item name ((if present)?
+				-> initialy none would be selected and recipes without selected items would be marked!
 
+	- Go shopping dialog!
+		* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
+		* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
+			trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
+			darunter eine zeile "2 gross" und eine "1 klein")
+		* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
+		* if somehow possible, also show other items of alternatives group
+	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
 		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?

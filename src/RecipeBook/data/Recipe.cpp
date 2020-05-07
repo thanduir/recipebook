@@ -83,3 +83,72 @@ void Recipe::moveRecipeItem(const RecipeItem& rItem, quint32 newPos)
 	}
 	m_RecipeItems.move(oldPos, newPos);
 }
+
+quint32 Recipe::getRecipeItemIndex(QString strName) const
+{
+	return internal::unsorted::find(strName, m_RecipeItems);
+}
+
+bool Recipe::moveGroupItemsTogether()
+{
+	// TODO(phiwid): Refactor and symplify this emthod!
+
+	bool bAlreadyCorrectlyOrdered = true;
+	for(int i = 0; i < m_RecipeItems.count(); ++i)
+	{
+		QSharedPointer<RecipeItem> spItem = m_RecipeItems.at(i);
+		if(!spItem->hasAlternativesGroup())
+		{
+			continue;
+		}
+
+		const AlternativesType& rCurrentGroup = spItem->getAlternativesGroup();
+
+		// Find first element after group
+		int firstAfterGroup = m_RecipeItems.count();
+		// TODO: VERIFY THAT ITEMS ARE SORTED ALPHABETICALLY!
+		for(int j = i + 1; j < m_RecipeItems.count(); ++j)
+		{
+			QSharedPointer<RecipeItem> spCurrentItem = m_RecipeItems.at(j);
+			if(!spCurrentItem->hasAlternativesGroup() || &spCurrentItem->getAlternativesGroup() != &rCurrentGroup)
+			{
+				firstAfterGroup = j;
+				break;
+			}
+
+			// Sort items in group
+			QSharedPointer<RecipeItem> spPrevItem = m_RecipeItems.at(j-1);
+			if(recipebook::internal::helper::lessThan(spCurrentItem->getName(), spPrevItem->getName()))
+			{
+				moveRecipeItem(*spCurrentItem, j-1);
+				bAlreadyCorrectlyOrdered = false;
+			}
+		}
+
+		// Sort further group items
+		for(int j = firstAfterGroup + 1; j < m_RecipeItems.count(); ++j)
+		{
+			QSharedPointer<RecipeItem> spCurrentItem = m_RecipeItems.at(j);
+			if(spCurrentItem->hasAlternativesGroup() && &spCurrentItem->getAlternativesGroup() == &rCurrentGroup)
+			{
+				// Insert alphabetically
+				int newPos = firstAfterGroup;
+				for(int z = i; z < firstAfterGroup; ++z)
+				{
+					QSharedPointer<RecipeItem> spCurrentGroupItem = m_RecipeItems.at(z);
+					if(recipebook::internal::helper::lessThan(spCurrentItem->getName(), spCurrentGroupItem->getName()))
+					{
+						newPos = z;
+						break;
+					}
+				}
+				moveRecipeItem(*spCurrentItem, newPos);
+
+				firstAfterGroup += 1;
+				bAlreadyCorrectlyOrdered = false;
+			}
+		}
+	}
+
+	return bAlreadyCorrectlyOrdered;
+}

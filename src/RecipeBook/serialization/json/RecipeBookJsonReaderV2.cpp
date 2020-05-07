@@ -247,6 +247,10 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 		{
 			rRecipe.moveRecipeItem(*indexMap[i], i);
 		}
+		if(m_bUseAlternativesGroupsSorting)
+		{
+			rRecipe.moveGroupItemsTogether();
+		}
 	}
 
 	return true;
