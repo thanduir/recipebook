@@ -132,3 +132,8 @@ bool FilterModelRecipes::removeRecipe(int row)
 	int rowSource = mapToSource(index(row, 0)).row();
 	return pRecipes->removeRecipe(rowSource);
 }
+
+int FilterModelRecipes::getRecipeIndex(int row) const
+{
+	return mapToSource(index(row, 0)).row();
+}

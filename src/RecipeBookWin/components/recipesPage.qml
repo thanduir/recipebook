@@ -146,7 +146,7 @@ Item {
 				onClicked: {
 					forceActiveFocus()
 					lvRecipes.currentIndex = index
-					modelRecipeItems.setRecipe(index)
+					modelRecipeItems.setRecipe(filterModelRecipes.getRecipeIndex(index))
 					lvCurrentRecipe.currentIndex = -1
 				}
 				width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin

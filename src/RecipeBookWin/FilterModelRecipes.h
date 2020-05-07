@@ -35,6 +35,8 @@ namespace recipebook::UI
 
 		bool removeRecipe(int row);
 
+		int getRecipeIndex(int row) const;
+
 	protected:
 		virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const override;
 
