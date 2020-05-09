@@ -91,17 +91,29 @@ bool SortModelSortOrder::removeCategory(int row)
 	return pCategories->removeCategory(rowSource);
 }
 
-void SortModelSortOrder::moveCategory(int row, int target)
+void SortModelSortOrder::beginMoveCategory(int row)
 {
-	if(row == target)
+	m_MoveFrom = row;
+	m_MoveTo = row;
+}
+
+void SortModelSortOrder::updateMoveTarget(int target)
+{
+	m_MoveTo = target;
+}
+
+void SortModelSortOrder::applyMoveCategory()
+{
+	if(m_MoveFrom != m_MoveTo)
 	{
-		return;
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		if(m_SortOrderIndex >= 0 && m_SortOrderIndex < (int) handle.data().getSortOrdersCount())
+		{
+			SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
+			rOrder.moveCategory(rOrder.at(m_MoveFrom), m_MoveTo);
+		}
 	}
 
-	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-	if(m_SortOrderIndex >= 0 && m_SortOrderIndex < (int) handle.data().getSortOrdersCount())
-	{
-		SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
-		rOrder.moveCategory(rOrder.at(row), target);
-	}
+	m_MoveFrom = -1;
+	m_MoveTo = -1;
 }

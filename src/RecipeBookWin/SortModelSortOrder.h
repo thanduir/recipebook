@@ -32,7 +32,9 @@ namespace recipebook::UI
 		bool canCategoryBeRemoved(int row) const;
 		bool removeCategory(int row);
 
-		void moveCategory(int row, int target);
+		void beginMoveCategory(int row);
+		void updateMoveTarget(int target);
+		void applyMoveCategory();
 
 		void onDataReset() { setSortOrder(-1); }
 
@@ -42,6 +44,9 @@ namespace recipebook::UI
 	private:
 		RBDataHandler& m_rRBDataHandler;
 		int m_SortOrderIndex;
+
+		int m_MoveFrom = -1;
+		int m_MoveTo = -1;
 	};
 }
 

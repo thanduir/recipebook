@@ -3,7 +3,6 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 
-	- Also use move concept from FilterModelRecipeItems / recipesPage in categoriesPage? Would be more efficient!
 	- Filter (and sort) models: There are probably quite a lot of methods i can remove, right? Everything called per role gets mapped directly anyways!
 
 	- shopping list page

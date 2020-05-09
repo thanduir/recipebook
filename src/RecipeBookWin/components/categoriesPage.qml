@@ -190,9 +190,13 @@ Item {
 
 			onPressed: {
 				held = true
+				modelSortOrder.beginMoveCategory(index);
 				lvCategories.currentIndex = -1
 			}
-			onReleased: held = false
+			onReleased: {
+				held = false
+				modelSortOrder.applyMoveCategory();
+			}
 			onClicked: lvCategories.currentIndex = index
             
 			Rectangle {
@@ -257,8 +261,7 @@ Item {
 				anchors { fill: parent; margins: 15 }
 
 				onEntered: {
-					modelSortOrder.moveCategory(drag.source.DelegateModel.itemsIndex,
-												dragArea.DelegateModel.itemsIndex);
+					modelSortOrder.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
 					categoriesDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
 														dragArea.DelegateModel.itemsIndex);
 				}
