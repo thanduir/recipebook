@@ -23,6 +23,7 @@ namespace recipebook::UI
 		enum class RecipeItemsRoles : int
 		{
 			NameRole = Qt::UserRole + 1,
+			GroupOrItemNameRole,
 			AmountUnitRole,
 			AmountIsRangeRole,
 			AmountMinRole,
@@ -30,9 +31,11 @@ namespace recipebook::UI
 			AdditionalInfoRole,
 			SizeRole,
 			OptionalRole,
+			HasGroupRole,
 			GroupRole,
 			GroupColorRole
 		};
+		QMap<int, bool> m_Held;
 
 	public:
 		ListModelRecipeItems(RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter);
@@ -47,6 +50,11 @@ namespace recipebook::UI
 		void setRecipe(int row);
 
 		QString name(int row) const;
+		QString groupOrItemName(int row) const;
+
+		bool firstInGroup(int row) const;
+		bool lastInGroup(int row) const;
+		bool hasGroup(int row) const;
 
 		quint32 amountUnit(int row) const;
 		bool amountIsRange(int row) const;

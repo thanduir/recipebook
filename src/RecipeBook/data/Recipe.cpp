@@ -106,7 +106,6 @@ bool Recipe::moveGroupItemsTogether()
 
 		// Find first element after group
 		int firstAfterGroup = m_RecipeItems.count();
-		// TODO: VERIFY THAT ITEMS ARE SORTED ALPHABETICALLY!
 		for(int j = i + 1; j < m_RecipeItems.count(); ++j)
 		{
 			QSharedPointer<RecipeItem> spCurrentItem = m_RecipeItems.at(j);
@@ -116,7 +115,7 @@ bool Recipe::moveGroupItemsTogether()
 				break;
 			}
 
-			// Sort items in group
+			// Sort items in group alphabetically
 			QSharedPointer<RecipeItem> spPrevItem = m_RecipeItems.at(j-1);
 			if(recipebook::internal::helper::lessThan(spCurrentItem->getName(), spPrevItem->getName()))
 			{

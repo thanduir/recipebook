@@ -15,6 +15,7 @@
 #include "ListModelRecipes.h"
 #include "FilterModelRecipes.h"
 #include "ListModelRecipeItems.h"
+#include "FilterModelRecipeItems.h"
 #include "ListModelShoppingRecipes.h"
 #include "ListModelShoppingListItems.h"
 #include "uistringconverter.h"
@@ -48,6 +49,7 @@ namespace recipebook::UI
 		ListModelRecipes& getRecipesModel();
 		FilterModelRecipes& getRecipesFilterModel();
 		ListModelRecipeItems& getRecipeItemsModel();
+		FilterModelRecipeItems& getRecipeItemsFilterModel();
 		ListModelShoppingRecipes& getShoppingRecipesModel();
 		ListModelShoppingListItems& getShoppingListItemsModel();
 
@@ -83,6 +85,7 @@ namespace recipebook::UI
 		FilterModelRecipes m_FilterModelRecipes;
 
 		ListModelRecipeItems m_ModelRecipeItems;
+		FilterModelRecipeItems m_FilterModelRecipeItems;
 
 		ListModelShoppingRecipes m_ModelShoppingRecipes;
 		ListModelShoppingListItems m_ModelShoppingListItems;

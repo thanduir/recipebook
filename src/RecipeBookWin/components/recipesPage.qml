@@ -1,7 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import QtQml.Models 2.1
+import QtQml.Models 2.14
 
 import "components"
 
@@ -402,7 +402,7 @@ Item {
 			boundsBehavior: Flickable.StopAtBounds
 			keyNavigationEnabled: false
             
-			spacing: 5
+			spacing: 0
 			model: modelRecipeItems
 			delegate: ItemDelegate {
 				id: listItemRecipeItem
@@ -420,10 +420,28 @@ Item {
 
 					height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
 
+					Rectangle {
+						id: groupBar
+						anchors.left: parent.left
+						anchors.top: parent.top
+						anchors.bottom: parent.bottom
+						anchors.topMargin: -10
+						anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
+
+						visible: hasGroup
+						color: groupColor
+						width: 5
+
+						ToolTip.delay: 1000
+						ToolTip.timeout: 5000
+						ToolTip.visible: hasGroup && hovered
+						ToolTip.text: group
+					}
+
 					// Ingredient / group name
 					Label {
 						id: listItemRecipeItemName
-						anchors.left: parent.left
+						anchors.left: hasGroup ? groupBar.right : parent.left
 						anchors.leftMargin: 10
                         
 						font.bold: !optional
@@ -436,16 +454,8 @@ Item {
 					Label {
 						function recipeItemSmallDesc(n){
 							var text = "";
-							if(group != alternativesGroups.stringNoAlternativesGroup())
-							{
-								text += group;
-							}
 							if(amountUnit != modelRecipeItems.indexUnitUnitless())
 							{
-								if(text != "")
-								{
-									text = text + ", ";
-								}
 								text += amountMin;
 								if(amountIsRange)
 								{
@@ -487,21 +497,6 @@ Item {
 						visible: !listItemRecipeItem.highlighted
 					}
 
-					// Group symbol
-					Rectangle {
-						id: rowGroupHeaderButtons
-						anchors.right: parent.right
-						anchors.top: parent.top
-						anchors.topMargin: 0
-						anchors.rightMargin: 10
-						width: 10
-						height: width
-						radius: 0.5 * width
-
-						color: groupColor
-						visible: group != alternativesGroups.stringNoAlternativesGroup()
-					}
-
 					// Extended information for active ingredient elements
 					GridLayout {
 						id: listItemGridRecipeItem
@@ -510,7 +505,7 @@ Item {
 						anchors.left: parent.left
 						anchors.right: parent.right
 						anchors.top: listItemRecipeItemName.bottom
-						anchors.leftMargin: 10
+						anchors.leftMargin: 20
 						anchors.rightMargin: 10
 						anchors.topMargin: 10
                         
@@ -684,8 +679,13 @@ Item {
 
 			onPressed: {
 				held = true
+				filterModelRecipeItems.beginMove(index);
+				
 			}
-			onReleased: held = false
+			onReleased: {
+				held = false
+				filterModelRecipeItems.applyMove();
+			}
             
 			Rectangle {
 				id: content
@@ -732,33 +732,32 @@ Item {
 						source: "qrc:/images/reorder.svg"
 					}
 
+					Rectangle {
+						id: reorderGroupBar
+						anchors.left: reorderImage.right
+						anchors.top: parent.top
+						anchors.leftMargin: 10
+						anchors.topMargin: -20
+						anchors.bottomMargin: 20
+
+						visible: hasGroup
+						color: groupColor
+						height: content.height
+						width: 5
+					}
+
 					// Item name
 					Label {
 						id: labelColumn
 						anchors.verticalCenter: parent.verticalCenter
-						anchors.left: reorderImage.right
+						anchors.left: hasGroup ? reorderGroupBar.right : reorderImage.right
 
 						anchors.margins: 15
 
 						verticalAlignment: Text.AlignVCenter
 						font.bold: !optional
 						font.italic: optional
-						text: name
-					}
-                    
-					// Group symbol
-					Rectangle {
-						id: rowRearrangeGroupHeaderButtons
-						anchors.right: parent.right
-						anchors.top: parent.top
-						anchors.topMargin: -5
-						anchors.rightMargin: 10
-						width: 10
-						height: width
-						radius: 0.5 * width
-
-						color: groupColor
-						visible: group != alternativesGroups.stringNoAlternativesGroup()
+						text: groupOrItemName
 					}
 				}
 			}
@@ -767,10 +766,9 @@ Item {
 				anchors { fill: parent; margins: 15 }
 
 				onEntered: {
-					modelRecipeItems.moveItem(drag.source.DelegateModel.itemsIndex,
-												dragArea.DelegateModel.itemsIndex);
-					rearrangeCurrentRecipeDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
-																	dragArea.DelegateModel.itemsIndex);
+					filterModelRecipeItems.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
+					rearrangeCurrentItemDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
+																 dragArea.DelegateModel.itemsIndex);
 				}
 			}
 		}
@@ -787,7 +785,6 @@ Item {
 		anchors.bottomMargin: 48
 		width: 400
 		visible: idRearrangeCurrentItems.checked
-
         
 		ListView {
 			anchors.fill: parent
@@ -797,11 +794,11 @@ Item {
 			rightMargin: 5
 			boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 5
+			spacing: 0
 			model: DelegateModel {
-				id: rearrangeCurrentRecipeDelegateModel
+				id: rearrangeCurrentItemDelegateModel
 
-				model: modelRecipeItems
+				model: filterModelRecipeItems
 				delegate: dragDelegate
 			}
 		}
@@ -849,7 +846,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Remove ingredient")
 
-				enabled: lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
+				enabled: scrollViewCurrentRecipe.visible && lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
 				onClicked: {
 					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
 					dlgRemoveIngredient.open();

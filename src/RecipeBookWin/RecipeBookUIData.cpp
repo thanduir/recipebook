@@ -29,6 +29,7 @@ RecipeBookUIData::RecipeBookUIData()
 	m_ModelRecipes(m_RBData, m_Settings),
 	m_FilterModelRecipes(),
 	m_ModelRecipeItems(m_RBData, m_Converter),
+	m_FilterModelRecipeItems(),
 	m_ModelShoppingRecipes(m_RBData, m_Settings),
 	m_ModelShoppingListItems(m_RBData, m_Converter),
 	m_SaveLock()
@@ -48,6 +49,7 @@ RecipeBookUIData::RecipeBookUIData()
 	m_AlternativesTypes.setSourceModel(&m_AlternativesGroups);
 	m_FilterModelIngredients.setSourceModel(&m_ModelIngredients);
 	m_FilterModelRecipes.setSourceModel(&m_ModelRecipes);
+	m_FilterModelRecipeItems.setSourceModel(&m_ModelRecipeItems);
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
@@ -277,6 +279,11 @@ FilterModelRecipes& RecipeBookUIData::getRecipesFilterModel()
 ListModelRecipeItems& RecipeBookUIData::getRecipeItemsModel()
 {
 	return m_ModelRecipeItems;
+}
+
+FilterModelRecipeItems& RecipeBookUIData::getRecipeItemsFilterModel()
+{
+	return m_FilterModelRecipeItems;
 }
 
 ListModelShoppingRecipes& RecipeBookUIData::getShoppingRecipesModel()

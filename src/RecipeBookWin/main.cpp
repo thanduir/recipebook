@@ -35,6 +35,7 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookUIData& data
 	context->setContextProperty("filterModelRecipes", &dataHandler.getRecipesFilterModel());
 
 	context->setContextProperty("modelRecipeItems", &dataHandler.getRecipeItemsModel());
+	context->setContextProperty("filterModelRecipeItems", &dataHandler.getRecipeItemsFilterModel());
 
 	context->setContextProperty("modelShoppingRecipes", &dataHandler.getShoppingRecipesModel());
 	context->setContextProperty("modelShoppingListItems", &dataHandler.getShoppingListItemsModel());

@@ -311,7 +311,7 @@ Item {
 				Layout.fillWidth: true
 				horizontalAlignment: Text.AlignRight
 				rightPadding: 10
-				// TODO: This is not updated on changes (even though dataChanged is set in model)!
+				// TODO: This is not updated on changes (even though dataChanged is correctly set in model)!
 				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "dddd, dd.MM.yyyy")
 			}
 

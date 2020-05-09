@@ -73,6 +73,10 @@ QVariant ListModelRecipeItems::data(const QModelIndex& index, int iRole) const
 	{
 		return name(index.row());
 	}
+	else if(role == RecipeItemsRoles::GroupOrItemNameRole)
+	{
+		return groupOrItemName(index.row());
+	}
 	else if(role == RecipeItemsRoles::AmountUnitRole)
 	{
 		return amountUnit(index.row());
@@ -100,6 +104,10 @@ QVariant ListModelRecipeItems::data(const QModelIndex& index, int iRole) const
 	else if(role == RecipeItemsRoles::OptionalRole)
 	{
 		return optional(index.row());
+	}
+	else if(role == RecipeItemsRoles::HasGroupRole)
+	{
+		return hasGroup(index.row());
 	}
 	else if(role == RecipeItemsRoles::GroupRole)
 	{
@@ -173,6 +181,7 @@ QHash<int, QByteArray> ListModelRecipeItems::roleNames() const
 {
 	QHash<int, QByteArray> roles;
 	roles[(int)RecipeItemsRoles::NameRole] = "name";
+	roles[(int)RecipeItemsRoles::GroupOrItemNameRole] = "groupOrItemName";
 	roles[(int)RecipeItemsRoles::AmountUnitRole] = "amountUnit";
 	roles[(int)RecipeItemsRoles::AmountIsRangeRole] = "amountIsRange";
 	roles[(int)RecipeItemsRoles::AmountMinRole] = "amountMin";
@@ -180,6 +189,7 @@ QHash<int, QByteArray> ListModelRecipeItems::roleNames() const
 	roles[(int)RecipeItemsRoles::AdditionalInfoRole] = "additionalInfo";
 	roles[(int)RecipeItemsRoles::SizeRole] = "sizeIndex";
 	roles[(int)RecipeItemsRoles::OptionalRole] = "optional";
+	roles[(int)RecipeItemsRoles::HasGroupRole] = "hasGroup";
 	roles[(int)RecipeItemsRoles::GroupRole] = "group";
 	roles[(int)RecipeItemsRoles::GroupColorRole] = "groupColor";
 	return roles;
@@ -202,6 +212,86 @@ QString ListModelRecipeItems::name(int row) const
 
 	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
 	return rItem.getName();
+}
+
+QString ListModelRecipeItems::groupOrItemName(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const Recipe* pRecipe = getRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+		return "";
+
+	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+	return rItem.hasAlternativesGroup() ? rItem.getAlternativesGroup().getName() : rItem.getName();
+}
+
+bool ListModelRecipeItems::firstInGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const Recipe* pRecipe = getRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+		return "";
+
+	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+
+	if(!rItem.hasAlternativesGroup())
+	{
+		return false;
+	}
+
+	if(row == 0)
+	{
+		return rItem.hasAlternativesGroup();
+	}
+
+	const RecipeItem& rPrevItem = pRecipe->getRecipeItemAt(row - 1);
+	if(!rPrevItem.hasAlternativesGroup())
+	{
+		return true;
+	}
+	return &rPrevItem.getAlternativesGroup() != &rItem.getAlternativesGroup();
+}
+
+bool ListModelRecipeItems::lastInGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const Recipe* pRecipe = getRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+		return "";
+
+	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+
+	if(!rItem.hasAlternativesGroup())
+	{
+		return false;
+	}
+
+	if(row == pRecipe->getRecipeItemsCount() - 1)
+	{
+		return rItem.hasAlternativesGroup();
+	}
+	const RecipeItem& rNextItem = pRecipe->getRecipeItemAt(row + 1);
+	if(!rNextItem.hasAlternativesGroup())
+	{
+		return true;
+	}
+	return &rNextItem.getAlternativesGroup() != &rItem.getAlternativesGroup();
+}
+
+bool ListModelRecipeItems::hasGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const Recipe* pRecipe = getRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+		return "";
+
+	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+
+	return rItem.hasAlternativesGroup();
 }
 
 quint32 ListModelRecipeItems::indexUnitUnitless() const
@@ -481,6 +571,7 @@ int ListModelRecipeItems::setGroup(int row, QString group)
 	}
 	else
 	{
+		setDataChanged(row, RecipeItemsRoles::HasGroupRole);
 		setDataChanged(row, RecipeItemsRoles::GroupRole);
 		setDataChanged(row, RecipeItemsRoles::GroupColorRole);
 	}
@@ -544,6 +635,9 @@ bool ListModelRecipeItems::removeItem(int row)
 
 void ListModelRecipeItems::moveItem(int row, int target)
 {
+	int groupEndIndex = row;
+	int correctedTarget = target;
+
 	{
 		RBDataReadHandle handle(m_rRBDataHandler);
 		const Recipe* pRecipe = getRecipe(handle);
@@ -553,17 +647,51 @@ void ListModelRecipeItems::moveItem(int row, int target)
 		   || target < 0 || target >= (int) pRecipe->getRecipeItemsCount()
 		   || row == target)
 			return;
-	}
 
-	beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
+		// Determine correct source rows!
+		const RecipeItem& rSourceItem = pRecipe->getRecipeItemAt(row);
+		if(rSourceItem.hasAlternativesGroup())
+		{
+			for(quint32 i = row; i < pRecipe->getRecipeItemsCount(); ++i)
+			{
+				const RecipeItem& rCurrentItem = pRecipe->getRecipeItemAt(i);
+				if(!rCurrentItem.hasAlternativesGroup() || &rCurrentItem.getAlternativesGroup() != &rSourceItem.getAlternativesGroup())
+				{
+					break;
+				}
+				groupEndIndex = i;
+			}
+		}
+
+		// Determine correct target index
+		const RecipeItem& rTargetItem = pRecipe->getRecipeItemAt(target);
+		if(rTargetItem.hasAlternativesGroup() && target > row)
+		{
+			for(quint32 i = target; i < pRecipe->getRecipeItemsCount(); ++i)
+			{
+				const RecipeItem& rCurrentItem = pRecipe->getRecipeItemAt(i);
+				if(!rCurrentItem.hasAlternativesGroup() || &rCurrentItem.getAlternativesGroup() != &rTargetItem.getAlternativesGroup())
+				{
+					break;
+				}
+				correctedTarget = i;
+			}
+		}
+	}
+		
+	beginMoveRows(QModelIndex(), row, groupEndIndex, QModelIndex(), correctedTarget > row ? correctedTarget + 1 : correctedTarget);
 
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		Recipe* pRecipe = getRecipe(handle);
-		pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt(row), target);
+
+		int sourceRow = correctedTarget > row ? row : groupEndIndex;
+		for(int i = row; i <= groupEndIndex; ++i)
+		{
+			pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt(sourceRow), correctedTarget);
+		}
 	}
 
-	// endMoveRows calls rowCount which needs a read handle -> I can do this only after moving
 	endMoveRows();
 }
 

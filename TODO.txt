@@ -3,19 +3,17 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 
-	- Improve groups in recipes:
-		* Improve UI: 
-			* Visually mark groups somehow (show as groups)			
-			* items sorting: group items are not shown, only groups + non-group items (-> change view accordingly, then sort correctly)
+	- Also use move concept from FilterModelRecipeItems / recipesPage in categoriesPage? Would be more efficient!
+	- Filter (and sort) models: There are probably quite a lot of methods i can remove, right? Everything called per role gets mapped directly anyways!
 
 	- shopping list page
-		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
-		* TODOs
 		* how to handle alternatives groups?
 			-> If they are still present here, then it should also be possible to change / create / remove them here!
 				-> probably similar UI than in recipes tab, maybe with a checkbox to disable group items?
 				-> How to sort? Could i use group name instead of item name ((if present)?
 				-> initialy none would be selected and recipes without selected items would be marked!
+		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
+		* TODOs
 
 	- Go shopping dialog!
 		* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
@@ -33,6 +31,7 @@ TODO
 	- TODO in serialization!
 	- Test everything, esp. also that it works correctly with empty data!
 	- Add a reasonable amount of unittests for everything not yet covered!
+	- shopping list (or, rather, go shopping) pdf exporter
 4. Update Design.txt! (incl. code organization descriptions?)
 
 5. Kochbuch-Exporter
