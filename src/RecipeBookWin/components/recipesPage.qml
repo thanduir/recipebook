@@ -420,6 +420,7 @@ Item {
 
 					height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
 
+					// Group bar
 					Rectangle {
 						id: groupBar
 						anchors.left: parent.left

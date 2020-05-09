@@ -103,6 +103,10 @@ QVariant ListModelShoppingListItems::data(const QModelIndex& index, int iRole) c
 	{
 		return optional(index.row());
 	}
+	else if(role == ShoppingListItemsRoles::HasGroupRole)
+	{
+		return hasGroup(index.row());
+	}
 	else if(role == ShoppingListItemsRoles::GroupRole)
 	{
 		return group(index.row());
@@ -186,6 +190,7 @@ QHash<int, QByteArray> ListModelShoppingListItems::roleNames() const
 	roles[(int)ShoppingListItemsRoles::AdditionalInfoRole] = "additionalInfo";
 	roles[(int)ShoppingListItemsRoles::SizeRole] = "sizeIndex";
 	roles[(int)ShoppingListItemsRoles::OptionalRole] = "optional";
+	roles[(int)ShoppingListItemsRoles::HasGroupRole] = "hasGroup";
 	roles[(int)ShoppingListItemsRoles::GroupRole] = "group";
 	roles[(int)ShoppingListItemsRoles::GroupColorRole] = "groupColor";
 	roles[(int)ShoppingListItemsRoles::StatusRole] = "status";
@@ -209,6 +214,74 @@ QString ListModelShoppingListItems::name(int row) const
 
 	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
 	return rItem.getName();
+}
+
+bool ListModelShoppingListItems::firstInGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+		return "";
+
+	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+
+	if(!rItem.hasAlternativesGroup())
+	{
+		return false;
+	}
+
+	if(row == 0)
+	{
+		return rItem.hasAlternativesGroup();
+	}
+
+	const ShoppingListItem& rPrevItem = pRecipe->getItemAt(row - 1);
+	if(!rPrevItem.hasAlternativesGroup())
+	{
+		return true;
+	}
+	return &rPrevItem.getAlternativesGroup() != &rItem.getAlternativesGroup();
+}
+
+bool ListModelShoppingListItems::lastInGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+		return "";
+
+	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+
+	if(!rItem.hasAlternativesGroup())
+	{
+		return false;
+	}
+
+	if(row == pRecipe->getItemsCount() - 1)
+	{
+		return rItem.hasAlternativesGroup();
+	}
+	const ShoppingListItem& rNextItem = pRecipe->getItemAt(row + 1);
+	if(!rNextItem.hasAlternativesGroup())
+	{
+		return true;
+	}
+	return &rNextItem.getAlternativesGroup() != &rItem.getAlternativesGroup();
+}
+
+bool ListModelShoppingListItems::hasGroup(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+		return "";
+
+	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+
+	return rItem.hasAlternativesGroup();
 }
 
 quint32 ListModelShoppingListItems::indexUnitUnitless() const

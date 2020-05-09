@@ -3,14 +3,14 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 
-	- Filter (and sort) models: There are probably quite a lot of methods i can remove, right? Everything called per role gets mapped directly anyways!
-
 	- shopping list page
-		* how to handle alternatives groups?
-			-> If they are still present here, then it should also be possible to change / create / remove them here!
-				-> probably similar UI than in recipes tab, maybe with a checkbox to disable group items?
-				-> How to sort? Could i use group name instead of item name ((if present)?
-				-> initialy none would be selected and recipes without selected items would be marked!
+		* sort items alphabetically using the group name for alternatives groups!
+		* should the group of an item be changeable in this UI?
+		* checkboxes for all items, normal items initially activated, group items deactivated
+			-> how to save this? Additional status "hidden" or should I save this in a separate attribute?
+		* mark shopping recipes (red?) with groups where no item is activated
+			-> disable "go shopping" if this is the case for any recipe? Or is the red mark enough?
+
 		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
 		* TODOs
 
@@ -20,7 +20,7 @@ TODO
 			trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
 			darunter eine zeile "2 gross" und eine "1 klein")
 		* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
-		* if somehow possible, also show other items of alternatives group
+		* if somehow possible, also show other items of alternatives group?
 	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)

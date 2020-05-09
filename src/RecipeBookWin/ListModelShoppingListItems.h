@@ -30,6 +30,7 @@ namespace recipebook::UI
 			AdditionalInfoRole,
 			SizeRole,
 			OptionalRole,
+			HasGroupRole,
 			GroupRole,
 			GroupColorRole,
 			StatusRole
@@ -48,6 +49,10 @@ namespace recipebook::UI
 		void setShoppingRecipe(int row);
 
 		QString name(int row) const;
+
+		bool firstInGroup(int row) const;
+		bool lastInGroup(int row) const;
+		bool hasGroup(int row) const;
 
 		quint32 amountUnit(int row) const;
 		bool amountIsRange(int row) const;
