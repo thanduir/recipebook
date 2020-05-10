@@ -13,6 +13,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
 
 		const Category& getCategory() const { return *m_pCategory; }
 		void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }

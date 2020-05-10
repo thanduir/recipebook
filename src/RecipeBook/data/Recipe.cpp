@@ -15,7 +15,7 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
 	for(int i = 0; i < rOther.m_RecipeItems.size(); ++i)
 	{
 		const RecipeItem& rItem = rOther.getRecipeItemAt(i);
-		internal::unsorted::addItem(rItem.getName(), i, m_RecipeItems, [&rItem]()
+		internal::unsorted::addItem(rItem.getIdString(), i, m_RecipeItems, [&rItem]()
 		{
 			return new RecipeItem(rItem);
 		});
@@ -24,7 +24,7 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
 
 RecipeItem& Recipe::addRecipeItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::addItem(rIngredient.getName(), -1, m_RecipeItems, [&rIngredient]()
+	return internal::unsorted::addItem(RecipeItem::getIdString(&rIngredient), -1, m_RecipeItems, [&rIngredient]()
 	{
 		return new RecipeItem(rIngredient);
 	});
@@ -32,23 +32,23 @@ RecipeItem& Recipe::addRecipeItem(const Ingredient& rIngredient)
 
 bool Recipe::existsRecipeItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::exists<RecipeItem>(rIngredient.getName(), m_RecipeItems);
+	return internal::unsorted::exists<RecipeItem>(RecipeItem::getIdString(&rIngredient), m_RecipeItems);
 }
 
 bool Recipe::removeRecipeItem(const RecipeItem& rItem)
 {
-	internal::unsorted::remove(rItem, m_RecipeItems);
+	internal::unsorted::remove(rItem.getIdString(), m_RecipeItems);
 	return true;
 }
 
 RecipeItem& Recipe::getRecipeItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::getItem(rIngredient.getName(), m_RecipeItems);
+	return internal::unsorted::getItem(RecipeItem::getIdString(&rIngredient), m_RecipeItems);
 }
 
 const RecipeItem& Recipe::getRecipeItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::getItem(rIngredient.getName(), m_RecipeItems);
+	return internal::unsorted::getItem(RecipeItem::getIdString(&rIngredient), m_RecipeItems);
 }
 
 quint32 Recipe::getRecipeItemsCount() const
@@ -76,7 +76,7 @@ const RecipeItem& Recipe::getRecipeItemAt(quint32 i) const
 
 void Recipe::moveRecipeItem(const RecipeItem& rItem, quint32 newPos)
 {
-	int oldPos = internal::unsorted::find(rItem.getName(), m_RecipeItems);
+	int oldPos = internal::unsorted::find(rItem.getIdString(), m_RecipeItems);
 	if(oldPos < 0)
 	{
 		throw QException();
@@ -117,7 +117,7 @@ bool Recipe::moveGroupItemsTogether()
 
 			// Sort items in group alphabetically
 			QSharedPointer<RecipeItem> spPrevItem = m_RecipeItems.at(j-1);
-			if(recipebook::internal::helper::lessThan(spCurrentItem->getName(), spPrevItem->getName()))
+			if(recipebook::internal::helper::lessThan(spCurrentItem->getIdString(), spPrevItem->getIdString()))
 			{
 				moveRecipeItem(*spCurrentItem, j-1);
 				bAlreadyCorrectlyOrdered = false;
@@ -135,7 +135,7 @@ bool Recipe::moveGroupItemsTogether()
 				for(int z = i; z < firstAfterGroup; ++z)
 				{
 					QSharedPointer<RecipeItem> spCurrentGroupItem = m_RecipeItems.at(z);
-					if(recipebook::internal::helper::lessThan(spCurrentItem->getName(), spCurrentGroupItem->getName()))
+					if(recipebook::internal::helper::lessThan(spCurrentItem->getIdString(), spCurrentGroupItem->getIdString()))
 					{
 						newPos = z;
 						break;

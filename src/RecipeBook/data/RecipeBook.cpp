@@ -42,7 +42,7 @@ Category& RecipeBook::addCategory(QString strName)
 
 void RecipeBook::renameCategory(Category& rCategory, QString strNewName)
 {
-	internal::sorted::moveForNewName(rCategory, strNewName, m_Categories);
+	internal::sorted::moveForNewIdString(rCategory, strNewName, m_Categories);
 	rCategory.rename(strNewName);
 }
 
@@ -60,7 +60,7 @@ bool RecipeBook::isCategoryInUse(const Category& rCategory, QList<Ingredient*>* 
 
 	for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
 	{
-		if(ingredient->getCategory().getName() == rCategory.getName())
+		if(ingredient->getCategory().getIdString() == rCategory.getIdString())
 		{
 			if(pIngredients)
 			{
@@ -93,7 +93,7 @@ bool RecipeBook::removeCategory(const Category& rCategory)
 	{
 		for(int i = 0; i < spSortOrder->m_Categories.size(); ++i)
 		{
-			if(spSortOrder->m_Categories[i]->getName() == rCategory.getName())
+			if(spSortOrder->m_Categories[i]->getIdString() == rCategory.getIdString())
 			{
 				spSortOrder->m_Categories.removeAt(i);
 				break;
@@ -101,7 +101,7 @@ bool RecipeBook::removeCategory(const Category& rCategory)
 		}
 	}
 
-	internal::sorted::remove(rCategory, m_Categories);
+	internal::sorted::remove(rCategory.getIdString(), m_Categories);
 
 	return true;
 }
@@ -164,7 +164,7 @@ SortOrder& RecipeBook::addSortOrder(QString strName)
 
 void RecipeBook::renameSortOrder(SortOrder& rOrder, QString strNewName)
 {
-	internal::sorted::moveForNewName(rOrder, strNewName, m_SortOrders);
+	internal::sorted::moveForNewIdString(rOrder, strNewName, m_SortOrders);
 	rOrder.rename(strNewName);
 }
 
@@ -183,7 +183,7 @@ bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder, QList<Ingredient*>* p
 	for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
 	{
 		if(!ingredient->hasProvenanceEverywhere()
-			&& ingredient->getProvenance().getName() == rOrder.getName())
+			&& ingredient->getProvenance().getIdString() == rOrder.getIdString())
 		{
 			if(pIngredients)
 			{
@@ -211,7 +211,7 @@ bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
 		return false;
 	}
 
-	internal::sorted::remove(rOrder, m_SortOrders);
+	internal::sorted::remove(rOrder.getIdString(), m_SortOrders);
 	return true;
 }
 
@@ -264,7 +264,13 @@ Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory
 
 void RecipeBook::renameIngredient(Ingredient& rIngredient, QString strNewName)
 {
-	internal::sorted::moveForNewName(rIngredient, strNewName, m_Ingredients);
+	// Inform shopping recipes
+	for(QSharedPointer<ShoppingRecipe> recipe : qAsConst(m_ShoppingRecipes))
+	{
+		recipe->beforeIngredientNameChanged(rIngredient, strNewName);
+	}
+
+	internal::sorted::moveForNewIdString(rIngredient, strNewName, m_Ingredients);
 	rIngredient.rename(strNewName);
 }
 
@@ -329,7 +335,7 @@ bool RecipeBook::removeIngredient(const Ingredient& rIngredient)
 		return false;
 	}
 
-	internal::sorted::remove(rIngredient, m_Ingredients);
+	internal::sorted::remove(rIngredient.getIdString(), m_Ingredients);
 	return true;
 }
 
@@ -382,7 +388,13 @@ AlternativesType& RecipeBook::addAlternativesType(QString strName)
 
 void RecipeBook::renameAlternativesType(AlternativesType& rType, QString strNewName)
 {
-	internal::sorted::moveForNewName(rType, strNewName, m_AlternativesTypes);
+	// Inform shopping recipes
+	for(QSharedPointer<ShoppingRecipe> recipe : qAsConst(m_ShoppingRecipes))
+	{
+		recipe->beforeAlternativesTypeNameChanged(rType, strNewName);
+	}
+
+	internal::sorted::moveForNewIdString(rType, strNewName, m_AlternativesTypes);
 	rType.rename(strNewName);
 }
 
@@ -403,7 +415,7 @@ bool RecipeBook::isAlternativesTypeInUse(const AlternativesType& rType, QList<Re
 		for(quint32 i = 0; i < recipe->getRecipeItemsCount(); ++i)
 		{
 			const RecipeItem& rItem = recipe->getRecipeItemAt(i);
-			if(rItem.hasAlternativesGroup() && rItem.getAlternativesGroup().getName() == rType.getName())
+			if(rItem.hasAlternativesGroup() && rItem.getAlternativesGroup().getIdString() == rType.getIdString())
 			{
 				if(pRecipes)
 				{
@@ -433,7 +445,7 @@ bool RecipeBook::removeAlternativesType(const AlternativesType& rType)
 		return false;
 	}
 
-	internal::sorted::remove(rType, m_AlternativesTypes);
+	internal::sorted::remove(rType.getIdString(), m_AlternativesTypes);
 
 	return true;
 }
@@ -487,7 +499,7 @@ Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
 
 void RecipeBook::renameRecipe(Recipe& rRecipe, QString strNewName)
 {
-	internal::sorted::moveForNewName(rRecipe, strNewName, m_Recipes);
+	internal::sorted::moveForNewIdString(rRecipe, strNewName, m_Recipes);
 	rRecipe.rename(strNewName);
 }
 
@@ -498,7 +510,7 @@ bool RecipeBook::existsRecipe(QString strName) const
 
 bool RecipeBook::removeRecipe(const Recipe& rRecipe)
 {
-	internal::sorted::remove(rRecipe, m_Recipes);
+	internal::sorted::remove(rRecipe.getIdString(), m_Recipes);
 	return true;
 }
 
@@ -567,7 +579,7 @@ ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRe
 
 void RecipeBook::renameShoppingRecipe(ShoppingRecipe& rRecipe, QString strNewName)
 {
-	internal::sorted::moveForNewName(rRecipe, strNewName, m_ShoppingRecipes);
+	internal::sorted::moveForNewIdString(rRecipe, strNewName, m_ShoppingRecipes);
 	rRecipe.rename(strNewName);
 }
 
@@ -578,7 +590,7 @@ bool RecipeBook::existsShoppingRecipe(QString strName) const
 
 bool RecipeBook::removeShoppingRecipe(const ShoppingRecipe& rRecipe)
 {
-	internal::sorted::remove(rRecipe, m_ShoppingRecipes);
+	internal::sorted::remove(rRecipe.getIdString(), m_ShoppingRecipes);
 	return true;
 }
 

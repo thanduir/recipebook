@@ -55,10 +55,14 @@ RecipeBookUIData::RecipeBookUIData()
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
 	connect(&m_ModelProvenance, SIGNAL(provenanceRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onSortOrderRenamed(quint32)));
+
 	connect(&m_ModelIngredients, SIGNAL(ingredientRenamed(quint32)),
 			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
 	connect(&m_AlternativesGroups, SIGNAL(alternativesGroupChanged(quint32)),
 			&m_ModelRecipeItems, SLOT(onDependentItemChanged(quint32)));
+
+	connect(&m_ModelIngredients, SIGNAL(ingredientRenamed(quint32)),
+			&m_ModelShoppingListItems, SLOT(onDependentItemChanged(quint32)));
 	connect(&m_AlternativesGroups, SIGNAL(alternativesGroupChanged(quint32)),
 			&m_ModelShoppingListItems, SLOT(onDependentItemChanged(quint32)));
 	connect(&m_ModelShoppingRecipes, SIGNAL(recipeScalingChanged(quint32)),

@@ -10,6 +10,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
 
 		QColor getColor() const { return m_Color; }
 		void setColor(QColor color) { m_Color = color; }

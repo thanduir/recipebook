@@ -10,12 +10,17 @@
 namespace recipebook
 {
 	class RecipeItem;
+	class ShoppingRecipe;
 	class AlternativesType;
 
 	class ShoppingListItem
 	{
 	public:
+		static QString getIdString(const Ingredient* pIngredient, const AlternativesType* pAlternativesGroup);
+
 		QString getName() const { return m_pIngredient->getName(); }
+		QString getIdString() const { return getIdString(m_pIngredient, m_pAlternativesGroup); }
+
 		const Ingredient& getIngredient() const { return *m_pIngredient; }
 		void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
 
@@ -33,21 +38,26 @@ namespace recipebook
 		
 		bool hasAlternativesGroup() const { return m_pAlternativesGroup != nullptr; }
 		const AlternativesType& getAlternativesGroup() const { return *m_pAlternativesGroup; }
-		void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
-		void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
+		void resetAlternativesGroup();
+		void setAlternativesGroup(const AlternativesType& rGroup);
 
 		Status getStatus() const { return m_Status; }
 		void setStatus(Status status) { m_Status = status; }
 		void invertStatus();
 
 	private:
-		explicit ShoppingListItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) {}
-		explicit ShoppingListItem(const RecipeItem& rRecipeItem);
+		ShoppingListItem(ShoppingRecipe& rParent, const Ingredient& rIngredient) : m_rParent(rParent), m_pIngredient(&rIngredient) {}
+		ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rRecipeItem);
 		ShoppingListItem(const ShoppingListItem& rOther) = delete;
 
 		void operator=(const ShoppingListItem& rOther) = delete;
 
+		static QString getIdString(const Ingredient* pIngredient, QString strNewGroupIdString);
+		static QString getIdString(QString strNewIngredientIdString, const AlternativesType* pAlternativesGroup);
+		static QString getIdString(QString strIngredientIdString, QString strGroupIdString);
+
 	private:
+		ShoppingRecipe& m_rParent;
 		const Ingredient* m_pIngredient;
 		Amount m_Amount;
 		QString m_AdditionalInfo;

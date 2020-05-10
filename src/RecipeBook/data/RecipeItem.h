@@ -13,7 +13,11 @@ namespace recipebook
 	class RecipeItem
 	{
 	public:
+		static QString getIdString(const Ingredient* pIngredient);
+
 		QString getName() const { return m_pIngredient->getName(); }
+		QString getIdString() const { return getIdString(m_pIngredient); }
+
 		const Ingredient& getIngredient() const { return *m_pIngredient; }
 		void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
 

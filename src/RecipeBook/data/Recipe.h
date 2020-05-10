@@ -14,6 +14,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
         
 		quint32 getNumberOfPersons() const { return m_NrPersons; }
 		void setNumberOfPersons(quint32 number) { m_NrPersons = number; }

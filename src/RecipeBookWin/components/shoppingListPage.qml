@@ -405,16 +405,8 @@ Item {
 					Label {
 						function recipeItemSmallDesc(n){
 							var text = "";
-							if(group != alternativesGroups.stringNoAlternativesGroup())
-							{
-								text += group;
-							}
 							if(amountUnit != modelShoppingListItems.indexUnitUnitless())
 							{
-								if(text != "")
-								{
-									text = text + ", ";
-								}
 								text += amountMin;
 								if(amountIsRange)
 								{

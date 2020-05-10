@@ -2,6 +2,15 @@
 
 using namespace recipebook;
 
+QString RecipeItem::getIdString(const Ingredient* pIngredient)
+{
+	if(pIngredient != nullptr)
+	{
+		return pIngredient->getIdString();
+	}
+	return "";
+}
+
 RecipeItem::RecipeItem(const RecipeItem& rOther)
 :	m_pIngredient(&rOther.getIngredient()), 
 	m_Amount(rOther.getAmount()), 

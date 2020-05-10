@@ -11,6 +11,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
 
 		quint32 getItemsCount() const { return m_Categories.size(); }
 		const Category& at(quint32 i) const;

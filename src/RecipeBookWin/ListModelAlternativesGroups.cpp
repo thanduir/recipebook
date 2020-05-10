@@ -72,8 +72,9 @@ QString ListModelAlternativesGroups::name(int row) const
 
 int ListModelAlternativesGroups::renameType(int row, QString newName)
 {
+	qint32 newIndex = -1;
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(row == c_uiRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
 			return -1;
@@ -83,17 +84,36 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
 			return -1;
 		}
 
+		newIndex = handle.data().getAlternativesTypeIndex(newName);
+	}
+
+	if(row != newIndex)
+	{
+		beginMoveRows(QModelIndex(), row, row, QModelIndex(), newIndex);
+	}
+
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(newIndex > row)
+		{
+			newIndex -= 1;
+		}
+
 		AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
 		handle.data().renameAlternativesType(rType, newName);
 	}
 
-	QVector<int> rolesChanged;
-	rolesChanged.append((int)AlternativesGroupsRoles::NameRole);
-	dataChanged(index(row), index(row), rolesChanged);
-    
+	if(row != newIndex)
+	{
+		endMoveRows();
+	}
+
+	dataChanged(index(newIndex), index(newIndex));
+
 	emit alternativesGroupChanged(row);
 
-	return row;
+	return newIndex;
 }
 
 QString ListModelAlternativesGroups::color(int row) const

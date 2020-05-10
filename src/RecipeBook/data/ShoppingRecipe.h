@@ -7,6 +7,7 @@
 
 namespace recipebook
 {
+	class AlternativesType;
 	class Ingredient;
 	class Recipe;
 	class RecipeItem;
@@ -16,6 +17,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
         
 		// Current scaling factor used for the items in the list.
 		float getScalingFactor() const { return m_fScalingFactor; }
@@ -49,6 +51,10 @@ namespace recipebook
 
 		void rename(QString strNewName) { m_Name = strNewName; }
 
+		void beforeIngredientNameChanged(const Ingredient& rIngredient, QString strNewIdString);
+		void beforeAlternativesTypeNameChanged(const AlternativesType& rIngredient, QString strNewIdString);
+		void beforeItemIdStringChanged(ShoppingListItem& rItem, QString strNewIdString);
+
 	private:
 		QString m_Name;
 		float m_fScalingFactor;
@@ -56,6 +62,7 @@ namespace recipebook
 
 		QVector<QSharedPointer<ShoppingListItem>> m_Items;
 
+		friend class ShoppingListItem;
 		friend class RecipeBook;
 	};
 }

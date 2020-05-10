@@ -8,7 +8,8 @@ namespace recipebook
 	class Category
 	{
 	public:
-		QString getName() const { return m_Name; }        
+		QString getName() const { return m_Name; }
+		QString getIdString() const { return getName(); }
 
 	private:
 		explicit Category(QString strName) : m_Name(strName) {}      

@@ -4,12 +4,12 @@ TODO
 3. Design and write GUI to manage recipes (feature parity with the app)!
 
 	- shopping list page
-		* sort items alphabetically using the group name for alternatives groups!
-		* should the group of an item be changeable in this UI?
+		* BUG: shopping list item resort for alternatives types doesn't always work!		
 		* checkboxes for all items, normal items initially activated, group items deactivated
 			-> how to save this? Additional status "hidden" or should I save this in a separate attribute?
 		* mark shopping recipes (red?) with groups where no item is activated
 			-> disable "go shopping" if this is the case for any recipe? Or is the red mark enough?
+		* should the group of an item be changeable in this UI?
 
 		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
 		* TODOs
