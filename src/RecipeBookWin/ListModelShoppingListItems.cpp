@@ -592,6 +592,11 @@ int ListModelShoppingListItems::addItem(QString strIngredient)
 		}
 
 		const Ingredient& rIngredient = handle.data().getIngredient(strIngredient);
+		if(pRecipe->existsItem(rIngredient))
+		{
+			return -1;
+		}
+
 		index = pRecipe->getItemIndex(rIngredient);
 	}
 

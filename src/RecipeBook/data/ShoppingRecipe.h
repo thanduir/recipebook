@@ -51,9 +51,9 @@ namespace recipebook
 
 		void rename(QString strNewName) { m_Name = strNewName; }
 
-		void beforeIngredientNameChanged(const Ingredient& rIngredient, QString strNewIdString);
-		void beforeAlternativesTypeNameChanged(const AlternativesType& rIngredient, QString strNewIdString);
-		void beforeItemIdStringChanged(ShoppingListItem& rItem, QString strNewIdString);
+		void onIngredientNameChanged(const Ingredient& rIngredient);
+		void onAlternativesTypeNameChanged(const AlternativesType& rGroup);
+		void onItemIdStringChanged();
 
 	private:
 		QString m_Name;

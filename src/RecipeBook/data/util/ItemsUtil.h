@@ -35,6 +35,17 @@ namespace recipebook::internal
 		}
 
 		template<class T> 
+		void sort(QVector<QSharedPointer<T>>& allItems)
+		{
+			auto comp = [](const QSharedPointer<T>& rItemFirst, const QSharedPointer<T>& rItemSecond) -> bool
+			{
+				return recipebook::internal::helper::lessThan(rItemFirst->getIdString(), rItemSecond->getIdString());
+			};
+
+			std::sort(allItems.begin(), allItems.end(), comp);
+		}
+
+		template<class T> 
 		typename QVector<QSharedPointer<T>>::const_iterator findItemSorted(QString strIdString, const QVector<QSharedPointer<T>>& allItems)
 		{
 			auto comp = [](const QSharedPointer<T>& rItem, const QString& strIdString) -> bool
@@ -63,17 +74,20 @@ namespace recipebook::internal
 		void moveForNewIdString(T& rItem, const QString strNewIdString, QVector<QSharedPointer<T>>& allItems)
 		{
 			auto iterOldPos = helper::findItemSorted(rItem.getIdString(), allItems);
-			if(iterOldPos != allItems.end() && helper::compare((*iterOldPos)->getIdString(), rItem.getIdString()) == 0)
+			if(iterOldPos != allItems.end())
 			{
-				QSharedPointer<T> savedItem = *iterOldPos;
-				allItems.erase(iterOldPos);
-
-				auto iterNewPos = helper::findItemSorted(strNewIdString, allItems);
-				if(iterNewPos != allItems.end() && helper::compare((*iterNewPos)->getIdString(), rItem.getIdString()) == 0)
+				if(helper::compare((*iterOldPos)->getIdString(), rItem.getIdString()) == 0)
 				{
-					throw QException();
+					QSharedPointer<T> savedItem = *iterOldPos;
+					allItems.erase(iterOldPos);
+
+					auto iterNewPos = helper::findItemSorted(strNewIdString, allItems);
+					if(iterNewPos != allItems.end() && helper::compare((*iterNewPos)->getIdString(), rItem.getIdString()) == 0)
+					{
+						throw QException();
+					}
+					allItems.insert(iterNewPos, savedItem);
 				}
-				allItems.insert(iterNewPos, savedItem);
 			}
 		}
 

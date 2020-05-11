@@ -51,7 +51,15 @@ ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 
 bool ShoppingRecipe::existsItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::exists<ShoppingListItem>(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items);
+	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
+	{
+		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool ShoppingRecipe::removeItem(const ShoppingListItem& rItem)
@@ -62,12 +70,28 @@ bool ShoppingRecipe::removeItem(const ShoppingListItem& rItem)
 
 ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::getItem(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items);
+	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
+	{
+		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		{
+			return *spItem;
+		}
+	}
+
+	throw QException();
 }
 
 const ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient) const
 {
-	return internal::unsorted::getItem(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items);
+	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
+	{
+		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		{
+			return *spItem;
+		}
+	}
+
+	throw QException();
 }
 
 quint32 ShoppingRecipe::getItemsCount() const
@@ -98,30 +122,41 @@ quint32 ShoppingRecipe::getItemIndex(const Ingredient& rIngredient) const
 	return recipebook::internal::helper::findItem(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items);
 }
 
-void ShoppingRecipe::beforeIngredientNameChanged(const Ingredient& rIngredient, QString strNewIdString)
+void ShoppingRecipe::onIngredientNameChanged(const Ingredient& rIngredient)
 {
-	if(existsItem(rIngredient))
+	bool sortingNeeded = false;
+	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
-		ShoppingListItem& rItem = getItem(rIngredient);
-		QString idString = ShoppingListItem::getIdString(strNewIdString, 
-														 rItem.hasAlternativesGroup() ? &rItem.getAlternativesGroup() : nullptr);
-		internal::sorted::moveForNewIdString(rItem, idString, m_Items);
+		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		{
+			sortingNeeded = true;
+		}
+	}
+
+	if(sortingNeeded)
+	{
+		internal::helper::sort(m_Items);
 	}
 }
 
-void ShoppingRecipe::beforeAlternativesTypeNameChanged(const AlternativesType& rGroup, QString strNewIdString)
+void ShoppingRecipe::onAlternativesTypeNameChanged(const AlternativesType& rGroup)
 {
-	QVector<QSharedPointer<ShoppingListItem>> itemsCopy = m_Items;
-	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(itemsCopy))
+	bool sortingNeeded = false;
+	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
 		if(spItem->hasAlternativesGroup() && &spItem->getAlternativesGroup() == &rGroup)
 		{
-			internal::sorted::moveForNewIdString(*spItem, ShoppingListItem::getIdString(&spItem->getIngredient(), strNewIdString), m_Items);
+			sortingNeeded = true;
 		}
+	}
+
+	if(sortingNeeded)
+	{
+		internal::helper::sort(m_Items);
 	}
 }
 
-void ShoppingRecipe::beforeItemIdStringChanged(ShoppingListItem& rItem, QString strNewIdString)
+void ShoppingRecipe::onItemIdStringChanged()
 {
-	internal::sorted::moveForNewIdString(rItem, strNewIdString, m_Items);
+	internal::helper::sort(m_Items);
 }

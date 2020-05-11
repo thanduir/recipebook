@@ -264,14 +264,14 @@ Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory
 
 void RecipeBook::renameIngredient(Ingredient& rIngredient, QString strNewName)
 {
+	internal::sorted::moveForNewIdString(rIngredient, strNewName, m_Ingredients);
+	rIngredient.rename(strNewName);
+
 	// Inform shopping recipes
 	for(QSharedPointer<ShoppingRecipe> recipe : qAsConst(m_ShoppingRecipes))
 	{
-		recipe->beforeIngredientNameChanged(rIngredient, strNewName);
+		recipe->onIngredientNameChanged(rIngredient);
 	}
-
-	internal::sorted::moveForNewIdString(rIngredient, strNewName, m_Ingredients);
-	rIngredient.rename(strNewName);
 }
 
 bool RecipeBook::existsIngredient(QString strName) const
@@ -388,14 +388,14 @@ AlternativesType& RecipeBook::addAlternativesType(QString strName)
 
 void RecipeBook::renameAlternativesType(AlternativesType& rType, QString strNewName)
 {
+	internal::sorted::moveForNewIdString(rType, strNewName, m_AlternativesTypes);
+	rType.rename(strNewName);
+
 	// Inform shopping recipes
 	for(QSharedPointer<ShoppingRecipe> recipe : qAsConst(m_ShoppingRecipes))
 	{
-		recipe->beforeAlternativesTypeNameChanged(rType, strNewName);
+		recipe->onAlternativesTypeNameChanged(rType);
 	}
-
-	internal::sorted::moveForNewIdString(rType, strNewName, m_AlternativesTypes);
-	rType.rename(strNewName);
 }
 
 bool RecipeBook::existsAlternativesType(QString strName) const

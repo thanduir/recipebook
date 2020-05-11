@@ -62,8 +62,8 @@ void ShoppingListItem::resetAlternativesGroup()
 {
 	if(m_pAlternativesGroup != nullptr)
 	{
-		m_rParent.beforeItemIdStringChanged(*this, getIdString(m_pIngredient, nullptr));
 		m_pAlternativesGroup = nullptr;
+		m_rParent.onItemIdStringChanged();
 	}
 }
 
@@ -71,7 +71,7 @@ void ShoppingListItem::setAlternativesGroup(const AlternativesType& rGroup)
 {
 	if(m_pAlternativesGroup != &rGroup)
 	{
-		m_rParent.beforeItemIdStringChanged(*this, getIdString(m_pIngredient, &rGroup));
 		m_pAlternativesGroup = &rGroup;
+		m_rParent.onItemIdStringChanged();
 	}
 }
