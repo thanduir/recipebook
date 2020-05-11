@@ -189,7 +189,6 @@ bool json::JsonReaderV2::readIngredients(const QJsonObject& rObject, RecipeBook&
 
 		const Category& rCategory = rRecipeBook.getCategory(strCategory);
 		Unit defaultUnit = helper::convertUnit(strDefaultUnit);
-		SortOrder* pProvenance = nullptr;
 
 		Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
 		if(!strProvenance.isEmpty())

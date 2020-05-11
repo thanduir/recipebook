@@ -12,6 +12,8 @@ FilterModelAlternativesTypes::FilterModelAlternativesTypes()
 
 bool FilterModelAlternativesTypes::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
+	Q_UNUSED(source_parent);
+
 	ListModelAlternativesGroups* pGroups = static_cast<ListModelAlternativesGroups*>(sourceModel());
 	return pGroups->name(source_row) != pGroups->stringNoAlternativesGroup();
 }

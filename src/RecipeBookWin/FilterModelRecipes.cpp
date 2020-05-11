@@ -22,6 +22,8 @@ void FilterModelRecipes::setFilterString(QString strFilter)
 
 bool FilterModelRecipes::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
+	Q_UNUSED(source_parent);
+
 	ListModelRecipes* pRecipes = static_cast<ListModelRecipes*>(sourceModel());
 	QString itemName = pRecipes->name(source_row);
 	return itemName.contains(m_FilterString, Qt::CaseInsensitive) || m_AdditionalItemsToShow.contains(itemName);

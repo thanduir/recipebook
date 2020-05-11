@@ -10,6 +10,8 @@ FilterModelRecipeItems::FilterModelRecipeItems()
 
 bool FilterModelRecipeItems::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
+	Q_UNUSED(source_parent);
+
 	ListModelRecipeItems* pItems = static_cast<ListModelRecipeItems*>(sourceModel());
 	return !pItems->hasGroup(source_row) || pItems->firstInGroup(source_row);
 }

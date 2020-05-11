@@ -12,6 +12,8 @@ FilterModelSortOrders::FilterModelSortOrders()
 
 bool FilterModelSortOrders::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
+	Q_UNUSED(source_parent);
+
 	ListModelProvenance* pProvenances = static_cast<ListModelProvenance*>(sourceModel());
 	return pProvenances->name(source_row) != pProvenances->provenanceEverywhere();
 }

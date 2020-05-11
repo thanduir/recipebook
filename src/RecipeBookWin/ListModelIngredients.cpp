@@ -379,7 +379,7 @@ bool ListModelIngredients::removeIngredient(int row)
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		Ingredient& rIngredient = handle.data().getIngredientAt(row);
-		bool bSuccess = handle.data().removeIngredient(rIngredient);
+		bSuccess = handle.data().removeIngredient(rIngredient);
 	}
 
 	endRemoveRows();
@@ -389,20 +389,24 @@ bool ListModelIngredients::removeIngredient(int row)
 
 void ListModelIngredients::onCategoryRenamed(quint32 row)
 {
+	Q_UNUSED(row);
+
 	int ingredientsCount = 0;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		int ingredientsCount = handle.data().getIngredientsCount();
+		ingredientsCount = handle.data().getIngredientsCount();
 	}
 	dataChanged(index(0), index(ingredientsCount-1));
 }
 
 void ListModelIngredients::onSortOrderRenamed(quint32 row)
 {
+	Q_UNUSED(row);
+
 	int ingredientsCount = 0;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		int ingredientsCount = handle.data().getIngredientsCount();
+		ingredientsCount = handle.data().getIngredientsCount();
 	}
 	dataChanged(index(0), index(ingredientsCount-1));
 }

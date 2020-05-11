@@ -120,10 +120,10 @@ void json::JsonWriter::writeCategories(const RecipeBook& rRecipeBook, QJsonObjec
     object[json::c_strCategoriesAll] = arrayAllCategories;
 
     QJsonObject objectSortOrders;
-    for(quint32 i = 0; i < rRecipeBook.getSortOrdersCount(); ++i)
+    for(quint32 j = 0; j < rRecipeBook.getSortOrdersCount(); ++j)
     {
         QJsonArray arraySortOrder;
-        const SortOrder& rSortOrder = rRecipeBook.getSortOrderAt(i);
+        const SortOrder& rSortOrder = rRecipeBook.getSortOrderAt(j);
         for(uint32_t i = 0; i < rSortOrder.getItemsCount(); ++i)
         {
             arraySortOrder.append(rSortOrder.at(i).getName());
@@ -179,7 +179,7 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
         }
 
         QJsonObject recipeItemsObject;
-        writeRecipeItems(rRecipe, rRecipeBook, recipeItemsObject);
+        writeRecipeItems(rRecipe, recipeItemsObject);
         recipeObject[json::c_strRecipesItems] = recipeItemsObject;
 
         objectRecipes[rRecipe.getName()] = recipeObject;
@@ -188,7 +188,7 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
     rRootObject[json::c_strRecipesId] = objectRecipes;
 }
 
-void json::JsonWriter::writeRecipeItems(const Recipe& rRecipe, const RecipeBook& rRecipeBook, QJsonObject& rObject)
+void json::JsonWriter::writeRecipeItems(const Recipe& rRecipe, QJsonObject& rObject)
 {
     for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
     {

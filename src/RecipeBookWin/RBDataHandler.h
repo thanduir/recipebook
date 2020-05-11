@@ -14,6 +14,10 @@ namespace recipebook
 		RBDataReadHandle(const RBDataHandler& rDataHandler);
 		const RecipeBook& data() { return m_rRecipeBook; }
 
+		RBDataReadHandle(const RBDataReadHandle&) = delete;
+		RBDataReadHandle(RBDataReadHandle&&) = delete;
+		RBDataReadHandle& operator=(const RBDataReadHandle&) = delete;
+
 	private:
 		QReadLocker m_Locker;
 		const RecipeBook& m_rRecipeBook;
@@ -24,6 +28,10 @@ namespace recipebook
 	public:
 		RBDataWriteHandle(RBDataHandler& rDataHandler, bool dontSetDataChanged = false);
 		RecipeBook& data() { return m_rRecipeBook; }
+
+		RBDataWriteHandle(const RBDataWriteHandle&) = delete;
+		RBDataWriteHandle(RBDataWriteHandle&&) = delete;
+		RBDataWriteHandle& operator=(const RBDataWriteHandle&) = delete;
 
 	private:
 		QWriteLocker m_Locker;

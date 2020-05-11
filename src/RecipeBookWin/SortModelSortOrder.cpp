@@ -30,8 +30,6 @@ void SortModelSortOrder::setSortOrder(int row)
 
 bool SortModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const
 {
-	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
-
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 	const Category& rCategoryLeft = handle.data().getCategoryAt(source_left.row()); 
 	const Category& rCategoryRight = handle.data().getCategoryAt(source_right.row()); 

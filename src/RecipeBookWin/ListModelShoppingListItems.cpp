@@ -259,7 +259,7 @@ bool ListModelShoppingListItems::lastInGroup(int row) const
 		return false;
 	}
 
-	if(row == pRecipe->getItemsCount() - 1)
+	if(row == (int)pRecipe->getItemsCount() - 1)
 	{
 		return rItem.hasAlternativesGroup();
 	}
@@ -739,6 +739,8 @@ bool ListModelShoppingListItems::applyEditList()
 
 void ListModelShoppingListItems::onDependentItemChanged(quint32 row)
 {
+	Q_UNUSED(row);
+
 	if(m_ShoppingRecipeIndex >= 0)
 	{
 		dataChanged(index(0), index(rowCount()-1));

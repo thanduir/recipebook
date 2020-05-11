@@ -269,7 +269,7 @@ bool ListModelRecipeItems::lastInGroup(int row) const
 		return false;
 	}
 
-	if(row == pRecipe->getRecipeItemsCount() - 1)
+	if(row == (int)pRecipe->getRecipeItemsCount() - 1)
 	{
 		return rItem.hasAlternativesGroup();
 	}
@@ -703,6 +703,8 @@ void ListModelRecipeItems::moveItem(int row, int target)
 
 void ListModelRecipeItems::onDependentItemChanged(quint32 row)
 {
+	Q_UNUSED(row);
+
 	if(m_RecipeIndex >= 0)
 	{
 		dataChanged(index(0), index(rowCount()-1));
