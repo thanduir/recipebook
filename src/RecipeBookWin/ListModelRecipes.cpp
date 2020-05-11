@@ -27,23 +27,23 @@ QVariant ListModelRecipes::data(const QModelIndex& index, int iRole) const
 	{
 		return name(index.row());
 	}
-	else if(role == RecipeRoles::NumberOfPersons)
+	else if(role == RecipeRoles::NumberOfPersonsRole)
 	{
 		return numberOfPersons(index.row());
 	}
-	else if(role == RecipeRoles::ShortDescription)
+	else if(role == RecipeRoles::ShortDescriptionRole)
 	{
 		return shortDescription(index.row());
 	}
-	else if(role == RecipeRoles::RecipeText)
+	else if(role == RecipeRoles::RecipeTextRole)
 	{
 		return recipeText(index.row());
 	}
-	else if(role == RecipeRoles::CookingTimeInMin)
+	else if(role == RecipeRoles::CookingTimeInMinRole)
 	{
 		return cookingTime(index.row());
 	}
-	else if(role == RecipeRoles::EverythingSet)
+	else if(role == RecipeRoles::EverythingSetRole)
 	{
 		return isEverythingSet(index.row());
 	}
@@ -55,11 +55,11 @@ QHash<int, QByteArray> ListModelRecipes::roleNames() const
 {
 	QHash<int, QByteArray> roles;
 	roles[(int)RecipeRoles::NameRole] = "name";
-	roles[(int)RecipeRoles::NumberOfPersons] = "numberOfPersons";
-	roles[(int)RecipeRoles::ShortDescription] = "shortDesc";
-	roles[(int)RecipeRoles::RecipeText] = "recipeText";
-	roles[(int)RecipeRoles::CookingTimeInMin] = "cookingTime";
-	roles[(int)RecipeRoles::EverythingSet] = "isEverythingSet";
+	roles[(int)RecipeRoles::NumberOfPersonsRole] = "numberOfPersons";
+	roles[(int)RecipeRoles::ShortDescriptionRole] = "shortDesc";
+	roles[(int)RecipeRoles::RecipeTextRole] = "recipeText";
+	roles[(int)RecipeRoles::CookingTimeInMinRole] = "cookingTime";
+	roles[(int)RecipeRoles::EverythingSetRole] = "isEverythingSet";
 	return roles;
 }
 
@@ -154,8 +154,8 @@ void ListModelRecipes::setNumberOfPersons(int row, qint32 nrPersons)
 		rRecipe.setNumberOfPersons(nrPersons);
 	}
 
-	setDataChanged(row, RecipeRoles::NumberOfPersons);
-	setDataChanged(row, RecipeRoles::EverythingSet);
+	setDataChanged(row, RecipeRoles::NumberOfPersonsRole);
+	setDataChanged(row, RecipeRoles::EverythingSetRole);
 }
 
 void ListModelRecipes::setShortDescription(int row, QString desc)
@@ -170,8 +170,8 @@ void ListModelRecipes::setShortDescription(int row, QString desc)
 		rRecipe.setShortDescription(desc);
 	}
 
-	setDataChanged(row, RecipeRoles::ShortDescription);
-	setDataChanged(row, RecipeRoles::EverythingSet);
+	setDataChanged(row, RecipeRoles::ShortDescriptionRole);
+	setDataChanged(row, RecipeRoles::EverythingSetRole);
 }
 
 void ListModelRecipes::setRecipeText(int row, QString text)
@@ -186,8 +186,8 @@ void ListModelRecipes::setRecipeText(int row, QString text)
 		rRecipe.setRecipeText(text);
 	}
 
-	setDataChanged(row, RecipeRoles::RecipeText);
-	setDataChanged(row, RecipeRoles::EverythingSet);
+	setDataChanged(row, RecipeRoles::RecipeTextRole);
+	setDataChanged(row, RecipeRoles::EverythingSetRole);
 }
 
 void ListModelRecipes::setCookingTime(int row, quint32 timeInMin)
@@ -203,8 +203,8 @@ void ListModelRecipes::setCookingTime(int row, quint32 timeInMin)
 		rRecipe.setCookingTime(time);
 	}
 
-	setDataChanged(row, RecipeRoles::CookingTimeInMin);
-	setDataChanged(row, RecipeRoles::EverythingSet);
+	setDataChanged(row, RecipeRoles::CookingTimeInMinRole);
+	setDataChanged(row, RecipeRoles::EverythingSetRole);
 }
 
 int ListModelRecipes::renameRecipe(int row, QString newName)

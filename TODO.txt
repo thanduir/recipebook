@@ -4,13 +4,8 @@ TODO
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
 	- shopping list page
-		* checkboxes for all items, normal items initially activated, group items deactivated
-			-> how to save this? Additional status "hidden" or should I save this in a separate attribute?
-			-> should this status be changed on group changes?
-		* mark shopping recipes (red?) with groups where no item is activated
-			-> disable "go shopping" if this is the case for any recipe? Or is the red mark enough?
-		
 		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
+			-> how do i round in app?
 		* TODOs
 
 	- Go shopping dialog!
@@ -23,6 +18,7 @@ TODO
 	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
+			-> also keep in mind that i might want to use the same controls for the smartphone version!
 		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
 	
 	- Verify that every feature from the app is present!

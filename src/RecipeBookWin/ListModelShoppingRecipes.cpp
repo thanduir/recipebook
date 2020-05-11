@@ -2,6 +2,8 @@
 #include <QException>
 #include <data/RecipeBook.h>
 #include <data/ShoppingRecipe.h>
+#include <data/ShoppingListItem.h>
+#include <data/AlternativesType.h>
 #include "RBDataHandler.h"
 #include "RecipeBookSettings.h"
 
@@ -35,6 +37,10 @@ QVariant ListModelShoppingRecipes::data(const QModelIndex& index, int iRole) con
 	{
 		return dueDate(index.row());
 	}
+	else if(role == ShoppingRecipeRoles::EverythingSetRole)
+	{
+		return everythingSet(index.row());
+	}
 
 	return QVariant();
 }
@@ -45,6 +51,7 @@ QHash<int, QByteArray> ListModelShoppingRecipes::roleNames() const
 	roles[(int)ShoppingRecipeRoles::NameRole] = "name";
 	roles[(int)ShoppingRecipeRoles::ScalingFactorRole] = "scalingFactor";
 	roles[(int)ShoppingRecipeRoles::DueDateRole] = "dueDate";
+	roles[(int)ShoppingRecipeRoles::EverythingSetRole] = "everythingSet";
 	return roles;
 }
 
@@ -86,6 +93,36 @@ QDate ListModelShoppingRecipes::dueDate(int row) const
 
 	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
 	return rRecipe.getDueDate();
+}
+
+bool ListModelShoppingRecipes::everythingSet(int row) const
+{
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
+		return true;
+
+	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+
+	QMap<QString, bool> mapGroups;
+	for(quint32 i = 0; i < rRecipe.getItemsCount(); ++i)
+	{
+		const ShoppingListItem& rItem = rRecipe.getItemAt(i);
+		if(rItem.hasAlternativesGroup())
+		{
+			QString group = rItem.getAlternativesGroup().getIdString();
+			mapGroups[group] = mapGroups.value(group, false) || rItem.isItemEnabled();
+		}
+	}
+
+	for(bool bValue : mapGroups.values())
+	{
+		if(!bValue)
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 void ListModelShoppingRecipes::setScalingFactor(int row, float fFactor)
@@ -321,4 +358,9 @@ bool ListModelShoppingRecipes::applyAddList()
 	bool bListChanged = bSuccess && m_AddListValues.size() > 0;
 	m_AddListValues.clear();
 	return bListChanged;
+}
+
+void ListModelShoppingRecipes::onItemEnabledChanged(int row)
+{
+	setDataChanged(row, ShoppingRecipeRoles::EverythingSetRole);
 }

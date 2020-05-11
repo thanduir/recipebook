@@ -279,6 +279,9 @@ bool json::JsonReaderV2::readShoppingList(const QJsonObject& rObject, RecipeBook
 			Status status = helper::convertStatus(strStatus);
 			rItem.setStatus(status);
 
+			bool bItemEnabled = item[json::c_strRecipesItemEnabled].toBool(true);
+			rItem.setItemEnabled(bItemEnabled);
+
 			if(!readRecipeItem(item, rRecipeBook, rItem))
 			{
 				return false;

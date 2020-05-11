@@ -19,11 +19,11 @@ namespace recipebook::UI
 		enum class RecipeRoles : int
 		{
 			NameRole = Qt::UserRole + 1,
-			NumberOfPersons,
-			ShortDescription,
-			RecipeText,
-			CookingTimeInMin,
-			EverythingSet
+			NumberOfPersonsRole,
+			ShortDescriptionRole,
+			RecipeTextRole,
+			CookingTimeInMinRole,
+			EverythingSetRole
 		};
 
 	public:

@@ -119,6 +119,10 @@ QVariant ListModelShoppingListItems::data(const QModelIndex& index, int iRole) c
 	{
 		return status(index.row());
 	}
+	else if(role == ShoppingListItemsRoles::ItemEnabledRole)
+	{
+		return isItemEnabled(index.row());
+	}
 
 	return QVariant();
 }
@@ -175,6 +179,11 @@ bool ListModelShoppingListItems::setData(const QModelIndex& index, const QVarian
 		setStatus(index.row(), value.toUInt());
 		return true;
 	}
+	else if(role == ShoppingListItemsRoles::ItemEnabledRole)
+	{
+		setItemEnabled(index.row(), value.toBool());
+		return true;
+	}
 
 	return false;
 }
@@ -194,6 +203,7 @@ QHash<int, QByteArray> ListModelShoppingListItems::roleNames() const
 	roles[(int)ShoppingListItemsRoles::GroupRole] = "group";
 	roles[(int)ShoppingListItemsRoles::GroupColorRole] = "groupColor";
 	roles[(int)ShoppingListItemsRoles::StatusRole] = "status";
+	roles[(int)ShoppingListItemsRoles::ItemEnabledRole] = "itemEnabled";
 	return roles;
 }
 
@@ -420,7 +430,19 @@ quint32 ListModelShoppingListItems::status(int row) const
 	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
 	return (quint32)rItem.getStatus();
 }
-        
+    
+bool ListModelShoppingListItems::isItemEnabled(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+		return 0;
+
+	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+	return rItem.isItemEnabled();
+}
+
 void ListModelShoppingListItems::setAmountUnit(int row, quint32 uiUnit)
 {
 	{
@@ -577,6 +599,29 @@ void ListModelShoppingListItems::setStatus(int row, quint32 uiStatus)
 	}
 
 	setDataChanged(row, ShoppingListItemsRoles::StatusRole);
+}
+
+void ListModelShoppingListItems::setItemEnabled(int row, bool bEnabled)
+{
+	bool bItemWithGroup = false;
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
+			return;
+
+		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+		rItem.setItemEnabled(bEnabled);
+		bItemWithGroup = rItem.hasAlternativesGroup();
+	}
+
+	setDataChanged(row, ShoppingListItemsRoles::ItemEnabledRole);
+
+	if(bItemWithGroup)
+	{
+		emit shoppingitemEnabledChanged(m_ShoppingRecipeIndex);
+	}
 }
 
 int ListModelShoppingListItems::addItem(QString strIngredient)

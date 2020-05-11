@@ -50,6 +50,7 @@ namespace recipebook::serialization::json
 	constexpr char* c_strRecipesAdditionalInfo			= "additionalInfo";
 	constexpr char* c_strRecipesStatus					= "status";
 	constexpr char* c_strRecipesGroup					= "alternativesGroup";
+	constexpr char* c_strRecipesItemEnabled				= "itemEnabled";
 	constexpr char* c_strRecipesPosition				= "_position";
 }
 

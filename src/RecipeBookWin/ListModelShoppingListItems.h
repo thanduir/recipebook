@@ -33,7 +33,8 @@ namespace recipebook::UI
 			HasGroupRole,
 			GroupRole,
 			GroupColorRole,
-			StatusRole
+			StatusRole,
+			ItemEnabledRole
 		};
 
 	public:
@@ -64,6 +65,7 @@ namespace recipebook::UI
 		QString group(int row) const;
 		QString groupColor(int row) const;
 		quint32 status(int row) const;
+		bool isItemEnabled(int row) const;
         
 		void setAmountUnit(int row, quint32 uiUnit);
 		void setAmountIsRange(int row, bool bRange);
@@ -74,6 +76,7 @@ namespace recipebook::UI
 		void setOptional(int row, bool bOptional);
 		void setGroup(int row, QString group);
 		void setStatus(int row, quint32 uiStatus);
+		void setItemEnabled(int row, bool bEnabled);
 
 		int addItem(QString strIngredient);
 		bool removeItem(int row);
@@ -87,6 +90,9 @@ namespace recipebook::UI
 
 		void onDependentItemChanged(quint32 index);
 		void onDataReset() { setShoppingRecipe(-1); }
+
+	signals:
+		void shoppingitemEnabledChanged(int recipeId);
 
 	protected:
 		virtual QHash<int, QByteArray> roleNames() const override;

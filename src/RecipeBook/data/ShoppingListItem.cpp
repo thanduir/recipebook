@@ -42,7 +42,8 @@ ShoppingListItem::ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rR
 	m_Size(rRecipeItem.getSize()),
 	m_bOptional(rRecipeItem.isOptional()),
 	m_pAlternativesGroup(rRecipeItem.hasAlternativesGroup() ? &rRecipeItem.getAlternativesGroup() : nullptr),
-	m_Status(Status::None)
+	m_Status(Status::None),
+	m_bItemEnabled(!rRecipeItem.hasAlternativesGroup())
 {
 }
 

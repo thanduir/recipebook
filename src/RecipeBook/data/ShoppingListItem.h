@@ -45,6 +45,9 @@ namespace recipebook
 		void setStatus(Status status) { m_Status = status; }
 		void invertStatus();
 
+		bool isItemEnabled() const { return m_bItemEnabled; }
+		void setItemEnabled(bool bEnabled) { m_bItemEnabled = bEnabled; }
+
 	private:
 		ShoppingListItem(ShoppingRecipe& rParent, const Ingredient& rIngredient) : m_rParent(rParent), m_pIngredient(&rIngredient) {}
 		ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rRecipeItem);
@@ -65,6 +68,7 @@ namespace recipebook
 		bool m_bOptional = false;
 		const AlternativesType* m_pAlternativesGroup = nullptr;
 		Status m_Status = Status::None;
+		bool m_bItemEnabled = true;
 
 		friend class ShoppingRecipe;
 	};

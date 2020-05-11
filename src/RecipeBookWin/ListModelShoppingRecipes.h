@@ -21,7 +21,8 @@ namespace recipebook::UI
 		{
 			NameRole = Qt::UserRole + 1,
 			ScalingFactorRole,
-			DueDateRole
+			DueDateRole,
+			EverythingSetRole
 		};
 
 	public:
@@ -34,6 +35,8 @@ namespace recipebook::UI
 		QString name(int row) const;
 		float scalingFactor(int row) const;
 		QDate dueDate(int row) const;
+
+		bool everythingSet(int row) const;
 
 		void setScalingFactor(int row, float fFactor);
 		void setDueDate(int row, QDate date);
@@ -55,6 +58,8 @@ namespace recipebook::UI
 		void changeState(QString itemName, quint32 insertionsCount);
 		void cancelAddList();
 		bool applyAddList();
+
+		void onItemEnabledChanged(int row);
 
 	signals:
 		void recipeScalingChanged(quint32 index);

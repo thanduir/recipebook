@@ -154,8 +154,22 @@ Item {
 					lvCurrentRecipe.currentIndex = -1
 				}
 				width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
-                
-				text: name
+ 				height: listItemRecipesName.height + 30
+
+				Label {
+					id: listItemRecipesName
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.top: parent.top
+					anchors.topMargin: 15
+					anchors.leftMargin: 15
+                        
+					text: name
+					verticalAlignment: Text.AlignVCenter
+
+					color: everythingSet ? "black" : "red"
+					font.bold: !everythingSet
+				}
 			}
 
 			Component.onCompleted: {
@@ -357,8 +371,8 @@ Item {
 			model: modelShoppingListItems
 			delegate: ItemDelegate {
 				id: listItemRecipeItem
-				highlighted: ListView.isCurrentItem
-				onPressed: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
+				highlighted: ListView.isCurrentItem 
+				onPressed: lvCurrentRecipe.currentIndex == index || !listItemRecipeItemName.checked ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
 				width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
 				height: listItemRecipeItemGroup.height
 
@@ -367,17 +381,14 @@ Item {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					anchors.top: parent.top
-					anchors.topMargin: 10
 
-					height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
+					height: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : 0)
 
 					Rectangle {
 						id: groupBar
 						anchors.left: parent.left
 						anchors.top: parent.top
 						anchors.bottom: parent.bottom
-						anchors.topMargin: -10
-						anchors.bottomMargin: modelShoppingListItems.lastInGroup(index) ? 10 : 0
 
 						visible: hasGroup
 						color: groupColor
@@ -390,15 +401,26 @@ Item {
 					}
 
 					// Ingredient / group name
-					Label {
+					CheckBox {
 						id: listItemRecipeItemName
+						anchors.top: parent.top
 						anchors.left: hasGroup ? groupBar.right : parent.left
+						anchors.topMargin: 0
 						anchors.leftMargin: 10
                         
-						font.bold: !optional
+						font.bold: checked
 						font.italic: optional
 						text: name
-						verticalAlignment: Text.AlignVCenter
+
+						checked: itemEnabled
+						onClicked: {
+							itemEnabled = checked
+							
+							if(!checked && lvCurrentRecipe.currentIndex == index)
+							{
+								lvCurrentRecipe.currentIndex = -1;
+							}
+						}
 					}
 
 					// Summary for inactive ingredients
@@ -439,6 +461,7 @@ Item {
 						}
 
 						anchors.left: listItemRecipeItemName.right
+						anchors.verticalCenter: listItemRecipeItemName.verticalCenter
 						color: "gray"
 						text: recipeItemSmallDesc(index)
 						verticalAlignment: Text.AlignVCenter
@@ -458,7 +481,6 @@ Item {
 						anchors.top: listItemRecipeItemName.bottom
 						anchors.leftMargin: 20
 						anchors.rightMargin: 10
-						anchors.topMargin: 10
                         
 						columns: 2
 						columnSpacing: 10

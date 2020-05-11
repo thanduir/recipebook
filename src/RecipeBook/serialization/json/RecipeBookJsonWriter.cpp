@@ -220,6 +220,8 @@ void json::JsonWriter::writeShoppongList(const RecipeBook& rRecipeBook, QJsonObj
             QJsonObject recipeItemObject;
 
             recipeItemObject[json::c_strRecipesStatus] = helper::convertStatus(rItem.getStatus());
+			recipeItemObject[json::c_strRecipesItemEnabled] = rItem.isItemEnabled();
+			
             writeRecipeItem(rItem, recipeItemObject);
 
             itemsGroupsObject[rItem.getName()] = recipeItemObject;

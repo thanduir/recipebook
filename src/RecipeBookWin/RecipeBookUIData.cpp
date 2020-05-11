@@ -68,6 +68,9 @@ RecipeBookUIData::RecipeBookUIData()
 	connect(&m_ModelShoppingRecipes, SIGNAL(recipeScalingChanged(quint32)),
 			&m_ModelShoppingListItems, SLOT(onDependentItemChanged(quint32)));
 
+	connect(&m_ModelShoppingListItems, SIGNAL(shoppingitemEnabledChanged(int)),
+			&m_ModelShoppingRecipes, SLOT(onItemEnabledChanged(int)));
+
 	connect(&m_Settings, SIGNAL(resetAllData()),
 			this, SLOT(slotResetData()));
 	connect(&m_Settings, SIGNAL(loadDefaultData()),
