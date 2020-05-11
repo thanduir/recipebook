@@ -6,6 +6,26 @@ import "components"
 
 Item {
 
+	// General rounding method
+	function roundValue(value) {
+		if(Math.abs(value - Math.round(value)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 0);
+		}
+		else if(Math.abs(value*10 - Math.round(value * 10)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 1);
+		}
+		else if(Math.abs(value*100 - Math.round(value * 100)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 2);
+		}
+		else
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 3);
+		}
+	}
+
 	// Recipes dialogs
 
 	AddRecipesListDialog {
@@ -65,6 +85,9 @@ Item {
 		title: qsTr("Select date")
 		onAccepted: {
 			modelShoppingRecipes.setDueDate(lvRecipes.currentIndex, selectedDate)
+			var oldIndex = lvRecipes.currentIndex
+			lvRecipes.currentIndex = -1
+			lvRecipes.currentIndex = oldIndex
 		}
 	}
 
@@ -325,7 +348,6 @@ Item {
 				Layout.fillWidth: true
 				horizontalAlignment: Text.AlignRight
 				rightPadding: 10
-				// TODO: This is not updated on changes (even though dataChanged is correctly set in model)!
 				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "dddd, dd.MM.yyyy")
 			}
 
@@ -429,10 +451,10 @@ Item {
 							var text = "";
 							if(amountUnit != modelShoppingListItems.indexUnitUnitless())
 							{
-								text += amountMin;
+								text += roundValue(amountMin);
 								if(amountIsRange)
 								{
-									text += "-" + amountMax;
+									text += "-" + roundValue(amountMax);
 								}
 								text += " " + unitNamesShort[amountUnit];
 							}
@@ -529,7 +551,7 @@ Item {
 										selectAll()
 								}
 
-								text: amountMin
+								text: roundValue(amountMin)
 								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
 								onEditingFinished: {
 									if(amountIsRange && text > amountMax)
@@ -562,7 +584,7 @@ Item {
 									{
 										text = amountMin;
 									}
-									amountMax = text
+									amountMax = roundValue(text)
 								}
 							}
 						}

@@ -3,11 +3,6 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- shopping list page
-		* changeScalingFactor should round values if possible (and restrict to two digits after comma)!
-			-> how do i round in app?
-		* TODOs
-
 	- Go shopping dialog!
 		* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
 		* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
