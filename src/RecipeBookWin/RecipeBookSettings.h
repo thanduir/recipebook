@@ -36,6 +36,12 @@ namespace recipebook
 		QString lastUsedImportFolder() const;
 		void setLastUsedImportFolder(QString strFolder);
 
+		QString getActiveSortOrderGoShopping() const;
+		void setActiveSortOrderGoShopping(QString strSortOrder);
+
+		QString getActiveListOrderingGoShopping() const;
+		void setActiveListOrderingGoShopping(QString strSortOrder);
+
 	signals:
 		void loadDefaultData() const;
 		void resetAllData() const;

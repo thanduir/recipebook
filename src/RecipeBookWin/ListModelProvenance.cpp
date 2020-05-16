@@ -2,8 +2,8 @@
 #include <data/RecipeBook.h>
 #include <data/Ingredient.h>
 #include <data/SortOrder.h>
+#include <data/RBDataHandler.h>
 #include "uistringconverter.h"
-#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 

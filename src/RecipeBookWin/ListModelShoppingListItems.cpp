@@ -4,8 +4,8 @@
 #include <data/ShoppingRecipe.h>
 #include <data/ShoppingListItem.h>
 #include <data/AlternativesType.h>
+#include <data/RBDataHandler.h>
 #include "uistringconverter.h"
-#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 

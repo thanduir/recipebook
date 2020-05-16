@@ -2,6 +2,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QMap>
 #include "data/AlternativesType.h"
 #include "data/Ingredient.h"
 #include "data/Recipe.h"

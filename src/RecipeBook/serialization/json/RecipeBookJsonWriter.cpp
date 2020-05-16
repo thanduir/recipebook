@@ -126,7 +126,7 @@ void json::JsonWriter::writeCategories(const RecipeBook& rRecipeBook, QJsonObjec
         const SortOrder& rSortOrder = rRecipeBook.getSortOrderAt(j);
         for(uint32_t i = 0; i < rSortOrder.getItemsCount(); ++i)
         {
-            arraySortOrder.append(rSortOrder.at(i).getName());
+            arraySortOrder.append(rSortOrder.getItemAt(i).getName());
         }
 
         objectSortOrders[rSortOrder.getName()] = arraySortOrder;

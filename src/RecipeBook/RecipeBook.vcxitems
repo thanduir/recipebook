@@ -17,13 +17,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\AlternativesType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Amount.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Category.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Ingredient.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RBDataHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Recipe.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBook.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Size.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\SortedShoppingList.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\SortedShoppingListOrdering.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\SortOrder.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Status.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Unit.h" />
@@ -41,12 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RBDataHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Recipe.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBook.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\SortedShoppingList.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\SortOrder.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Unit.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.cpp" />

@@ -12,7 +12,7 @@ recipebook::SortOrder::SortOrder(QString strName, const QVector<QSharedPointer<C
 	}
 }
 
-const recipebook::Category& recipebook::SortOrder::at(quint32 i) const
+const recipebook::Category& recipebook::SortOrder::getItemAt(quint32 i) const
 {
 	if(i >= static_cast<quint32>(m_Categories.size()))
 	{

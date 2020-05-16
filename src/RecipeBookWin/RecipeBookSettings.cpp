@@ -7,17 +7,20 @@
 
 using namespace recipebook;
 
-constexpr char* c_strAppRBSaveFilename	= "/RecipeBook.json";
+constexpr char* c_strAppRBSaveFilename				= "/RecipeBook.json";
 
-constexpr char* c_strAppInstanceUID		= "appInstanceUID";
+constexpr char* c_strAppInstanceUID					= "appInstanceUID";
 
-constexpr char* c_strDefaultUnit		= "defaults/unit";
-constexpr char* c_strDefaultNrPersons	= "defaults/nrpersons";
-constexpr char* c_strDefaultCategory	= "defaults/category";
-constexpr char* c_strDefaultSortOrder	= "defaults/sortorder";
+constexpr char* c_strDefaultUnit					= "defaults/unit";
+constexpr char* c_strDefaultNrPersons				= "defaults/nrpersons";
+constexpr char* c_strDefaultCategory				= "defaults/category";
+constexpr char* c_strDefaultSortOrder				= "defaults/sortorder";
 
-constexpr char* c_strLastExportFolder	= "folders/lastexportfolder";
-constexpr char* c_strLastImportFolder	= "folders/lastimportfolder";
+constexpr char* c_strActiveSortOrderGoShopping		= "actives/sortorder_goshopping";
+constexpr char* c_strActiveListOrderingGoShopping	= "actives/listordering_goshopping";
+
+constexpr char* c_strLastExportFolder				= "folders/lastexportfolder";
+constexpr char* c_strLastImportFolder				= "folders/lastimportfolder";
 
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
@@ -127,4 +130,28 @@ void RecipeBookSettings::setLastUsedImportFolder(QString strFolder)
 {
 	QSettings settings;
 	settings.setValue(c_strLastImportFolder, strFolder);
+}
+
+QString RecipeBookSettings::getActiveSortOrderGoShopping() const
+{
+	QSettings settings;
+	return settings.value(c_strActiveSortOrderGoShopping, "").toString();
+}
+
+void RecipeBookSettings::setActiveSortOrderGoShopping(QString strSortOrder)
+{
+	QSettings settings;
+	settings.setValue(c_strActiveSortOrderGoShopping, strSortOrder);
+}
+
+QString RecipeBookSettings::getActiveListOrderingGoShopping() const
+{
+	QSettings settings;
+	return settings.value(c_strActiveListOrderingGoShopping, "").toString();
+}
+
+void RecipeBookSettings::setActiveListOrderingGoShopping(QString strSortOrder)
+{
+	QSettings settings;
+	settings.setValue(c_strActiveListOrderingGoShopping, strSortOrder);
 }

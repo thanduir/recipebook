@@ -6,7 +6,7 @@
 #include <data/SortOrder.h>
 #include <data/Recipe.h>
 #include <data/ShoppingRecipe.h>
-#include "RBDataHandler.h"
+#include <data/RBDataHandler.h>
 #include "uistringconverter.h"
 #include "RecipeBookSettings.h"
 

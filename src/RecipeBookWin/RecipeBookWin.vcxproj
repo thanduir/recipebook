@@ -107,13 +107,13 @@
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
     <ClCompile Include="FilterModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
+    <ClCompile Include="ListModelGoShopping.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
     <ClCompile Include="ListModelProvenance.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
     <ClCompile Include="ListModelShoppingListItems.cpp" />
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
-    <ClCompile Include="RBDataHandler.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
     <ClCompile Include="FilterModelSortOrders.cpp" />
@@ -179,7 +179,7 @@
     <QtMoc Include="ListModelShoppingRecipes.h" />
     <QtMoc Include="ListModelShoppingListItems.h" />
     <QtMoc Include="FilterModelRecipeItems.h" />
-    <ClInclude Include="RBDataHandler.h" />
+    <QtMoc Include="ListModelGoShopping.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

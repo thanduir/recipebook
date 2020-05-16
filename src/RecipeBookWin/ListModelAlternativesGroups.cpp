@@ -1,8 +1,8 @@
 #include "ListModelAlternativesGroups.h"
 #include <data/RecipeBook.h>
 #include <data/AlternativesType.h>
+#include <data/RBDataHandler.h>
 #include "uistringconverter.h"
-#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 

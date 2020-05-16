@@ -2,7 +2,6 @@
 #define RECIPEBOOK_RECIPEBOOK_H
 
 #include <QLinkedList>
-#include <QMap>
 #include <QSharedPointer>
 #include <QString>
 #include "Unit.h"

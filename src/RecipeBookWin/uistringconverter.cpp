@@ -30,6 +30,9 @@ static constexpr char* c_strUnitDessertspoonShort	= "ds";
 static constexpr char* c_strUnitTeaspoonShort		= "ts";
 static constexpr char* c_strUnitUnitlessShort		= "";
 
+static constexpr char* c_strListOrderingCombined			= "Combined";
+static constexpr char* c_strListOrderingSeparateTakenItems	= "SeparateTakenItems";
+
 UIStringConverter::UIStringConverter()
 {
 	m_strProvenanceEverywhere = tr(c_strProvenanceEverywhere);
@@ -37,10 +40,12 @@ UIStringConverter::UIStringConverter()
 	m_strNoAlternativesGroup = tr(c_strNoAlternativesGroup);
 
 	// Status
+
 	m_StatusToName.append(tr(c_strStatusNone));
 	m_StatusToName.append(tr(c_strStatusTaken));
 
 	// Size
+
 	m_SizeToName.append(tr(c_strSizeSmall));
 	m_SizeToName.append(tr(c_strSizNormal));
 	m_SizeToName.append(tr(c_strSizeLarge));
@@ -66,6 +71,11 @@ UIStringConverter::UIStringConverter()
 	m_UnitToShortName.append(tr(c_strUnitDessertspoonShort));
 	m_UnitToShortName.append(tr(c_strUnitTeaspoonShort));
 	m_UnitToShortName.append(tr(c_strUnitUnitlessShort));
+
+	// SortedShoppingListOrdering
+
+	m_ShoppingListOrderingToName.append(tr(c_strListOrderingCombined));
+	m_ShoppingListOrderingToName.append(tr(c_strListOrderingSeparateTakenItems));
 }
 
 QString UIStringConverter::getProvenanceEverywhere() const
@@ -150,4 +160,27 @@ QStringList UIStringConverter::getAllUnitNames() const
 QStringList UIStringConverter::getAllUnitShortNames() const
 {
 	return m_UnitToShortName;
+}
+
+QString UIStringConverter::convertShoppingListOrdering(recipebook::SortedShoppingListOrdering ordering) const
+{
+	return m_ShoppingListOrderingToName[(int)ordering];
+}
+
+recipebook::SortedShoppingListOrdering UIStringConverter::convertShoppingListOrdering(QString strOrdering) const
+{
+	for(int i = 0; i < m_ShoppingListOrderingToName.size(); ++i)
+	{
+		if(m_ShoppingListOrderingToName[i] == strOrdering)
+		{
+			return (recipebook::SortedShoppingListOrdering)i;
+		}
+	}
+	
+	return recipebook::SortedShoppingListOrdering::Combined;
+}
+
+QStringList UIStringConverter::getAllShoppingListOrderingNames() const
+{
+	return m_ShoppingListOrderingToName;
 }

@@ -19,6 +19,8 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookUIData& data
 	context->setContextProperty("sizeNames", dataHandler.getAllSizeNames());
 	context->setContextProperty("statusNames", dataHandler.getAllStatusNames());
 
+	context->setContextProperty("shoppingListOrderingNames", dataHandler.getAllShoppingListOrderingNames());
+
 	context->setContextProperty("modelCategories", &dataHandler.getCategoriesModel());
 	context->setContextProperty("modelSortOrder", &dataHandler.getSortOrderModel());
 
@@ -39,6 +41,8 @@ bool setupNameLists(QQmlContext* context, recipebook::UI::RecipeBookUIData& data
 
 	context->setContextProperty("modelShoppingRecipes", &dataHandler.getShoppingRecipesModel());
 	context->setContextProperty("modelShoppingListItems", &dataHandler.getShoppingListItemsModel());
+
+	context->setContextProperty("modelGoShopping", &dataHandler.getGoShoppingModel());
 
 	return true;
 }

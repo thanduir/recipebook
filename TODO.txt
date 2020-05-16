@@ -3,14 +3,11 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- Go shopping dialog!
-		* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
-		* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
-			trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
-			darunter eine zeile "2 gross" und eine "1 klein")
-		* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
-		* if somehow possible, also show other items of alternatives group?
+	- Go shopping dialog: Show additional information!
 	
+	- provenance should be (replaced by) a (negativ?) list!
+	- "Used in ..." list in ingredients need to be scrollable (see e.g. Peperoni)
+	- use std::function instead of template argument in ItemsUtil.h!
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
 			-> also keep in mind that i might want to use the same controls for the smartphone version!

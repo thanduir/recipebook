@@ -2,7 +2,7 @@
 #include <QException>
 #include <data/RecipeBook.h>
 #include <data/Recipe.h>
-#include "RBDataHandler.h"
+#include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
 
 using namespace recipebook::UI;

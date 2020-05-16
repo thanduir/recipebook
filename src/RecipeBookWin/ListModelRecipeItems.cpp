@@ -4,8 +4,8 @@
 #include <data/Recipe.h>
 #include <data/RecipeItem.h>
 #include <data/AlternativesType.h>
+#include <data/RBDataHandler.h>
 #include "uistringconverter.h"
-#include "RBDataHandler.h"
 
 using namespace recipebook::UI;
 
@@ -654,7 +654,7 @@ void ListModelRecipeItems::moveItem(int row, int target)
 		   || row == target)
 			return;
 
-		// Determine correct source rows!
+		// Determine correct source rows
 		const RecipeItem& rSourceItem = pRecipe->getRecipeItemAt(row);
 		if(rSourceItem.hasAlternativesGroup())
 		{

@@ -2,7 +2,7 @@
 #define RECIPEBOOK_UI_DATA_H
 
 #include <QtGlobal>
-#include "RBDataHandler.h"
+#include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
@@ -18,6 +18,7 @@
 #include "FilterModelRecipeItems.h"
 #include "ListModelShoppingRecipes.h"
 #include "ListModelShoppingListItems.h"
+#include "ListModelGoShopping.h"
 #include "uistringconverter.h"
 
 namespace recipebook::UI
@@ -36,6 +37,7 @@ namespace recipebook::UI
 		QStringList getAllUnitShortNames() const;
 		QStringList getAllSizeNames() const;
 		QStringList getAllStatusNames() const;
+		QStringList getAllShoppingListOrderingNames() const;
 
 		// DataModels
 		ListModelCategories& getCategoriesModel();
@@ -52,6 +54,7 @@ namespace recipebook::UI
 		FilterModelRecipeItems& getRecipeItemsFilterModel();
 		ListModelShoppingRecipes& getShoppingRecipesModel();
 		ListModelShoppingListItems& getShoppingListItemsModel();
+		ListModelGoShopping& getGoShoppingModel();
 
 	public slots:
 		void slotSave();
@@ -89,6 +92,8 @@ namespace recipebook::UI
 
 		ListModelShoppingRecipes m_ModelShoppingRecipes;
 		ListModelShoppingListItems m_ModelShoppingListItems;
+
+		ListModelGoShopping m_ModelGoShopping;
 
 		QAtomicInt m_SaveLock;
 	};

@@ -6,6 +6,7 @@
 #include <data/Size.h>
 #include <data/Status.h>
 #include <data/Unit.h>
+#include <data/SortedShoppingListOrdering.h>
 
 class UIStringConverter : public QObject
 {
@@ -30,6 +31,10 @@ public:
 	QStringList getAllUnitNames() const;
 	QStringList getAllUnitShortNames() const;
 
+	QString convertShoppingListOrdering(recipebook::SortedShoppingListOrdering ordering) const;
+	recipebook::SortedShoppingListOrdering convertShoppingListOrdering(QString strOrdering) const;
+	QStringList getAllShoppingListOrderingNames() const;
+
 private:
 	QString m_strProvenanceEverywhere;
 	QString m_strNoAlternativesGroup;
@@ -38,6 +43,7 @@ private:
 	QStringList m_UnitToName;
 	QStringList m_UnitToShortName;
 	QStringList m_SizeToName;
+	QStringList m_ShoppingListOrderingToName;
 };
 
 #endif

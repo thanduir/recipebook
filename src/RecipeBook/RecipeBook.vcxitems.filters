@@ -102,6 +102,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\AlternativesType.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\SortedShoppingList.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RBDataHandler.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\SortedShoppingListOrdering.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
@@ -147,6 +157,13 @@
       <Filter>serialization\helper</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Amount.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RBDataHandler.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\SortedShoppingList.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

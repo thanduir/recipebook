@@ -4,7 +4,7 @@
 #include <data/Category.h>
 #include <data/Ingredient.h>
 #include <data/SortOrder.h>
-#include "RBDataHandler.h"
+#include <data/RBDataHandler.h>
 
 using namespace recipebook::UI;
 
@@ -108,7 +108,7 @@ void SortModelSortOrder::applyMoveCategory()
 		if(m_SortOrderIndex >= 0 && m_SortOrderIndex < (int) handle.data().getSortOrdersCount())
 		{
 			SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
-			rOrder.moveCategory(rOrder.at(m_MoveFrom), m_MoveTo);
+			rOrder.moveCategory(rOrder.getItemAt(m_MoveFrom), m_MoveTo);
 		}
 	}
 
