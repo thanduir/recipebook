@@ -26,7 +26,7 @@ void RecipeBook::clearData()
 
 Category& RecipeBook::addCategory(QString strName)
 {
-	Category& rCategory = internal::sorted::addItem(strName, m_Categories, [strName, this]()
+	Category& rCategory = internal::sorted::addItem<Category>(strName, m_Categories, [strName, this]()
 	{
 		return new Category(strName);
 	});
@@ -156,7 +156,7 @@ quint32 RecipeBook::getCategoryIndex(QString strName) const
 
 SortOrder& RecipeBook::addSortOrder(QString strName)
 {
-	return internal::sorted::addItem(strName, m_SortOrders, [strName, this]()
+	return internal::sorted::addItem<SortOrder>(strName, m_SortOrders, [strName, this]()
 	{
 		return new SortOrder(strName, m_Categories);
 	});
@@ -256,7 +256,7 @@ quint32 RecipeBook::getSortOrderIndex(QString strName) const
 
 Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
 {
-	return internal::sorted::addItem(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
+	return internal::sorted::addItem<Ingredient>(strName, m_Ingredients, [strName, &rCategory, defaultUnit]()
 	{
 		return new Ingredient(strName, rCategory, defaultUnit);
 	});
@@ -380,7 +380,7 @@ quint32 RecipeBook::getIngredientIndex(QString strName) const
 
 AlternativesType& RecipeBook::addAlternativesType(QString strName)
 {
-	return internal::sorted::addItem(strName, m_AlternativesTypes, [strName, this]()
+	return internal::sorted::addItem<AlternativesType>(strName, m_AlternativesTypes, [strName, this]()
 	{
 		return new AlternativesType(strName);
 	});
@@ -491,7 +491,7 @@ quint32 RecipeBook::getAlternativesTypeIndex(QString strName) const
 
 Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
 {
-	return internal::sorted::addItem(strName, m_Recipes, [strName, uiNrPersons]()
+	return internal::sorted::addItem<Recipe>(strName, m_Recipes, [strName, uiNrPersons]()
 	{
 		return new Recipe(strName, uiNrPersons);
 	});
@@ -516,7 +516,7 @@ bool RecipeBook::removeRecipe(const Recipe& rRecipe)
 
 const Recipe& RecipeBook::copyRecipe(const Recipe& rRecipe, QString strNewName)
 {
-	return internal::sorted::addItem(strNewName, m_Recipes, [strNewName, &rRecipe]()
+	return internal::sorted::addItem<Recipe>(strNewName, m_Recipes, [strNewName, &rRecipe]()
 	{
 		return new Recipe(strNewName, rRecipe);
 	});
@@ -563,7 +563,7 @@ quint32 RecipeBook::getRecipeIndex(QString strName) const
 
 ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScalingFactor)
 {
-	return internal::sorted::addItem(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
+	return internal::sorted::addItem<ShoppingRecipe>(strName, m_ShoppingRecipes, [strName, fScalingFactor]()
 	{
 		return new ShoppingRecipe(strName, fScalingFactor);
 	});
@@ -571,7 +571,7 @@ ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScaling
 
 ShoppingRecipe& RecipeBook::addShoppingRecipe(QString strName, const Recipe& rRecipe)
 {
-	return internal::sorted::addItem(strName, m_ShoppingRecipes, [strName, &rRecipe]()
+	return internal::sorted::addItem<ShoppingRecipe>(strName, m_ShoppingRecipes, [strName, &rRecipe]()
 	{
 		return new ShoppingRecipe(strName, rRecipe);
 	});

@@ -70,7 +70,7 @@ void SortedShoppingList::updateList(RecipeBook& rRecipeBook)
 
 			if(pCombinedItem == nullptr)
 			{
-				pCombinedItem = &internal::sorted::addItem(rIngredient.getIdString(), m_CombinedList[pCategory], [&rIngredient]()
+				pCombinedItem = &internal::sorted::addItem<GoShoppingListItem>(rIngredient.getIdString(), m_CombinedList[pCategory], [&rIngredient]()
 				{
 					return new GoShoppingListItem(rIngredient);
 				});

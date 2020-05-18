@@ -15,7 +15,7 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
 	for(int i = 0; i < rOther.m_RecipeItems.size(); ++i)
 	{
 		const RecipeItem& rItem = rOther.getRecipeItemAt(i);
-		internal::unsorted::addItem(rItem.getIdString(), i, m_RecipeItems, [&rItem]()
+		internal::unsorted::addItem<RecipeItem>(rItem.getIdString(), i, m_RecipeItems, [&rItem]()
 		{
 			return new RecipeItem(rItem);
 		});
@@ -24,7 +24,7 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
 
 RecipeItem& Recipe::addRecipeItem(const Ingredient& rIngredient)
 {
-	return internal::unsorted::addItem(RecipeItem::getIdString(&rIngredient), -1, m_RecipeItems, [&rIngredient]()
+	return internal::unsorted::addItem<RecipeItem>(RecipeItem::getIdString(&rIngredient), -1, m_RecipeItems, [&rIngredient]()
 	{
 		return new RecipeItem(rIngredient);
 	});

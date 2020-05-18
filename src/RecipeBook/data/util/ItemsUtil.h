@@ -120,8 +120,8 @@ namespace recipebook::internal
 			throw QException();
 		}
 
-		template<class T, typename Func> 
-		T& addItem(QString strIdString, QVector<QSharedPointer<T>>& allItems, Func constructNewItem)
+		template<class T> 
+		T& addItem(QString strIdString, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
 		{
 			auto iter = helper::findItemSorted(strIdString, allItems);
 			if(iter != allItems.end() && helper::compare((*iter)->getIdString(), strIdString) == 0)
@@ -129,7 +129,7 @@ namespace recipebook::internal
 				throw QException();
 			}
 
-			QSharedPointer<T> spNewItem(constructNewItem());
+			QSharedPointer<T> spNewItem(rConstructNewItem());
 			allItems.insert(iter, spNewItem);
 
 			return *spNewItem.get();
@@ -172,15 +172,15 @@ namespace recipebook::internal
 			throw QException();
 		}
 
-		template<class T, typename Func> 
-		T& addItem(QString strIdString, int pos, QVector<QSharedPointer<T>>& allItems, Func constructNewItem)
+		template<class T> 
+		T& addItem(QString strIdString, int pos, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
 		{
 			if(helper::findItem(strIdString, allItems) >= 0)
 			{
 				throw QException();
 			}
 
-			QSharedPointer<T> spNewItem(constructNewItem());
+			QSharedPointer<T> spNewItem(rConstructNewItem());
 			if(pos >= 0)
 			{
 				allItems.insert(pos, spNewItem);

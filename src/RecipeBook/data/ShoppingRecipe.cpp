@@ -14,7 +14,7 @@ ShoppingRecipe::ShoppingRecipe(QString strName, const Recipe& rRecipe)
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
 		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
-		internal::sorted::addItem(rItem.getIdString(), m_Items, [this, &rItem]()
+		internal::sorted::addItem<ShoppingListItem>(rItem.getIdString(), m_Items, [this, &rItem]()
 		{
 			return new ShoppingListItem(*this, rItem);
 		});
@@ -35,7 +35,7 @@ void ShoppingRecipe::changeScalingFactor(float f)
 
 ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 {
-	return internal::sorted::addItem(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items, [this, &rIngredient]()
+	return internal::sorted::addItem<ShoppingListItem>(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items, [this, &rIngredient]()
 	{
 		return new ShoppingListItem(*this, rIngredient);
 	});
@@ -43,7 +43,7 @@ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 
 ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
-	return internal::sorted::addItem(rItem.getIdString(), m_Items, [this, &rItem]()
+	return internal::sorted::addItem<ShoppingListItem>(rItem.getIdString(), m_Items, [this, &rItem]()
 	{
 		return new ShoppingListItem(*this, rItem);
 	});
