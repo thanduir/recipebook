@@ -76,3 +76,8 @@ void ShoppingListItem::setAlternativesGroup(const AlternativesType& rGroup)
 		m_rParent.onItemIdStringChanged();
 	}
 }
+
+QString ShoppingListItem::getParentRecipeName() const
+{
+	return m_rParent.getName();
+}

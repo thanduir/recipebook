@@ -111,7 +111,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\SortedShoppingListOrdering.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
@@ -162,8 +164,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RBDataHandler.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\SortedShoppingList.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

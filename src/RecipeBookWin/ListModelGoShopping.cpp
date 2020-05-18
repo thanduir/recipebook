@@ -66,9 +66,29 @@ QVariant ListModelGoShopping::data(const QModelIndex& index, int iRole) const
 	{
 		return isNormalItem(index.row());
 	}
+	else if(role == GoShoppingRoles::ItemHeaderRole)
+	{
+		return itemHeader(index.row());
+	}
+	else if(role == GoShoppingRoles::ItemMultilineRole)
+	{
+		return isItemMultline(index.row());
+	}
+	else if(role == GoShoppingRoles::ItemAdditionalTextRole)
+	{
+		return itemAdditionalText(index.row());
+	}
+	else if(role == GoShoppingRoles::ItemOptionalRole)
+	{
+		return isItemOptional(index.row());
+	}
 	else if(role == GoShoppingRoles::ItemCheckedRole)
 	{
 		return isItemChecked(index.row());
+	}
+	else if(role == GoShoppingRoles::ItemRecipeInfoRole)
+	{
+		return getRecipeInfo(index.row());
 	}
 
 	return QVariant();
@@ -82,7 +102,12 @@ QHash<int, QByteArray> ListModelGoShopping::roleNames() const
 	roles[(int)GoShoppingRoles::CategoryHeaderRole] = "categoryHeader";
 	roles[(int)GoShoppingRoles::IncompatibleItemsHeaderRole] = "incompatiblesHeader";
 	roles[(int)GoShoppingRoles::NormalItemRole] = "normalItem";
+	roles[(int)GoShoppingRoles::ItemHeaderRole] = "itemHeader";
+	roles[(int)GoShoppingRoles::ItemMultilineRole] = "itemMultiline";
+	roles[(int)GoShoppingRoles::ItemAdditionalTextRole] = "itemAdditionalText";
+	roles[(int)GoShoppingRoles::ItemOptionalRole] = "itemOptional";
 	roles[(int)GoShoppingRoles::ItemCheckedRole] = "itemChecked";
+	roles[(int)GoShoppingRoles::ItemRecipeInfoRole] = "itemRecipeInfo";	
 	
 	return roles;
 }
@@ -124,7 +149,6 @@ QString ListModelGoShopping::name(int row) const
 	{
 		return m_List.getItemAt(row).getName();
 	}
-	
 }
 
 bool ListModelGoShopping::isItemChecked(int row) const
@@ -133,6 +157,203 @@ bool ListModelGoShopping::isItemChecked(int row) const
 		return false;
 
 	return m_List.getItemAt(row).getStatus() == Status::Taken;
+}
+
+QString ListModelGoShopping::itemHeader(int row) const
+{
+	if(row < 0 || row >= (int) m_List.getItemsCount())
+		return "";
+
+	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
+	{
+		return "";
+	}
+
+	if(rItem.getAmount().size() == 1)
+	{
+		return m_rConverter.formatAmount(rItem.getAmount().at(0)) + " " + rItem.getName();
+	}
+	else if(rItem.getAmount().size() > 1)
+	{
+		QString strText;
+		for(Amount amount : rItem.getAmount())
+		{
+			if(!strText.isEmpty())
+			{
+				strText += " + ";
+			}
+			strText += m_rConverter.formatAmount(amount, false);
+		}
+		return strText + " " + rItem.getName();
+	}
+
+	return "";
+}
+
+bool ListModelGoShopping::isItemMultline(int row) const
+{
+	if(row < 0 || row >= (int) m_List.getItemsCount())
+		return false;
+
+	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
+	{
+		return false;
+	}
+
+	return rItem.getCombinedItemsCount() > 1;
+}
+
+QString ListModelGoShopping::itemAdditionalText(int row) const
+{
+	if(row < 0 || row >= (int) m_List.getItemsCount())
+		return "";
+
+	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
+	{
+		return "";
+	}
+
+	if(rItem.getCombinedItemsCount() == 1)
+	{
+		QString addText;
+		if(rItem.getSize(0) != Size::Normal)
+		{
+			addText += m_rConverter.convertSize(rItem.getSize(0));
+		}
+		if(!rItem.getAdditionalInfo(0).isEmpty())
+		{
+			if(!addText.isEmpty())
+			{
+				addText += ", ";
+			}
+			addText += rItem.getAdditionalInfo(0);
+		}
+		if(!addText.isEmpty())
+		{
+			addText = "(" + addText + ")";
+		}
+
+		return addText;
+	}
+	else if(rItem.getCombinedItemsCount() > 1)
+	{
+		QString lines;
+		for(quint32 i = 0; i < rItem.getCombinedItemsCount(); ++i)
+		{
+			QString strText;
+			if(rItem.getSize(i) != Size::Normal)
+			{
+				if(!strText.isEmpty())
+				{
+					strText += ", ";
+				}
+				strText += m_rConverter.convertSize(rItem.getSize(i));
+			}
+
+			if(rItem.isOptional(i))
+			{
+				if(!strText.isEmpty())
+				{
+					strText += ", ";
+				}
+				strText += tr("Optional");
+			}
+
+			if(!rItem.getAdditionalInfo(i).isEmpty())
+			{
+				if(!strText.isEmpty())
+				{
+					strText += ", ";
+				}
+				strText += rItem.getAdditionalInfo(i);
+			}
+
+			if(!strText.isEmpty())
+			{
+				QString strAmount = m_rConverter.formatAmount(rItem.getAmount(i));
+				lines += QString(tr("<li>%1 of those %2</li>")).arg(strAmount).arg(strText);
+			}
+			else if(rItem.getAmount(i).getUnit() == Unit::Unitless)
+			{
+				lines += "<li>Also needed in a unitless amount</li>";
+			}
+				 
+		}
+
+		if(!lines.isEmpty())
+		{
+			lines = "<ul>" + lines + "</ul>";
+		}
+		return lines;
+	}
+	
+	return "";
+}
+
+bool ListModelGoShopping::isItemOptional(int row) const
+{
+	if(row < 0 || row >= (int) m_List.getItemsCount())
+		return false;
+
+	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
+	{
+		return false;
+	}
+
+	return rItem.isOptional();
+}
+
+QString ListModelGoShopping::getRecipeInfo(int row) const
+{
+	if(row < 0 || row >= (int) m_List.getItemsCount())
+		return "";
+
+	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
+	{
+		return "";
+	}
+
+	QString strText;
+	const auto& rInfos = rItem.getRecipeInfos();
+	bool bAsList = rInfos.size() > 1;
+	for(const auto& rInfo : rInfos)
+	{
+		if(bAsList)
+		{
+			strText += "<li>";
+		}
+
+		QString amountText = m_rConverter.formatAmount(rInfo.m_Amount);
+		if(amountText.isEmpty() || !bAsList)
+		{
+			strText += QString(tr("Recipe: \"%1\".")).arg(rInfo.m_RecipeName);
+		}
+		else
+		{
+			strText += QString(tr("%1 for recipe \"%2\".")).arg(amountText).arg(rInfo.m_RecipeName);
+		}
+		if(rInfo.m_DueDate.isValid())
+		{
+			strText += QString(tr(" Due date: %1.")).arg(rInfo.m_DueDate.toString(Qt::ISODate));
+		}
+
+		if(bAsList)
+		{
+			strText += "</li>";
+		}
+	}
+
+	if(bAsList)
+	{
+		strText = "<ul>" + strText + "</ul>";
+	}
+
+	return strText;
 }
 
 recipebook::GoShoppingListItemType ListModelGoShopping::itemType(int row) const

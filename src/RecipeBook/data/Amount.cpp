@@ -34,13 +34,157 @@ void recipebook::Amount::scaleAmount(float fFactor)
 	}
 }
 
-bool recipebook::Amount::canBeAddedUp(const Amount& m1, const Amount& m2)
+void recipebook::Amount::add(const Amount& other)
 {
-	if(m1.isRange() || m2.isRange())
+	if(!canBeAddedUp(*this, other))
 	{
-		return false;
+		throw QException();
 	}
 
+	switch(m_Unit)
+	{
+		case Unit::Count:
+		case Unit::Dessertspoon:
+		case Unit::Teaspoon:
+		case Unit::Unitless:
+		{
+			setQuantityMin(getQuantityMin() + other.getQuantityMin());
+			if(isRange() || other.isRange())
+			{
+				setIsRange(true);
+				float value = getQuantityMax();
+				if(other.isRange())
+				{
+					value += other.getQuantityMax();
+				}
+				else
+				{
+					value += other.getQuantityMin();
+				}
+				setQuantityMax(value);
+			}
+			break;
+		}
+
+		case Unit::Kilogram:
+		case Unit::Gram:
+		{
+			float value1 = getUnit() == Unit::Kilogram ? getQuantityMin() * 1000.0f : getQuantityMin();
+			float value2 = other.getUnit() == Unit::Kilogram ? other.getQuantityMin() * 1000.0f : other.getQuantityMin();
+			float quantityMin = value1 + value2;
+
+			float quantityMax = 0.0f;
+			if(isRange() || other.isRange())
+			{
+				setIsRange(true);
+				float value = getUnit() == Unit::Kilogram ? getQuantityMax() * 1000.0f : getQuantityMax();
+				if(other.isRange())
+				{
+					value += other.getUnit() == Unit::Kilogram ? other.getQuantityMax() * 1000.0f : other.getQuantityMax();
+				}
+				else
+				{
+					value += other.getUnit() == Unit::Kilogram ? other.getQuantityMin() * 1000.0f : other.getQuantityMin();
+				}
+			}
+
+			if(quantityMin >= 1000.0f)
+			{
+				setQuantityMin(quantityMin / 1000.0f);
+				if(isRange())
+				{
+					setQuantityMax(quantityMax / 1000.0f);
+				}
+				setUnit(Unit::Kilogram);
+			}
+			else
+			{
+				setQuantityMin(quantityMin);
+				if(isRange())
+				{
+					setQuantityMax(quantityMax);
+				}
+				setUnit(Unit::Gram);
+			}
+			break;
+		}
+
+		case Unit::Liter:
+		case Unit::Deciliter:
+		case Unit::Milliliter:
+		{
+			auto convertValue = [](Unit unit, float value) -> float
+			{
+				if(unit == Unit::Liter)
+				{
+					return value * 1000.0f;
+				}
+				else if(unit == Unit::Deciliter)
+				{
+					return value * 100.0f;
+				}
+				else
+				{
+					return value;
+				}
+			};
+
+			float value1 = convertValue(getUnit(), getQuantityMin());
+			float value2 = convertValue(other.getUnit(), other.getQuantityMin());
+			float quantityMin = value1 + value2;
+
+			float quantityMax = 0.0f;
+			if(isRange() || other.isRange())
+			{
+				setIsRange(true);
+				float value = convertValue(getUnit(), getQuantityMax());
+				if(other.isRange())
+				{
+					value += convertValue(other.getUnit(), other.getQuantityMax());
+				}
+				else
+				{
+					value += convertValue(other.getUnit(), other.getQuantityMin());
+				}
+			}
+
+			if(quantityMin >= 1000.0f)
+			{
+				setQuantityMin(quantityMin / 1000.0f);
+				if(isRange())
+				{
+					setQuantityMax(quantityMax / 1000.0f);
+				}
+				setUnit(Unit::Liter);
+			}
+			else if(quantityMin >= 10.0f)
+			{
+				setQuantityMin(quantityMin / 100.0f);
+				if(isRange())
+				{
+					setQuantityMax(quantityMax / 100.0f);
+				}
+				setUnit(Unit::Deciliter);
+			}
+			else
+			{
+				setQuantityMin(quantityMin);
+				if(isRange())
+				{
+					setQuantityMax(quantityMax);
+				}
+				setUnit(Unit::Milliliter);
+			}
+			break;
+		}
+
+		default:
+			throw QException();
+	}
+}
+
+bool recipebook::Amount::canBeAddedUp(const Amount& m1, const Amount& m2)
+{
 	switch(m1.getUnit())
 	{
 		case Unit::Count:
@@ -63,91 +207,6 @@ bool recipebook::Amount::canBeAddedUp(const Amount& m1, const Amount& m2)
 
 		case Unit::Unitless:
 			return m2.getUnit() == Unit::Unitless;
-
-		default:
-			throw QException();
-	}
-}
-
-void recipebook::Amount::addUp(const Amount& m1, const Amount& m2, Amount& rResult)
-{
-	if(!canBeAddedUp(m1, m2))
-	{
-		throw QException();
-	}
-
-	switch(m1.getUnit())
-	{
-		case Unit::Count:
-		case Unit::Dessertspoon:
-		case Unit::Teaspoon:
-		case Unit::Unitless:
-		{
-			rResult.setQuantityMin(m1.getQuantityMin() + m2.getQuantityMin());
-			rResult.setUnit(m1.getUnit());
-			break;
-		}
-
-		case Unit::Kilogram:
-		case Unit::Gram:
-		{
-			float value1 = m1.getUnit() == Unit::Kilogram ? m1.getQuantityMin() * 1000.0f : m1.getQuantityMin();
-			float value2 = m2.getUnit() == Unit::Kilogram ? m2.getQuantityMin() * 1000.0f : m2.getQuantityMin();
-			rResult.setQuantityMin(value1 + value2);
-
-			if(rResult.getQuantityMin() >= 1000.0f)
-			{
-				rResult.setQuantityMin(rResult.getQuantityMin() / 1000.0f);
-				rResult.setUnit(Unit::Kilogram);
-			}
-			else
-			{
-				rResult.setUnit(Unit::Gram);
-			}
-			break;
-		}
-
-		case Unit::Liter:
-		case Unit::Deciliter:
-		case Unit::Milliliter:
-		{
-			float value1 = m1.getQuantityMin();
-			if(m1.getUnit() == Unit::Liter)
-			{
-				value1 *= 1000.0f;
-			}
-			else if(m1.getUnit() == Unit::Deciliter)
-			{
-				value1 *= 100.0f;
-			}
-
-			float value2 = m2.getQuantityMin();
-			if(m2.getUnit() == Unit::Liter)
-			{
-				value2 *= 1000.0f;
-			}
-			else if(m2.getUnit() == Unit::Deciliter)
-			{
-				value2 *= 100.0f;
-			}
-
-			rResult.setQuantityMin(value1 + value2);
-			if(rResult.getQuantityMin() >= 1000.0f)
-			{
-				rResult.setQuantityMin(rResult.getQuantityMin() / 1000.0f);
-				rResult.setUnit(Unit::Liter);
-			}
-			else if(rResult.getQuantityMin() >= 10.0f)
-			{
-				rResult.setQuantityMin(rResult.getQuantityMin() / 100.0f);
-				rResult.setUnit(Unit::Deciliter);
-			}
-			else
-			{
-				rResult.setUnit(Unit::Milliliter);
-			}
-			break;
-		}
 
 		default:
 			throw QException();

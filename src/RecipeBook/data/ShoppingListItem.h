@@ -48,6 +48,8 @@ namespace recipebook
 		bool isItemEnabled() const { return m_bItemEnabled; }
 		void setItemEnabled(bool bEnabled) { m_bItemEnabled = bEnabled; }
 
+		QString getParentRecipeName() const;
+
 	private:
 		ShoppingListItem(ShoppingRecipe& rParent, const Ingredient& rIngredient) : m_rParent(rParent), m_pIngredient(&rIngredient) {}
 		ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rRecipeItem);

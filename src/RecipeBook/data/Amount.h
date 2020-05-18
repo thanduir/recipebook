@@ -25,8 +25,9 @@ namespace recipebook
 
 		void scaleAmount(float fFactor);
 
+		void add(const Amount& other);
+
 		static bool canBeAddedUp(const Amount& m1, const Amount& m2);
-		static void addUp(const Amount& m1, const Amount& m2, Amount& rResult);
 
 	private:
 		Unit m_Unit          = Unit::Count;

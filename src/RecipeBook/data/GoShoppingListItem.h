@@ -3,6 +3,8 @@
 
 #include <QVector>
 #include <QDate>
+#include "Amount.h"
+#include "Size.h"
 #include "Status.h"
 
 namespace recipebook
@@ -19,24 +21,32 @@ namespace recipebook
 		IngredientListItem
 	};
 
-	/* TODO:
-		* nötiges haltbarkeitsdatum / wann man etwas braucht datum in shoppinglist (duedate)
-		* gleiche zutaten mit untersch. eigenschaften (z.B. klein/gross, add. info.)
-			trotzdem zusammenfassen, aber darunter aufzählung der einzelnen sachen (e.g. * 3 Peperoni,
-			darunter eine zeile "2 gross" und eine "1 klein")
-		* show somehow in "go shopping" from which shopping recipe the items are coming! (at least as a tooltip, but it'd be better if it were always visible)
-			-> can be read through the parent every ShoppingListItem saves!
-	*/
-	// TODO(phiwid): Rückgabe von (und Abfrage auf) Unterelemente von RecipeBook aus public-Methoden braucht ein Handle!
-
 	class GoShoppingListItem
 	{
+	public:
+		struct RecipeInfo
+		{
+			QString m_RecipeName;
+			Amount	m_Amount;
+			QDate	m_DueDate;
+		};
+
 	public:
 		QString getName() const { return m_Name; }
 		QString getIdString() const { return m_IdString; }
 		GoShoppingListItemType getType() const { return m_Type; }
 
 		Status getStatus() const { return m_Status; }
+		const QVector<Amount>& getAmount() const { return m_Amount; }
+		bool isOptional() const { return m_bOptional; }
+
+		quint32 getCombinedItemsCount() const { return m_CombinedItems.size(); }
+		Amount getAmount(quint32 i) const;
+		bool isOptional(quint32 i) const;
+		Size getSize(quint32 i) const;
+		QString getAdditionalInfo(quint32 i) const;
+
+		const QVector<RecipeInfo>& getRecipeInfos() const { return m_RecipeInfo; }
 
 	private:
 		GoShoppingListItem(GoShoppingListItemType type, QString strName);
@@ -45,10 +55,22 @@ namespace recipebook
 
 		void operator=(const GoShoppingListItem& rOther) = delete;
 
-		void addShoppingListItem(ShoppingListItem& rItem);
+		void addShoppingListItem(ShoppingListItem& rItem, QDate dueDate);
 		void updateStatus(Status newStatus);
-
 		const Ingredient& getIngredient();
+
+	private:
+		struct CombinedItem
+		{
+			Amount						m_Amount;
+			bool						m_bOptional;
+			Size						m_Size;
+			QString						m_AdditionalInfo;
+
+			QVector<ShoppingListItem*>	m_pItems;
+		};
+
+		bool itemCompatible(const ShoppingListItem& rItem, const CombinedItem& rCombined)  const;
 
 	private:
 		QString						m_Name;
@@ -57,10 +79,12 @@ namespace recipebook
 		const Ingredient*			m_pIngredient;
 
 		Status						m_Status = Status::None;
-		//QDate						m_DueDate;
-		//Amount					m_Amount;
+		QVector<Amount>				m_Amount;
+		bool						m_bOptional = false;
 
-		QVector<ShoppingListItem*>	m_pItems;
+		QVector<CombinedItem>		m_CombinedItems;
+
+		QVector<RecipeInfo>			m_RecipeInfo;
 
 		friend class SortedShoppingList;
 	};

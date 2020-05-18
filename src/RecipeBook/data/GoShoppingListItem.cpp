@@ -32,11 +32,22 @@ const Ingredient& GoShoppingListItem::getIngredient()
 	return *m_pIngredient;
 }
 
-void GoShoppingListItem::addShoppingListItem(ShoppingListItem& rItem)
+bool GoShoppingListItem::itemCompatible(const ShoppingListItem& rItem, const CombinedItem& rCombined)  const
 {
-	m_pItems.append(&rItem);
+	if(rItem.isOptional() != rCombined.m_bOptional
+	   || rItem.getSize() != rCombined.m_Size
+	   || rItem.getAdditionalInfo() != rCombined.m_AdditionalInfo)
+	{
+		return false;
+	}
 
-	if(m_pItems.size() == 1)
+	return Amount::canBeAddedUp(rItem.getAmount(), rCombined.m_Amount);
+}
+
+void GoShoppingListItem::addShoppingListItem(ShoppingListItem& rItem, QDate dueDate)
+{
+	// Status
+	if(m_CombinedItems.size() == 1)
 	{
 		m_Status = rItem.getStatus();
 	}
@@ -48,41 +59,108 @@ void GoShoppingListItem::addShoppingListItem(ShoppingListItem& rItem)
 		}
 	}
 
-	/*
-	CategoryShoppingItem csi
-	Optional<ShoppingListItem.Status> otherStatus = csi.getStatus();
-	if(!otherStatus.isPresent())
+	// Amount
+	bool bAdded = false;
+	for(Amount& rAmount : m_Amount)
 	{
-		continue;
+		if(Amount::canBeAddedUp(rAmount, rItem.getAmount()))
+		{
+			bAdded = true;
+			rAmount.add(rItem.getAmount());
+		}
 	}
-	if(item.isOptional() != csi.isOptional()
-			|| item.getSize() != csi.getSize()
-			|| item.getStatus() != otherStatus.get()
-			|| !item.getAdditionalInfo().equals(csi.getAdditionalInfo()))
+	if(!bAdded)
 	{
-		continue;
+		m_Amount.append(rItem.getAmount());
 	}
 
-	if(Amount.canBeAddedUp(item.getAmount(), csi.getAmount()))
+	// Optional
+	if(m_CombinedItems.size() > 0)
 	{
-		Optional<Amount> addedAmounts = Amount.addUp(item.getAmount(), csi.getAmount());
-		if(!addedAmounts.isPresent())
-		{
-			continue;
-		}
-		csi.setAmount(addedAmounts.get());
-		csi.addShoppingListItem(item);
-		return;
+		m_bOptional = m_bOptional && rItem.isOptional();
 	}
-	*/
+	else
+	{
+		m_bOptional = rItem.isOptional();
+	}
+
+	// Recipe infos
+	RecipeInfo info;
+	info.m_RecipeName = rItem.getParentRecipeName();
+	info.m_Amount = rItem.getAmount();
+	info.m_DueDate = dueDate;
+	m_RecipeInfo.append(info);
+
+	// Combined items
+
+	for(CombinedItem& rCombinedItem : m_CombinedItems)
+	{
+		if(itemCompatible(rItem, rCombinedItem))
+		{
+			rCombinedItem.m_Amount.add(rItem.getAmount());
+			rCombinedItem.m_pItems.append(&rItem);
+			return;
+		}
+	}
+
+	CombinedItem newItem;
+	newItem.m_Amount = rItem.getAmount();
+	newItem.m_bOptional = rItem.isOptional();
+	newItem.m_Size = rItem.getSize();
+	newItem.m_AdditionalInfo = rItem.getAdditionalInfo();
+	newItem.m_pItems.append(&rItem);
+	m_CombinedItems.append(newItem);
 }
 
 void GoShoppingListItem::updateStatus(Status newStatus)
 {
 	m_Status = newStatus;
 
-	for(ShoppingListItem* pItem : qAsConst(m_pItems))
+	for(const CombinedItem& rCombinedItem : qAsConst(m_CombinedItems))
 	{
-		pItem->setStatus(newStatus);
+		for(ShoppingListItem* pItem : qAsConst(rCombinedItem.m_pItems))
+		{
+			pItem->setStatus(newStatus);
+		}
 	}
+}
+
+Amount GoShoppingListItem::getAmount(quint32 i) const
+{
+	if(i >= (quint32)m_CombinedItems.size())
+	{
+		throw QException();
+	}
+
+	return m_CombinedItems[i].m_Amount;
+}
+
+bool GoShoppingListItem::isOptional(quint32 i) const
+{
+	if(i >= (quint32)m_CombinedItems.size())
+	{
+		throw QException();
+	}
+
+	return m_CombinedItems[i].m_bOptional;
+}
+
+Size GoShoppingListItem::getSize(quint32 i) const
+{
+	if(i >= (quint32)m_CombinedItems.size())
+	{
+		throw QException();
+	}
+
+	return m_CombinedItems[i].m_Size;
+}
+
+QString GoShoppingListItem::getAdditionalInfo(quint32 i) const
+{
+	if(i >= (quint32)m_CombinedItems.size())
+	{
+		throw QException();
+	}
+
+	return m_CombinedItems[i].m_AdditionalInfo;
 }

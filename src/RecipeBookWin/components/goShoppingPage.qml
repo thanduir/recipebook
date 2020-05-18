@@ -80,15 +80,34 @@ Item {
 			rightMargin: 5
 			boundsBehavior: Flickable.StopAtBounds
 
+			move: Transition {
+				NumberAnimation { properties: "x,y"; duration: 600; easing.type: Easing.InCubic }
+			}
+
+			displaced: Transition {
+				NumberAnimation { properties: "x,y"; duration: 300; easing.type: Easing.InCubic }
+			}
+
 			spacing: 5
 			model: modelGoShopping
 			delegate: ItemDelegate {
 				width: lvShoppingList.width - lvShoppingList.leftMargin - lvShoppingList.rightMargin
 				highlighted: ListView.isCurrentItem
-				onClicked: lvShoppingList.currentIndex = index
-                
+				height: listItemParent.height
+
 				Item {
-					anchors.fill: parent
+					id: listItemParent
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.top: parent.top
+					anchors.topMargin: 10
+
+					height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
+
+					ToolTip.delay: 1000
+					ToolTip.timeout: 5000
+					ToolTip.visible: hovered && normalItem
+					ToolTip.text: itemRecipeInfo
 
 					Label {
 						id: listItemName
@@ -101,19 +120,36 @@ Item {
 
 						text: name
 						verticalAlignment: Text.AlignVCenter
-						height: parent.height
 					}
 
 					CheckBox {
 						id: cbxItemName
+						anchors.top: parent.top
+						anchors.topMargin: -15
 						anchors.left: parent.left
 						anchors.leftMargin: 10
                         
-						visible: normalItem						
-						text: name
+						visible: normalItem
+						font.strikeout: itemChecked
+						font.italic: itemOptional
+						text: itemHeader + (itemMultiline ? "" : " <font color=\"gray\">" + itemAdditionalText + "</font>")
 
 						checked: itemChecked
 						onClicked: itemChecked = checked
+					}
+
+					Label {
+						id: listItemAdditionalText
+						anchors.top: cbxItemName.bottom
+						anchors.topMargin: -10
+						anchors.left: parent.left
+						anchors.right: parent.right
+						anchors.leftMargin: 10
+
+						visible: normalItem && itemMultiline
+						font.strikeout: itemChecked
+						color: "gray"
+						text: itemAdditionalText
 					}
 				}
 			}

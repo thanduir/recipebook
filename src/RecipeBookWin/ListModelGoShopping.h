@@ -29,7 +29,12 @@ namespace recipebook::UI
 			CategoryHeaderRole,
 			IncompatibleItemsHeaderRole,
 			NormalItemRole,
-			ItemCheckedRole
+			ItemHeaderRole,
+			ItemMultilineRole,
+			ItemAdditionalTextRole,
+			ItemOptionalRole,
+			ItemCheckedRole,
+			ItemRecipeInfoRole
 		};
 
 	public:
@@ -45,6 +50,11 @@ namespace recipebook::UI
 
 		QString name(int row) const;
 		bool isItemChecked(int row) const;
+		QString itemHeader(int row) const;
+		bool isItemMultline(int row) const;
+		QString itemAdditionalText(int row) const;
+		bool isItemOptional(int row) const;
+		QString getRecipeInfo(int row) const;
 		
 		bool isTopLevelHeader(int row) const;
 		bool isCategoryHeader(int row) const;

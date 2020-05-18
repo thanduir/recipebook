@@ -30,6 +30,16 @@ static constexpr char* c_strUnitDessertspoonShort	= "ds";
 static constexpr char* c_strUnitTeaspoonShort		= "ts";
 static constexpr char* c_strUnitUnitlessShort		= "";
 
+static constexpr char* c_strUnitCountPostfix		= "";
+static constexpr char* c_strUnitKilogramPostfix		= "kg";
+static constexpr char* c_strUnitGramPostfix			= "g";
+static constexpr char* c_strUnitLiterPostfix		= "L";
+static constexpr char* c_strUnitDeciliterPostfix	= "dl";
+static constexpr char* c_strUnitMilliliterPostfix	= "ml";
+static constexpr char* c_strUnitDessertspoonPostfix = "ds";
+static constexpr char* c_strUnitTeaspoonPostfix		= "ts";
+static constexpr char* c_strUnitUnitlessPostfix		= "";
+
 static constexpr char* c_strListOrderingCombined			= "Combined";
 static constexpr char* c_strListOrderingSeparateTakenItems	= "SeparateTakenItems";
 
@@ -71,6 +81,16 @@ UIStringConverter::UIStringConverter()
 	m_UnitToShortName.append(tr(c_strUnitDessertspoonShort));
 	m_UnitToShortName.append(tr(c_strUnitTeaspoonShort));
 	m_UnitToShortName.append(tr(c_strUnitUnitlessShort));
+
+	m_UnitToPostfixes.append(tr(c_strUnitCountPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitKilogramPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitGramPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitLiterPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitDeciliterPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitMilliliterPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitDessertspoonPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitTeaspoonPostfix));
+	m_UnitToPostfixes.append(tr(c_strUnitUnitlessPostfix));	
 
 	// SortedShoppingListOrdering
 
@@ -139,6 +159,16 @@ QString UIStringConverter::convertUnit(recipebook::Unit unit) const
 	return m_UnitToName[(int)unit];
 }
 
+QString UIStringConverter::getUnitShortName(recipebook::Unit unit) const
+{
+	return m_UnitToShortName[(int)unit];
+}
+
+QString UIStringConverter::getUnitPostfix(recipebook::Unit unit) const
+{
+	return m_UnitToPostfixes[(int)unit];
+}
+
 recipebook::Unit UIStringConverter::convertUnit(QString strUnit) const
 {
 	for(int i = 0; i < m_UnitToName.size(); ++i)
@@ -183,4 +213,28 @@ recipebook::SortedShoppingListOrdering UIStringConverter::convertShoppingListOrd
 QStringList UIStringConverter::getAllShoppingListOrderingNames() const
 {
 	return m_ShoppingListOrderingToName;
+}
+
+QString UIStringConverter::formatAmount(recipebook::Amount amount, bool bUsePostfix) const
+{
+	if(amount.getUnit() == recipebook::Unit::Unitless)
+	{
+		return "";
+	}
+
+	QString strAmount;
+	if(amount.isRange())
+	{
+		strAmount = QString("%1-%2").arg(amount.getQuantityMin()).arg(amount.getQuantityMax());
+	}
+	else
+	{
+		strAmount = QString("%1").arg(amount.getQuantityMin());
+	}
+	QString strUnitText = bUsePostfix ? getUnitPostfix(amount.getUnit()) : getUnitShortName(amount.getUnit());
+	if(!strUnitText.isEmpty())
+	{
+		strUnitText = " " + strUnitText;
+	}
+	return strAmount + strUnitText;
 }

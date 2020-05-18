@@ -76,7 +76,7 @@ void SortedShoppingList::updateList(RecipeBook& rRecipeBook)
 				});
 			}
 
-			pCombinedItem->addShoppingListItem(rItem);
+			pCombinedItem->addShoppingListItem(rItem, rRecipe.getDueDate());
 		}
 	}
 }
@@ -352,6 +352,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	}
 	if(pCallback)
 	{
-		pCallback->itemChanged(iItem);
+		quint32 delta = bChecked ? 0 : m_SortedListChecked.size();
+		pCallback->itemChanged(newItemPos + delta);
 	}
 }
