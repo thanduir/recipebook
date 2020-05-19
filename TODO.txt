@@ -3,9 +3,6 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- get rid of ScrollViews for ListView as they are themselves flickable already (and just add scrollbars, c.f. gridview in ingredientsPage)
-		-> get rid of all (except one) ScrollView!
-		-> instead add "ScrollBar.vertical: ScrollBar { }"
 	- DueDate sollte explicit setz- und löschbar sein!
 	
 	- Verify that every feature from the app is present!

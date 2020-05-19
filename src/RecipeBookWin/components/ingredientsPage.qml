@@ -50,8 +50,8 @@ Item {
 
 	TextField { 
 		id: textFilterIngredients
-		anchors.left: scrollView.left
-		anchors.right: scrollView.right
+		anchors.left: lvIngredients.left
+		anchors.right: lvIngredients.right
 		anchors.top: labelIngredients.bottom
 		anchors.topMargin: 24
 		selectByMouse: true
@@ -84,54 +84,48 @@ Item {
 		}
 	}
 
-	ScrollView {
-		id: scrollView
+	ListView {
+		id: lvIngredients
 		anchors.left: parent.left
 		anchors.top: textFilterIngredients.bottom 
 		anchors.bottom: paneIngredients.top
 		anchors.topMargin: 48
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
+
 		width: 400
 
-		ListView {
-			id: lvIngredients
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
 
-			spacing: 5
-			model: filterModelIngredients
-			delegate: ItemDelegate {
-				width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
-				highlighted: ListView.isCurrentItem
-				onClicked: lvIngredients.currentIndex = index
+		spacing: 5
+		model: filterModelIngredients
+		delegate: ItemDelegate {
+			width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
+			highlighted: ListView.isCurrentItem
+			onClicked: lvIngredients.currentIndex = index
                 
-				Item {
-					anchors.fill: parent
+			Item {
+				anchors.fill: parent
 
-					Label {
-						id: listItemDelegateName
-						anchors.left: parent.left
-						anchors.leftMargin: 10
+				Label {
+					id: listItemDelegateName
+					anchors.left: parent.left
+					anchors.leftMargin: 10
                         
-						text: name
-						verticalAlignment: Text.AlignVCenter
-						height: parent.height
-					}
+					text: name
+					verticalAlignment: Text.AlignVCenter
+					height: parent.height
+				}
 
-					Label {
-						anchors.left: listItemDelegateName.right
-						color: "gray"
-						text: " (" + category + ", " + defaultUnit + ")"
-						verticalAlignment: Text.AlignVCenter
-						height: parent.height
-						width: parent.width - listItemDelegateName.width - 10
-						wrapMode: Label.WordWrap
-					}
+				Label {
+					anchors.left: listItemDelegateName.right
+					color: "gray"
+					text: " (" + category + ", " + defaultUnit + ")"
+					verticalAlignment: Text.AlignVCenter
+					height: parent.height
+					width: parent.width - listItemDelegateName.width - 10
+					wrapMode: Label.WordWrap
 				}
 			}
 		}
@@ -140,8 +134,8 @@ Item {
 	Pane {
 		id: paneIngredients
 		anchors.bottom: parent.bottom
-		anchors.left: scrollView.left
-		anchors.right: scrollView.right
+		anchors.left: lvIngredients.left
+		anchors.right: lvIngredients.right
 		anchors.leftMargin: 48
 		anchors.rightMargin: 48
 		anchors.bottomMargin: 10
@@ -214,7 +208,7 @@ Item {
 
 	GridLayout {
 		id: grid
-		anchors.left: scrollView.right
+		anchors.left: lvIngredients.right
 		anchors.top: labelCurrentSortOrder.bottom
 		anchors.right: parent.right
 		anchors.topMargin: 48

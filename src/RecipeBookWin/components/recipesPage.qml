@@ -86,8 +86,8 @@ Item {
 
 	TextField { 
 		id: textFilterRecipes
-		anchors.left: scrollViewRecipes.left
-		anchors.right: scrollViewRecipes.right
+		anchors.left: lvRecipes.left
+		anchors.right: lvRecipes.right
 		anchors.top: labelRecipes.bottom
 		anchors.topMargin: 24
 		selectByMouse: true
@@ -122,8 +122,8 @@ Item {
 		}
 	}
 
-	ScrollView {
-		id: scrollViewRecipes
+	ListView {
+		id: lvRecipes
 		anchors.left: parent.left
 		anchors.top: textFilterRecipes.bottom 
 		anchors.bottom: paneRecipes.top
@@ -132,35 +132,28 @@ Item {
 		anchors.bottomMargin: 48
 		width: 300
 
-		ListView {
-			id: lvRecipes
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 5
-			model: filterModelRecipes
-			delegate: ItemDelegate {
-				highlighted: ListView.isCurrentItem
-				onClicked: {
-					forceActiveFocus()
-					lvRecipes.currentIndex = index
-					modelRecipeItems.setRecipe(filterModelRecipes.getRecipeIndex(index))
-					lvCurrentRecipe.currentIndex = -1
-				}
-				width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
-                
-				text: isEverythingSet ? name : name + " (*)"
+		spacing: 5
+		model: filterModelRecipes
+		delegate: ItemDelegate {
+			highlighted: ListView.isCurrentItem
+			onClicked: {
+				forceActiveFocus()
+				lvRecipes.currentIndex = index
+				modelRecipeItems.setRecipe(filterModelRecipes.getRecipeIndex(index))
+				lvCurrentRecipe.currentIndex = -1
 			}
+			width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
+                
+			text: isEverythingSet ? name : name + " (*)"
+		}
 
-			Component.onCompleted: {
-				if(lvRecipes.count > 0) {
-					lvRecipes.currentIndex = 0;
-					modelRecipeItems.setRecipe(0);
-				}
+		Component.onCompleted: {
+			if(lvRecipes.count > 0) {
+				lvRecipes.currentIndex = 0;
+				modelRecipeItems.setRecipe(0);
 			}
 		}
 	}
@@ -168,8 +161,8 @@ Item {
 	Pane {
 		id: paneRecipes
 		anchors.bottom: parent.bottom
-		anchors.left: scrollViewRecipes.left
-		anchors.right: scrollViewRecipes.right
+		anchors.left: lvRecipes.left
+		anchors.right: lvRecipes.right
 		anchors.leftMargin: 10
 		anchors.rightMargin: 10
 		anchors.bottomMargin: 10
@@ -260,7 +253,7 @@ Item {
 
 	GridLayout {
 		id: grid
-		anchors.left: scrollViewRecipes.right
+		anchors.left: lvRecipes.right
 		anchors.top: labelCurrentRecipe.bottom
 		anchors.topMargin: 24
 		anchors.leftMargin: 48
@@ -322,7 +315,7 @@ Item {
 	TextField { 
 		id: textShortDesc
 		anchors.top: grid.bottom
-		anchors.left: scrollViewRecipes.right
+		anchors.left: lvRecipes.right
 		anchors.right: grid.right
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
@@ -343,7 +336,7 @@ Item {
 
 	ScrollView {
 		anchors.top: textShortDesc.bottom
-		anchors.left: scrollViewRecipes.right
+		anchors.left: lvRecipes.right
 		anchors.right: grid.right
 		anchors.bottom: parent.bottom
 		anchors.leftMargin: 48
@@ -373,7 +366,7 @@ Item {
 
 	Switch {
 		id: idRearrangeCurrentItems
-		anchors.right: scrollViewCurrentRecipe.right
+		anchors.right: lvCurrentRecipe.right
 		anchors.top: parent.top
 		anchors.topMargin: 24
 
@@ -381,8 +374,8 @@ Item {
 	}
 
 	// Edit recipe item list view
-	ScrollView {
-		id: scrollViewCurrentRecipe
+	ListView {
+		id: lvCurrentRecipe
 		anchors.left: grid.right
 		anchors.top: idRearrangeCurrentItems.bottom
 		anchors.bottom: paneCurrentRecipe.top
@@ -392,270 +385,263 @@ Item {
 		width: 400
 		visible: !idRearrangeCurrentItems.checked
 
-		ListView {
-			id: lvCurrentRecipe
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
-			keyNavigationEnabled: false
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
+		keyNavigationEnabled: false
             
-			spacing: 0
-			model: modelRecipeItems
-			delegate: ItemDelegate {
-				id: listItemRecipeItem
-				highlighted: ListView.isCurrentItem
-				onPressed: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
-				width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
-				height: listItemRecipeItemGroup.height
+		spacing: 0
+		model: modelRecipeItems
+		delegate: ItemDelegate {
+			id: listItemRecipeItem
+			highlighted: ListView.isCurrentItem
+			onPressed: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
+			width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
+			height: listItemRecipeItemGroup.height
 
-				Item {
-					id: listItemRecipeItemGroup
+			Item {
+				id: listItemRecipeItemGroup
+				anchors.left: parent.left
+				anchors.right: parent.right
+				anchors.top: parent.top
+				anchors.topMargin: 10
+
+				height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
+
+				// Group bar
+				Rectangle {
+					id: groupBar
+					anchors.left: parent.left
+					anchors.top: parent.top
+					anchors.bottom: parent.bottom
+					anchors.topMargin: -10
+					anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
+
+					visible: hasGroup
+					color: groupColor
+					width: 5
+
+					ToolTip.delay: 1000
+					ToolTip.timeout: 5000
+					ToolTip.visible: hasGroup && hovered
+					ToolTip.text: group
+				}
+
+				// Ingredient / group name
+				Label {
+					id: listItemRecipeItemName
+					anchors.left: hasGroup ? groupBar.right : parent.left
+					anchors.leftMargin: 10
+                        
+					font.bold: !optional
+					font.italic: optional
+					text: name
+					verticalAlignment: Text.AlignVCenter
+				}
+
+				// Summary for inactive ingredients
+				Label {
+					function recipeItemSmallDesc(n){
+						var text = "";
+						if(amountUnit != modelRecipeItems.indexUnitUnitless())
+						{
+							text += amountMin;
+							if(amountIsRange)
+							{
+								text += "-" + amountMax;
+							}
+							text += " " + unitNamesShort[amountUnit];
+						}
+						if(sizeIndex != 1)
+						{
+							if(text != "")
+							{
+								text = text + ", ";
+							}
+							text += sizeNames[sizeIndex]
+						}
+						if(additionalInfo != "")
+						{
+							if(text != "")
+							{
+								text = text + ", ";
+							}
+							text += additionalInfo;
+						}
+
+						if(text != "")
+						{
+							text = " (" + text + ")";
+						}
+						return text;
+					}
+
+					anchors.left: listItemRecipeItemName.right
+					color: "gray"
+					text: recipeItemSmallDesc(index)
+					verticalAlignment: Text.AlignVCenter
+					font.italic: optional
+					width: parent.width - listItemRecipeItemName.width - 10
+					wrapMode: Label.WordWrap
+					visible: !listItemRecipeItem.highlighted
+				}
+
+				// Extended information for active ingredient elements
+				GridLayout {
+					id: listItemGridRecipeItem
+					visible: listItemRecipeItem.highlighted
+
 					anchors.left: parent.left
 					anchors.right: parent.right
-					anchors.top: parent.top
+					anchors.top: listItemRecipeItemName.bottom
+					anchors.leftMargin: 20
+					anchors.rightMargin: 10
 					anchors.topMargin: 10
+                        
+					columns: 2
+					columnSpacing: 10
+                        
+					Label { 
+						text: qsTr("Amount")
+					}
+					RowLayout { 
+						Layout.fillWidth: true
 
-					height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
+						ComboBox {
+							Layout.fillWidth: true
+							model: unitNames
+							currentIndex: amountUnit
+							onActivated: amountUnit = currentIndex
+						}
 
-					// Group bar
-					Rectangle {
-						id: groupBar
-						anchors.left: parent.left
-						anchors.top: parent.top
-						anchors.bottom: parent.bottom
-						anchors.topMargin: -10
-						anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
+						CheckBox {
+							visible: amountUnit != modelRecipeItems.indexUnitUnitless()
 
-						visible: hasGroup
-						color: groupColor
-						width: 5
+							text: qsTr("Range")
+							checked: amountIsRange
+
+							onClicked: amountIsRange = checked
+						}
+					}
+
+					Label { 
+						visible: amountUnit != modelRecipeItems.indexUnitUnitless()
+						text: " "
+					}
+					RowLayout {
+						visible: amountUnit != modelRecipeItems.indexUnitUnitless()
+						spacing: 20
+
+						Label { 
+							visible: amountIsRange
+							text: qsTr("Min.")
+						}
+						TextField { 
+							Layout.preferredWidth: 75
+							selectByMouse: true
+							horizontalAlignment: TextInput.AlignRight
+							onFocusChanged: {
+								if(focus)
+									selectAll()
+							}
+
+							text: amountMin
+							validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+							onEditingFinished: {
+								if(amountIsRange && text > amountMax)
+								{
+									text = amountMax;
+								}
+								amountMin = text;
+							}
+						}
+
+						Label {
+							visible: amountIsRange
+							text: qsTr("Max.") 
+						}
+						TextField { 
+							Layout.preferredWidth: 75
+							visible: amountIsRange
+                                
+							selectByMouse: true
+							horizontalAlignment: TextInput.AlignRight
+							onFocusChanged: {
+								if(focus)
+									selectAll()
+							}
+
+							validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+							text: amountMax
+							onEditingFinished: {
+								if(amountIsRange && text < amountMin)
+								{
+									text = amountMin;
+								}
+								amountMax = text
+							}
+						}
+					}
+
+					Label { 
+						text: qsTr("Size") 
+					}
+					SpinBox { 
+						from: 0
+						to: sizeNames.length - 1
+                            
+						textFromValue: function(value, locale) {
+							return sizeNames[value];
+						}
+						valueFromText: function(text, locale) {
+							return sizeNames.indexOf(text)
+						}
+
+						value: sizeIndex
+						onValueModified: sizeIndex = value
+					}
+
+					Label { 
+						text: qsTr("Add. Info") 
+					}
+					TextField { 
+						Layout.fillWidth: true
+						selectByMouse: true
+
+						text: additionalInfo
+						onEditingFinished: additionalInfo = text
+					}
+
+					Label { 
+						text: " "
+					}
+					CheckBox {
+						text: qsTr("Optional")
+						checked: optional
+
+						onClicked: optional = checked
+					}
+
+					Label { text: qsTr("Group") }
+					ComboBox {
+						Layout.fillWidth: true
+                            
+						model: alternativesGroups
+						textRole: "name"
+						valueRole: "name"
+
+						currentIndex: indexOfValue(group)
+						onActivated: {
+							lvCurrentRecipe.currentIndex = modelRecipeItems.setGroup(lvCurrentRecipe.currentIndex, currentText)
+						}
 
 						ToolTip.delay: 1000
 						ToolTip.timeout: 5000
-						ToolTip.visible: hasGroup && hovered
-						ToolTip.text: group
-					}
+						ToolTip.visible: hovered
+						ToolTip.text: qsTr("Alternatives group")                        
 
-					// Ingredient / group name
-					Label {
-						id: listItemRecipeItemName
-						anchors.left: hasGroup ? groupBar.right : parent.left
-						anchors.leftMargin: 10
-                        
-						font.bold: !optional
-						font.italic: optional
-						text: name
-						verticalAlignment: Text.AlignVCenter
-					}
-
-					// Summary for inactive ingredients
-					Label {
-						function recipeItemSmallDesc(n){
-							var text = "";
-							if(amountUnit != modelRecipeItems.indexUnitUnitless())
-							{
-								text += amountMin;
-								if(amountIsRange)
-								{
-									text += "-" + amountMax;
-								}
-								text += " " + unitNamesShort[amountUnit];
-							}
-							if(sizeIndex != 1)
-							{
-								if(text != "")
-								{
-									text = text + ", ";
-								}
-								text += sizeNames[sizeIndex]
-							}
-							if(additionalInfo != "")
-							{
-								if(text != "")
-								{
-									text = text + ", ";
-								}
-								text += additionalInfo;
-							}
-
-							if(text != "")
-							{
-								text = " (" + text + ")";
-							}
-							return text;
-						}
-
-						anchors.left: listItemRecipeItemName.right
-						color: "gray"
-						text: recipeItemSmallDesc(index)
-						verticalAlignment: Text.AlignVCenter
-						font.italic: optional
-						width: parent.width - listItemRecipeItemName.width - 10
-						wrapMode: Label.WordWrap
-						visible: !listItemRecipeItem.highlighted
-					}
-
-					// Extended information for active ingredient elements
-					GridLayout {
-						id: listItemGridRecipeItem
-						visible: listItemRecipeItem.highlighted
-
-						anchors.left: parent.left
-						anchors.right: parent.right
-						anchors.top: listItemRecipeItemName.bottom
-						anchors.leftMargin: 20
-						anchors.rightMargin: 10
-						anchors.topMargin: 10
-                        
-						columns: 2
-						columnSpacing: 10
-                        
-						Label { 
-							text: qsTr("Amount")
-						}
-						RowLayout { 
-							Layout.fillWidth: true
-
-							ComboBox {
-								Layout.fillWidth: true
-								model: unitNames
-								currentIndex: amountUnit
-								onActivated: amountUnit = currentIndex
-							}
-
-							CheckBox {
-								visible: amountUnit != modelRecipeItems.indexUnitUnitless()
-
-								text: qsTr("Range")
-								checked: amountIsRange
-
-								onClicked: amountIsRange = checked
-							}
-						}
-
-						Label { 
-							visible: amountUnit != modelRecipeItems.indexUnitUnitless()
-							text: " "
-						}
-						RowLayout {
-							visible: amountUnit != modelRecipeItems.indexUnitUnitless()
-							spacing: 20
-
-							Label { 
-								visible: amountIsRange
-								text: qsTr("Min.")
-							}
-							TextField { 
-								Layout.preferredWidth: 75
-								selectByMouse: true
-								horizontalAlignment: TextInput.AlignRight
-								onFocusChanged: {
-									if(focus)
-										selectAll()
-								}
-
-								text: amountMin
-								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-								onEditingFinished: {
-									if(amountIsRange && text > amountMax)
-									{
-										text = amountMax;
-									}
-									amountMin = text;
-								}
-							}
-
-							Label {
-								visible: amountIsRange
-								text: qsTr("Max.") 
-							}
-							TextField { 
-								Layout.preferredWidth: 75
-								visible: amountIsRange
-                                
-								selectByMouse: true
-								horizontalAlignment: TextInput.AlignRight
-								onFocusChanged: {
-									if(focus)
-										selectAll()
-								}
-
-								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-								text: amountMax
-								onEditingFinished: {
-									if(amountIsRange && text < amountMin)
-									{
-										text = amountMin;
-									}
-									amountMax = text
-								}
-							}
-						}
-
-						Label { 
-							text: qsTr("Size") 
-						}
-						SpinBox { 
-							from: 0
-							to: sizeNames.length - 1
-                            
-							textFromValue: function(value, locale) {
-								return sizeNames[value];
-							}
-							valueFromText: function(text, locale) {
-								return sizeNames.indexOf(text)
-							}
-
-							value: sizeIndex
-							onValueModified: sizeIndex = value
-						}
-
-						Label { 
-							text: qsTr("Add. Info") 
-						}
-						TextField { 
-							Layout.fillWidth: true
-							selectByMouse: true
-
-							text: additionalInfo
-							onEditingFinished: additionalInfo = text
-						}
-
-						Label { 
-							text: " "
-						}
-						CheckBox {
-							text: qsTr("Optional")
-							checked: optional
-
-							onClicked: optional = checked
-						}
-
-						Label { text: qsTr("Group") }
-						ComboBox {
-							Layout.fillWidth: true
-                            
-							model: alternativesGroups
-							textRole: "name"
-							valueRole: "name"
-
-							currentIndex: indexOfValue(group)
-							onActivated: {
-								lvCurrentRecipe.currentIndex = modelRecipeItems.setGroup(lvCurrentRecipe.currentIndex, currentText)
-							}
-
-							ToolTip.delay: 1000
-							ToolTip.timeout: 5000
-							ToolTip.visible: hovered
-							ToolTip.text: qsTr("Alternatives group")                        
-
-							onVisibleChanged: {
-								if(visible)
-									currentIndex = indexOfValue(group)
-							}
+						onVisibleChanged: {
+							if(visible)
+								currentIndex = indexOfValue(group)
 						}
 					}
 				}
@@ -776,8 +762,7 @@ Item {
 	}
 
 	// Rearrange recipe item list view
-	ScrollView {
-		id: scrollViewRearrangeCurrentRecipe
+	ListView {
 		anchors.left: grid.right
 		anchors.top: idRearrangeCurrentItems.bottom
 		anchors.bottom: paneCurrentRecipe.top
@@ -786,29 +771,23 @@ Item {
 		anchors.bottomMargin: 48
 		width: 400
 		visible: idRearrangeCurrentItems.checked
-        
-		ListView {
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 0
-			model: DelegateModel {
-				id: rearrangeCurrentItemDelegateModel
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-				model: filterModelRecipeItems
-				delegate: dragDelegate
-			}
+		spacing: 0
+		model: DelegateModel {
+			id: rearrangeCurrentItemDelegateModel
+
+			model: filterModelRecipeItems
+			delegate: dragDelegate
 		}
 	}
 
 	Pane {
 		id: paneCurrentRecipe
-		anchors.left: scrollViewCurrentRecipe.left
-		anchors.right: scrollViewCurrentRecipe.right
+		anchors.left: lvCurrentRecipe.left
+		anchors.right: lvCurrentRecipe.right
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 48
 
@@ -829,7 +808,7 @@ Item {
 				onClicked: {
 					dlgEditRecipeItemsList.editListModel = modelRecipeItems;
 					dlgEditRecipeItemsList.allValuesFilterModel = filterModelIngredients;
-					if(scrollViewCurrentRecipe.visible)
+					if(lvCurrentRecipe.visible)
 						dlgEditRecipeItemsList.initialyHighlightedIndex = modelIngredients.indexOfIngredient(modelRecipeItems.name(lvCurrentRecipe.currentIndex))
 					else
 						dlgEditRecipeItemsList.initialyHighlightedIndex = -1
@@ -847,7 +826,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Remove ingredient")
 
-				enabled: scrollViewCurrentRecipe.visible && lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
+				enabled: lvCurrentRecipe.visible && lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
 				onClicked: {
 					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
 					dlgRemoveIngredient.open();

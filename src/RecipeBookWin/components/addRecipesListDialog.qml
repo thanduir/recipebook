@@ -15,7 +15,7 @@ Dialog {
 
 	Item {
 		implicitWidth: 400
-		implicitHeight: scrollViewValues.implicitHeight + textFilter.implicitHeight
+		implicitHeight: lvValues.implicitHeight + textFilter.implicitHeight
 
 		TextField { 
 			id: textFilter
@@ -51,8 +51,8 @@ Dialog {
 				}
 		}
 
-		ScrollView {
-			id: scrollViewValues
+		ListView {
+			id: lvValues
 			anchors.left: parent.left
 			anchors.right: parent.right
 			anchors.top: textFilter.bottom
@@ -61,42 +61,39 @@ Dialog {
 
 			implicitHeight: 400
 
-			ListView {
-				id: lvValues
-				anchors.fill: parent
+			ScrollBar.vertical: ScrollBar { }
 
-				delegate: ItemDelegate {
-					width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
+			delegate: ItemDelegate {
+				width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
 					
-					Item {
-						anchors.fill: parent
+				Item {
+					anchors.fill: parent
 
-						Label {
-							anchors.left: parent.left
-							anchors.leftMargin: 10
+					Label {
+						anchors.left: parent.left
+						anchors.leftMargin: 10
                         
-							width: 210
-							elide: Text.ElideRight
+						width: 210
+						elide: Text.ElideRight
 
-							text: name
-							verticalAlignment: Text.AlignVCenter
-							height: parent.height
+						text: name
+						verticalAlignment: Text.AlignVCenter
+						height: parent.height
 
-							font.bold: spinBoxListItem.value > 0
-						}
+						font.bold: spinBoxListItem.value > 0
+					}
 
-						SpinBox {
-							id: spinBoxListItem
-							anchors.right: parent.right
-							anchors.rightMargin: 24
+					SpinBox {
+						id: spinBoxListItem
+						anchors.right: parent.right
+						anchors.rightMargin: 24
 
-							from: 0
-							to: 50
-							width: 150
+						from: 0
+						to: 50
+						width: 150
 
-							value: editListModel.getInsertionsCount(name)
-							onValueModified: editListModel.changeState(name, value)
-						}
+						value: editListModel.getInsertionsCount(name)
+						onValueModified: editListModel.changeState(name, value)
 					}
 				}
 			}

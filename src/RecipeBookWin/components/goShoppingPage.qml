@@ -23,7 +23,7 @@ Item {
 	ComboBox {
 		id: cbxSortOrder
         
-		anchors.left: scrollView.left
+		anchors.left: lvShoppingList.left
 		anchors.right: btnSeparateCollectedItems.left
 		anchors.top: parent.top
 		anchors.topMargin: 24
@@ -39,7 +39,7 @@ Item {
 	RoundButton {
 		id: btnSeparateCollectedItems
         
-		anchors.right: scrollView.right
+		anchors.right: lvShoppingList.right
 		anchors.verticalCenter: cbxSortOrder.verticalCenter
 		
 		height: 50
@@ -61,8 +61,8 @@ Item {
 		}
 	}
 
-	ScrollView {
-		id: scrollView
+	ListView {
+		id: lvShoppingList
 		anchors.left: parent.left
 		anchors.top: cbxSortOrder.bottom 
 		anchors.bottom: parent.bottom
@@ -71,86 +71,79 @@ Item {
 		anchors.bottomMargin: 48
 		width: 400
 
-		ListView {
-			id: lvShoppingList
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-			move: Transition {
-				NumberAnimation { properties: "x,y"; duration: 600; easing.type: Easing.InCubic }
-			}
+		move: Transition {
+			NumberAnimation { properties: "x,y"; duration: 600; easing.type: Easing.InCubic }
+		}
 
-			displaced: Transition {
-				NumberAnimation { properties: "x,y"; duration: 300; easing.type: Easing.InCubic }
-			}
+		displaced: Transition {
+			NumberAnimation { properties: "x,y"; duration: 300; easing.type: Easing.InCubic }
+		}
 
-			spacing: 5
-			model: modelGoShopping
-			delegate: ItemDelegate {
-				width: lvShoppingList.width - lvShoppingList.leftMargin - lvShoppingList.rightMargin
-				highlighted: ListView.isCurrentItem
-				height: listItemParent.height
+		spacing: 5
+		model: modelGoShopping
+		delegate: ItemDelegate {
+			width: lvShoppingList.width - lvShoppingList.leftMargin - lvShoppingList.rightMargin
+			highlighted: ListView.isCurrentItem
+			height: listItemParent.height
 
-				Item {
-					id: listItemParent
+			Item {
+				id: listItemParent
+				anchors.left: parent.left
+				anchors.right: parent.right
+				anchors.top: parent.top
+				anchors.topMargin: 10
+
+				height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered && normalItem
+				ToolTip.text: itemRecipeInfo
+
+				Label {
+					id: listItemName
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+                        
+					visible: !normalItem
+					font.bold: true
+					color: topLevelHeader ? "blue" : (incompatiblesHeader ? "red" : "black")
+
+					text: name
+					verticalAlignment: Text.AlignVCenter
+				}
+
+				CheckBox {
+					id: cbxItemName
+					anchors.top: parent.top
+					anchors.topMargin: -15
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+                        
+					visible: normalItem
+					font.strikeout: itemChecked
+					font.italic: itemOptional
+					text: itemHeader + (itemMultiline ? "" : " <font color=\"gray\">" + itemAdditionalText + "</font>")
+
+					checked: itemChecked
+					onClicked: itemChecked = checked
+				}
+
+				Label {
+					id: listItemAdditionalText
+					anchors.top: cbxItemName.bottom
+					anchors.topMargin: -10
 					anchors.left: parent.left
 					anchors.right: parent.right
-					anchors.top: parent.top
-					anchors.topMargin: 10
+					anchors.leftMargin: 10
 
-					height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
-
-					ToolTip.delay: 1000
-					ToolTip.timeout: 5000
-					ToolTip.visible: hovered && normalItem
-					ToolTip.text: itemRecipeInfo
-
-					Label {
-						id: listItemName
-						anchors.left: parent.left
-						anchors.leftMargin: 10
-                        
-						visible: !normalItem
-						font.bold: true
-						color: topLevelHeader ? "blue" : (incompatiblesHeader ? "red" : "black")
-
-						text: name
-						verticalAlignment: Text.AlignVCenter
-					}
-
-					CheckBox {
-						id: cbxItemName
-						anchors.top: parent.top
-						anchors.topMargin: -15
-						anchors.left: parent.left
-						anchors.leftMargin: 10
-                        
-						visible: normalItem
-						font.strikeout: itemChecked
-						font.italic: itemOptional
-						text: itemHeader + (itemMultiline ? "" : " <font color=\"gray\">" + itemAdditionalText + "</font>")
-
-						checked: itemChecked
-						onClicked: itemChecked = checked
-					}
-
-					Label {
-						id: listItemAdditionalText
-						anchors.top: cbxItemName.bottom
-						anchors.topMargin: -10
-						anchors.left: parent.left
-						anchors.right: parent.right
-						anchors.leftMargin: 10
-
-						visible: normalItem && itemMultiline
-						font.strikeout: itemChecked
-						color: "gray"
-						text: itemAdditionalText
-					}
+					visible: normalItem && itemMultiline
+					font.strikeout: itemChecked
+					color: "gray"
+					text: itemAdditionalText
 				}
 			}
 		}

@@ -45,74 +45,67 @@ Item {
 	}
 
 	ListView {
-		id: scrollViewValues
+		id: lvValues
 		anchors.top: parent.top
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.bottom: groupButtons.top
-		anchors.topMargin: 0
-		anchors.leftMargin: 0
-		anchors.rightMargin: 0
+		topMargin: 5
+		leftMargin: 5
+		rightMargin: 5
 		anchors.bottomMargin: 48
 
-		ListView {
-			id: lvValues
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 5
-			model: alternativesTypes
+		spacing: 5
+		model: alternativesTypes
 
-			delegate: ItemDelegate {
-				id: listItemRecipeItem
-				highlighted: ListView.isCurrentItem
-				onPressed: lvValues.currentIndex = index
-				width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
-				height: listItem.height
+		delegate: ItemDelegate {
+			id: listItemRecipeItem
+			highlighted: ListView.isCurrentItem
+			onPressed: lvValues.currentIndex = index
+			width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
+			height: listItem.height
 
-				Item {
-					id: listItem
-					anchors.left: listItemRecipeItem.left
-					anchors.right: listItemRecipeItem.right
-					anchors.top: listItemRecipeItem.top
-					anchors.topMargin: 15
+			Item {
+				id: listItem
+				anchors.left: listItemRecipeItem.left
+				anchors.right: listItemRecipeItem.right
+				anchors.top: listItemRecipeItem.top
+				anchors.topMargin: 15
 
-					height: labelGroupName.height + 30
+				height: labelGroupName.height + 30
 					
-					// group name
-					Label {
-						id: labelGroupName
-						anchors.left: parent.left
-						anchors.leftMargin: 10
+				// group name
+				Label {
+					id: labelGroupName
+					anchors.left: parent.left
+					anchors.leftMargin: 10
                         
-						text: name
-						verticalAlignment: Text.AlignVCenter
-					}
+					text: name
+					verticalAlignment: Text.AlignVCenter
+				}
 
-					// group symbol
-					Rectangle {
-						id: rowGroupHeaderButtons
-						anchors.right: listItem.right
-						anchors.top: parent.top
-						anchors.topMargin: 0
-						anchors.rightMargin: 10
-						width: 20
-						height: width
-						radius: 0.5 * width
+				// group symbol
+				Rectangle {
+					id: rowGroupHeaderButtons
+					anchors.right: listItem.right
+					anchors.top: parent.top
+					anchors.topMargin: 0
+					anchors.rightMargin: 10
+					width: 20
+					height: width
+					radius: 0.5 * width
 
-						color: typeColor
+					color: typeColor
 
-						MouseArea {
-							anchors.fill: parent
-							onClicked: { 
-								colorDialog.currentColor = typeColor
-								colorDialog.currentIndex = index
-								colorDialog.open();
-							}
+					MouseArea {
+						anchors.fill: parent
+						onClicked: { 
+							colorDialog.currentColor = typeColor
+							colorDialog.currentIndex = index
+							colorDialog.open();
 						}
 					}
 				}

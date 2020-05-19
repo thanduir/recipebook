@@ -82,8 +82,8 @@ Item {
 		font.bold: true
 	}
 
-	ScrollView {
-		id: scrollViewSortOrders
+	ListView {
+		id: lvSortOrders
 		anchors.left: parent.left
 		anchors.top: labelSortOrders.bottom 
 		anchors.bottom: groupSortOrders.top
@@ -92,41 +92,34 @@ Item {
 		anchors.bottomMargin: 48
 		width: 300
 
-		ListView {
-			id: lvSortOrders
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 5
-			model: modelSortOrders
-			delegate: ItemDelegate {
-				highlighted: ListView.isCurrentItem
-				onClicked: {
-					lvSortOrders.currentIndex = index
-					modelSortOrder.setSortOrder(index)
-				}
-				width: lvSortOrders.width - lvSortOrders.leftMargin - lvSortOrders.rightMargin
-                
-				text: name
+		spacing: 5
+		model: modelSortOrders
+		delegate: ItemDelegate {
+			highlighted: ListView.isCurrentItem
+			onClicked: {
+				lvSortOrders.currentIndex = index
+				modelSortOrder.setSortOrder(index)
 			}
+			width: lvSortOrders.width - lvSortOrders.leftMargin - lvSortOrders.rightMargin
+                
+			text: name
+		}
 
-			Component.onCompleted: {
-				if(lvSortOrders.count > 0) {
-					lvSortOrders.currentIndex = 0;
-					modelSortOrder.setSortOrder(0);
-				}
+		Component.onCompleted: {
+			if(lvSortOrders.count > 0) {
+				lvSortOrders.currentIndex = 0;
+				modelSortOrder.setSortOrder(0);
 			}
 		}
 	}
 
 	Pane {
 		id: groupSortOrders
-		anchors.left: scrollViewSortOrders.left
-		anchors.right: scrollViewSortOrders.right
+		anchors.left: lvSortOrders.left
+		anchors.right: lvSortOrders.right
 		anchors.bottom: parent.bottom
 		anchors.bottomMargin: 10
 
@@ -273,7 +266,7 @@ Item {
 	Label {
 		id: labelCurrentSortOrder
         
-		anchors.left: scrollViewCategories.left
+		anchors.left: lvCategories.left
 		anchors.top: parent.top
 		anchors.topMargin: 24
         
@@ -281,9 +274,9 @@ Item {
 		font.bold: true
 	}
 
-	ScrollView {
-		id: scrollViewCategories
-		anchors.left: scrollViewSortOrders.right
+	ListView {
+		id: lvCategories
+		anchors.left: lvSortOrders.right
 		anchors.top: labelCurrentSortOrder.bottom
 		anchors.bottom: groupCategories.top
 		anchors.topMargin: 48
@@ -291,29 +284,22 @@ Item {
 		anchors.bottomMargin: 48
 		width: 400
 
-		ListView {
-			id: lvCategories
-			anchors.fill: parent
-			topMargin: 5
-			leftMargin: 5
-			bottomMargin: 5
-			rightMargin: 5
-			boundsBehavior: Flickable.StopAtBounds
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
 
-			spacing: 5
-			model: DelegateModel {
-				id: categoriesDelegateModel
+		spacing: 5
+		model: DelegateModel {
+			id: categoriesDelegateModel
 
-				model: modelSortOrder
-				delegate: dragDelegate
-			}
+			model: modelSortOrder
+			delegate: dragDelegate
 		}
 	}
 
 	Pane {
 		id: groupCategories
-		anchors.left: scrollViewCategories.left
-		anchors.right: scrollViewCategories.right
+		anchors.left: lvCategories.left
+		anchors.right: lvCategories.right
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 48
 
@@ -377,7 +363,7 @@ Item {
 
 	EditAlternativesGroupPane {
 		id: paneAlternativesGroups
-		anchors.left: scrollViewCategories.right
+		anchors.left: lvCategories.right
 		anchors.top: labelAlternativesGroups.bottom
 		anchors.bottom: parent.bottom
 		anchors.right: parent.right

@@ -16,7 +16,7 @@ Dialog {
 
 	Item {
 		implicitWidth: 300
-		implicitHeight: scrollViewValues.implicitHeight + textFilter.implicitHeight
+		implicitHeight: lvValues.implicitHeight + textFilter.implicitHeight
 
 		TextField { 
 			id: textFilter
@@ -52,8 +52,8 @@ Dialog {
 				}
 		}
 
-		ScrollView {
-			id: scrollViewValues
+		ListView {
+			id: lvValues
 			anchors.left: parent.left
 			anchors.right: parent.right
 			anchors.top: textFilter.bottom
@@ -62,18 +62,15 @@ Dialog {
 
 			implicitHeight: 400
 
-			ListView {
-				id: lvValues
-				anchors.fill: parent
+			ScrollBar.vertical: ScrollBar { }
 
-				model: allValuesFilterModel
-				delegate: CheckDelegate {
-					checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
-					onClicked: editListModel.changeState(name, checked)
-					width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
+			model: allValuesFilterModel
+			delegate: CheckDelegate {
+				checkState: editListModel.itemSelected(name) ? Qt.Checked : Qt.Unchecked
+				onClicked: editListModel.changeState(name, checked)
+				width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
                 
-					text: name
-				}
+				text: name
 			}
 		}
 	}
