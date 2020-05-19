@@ -18,10 +18,9 @@ namespace recipebook
 		const Category& getCategory() const { return *m_pCategory; }
 		void setCategory(const Category& rCategory) { m_pCategory = &rCategory; }
 
-		bool hasProvenanceEverywhere() const { return m_pProvenance == nullptr; }
-		const SortOrder& getProvenance() const;
-		void setProvenanceEverywhere();
-		void setProvenance(const SortOrder& rProvenance);
+		bool provenanceAvailable(const SortOrder& rProvenance) const;
+		void setProvenanceAvailable(const SortOrder& rProvenance);
+		void setProvenanceUnavailable(const SortOrder& rProvenance);
 
 		Unit getDefaultUnit() const { return m_DefaultUnit; }
 		void setDefaultUnit(Unit unit) { m_DefaultUnit = unit; }
@@ -37,7 +36,7 @@ namespace recipebook
 	private:
 		QString m_Name;
 		const Category* m_pCategory;
-		const SortOrder* m_pProvenance;
+		QVector<const SortOrder*> m_UnavailableProvenances;
 		Unit m_DefaultUnit;
 
 		friend class RecipeBook;

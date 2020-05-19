@@ -15,8 +15,6 @@ class UIStringConverter : public QObject
 public:
 	UIStringConverter();
 
-	QString getProvenanceEverywhere() const;
-
 	QString getStringNoAlternativesGroup() const;
 
 	QString convertSize(recipebook::Size size) const;
@@ -41,7 +39,6 @@ public:
 	QString formatAmount(recipebook::Amount amount, bool bUsePostfix = true) const;
 
 private:
-	QString m_strProvenanceEverywhere;
 	QString m_strNoAlternativesGroup;
 
 	QStringList m_StatusToName;

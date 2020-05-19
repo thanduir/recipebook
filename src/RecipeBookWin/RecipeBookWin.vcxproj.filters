@@ -49,9 +49,6 @@
     <ClCompile Include="ListModelCategories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListModelProvenance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ListModelRecipes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -62,9 +59,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FilterModelAlternativesTypes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FilterModelSortOrders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SortModelSortOrder.cpp">
@@ -92,6 +86,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListModelGoShopping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelSortOrders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,9 +155,6 @@
     <QtMoc Include="ListModelCategories.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ListModelProvenance.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ListModelRecipes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -174,9 +168,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FilterModelAlternativesTypes.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="FilterModelSortOrders.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SortModelSortOrder.h">
@@ -204,6 +195,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ListModelGoShopping.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelSortOrders.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

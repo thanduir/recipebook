@@ -43,11 +43,11 @@ QString FilterModelIngredients::category(int row) const
 	return pIngredients->category(rowSource);
 }
 
-QString FilterModelIngredients::provenance(int row) const
+bool FilterModelIngredients::provenanceAvailable(int row, QString strProvenance) const
 {
 	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
 	int rowSource = mapToSource(index(row, 0)).row();
-	return pIngredients->provenance(rowSource);
+	return pIngredients->provenanceAvailable(rowSource, strProvenance);
 }
 
 QString FilterModelIngredients::defaultUnit(int row) const
@@ -78,11 +78,11 @@ void FilterModelIngredients::setCategory(int row, QString newCategory)
 	pIngredients->setCategory(rowSource, newCategory);
 }
 
-void FilterModelIngredients::setProvenance(int row, QString newProvenance)
+void FilterModelIngredients::setProvenanceAvailable(int row, QString strProvenance, bool bAvailable)
 {
 	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
 	int rowSource = mapToSource(index(row, 0)).row();
-	pIngredients->setProvenance(rowSource, newProvenance);
+	pIngredients->setProvenanceAvailable(rowSource, strProvenance, bAvailable);
 }
 
 void FilterModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)

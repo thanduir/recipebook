@@ -115,7 +115,7 @@ void SortedShoppingList::changeSortOrder(const SortOrder& rOrder, SortedShopping
             {
 				const Ingredient& rIngredient = spCurrent->getIngredient();
 
-				bool bCompatible = rIngredient.hasProvenanceEverywhere() || (&rIngredient.getProvenance() == &rOrder);
+				bool bCompatible = rIngredient.provenanceAvailable(rOrder);
 				bool bTaken = spCurrent->getStatus() == Status::Taken;
 
 				auto fnAddToList = [pCategory, spCurrent](bool& bHeaderAdded, QVector<QSharedPointer<GoShoppingListItem>>& rList, GoShoppingListItemType headerType)
@@ -231,7 +231,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	{
 		recipebook::RBDataReadHandle handle(rRBDataHandler);
 		const Ingredient& rIngredient = rItem.getIngredient();
-		bCompatible = rIngredient.hasProvenanceEverywhere() || (&rIngredient.getProvenance() == m_pSortOrder);
+		bCompatible = rIngredient.provenanceAvailable(*m_pSortOrder);
 		strCategory = rIngredient.getCategory().getName();
 	}
 

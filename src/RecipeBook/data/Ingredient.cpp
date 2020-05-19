@@ -4,27 +4,43 @@
 recipebook::Ingredient::Ingredient(QString strName, const Category& rCategory, Unit defaultUnit)
 :	m_Name(strName),
 	m_pCategory(&rCategory),
-	m_pProvenance(nullptr),
 	m_DefaultUnit(defaultUnit)
 {
 }
 
-const recipebook::SortOrder& recipebook::Ingredient::getProvenance() const
+bool recipebook::Ingredient::provenanceAvailable(const SortOrder& rProvenance) const
 {
-	if(m_pProvenance == nullptr)
+	for(const SortOrder* pOrder : qAsConst(m_UnavailableProvenances))
 	{
-		throw QException();
+		if(pOrder == &rProvenance)
+		{
+			return false;
+		}
 	}
-
-	return *m_pProvenance;
+	return true;
 }
 
-void recipebook::Ingredient::setProvenanceEverywhere()
+void recipebook::Ingredient::setProvenanceAvailable(const SortOrder& rProvenance)
 {
-	m_pProvenance = nullptr;
+	for(const SortOrder* pOrder : qAsConst(m_UnavailableProvenances))
+	{
+		if(pOrder == &rProvenance)
+		{
+			m_UnavailableProvenances.removeAll(&rProvenance);
+			return;
+		}
+	}
 }
 
-void recipebook::Ingredient::setProvenance(const SortOrder& rProvenance)
+void recipebook::Ingredient::setProvenanceUnavailable(const SortOrder& rProvenance)
 {
-	m_pProvenance = &rProvenance;
+	for(const SortOrder* pOrder : qAsConst(m_UnavailableProvenances))
+	{
+		if(pOrder == &rProvenance)
+		{
+			// Already unavailable
+			return;
+		}
+	}
+	m_UnavailableProvenances.append(&rProvenance);
 }

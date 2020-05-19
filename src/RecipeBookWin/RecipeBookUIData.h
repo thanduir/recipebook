@@ -7,9 +7,8 @@
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
 #include "FilterModelIngredients.h"
-#include "FilterModelSortOrders.h"
 #include "SortModelSortOrder.h"
-#include "ListModelProvenance.h"
+#include "ListModelSortOrders.h"
 #include "ListModelAlternativesGroups.h"
 #include "FilterModelAlternativesTypes.h"
 #include "ListModelRecipes.h"
@@ -42,8 +41,7 @@ namespace recipebook::UI
 		// DataModels
 		ListModelCategories& getCategoriesModel();
 		SortModelSortOrder& getSortOrderModel();
-		ListModelProvenance& getProvenanceModel();
-		FilterModelSortOrders& getSortOrdersModel();
+		ListModelSortOrders& getSortOrdersModel();
 		ListModelIngredients& getIngredientsModel();
 		FilterModelIngredients& getIngredientsFilterModel();
 		ListModelAlternativesGroups& getAlternativesGroups();
@@ -75,8 +73,7 @@ namespace recipebook::UI
 		ListModelCategories m_ModelCategories;
 		SortModelSortOrder m_ModelSortOrder;
 
-		ListModelProvenance m_ModelProvenance;
-		FilterModelSortOrders m_ModelSortOrders;
+		ListModelSortOrders m_ModelSortOrders;
 
 		ListModelIngredients m_ModelIngredients;
 		FilterModelIngredients m_FilterModelIngredients;

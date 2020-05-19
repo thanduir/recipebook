@@ -185,16 +185,17 @@ bool json::JsonReaderV2::readIngredients(const QJsonObject& rObject, RecipeBook&
 	{
 		QJsonObject ingredient = rObject[strIngredientName].toObject();
 		QString strCategory = ingredient[json::c_strIngredientsCategory].toString();
-		QString strProvenance = ingredient[json::c_strIngredientsProvenance].toString();
+		QJsonArray unavailableProvenances = ingredient[json::c_strIngredientsUnavailProvenances].toArray();
 		QString strDefaultUnit = ingredient[json::c_strIngredientsDefaultUnit].toString();
 
 		const Category& rCategory = rRecipeBook.getCategory(strCategory);
 		Unit defaultUnit = helper::convertUnit(strDefaultUnit);
 
 		Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
-		if(!strProvenance.isEmpty())
+		for(auto strProvenance : qAsConst(unavailableProvenances))
 		{
-			rIngredient.setProvenance(rRecipeBook.getSortOrder(strProvenance));
+			const SortOrder& rOrder = rRecipeBook.getSortOrder(strProvenance.toString());
+			rIngredient.setProvenanceUnavailable(rOrder);
 		}
 	}
 

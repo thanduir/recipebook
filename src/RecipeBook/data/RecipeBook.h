@@ -42,7 +42,6 @@ namespace recipebook
 		SortOrder& addSortOrder(QString strName);
 		void renameSortOrder(SortOrder& rOrder, QString strNewName);
 		bool existsSortOrder(QString strName) const;
-		bool isSortOrderInUse(const SortOrder& rSortOrder, QList<Ingredient*>* pIngredients = nullptr) const;
 		bool removeSortOrder(const SortOrder& rOrder);
 		SortOrder& getSortOrder(QString strName);
 		const SortOrder& getSortOrder(QString strName) const;

@@ -1,6 +1,5 @@
 #include "uistringconverter.h"
 
-static constexpr char* c_strProvenanceEverywhere	= "Everywhere";
 static constexpr char* c_strNoAlternativesGroup		= "-";
 
 static constexpr char* c_strStatusNone				= "None";
@@ -45,8 +44,6 @@ static constexpr char* c_strListOrderingSeparateTakenItems	= "SeparateTakenItems
 
 UIStringConverter::UIStringConverter()
 {
-	m_strProvenanceEverywhere = tr(c_strProvenanceEverywhere);
-
 	m_strNoAlternativesGroup = tr(c_strNoAlternativesGroup);
 
 	// Status
@@ -96,11 +93,6 @@ UIStringConverter::UIStringConverter()
 
 	m_ShoppingListOrderingToName.append(tr(c_strListOrderingCombined));
 	m_ShoppingListOrderingToName.append(tr(c_strListOrderingSeparateTakenItems));
-}
-
-QString UIStringConverter::getProvenanceEverywhere() const
-{
-	return m_strProvenanceEverywhere;
 }
 
 QString UIStringConverter::getStringNoAlternativesGroup() const

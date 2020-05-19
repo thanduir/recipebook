@@ -173,42 +173,15 @@ bool RecipeBook::existsSortOrder(QString strName) const
 	return internal::sorted::exists<SortOrder>(strName, m_SortOrders);
 }
 
-bool RecipeBook::isSortOrderInUse(const SortOrder& rOrder, QList<Ingredient*>* pIngredients) const
-{
-	if(pIngredients)
-	{
-		pIngredients->clear();
-	}
-
-	for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
-	{
-		if(!ingredient->hasProvenanceEverywhere()
-			&& ingredient->getProvenance().getIdString() == rOrder.getIdString())
-		{
-			if(pIngredients)
-			{
-				pIngredients->append(ingredient.get());
-			}
-			else
-			{
-				return true;
-			}
-		}
-	}
-
-	if(pIngredients)
-	{
-		return pIngredients->size() > 0;
-	}
-
-	return false;
-}
-
 bool RecipeBook::removeSortOrder(const SortOrder& rOrder)
 {
-	if(isSortOrderInUse(rOrder))
+	// Remove sort order from disallowed provenances first
+	for(QSharedPointer<Ingredient> ingredient : qAsConst(m_Ingredients))
 	{
-		return false;
+		if(!ingredient->provenanceAvailable(rOrder))
+		{
+			ingredient->setProvenanceAvailable(rOrder);
+		}
 	}
 
 	internal::sorted::remove(rOrder.getIdString(), m_SortOrders);

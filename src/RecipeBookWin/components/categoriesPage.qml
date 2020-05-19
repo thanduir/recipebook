@@ -165,7 +165,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Remove sort order")
 
-				enabled: lvSortOrders.count > 0 && modelSortOrders.canSortOrderBeRemoved(lvSortOrders.currentIndex)
+				enabled: lvSortOrders.count > 0
 				onClicked: {
 					dlgRemoveSortOrder.msgText = qsTr("This will remove the ingredient \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\". Proceed?");
 					dlgRemoveSortOrder.open();

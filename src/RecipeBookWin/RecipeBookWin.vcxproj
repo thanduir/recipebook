@@ -109,14 +109,13 @@
     <ClCompile Include="ListModelCategories.cpp" />
     <ClCompile Include="ListModelGoShopping.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
-    <ClCompile Include="ListModelProvenance.cpp" />
+    <ClCompile Include="ListModelSortOrders.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
     <ClCompile Include="ListModelShoppingListItems.cpp" />
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
-    <ClCompile Include="FilterModelSortOrders.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RecipeBookUIData.cpp" />
     <ClCompile Include="uistringconverter.cpp" />
@@ -147,8 +146,7 @@
     <QtMoc Include="uistringconverter.h" />
     <QtMoc Include="ListModelIngredients.h" />
     <QtMoc Include="ListModelCategories.h" />
-    <QtMoc Include="FilterModelSortOrders.h" />
-    <QtMoc Include="ListModelProvenance.h" />
+    <QtMoc Include="ListModelSortOrders.h" />
     <QtMoc Include="RecipeBookUIData.h" />
   </ItemGroup>
   <ItemGroup>

@@ -20,8 +20,7 @@ RecipeBookUIData::RecipeBookUIData()
 	m_Settings(),
 	m_ModelCategories(m_RBData),
 	m_ModelSortOrder(m_RBData),
-	m_ModelProvenance(m_RBData, m_Converter),
-	m_ModelSortOrders(),
+	m_ModelSortOrders(m_RBData, m_Converter),
 	m_ModelIngredients(m_RBData, m_Settings, m_Converter),
 	m_FilterModelIngredients(),
 	m_AlternativesGroups(m_RBData, m_Converter),
@@ -46,7 +45,6 @@ RecipeBookUIData::RecipeBookUIData()
 	}
 
 	m_ModelSortOrder.setSourceModel(&m_ModelCategories);
-	m_ModelSortOrders.setSourceModel(&m_ModelProvenance);
 	m_AlternativesTypes.setSourceModel(&m_AlternativesGroups);
 	m_FilterModelIngredients.setSourceModel(&m_ModelIngredients);
 	m_FilterModelRecipes.setSourceModel(&m_ModelRecipes);
@@ -54,7 +52,7 @@ RecipeBookUIData::RecipeBookUIData()
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
-	connect(&m_ModelProvenance, SIGNAL(provenanceRenamed(quint32)),
+	connect(&m_ModelSortOrders, SIGNAL(sortOrderRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onSortOrderRenamed(quint32)));
 
 	connect(&m_ModelIngredients, SIGNAL(ingredientRenamed(quint32)),
@@ -83,7 +81,7 @@ RecipeBookUIData::RecipeBookUIData()
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelCategories, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
-			&m_ModelProvenance, SLOT(onDataReset()));
+			&m_ModelSortOrders, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelIngredients, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
@@ -251,14 +249,9 @@ SortModelSortOrder& RecipeBookUIData::getSortOrderModel()
 	return m_ModelSortOrder;
 }
 
-FilterModelSortOrders& RecipeBookUIData::getSortOrdersModel()
+ListModelSortOrders& RecipeBookUIData::getSortOrdersModel()
 {
 	return m_ModelSortOrders;
-}
-
-ListModelProvenance& RecipeBookUIData::getProvenanceModel()
-{
-	return m_ModelProvenance;
 }
 
 ListModelIngredients& RecipeBookUIData::getIngredientsModel()

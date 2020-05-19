@@ -22,7 +22,6 @@ namespace recipebook::UI
 		{
 			NameRole = Qt::UserRole + 1,
 			CategoryRole,
-			ProvenanceRole,
 			DefaultUnitRole
 		};
 
@@ -35,15 +34,15 @@ namespace recipebook::UI
 	public slots:
 		QString name(int row) const;
 		QString category(int row) const;
-		QString provenance(int row) const;
 		QString defaultUnit(int row) const;
+		bool provenanceAvailable(int row, QString strProvenance) const;
 
 		QString listUsedInRecipes(int row) const;
 		QString listUsedInShoppingRecipes(int row) const;
                 
 		void setCategory(int row, QString newCategory);
-		void setProvenance(int row, QString newProvenance);
 		void setDefaultUnit(int row, QString newDefaultUnit);
+		void setProvenanceAvailable(int row, QString strProvenance, bool bAvailable);
 
 		int renameIngredient(int row, QString newName);
 

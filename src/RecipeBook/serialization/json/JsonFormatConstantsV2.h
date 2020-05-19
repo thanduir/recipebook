@@ -23,7 +23,7 @@ namespace recipebook::serialization::json
         
 	// ingredients
 	constexpr char* c_strIngredientsCategory			= "category";
-	constexpr char* c_strIngredientsProvenance			= "provenance";
+	constexpr char* c_strIngredientsUnavailProvenances	= "unavailableProvenances";
 	constexpr char* c_strIngredientsDefaultUnit			= "default-unit";
     
 	// alternatives types

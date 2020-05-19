@@ -39,10 +39,6 @@ QVariant ListModelIngredients::data(const QModelIndex& index, int iRole) const
 	{
 		return category(index.row());
 	}
-	else if(role == IngredientRoles::ProvenanceRole)
-	{
-		return provenance(index.row());
-	}
 	else if(role == IngredientRoles::DefaultUnitRole)
 	{
 		return defaultUnit(index.row());
@@ -73,22 +69,20 @@ QString ListModelIngredients::category(int row) const
 	return rIngredient.getCategory().getName();
 }
 
-QString ListModelIngredients::provenance(int row) const
+bool ListModelIngredients::provenanceAvailable(int row, QString strProvenance) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return "";
+		return false;
+
+	if(!handle.data().existsSortOrder(strProvenance))
+		return false;
 
 	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
-	if(rIngredient.hasProvenanceEverywhere())
-	{
-		return m_rConverter.getProvenanceEverywhere();
-	}
-	else
-	{
-		return rIngredient.getProvenance().getName();
-	}
+	const SortOrder& rOrder = handle.data().getSortOrder(strProvenance);
+	
+	return rIngredient.provenanceAvailable(rOrder);
 }
 
 QString ListModelIngredients::defaultUnit(int row) const
@@ -189,7 +183,7 @@ void ListModelIngredients::setCategory(int row, QString newCategory)
 	setDataChanged(row, IngredientRoles::CategoryRole);
 }
 
-void ListModelIngredients::setProvenance(int row, QString newProvenance)
+void ListModelIngredients::setProvenanceAvailable(int row, QString strProvenance, bool bAvailable)
 {
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
@@ -198,22 +192,21 @@ void ListModelIngredients::setProvenance(int row, QString newProvenance)
 			return;
 
 		Ingredient& rIngredient = handle.data().getIngredientAt(row);
-		if(newProvenance == m_rConverter.getProvenanceEverywhere())
-		{
-			rIngredient.setProvenanceEverywhere();
-		}
-		else if(handle.data().existsSortOrder(newProvenance))
-		{
-			const SortOrder& rSortOrder = handle.data().getSortOrder(newProvenance);
-			rIngredient.setProvenance(rSortOrder);
-		}
-		else
+		if(!handle.data().existsSortOrder(strProvenance))
 		{
 			return;
 		}
-	}
 
-	setDataChanged(row, IngredientRoles::ProvenanceRole);
+		const SortOrder& rSortOrder = handle.data().getSortOrder(strProvenance);
+		if(bAvailable)
+		{
+			rIngredient.setProvenanceAvailable(rSortOrder);
+		}
+		else
+		{
+			rIngredient.setProvenanceUnavailable(rSortOrder);
+		}
+	}
 }
 
 void ListModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)
@@ -237,7 +230,6 @@ QHash<int, QByteArray> ListModelIngredients::roleNames() const
 	QHash<int, QByteArray> roles;
 	roles[(int)IngredientRoles::NameRole] = "name";
 	roles[(int)IngredientRoles::CategoryRole] = "category";
-	roles[(int)IngredientRoles::ProvenanceRole] = "provenance";
 	roles[(int)IngredientRoles::DefaultUnitRole] = "defaultUnit";
 	return roles;
 }

@@ -145,14 +145,18 @@ void json::JsonWriter::writeIngredients(const RecipeBook& rRecipeBook, QJsonObje
         const Ingredient& rIngredient = rRecipeBook.getIngredientAt(i);
         
         ingredientObject[json::c_strIngredientsCategory] = rIngredient.getCategory().getName();
-        if(rIngredient.hasProvenanceEverywhere())
-        {
-            ingredientObject[json::c_strIngredientsProvenance] = "";
-        }
-        else
-        {
-            ingredientObject[json::c_strIngredientsProvenance] = rIngredient.getProvenance().getName();
-        }
+
+		QJsonArray unavailableProvenances;
+		for(quint32 i = 0; i < rRecipeBook.getSortOrdersCount(); ++i)
+		{
+			const SortOrder& rOrder = rRecipeBook.getSortOrderAt(i);
+			if(!rIngredient.provenanceAvailable(rOrder))
+			{
+				unavailableProvenances.append(rOrder.getName());
+			}
+		}
+		ingredientObject[json::c_strIngredientsUnavailProvenances] = unavailableProvenances;
+
         ingredientObject[json::c_strIngredientsDefaultUnit] = helper::convertUnit(rIngredient.getDefaultUnit());
 
         objectIngredients[rIngredient.getName()] = ingredientObject;

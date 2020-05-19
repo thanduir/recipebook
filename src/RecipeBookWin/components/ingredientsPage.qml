@@ -126,7 +126,7 @@ Item {
 					Label {
 						anchors.left: listItemDelegateName.right
 						color: "gray"
-						text: " (" + category + (provenance != modelProvenance.provenanceEverywhere() ? ", " + provenance : "") + ", " + defaultUnit + ")"
+						text: " (" + category + ", " + defaultUnit + ")"
 						verticalAlignment: Text.AlignVCenter
 						height: parent.height
 						width: parent.width - listItemDelegateName.width - 10
@@ -237,13 +237,26 @@ Item {
 
 		Label { 
 			Layout.rightMargin: 50
+			Layout.alignment: Qt.AlignTop
 			text: qsTr("Provenance")
 		}
-		ComboBox {
+		GridView {
+			id: lvSortOrders
 			Layout.fillWidth: true
-			model: modelProvenance
-			currentIndex: indexOfValue(filterModelIngredients.provenance(lvIngredients.currentIndex))
-			onActivated: filterModelIngredients.setProvenance(lvIngredients.currentIndex, currentText)
+			height: 100
+			cellWidth: 75
+			cellHeight: 40
+			flow: GridView.FlowTopToBottom
+
+			model: modelSortOrders
+			delegate: CheckBox {
+				id: cbxItemName                        
+				text: name
+
+				checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
+				onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
+				
+			}			
 		}
 
 		Label { text: qsTr("Unit") }

@@ -214,7 +214,15 @@ bool json::JsonReaderV1::readIngredients(const QJsonObject& rObject, RecipeBook&
 		Ingredient& rIngredient = rRecipeBook.addIngredient(strIngredientName, rCategory, defaultUnit);
 		if(strProvenance != json::c_strProvenanceEverywhere)
 		{
-			rIngredient.setProvenance(rRecipeBook.getSortOrder(strProvenance));
+			const SortOrder& rAllowedOrder = rRecipeBook.getSortOrder(strProvenance);
+			for(quint32 i = 0; i < rRecipeBook.getSortOrdersCount(); ++i)
+			{
+				const SortOrder& rOrder = rRecipeBook.getSortOrderAt(i);
+				if(&rOrder != &rAllowedOrder)
+				{
+					rIngredient.setProvenanceUnavailable(rOrder);
+				}
+			}
 		}
 	}
 
