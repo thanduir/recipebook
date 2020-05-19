@@ -24,6 +24,13 @@ Dialog {
 			currentTextChanged();
 			buttons.standardButton(Dialog.Ok).enabled = text != "" && currentTextAllowed;
 		}
+
+		onAccepted: {
+			if(buttons.standardButton(Dialog.Ok).enabled)
+			{
+				buttons.standardButton(Dialog.Ok).clicked();
+			}
+		}
 	}
 
 	footer: DialogButtonBox {

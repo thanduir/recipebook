@@ -109,39 +109,6 @@ bool ListModelCategories::existsCategory(QString strCategory) const
 	return handle.data().existsCategory(strCategory);
 }
 
-QString ListModelCategories::listUsedInIngredients(int row) const
-{
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
-		return " -";
-
-	const Category& rCategory = handle.data().getCategoryAt(row);
-
-	QList<Ingredient*> ingredients;
-	if(!handle.data().isCategoryInUse(rCategory, &ingredients))
-	{
-		return " -";
-	}
-
-	QString text;
-	if(ingredients.size() > 0)
-	{
-		text = "<ul>";
-		for(Ingredient* pIngredient : qAsConst(ingredients))
-		{
-			text += "<li>" + pIngredient->getName() + "</li>";
-		}
-		text += "</ul>";
-	}
-	else
-	{
-		text = " -";
-	}
-
-	return text;
-}
-
 bool ListModelCategories::canCategoryBeRemoved(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);

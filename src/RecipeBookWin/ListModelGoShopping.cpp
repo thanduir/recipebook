@@ -339,7 +339,14 @@ QString ListModelGoShopping::getRecipeInfo(int row) const
 		}
 		if(rInfo.m_DueDate.isValid())
 		{
-			strText += QString(tr(" Due date: %1.")).arg(rInfo.m_DueDate.toString(Qt::ISODate));
+			if(bAsList)
+			{
+				strText += QString(tr(" Due date: %1.")).arg(rInfo.m_DueDate.toString("dddd, dd.MM.yyyy"));
+			}
+			else
+			{
+				strText += QString(tr("<br>Due date: %1.")).arg(rInfo.m_DueDate.toString("dddd, dd.MM.yyyy"));
+			}
 		}
 
 		if(bAsList)

@@ -68,13 +68,6 @@ bool SortModelSortOrder::existsCategory(QString strCategory) const
 	return pCategories->existsCategory(strCategory);
 }
 
-QString SortModelSortOrder::listUsedInIngredients(int row) const
-{
-	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
-	int rowSource = mapToSource(index(row, 0)).row();
-	return pCategories->listUsedInIngredients(rowSource);
-}
-
 bool SortModelSortOrder::canCategoryBeRemoved(int row) const
 {
 	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());

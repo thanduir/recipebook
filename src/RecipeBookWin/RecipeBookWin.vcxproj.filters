@@ -102,15 +102,6 @@
     <None Include="recipebook.qml">
       <Filter>qml Files</Filter>
     </None>
-    <None Include="components\textInputDialog.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
-    <None Include="components\textMessageDialog.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
-    <None Include="components\editItemsListDialog.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
     <None Include="components\categoriesPage.qml">
       <Filter>qml Files\components\recipes tab</Filter>
     </None>
@@ -138,14 +129,23 @@
     <None Include="components\goShoppingPage.qml">
       <Filter>qml Files\components\shopping tab</Filter>
     </None>
-    <None Include="components\dateSelectionDialog.qml">
-      <Filter>qml Files\components</Filter>
-    </None>
     <None Include="components\addRecipesListDialog.qml">
-      <Filter>qml Files\components</Filter>
+      <Filter>qml Files\components\helper</Filter>
+    </None>
+    <None Include="components\dateSelectionDialog.qml">
+      <Filter>qml Files\components\helper</Filter>
     </None>
     <None Include="components\editAlternativesGroupPane.qml">
-      <Filter>qml Files\components</Filter>
+      <Filter>qml Files\components\helper</Filter>
+    </None>
+    <None Include="components\editItemsListDialog.qml">
+      <Filter>qml Files\components\helper</Filter>
+    </None>
+    <None Include="components\textInputDialog.qml">
+      <Filter>qml Files\components\helper</Filter>
+    </None>
+    <None Include="components\textMessageDialog.qml">
+      <Filter>qml Files\components\helper</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

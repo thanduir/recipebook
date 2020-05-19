@@ -35,7 +35,6 @@ namespace recipebook::UI
 		int addCategory(QString strCategory);
 		bool existsCategory(QString strCategory) const;
 
-		QString listUsedInIngredients(int row) const;
 		bool canCategoryBeRemoved(int row) const;
 		bool removeCategory(int row);
 

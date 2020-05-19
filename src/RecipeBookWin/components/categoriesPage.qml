@@ -85,7 +85,8 @@ Item {
 	ScrollView {
 		id: scrollViewSortOrders
 		anchors.left: parent.left
-		anchors.top: labelSortOrders.bottom
+		anchors.top: labelSortOrders.bottom 
+		anchors.bottom: groupSortOrders.top
 		anchors.topMargin: 48
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
@@ -126,8 +127,8 @@ Item {
 		id: groupSortOrders
 		anchors.left: scrollViewSortOrders.left
 		anchors.right: scrollViewSortOrders.right
-		anchors.top: scrollViewSortOrders.bottom
-		anchors.topMargin: 48
+		anchors.bottom: parent.bottom
+		anchors.bottomMargin: 10
 
 		RowLayout {
 			anchors.fill: parent

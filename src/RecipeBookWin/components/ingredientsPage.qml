@@ -237,6 +237,7 @@ Item {
 
 		Label { 
 			Layout.rightMargin: 50
+			Layout.topMargin: 15
 			Layout.alignment: Qt.AlignTop
 			text: qsTr("Provenance")
 		}
@@ -244,14 +245,18 @@ Item {
 			id: lvSortOrders
 			Layout.fillWidth: true
 			height: 100
-			cellWidth: 75
+			cellWidth: 155
 			cellHeight: 40
 			flow: GridView.FlowTopToBottom
+
+			ScrollBar.horizontal: ScrollBar { }
 
 			model: modelSortOrders
 			delegate: CheckBox {
 				id: cbxItemName                        
 				text: name
+
+				width: lvSortOrders.cellWidth
 
 				checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
 				onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
@@ -271,27 +276,47 @@ Item {
 		Item { height: 10; Layout.columnSpan: 2 }
 
 		Label { 
+			Layout.topMargin: 24
 			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
 			text: qsTr("Used in recipes") 
 		}
-		Label {
-			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-			lineHeight: 1.25
+		GridView {
+			Layout.topMargin: 24
+			Layout.fillWidth: true
+			height: 200
 
-			text: filterModelIngredients.listUsedInRecipes(lvIngredients.currentIndex)
+			cellWidth: 275
+			cellHeight: 30
+			flow: GridView.FlowLeftToRight
+			ScrollBar.vertical: ScrollBar { }
+
+			model: filterModelIngredients.listUsedInRecipes(lvIngredients.currentIndex)
+			delegate: Label {
+				text: modelData
+			}
 		}
 
 		Label { 
+			Layout.topMargin: 24
 			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
 			text: qsTr("Used in shopping list") 
 		}
-		Label {
-			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-			lineHeight: 1.25
+		GridView {
+			Layout.topMargin: 24
+			Layout.fillWidth: true
+			height: 150
 
-			text: filterModelIngredients.listUsedInShoppingRecipes(lvIngredients.currentIndex)
+			cellWidth: 275
+			cellHeight: 40
+			flow: GridView.FlowLeftToRight
+			ScrollBar.vertical: ScrollBar { }
+
+			model: filterModelIngredients.listUsedInShoppingRecipes(lvIngredients.currentIndex)
+			delegate: Label {
+				text: modelData
+			}
 		}
 	}
 }

@@ -3,21 +3,22 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- show provenance (as tool tip text?) in go shopping dialog for incompatibles list?
-	- "Used in ..." in ingredients needs some love: list shouöd be scrollable (see e.g. Peperoni), formatting improvements are needed
+	- get rid of ScrollViews for ListView as they are themselves flickable already (and just add scrollbars, c.f. gridview in ingredientsPage)
+		-> get rid of all (except one) ScrollView!
+		-> instead add "ScrollBar.vertical: ScrollBar { }"
 	- DueDate sollte explicit setz- und löschbar sein!
-	- Better due date handling in go shopping! (Idea: Define a relative "warning date" (e.g. X days from now). Items are displayed differently if duedate < "warning date")
 	
+	- Verify that every feature from the app is present!
+	- TODO in serialization!
+
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
 			-> also keep in mind that i might want to use the same controls for the smartphone version!
 		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
+		- improve layout everywhere (and make consistent)
 
-	- Verify that every feature from the app is present!
-	- TODO in serialization!
 	- Test everything, esp. also that it works correctly with empty data!
 	- Add a reasonable amount of unittests for everything not yet covered!
-	- shopping list (or, rather, go shopping) pdf exporter
 4. Update Design.txt! (incl. code organization descriptions?)
 
 5. Exporter

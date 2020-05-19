@@ -57,14 +57,14 @@ QString FilterModelIngredients::defaultUnit(int row) const
 	return pIngredients->defaultUnit(rowSource);
 }
 
-QString FilterModelIngredients::listUsedInRecipes(int row) const
+QStringList FilterModelIngredients::listUsedInRecipes(int row) const
 {
 	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
 	int rowSource = mapToSource(index(row, 0)).row();
 	return pIngredients->listUsedInRecipes(rowSource);
 }
 
-QString FilterModelIngredients::listUsedInShoppingRecipes(int row) const
+QStringList FilterModelIngredients::listUsedInShoppingRecipes(int row) const
 {
 	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
 	int rowSource = mapToSource(index(row, 0)).row();

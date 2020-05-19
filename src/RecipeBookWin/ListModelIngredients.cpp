@@ -96,12 +96,12 @@ QString ListModelIngredients::defaultUnit(int row) const
 	return  m_rConverter.convertUnit(rIngredient.getDefaultUnit());
 }
 
-QString ListModelIngredients::listUsedInRecipes(int row) const
+QStringList ListModelIngredients::listUsedInRecipes(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return " -";
+		return QStringList();
 
 	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 
@@ -109,33 +109,27 @@ QString ListModelIngredients::listUsedInRecipes(int row) const
 	QList<ShoppingRecipe*> shoppingRecipes;
 	if(!handle.data().isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
 	{
-		return " -";
+		return QStringList();
 	}
 
-	QString text;
+	QStringList items;
 	if(recipes.size() > 0)
 	{
-		text = "<ul>";
 		for(Recipe* pRecipe : qAsConst(recipes))
 		{
-			text += "<li>" + pRecipe->getName() + "</li>";
+			items.append(pRecipe->getName());
 		}
-		text += "</ul>";
-	}
-	else
-	{
-		text = " -";
 	}
 
-	return text;
+	return items;
 }
 
-QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
+QStringList ListModelIngredients::listUsedInShoppingRecipes(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
-		return " -";
+		return QStringList();
 
 	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
 
@@ -143,25 +137,19 @@ QString ListModelIngredients::listUsedInShoppingRecipes(int row) const
 	QList<ShoppingRecipe*> shoppingRecipes;
 	if(!handle.data().isIngredientInUse(rIngredient, &recipes, &shoppingRecipes))
 	{
-		return " -";
+		return QStringList();
 	}
 
-	QString text;
+	QStringList items;
 	if(shoppingRecipes.size() > 0)
 	{
-		text = "<ul>";
 		for(ShoppingRecipe* pRecipe : qAsConst(shoppingRecipes))
 		{
-			text += "<li>" + pRecipe->getName() + "</li>";
+			items.append(pRecipe->getName());
 		}
-		text += "</ul>";
-	}
-	else
-	{
-		text = " -";
 	}
 
-	return text;
+	return items;
 }
 
 void ListModelIngredients::setCategory(int row, QString newCategory)

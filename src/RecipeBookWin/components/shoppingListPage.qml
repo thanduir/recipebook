@@ -348,7 +348,7 @@ Item {
 				Layout.fillWidth: true
 				horizontalAlignment: Text.AlignRight
 				rightPadding: 10
-				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "dddd, dd.MM.yyyy")
+				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
 			}
 
 			RoundButton {
