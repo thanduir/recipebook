@@ -338,8 +338,8 @@ Item {
 			Layout.fillWidth: true
 
 			Label {
+				Layout.leftMargin: 15
 				Layout.fillWidth: true
-				horizontalAlignment: Text.AlignRight
 				rightPadding: 10
 				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
 			}

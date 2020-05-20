@@ -139,10 +139,10 @@ void json::JsonWriter::writeCategories(const RecipeBook& rRecipeBook, QJsonObjec
 void json::JsonWriter::writeIngredients(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
 {
     QJsonObject objectIngredients;
-    for(quint32 i = 0; i < rRecipeBook.getIngredientsCount(); ++i)
+    for(quint32 j = 0; j < rRecipeBook.getIngredientsCount(); ++j)
     {
         QJsonObject ingredientObject;
-        const Ingredient& rIngredient = rRecipeBook.getIngredientAt(i);
+        const Ingredient& rIngredient = rRecipeBook.getIngredientAt(j);
         
         ingredientObject[json::c_strIngredientsCategory] = rIngredient.getCategory().getName();
 

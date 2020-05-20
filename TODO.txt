@@ -3,11 +3,10 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- DueDate sollte explicit setz- und löschbar sein!
-	
-	- Verify that every feature from the app is present!
+	- DueDate: Unset button im calendar dialog? Or is there a good place for a remove button in shoppingListPage?
 	- TODO in serialization!
-
+	- Verify that every feature from the app is present!
+	
 	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
 		-> simplify qml files by moving things out of files (and refactor common use cases)
 			-> also keep in mind that i might want to use the same controls for the smartphone version!

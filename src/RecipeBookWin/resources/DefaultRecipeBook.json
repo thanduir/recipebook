@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
+        "origin-uid": "f9bc48bf-9053-4d2f-a15b-4df440ad0d01",
         "version": 2
     },
     "alternativesTypes": {
@@ -93,1537 +93,1871 @@
         "Abfallsack (blau)": {
             "category": "Restliches",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Aceto Balsamico": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Acetocrème": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Ahornsirup": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Allzweck-Reiniger": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ananas": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Antihistamin": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Apfel": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Apfel (rot) ": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Apfelmus": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Aprikosen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Aubergine": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Austernsauce": {
             "category": "Öle und Saucen",
             "default-unit": "Milliliter",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Avocado": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Backpapier (Bögen)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Backpulver": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Banane": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Basilikum (getrocknet)": {
             "category": "Gewürze",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Basilikum-Pesto": {
             "category": "Öle und Saucen",
             "default-unit": "Dessertspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Beyond Burger": {
             "category": "Halbfertigprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Birchermüesli": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Birnen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Birnen (Dose)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Blumenkohl": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bohnen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bouillon (Gemüse)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bouillon (Huhn)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bouillon (Rind)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bratensauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bratwurst": {
             "category": "Fleisch und Fisch",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Brie": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Brillenputztücher": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Brokkoli": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Brot": {
             "category": "Brot",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Brownie": {
             "category": "Brot",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Butter": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Béchamelsauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Bündnerfleisch": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cashewnüsse ": {
             "category": "Backwaren",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cayenne-Pfeffer": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Champignon": {
             "category": "Salate",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Champignon (getrocknet)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cherry-Tomaten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Chicken-Nuggets": {
             "category": "Fleisch und Fisch",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Chicorée": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Chili-Schote (rot)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Chinakohl": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Chrömli": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cipollata": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cola classic": {
             "category": "Getränke",
             "default-unit": "Liter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cola zero": {
             "category": "Getränke",
             "default-unit": "Liter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Confiture": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Confiture (Erdbeere)": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Confiture (Himbeer)": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cordon Bleu": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cornflakes (Nicole)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cornflakes (Phil)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Couscous": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Cranberries": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Crème Fraiche": {
             "category": "Milchprodukte",
             "default-unit": "Milliliter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Curry": {
             "category": "Gewürze",
             "default-unit": "Teaspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Currypaste (gelb)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Currypaste (grün, Thai)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Currypaste (rot)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Currysauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Datteltomaten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Deo (Nicole)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Dill": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Dukkah": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Edamame-Noodles": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Eier": {
             "category": "Eier",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Erdbeeren": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Erdnussbutter": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Migros"
+            "unavailableProvenances": [
+                "Coop"
+            ]
         },
         "Erdnussöl": {
             "category": "Öle und Saucen",
             "default-unit": "Milliliter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Erdnüsse": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Essiggürkchen": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Falafel": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fenchel": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fertig-Essen": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fertig-Pizza": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Feta": {
             "category": "Milchprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fischsticks": {
             "category": "Fleisch und Fisch",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Flammkuchenteig": {
             "category": "Fertigteig",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fleisch": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Fleischtomaten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Frischkäse": {
             "category": "Milchprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Frucht": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Früchte": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Früchte-Cocktail": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Frühlingszwiebeln": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Gemüse-Mix": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Gnocchi": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Grapefruit": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Gruyère": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Guetzli (gesund)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Gurken (frisch, Snack)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Haarnadeln": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Haaröl": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Hackfleisch (Poulet)": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Hackfleisch (Rind)": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Hackfleisch (gemischt)": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Halbrahm": {
             "category": "Milchprodukte",
             "default-unit": "Deciliter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Halloumi": {
             "category": "Halbfertigprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Handy": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Migros"
+            "unavailableProvenances": [
+                "Coop"
+            ]
         },
         "Haselnüsse (gemahlen)": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Haushalts-Artikel": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Haushaltspapier": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Himbeeren": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Honig": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Hüttenkäse": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ingwer": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kaffee": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Karotten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kartoffeln": {
             "category": "Salate",
             "default-unit": "Kilogram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kartoffeln (früh, jung)": {
             "category": "Salate",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kartoffeln-Rissolées": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Unitless",
-            "provenance": "Migros"
+            "unavailableProvenances": [
+                "Coop"
+            ]
         },
         "Kartoffelstock": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kefen (gefrohren)": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kerbel": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ketchup": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kichererbsen": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kirschen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kirschen (gefrohren)": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kiwi": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Klostein": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kochwein (rot)": {
             "category": "Getränke",
             "default-unit": "Deciliter",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Kochwein (weiss)": {
             "category": "Getränke",
             "default-unit": "Deciliter",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Kohlrabi": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kokosmilch": {
             "category": "Öle und Saucen",
             "default-unit": "Milliliter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Koriander": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Krautstiel": {
             "category": "Salate",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kresse": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kressi-Essig": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kreuzkümmel": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Kuchenteig": {
             "category": "Fertigteig",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Käsekuchenmischung": {
             "category": "Milchprodukte",
             "default-unit": "Gram",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Lachs (frisch)": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Lachs (geräuchert)": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Lasagneplatten": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Lauch": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Limettensaft": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Linzertörtchen": {
             "category": "Brot",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Magermilchpulver": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Magerquark": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mais (Dose)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Maizena": {
             "category": "Backwaren",
             "default-unit": "Dessertspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mandeln (Stifte)": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mandeln (gemahlen)": {
             "category": "Backwaren",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mango": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mayonnaise": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Meerettich-Crème": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mehl (weiss)": {
             "category": "Backwaren",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Milch": {
             "category": "Milchprodukte",
             "default-unit": "Liter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mini-Tupperware": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mokka Joghurt": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mozzarella": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mozzarellaperlen": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mungosprossen": {
             "category": "Salate",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Muskatnuss": {
             "category": "Gewürze",
             "default-unit": "Teaspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Mürbeteig": {
             "category": "Fertigteig",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Nachfüllhandseife": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Nature Joghurt": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Nektarinen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Oliven": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Olivenöl": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Orangen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Orangensaft": {
             "category": "Getränke",
             "default-unit": "Liter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ovomaltine": {
             "category": "Backwaren",
             "default-unit": "Kilogram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pak Choi": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Papeterie-Artikel": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Paprika": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Parmesan": {
             "category": "Milchprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pastetli": {
             "category": "Fertigteig",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pelati": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Peperoni": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Peperoni (Mini)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Petersilie": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pfeffer (weiss)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pfefferminze (frisch)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pfirsich": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Philadelphia": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pizzateig": {
             "category": "Fertigteig",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pommes Frites": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pouletbrust": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pouletflügel": {
             "category": "Fleisch und Fisch",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Pouletgeschnetzeltes": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Puderzucker": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Putzmittel": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Raclettekäse": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Radieschen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rahmsauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rahmspinat": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ras el Hanout": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ravioli": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Reis": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Reis (Basmati)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Reis (Jasmin)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Reisessig": {
             "category": "Öle und Saucen",
             "default-unit": "Dessertspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Reisnudeln": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Ricotta": {
             "category": "Milchprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rindsgeschnetzeltes": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rindsschnitzel": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Risotto": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rohschinken": {
             "category": "Fleisch und Fisch",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Romanescou": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Rosenkohl": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rosmarin (Pulver) ": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rucola": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Rösti": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Safran": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salami (scharf) ": {
             "category": "Fleisch und Fisch",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Salat": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salat (Eisberg)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salat (Eisberg, Kopf)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salat (Kopf)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salat (Nüssler)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salbei (frisch)": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Salz": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sambal Oelek": {
             "category": "Öle und Saucen",
             "default-unit": "Teaspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Saucen-Halbrahm": {
             "category": "Milchprodukte",
             "default-unit": "Deciliter",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Saurer Halbrahm": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schalotten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schinken": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schinkenwürfelchen": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schneidbrett": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schnittlauch": {
             "category": "Salate",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schnittlauch (getrocknet)": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schoggi Joghurt": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schoggiwürfeli": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schokolade": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schuheinlagen": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schweinsgeschnetzeltes": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Schweinsschnitzel": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Senf": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sesam-Samen": {
             "category": "Backwaren",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sesamöl": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Shampoo": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Shiitakepilze": {
             "category": "Konserven",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sojasauce": {
             "category": "Öle und Saucen",
             "default-unit": "Dessertspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sonnenblumenkerne": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sonnenblumenöl": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spaghetti": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spargeln": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Speck": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Speckwürfel": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spinat (Blatt, gefrohren)": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spinat (frisch, jung)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spinat (gehackt, gefrohren)": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spinatplätzli": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Spätzli": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sriracha-Sauce": {
             "category": "Öle und Saucen",
             "default-unit": "Dessertspoon",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Steinofenbrötli": {
             "category": "Brot",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Sultaninen (Rosinen)": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Suure Moscht": {
             "category": "Getränke",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Sweet Chilli Sauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Süss-Sauer-Sauce": {
             "category": "Öle und Saucen",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tee": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Chinanudeln)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Fusilli)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Hörnli)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Kichererbsen)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Penne)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Schnäggli)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Count",
-            "provenance": "Migros"
+            "unavailableProvenances": [
+                "Coop"
+            ]
         },
         "Teigwaren (Tagliatelle)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Vollkorn)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Teigwaren (Älplermagronen)": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Thon": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Thymian": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Toast": {
             "category": "Brot",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Toastschinken": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tofu": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tofu (geräuchert)": {
             "category": "Halbfertigprodukte",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomaten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomaten (getrocknet)": {
             "category": "Konserven",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomatenplätzli": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomatenpüree": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomatensauce (Bollo)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tomatensauce (Nature)": {
             "category": "Konserven",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tortilla-Chips": {
             "category": "Gewürze",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tortillas (Vollkorn)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Tortillas (Weizen)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tortillasauce (mild)": {
             "category": "Öle und Saucen",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Tortillasauce (scharf)": {
             "category": "Öle und Saucen",
             "default-unit": "Unitless",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Trauben (kernlos)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "WC-Papier": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "WC-Reiniger": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Walnüsse": {
             "category": "Backwaren",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Waschmittel (Schwarz)": {
             "category": "Restliches",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Waschmittel (farbig)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Wasser": {
             "category": "Getränke",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Wattestäbchen": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Wein (rot)": {
             "category": "Getränke",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Wein (weiss)": {
             "category": "Getränke",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Whiskey": {
             "category": "Getränke",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Wirz": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "YoQua (Mocca)": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "YoQua (Nature)": {
             "category": "Milchprodukte",
             "default-unit": "Count",
-            "provenance": "Coop"
+            "unavailableProvenances": [
+                "Migros"
+            ]
         },
         "Zimt": {
             "category": "Gewürze",
             "default-unit": "Unitless",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zitrone": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zitronensaft": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zopf": {
             "category": "Brot",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zucchetti": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zucker": {
             "category": "Backwaren",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zwetschgen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zwetschgen (gefrohren)": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "Zwiebel": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         },
         "o.b. (orange)": {
             "category": "Restliches",
             "default-unit": "Count",
-            "provenance": ""
+            "unavailableProvenances": [
+            ]
         }
     },
     "recipes": {
@@ -10158,97 +10492,105 @@
             "ScalingFactor": 2,
             "items": {
                 "Aubergine": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 500,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Basilikum (getrocknet)": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Kartoffeln": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 450,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Mozzarella": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Large",
                     "status": "None"
                 },
                 "Olivenöl": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Parmesan": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Pelati": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Tomatenpüree": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
@@ -10260,169 +10602,183 @@
             "ScalingFactor": 2,
             "items": {
                 "Eier": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Karotten": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Large",
                     "status": "None"
                 },
                 "Maizena": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Mungosprossen": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 50,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Pak Choi": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 120,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Reis (Jasmin)": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 150,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Reisessig": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.5,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Rindsschnitzel": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 250,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Sesam-Samen": {
-                    "_position": 8,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Sesamöl": {
-                    "_position": 9,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Shiitakepilze": {
-                    "_position": 10,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 25,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Sojasauce": {
-                    "_position": 11,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 3,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Sriracha-Sauce": {
-                    "_position": 12,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Zucker": {
-                    "_position": 13,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.5,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
@@ -10434,145 +10790,157 @@
             "ScalingFactor": 2,
             "items": {
                 "Blumenkohl": {
-                    "_position": 0,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 450,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Cayenne-Pfeffer": {
-                    "_position": 1,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Teaspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Chili-Schote (rot)": {
-                    "_position": 2,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Halbrahm": {
-                    "_position": 3,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 275,
                         "unit": "Milliliter"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Kreuzkümmel": {
-                    "_position": 4,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
                         "unit": "Teaspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Limettensaft": {
-                    "_position": 5,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Paprika": {
-                    "_position": 6,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Ricotta": {
-                    "_position": 7,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 125,
                         "unit": "Gram"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Salat (Eisberg, Kopf)": {
-                    "_position": 8,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 0.25,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Schalotten": {
-                    "_position": 9,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Sonnenblumenöl": {
-                    "_position": 10,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 2,
                         "unit": "Dessertspoon"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
                 },
                 "Tortillas (Weizen)": {
-                    "_position": 11,
                     "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 4,
                         "unit": "Count"
                     },
+                    "itemEnabled": true,
                     "optional": false,
                     "size": "Normal",
                     "status": "None"
