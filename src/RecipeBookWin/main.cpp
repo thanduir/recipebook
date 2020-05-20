@@ -64,13 +64,13 @@ bool setupConnections(QObject* pRoot, recipebook::UI::RecipeBookUIData& dataHand
 
 int main(int argc, char *argv[])
 {
-	recipebook::UI::RecipeBookUIData dataHandler;
-
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
 
+	recipebook::UI::RecipeBookUIData dataHandler;
+
 	QQmlApplicationEngine engine;
-		
+
 	QQmlContext* ctxt = engine.rootContext();
 	if(!setupNameLists(ctxt, dataHandler))
 	{

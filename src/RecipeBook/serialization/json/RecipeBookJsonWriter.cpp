@@ -45,7 +45,8 @@ namespace
 
 json::JsonWriter::JsonWriter(QString strUID, bool bStripDescriptions)
 :   m_strUID(strUID),
-    m_bStripDescriptions(bStripDescriptions)
+    m_bStripDescriptions(bStripDescriptions),
+	m_bUseTempFile(true)
 {
 }
 
@@ -67,14 +68,57 @@ bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QFile& file)
 
     QJsonDocument jsonDoc(rootObject);
 
+	if(!m_bUseTempFile || !file.exists())
+	{
+		return writeFile(file, jsonDoc);
+	}
+	else
+	{
+		/* Concept if the file already exists:
+			* write to filename.new
+			* delete filename.old if it already exists
+			* move existing to filename.old
+			* move filename.new to filename
+		*/
+		QString filename = file.fileName();
+
+		QFile tempFile(filename + ".new");
+		if(!writeFile(tempFile, jsonDoc))
+		{
+			return false;
+		}
+
+		QFile fileOld(filename + ".old");
+        if(fileOld.exists())
+        {
+            if(!fileOld.remove())
+			{
+				return false;
+			}
+        }
+		
+        if(!file.rename(fileOld.fileName()))
+        {
+			return false;
+        }
+        if(!tempFile.rename(filename))
+        {
+            fileOld.rename(filename);
+			return false;
+        }
+	}
+
+	return true;
+}
+
+bool json::JsonWriter::writeFile(QFile& file, const QJsonDocument& rJsonDoc)
+{
 	if (!file.open(QIODevice::WriteOnly))
 	{
         qWarning("Couldn't open save file.");
         return false;
     }
-
-	file.write(jsonDoc.toJson());
-
+	file.write(rJsonDoc.toJson());
     file.close();
 
 	return true;

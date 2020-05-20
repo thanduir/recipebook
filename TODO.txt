@@ -3,14 +3,9 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- TODO in serialization!
-	- Verify that every feature from the app is present!
-	
-	- Refactor and improve whatever i can (if possible, use e.g. a custom listview item that adds what we need like insert/remove/changes of items)
-		-> simplify qml files by moving things out of files (and refactor common use cases)
-			-> also keep in mind that i might want to use the same controls for the smartphone version!
-		-> might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
-		- improve layout everywhere (and make consistent)
+	- TODO in Recipe.cpp
+	- might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
+	- improve layout everywhere (and make consistent)
 
 	- Test everything, esp. also that it works correctly with empty data!
 	- Add a reasonable amount of unittests for everything not yet covered!
@@ -25,7 +20,6 @@ TODO
 7. TODOs
 8. UnitTests!
 9. Update and finalize Design.txt!
-
 
 Possibilities for later:
 a. Write json schema?

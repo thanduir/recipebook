@@ -18,6 +18,8 @@ namespace recipebook::serialization::json
     private:
         JsonWriter(QString strUID, bool bStripDescriptions);
 
+		bool writeFile(QFile& file, const QJsonDocument& rJsonDoc);
+
         void writeMetadata(const RBMetaData& rMetaData, QJsonObject& rRootArray);
 
         void writeAlternativesTypes(const RecipeBook& rRecipeBook, QJsonObject& rRootObject);
@@ -33,6 +35,7 @@ namespace recipebook::serialization::json
     private:
         QString m_strUID;
         bool m_bStripDescriptions;
+		bool m_bUseTempFile;
     };
 }
 

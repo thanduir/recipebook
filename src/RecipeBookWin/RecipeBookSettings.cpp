@@ -25,11 +25,12 @@ constexpr char* c_strLastImportFolder				= "folders/lastimportfolder";
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
 RecipeBookSettings::RecipeBookSettings()
-:	m_AppRBFilePath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation))
 {
 	QCoreApplication::setOrganizationName("phwidmer.ch");
 	QCoreApplication::setOrganizationDomain("phwidmer.ch");
 	QCoreApplication::setApplicationName("RecipeBook");
+
+	m_AppRBFilePath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 }
 
 QString RecipeBookSettings::getApplicationInstanceUID()
