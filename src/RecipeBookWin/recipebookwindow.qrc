@@ -43,5 +43,6 @@
 		<file alias="date-range.svg">images/date-range.svg</file>
 		<file alias="list-black.svg">images/list-black.svg</file>
 		<file alias="sort-black.svg">images/sort-black.svg</file>
+		<file alias="cancel-black.svg">images/cancel-black.svg</file>
     </qresource>
 </RCC>

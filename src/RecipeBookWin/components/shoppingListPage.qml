@@ -337,25 +337,47 @@ Item {
 		RowLayout { 
 			Layout.fillWidth: true
 
-			Label {
-				Layout.leftMargin: 15
-				Layout.fillWidth: true
-				rightPadding: 10
-				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
-			}
-
 			RoundButton {
-				id: buttonEditDate
-
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/date-range.svg"
-
+				
 				onClicked: {
 					var currentDate = new Date();
 					var selDate = modelShoppingRecipes.dueDate(lvRecipes.currentIndex);
 					dlgDateSelection.minimumDate = selDate < currentDate ? selDate : currentDate;
 					dlgDateSelection.selectedDate = selDate;
 					dlgDateSelection.open();
+				}
+			}
+			
+			Label {
+				Layout.leftMargin: 10
+				Layout.fillWidth: true
+				rightPadding: 10
+				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
+			}
+
+			Item {
+				height: parent.height
+				Layout.fillWidth: true
+				Layout.rightMargin: 20
+
+				RoundButton {
+					anchors.centerIn: parent
+					display: AbstractButton.IconOnly
+					icon.source: "qrc:/images/cancel-black.svg"
+					height: 40
+					width: height				
+					padding: 10
+
+					visible: modelShoppingRecipes.isDueDateSet(lvRecipes.currentIndex)
+
+					onClicked: {
+						modelShoppingRecipes.resetDueDate(lvRecipes.currentIndex)
+						var oldIndex = lvRecipes.currentIndex
+						lvRecipes.currentIndex = -1
+						lvRecipes.currentIndex = oldIndex
+					}
 				}
 			}
 		}

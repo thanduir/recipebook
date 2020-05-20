@@ -3,7 +3,6 @@ TODO
 
 3. Design and write GUI to manage recipes (feature parity with the app)!
 	
-	- DueDate: Unset button im calendar dialog? Or is there a good place for a remove button in shoppingListPage?
 	- TODO in serialization!
 	- Verify that every feature from the app is present!
 	

@@ -95,6 +95,17 @@ QDate ListModelShoppingRecipes::dueDate(int row) const
 	return rRecipe.getDueDate();
 }
 
+bool ListModelShoppingRecipes::isDueDateSet(int row) const
+{
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+
+	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
+		return false;
+
+	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+	return rRecipe.getDueDate().isValid();
+}
+
 bool ListModelShoppingRecipes::everythingSet(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
@@ -151,6 +162,21 @@ void ListModelShoppingRecipes::setDueDate(int row, QDate date)
 
 		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
 		rRecipe.setDueDate(date);
+	}
+
+	setDataChanged(row, ShoppingRecipeRoles::DueDateRole);
+}
+
+void ListModelShoppingRecipes::resetDueDate(int row)
+{
+	{
+		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+
+		if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
+			return;
+
+		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+		rRecipe.setDueDate(QDate());
 	}
 
 	setDataChanged(row, ShoppingRecipeRoles::DueDateRole);

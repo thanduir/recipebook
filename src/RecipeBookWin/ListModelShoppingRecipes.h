@@ -35,11 +35,13 @@ namespace recipebook::UI
 		QString name(int row) const;
 		float scalingFactor(int row) const;
 		QDate dueDate(int row) const;
+		bool isDueDateSet(int row) const;
 
 		bool everythingSet(int row) const;
 
 		void setScalingFactor(int row, float fFactor);
 		void setDueDate(int row, QDate date);
+		void resetDueDate(int row);
         
 		int renameRecipe(int row, QString newName);
 

@@ -31,24 +31,24 @@ Dialog {
 			}
 
 			Image {
-					anchors { top: parent.top; right: parent.right }
-					id: clearText
-					fillMode: Image.PreserveAspectFit
-					visible: textFilter.text
-					source: "qrc:/images/backspace.svg"
-					height: parent.height - 5
+				anchors { top: parent.top; right: parent.right }
+				id: clearText
+				fillMode: Image.PreserveAspectFit
+				visible: textFilter.text
+				source: "qrc:/images/backspace.svg"
+				height: parent.height - 5
 
-					MouseArea {
-						id: clear
-						anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
-						height: textFilter.height; width: textFilter.height
-						onClicked: {
-							textFilter.text = ""
-							allValuesFilterModel.setFilterString(textFilter.text);
-							textFilter.forceActiveFocus()
-						}
+				MouseArea {
+					id: clear
+					anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+					height: textFilter.height; width: textFilter.height
+					onClicked: {
+						textFilter.text = ""
+						allValuesFilterModel.setFilterString(textFilter.text);
+						textFilter.forceActiveFocus()
 					}
 				}
+			}
 		}
 
 		ListView {
