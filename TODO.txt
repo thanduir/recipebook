@@ -1,24 +1,14 @@
 TODO
 ====
 
-3. Design and write GUI to manage recipes (feature parity with the app)!
-	
-	- TODO in Recipe.cpp
-	- might i be able to get rid of the Switch-Control in recipesTab and combine the two ListViews after refactoring?
-	- improve layout everywhere (and make consistent)
-
-	- Test everything, esp. also that it works correctly with empty data!
-	- Add a reasonable amount of unittests for everything not yet covered!
-4. Update Design.txt! (incl. code organization descriptions?)
-
-5. Exporter
+5. Exporters
 	* Go shopping pdf exporter
 	* Kochbuch-Exporter
 		-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
 		-> the same is true for groupings of recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
 6. Merge functionality
 7. TODOs
-8. UnitTests!
+8. UnitTests
 9. Update and finalize Design.txt!
 
 Possibilities for later:

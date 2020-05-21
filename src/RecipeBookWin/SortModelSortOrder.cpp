@@ -56,6 +56,12 @@ int SortModelSortOrder::renameCategory(int row, QString newName)
 	return mapFromSource(pCategories->index(pCategories->renameCategory(rowSource, newName), 0)).row();
 }
 
+bool SortModelSortOrder::canCategoriesBeAdded() const
+{
+	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());
+	return pCategories->canCategoriesBeAdded();
+}
+
 int SortModelSortOrder::addCategory(QString strCategory)
 {
 	ListModelCategories* pCategories = static_cast<ListModelCategories*>(sourceModel());

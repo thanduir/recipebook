@@ -146,8 +146,18 @@ void ListModelAlternativesGroups::setColor(int row, QString strColor)
 	emit alternativesGroupChanged(row);
 }
 
+bool ListModelAlternativesGroups::canTypesBeAdded() const
+{
+	return true;
+}
+
 int ListModelAlternativesGroups::addType(QString strType)
 {
+	if(!canTypesBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);

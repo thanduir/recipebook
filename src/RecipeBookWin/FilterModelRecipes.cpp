@@ -107,6 +107,12 @@ int FilterModelRecipes::renameRecipe(int row, QString newName)
 	return mapFromSource(pRecipes->index(pRecipes->renameRecipe(rowSource, newName), 0)).row();
 }
 
+bool FilterModelRecipes::canRecipesBeAdded() const
+{
+	ListModelRecipes* pRecipes = static_cast<ListModelRecipes*>(sourceModel());
+	return pRecipes->canRecipesBeAdded();
+}
+
 int FilterModelRecipes::addRecipe(QString strRecipe)
 {
 	ListModelRecipes* pRecipes = static_cast<ListModelRecipes*>(sourceModel());

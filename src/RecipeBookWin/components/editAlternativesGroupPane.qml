@@ -29,8 +29,7 @@ Item {
 		title: qsTr("Remove alternatives group")
 		onAccepted: {
 			alternativesTypes.removeType(lvValues.currentIndex)
-			lvValues.incrementCurrentIndex()
-			lvValues.decrementCurrentIndex()
+			lvValues.currentIndex = -1
 		}
 	}
 
@@ -120,8 +119,8 @@ Item {
 		anchors.bottom: parent.bottom
 
 		RowLayout {
-			anchors.fill: parent
-			//spacing: 20
+			anchors.centerIn: parent
+			spacing: 20
                     
 			RoundButton { 
 				display: AbstractButton.IconOnly
@@ -132,6 +131,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add alternatives group")
 
+				enabled: alternativesTypes.canTypesBeAdded()
 				onClicked: dlgAddType.open()
 			}
 
@@ -144,6 +144,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Rename alternatives group")
 
+				enabled: lvValues.count > 0 && lvValues.currentIndex != -1
 				onClicked: {
 					dlgRenameType.initialText = alternativesTypes.name(lvValues.currentIndex);
 					dlgRenameType.open();

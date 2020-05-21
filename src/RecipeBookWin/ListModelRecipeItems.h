@@ -75,6 +75,7 @@ namespace recipebook::UI
 		void setOptional(int row, bool bOptional);
 		int setGroup(int row, QString group);
 
+		bool canRecipeItemsBeAdded() const;
 		int addRecipeItem(QString strIngredient);
 		bool removeItem(int row);
 		void moveItem(int row, int target);
@@ -87,8 +88,6 @@ namespace recipebook::UI
 		void changeState(QString itemName, bool selected);
 		void cancelEditList();
 		bool applyEditList();
-
-		void onDataReset() { setRecipe(-1); }
 
 	protected:
 		virtual QHash<int, QByteArray> roleNames() const override;

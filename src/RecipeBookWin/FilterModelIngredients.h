@@ -28,6 +28,7 @@ namespace recipebook::UI
 
 		int renameIngredient(int row, QString newName);
 
+		bool canIngredientsBeAdded() const;
 		int addIngredient(QString strIngredient);
 		bool existsIngredient(QString strIngredient) const;
 

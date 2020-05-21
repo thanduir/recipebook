@@ -91,8 +91,6 @@ quint32 Recipe::getRecipeItemIndex(QString strName) const
 
 bool Recipe::moveGroupItemsTogether()
 {
-	// TODO(phiwid): Refactor and symplify this emthod!
-
 	bool bAlreadyCorrectlyOrdered = true;
 	for(int i = 0; i < m_RecipeItems.count(); ++i)
 	{

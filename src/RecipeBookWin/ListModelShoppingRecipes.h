@@ -45,6 +45,8 @@ namespace recipebook::UI
         
 		int renameRecipe(int row, QString newName);
 
+		bool canShoppingRecipesBeAddedFromRecipes() const;
+		bool canNewShoppingRecipesBeAdded() const;
 		int addFromRecipe(QString strRecipe);
 		int addNewRecipe(QString strName);
 		bool existsRecipe(QString strRecipe) const;

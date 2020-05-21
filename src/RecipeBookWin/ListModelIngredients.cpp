@@ -275,18 +275,24 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 	return newIndex;
 }
 
+bool ListModelIngredients::canIngredientsBeAdded() const
+{
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getCategoriesCount() > 0;
+}
+
 int ListModelIngredients::addIngredient(QString strIngredient)
 {
+	if(!canIngredientsBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
 		if(handle.data().existsIngredient(strIngredient))
-		{
-			return -1;
-		}
-
-		if(handle.data().getCategoriesCount() == 0)
 		{
 			return -1;
 		}

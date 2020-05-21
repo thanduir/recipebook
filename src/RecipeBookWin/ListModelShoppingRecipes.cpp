@@ -226,8 +226,19 @@ int ListModelShoppingRecipes::renameRecipe(int row, QString newName)
 	return newIndex;
 }
 
+bool ListModelShoppingRecipes::canShoppingRecipesBeAddedFromRecipes() const
+{
+	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+	return handle.data().getRecipesCount() > 0;
+}
+
 int ListModelShoppingRecipes::addFromRecipe(QString strRecipe)
 {
+	if(!canShoppingRecipesBeAddedFromRecipes())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	QString strShoppingRecipe = strRecipe;
 	{
@@ -261,8 +272,18 @@ int ListModelShoppingRecipes::addFromRecipe(QString strRecipe)
 	return index;
 }
 
+bool ListModelShoppingRecipes::canNewShoppingRecipesBeAdded() const
+{
+	return true;
+}
+
 int ListModelShoppingRecipes::addNewRecipe(QString strRecipe)
 {
+	if(!canNewShoppingRecipesBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);

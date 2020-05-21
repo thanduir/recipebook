@@ -20,16 +20,10 @@ int ListModelCategories::rowCount(const QModelIndex& parent) const
 
 QVariant ListModelCategories::data(const QModelIndex& index, int iRole) const
 {
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-
-	if (index.row() < 0 || index.row() >= (int)handle.data().getCategoriesCount())
-		return QVariant();
-
-	const Category& rCategory = handle.data().getCategoryAt(index.row());
 	CategoryRoles role = static_cast<CategoryRoles>(iRole);
 	if(role == CategoryRoles::NameRole)
 	{
-		return rCategory.getName();
+		return name(index.row());
 	}
 
 	return QVariant();
@@ -77,8 +71,18 @@ int ListModelCategories::renameCategory(int row, QString newName)
 	return row;
 }
 
+bool ListModelCategories::canCategoriesBeAdded() const
+{
+	return true;
+}
+
 int ListModelCategories::addCategory(QString strCategory)
 {
+	if(!canCategoriesBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);

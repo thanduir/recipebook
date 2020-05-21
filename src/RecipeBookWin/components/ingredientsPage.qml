@@ -31,8 +31,7 @@ Item {
 		title: qsTr("Remove ingredient")
 		onAccepted: {
 			filterModelIngredients.removeIngredient(lvIngredients.currentIndex)
-			lvIngredients.incrementCurrentIndex()
-			lvIngredients.decrementCurrentIndex()
+			lvIngredients.currentIndex = -1
 		}
 	}
 
@@ -129,6 +128,15 @@ Item {
 				}
 			}
 		}
+
+		Connections {
+			target: modelIngredients
+			onModelReset: {
+				if(modelIngredients.rowCount() == 0) {
+					lvIngredients.currentIndex = -1
+				}
+			}
+		}
 	}
 
 	Pane {
@@ -141,7 +149,8 @@ Item {
 		anchors.bottomMargin: 10
 
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
         
 			RoundButton {
 				id: buttonAdd
@@ -153,7 +162,13 @@ Item {
 				ToolTip.timeout: 5000
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add ingredient")
-
+				
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = filterModelIngredients.canIngredientsBeAdded();
+					}
+				}
 				onClicked: dlgAddIngredient.open()
 			}
 
@@ -168,6 +183,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Rename ingredient")
 
+				enabled: lvIngredients.currentIndex != -1
 				onClicked: {
 					dlgRenameIngredient.initialText = filterModelIngredients.name(lvIngredients.currentIndex);
 					dlgRenameIngredient.open();

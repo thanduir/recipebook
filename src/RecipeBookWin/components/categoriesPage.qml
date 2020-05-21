@@ -114,6 +114,19 @@ Item {
 				modelSortOrder.setSortOrder(0);
 			}
 		}
+
+		Connections {
+			target: modelSortOrders
+			onModelReset: {
+				if(modelSortOrders.rowCount() <= lvSortOrders.currentIndex) {
+					lvSortOrders.currentIndex = -1;
+				}
+				else if(modelSortOrders.rowCount() > 0 && lvSortOrders.currentIndex == -1) {
+					lvSortOrders.currentIndex = 0;
+				}
+				modelSortOrder.setSortOrder(lvSortOrders.currentIndex);
+			}
+		}
 	}
 
 	Pane {
@@ -121,10 +134,11 @@ Item {
 		anchors.left: lvSortOrders.left
 		anchors.right: lvSortOrders.right
 		anchors.bottom: parent.bottom
-		anchors.bottomMargin: 10
 
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
+
 			RoundButton {
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/add-black.svg"
@@ -134,6 +148,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add sort order")
 
+				enabled: modelSortOrders.canSortOrdersBeAdded()
 				onClicked: dlgAddSortOrder.open()
 			}
 			RoundButton { 
@@ -145,6 +160,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Rename sort order")
 
+				enabled: lvSortOrders.currentIndex != -1
 				onClicked: {
 					dlgRenameSortOrder.initialText = modelSortOrders.name(lvSortOrders.currentIndex);
 					dlgRenameSortOrder.open();
@@ -270,7 +286,9 @@ Item {
 		anchors.top: parent.top
 		anchors.topMargin: 24
         
-		text: qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
+		visible: lvSortOrders.currentIndex != -1
+
+		text: "" // qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
 		font.bold: true
 	}
 
@@ -283,6 +301,8 @@ Item {
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
 		width: 400
+
+		visible: lvSortOrders.currentIndex != -1
 
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
@@ -302,9 +322,12 @@ Item {
 		anchors.right: lvCategories.right
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 48
-
+		
+		visible: lvSortOrders.currentIndex != -1
+		
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
 
 			RoundButton { 
 				display: AbstractButton.IconOnly
@@ -315,6 +338,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add category")
 
+				enabled: modelSortOrder.canCategoriesBeAdded()
 				onClicked: dlgAddCategory.open()
 			}
 			RoundButton { 
@@ -348,6 +372,15 @@ Item {
 				}
 			}
 		}
+	}
+
+	ToolSeparator {
+		anchors.left: lvCategories.right
+		anchors.top: parent.top
+		anchors.bottom: parent.bottom
+		anchors.topMargin: 24
+		anchors.leftMargin: 12
+		anchors.bottomMargin: 24
 	}
 
 	Label {

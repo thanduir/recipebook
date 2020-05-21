@@ -89,11 +89,7 @@ RecipeBookUIData::RecipeBookUIData()
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelRecipes, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
-			&m_ModelRecipeItems, SLOT(onDataReset()));
-	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelShoppingRecipes, SLOT(onDataReset()));
-	connect(this, SIGNAL(signalDataReset()),
-			&m_ModelShoppingListItems, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelGoShopping, SLOT(onDataReset()));
 

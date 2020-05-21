@@ -25,6 +25,7 @@ namespace recipebook::UI
 		QString name(int row) const;
 		int renameCategory(int row, QString newName);
 
+		bool canCategoriesBeAdded() const;
 		int addCategory(QString strCategory);
 		bool existsCategory(QString strCategory) const;
 

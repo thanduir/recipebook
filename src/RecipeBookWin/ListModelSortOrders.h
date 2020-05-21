@@ -32,6 +32,7 @@ namespace recipebook::UI
 		QString name(int row) const;
 		int renameSortOrder(int row, QString newName);
 
+		bool canSortOrdersBeAdded() const;
 		int addSortOrder(QString strSortOrder);
 		bool existsSortOrder(QString strSortOrder) const;
 

@@ -65,6 +65,7 @@ Item {
 			modelShoppingRecipes.removeRecipe(lvRecipes.currentIndex)
 			lvRecipes.incrementCurrentIndex()
 			lvRecipes.decrementCurrentIndex()
+			modelShoppingListItems.setShoppingRecipe(lvRecipes.currentIndex);
 		}
 	}
 
@@ -73,8 +74,8 @@ Item {
 		title: qsTr("Clear shopping list")
 		onAccepted: {
 			modelShoppingRecipes.resetShoppingList()
-			lvRecipes.incrementCurrentIndex()
-			lvRecipes.decrementCurrentIndex()
+			lvRecipes.currentIndex = -1
+			modelShoppingListItems.setShoppingRecipe(-1);
 		}
 	}
 
@@ -140,7 +141,7 @@ Item {
 		ToolTip.visible: hovered
 		ToolTip.text: qsTr("Clear all shopping recipe")
 
-		enabled: lvRecipes.currentIndex < lvRecipes.count
+		enabled: lvRecipes.currentIndex != -1
 		onClicked: {
 			dlgClearShoppingList.msgText = qsTr("This will remove all recipes from the list. Proceed?");
 			dlgClearShoppingList.open();
@@ -195,6 +196,22 @@ Item {
 				modelShoppingListItems.setShoppingRecipe(0);
 			}
 		}
+
+		Connections {
+			target: modelShoppingRecipes
+			onModelReset: {
+				if(modelShoppingRecipes.rowCount() <= lvRecipes.currentIndex)
+				{
+					lvRecipes.currentIndex = -1;
+					buttonAddFromRecipe.enabled = modelShoppingRecipes.canShoppingRecipesBeAddedFromRecipes()
+				}
+				else
+				{
+					modelShoppingListItems.setShoppingRecipe(-1);
+				}
+				modelShoppingListItems.setShoppingRecipe(lvRecipes.currentIndex);
+			}
+		}
 	}
 
 	Pane {
@@ -204,12 +221,13 @@ Item {
 		anchors.right: lvRecipes.right
 		anchors.leftMargin: 10
 		anchors.rightMargin: 10
-		anchors.bottomMargin: 10
 
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
         
 			RoundButton {
+				id: buttonAddFromRecipe
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/add-black.svg"
 
@@ -218,6 +236,12 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add from recipe")
 
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = modelShoppingRecipes.canShoppingRecipesBeAddedFromRecipes()
+					}
+				}
 				onClicked: {
 					dlgAddExistingRecipes.editListModel = modelShoppingRecipes;
 					dlgAddExistingRecipes.allValuesFilterModel = filterModelRecipes;
@@ -235,6 +259,12 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add new shopping recipe")
 
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = modelShoppingRecipes.canNewShoppingRecipesBeAdded()
+					}
+				}
 				onClicked: dlgAddNewRecipe.open()
 			}
 
@@ -247,6 +277,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Rename shopping recipe")
 
+				enabled: lvRecipes.currentIndex < lvRecipes.count && lvRecipes.currentIndex >= 0
 				onClicked: {
 					dlgRenameRecipe.initialText = modelShoppingRecipes.name(lvRecipes.currentIndex);
 					dlgRenameRecipe.open();
@@ -387,10 +418,10 @@ Item {
 	ListView {
 		id: lvCurrentRecipe
 		anchors.left: grid.right
-		anchors.top: parent.top
+		anchors.top: labelCurrentRecipe.bottom
 		anchors.bottom: paneCurrentRecipe.top
 		anchors.topMargin: 24
-		anchors.leftMargin: 24
+		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
 		width: 400
 
@@ -649,15 +680,22 @@ Item {
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 48
 
+		visible: lvRecipes.currentIndex != -1
+
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
         
 			RoundButton {
-				enabled: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
-
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/list-black.svg"
 
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = modelShoppingListItems.canItemsBeAdded()
+					}
+				}
 				onClicked: {
 					dlgEditShoppingListItemsList.editListModel = modelShoppingListItems;
 					dlgEditShoppingListItemsList.allValuesFilterModel = filterModelIngredients;

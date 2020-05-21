@@ -251,8 +251,18 @@ int ListModelRecipes::renameRecipe(int row, QString newName)
 	return newIndex;
 }
 
+bool ListModelRecipes::canRecipesBeAdded() const
+{
+	return true;
+}
+
 int ListModelRecipes::addRecipe(QString strRecipe)
 {
+	if(!canRecipesBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);

@@ -18,6 +18,7 @@ namespace recipebook::UI
 		QString color(int row) const;
 		void setColor(int row, QString strColor);
 
+		bool canTypesBeAdded() const;
 		int addType(QString strType);
 		bool existsType(QString strType) const;
 

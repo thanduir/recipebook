@@ -624,8 +624,24 @@ void ListModelShoppingListItems::setItemEnabled(int row, bool bEnabled)
 	}
 }
 
+bool ListModelShoppingListItems::canItemsBeAdded() const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+	if(pRecipe == nullptr)
+	{
+		return false;
+	}
+	return handle.data().getIngredientsCount() > 0;
+}
+
 int ListModelShoppingListItems::addItem(QString strIngredient)
 {
+	if(!canItemsBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		RBDataReadHandle handle(m_rRBDataHandler);

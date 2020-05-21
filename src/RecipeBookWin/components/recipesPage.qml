@@ -43,9 +43,10 @@ Item {
 		id: dlgRemoveRecipe
 		title: qsTr("Remove recipe")
 		onAccepted: {
-			filterModelRecipes.removeRecipe(lvRecipes.currentIndex)
-			lvRecipes.incrementCurrentIndex()
-			lvRecipes.decrementCurrentIndex()
+			filterModelRecipes.removeRecipe(lvRecipes.currentIndex);
+			lvRecipes.incrementCurrentIndex();
+			lvRecipes.decrementCurrentIndex();
+			modelRecipeItems.setRecipe(lvRecipes.currentIndex);
 		}
 	}
 
@@ -154,6 +155,17 @@ Item {
 			if(lvRecipes.count > 0) {
 				lvRecipes.currentIndex = 0;
 				modelRecipeItems.setRecipe(0);
+				editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded();
+			}
+		}
+
+		Connections {
+			target: modelRecipes
+			onModelReset: {
+				if(modelRecipes.rowCount() == 0) {
+					lvRecipes.currentIndex = -1;
+				}
+				modelRecipeItems.setRecipe(lvRecipes.currentIndex);
 			}
 		}
 	}
@@ -165,10 +177,10 @@ Item {
 		anchors.right: lvRecipes.right
 		anchors.leftMargin: 10
 		anchors.rightMargin: 10
-		anchors.bottomMargin: 10
 
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
         
 			RoundButton {
 				id: buttonAdd
@@ -181,6 +193,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Add recipe")
 
+				enabled: filterModelRecipes.canRecipesBeAdded()
 				onClicked: dlgAddRecipe.open()
 			}
 
@@ -195,6 +208,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Copy recipe")
 
+				enabled: lvRecipes.currentIndex != -1
 				onClicked: {
 					dlgCopyRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
 					dlgCopyRecipe.open();
@@ -212,6 +226,7 @@ Item {
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Rename recipe")
 
+				enabled: lvRecipes.currentIndex != -1
 				onClicked: {
 					dlgRenameRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
 					dlgRenameRecipe.open();
@@ -338,9 +353,9 @@ Item {
 		anchors.top: textShortDesc.bottom
 		anchors.left: lvRecipes.right
 		anchors.right: grid.right
-		anchors.bottom: parent.bottom
+		anchors.bottom: paneRecipes.bottom
 		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
+		anchors.bottomMargin: 12
 		anchors.rightMargin: 24
 
 		visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
@@ -369,6 +384,8 @@ Item {
 		anchors.right: lvCurrentRecipe.right
 		anchors.top: parent.top
 		anchors.topMargin: 24
+
+		visible: lvRecipes.currentIndex != -1
 
 		text: "Rearrange recipe items"
 	}
@@ -791,12 +808,14 @@ Item {
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 48
 
+		visible: lvRecipes.currentIndex != -1
+
 		RowLayout {
-			anchors.fill: parent
+			anchors.centerIn: parent
+			spacing: 20
         
 			RoundButton {
-				enabled: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
-
+				id: editIngredientsListButton
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/list-black.svg"
 
@@ -804,6 +823,13 @@ Item {
 				ToolTip.timeout: 5000
 				ToolTip.visible: hovered
 				ToolTip.text: qsTr("Edit ingredients list")
+
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = modelRecipeItems.canRecipeItemsBeAdded()
+					}
+				}
 
 				onClicked: {
 					dlgEditRecipeItemsList.editListModel = modelRecipeItems;

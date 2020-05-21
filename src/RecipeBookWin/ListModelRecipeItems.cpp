@@ -579,8 +579,24 @@ int ListModelRecipeItems::setGroup(int row, QString group)
 	return newRow;
 }
 
+bool ListModelRecipeItems::canRecipeItemsBeAdded() const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const Recipe* pRecipe = getRecipe(handle);
+	if(pRecipe == nullptr)
+	{
+		return false;
+	}
+	return handle.data().getIngredientsCount() > 0;
+}
+
 int ListModelRecipeItems::addRecipeItem(QString strIngredient)
 {
+	if(!canRecipeItemsBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		RBDataReadHandle handle(m_rRBDataHandler);

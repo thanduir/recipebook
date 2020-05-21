@@ -20,6 +20,7 @@ void RecipeBook::clearData()
 	m_Categories.clear();
 	m_SortOrders.clear();
 	m_Ingredients.clear();
+	m_AlternativesTypes.clear();
 	m_Recipes.clear();
 	m_ShoppingRecipes.clear();
 }

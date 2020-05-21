@@ -78,6 +78,7 @@ namespace recipebook::UI
 		void setStatus(int row, quint32 uiStatus);
 		void setItemEnabled(int row, bool bEnabled);
 
+		bool canItemsBeAdded() const;
 		int addItem(QString strIngredient);
 		bool removeItem(int row);
 		
@@ -89,7 +90,6 @@ namespace recipebook::UI
 		bool applyEditList();
 
 		void onDependentItemChanged(quint32 index);
-		void onDataReset() { setShoppingRecipe(-1); }
 
 	signals:
 		void shoppingitemEnabledChanged(int recipeId);

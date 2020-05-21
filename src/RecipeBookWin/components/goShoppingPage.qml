@@ -48,13 +48,14 @@ Item {
 		checkable: true
 
 		display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/sort-black.svg"
+		icon.source: "qrc:/images/sort-black.svg"
 
 		ToolTip.delay: 1000
 		ToolTip.timeout: 5000
 		ToolTip.visible: hovered
 		ToolTip.text: qsTr("List collected items separately")
 
+		enabled: cbxSortOrder.count > 0
 		onClicked: {
 			recipeBookSettings.setActiveListOrderingGoShopping(checked ? shoppingListOrderingNames[1] : shoppingListOrderingNames[0]);
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, checked);

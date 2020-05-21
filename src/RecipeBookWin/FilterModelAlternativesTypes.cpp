@@ -46,6 +46,12 @@ void FilterModelAlternativesTypes::setColor(int row, QString strColor)
 	pGroups->setColor(rowSource, strColor);
 }
 
+bool FilterModelAlternativesTypes::canTypesBeAdded() const
+{
+	ListModelAlternativesGroups* pGroups = static_cast<ListModelAlternativesGroups*>(sourceModel());
+	return pGroups->canTypesBeAdded();
+}
+
 int FilterModelAlternativesTypes::addType(QString strType)
 {
 	ListModelAlternativesGroups* pGroups = static_cast<ListModelAlternativesGroups*>(sourceModel());

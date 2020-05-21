@@ -22,16 +22,10 @@ int ListModelSortOrders::rowCount(const QModelIndex& parent) const
 
 QVariant ListModelSortOrders::data(const QModelIndex& index, int iRole) const
 {
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-
-	if (index.row() < 0 || index.row() >= (int)handle.data().getIngredientsCount())
-		return QVariant();
-
-	const SortOrder& rSortOrder = handle.data().getSortOrderAt(index.row());
 	SortOrdersRoles role = static_cast<SortOrdersRoles>(iRole);
 	if(role == SortOrdersRoles::NameRole)
 	{
-		return rSortOrder.getName();
+		return name(index.row());
 	}
 
 	return QVariant();
@@ -101,8 +95,18 @@ int ListModelSortOrders::renameSortOrder(int row, QString newName)
 	return newIndex;
 }
 
+bool ListModelSortOrders::canSortOrdersBeAdded() const
+{
+	return true;
+}
+
 int ListModelSortOrders::addSortOrder(QString strSortOrder)
 {
+	if(!canSortOrdersBeAdded())
+	{
+		return -1;
+	}
+
 	qint32 index = -1;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);

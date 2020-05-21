@@ -11,6 +11,7 @@ Requirements
 	* 3-way-merge by keeping the latest sync'd state with different devices, manuel conflict resolving
 		-> extend format with per device / instance GUID	
 - Import / Export of json files without merge
+- PDF-Export of shopping list
 - Export to odt / pdf / ? in a style similar to current "Kochbuch Phil & Nicole.odt"
 
 - Possible long term goal: 

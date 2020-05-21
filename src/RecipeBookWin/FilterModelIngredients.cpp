@@ -100,6 +100,12 @@ int FilterModelIngredients::renameIngredient(int row, QString newName)
 	return mapFromSource(pIngredients->index(pIngredients->renameIngredient(rowSource, newName), 0)).row();
 }
 
+bool FilterModelIngredients::canIngredientsBeAdded() const
+{
+	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
+	return pIngredients->canIngredientsBeAdded();
+}
+
 int FilterModelIngredients::addIngredient(QString strIngredient)
 {
 	ListModelIngredients* pIngredients = static_cast<ListModelIngredients*>(sourceModel());
