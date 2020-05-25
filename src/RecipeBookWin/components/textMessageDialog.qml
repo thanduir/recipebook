@@ -10,16 +10,49 @@ Dialog {
 	width: 360
 
 	property alias msgText: dlgAskLabel.text
+	property bool errorIcon: false
+	property bool okOnly: false
     
 	Label { 
 		id: dlgAskLabel
 		anchors.centerIn: parent
 		width: parent.width
 		wrapMode: Text.WordWrap
+
+		visible: !errorIcon
+	}
+
+	Item {
+		visible: errorIcon
+		anchors.left: parent.left
+		anchors.right: parent.right
+		anchors.verticalCenter: parent.verticalCenter
+		width: 360
+		implicitHeight: dlgAskLabelWarn.implicitHeight
+
+		Image {
+			id: imgWarn
+			anchors.left: parent.left
+			anchors.verticalCenter: parent.verticalCenter
+			height: 48
+			fillMode: Image.PreserveAspectFit
+			source: "qrc:/images/error-black.svg"
+		}
+		Label { 
+			id: dlgAskLabelWarn
+			
+			anchors.left: imgWarn.right
+			anchors.right: parent.right
+			anchors.leftMargin: 24
+			anchors.verticalCenter: parent.verticalCenter
+
+			wrapMode: Text.WordWrap
+			text: dlgAskLabel.text
+		}
 	}
 
 	footer: DialogButtonBox {
 		id: buttons
-		standardButtons: Dialog.Yes | Dialog.No
+		standardButtons: okOnly ? Dialog.Ok : Dialog.Yes | Dialog.No
 	}
 }

@@ -1,9 +1,10 @@
-#include "RecipeBookUIData.h"
+#include "RecipeBookUIContext.h"
 #include <QtGlobal>
 #include <QDir>
 #include <QTimer>
 #include <QUrl>
 #include <QFileInfo>
+#include <QQmlContext>
 #include "serialization/RecipeBookSerializerFactory.h"
 #include "data/Size.h"
 #include "data/Status.h"
@@ -14,7 +15,7 @@ using namespace recipebook::serialization;
 
 const int c_SaveIntervalSeconds = 60;
 
-RecipeBookUIData::RecipeBookUIData()
+RecipeBookUIContext::RecipeBookUIContext()
 :	m_RBData(),
 	m_Converter(),
 	m_Settings(),
@@ -32,6 +33,9 @@ RecipeBookUIData::RecipeBookUIData()
 	m_ModelShoppingRecipes(m_RBData, m_Settings),
 	m_ModelShoppingListItems(m_RBData, m_Converter),
 	m_ModelGoShopping(m_RBData, m_Converter),
+	m_Engine(),
+	m_DlgInterface(m_Engine),
+	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
 	m_SaveLock()
 {
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
@@ -99,7 +103,7 @@ RecipeBookUIData::RecipeBookUIData()
 	pTimer->start(c_SaveIntervalSeconds * 1000);
 }
 
-void RecipeBookUIData::slotSave()
+void RecipeBookUIContext::slotSave()
 {
 	if(!m_SaveLock.testAndSetAcquire(0, 1))
 	{
@@ -133,7 +137,7 @@ void RecipeBookUIData::slotSave()
 	m_SaveLock = 0;
 }
 
-void RecipeBookUIData::slotExport(QString strFileURL)
+void RecipeBookUIContext::slotExport(QString strFileURL)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
@@ -150,7 +154,7 @@ void RecipeBookUIData::slotExport(QString strFileURL)
 	}
 }
 
-void RecipeBookUIData::slotImport(QString strFileURL)
+void RecipeBookUIContext::slotImport(QString strFileURL)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
@@ -175,7 +179,7 @@ void RecipeBookUIData::slotImport(QString strFileURL)
 	}
 }
 
-void RecipeBookUIData::slotLoadDefaultData()
+void RecipeBookUIContext::slotLoadDefaultData()
 {
 	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
 	RBMetaData metaData;
@@ -195,7 +199,7 @@ void RecipeBookUIData::slotLoadDefaultData()
 	}
 }
 
-void RecipeBookUIData::slotResetData()
+void RecipeBookUIContext::slotResetData()
 {
 	{
 		recipebook::RBDataWriteHandle handle(m_RBData);
@@ -205,102 +209,84 @@ void RecipeBookUIData::slotResetData()
 	emit signalDataReset();
 }
 
-recipebook::RecipeBookSettings& RecipeBookUIData::getRecipeBookSettings()
+bool RecipeBookUIContext::setupQml()
 {
-	return m_Settings;
+	QQmlContext* ctxt = m_Engine.rootContext();
+	if(!setupNameLists(ctxt))
+	{
+		return false;
+	}
+
+	m_Engine.load(QUrl(QStringLiteral("qrc:/recipebook.qml")));
+	if(m_Engine.rootObjects().isEmpty())
+	{
+		return false;
+	}
+
+	QObject* rootObject = m_Engine.rootObjects().first();
+	if(!setupConnections(rootObject))
+	{
+		return false;
+	}
+
+	return true;
 }
 
-QStringList RecipeBookUIData::getAllUnitNames() const
+bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 {
-	return m_Converter.getAllUnitNames();
+	if(context == nullptr)
+	{
+		return false;
+	}
+
+	context->setContextProperty("recipeBookSettings", &m_Settings);
+
+	context->setContextProperty("shoppingListExporter", &m_ShoppingListExporter);
+
+	context->setContextProperty("unitNames", m_Converter.getAllUnitNames());
+	context->setContextProperty("unitNamesShort", m_Converter.getAllUnitShortNames());
+    
+	context->setContextProperty("sizeNames", m_Converter.getAllSizeNames());
+	context->setContextProperty("statusNames", m_Converter.getAllStatusNames());
+
+	context->setContextProperty("shoppingListOrderingNames", m_Converter.getAllShoppingListOrderingNames());
+
+	context->setContextProperty("modelCategories", &m_ModelCategories);
+	context->setContextProperty("modelSortOrder", &m_ModelSortOrder);
+
+	context->setContextProperty("modelSortOrders", &m_ModelSortOrders);
+
+	context->setContextProperty("modelIngredients", &m_ModelIngredients);
+	context->setContextProperty("filterModelIngredients", &m_FilterModelIngredients);
+
+	context->setContextProperty("alternativesGroups", &m_AlternativesGroups);
+	context->setContextProperty("alternativesTypes", &m_AlternativesTypes);
+
+	context->setContextProperty("modelRecipes", &m_ModelRecipes);
+	context->setContextProperty("filterModelRecipes", &m_FilterModelRecipes);
+
+	context->setContextProperty("modelRecipeItems", &m_ModelRecipeItems);
+	context->setContextProperty("filterModelRecipeItems", &m_FilterModelRecipeItems);
+
+	context->setContextProperty("modelShoppingRecipes", &m_ModelShoppingRecipes);
+	context->setContextProperty("modelShoppingListItems", &m_ModelShoppingListItems);
+
+	context->setContextProperty("modelGoShopping", &m_ModelGoShopping);
+
+	return true;
 }
 
-QStringList RecipeBookUIData::getAllUnitShortNames() const
+bool RecipeBookUIContext::setupConnections(QObject* pRoot)
 {
-	return m_Converter.getAllUnitShortNames();
-}
+	QObject* fileDialogExport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogExport"));
+	QObject::connect(fileDialogExport, SIGNAL(onExport(QString)),
+					 this, SLOT(slotExport(QString)));
 
-QStringList RecipeBookUIData::getAllSizeNames() const
-{
-	return m_Converter.getAllSizeNames();
-}
+	QObject* fileDialogImport = pRoot->findChild<QObject*>(QStringLiteral("fileDialogImport"));
+	QObject::connect(fileDialogImport, SIGNAL(onImport(QString)),
+					 this, SLOT(slotImport(QString)));
 
-QStringList RecipeBookUIData::getAllStatusNames() const
-{ 
-	return m_Converter.getAllStatusNames();
-}
-
-QStringList RecipeBookUIData::getAllShoppingListOrderingNames() const
-{
-	return m_Converter.getAllShoppingListOrderingNames();
-}
-
-ListModelCategories& RecipeBookUIData::getCategoriesModel()
-{
-	return m_ModelCategories;
-}
-
-SortModelSortOrder& RecipeBookUIData::getSortOrderModel()
-{
-	return m_ModelSortOrder;
-}
-
-ListModelSortOrders& RecipeBookUIData::getSortOrdersModel()
-{
-	return m_ModelSortOrders;
-}
-
-ListModelIngredients& RecipeBookUIData::getIngredientsModel()
-{
-	return m_ModelIngredients;
-}
-
-FilterModelIngredients& RecipeBookUIData::getIngredientsFilterModel()
-{
-	return m_FilterModelIngredients;
-}
-
-ListModelAlternativesGroups& RecipeBookUIData::getAlternativesGroups()
-{
-	return m_AlternativesGroups;
-}
-
-FilterModelAlternativesTypes& RecipeBookUIData::getAlternativesTypes()
-{
-	return m_AlternativesTypes;
-}
-
-ListModelRecipes& RecipeBookUIData::getRecipesModel()
-{
-	return m_ModelRecipes;
-}
-
-FilterModelRecipes& RecipeBookUIData::getRecipesFilterModel()
-{
-	return m_FilterModelRecipes;
-}
-
-ListModelRecipeItems& RecipeBookUIData::getRecipeItemsModel()
-{
-	return m_ModelRecipeItems;
-}
-
-FilterModelRecipeItems& RecipeBookUIData::getRecipeItemsFilterModel()
-{
-	return m_FilterModelRecipeItems;
-}
-
-ListModelShoppingRecipes& RecipeBookUIData::getShoppingRecipesModel()
-{
-	return m_ModelShoppingRecipes;
-}
-
-ListModelShoppingListItems& RecipeBookUIData::getShoppingListItemsModel()
-{
-	return m_ModelShoppingListItems;
-}
-
-ListModelGoShopping& RecipeBookUIData::getGoShoppingModel()
-{
-	return m_ModelGoShopping;
+	QObject::connect(pRoot, SIGNAL(onClosingRecipeBook()),
+					 this, SLOT(slotSave()));
+	return true;
 }

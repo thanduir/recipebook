@@ -23,6 +23,10 @@ ApplicationWindow {
 		onAccepted: fileDialogImport.onImport(fileDialogImport.fileUrls)
 	}
 
+	AppDlgInterface {
+		anchors.centerIn: parent
+	}
+
 	signal onClosingRecipeBook()
 	onClosing: onClosingRecipeBook()
 
@@ -40,7 +44,7 @@ ApplicationWindow {
 					id: fileDialogImport
 					objectName: "fileDialogImport"
 
-					title: qsTr("Export data")
+					title: qsTr("Import file")
 					modality: Qt.WindowModal
 					nameFilters: [ qsTr("Json files (*.json)") ]
 					selectExisting: true

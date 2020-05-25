@@ -35,6 +35,9 @@
     <Filter Include="qml Files\components\overlays">
       <UniqueIdentifier>{b1f9e5e2-4de5-496d-8de9-0ecdfeba835d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Exporter">
+      <UniqueIdentifier>{83109ca2-4758-4cff-a312-52a70123bfac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -73,9 +76,6 @@
     <ClCompile Include="RecipeBookSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RecipeBookUIData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ListModelShoppingRecipes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -89,6 +89,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListModelSortOrders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShoppingListExporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShoppingListExporterQtHtml .cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="ShoppingListExporterLatex.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="RBLatexExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="RBDialogInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RecipeBookUIContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -147,6 +165,9 @@
     <None Include="components\textMessageDialog.qml">
       <Filter>qml Files\components\helper</Filter>
     </None>
+    <None Include="components\appDlgInterface.qml">
+      <Filter>qml Files\components\helper</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ListModelIngredients.h">
@@ -182,9 +203,6 @@
     <QtMoc Include="RecipeBookSettings.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="RecipeBookUIData.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ListModelShoppingRecipes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -200,5 +218,25 @@
     <QtMoc Include="ListModelSortOrders.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ShoppingListExporter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ShoppingListExporterQtHtml.h">
+      <Filter>Exporter</Filter>
+    </QtMoc>
+    <QtMoc Include="ShoppingListExporterLatex.h">
+      <Filter>Exporter</Filter>
+    </QtMoc>
+    <QtMoc Include="RBLatexExporter.h">
+      <Filter>Exporter</Filter>
+    </QtMoc>
+    <QtMoc Include="RecipeBookUIContext.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RBDialogInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,17 +1,26 @@
 TODO
 ====
 
-5. Exporters
-	* Go shopping pdf exporter
+4. Exporters
 	* Kochbuch-Exporter
 		-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
-		-> the same is true for groupings of recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
+		-> this includes the ability to group included recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
+	* Go shopping pdf exporter TODOs
+
+	* Try to minimze miktex folder size and copy it to a final place!
+		-> Change pdflatex path in RBLatexExporter to final path!
+		-> i probably also need to change app working dir for this to work!
+		=> remove from .gitignore and commit!
+	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to a acceptable folder size
+4.5 BUG: Group not together directly after inserting Bibimbap into shopping list!
+
+5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
 6. Merge functionality
+	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
 7. TODOs
 8. UnitTests
 9. Update and finalize Design.txt!
 
 Possibilities for later:
-a. Write json schema?
-b. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
-c. Add picture to Recipe (and json)?
+a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
+b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)

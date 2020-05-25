@@ -58,11 +58,11 @@
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;qml;quick;quickcontrols2</QtModules>
+    <QtModules>core;gui;printsupport;qml;quick;quickcontrols2</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;qml;quick;quickcontrols2</QtModules>
+    <QtModules>core;gui;printsupport;qml;quick;quickcontrols2</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -114,10 +114,15 @@
     <ClCompile Include="ListModelRecipes.cpp" />
     <ClCompile Include="ListModelShoppingListItems.cpp" />
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
+    <ClCompile Include="RBDialogInterface.cpp" />
+    <ClCompile Include="RBLatexExporter.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
+    <ClCompile Include="ShoppingListExporter.cpp" />
+    <ClCompile Include="ShoppingListExporterLatex.cpp" />
+    <ClCompile Include="ShoppingListExporterQtHtml .cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RecipeBookUIData.cpp" />
+    <ClCompile Include="RecipeBookUIContext.cpp" />
     <ClCompile Include="uistringconverter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="components\addRecipesListDialog.qml" />
+    <None Include="components\appDlgInterface.qml" />
     <None Include="components\categoriesPage.qml" />
     <None Include="components\cookbookTab.qml" />
     <None Include="components\dateSelectionDialog.qml" />
@@ -147,7 +153,7 @@
     <QtMoc Include="ListModelIngredients.h" />
     <QtMoc Include="ListModelCategories.h" />
     <QtMoc Include="ListModelSortOrders.h" />
-    <QtMoc Include="RecipeBookUIData.h" />
+    <QtMoc Include="RecipeBookUIContext.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortModelSortOrder.h" />
@@ -178,6 +184,21 @@
     <QtMoc Include="ListModelShoppingListItems.h" />
     <QtMoc Include="FilterModelRecipeItems.h" />
     <QtMoc Include="ListModelGoShopping.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ShoppingListExporter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ShoppingListExporterQtHtml.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ShoppingListExporterLatex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="RBLatexExporter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RBDialogInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

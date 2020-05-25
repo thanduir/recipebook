@@ -21,6 +21,7 @@
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>
     </qresource>
 	<qresource prefix="/components">
+		<file alias="AppDlgInterface.qml">components/appDlgInterface.qml</file>
 		<file alias="TextInputDialog.qml">components/textInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">components/editItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">components/textMessageDialog.qml</file>
@@ -44,5 +45,6 @@
 		<file alias="list-black.svg">images/list-black.svg</file>
 		<file alias="sort-black.svg">images/sort-black.svg</file>
 		<file alias="cancel-black.svg">images/cancel-black.svg</file>
+		<file alias="error-black.svg">images/error-black.svg</file>
     </qresource>
 </RCC>

@@ -22,6 +22,8 @@ constexpr char* c_strActiveListOrderingGoShopping	= "actives/listordering_goshop
 constexpr char* c_strLastExportFolder				= "folders/lastexportfolder";
 constexpr char* c_strLastImportFolder				= "folders/lastimportfolder";
 
+constexpr char* c_strLastShoppingListExportFolder	= "folders/lastshoppinglistexportfolder";
+
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
 RecipeBookSettings::RecipeBookSettings()
@@ -131,6 +133,19 @@ void RecipeBookSettings::setLastUsedImportFolder(QString strFolder)
 {
 	QSettings settings;
 	settings.setValue(c_strLastImportFolder, strFolder);
+}
+
+QString RecipeBookSettings::lastUsedShoppingListExportFolder() const
+{
+	QSettings settings;
+	QString defaultValue = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+	return settings.value(c_strLastShoppingListExportFolder, defaultValue).toString();
+}
+
+void RecipeBookSettings::setLastUsedShoppingListExportFolder(QString strFolder) const
+{
+	QSettings settings;
+	settings.setValue(c_strLastShoppingListExportFolder, strFolder);
 }
 
 QString RecipeBookSettings::getActiveSortOrderGoShopping() const

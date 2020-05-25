@@ -1,3 +1,4 @@
+import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 
@@ -66,7 +67,7 @@ Item {
 		id: lvShoppingList
 		anchors.left: parent.left
 		anchors.top: cbxSortOrder.bottom 
-		anchors.bottom: parent.bottom
+		anchors.bottom: btnExport.top
 		anchors.topMargin: 48
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
@@ -147,6 +148,31 @@ Item {
 					text: itemAdditionalText
 				}
 			}
+		}
+	}
+
+	Button {
+		id: btnExport
+		anchors.bottom: parent.bottom
+		anchors.horizontalCenter: lvShoppingList.horizontalCenter
+
+		text: "Export shopping list"
+
+		onClicked: {
+			fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedShoppingListExportFolder()
+			fileDialogExport.open()
+		}
+
+		FileDialog {
+			id: fileDialogExport
+
+			title: qsTr("Export shopping list")
+			modality: Qt.WindowModal
+			nameFilters: shoppingListExporter.getDlgNameFilters()
+			selectExisting: false
+			selectMultiple: false
+			selectFolder: false
+			onAccepted: shoppingListExporter.exportShoppingList(fileUrls, cbxSortOrder.currentText)
 		}
 	}
 }

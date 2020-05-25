@@ -2,8 +2,10 @@
 #define RECIPEBOOK_UI_DATA_H
 
 #include <QtGlobal>
+#include <QQmlApplicationEngine>
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
+#include "ShoppingListExporter.h"
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
 #include "FilterModelIngredients.h"
@@ -19,40 +21,20 @@
 #include "ListModelShoppingListItems.h"
 #include "ListModelGoShopping.h"
 #include "uistringconverter.h"
+#include "RBDialogInterface.h"
+
+class QQmlContext;
 
 namespace recipebook::UI
 {
-	class RecipeBookUIData : public QObject
+	class RecipeBookUIContext : public QObject
 	{
 		Q_OBJECT
 
 	public:
-		RecipeBookUIData();
+		RecipeBookUIContext();
 
-		RecipeBookSettings& getRecipeBookSettings();
-
-		// Namelists
-		QStringList getAllUnitNames() const;
-		QStringList getAllUnitShortNames() const;
-		QStringList getAllSizeNames() const;
-		QStringList getAllStatusNames() const;
-		QStringList getAllShoppingListOrderingNames() const;
-
-		// DataModels
-		ListModelCategories& getCategoriesModel();
-		SortModelSortOrder& getSortOrderModel();
-		ListModelSortOrders& getSortOrdersModel();
-		ListModelIngredients& getIngredientsModel();
-		FilterModelIngredients& getIngredientsFilterModel();
-		ListModelAlternativesGroups& getAlternativesGroups();
-		FilterModelAlternativesTypes& getAlternativesTypes();
-		ListModelRecipes& getRecipesModel();
-		FilterModelRecipes& getRecipesFilterModel();
-		ListModelRecipeItems& getRecipeItemsModel();
-		FilterModelRecipeItems& getRecipeItemsFilterModel();
-		ListModelShoppingRecipes& getShoppingRecipesModel();
-		ListModelShoppingListItems& getShoppingListItemsModel();
-		ListModelGoShopping& getGoShoppingModel();
+		bool setupQml();
 
 	public slots:
 		void slotSave();
@@ -63,6 +45,10 @@ namespace recipebook::UI
 
 	signals:
 		void signalDataReset();
+
+	private:
+		bool setupNameLists(QQmlContext* context);
+		bool setupConnections(QObject* pRoot);
 
 	private:
 		RBDataHandler m_RBData;
@@ -91,6 +77,11 @@ namespace recipebook::UI
 		ListModelShoppingListItems m_ModelShoppingListItems;
 
 		ListModelGoShopping m_ModelGoShopping;
+
+		QQmlApplicationEngine m_Engine;
+
+		RBDialogInterface m_DlgInterface;
+		ShoppingListExporter m_ShoppingListExporter;
 
 		QAtomicInt m_SaveLock;
 	};
