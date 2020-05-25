@@ -5,8 +5,7 @@ TODO
 	* Kochbuch-Exporter
 		-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
 		-> this includes the ability to group included recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
-	* Go shopping pdf exporter TODOs
-
+	
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!

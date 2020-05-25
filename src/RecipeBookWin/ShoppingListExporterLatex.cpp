@@ -27,12 +27,13 @@ QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
 	QString text;
 	QTextStream stream(&text);
 
-	stream << "\\documentclass[a4paper,8pt]{extarticle}\n";
+	stream << "\\documentclass[a4paper,9pt]{extarticle}\n";
 	stream << "\\usepackage[utf8]{inputenc}\n";
 	stream << "\\usepackage{xcolor}\n";
 	stream << "\\usepackage{a4wide}\n";
 	stream << "\\usepackage{amssymb}\n";
 	stream << "\\usepackage{multicol}\n";
+	stream << "\\usepackage{enumitem}\n";
 
 	stream << "\\addtolength{\\oddsidemargin}{-.875in}\n";
 	stream << "\\addtolength{\\evensidemargin}{-.875in}\n";
@@ -51,9 +52,6 @@ QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
 
 	stream << "\\begin{multicols}{2}\n";
 
-	// TODO: Can i prevent page / column breaks within a itemized list (this is definitely needed within sublists!)?
-	// TODO: It'd also be better if we had smaller spaces before / after nested itemize groups!
-
 	bool bListOpen = false;
 	for(quint32 i = 0; i < list.getItemsCount(); ++i)
 	{
@@ -65,11 +63,11 @@ QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
 			{
 				if(bListOpen)
 				{
-					stream << "\\end{itemize}\n";
+					stream << "\\end{itemize}\\\n";
 				}
 
-				stream << "\\textbf{" << rItem.getName() << "}\n";
-				stream << "\\begin{itemize}\n";
+				stream << "\\filbreak\\textbf{" << rItem.getName() << "}\n";
+				stream << "\\begin{itemize}[noitemsep,topsep=0pt]\n";
 				stream << "\\renewcommand{\\labelitemi}{$\\square$}\n";
 				bListOpen = true;
 				break;
@@ -77,7 +75,7 @@ QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
 
 			case GoShoppingListItemType::IngredientListItem:
 			{
-				stream << "\\item " << formatItem(rItem);
+				stream << "\\filbreak\\item " << formatItem(rItem);
 				stream << " {\\color{gray}" << getItemAdditionalText(rItem) << "}\n";
 				break;
 			}
@@ -194,7 +192,7 @@ QString ShoppingListExporterLatex::getItemAdditionalText(const GoShoppingListIte
 
 		if(!lines.isEmpty())
 		{
-			lines = "\n\\begin{itemize}\n" + lines + "\\end{itemize}";
+			lines = "\n\\begin{itemize}[noitemsep,topsep=0pt]\n" + lines + "\\end{itemize}";
 		}
 		return lines;
 	}
