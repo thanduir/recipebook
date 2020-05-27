@@ -161,7 +161,7 @@ Item {
 
 		Connections {
 			target: modelRecipes
-			onModelReset: {
+			function onModelReset() {
 				if(modelRecipes.rowCount() == 0) {
 					lvRecipes.currentIndex = -1;
 				}

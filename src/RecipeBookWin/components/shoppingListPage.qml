@@ -199,7 +199,7 @@ Item {
 
 		Connections {
 			target: modelShoppingRecipes
-			onModelReset: {
+			function onModelReset() {
 				if(modelShoppingRecipes.rowCount() <= lvRecipes.currentIndex)
 				{
 					lvRecipes.currentIndex = -1;

@@ -17,12 +17,14 @@ namespace recipebook
 		};
 
 	public:
-		RBDialogInterface(const QQmlApplicationEngine& rEngine);
+		RBDialogInterface();
+
+		void setQmlEngine(const QQmlApplicationEngine& rEngine) { m_pEngine = &rEngine; }
 
 		void showMessageBox(QString strTitle, QString strMessage, DlgType type) const;
 
 	private:
-		const QQmlApplicationEngine& m_rEngine;
+		const QQmlApplicationEngine* m_pEngine = nullptr;
 	};
 }
 

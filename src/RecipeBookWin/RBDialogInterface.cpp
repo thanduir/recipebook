@@ -3,14 +3,18 @@
 
 using namespace recipebook;
 
-RBDialogInterface::RBDialogInterface(const QQmlApplicationEngine& rEngine)
-:	m_rEngine(rEngine)
+RBDialogInterface::RBDialogInterface()
 {
 }
 
 void RBDialogInterface::showMessageBox(QString strTitle, QString strMessage, DlgType type) const
 {
-	QObject* rootObject = m_rEngine.rootObjects().first();
+	if(!m_pEngine)
+	{
+		return;
+	}
+
+	QObject* rootObject = m_pEngine->rootObjects().first();
 	if(!rootObject)
 	{
 		return;

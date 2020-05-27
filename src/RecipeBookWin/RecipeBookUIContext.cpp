@@ -33,11 +33,13 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_ModelShoppingRecipes(m_RBData, m_Settings),
 	m_ModelShoppingListItems(m_RBData, m_Converter),
 	m_ModelGoShopping(m_RBData, m_Converter),
-	m_Engine(),
-	m_DlgInterface(m_Engine),
+	m_DlgInterface(),
 	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
+	m_Engine(),
 	m_SaveLock()
 {
+	m_DlgInterface.setQmlEngine(m_Engine);
+
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
 	if(fileIn.exists())
 	{

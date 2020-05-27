@@ -78,10 +78,10 @@ namespace recipebook::UI
 
 		ListModelGoShopping m_ModelGoShopping;
 
-		QQmlApplicationEngine m_Engine;
-
 		RBDialogInterface m_DlgInterface;
 		ShoppingListExporter m_ShoppingListExporter;
+
+		QQmlApplicationEngine m_Engine;
 
 		QAtomicInt m_SaveLock;
 	};

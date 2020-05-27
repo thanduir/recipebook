@@ -117,7 +117,7 @@ Item {
 
 		Connections {
 			target: modelSortOrders
-			onModelReset: {
+			function onModelReset() {
 				if(modelSortOrders.rowCount() <= lvSortOrders.currentIndex) {
 					lvSortOrders.currentIndex = -1;
 				}
@@ -192,7 +192,7 @@ Item {
 
 			property bool held: false
 
-			anchors { left: parent.left; right: parent.right }
+			anchors { left: parent != null ? parent.left : undefined; right: parent != null ? parent.right : undefined }
 			height: content.height
 
 			drag.target: held ? content : undefined
