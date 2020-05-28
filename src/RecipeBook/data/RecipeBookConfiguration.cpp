@@ -26,7 +26,7 @@ RecipeBookConfiguration::RecipeBookConfiguration(QString strName, const RecipeBo
 	for(quint32 i = 0; i < rOther.getItemsCount(); ++i)
 	{
 		const RecipeBookConfigItem& rItem = rOther.getItemAt(i);
-		internal::unsorted::addItem<RecipeBookConfigItem>(rItem.getIdString(), -1, m_Items, [&rItem]()
+		internal::unsorted::addItem<RecipeBookConfigItem>(rItem.getElementId(), -1, m_Items, [&rItem]()
 		{
 			return new RecipeBookConfigItem(rItem);
 		});
@@ -35,7 +35,7 @@ RecipeBookConfiguration::RecipeBookConfiguration(QString strName, const RecipeBo
 
 RecipeBookConfigItem& RecipeBookConfiguration::addRecipe(const Recipe& rRecipe, qint32 pos)
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Recipe, rRecipe.getName());
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Recipe, rRecipe.getName());
 	return internal::unsorted::addItem<RecipeBookConfigItem>(idString, pos, m_Items, [&rRecipe]()
 	{
 		return new RecipeBookConfigItem(rRecipe);
@@ -44,7 +44,7 @@ RecipeBookConfigItem& RecipeBookConfiguration::addRecipe(const Recipe& rRecipe, 
 
 RecipeBookConfigItem& RecipeBookConfiguration::addHeader(QString strName, quint32 uiLevel, qint32 pos)
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Header, strName);
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
 	return internal::unsorted::addItem<RecipeBookConfigItem>(idString, pos, m_Items, [strName, uiLevel]()
 	{
 		return new RecipeBookConfigItem(strName, uiLevel);
@@ -53,13 +53,13 @@ RecipeBookConfigItem& RecipeBookConfiguration::addHeader(QString strName, quint3
 
 bool RecipeBookConfiguration::existsRecipe(const Recipe& rRecipe) const
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Recipe, rRecipe.getName());
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Recipe, rRecipe.getName());
 	return internal::unsorted::exists<RecipeBookConfigItem>(idString, m_Items);
 }
 
 bool RecipeBookConfiguration::existsHeader(QString strName) const
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Header, strName);
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
 	return internal::unsorted::exists<RecipeBookConfigItem>(idString, m_Items);
 }
 
@@ -76,14 +76,14 @@ bool RecipeBookConfiguration::removeItem(quint32 pos)
 
 bool RecipeBookConfiguration::removeRecipe(const Recipe& rRecipe)
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Recipe, rRecipe.getName());
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Recipe, rRecipe.getName());
 	internal::unsorted::remove(idString, m_Items);
 	return true;
 }
 
 bool RecipeBookConfiguration::removeHeader(QString strName)
 {
-	QString idString = RecipeBookConfigItem::getIdString(RecipeBookConfigItemType::Header, strName);
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
 	internal::unsorted::remove(idString, m_Items);
 	return true;
 }
@@ -113,15 +113,10 @@ const RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i) const
 
 void RecipeBookConfiguration::moveRecipeItem(const RecipeBookConfigItem& rItem, quint32 newPos)
 {
-	int oldPos = internal::unsorted::find(rItem.getIdString(), m_Items);
+	int oldPos = internal::unsorted::find(rItem.getElementId(), m_Items);
 	if(oldPos < 0)
 	{
 		throw QException();
 	}
 	m_Items.move(oldPos, newPos);
-}
-
-quint32 RecipeBookConfiguration::getItemIndex(QString idString) const
-{
-	return internal::unsorted::find(idString, m_Items);
 }

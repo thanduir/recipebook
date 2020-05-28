@@ -3,6 +3,7 @@
 
 #include <QVector>
 #include <QSharedPointer>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -14,7 +15,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return getName(); }
+		RBElementId getElementId() const { return getElementId(getName()); }
         
 		QString getBookTitle() const { return m_Title; }
 		void setBookTitle(QString strTitle) { m_Title = strTitle; }
@@ -42,8 +43,6 @@ namespace recipebook
 		const RecipeBookConfigItem& getItemAt(quint32 i) const;
 		void moveRecipeItem(const RecipeBookConfigItem& rItem, quint32 newPos);
 
-		quint32 getItemIndex(QString idString) const;
-
 	private:
 		RecipeBookConfiguration(QString strName, const RecipeBook& rRecipeBook);
 		RecipeBookConfiguration(QString strName, const RecipeBookConfiguration& rOther);
@@ -52,6 +51,8 @@ namespace recipebook
 		void operator=(const RecipeBookConfiguration& rOther) = delete;
 
 		void rename(QString strNewName) { m_Name = strNewName; }
+
+		static RBElementId getElementId(QString strName) { return RBElementId(strName); }
 
 	private:
 		QString m_Name;

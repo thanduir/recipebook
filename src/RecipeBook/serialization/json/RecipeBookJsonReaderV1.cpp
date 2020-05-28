@@ -37,7 +37,7 @@ namespace
 			rItem.getAmount().setIsRange(false);
 			rItem.getAmount().setQuantityMin(dMin);
 
-			Unit unit = helper::convertUnit(strUnit);
+			Unit unit = serialization::helper::convertUnit(strUnit);
 			rItem.getAmount().setUnit(unit);
 		}
 		else
@@ -60,12 +60,12 @@ namespace
 				rItem.getAmount().setQuantityMax(dMax);
 			}
 
-			Unit unit = helper::convertUnit(strUnit);
+			Unit unit = serialization::helper::convertUnit(strUnit);
 			rItem.getAmount().setUnit(unit);
 		}
 
 		QString strSize = rObject[json::c_strRecipesSize].toString();
-		Size size = helper::convertSize(strSize);
+		Size size = serialization::helper::convertSize(strSize);
 		rItem.setSize(size);
 
 		bool bOptional = rObject[json::c_strRecipesOptional].toBool();

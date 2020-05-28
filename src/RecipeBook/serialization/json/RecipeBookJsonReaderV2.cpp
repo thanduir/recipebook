@@ -35,12 +35,12 @@ namespace
 		{
 			rItem.getAmount().setQuantityMax(dMax);
 		}
-		Unit unit = helper::convertUnit(strUnit);
+		Unit unit = serialization::helper::convertUnit(strUnit);
 		rItem.getAmount().setUnit(unit);
 
 		// Size
 		QString strSize = rObject[json::c_strRecipesSize].toString();
-		Size size = helper::convertSize(strSize);
+		Size size = serialization::helper::convertSize(strSize);
 		rItem.setSize(size);
 
 		// Optional

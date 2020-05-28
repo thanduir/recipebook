@@ -62,7 +62,7 @@ void SortedShoppingList::updateList(RecipeBook& rRecipeBook)
 			GoShoppingListItem* pCombinedItem = nullptr;
 			for(auto listItem : qAsConst(m_CombinedList[pCategory]))
 			{
-				if(internal::helper::compare(listItem->getIdString(), rIngredient.getIdString()) == 0)
+				if(helper::compare(listItem->getElementId(), rIngredient.getElementId()) == 0)
 				{
 					pCombinedItem = listItem.get();
 				}
@@ -70,7 +70,7 @@ void SortedShoppingList::updateList(RecipeBook& rRecipeBook)
 
 			if(pCombinedItem == nullptr)
 			{
-				pCombinedItem = &internal::sorted::addItem<GoShoppingListItem>(rIngredient.getIdString(), m_CombinedList[pCategory], [&rIngredient]()
+				pCombinedItem = &internal::sorted::addItem<GoShoppingListItem>(rIngredient.getElementId(), m_CombinedList[pCategory], [&rIngredient]()
 				{
 					return new GoShoppingListItem(rIngredient);
 				});
@@ -324,7 +324,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	{
 		QSharedPointer<GoShoppingListItem> spCurrent = rNewList.at(newItemPos);
 		if(spCurrent->getType() != GoShoppingListItemType::IngredientListItem
-		   || internal::helper::lessThan(rItem.getIdString(), spCurrent->getIdString()))
+		   || helper::lessThan(rItem.getElementId(), spCurrent->getElementId()))
 		{
 			break;
 		}

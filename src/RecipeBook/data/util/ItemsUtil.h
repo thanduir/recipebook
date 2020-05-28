@@ -3,29 +3,19 @@
 
 #include <QException>
 #include <QSharedPointer>
-#include <QString>
 #include <algorithm>
+#include "RBElementId.h"
 
 namespace recipebook::internal
 {
 	namespace helper
 	{
-		inline int compare(QString strFirst, QString strSecond)
-		{
-			return QString::localeAwareCompare(strFirst.toLower(), strSecond.toLower());
-		}
-
-		inline bool lessThan(QString strFirst, QString strSecond)
-		{
-			return compare(strFirst, strSecond) < 0;
-		}
-
 		template<class T> 
-		int findItem(QString strIdString, QVector<QSharedPointer<T>> allItems)
+		int findItem(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
 			for(int i = 0; i < allItems.size(); ++i)
 			{
-				if(compare(allItems[i]->getIdString(), strIdString) == 0)
+				if(recipebook::helper::compare(allItems[i]->getElementId(), idString) == 0)
 				{
 					return i;
 				}
@@ -39,50 +29,50 @@ namespace recipebook::internal
 		{
 			auto comp = [](const QSharedPointer<T>& rItemFirst, const QSharedPointer<T>& rItemSecond) -> bool
 			{
-				return recipebook::internal::helper::lessThan(rItemFirst->getIdString(), rItemSecond->getIdString());
+				return recipebook::helper::lessThan(rItemFirst->getElementId(), rItemSecond->getElementId());
 			};
 
 			std::sort(allItems.begin(), allItems.end(), comp);
 		}
 
 		template<class T> 
-		typename QVector<QSharedPointer<T>>::const_iterator findItemSorted(QString strIdString, const QVector<QSharedPointer<T>>& allItems)
+		typename QVector<QSharedPointer<T>>::const_iterator findItemSorted(const RBElementId& idString, const QVector<QSharedPointer<T>>& allItems)
 		{
-			auto comp = [](const QSharedPointer<T>& rItem, const QString& strIdString) -> bool
+			auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& idString) -> bool
 			{
-				return recipebook::internal::helper::lessThan(rItem->getIdString(), strIdString);
+				return recipebook::helper::lessThan(rItem->getElementId(), idString);
 			};
 
-			return std::lower_bound(allItems.begin(), allItems.end(), strIdString, comp);
+			return std::lower_bound(allItems.begin(), allItems.end(), idString, comp);
 		}
 
 		template<class T> 
-		typename QVector<QSharedPointer<T>>::iterator findItemSorted(QString strIdString, QVector<QSharedPointer<T>>& allItems)
+		typename QVector<QSharedPointer<T>>::iterator findItemSorted(const RBElementId& idString, QVector<QSharedPointer<T>>& allItems)
 		{
-			auto comp = [](const QSharedPointer<T>& rItem, const QString& strIdString) -> bool
+			auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& idString) -> bool
 			{
-				return recipebook::internal::helper::lessThan(rItem->getIdString(), strIdString);
+				return recipebook::helper::lessThan(rItem->getElementId(), idString);
 			};
 
-			return std::lower_bound(allItems.begin(), allItems.end(), strIdString, comp);
+			return std::lower_bound(allItems.begin(), allItems.end(), idString, comp);
 		}
 	}
 
 	namespace sorted
 	{
 		template<class T> 
-		void moveForNewIdString(T& rItem, const QString strNewIdString, QVector<QSharedPointer<T>>& allItems)
+		void moveForNewIdString(T& rItem, const RBElementId strNewIdString, QVector<QSharedPointer<T>>& allItems)
 		{
-			auto iterOldPos = helper::findItemSorted(rItem.getIdString(), allItems);
+			auto iterOldPos = helper::findItemSorted(rItem.getElementId(), allItems);
 			if(iterOldPos != allItems.end())
 			{
-				if(helper::compare((*iterOldPos)->getIdString(), rItem.getIdString()) == 0)
+				if(recipebook::helper::compare((*iterOldPos)->getElementId(), rItem.getElementId()) == 0)
 				{
 					QSharedPointer<T> savedItem = *iterOldPos;
 					allItems.erase(iterOldPos);
 
 					auto iterNewPos = helper::findItemSorted(strNewIdString, allItems);
-					if(iterNewPos != allItems.end() && helper::compare((*iterNewPos)->getIdString(), rItem.getIdString()) == 0)
+					if(iterNewPos != allItems.end() && recipebook::helper::compare((*iterNewPos)->getElementId(), rItem.getElementId()) == 0)
 					{
 						throw QException();
 					}
@@ -92,27 +82,27 @@ namespace recipebook::internal
 		}
 
 		template<class T>
-		bool exists(const QString strIdString, QVector<QSharedPointer<T>> allItems)
+		bool exists(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
-			auto iter = helper::findItemSorted(strIdString, allItems);
-			return iter != allItems.end() && helper::compare((*iter)->getIdString(), strIdString) == 0;
+			auto iter = helper::findItemSorted(idString, allItems);
+			return iter != allItems.end() && recipebook::helper::compare((*iter)->getElementId(), idString) == 0;
 		}
 
 		template<class T> 
-		void remove(const QString strIdString, QVector<QSharedPointer<T>>& allItems)
+		void remove(const RBElementId& idString, QVector<QSharedPointer<T>>& allItems)
 		{
-			auto iter = helper::findItemSorted(strIdString, allItems);
-			if(iter != allItems.end() && helper::compare((*iter)->getIdString(), strIdString) == 0)
+			auto iter = helper::findItemSorted(idString, allItems);
+			if(iter != allItems.end() && recipebook::helper::compare((*iter)->getElementId(), idString) == 0)
 			{
 				allItems.erase(iter);
 			}
 		}
 
 		template<class T> 
-		T& getItem(QString strIdString, QVector<QSharedPointer<T>> allItems)
+		T& getItem(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
-			auto iter = helper::findItemSorted(strIdString, allItems);
-			if(iter != allItems.end() && helper::compare((*iter)->getIdString(), strIdString) == 0)
+			auto iter = helper::findItemSorted(idString, allItems);
+			if(iter != allItems.end() && recipebook::helper::compare((*iter)->getElementId(), idString) == 0)
 			{
 				return *(*iter).get();
 			}
@@ -121,10 +111,10 @@ namespace recipebook::internal
 		}
 
 		template<class T> 
-		T& addItem(QString strIdString, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
+		T& addItem(const RBElementId& idString, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
 		{
-			auto iter = helper::findItemSorted(strIdString, allItems);
-			if(iter != allItems.end() && helper::compare((*iter)->getIdString(), strIdString) == 0)
+			auto iter = helper::findItemSorted(idString, allItems);
+			if(iter != allItems.end() && recipebook::helper::compare((*iter)->getElementId(), idString) == 0)
 			{
 				throw QException();
 			}
@@ -139,21 +129,21 @@ namespace recipebook::internal
 	namespace unsorted
 	{
 		template<class T> 
-		bool exists(const QString strIdString, QVector<QSharedPointer<T>> allItems)
+		bool exists(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
-			return helper::findItem(strIdString, allItems) >= 0;
+			return helper::findItem(idString, allItems) >= 0;
 		}
 
 		template<class T> 
-		int find(const QString strIdString, QVector<QSharedPointer<T>> allItems)
+		int find(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
-			return helper::findItem(strIdString, allItems);
+			return helper::findItem(idString, allItems);
 		}
 
 		template<class T> 
-		void remove(const QString strIdString, QVector<QSharedPointer<T>>& allItems)
+		void remove(const RBElementId& idString, QVector<QSharedPointer<T>>& allItems)
 		{
-			int i = helper::findItem(strIdString, allItems);
+			int i = helper::findItem(idString, allItems);
 			if(i >= 0)
 			{
 				allItems.remove(i);
@@ -161,9 +151,9 @@ namespace recipebook::internal
 		}
 
 		template<class T> 
-		T& getItem(QString strIdString, QVector<QSharedPointer<T>> allItems)
+		T& getItem(const RBElementId& idString, QVector<QSharedPointer<T>> allItems)
 		{
-			int i = helper::findItem(strIdString, allItems);
+			int i = helper::findItem(idString, allItems);
 			if(i >= 0)
 			{
 				return *allItems[i].get();
@@ -173,9 +163,9 @@ namespace recipebook::internal
 		}
 
 		template<class T> 
-		T& addItem(QString strIdString, int pos, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
+		T& addItem(const RBElementId& idString, int pos, QVector<QSharedPointer<T>>& allItems, std::function<T*()> rConstructNewItem)
 		{
-			if(helper::findItem(strIdString, allItems) >= 0)
+			if(helper::findItem(idString, allItems) >= 0)
 			{
 				throw QException();
 			}

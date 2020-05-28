@@ -16,10 +16,10 @@ namespace recipebook
 	class ShoppingListItem
 	{
 	public:
-		static QString getIdString(const Ingredient* pIngredient, const AlternativesType* pAlternativesGroup);
+		static RBElementId getElementId(const Ingredient* pIngredient, const AlternativesType* pAlternativesGroup);
 
 		QString getName() const { return m_pIngredient->getName(); }
-		QString getIdString() const { return getIdString(m_pIngredient, m_pAlternativesGroup); }
+		RBElementId getElementId() const { return getElementId(m_pIngredient, m_pAlternativesGroup); }
 
 		const Ingredient& getIngredient() const { return *m_pIngredient; }
 		void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
@@ -57,9 +57,9 @@ namespace recipebook
 
 		void operator=(const ShoppingListItem& rOther) = delete;
 
-		static QString getIdString(const Ingredient* pIngredient, QString strNewGroupIdString);
-		static QString getIdString(QString strNewIngredientIdString, const AlternativesType* pAlternativesGroup);
-		static QString getIdString(QString strIngredientIdString, QString strGroupIdString);
+		static RBElementId getElementId(const Ingredient* pIngredient, const RBElementId& strNewGroupIdString);
+		static RBElementId getElementId(const RBElementId& strNewIngredientIdString, const AlternativesType* pAlternativesGroup);
+		static RBElementId getElementId(const RBElementId& strIngredientIdString, const RBElementId& strGroupIdString);
 
 	private:
 		ShoppingRecipe& m_rParent;

@@ -1,14 +1,20 @@
 #include "RecipeItem.h"
+#include "util/RBElementId.h"
 
 using namespace recipebook;
 
-QString RecipeItem::getIdString(const Ingredient* pIngredient)
+RBElementId RecipeItem::getElementId(const Ingredient* pIngredient)
 {
 	if(pIngredient != nullptr)
 	{
-		return pIngredient->getIdString();
+		return pIngredient->getElementId();
 	}
-	return "";
+	return getElementId("");
+}
+
+RBElementId RecipeItem::getElementId(QString strName)
+{
+	return Ingredient::getElementId(strName);
 }
 
 RecipeItem::RecipeItem(const RecipeItem& rOther)

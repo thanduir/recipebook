@@ -1,37 +1,36 @@
 #include "ShoppingListItem.h"
+#include "util/RBElementId.h"
 #include "ShoppingRecipe.h"
 #include "RecipeItem.h"
 #include "AlternativesType.h"
 
 using namespace recipebook;
 
-QString ShoppingListItem::getIdString(const Ingredient* pIngredient, const AlternativesType* pAlternativesGroup)
+RBElementId ShoppingListItem::getElementId(const Ingredient* pIngredient, const AlternativesType* pAlternativesGroup)
 {
-	return getIdString(pIngredient != nullptr ? pIngredient->getIdString() : "", pAlternativesGroup != nullptr ? pAlternativesGroup->getIdString() : "");
+	return getElementId(pIngredient != nullptr ? pIngredient->getElementId() : Ingredient::getElementId(""), 
+					   pAlternativesGroup != nullptr ? pAlternativesGroup->getElementId() : AlternativesType::getElementId(""));
 }
 
-QString ShoppingListItem::getIdString(const Ingredient* pIngredient, QString strNewGroupIdString)
+RBElementId ShoppingListItem::getElementId(const Ingredient* pIngredient, const RBElementId& newGroupIdString)
 {
-	return getIdString(pIngredient != nullptr ? pIngredient->getIdString() : "", strNewGroupIdString);
+	return getElementId(pIngredient != nullptr ? pIngredient->getElementId() : Ingredient::getElementId(""), newGroupIdString);
 }
 
-QString ShoppingListItem::getIdString(QString strNewIngredientIdString, const AlternativesType* pAlternativesGroup)
+RBElementId ShoppingListItem::getElementId(const RBElementId& newIngredientIdString, const AlternativesType* pAlternativesGroup)
 {
-	return getIdString(strNewIngredientIdString, pAlternativesGroup != nullptr ? pAlternativesGroup->getIdString() : "");
+	return getElementId(newIngredientIdString, pAlternativesGroup != nullptr ? pAlternativesGroup->getElementId() : AlternativesType::getElementId(""));
 }
 
-QString ShoppingListItem::getIdString(QString strIngredientIdString, QString strGroupIdString)
+RBElementId ShoppingListItem::getElementId(const RBElementId& strIngredientIdString, const RBElementId& strGroupIdString)
 {
 	QString result;
-	if(strGroupIdString != "")
+	if(!strGroupIdString.m_Id.isEmpty())
 	{
-		result = strGroupIdString + "-";
+		result = strGroupIdString.m_Id + "-";
 	}
-	if(strIngredientIdString != "")
-	{
-		result += strIngredientIdString;
-	}
-	return result;
+	result += strIngredientIdString.m_Id;
+	return RBElementId(result);
 }
 
 ShoppingListItem::ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rRecipeItem)

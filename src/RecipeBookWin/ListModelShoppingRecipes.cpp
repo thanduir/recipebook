@@ -121,7 +121,7 @@ bool ListModelShoppingRecipes::everythingSet(int row) const
 		const ShoppingListItem& rItem = rRecipe.getItemAt(i);
 		if(rItem.hasAlternativesGroup())
 		{
-			QString group = rItem.getAlternativesGroup().getIdString();
+			QString group = rItem.getAlternativesGroup().getElementId().toString();
 			mapGroups[group] = mapGroups.value(group, false) || rItem.isItemEnabled();
 		}
 	}

@@ -3,6 +3,7 @@
 
 #include <QColor>
 #include <QString>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -10,7 +11,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return getName(); }
+		RBElementId getElementId() const { return getElementId(getName()); }
 
 		QColor getColor() const { return m_Color; }
 		void setColor(QColor color) { m_Color = color; }
@@ -23,11 +24,14 @@ namespace recipebook
 
 		void rename(QString strNewName) { m_Name = strNewName; }
 
+		static RBElementId getElementId(QString strName) { return RBElementId(strName); }
+
 	private:
 		QString m_Name;
 		QColor m_Color;
 
 		friend class RecipeBook;
+		friend class ShoppingListItem;
 	};
 }
 

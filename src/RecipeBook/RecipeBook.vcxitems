@@ -34,6 +34,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Status.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Unit.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\util\ItemsUtil.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\util\RBElementId.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)serialization\helper\StringConverter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)serialization\IRecipeBookSerializer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)serialization\json\JsonFormatConstantsV1.h" />

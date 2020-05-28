@@ -13,10 +13,10 @@ namespace recipebook
 	class RecipeItem
 	{
 	public:
-		static QString getIdString(const Ingredient* pIngredient);
+		static RBElementId getElementId(const Ingredient* pIngredient);
 
 		QString getName() const { return m_pIngredient->getName(); }
-		QString getIdString() const { return getIdString(m_pIngredient); }
+		RBElementId getElementId() const { return getElementId(m_pIngredient); }
 
 		const Ingredient& getIngredient() const { return *m_pIngredient; }
 		void setIngredient(const Ingredient& rIngredient) { m_pIngredient = &rIngredient; }
@@ -43,6 +43,8 @@ namespace recipebook
 		RecipeItem(const RecipeItem& rOther);
 
 		void operator=(const RecipeItem& rOther) = delete;
+
+		static RBElementId getElementId(QString strName);
 
 	private:
 		const Ingredient* m_pIngredient;

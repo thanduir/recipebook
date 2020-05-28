@@ -7,16 +7,15 @@ using namespace recipebook;
 
 GoShoppingListItem::GoShoppingListItem(GoShoppingListItemType type, QString strName)
 :	m_Name(strName),
-	m_IdString(strName),
+	m_ElementId(strName),
 	m_Type(type),
 	m_pIngredient(nullptr)
 {
-
 }
 
 GoShoppingListItem::GoShoppingListItem(const Ingredient& rIngredient)
 :	m_Name(rIngredient.getName()),
-	m_IdString(rIngredient.getIdString()),
+	m_ElementId(rIngredient.getElementId()),
 	m_Type(GoShoppingListItemType::IngredientListItem),
 	m_pIngredient(&rIngredient)
 {

@@ -25,10 +25,10 @@ namespace
         QJsonObject amountObject;
         amountObject[json::c_strRecipesAmountMin] = rItem.getAmount().getQuantityMin();
         amountObject[json::c_strRecipesAmountMax] = rItem.getAmount().isRange() ? rItem.getAmount().getQuantityMax() : -1.0f;
-        amountObject[json::c_strRecipesAmountUnit] = helper::convertUnit(rItem.getAmount().getUnit());
+        amountObject[json::c_strRecipesAmountUnit] = serialization::helper::convertUnit(rItem.getAmount().getUnit());
         rObject[json::c_strRecipesAmount] = amountObject;
 
-        rObject[json::c_strRecipesSize] = helper::convertSize(rItem.getSize());
+        rObject[json::c_strRecipesSize] = serialization::helper::convertSize(rItem.getSize());
         rObject[json::c_strRecipesOptional] = rItem.isOptional();
         rObject[json::c_strRecipesAdditionalInfo] = rItem.getAdditionalInfo();
 

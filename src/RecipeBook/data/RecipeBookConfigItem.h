@@ -2,6 +2,7 @@
 #define RECIPEBOOK_CONFIG_ITEM_H
 
 #include <QString>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -16,10 +17,10 @@ namespace recipebook
 	class RecipeBookConfigItem
 	{
 	public:
-		static QString getIdString(RecipeBookConfigItemType type, QString strName);
+		static RBElementId getElementId(RecipeBookConfigItemType type, QString strName);
 
 		QString getName() const;
-		QString getIdString() const { return getIdString(m_Type, getName()); }
+		RBElementId getElementId() const { return getElementId(m_Type, getName()); }
 		RecipeBookConfigItemType getType() const { return m_Type; }
 
 		const Recipe* getRecipe() const { return m_pRecipe; }

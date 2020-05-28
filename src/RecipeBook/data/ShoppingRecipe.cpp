@@ -14,7 +14,7 @@ ShoppingRecipe::ShoppingRecipe(QString strName, const Recipe& rRecipe)
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
 		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
-		internal::sorted::addItem<ShoppingListItem>(rItem.getIdString(), m_Items, [this, &rItem]()
+		internal::sorted::addItem<ShoppingListItem>(rItem.getElementId(), m_Items, [this, &rItem]()
 		{
 			return new ShoppingListItem(*this, rItem);
 		});
@@ -35,7 +35,7 @@ void ShoppingRecipe::changeScalingFactor(float f)
 
 ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 {
-	return internal::sorted::addItem<ShoppingListItem>(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items, [this, &rIngredient]()
+	return internal::sorted::addItem<ShoppingListItem>(ShoppingListItem::getElementId(&rIngredient, nullptr), m_Items, [this, &rIngredient]()
 	{
 		return new ShoppingListItem(*this, rIngredient);
 	});
@@ -43,7 +43,7 @@ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 
 ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
-	return internal::sorted::addItem<ShoppingListItem>(rItem.getIdString(), m_Items, [this, &rItem]()
+	return internal::sorted::addItem<ShoppingListItem>(rItem.getElementId(), m_Items, [this, &rItem]()
 	{
 		return new ShoppingListItem(*this, rItem);
 	});
@@ -53,7 +53,7 @@ bool ShoppingRecipe::existsItem(const Ingredient& rIngredient) const
 {
 	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
-		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		if(helper::compare(spItem->getIngredient().getElementId(), rIngredient.getElementId()) == 0)
 		{
 			return true;
 		}
@@ -64,7 +64,7 @@ bool ShoppingRecipe::existsItem(const Ingredient& rIngredient) const
 
 bool ShoppingRecipe::removeItem(const ShoppingListItem& rItem)
 {
-	internal::sorted::remove(rItem.getIdString(), m_Items);
+	internal::sorted::remove(rItem.getElementId(), m_Items);
 	return true;
 }
 
@@ -72,7 +72,7 @@ ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient)
 {
 	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
-		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		if(helper::compare(spItem->getIngredient().getElementId(), rIngredient.getElementId()) == 0)
 		{
 			return *spItem;
 		}
@@ -85,7 +85,7 @@ const ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient) c
 {
 	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
-		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		if(helper::compare(spItem->getIngredient().getElementId(), rIngredient.getElementId()) == 0)
 		{
 			return *spItem;
 		}
@@ -119,7 +119,7 @@ const ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i) const
 
 quint32 ShoppingRecipe::getItemIndex(const Ingredient& rIngredient) const
 {
-	return recipebook::internal::helper::findItem(ShoppingListItem::getIdString(&rIngredient, nullptr), m_Items);
+	return recipebook::internal::helper::findItem(ShoppingListItem::getElementId(&rIngredient, nullptr), m_Items);
 }
 
 void ShoppingRecipe::onIngredientNameChanged(const Ingredient& rIngredient)
@@ -127,7 +127,7 @@ void ShoppingRecipe::onIngredientNameChanged(const Ingredient& rIngredient)
 	bool sortingNeeded = false;
 	for(QSharedPointer<ShoppingListItem> spItem : qAsConst(m_Items))
 	{
-		if(internal::helper::compare(spItem->getIngredient().getIdString(), rIngredient.getIdString()) == 0)
+		if(helper::compare(spItem->getIngredient().getElementId(), rIngredient.getElementId()) == 0)
 		{
 			sortingNeeded = true;
 		}

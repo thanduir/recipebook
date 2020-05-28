@@ -4,6 +4,7 @@
 #include <QString>
 #include <QSharedPointer>
 #include <QTime>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -14,7 +15,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return getName(); }
+		RBElementId getElementId() const { return getElementId(getName()); }
         
 		quint32 getNumberOfPersons() const { return m_NrPersons; }
 		void setNumberOfPersons(quint32 number) { m_NrPersons = number; }
@@ -53,6 +54,8 @@ namespace recipebook
 		void operator=(const Recipe& rOther) = delete;
 
 		void rename(QString strNewName) { m_Name = strNewName; }
+
+		static RBElementId getElementId(QString strName) { return RBElementId(strName); }
 
 	private:
 		QString m_Name;

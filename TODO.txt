@@ -1,13 +1,12 @@
 TODO
 ====
 
-4.0 Replace "id string" by explicit type? (would avoid a few possible errors...)
-4.1 Exporters
+4 Exporters
 	* Kochbuch-Exporter
 		- data class:
+			* serialization (in normal json for now, but excluded in app config!)
 			* need a method to return currently not included recipes?
 			* header level consistency checks in data classes? (probably not)
-			* serialization (in normal json for now, but excluded in app config!)
 			* TODOs
 
 		- UI:

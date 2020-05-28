@@ -4,6 +4,7 @@
 #include <QDate>
 #include <QString>
 #include <QSharedPointer>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -17,7 +18,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return getName(); }
+		RBElementId getElementId() const { return getElementId(getName()); }
         
 		// Current scaling factor used for the items in the list.
 		float getScalingFactor() const { return m_fScalingFactor; }
@@ -54,6 +55,8 @@ namespace recipebook
 		void onIngredientNameChanged(const Ingredient& rIngredient);
 		void onAlternativesTypeNameChanged(const AlternativesType& rGroup);
 		void onItemIdStringChanged();
+
+		static RBElementId getElementId(QString strName) { return RBElementId(strName); }
 
 	private:
 		QString m_Name;

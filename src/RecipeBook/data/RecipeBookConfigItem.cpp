@@ -1,24 +1,25 @@
 #include "RecipeBookConfigItem.h"
 #include "Recipe.h"
 
+
 using namespace recipebook;
 
-QString RecipeBookConfigItem::getIdString(RecipeBookConfigItemType type, QString strName)
+RBElementId RecipeBookConfigItem::getElementId(RecipeBookConfigItemType type, QString strName)
 {
 	switch(type)
 	{
 		case RecipeBookConfigItemType::Header:
 		{
-			return "Header_" + strName;
+			return RBElementId("Header_" + strName);
 		}
 
 		case RecipeBookConfigItemType::Recipe:
 		{
-			return "Recipe_" + strName;
+			return RBElementId("Recipe_" + strName);
 		}
 	}
 
-	return strName;
+	return RBElementId("");
 }
 
 RecipeBookConfigItem::RecipeBookConfigItem(const Recipe& rRecipe)

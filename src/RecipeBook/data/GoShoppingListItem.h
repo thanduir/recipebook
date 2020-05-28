@@ -3,6 +3,7 @@
 
 #include <QVector>
 #include <QDate>
+#include "util/RBElementId.h"
 #include "Amount.h"
 #include "Size.h"
 #include "Status.h"
@@ -33,7 +34,7 @@ namespace recipebook
 
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return m_IdString; }
+		RBElementId getElementId() const { return m_ElementId; }
 		GoShoppingListItemType getType() const { return m_Type; }
 
 		Status getStatus() const { return m_Status; }
@@ -74,7 +75,7 @@ namespace recipebook
 
 	private:
 		QString						m_Name;
-		QString						m_IdString;
+		RBElementId					m_ElementId;
 		GoShoppingListItemType		m_Type;
 		const Ingredient*			m_pIngredient;
 

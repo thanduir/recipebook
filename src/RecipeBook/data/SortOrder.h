@@ -2,6 +2,7 @@
 #define RECIPEBOOK_SORTORDER_H
 
 #include <QList>
+#include "util/RBElementId.h"
 
 namespace recipebook
 {
@@ -11,7 +12,7 @@ namespace recipebook
 	{
 	public:
 		QString getName() const { return m_Name; }
-		QString getIdString() const { return getName(); }
+		RBElementId getElementId() const { return getElementId(getName()); }
 
 		quint32 getItemsCount() const { return m_Categories.size(); }
 		const Category& getItemAt(quint32 i) const;
@@ -27,6 +28,8 @@ namespace recipebook
 		void operator=(const SortOrder& rOther) = delete;
 
 		void rename(QString strNewName) { m_Name = strNewName; }
+
+		static RBElementId getElementId(QString strName) { return RBElementId(strName); }
 
 	private:
 		QString m_Name;
