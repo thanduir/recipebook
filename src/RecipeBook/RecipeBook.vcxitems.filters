@@ -120,9 +120,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBookConfigItem.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\programming\RecipeBook\src\RecipeBook\data\util\RBElementId.h">
-      <Filter>data\util</Filter>
-    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\util\RBElementId.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
