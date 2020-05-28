@@ -14,6 +14,7 @@ namespace recipebook
 	class AlternativesType;
 	class Recipe;
 	class ShoppingRecipe;
+	class RecipeBookConfiguration;
 
 	class RecipeBook
 	{
@@ -108,13 +109,28 @@ namespace recipebook
 
 		void clearShoppingList();
 
+		// Recipe book configurations
+				
+		RecipeBookConfiguration& addConfiguration(QString strName);
+		void renameConfiguration(RecipeBookConfiguration& rConfig, QString strNewName);
+		bool existsConfiguration(QString strName) const;
+		bool removeConfiguration(const RecipeBookConfiguration& rConfig);
+		const RecipeBookConfiguration& copyConfiguration(const RecipeBookConfiguration& rConfig, QString strNewName);
+		RecipeBookConfiguration& getConfiguration(QString strName);
+		const RecipeBookConfiguration& getConfiguration(QString strName) const;
+		quint32 getConfigurationsCount() const;
+		RecipeBookConfiguration& getConfigurationAt(quint32 i);
+		const RecipeBookConfiguration& getConfigurationAt(quint32 i) const;
+		quint32 getConfigurationIndex(QString strName) const;
+
 	private:
-		QVector<QSharedPointer<Category>>           m_Categories;
-		QVector<QSharedPointer<SortOrder>>          m_SortOrders;
-		QVector<QSharedPointer<Ingredient>>         m_Ingredients;
-		QVector<QSharedPointer<AlternativesType>>   m_AlternativesTypes;
-		QVector<QSharedPointer<Recipe>>             m_Recipes;
-		QVector<QSharedPointer<ShoppingRecipe>>     m_ShoppingRecipes;
+		QVector<QSharedPointer<Category>>					m_Categories;
+		QVector<QSharedPointer<SortOrder>>					m_SortOrders;
+		QVector<QSharedPointer<Ingredient>>					m_Ingredients;
+		QVector<QSharedPointer<AlternativesType>>			m_AlternativesTypes;
+		QVector<QSharedPointer<Recipe>>						m_Recipes;
+		QVector<QSharedPointer<ShoppingRecipe>>				m_ShoppingRecipes;
+		QVector<QSharedPointer<RecipeBookConfiguration>>	m_Configurations;
 	};
 }
 

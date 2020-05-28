@@ -7,6 +7,7 @@
 #include "RecipeItem.h"
 #include "ShoppingRecipe.h"
 #include "SortOrder.h"
+#include "RecipeBookConfiguration.h"
 #include "util/ItemsUtil.h"
 
 using namespace recipebook;
@@ -484,6 +485,12 @@ bool RecipeBook::existsRecipe(QString strName) const
 
 bool RecipeBook::removeRecipe(const Recipe& rRecipe)
 {
+	// Remove recipe from all configurations
+	for(QSharedPointer<RecipeBookConfiguration> config : qAsConst(m_Configurations))
+	{
+		config->removeRecipe(rRecipe);
+	}
+
 	internal::sorted::remove(rRecipe.getIdString(), m_Recipes);
 	return true;
 }
@@ -610,4 +617,76 @@ quint32 RecipeBook::getShoppingRecipeIndex(QString strName) const
 void RecipeBook::clearShoppingList()
 {
 	m_ShoppingRecipes.clear();
+}
+
+RecipeBookConfiguration& RecipeBook::addConfiguration(QString strName)
+{
+	return internal::sorted::addItem<RecipeBookConfiguration>(strName, m_Configurations, [this, strName]()
+	{
+		return new RecipeBookConfiguration(strName, *this);
+	});
+}
+
+void RecipeBook::renameConfiguration(RecipeBookConfiguration& rConfig, QString strNewName)
+{
+	internal::sorted::moveForNewIdString(rConfig, strNewName, m_Configurations);
+	rConfig.rename(strNewName);
+}
+
+bool RecipeBook::existsConfiguration(QString strName) const
+{
+	return internal::sorted::exists<RecipeBookConfiguration>(strName, m_Configurations);
+}
+
+bool RecipeBook::removeConfiguration(const RecipeBookConfiguration& rConfig)
+{
+	internal::sorted::remove(rConfig.getIdString(), m_Configurations);
+	return true;
+}
+
+const RecipeBookConfiguration& RecipeBook::copyConfiguration(const RecipeBookConfiguration& rConfig, QString strNewName)
+{
+	return internal::sorted::addItem<RecipeBookConfiguration>(strNewName, m_Configurations, [strNewName, &rConfig]()
+	{
+		return new RecipeBookConfiguration(strNewName, rConfig);
+	});
+}
+
+RecipeBookConfiguration& RecipeBook::getConfiguration(QString strName)
+{
+	return internal::sorted::getItem(strName, m_Configurations);
+}
+
+const RecipeBookConfiguration& RecipeBook::getConfiguration(QString strName) const
+{
+	return internal::sorted::getItem(strName, m_Configurations);
+}
+
+quint32 RecipeBook::getConfigurationsCount() const
+{
+	return m_Configurations.size();
+}
+
+RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i)
+{
+	if(i >= (quint32)m_Configurations.size())
+	{
+		throw QException();
+	}
+	return *m_Configurations.at(i).get();
+}
+
+const RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i) const
+{
+	if(i >= (quint32)m_Configurations.size())
+	{
+		throw QException();
+	}
+	return *m_Configurations.at(i).get();
+}
+
+quint32 RecipeBook::getConfigurationIndex(QString strName) const
+{
+	auto iter = recipebook::internal::helper::findItemSorted(strName, m_Configurations);
+	return iter - m_Configurations.begin();
 }

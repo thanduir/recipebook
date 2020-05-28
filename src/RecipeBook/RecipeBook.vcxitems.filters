@@ -114,6 +114,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.h">
       <Filter>data\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBookConfiguration.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBookConfigItem.h">
+      <Filter>data\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Ingredient.cpp">
@@ -168,6 +174,12 @@
       <Filter>data\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)data\GoShoppingListItem.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBookConfiguration.cpp">
+      <Filter>data\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBookConfigItem.cpp">
       <Filter>data\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

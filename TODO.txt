@@ -1,31 +1,34 @@
 TODO
 ====
 
-4. Exporters
+4.0 Replace "id string" by explicit type? (would avoid a few possible errors...)
+4.1 Exporters
 	* Kochbuch-Exporter
-		- Layout idea:
-			* ListView with all unassigned recipes on the left (do hidden recipes belong here or are the a special section (cf. below)?)
-			* Next a horizontal ListView with all the section (+ add / remove buttons for sections)
-				and below them a list of the recipes in this list 
-				(extending horizontal ListView or further ListViews? If the horizontal ListView is scrollable, then i could only add a vertical ListView inside the horizontal!)
-				-> it should also be possible here to reorder the sections themselves!
-			* Relevant settings also need to be placed somewhere on this screen, right? (Or there could be several tabs the user can click through for these)
-				-> if tabs, then the generate-button should be outside (below?) these tabs
-				- settings (at least): title, subtitle, font size
+		- data class:
+			* need a method to return currently not included recipes?
+			* header level consistency checks in data classes? (probably not)
+			* serialization (in normal json for now, but excluded in app config!)
+			* TODOs
+
+		- UI:
+			* cbx (or tabs? or listview?) to chose active config (+ adding and removal of configs)
+			* textboxes etc. for additional settings (font, title, ...)
+			* sortable list of recipes into which headers can be inserted (and which are moveable)
+				- user sortable
+				- separate add recipe and add header buttons. Both can be inserted before current item (or, alternatively, at the end of the list)
+				- add recipe button shows only recipes that are not currently present in the list
+					-> Alternative: a second ListView showing the recipes not currently added (and instead of add/remove buttons, buttons to move items between the two lists)
+				- list items are removeable (button at the end as usual)
+				- headers have a cbx or spinbox to adjust their level (this as consistency requirements though)
 			
-			- Recipes are dragable and can be added to a section using drag'n'drop (it should also be possible to drag recipes from one section to another)
-		
-		-> should be configurable, e.g. the user should be able to define which recipes to export (and which not) and this should be saveable as an export configuration.
-		-> this includes the ability to group included recipes (cf. current Kochubuch: Pasta, Reis, Kartoffeln, Brunch, ...)
-		-> all of these configurations should be saved as well! (within the json or externally? Maybe in the json, but not written in app-variant?)
-	
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!
 		=> remove from .gitignore and commit!
 	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to a acceptable folder size
 	* Export-class should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
-4.5 BUG: Group not together directly after inserting Bibimbap into shopping list!
+4.2 BUG: Group not together directly after inserting Bibimbap into shopping list!
+4.3 json app export (with unnecessary info removed)
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
 6. Merge functionality

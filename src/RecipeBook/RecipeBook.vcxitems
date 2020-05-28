@@ -22,6 +22,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RBDataHandler.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\Recipe.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBook.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBookConfigItem.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeBookConfiguration.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\RecipeItem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.h" />
@@ -50,6 +52,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RBDataHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\Recipe.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBook.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBookConfigItem.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeBookConfiguration.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\RecipeItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingListItem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)data\ShoppingRecipe.cpp" />
