@@ -177,7 +177,7 @@ Item {
 
 				enabled: lvSortOrders.count > 0
 				onClicked: {
-					dlgRemoveSortOrder.msgText = qsTr("This will remove the ingredient \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\". Proceed?");
+					dlgRemoveSortOrder.msgText = qsTr("This will remove the sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\". Proceed?");
 					dlgRemoveSortOrder.open();
 				}
 			}
@@ -288,7 +288,7 @@ Item {
         
 		visible: lvSortOrders.currentIndex != -1
 
-		text: "" // qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
+		text: qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
 		font.bold: true
 	}
 

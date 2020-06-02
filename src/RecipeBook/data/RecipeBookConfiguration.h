@@ -41,12 +41,11 @@ namespace recipebook
 		quint32 getItemsCount() const;
 		RecipeBookConfigItem& getItemAt(quint32 i);
 		const RecipeBookConfigItem& getItemAt(quint32 i) const;
-		void moveRecipeItem(const RecipeBookConfigItem& rItem, quint32 newPos);
+		void moveItem(const RecipeBookConfigItem& rItem, quint32 newPos);
 
 	private:
 		RecipeBookConfiguration(QString strName, const RecipeBook& rRecipeBook);
 		RecipeBookConfiguration(QString strName, const RecipeBookConfiguration& rOther);
-		// TODO: Second ctor for loading from file? Or how to do that?
 		
 		void operator=(const RecipeBookConfiguration& rOther) = delete;
 

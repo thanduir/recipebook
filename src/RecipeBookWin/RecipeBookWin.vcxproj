@@ -104,11 +104,14 @@
     <ClCompile Include="FilterModelIngredients.cpp" />
     <ClCompile Include="FilterModelRecipeItems.cpp" />
     <ClCompile Include="FilterModelRecipes.cpp" />
+    <ClCompile Include="FilterModelUnusedRecipes.cpp" />
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
     <ClCompile Include="FilterModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
     <ClCompile Include="ListModelGoShopping.cpp" />
     <ClCompile Include="ListModelIngredients.cpp" />
+    <ClCompile Include="ListModelRBConfigItems.cpp" />
+    <ClCompile Include="ListModelRecipeBookConfigurations.cpp" />
     <ClCompile Include="ListModelSortOrders.cpp" />
     <ClCompile Include="ListModelRecipeItems.cpp" />
     <ClCompile Include="ListModelRecipes.cpp" />
@@ -137,6 +140,7 @@
     <None Include="components\editAlternativesGroupPane.qml" />
     <None Include="components\goShoppingPage.qml" />
     <None Include="components\ingredientsPage.qml" />
+    <None Include="components\rbConfigPage.qml" />
     <None Include="components\recipesPage.qml" />
     <None Include="components\recipesTab.qml" />
     <None Include="components\settingsDialog.qml" />
@@ -198,6 +202,9 @@
     <QtMoc Include="RBLatexExporter.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ListModelRecipeBookConfigurations.h" />
+    <QtMoc Include="ListModelRBConfigItems.h" />
+    <QtMoc Include="FilterModelUnusedRecipes.h" />
     <ClInclude Include="RBDialogInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -21,6 +21,7 @@ Item {
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, btnSeparateCollectedItems.checked);
 		}
 	}
+
 	ComboBox {
 		id: cbxSortOrder
         

@@ -52,14 +52,25 @@ QString RecipeBookConfigItem::getName() const
 	{
 		case RecipeBookConfigItemType::Header:
 		{
-			return "Header_" + m_HeaderName;
+			return m_HeaderName;
 		}
 
 		case RecipeBookConfigItemType::Recipe:
 		{
-			return "Recipe_" + m_pRecipe->getName();
+			return m_pRecipe->getName();
 		}
 	}
 
 	return "";
+}
+
+bool RecipeBookConfigItem::rename(QString newName)
+{
+	if(m_Type != RecipeBookConfigItemType::Header)
+	{
+		return false;
+	}
+
+	m_HeaderName = newName;
+	return true;
 }

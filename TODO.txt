@@ -3,23 +3,15 @@ TODO
 
 4 Exporters
 	* Kochbuch-Exporter
-		- data class:
-			* serialization (in normal json for now, but excluded in app config!)
-			* need a method to return currently not included recipes?
-			* header level consistency checks in data classes? (probably not)
-			* TODOs
+		- recipe book configurations serialization (in normal json for now, but excluded in app config!)
+		
+		- generate something similar to our recipebook, then save this as new reference!
 
-		- UI:
-			* cbx (or tabs? or listview?) to chose active config (+ adding and removal of configs)
-			* textboxes etc. for additional settings (font, title, ...)
-			* sortable list of recipes into which headers can be inserted (and which are moveable)
-				- user sortable
-				- separate add recipe and add header buttons. Both can be inserted before current item (or, alternatively, at the end of the list)
-				- add recipe button shows only recipes that are not currently present in the list
-					-> Alternative: a second ListView showing the recipes not currently added (and instead of add/remove buttons, buttons to move items between the two lists)
-				- list items are removeable (button at the end as usual)
-				- headers have a cbx or spinbox to adjust their level (this as consistency requirements though)
-			
+		- export / generate button!
+		- Exporter Algo: Write and compile latex file
+			* first version should look very similar to current recipe book
+			* layout should be configurable to some degree
+		
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!

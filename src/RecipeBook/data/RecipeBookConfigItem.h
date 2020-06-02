@@ -20,6 +20,8 @@ namespace recipebook
 		static RBElementId getElementId(RecipeBookConfigItemType type, QString strName);
 
 		QString getName() const;
+		bool rename(QString newName);
+
 		RBElementId getElementId() const { return getElementId(m_Type, getName()); }
 		RecipeBookConfigItemType getType() const { return m_Type; }
 

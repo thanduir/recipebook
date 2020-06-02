@@ -675,7 +675,7 @@ Item {
 
 			property bool held: false
 
-			anchors { left: parent.left; right: parent.right }
+			anchors { left: parent != null ? parent.left : undefined; right: parent != null ? parent.right : undefined }
 			height: content.height
 
 			drag.target: held ? content : undefined

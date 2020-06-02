@@ -345,6 +345,8 @@ bool ListModelRecipes::removeRecipe(int row)
 
 	endRemoveRows();
 
+	emit recipeRemoved(row);
+
 	return bSuccess;
 }
 

@@ -109,6 +109,15 @@
     <ClCompile Include="RecipeBookUIContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListModelRecipeBookConfigurations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListModelRBConfigItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterModelUnusedRecipes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -167,6 +176,9 @@
     </None>
     <None Include="components\appDlgInterface.qml">
       <Filter>qml Files\components\helper</Filter>
+    </None>
+    <None Include="components\rbConfigPage.qml">
+      <Filter>qml Files\components\cookbook</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +243,15 @@
       <Filter>Exporter</Filter>
     </QtMoc>
     <QtMoc Include="RecipeBookUIContext.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelRecipeBookConfigurations.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ListModelRBConfigItems.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilterModelUnusedRecipes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

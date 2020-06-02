@@ -115,7 +115,7 @@ ApplicationWindow {
 			text: qsTr("Shopping")
 		}
 		TabButton {
-			text: qsTr("Cookbook")
+			text: qsTr("Recipe books")
 		}
 	}
 

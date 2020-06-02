@@ -1,0 +1,334 @@
+import QtQuick 2.14
+import QtQuick.Controls 2.14
+import QtQuick.Layouts 1.14
+import QtQml.Models 2.1
+
+import "components"
+
+Item {
+	id: rbConfigPage
+
+	property int currentConfig: -1
+	
+	visible: currentConfig != -1
+
+	onVisibleChanged: {
+		if(visible)
+		{
+			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
+		}
+	}
+
+	TextInputDialog {
+		id: dlgAddHeader
+		title: qsTr("Add header")
+		onCurrentTextChanged: currentTextAllowed = !modelRBConfigItems.existsHeader(outputText)
+		onAccepted: {
+			lvItems.currentIndex = modelRBConfigItems.addHeader(outputText, lvItems.currentIndex)
+			lvItems.positionViewAtIndex(lvItems.currentIndex, ListView.Center)
+		}
+	}
+
+	EditItemsListDialog {
+		id: dlgAddRecipes
+		title: qsTr("Add recipe")
+		onListChanged: {
+			lvItems.currentIndex = -1;
+			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded();
+		}
+	}
+    
+	TextMessageDialog {
+		id: dlgRemoveItem
+		title: qsTr("Remove item")
+		onAccepted: {
+			modelRBConfigItems.removeItem(lvItems.currentIndex)
+			lvItems.currentIndex = -1
+			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
+		}
+	}
+
+	Label {
+		id: labelConfig
+        
+		anchors.left: parent.left
+		anchors.top: parent.top
+		anchors.topMargin: 24
+		anchors.leftMargin: 48
+        
+		text: qsTr("Configuration \"" + modelRecipeBookConfigurations.name(currentConfig) + "\"")
+		font.bold: true
+	}
+
+	GridLayout {
+		id: grid
+		anchors.left: parent.left
+		anchors.top: labelConfig.bottom
+		anchors.topMargin: 24
+		anchors.leftMargin: 48
+		anchors.bottomMargin: 48
+		anchors.rightMargin: 24
+        
+		width: 375
+
+		columns: 2
+
+		Label { 
+			text: qsTr("Title") 
+		}
+		TextField { 
+			Layout.fillWidth: true
+			selectByMouse: true
+
+			ToolTip.delay: 1000
+			ToolTip.timeout: 3000
+			ToolTip.visible: hovered
+			ToolTip.text: qsTr("Recipe book title")
+
+			text: modelRecipeBookConfigurations.title(currentConfig)
+			onEditingFinished: modelRecipeBookConfigurations.setTitle(currentConfig, text)
+		}
+
+		Label { 
+			Layout.rightMargin: 50
+
+			text: qsTr("Subtitle") 
+		}
+		TextField { 
+			Layout.fillWidth: true
+			selectByMouse: true
+
+			ToolTip.delay: 1000
+			ToolTip.timeout: 3000
+			ToolTip.visible: hovered
+			ToolTip.text: qsTr("Recipe book subtitle")
+
+			text: modelRecipeBookConfigurations.subtitle(currentConfig)
+			onEditingFinished: modelRecipeBookConfigurations.setSubtitle(currentConfig, text)
+		}
+
+		Label { 
+			text: qsTr("Font size") 
+		}
+		SpinBox { 
+			from: 8
+			to: 16
+			wheelEnabled: true
+			
+			value: modelRecipeBookConfigurations.fontSize(currentConfig)
+			onValueModified: modelRecipeBookConfigurations.setFontSize(currentConfig, value)
+		}
+	}
+
+	ToolSeparator {
+		anchors.left: grid.right
+		anchors.top: labelConfig.bottom
+		anchors.bottom: parent.bottom
+		anchors.topMargin: 24
+		anchors.leftMargin: 24
+		anchors.bottomMargin: 24
+	}
+
+	// Rearrange recipe items and headers
+
+	Component {
+		id: dragDelegate
+
+		MouseArea {
+			id: dragArea
+
+			property bool held: false
+
+			anchors { left: parent != null ? parent.left : undefined; right: parent != null ? parent.right : undefined }
+			height: content.height
+
+			drag.target: held ? content : undefined
+			drag.axis: Drag.YAxis
+
+			onPressed: {
+				if(!isHeader)
+				{
+					held = true
+					modelRBConfigItems.beginMove(index);
+					lvItems.currentIndex = -1
+				}
+			}
+			onReleased: {
+				if(!isHeader)
+				{
+					held = false
+					modelRBConfigItems.applyMove();
+				}
+			}
+			onClicked: lvItems.currentIndex = index
+            
+			Rectangle {
+				id: content
+
+				anchors.horizontalCenter: parent.horizontalCenter
+				anchors.verticalCenter: parent.verticalCenter
+
+				width: dragArea.width; 
+				height: column.implicitHeight + 47
+
+				color: dragArea.held || lvItems.currentIndex == index ? "lightgray" : "transparent"
+                
+				Drag.active: dragArea.held
+				Drag.source: dragArea
+				Drag.hotSpot.x: width / 2
+				Drag.hotSpot.y: height / 2
+
+				states: State {
+					when: dragArea.held
+
+					ParentChange { target: content; parent: cookbookTab }
+					AnchorChanges {
+						target: content
+						anchors { horizontalCenter: undefined; verticalCenter: undefined }
+					}
+				}
+
+				Item {
+					id: column
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.verticalCenter: parent.verticalCenter
+
+					// Move image
+					Image {
+						id: reorderImage
+						anchors.verticalCenter: parent.verticalCenter
+						anchors.left: parent.left
+						height: labelColumn.implicitHeight + 10
+						verticalAlignment: Image.AlignVCenter
+						anchors.margins: 15
+						visible: !isHeader
+
+						fillMode: Image.PreserveAspectFit
+						source: "qrc:/images/reorder.svg"
+					}
+
+					// Item name
+					Label {
+						id: labelColumn
+						anchors.verticalCenter: parent.verticalCenter
+						anchors.left: !isHeader ? reorderImage.right : parent.left
+
+						anchors.margins: 15
+
+						verticalAlignment: Text.AlignVCenter
+						font.bold: isHeader
+						text: name
+					}
+
+					SpinBox { 
+						anchors.verticalCenter: parent.verticalCenter
+						anchors.right: parent.right
+
+						from: 1
+						to: maxHeaderLevel+1
+						wheelEnabled: true
+						visible: isHeader
+			
+						value: headerLevel+1
+						onValueModified: headerLevel = value - 1
+					}
+				}
+			}
+
+			DropArea {
+				anchors { fill: parent; margins: 15 }
+
+				onEntered: {
+					modelRBConfigItems.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
+					rearrangeCurrentItemDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
+																 dragArea.DelegateModel.itemsIndex);
+				}
+			}
+		}
+	}
+
+	// Rearrange recipe item list view
+	ListView {
+		id: lvItems
+		anchors.left: grid.right
+		anchors.top: labelConfig.bottom
+		anchors.bottom: groupItems.top
+		anchors.topMargin: 24
+		anchors.leftMargin: 48
+		anchors.bottomMargin: 48
+		width: 400
+		
+		ScrollBar.vertical: ScrollBar { }
+		boundsBehavior: Flickable.StopAtBounds
+
+		spacing: 0
+		model: DelegateModel {
+			id: rearrangeCurrentItemDelegateModel
+
+			model: modelRBConfigItems
+			delegate: dragDelegate
+		}
+	}
+
+	Pane {
+		id: groupItems
+		anchors.left: lvItems.left
+		anchors.right: lvItems.right
+		anchors.bottom: parent.bottom
+
+		RowLayout {
+			anchors.centerIn: parent
+			spacing: 20
+
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+				icon.color: "blue"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add header")
+
+				onClicked: dlgAddHeader.open()
+			}
+			RoundButton {
+				id: btnAddRecipe
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Add recipe")
+
+				enabled: modelRBConfigItems.canRecipesBeAdded()
+				onClicked: {
+					filterModelUnusedRecipes.setRecipeBookConfiguration(currentConfig)
+
+					dlgAddRecipes.editListModel = modelRBConfigItems;
+					dlgAddRecipes.allValuesFilterModel = filterModelUnusedRecipes;
+
+					dlgAddRecipes.open()
+				}
+			}
+			
+			RoundButton { 
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/remove.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Remove item")
+
+				enabled: lvItems.count > 0
+				onClicked: {
+					dlgRemoveItem.msgText = qsTr("This will remove the item \"" + modelRBConfigItems.name(lvItems.currentIndex) + "\". Proceed?");
+					dlgRemoveItem.open();
+				}
+			}
+		}
+	}
+}

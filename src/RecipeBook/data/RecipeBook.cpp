@@ -24,6 +24,7 @@ void RecipeBook::clearData()
 	m_AlternativesTypes.clear();
 	m_Recipes.clear();
 	m_ShoppingRecipes.clear();
+	m_Configurations.clear();
 }
 
 Category& RecipeBook::addCategory(QString strName)

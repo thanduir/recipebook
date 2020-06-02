@@ -33,6 +33,9 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_ModelShoppingRecipes(m_RBData, m_Settings),
 	m_ModelShoppingListItems(m_RBData, m_Converter),
 	m_ModelGoShopping(m_RBData, m_Converter),
+	m_ModelConfigurations(m_RBData),
+	m_ModelConfigItems(m_RBData),
+	m_FilterModelUnusedRecipes(m_RBData),
 	m_DlgInterface(),
 	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
 	m_Engine(),
@@ -55,6 +58,7 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_FilterModelIngredients.setSourceModel(&m_ModelIngredients);
 	m_FilterModelRecipes.setSourceModel(&m_ModelRecipes);
 	m_FilterModelRecipeItems.setSourceModel(&m_ModelRecipeItems);
+	m_FilterModelUnusedRecipes.setSourceModel(&m_ModelRecipes);
 
 	connect(&m_ModelCategories, SIGNAL(categoryRenamed(quint32)),
 			&m_ModelIngredients, SLOT(onCategoryRenamed(quint32)));
@@ -75,6 +79,9 @@ RecipeBookUIContext::RecipeBookUIContext()
 
 	connect(&m_ModelShoppingListItems, SIGNAL(shoppingitemEnabledChanged(int)),
 			&m_ModelShoppingRecipes, SLOT(onItemEnabledChanged(int)));
+
+	connect(&m_ModelRecipes, SIGNAL(recipeRemoved(int)),
+			&m_ModelConfigItems, SLOT(onDependentItemRemoved(int)));
 
 	connect(&m_Settings, SIGNAL(resetAllData()),
 			this, SLOT(slotResetData()));
@@ -98,6 +105,8 @@ RecipeBookUIContext::RecipeBookUIContext()
 			&m_ModelShoppingRecipes, SLOT(onDataReset()));
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelGoShopping, SLOT(onDataReset()));
+	connect(this, SIGNAL(signalDataReset()),
+			&m_ModelConfigurations, SLOT(onDataReset()));
 
 	// Enable periodic saving routine
 	QTimer *pTimer = new QTimer(this);
@@ -275,6 +284,10 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 
 	context->setContextProperty("modelGoShopping", &m_ModelGoShopping);
 
+	context->setContextProperty("modelRecipeBookConfigurations", &m_ModelConfigurations);
+	context->setContextProperty("modelRBConfigItems", &m_ModelConfigItems);
+	context->setContextProperty("filterModelUnusedRecipes", &m_FilterModelUnusedRecipes);
+	
 	return true;
 }
 

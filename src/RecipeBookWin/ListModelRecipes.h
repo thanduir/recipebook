@@ -57,6 +57,9 @@ namespace recipebook::UI
 
 		void onDataReset();
 
+	signals:
+		void recipeRemoved(int index);
+
 	protected:
 		virtual QHash<int, QByteArray> roleNames() const override;
 

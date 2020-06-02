@@ -111,7 +111,7 @@ const RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i) const
 	return *m_Items.at(i).get();
 }
 
-void RecipeBookConfiguration::moveRecipeItem(const RecipeBookConfigItem& rItem, quint32 newPos)
+void RecipeBookConfiguration::moveItem(const RecipeBookConfigItem& rItem, quint32 newPos)
 {
 	int oldPos = internal::unsorted::find(rItem.getElementId(), m_Items);
 	if(oldPos < 0)

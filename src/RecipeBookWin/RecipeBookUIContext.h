@@ -20,6 +20,9 @@
 #include "ListModelShoppingRecipes.h"
 #include "ListModelShoppingListItems.h"
 #include "ListModelGoShopping.h"
+#include "ListModelRecipeBookConfigurations.h"
+#include "ListModelRBConfigItems.h"
+#include "FilterModelUnusedRecipes.h"
 #include "uistringconverter.h"
 #include "RBDialogInterface.h"
 
@@ -77,6 +80,10 @@ namespace recipebook::UI
 		ListModelShoppingListItems m_ModelShoppingListItems;
 
 		ListModelGoShopping m_ModelGoShopping;
+
+		ListModelRecipeBookConfigurations m_ModelConfigurations;
+		ListModelRBConfigItems m_ModelConfigItems;
+		FilterModelUnusedRecipes m_FilterModelUnusedRecipes;
 
 		RBDialogInterface m_DlgInterface;
 		ShoppingListExporter m_ShoppingListExporter;
