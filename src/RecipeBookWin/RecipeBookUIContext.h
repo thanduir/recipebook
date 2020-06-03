@@ -6,6 +6,7 @@
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
 #include "ShoppingListExporter.h"
+#include "RecipeBookExporter.h"
 #include "ListModelCategories.h"
 #include "ListModelIngredients.h"
 #include "FilterModelIngredients.h"
@@ -87,6 +88,7 @@ namespace recipebook::UI
 
 		RBDialogInterface m_DlgInterface;
 		ShoppingListExporter m_ShoppingListExporter;
+		RecipeBookExporter m_RecipeBookExporter;
 
 		QQmlApplicationEngine m_Engine;
 

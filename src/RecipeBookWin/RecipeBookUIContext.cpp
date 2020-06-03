@@ -38,6 +38,7 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_FilterModelUnusedRecipes(m_RBData),
 	m_DlgInterface(),
 	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
+	m_RecipeBookExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
 	m_Engine(),
 	m_SaveLock()
 {
@@ -253,6 +254,7 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	context->setContextProperty("recipeBookSettings", &m_Settings);
 
 	context->setContextProperty("shoppingListExporter", &m_ShoppingListExporter);
+	context->setContextProperty("recipeBookExporter", &m_RecipeBookExporter);
 
 	context->setContextProperty("unitNames", m_Converter.getAllUnitNames());
 	context->setContextProperty("unitNamesShort", m_Converter.getAllUnitShortNames());

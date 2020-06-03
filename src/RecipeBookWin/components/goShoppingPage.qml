@@ -157,6 +157,8 @@ Item {
 		anchors.bottom: parent.bottom
 		anchors.horizontalCenter: lvShoppingList.horizontalCenter
 
+		font.capitalization: Font.MixedCase
+
 		text: "Export shopping list"
 
 		onClicked: {

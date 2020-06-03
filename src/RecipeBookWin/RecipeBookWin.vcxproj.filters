@@ -118,6 +118,9 @@
     <ClCompile Include="FilterModelUnusedRecipes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RecipeBookExporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -252,6 +255,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="FilterModelUnusedRecipes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="RecipeBookExporter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -2,10 +2,6 @@ TODO
 ====
 
 4 Exporters
-	* Kochbuch-Exporter UI
-		- It should be possible to add the same header (same text) several times!
-		- export / generate button!
-
 	* Exporter Algo: Write and compile latex file
 		- first version should look very similar to current recipe book
 		- layout should be configurable to some degree

@@ -1,3 +1,4 @@
+import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
@@ -230,6 +231,7 @@ Item {
 					SpinBox { 
 						anchors.verticalCenter: parent.verticalCenter
 						anchors.right: parent.right
+						anchors.rightMargin: 24
 
 						from: 1
 						to: maxHeaderLevel+1
@@ -352,4 +354,53 @@ Item {
 			}
 		}
 	}
+
+	ToolSeparator {
+		anchors.left: lvItems.right
+		anchors.top: labelConfig.bottom
+		anchors.bottom: parent.bottom
+		anchors.topMargin: 24
+		anchors.leftMargin: 12
+		anchors.bottomMargin: 24
+	}
+
+	Rectangle {
+		anchors.top: parent.top
+		anchors.bottom: parent.bottom
+		anchors.left: lvItems.right
+		anchors.right: parent.right
+		anchors.leftMargin: 24
+
+		color: "transparent"
+
+		Button {
+			anchors.horizontalCenter: parent.horizontalCenter
+			anchors.verticalCenter: parent.verticalCenter
+
+			width: 300
+			height: 60
+
+			font.capitalization: Font.MixedCase
+
+			text: qsTr("Generate PDF")
+
+			onClicked: {
+				fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedRecipeBookConfigurationExportFolder()
+				fileDialogExport.open()
+			}
+
+			FileDialog {
+				id: fileDialogExport
+
+				title: qsTr("Generate recipe book pdf")
+				modality: Qt.WindowModal
+				nameFilters: recipeBookExporter.getDlgNameFilters()
+				selectExisting: false
+				selectMultiple: false
+				selectFolder: false
+				onAccepted: recipeBookExporter.exportRecipeBook(fileUrls, currentConfig)
+			}
+		}
+	}
+	
 }

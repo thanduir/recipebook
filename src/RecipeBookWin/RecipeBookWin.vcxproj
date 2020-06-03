@@ -119,6 +119,7 @@
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
     <ClCompile Include="RBDialogInterface.cpp" />
     <ClCompile Include="RBLatexExporter.cpp" />
+    <ClCompile Include="RecipeBookExporter.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="ShoppingListExporter.cpp" />
     <ClCompile Include="ShoppingListExporterLatex.cpp" />
@@ -202,6 +203,7 @@
     <QtMoc Include="RBLatexExporter.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="RecipeBookExporter.h" />
     <QtMoc Include="ListModelRecipeBookConfigurations.h" />
     <QtMoc Include="ListModelRBConfigItems.h" />
     <QtMoc Include="FilterModelUnusedRecipes.h" />
