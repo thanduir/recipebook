@@ -63,6 +63,7 @@ namespace recipebook::serialization::json
 	// recipe boook config items
 	constexpr char* c_strConfigItemPosition				= "_position";
 	constexpr char* c_strConfigItemType					= "type";
+	constexpr char* c_strConfigItemHeaderName			= "name";
 	constexpr char* c_strConfigItemHeaderLevel			= "headerLevel";
 }
 

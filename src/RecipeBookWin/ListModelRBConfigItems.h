@@ -35,11 +35,10 @@ namespace recipebook::UI
 	public slots:
 		void setCurrentConfig(int row);
 
+		bool existsRecipe(QString strRecipe) const;
+
 		QString name(int row) const;
 		bool renameHeader(int row, QString newName);
-
-		bool existsHeader(QString strHeader) const;
-		bool existsRecipe(QString strRecipe) const;
 
 		bool isHeader(int row) const;
 

@@ -332,7 +332,8 @@ bool json::JsonReaderV2::readRecipeBookConfigs(const QJsonObject& rObject, Recip
 			if(type == RecipeBookConfigItemType::Header)
 			{
 				qint32 uiLevel = item[c_strConfigItemHeaderLevel].toInt();
-				pItem = &rConfig.addHeader(strConfigItem, uiLevel);
+				QString strName = item[c_strConfigItemHeaderName].toString();
+				pItem = &rConfig.addHeader(strName, uiLevel);
 			}
 			else if(type == RecipeBookConfigItemType::Recipe)
 			{

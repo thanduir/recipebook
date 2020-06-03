@@ -10986,11 +10986,6 @@
                     "_position": 33,
                     "type": "Recipe"
                 },
-                "Brunch": {
-                    "_position": 0,
-                    "headerLevel": 0,
-                    "type": "Header"
-                },
                 "Chatschapuri": {
                     "_position": 70,
                     "type": "Recipe"
@@ -11006,16 +11001,6 @@
                 "Curry Classic": {
                     "_position": 55,
                     "type": "Recipe"
-                },
-                "Diverses": {
-                    "_position": 1,
-                    "headerLevel": 1,
-                    "type": "Header"
-                },
-                "Diverses2": {
-                    "_position": 68,
-                    "headerLevel": 1,
-                    "type": "Header"
                 },
                 "Edamame-Noodles": {
                     "_position": 71,
@@ -11057,9 +11042,52 @@
                     "_position": 74,
                     "type": "Recipe"
                 },
-                "Hauptgerichte": {
+                "Header_Brunch": {
+                    "_position": 0,
+                    "headerLevel": 0,
+                    "name": "Brunch",
+                    "type": "Header"
+                },
+                "Header_Diverses": {
+                    "_position": 1,
+                    "headerLevel": 1,
+                    "name": "Diverses",
+                    "type": "Header"
+                },
+                "Header_Diverses.1": {
+                    "_position": 68,
+                    "headerLevel": 1,
+                    "name": "Diverses",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte": {
                     "_position": 13,
                     "headerLevel": 0,
+                    "name": "Hauptgerichte",
+                    "type": "Header"
+                },
+                "Header_Kartoffeln": {
+                    "_position": 14,
+                    "headerLevel": 1,
+                    "name": "Kartoffeln",
+                    "type": "Header"
+                },
+                "Header_Pasta": {
+                    "_position": 31,
+                    "headerLevel": 1,
+                    "name": "Pasta",
+                    "type": "Header"
+                },
+                "Header_Reis": {
+                    "_position": 50,
+                    "headerLevel": 1,
+                    "name": "Reis",
+                    "type": "Header"
+                },
+                "Header_Sommersalate": {
+                    "_position": 85,
+                    "headerLevel": 1,
+                    "name": "Sommersalate",
                     "type": "Header"
                 },
                 "Honig-Apfelwähe": {
@@ -11085,11 +11113,6 @@
                 "Kartoffel-Lauch-Gratin": {
                     "_position": 18,
                     "type": "Recipe"
-                },
-                "Kartoffeln": {
-                    "_position": 14,
-                    "headerLevel": 1,
-                    "type": "Header"
                 },
                 "Kokos-Rind One-Pot": {
                     "_position": 59,
@@ -11159,11 +11182,6 @@
                     "_position": 9,
                     "type": "Recipe"
                 },
-                "Pasta": {
-                    "_position": 31,
-                    "headerLevel": 1,
-                    "type": "Header"
-                },
                 "Pasta-Salat": {
                     "_position": 86,
                     "type": "Recipe"
@@ -11191,11 +11209,6 @@
                 "Raclette": {
                     "_position": 25,
                     "type": "Recipe"
-                },
-                "Reis": {
-                    "_position": 50,
-                    "headerLevel": 1,
-                    "type": "Header"
                 },
                 "Reispfanne italiana": {
                     "_position": 62,
@@ -11240,11 +11253,6 @@
                 "Sommerfladen": {
                     "_position": 80,
                     "type": "Recipe"
-                },
-                "Sommersalate": {
-                    "_position": 85,
-                    "headerLevel": 1,
-                    "type": "Header"
                 },
                 "Sommerwähe": {
                     "_position": 81,

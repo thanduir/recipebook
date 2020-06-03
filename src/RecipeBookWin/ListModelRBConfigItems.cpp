@@ -155,17 +155,6 @@ QString ListModelRBConfigItems::name(int row) const
 	return rItem.getName();
 }
 
-bool ListModelRBConfigItems::existsHeader(QString strHeader) const
-{
-	RBDataReadHandle handle(m_rRBDataHandler);
-	const RecipeBookConfiguration* pConfig = getConfig(handle);
-
-	if(pConfig == nullptr)
-		return false;
-
-	return pConfig->existsHeader(strHeader);
-}
-
 bool ListModelRBConfigItems::existsRecipe(QString strRecipe) const
 {
 	RBDataReadHandle handle(m_rRBDataHandler);
@@ -220,11 +209,6 @@ bool ListModelRBConfigItems::renameHeader(int row, QString newName)
 
 		if(pConfig == nullptr || row < 0 || row >= (int) pConfig->getItemsCount())
 			return false;
-
-		if(pConfig->existsHeader(newName))
-		{
-			return false;
-		}
 
 		RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
 		if(rItem.getType() != RecipeBookConfigItemType::Header)
@@ -292,7 +276,7 @@ int ListModelRBConfigItems::addHeader(QString strName, int pos)
 		RBDataReadHandle handle(m_rRBDataHandler);
 		const RecipeBookConfiguration* pConfig = getConfig(handle);
 
-		if(pConfig == nullptr || pConfig->existsHeader(strName))
+		if(pConfig == nullptr)
 		{
 			return -1;
 		}

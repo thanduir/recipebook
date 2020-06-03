@@ -47,22 +47,26 @@ RecipeBookConfigItem& RecipeBookConfiguration::addRecipe(const Recipe& rRecipe, 
 
 RecipeBookConfigItem& RecipeBookConfiguration::addHeader(QString strName, quint32 uiLevel, qint32 pos)
 {
-	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
-	return internal::unsorted::addItem<RecipeBookConfigItem>(idString, pos, m_Items, [strName, uiLevel]()
+	// Find unsed id
+	QString idStringBase = strName;
+	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, idStringBase);
+	int i = 1;
+	while(internal::unsorted::exists(idString, m_Items))
 	{
-		return new RecipeBookConfigItem(strName, uiLevel);
+		idStringBase = QString("%1.%2").arg(strName).arg(i);
+		idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, idStringBase);
+		++i;
+	}
+
+	return internal::unsorted::addItem<RecipeBookConfigItem>(idString, pos, m_Items, [strName, idStringBase, uiLevel]()
+	{
+		return new RecipeBookConfigItem(strName, idStringBase, uiLevel);
 	});
 }
 
 bool RecipeBookConfiguration::existsRecipe(const Recipe& rRecipe) const
 {
 	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Recipe, rRecipe.getName());
-	return internal::unsorted::exists<RecipeBookConfigItem>(idString, m_Items);
-}
-
-bool RecipeBookConfiguration::existsHeader(QString strName) const
-{
-	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
 	return internal::unsorted::exists<RecipeBookConfigItem>(idString, m_Items);
 }
 
@@ -80,13 +84,6 @@ bool RecipeBookConfiguration::removeItem(quint32 pos)
 bool RecipeBookConfiguration::removeRecipe(const Recipe& rRecipe)
 {
 	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Recipe, rRecipe.getName());
-	internal::unsorted::remove(idString, m_Items);
-	return true;
-}
-
-bool RecipeBookConfiguration::removeHeader(QString strName)
-{
-	RBElementId idString = RecipeBookConfigItem::getElementId(RecipeBookConfigItemType::Header, strName);
 	internal::unsorted::remove(idString, m_Items);
 	return true;
 }

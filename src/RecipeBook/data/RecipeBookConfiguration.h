@@ -32,11 +32,9 @@ namespace recipebook
 		RecipeBookConfigItem& addHeader(QString strName, quint32 uiLevel = 0, qint32 pos = -1);
 
 		bool existsRecipe(const Recipe& rRecipe) const;
-		bool existsHeader(QString strName) const;
 
 		bool removeItem(quint32 pos);
 		bool removeRecipe(const Recipe& rRecipe);
-		bool removeHeader(QString strName);
 
 		quint32 getItemsCount() const;
 		RecipeBookConfigItem& getItemAt(quint32 i);

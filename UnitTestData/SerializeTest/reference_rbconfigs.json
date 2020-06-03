@@ -10949,384 +10949,381 @@
         }
     },
     "z_recipebookconfig": {
-        "default": {
+        "Standard": {
             "FontSize": 10,
-            "Subtitle": "",
-            "Title": "default",
+            "Subtitle": "Unser Kochbuch",
+            "Title": "Kochbuch",
             "items": {
                 "Asia Nudeln": {
-                    "_position": 1,
-                    "type": "Recipe"
-                },
-                "Auberginen-Auflauf": {
-                    "_position": 2,
-                    "type": "Recipe"
-                },
-                "Auberginen-Risotto": {
-                    "_position": 3,
-                    "type": "Recipe"
-                },
-                "Bibimbap": {
-                    "_position": 5,
-                    "type": "Recipe"
-                },
-                "Birnen-Nuss-Wähe": {
-                    "_position": 6,
-                    "type": "Recipe"
-                },
-                "Blumenkohl-Wraps": {
-                    "_position": 8,
-                    "type": "Recipe"
-                },
-                "Broccoli mit Reisnudeln": {
-                    "_position": 9,
-                    "type": "Recipe"
-                },
-                "Broccoli-Peperoni-Nudeln": {
-                    "_position": 10,
-                    "type": "Recipe"
-                },
-                "Chatschapuri": {
-                    "_position": 12,
-                    "type": "Recipe"
-                },
-                "China-Gemüse mit sweet Tofu": {
-                    "_position": 13,
-                    "type": "Recipe"
-                },
-                "Clafuti": {
-                    "_position": 14,
-                    "type": "Recipe"
-                },
-                "Curry Classic": {
-                    "_position": 15,
-                    "type": "Recipe"
-                },
-                "Edamame-Noodles": {
-                    "_position": 16,
-                    "type": "Recipe"
-                },
-                "Fischsticks + Fenchel": {
-                    "_position": 17,
-                    "type": "Recipe"
-                },
-                "Fotzelschnitten": {
-                    "_position": 18,
-                    "type": "Recipe"
-                },
-                "Fruchtsalat / Kompott": {
-                    "_position": 19,
-                    "type": "Recipe"
-                },
-                "Fruchtwähe": {
-                    "_position": 20,
-                    "type": "Recipe"
-                },
-                "Frühlings-Spaghetti": {
-                    "_position": 22,
-                    "type": "Recipe"
-                },
-                "Frühlingsrisotto": {
-                    "_position": 21,
-                    "type": "Recipe"
-                },
-                "Fusilli al Pollo": {
-                    "_position": 23,
-                    "type": "Recipe"
-                },
-                "Gefüllte Peperoni": {
-                    "_position": 24,
-                    "type": "Recipe"
-                },
-                "Gnocchi mit Krautstiel": {
-                    "_position": 25,
-                    "type": "Recipe"
-                },
-                "Gnocchi-Pilz-Pfanne": {
-                    "_position": 26,
-                    "type": "Recipe"
-                },
-                "Gnocchi-Tomaten-Pfanne": {
-                    "_position": 27,
-                    "type": "Recipe"
-                },
-                "Himbeer-Quark": {
-                    "_position": 28,
-                    "type": "Recipe"
-                },
-                "Honig-Apfelwähe": {
-                    "_position": 29,
-                    "type": "Recipe"
-                },
-                "Hörnli + Ghackets": {
-                    "_position": 30,
-                    "type": "Recipe"
-                },
-                "Hörnli-Auflauf": {
-                    "_position": 31,
-                    "type": "Recipe"
-                },
-                "Hüttenkäse": {
                     "_position": 32,
                     "type": "Recipe"
                 },
-                "Kaiserschmarn": {
-                    "_position": 33,
+                "Auberginen-Auflauf": {
+                    "_position": 16,
                     "type": "Recipe"
                 },
-                "Kartoffel-Kohlrabi Auflauf": {
-                    "_position": 34,
-                    "type": "Recipe"
-                },
-                "Kartoffel-Lauch-Gratin": {
-                    "_position": 35,
-                    "type": "Recipe"
-                },
-                "Kichererbsensalat": {
-                    "_position": 36,
-                    "type": "Recipe"
-                },
-                "Kokos-Rind One-Pot": {
-                    "_position": 37,
-                    "type": "Recipe"
-                },
-                "Krautstiel Wok Nudeln": {
-                    "_position": 39,
-                    "type": "Recipe"
-                },
-                "Kräuterreis mit Auberginen-Piccata": {
-                    "_position": 38,
-                    "type": "Recipe"
-                },
-                "Lachs mit Salzkartoffeln": {
-                    "_position": 40,
-                    "type": "Recipe"
-                },
-                "Lachs-Käse-Wähe + Salat": {
-                    "_position": 41,
-                    "type": "Recipe"
-                },
-                "Lasagne": {
-                    "_position": 42,
-                    "type": "Recipe"
-                },
-                "Lauch-Pilz-Lasagne": {
-                    "_position": 43,
-                    "type": "Recipe"
-                },
-                "Lauchrisotto + Fleisch": {
-                    "_position": 44,
-                    "type": "Recipe"
-                },
-                "Moussaka": {
-                    "_position": 45,
-                    "type": "Recipe"
-                },
-                "Mozzarella + Tomaten": {
-                    "_position": 46,
-                    "type": "Recipe"
-                },
-                "Müesli": {
-                    "_position": 47,
-                    "type": "Recipe"
-                },
-                "Nudel-Vogelnester": {
-                    "_position": 48,
-                    "type": "Recipe"
-                },
-                "Ofen-Kartoffel-Gemüse+Cipollata": {
-                    "_position": 50,
-                    "type": "Recipe"
-                },
-                "Ofen-Kartoffel-Gemüse+Poulet": {
+                "Auberginen-Risotto": {
                     "_position": 51,
                     "type": "Recipe"
                 },
-                "Ofen-Tortillas": {
-                    "_position": 52,
-                    "type": "Recipe"
-                },
-                "Ofengemüse": {
-                    "_position": 49,
-                    "type": "Recipe"
-                },
-                "Omelette": {
+                "Bibimbap": {
                     "_position": 53,
                     "type": "Recipe"
                 },
-                "One-Pot-Pasta": {
-                    "_position": 54,
+                "Birnen-Nuss-Wähe": {
+                    "_position": 2,
                     "type": "Recipe"
                 },
-                "Pancakes": {
-                    "_position": 55,
-                    "type": "Recipe"
-                },
-                "Pasta-Salat": {
-                    "_position": 56,
-                    "type": "Recipe"
-                },
-                "Pastetli mit Tofu / Champignons": {
-                    "_position": 57,
-                    "type": "Recipe"
-                },
-                "Penne mit Lachs + Spargel": {
-                    "_position": 58,
-                    "type": "Recipe"
-                },
-                "Pilz-Risotto": {
-                    "_position": 59,
-                    "type": "Recipe"
-                },
-                "Pizza": {
-                    "_position": 60,
-                    "type": "Recipe"
-                },
-                "Pommes + Cordon bleu": {
-                    "_position": 61,
-                    "type": "Recipe"
-                },
-                "Pouletflügeli mit Kichererbsen": {
-                    "_position": 62,
-                    "type": "Recipe"
-                },
-                "Raclette": {
-                    "_position": 63,
-                    "type": "Recipe"
-                },
-                "Reispfanne italiana": {
-                    "_position": 64,
-                    "type": "Recipe"
-                },
-                "Ricotta-Spinat-Penne": {
-                    "_position": 65,
-                    "type": "Recipe"
-                },
-                "Risotto mit Chicorée-Piccata": {
-                    "_position": 66,
-                    "type": "Recipe"
-                },
-                "Riz Casimir": {
-                    "_position": 67,
-                    "type": "Recipe"
-                },
-                "Rosenkohl-Lauch-Kartoffeln": {
-                    "_position": 68,
-                    "type": "Recipe"
-                },
-                "Rösti mit Bratwurst": {
+                "Blumenkohl-Wraps": {
                     "_position": 69,
                     "type": "Recipe"
                 },
-                "Salat": {
+                "Broccoli mit Reisnudeln": {
+                    "_position": 54,
+                    "type": "Recipe"
+                },
+                "Broccoli-Peperoni-Nudeln": {
+                    "_position": 33,
+                    "type": "Recipe"
+                },
+                "Chatschapuri": {
                     "_position": 70,
                     "type": "Recipe"
                 },
-                "Salzkartoffeln mit Fleisch": {
+                "China-Gemüse mit sweet Tofu": {
+                    "_position": 52,
+                    "type": "Recipe"
+                },
+                "Clafuti": {
+                    "_position": 4,
+                    "type": "Recipe"
+                },
+                "Curry Classic": {
+                    "_position": 55,
+                    "type": "Recipe"
+                },
+                "Edamame-Noodles": {
                     "_position": 71,
                     "type": "Recipe"
                 },
-                "Salzkartoffeln mit Ofen-Hack-Gemüse": {
-                    "_position": 73,
+                "Fotzelschnitten": {
+                    "_position": 3,
                     "type": "Recipe"
                 },
-                "Salzkartoffeln mit gefüllten Pilzen": {
+                "Fruchtwähe": {
+                    "_position": 5,
+                    "type": "Recipe"
+                },
+                "Frühlings-Spaghetti": {
+                    "_position": 34,
+                    "type": "Recipe"
+                },
+                "Frühlingsrisotto": {
+                    "_position": 56,
+                    "type": "Recipe"
+                },
+                "Fusilli al Pollo": {
+                    "_position": 35,
+                    "type": "Recipe"
+                },
+                "Gefüllte Peperoni": {
+                    "_position": 57,
+                    "type": "Recipe"
+                },
+                "Gnocchi mit Krautstiel": {
                     "_position": 72,
                     "type": "Recipe"
                 },
-                "Shakshuka": {
+                "Gnocchi-Pilz-Pfanne": {
+                    "_position": 73,
+                    "type": "Recipe"
+                },
+                "Gnocchi-Tomaten-Pfanne": {
                     "_position": 74,
                     "type": "Recipe"
                 },
-                "Sommerfladen": {
+                "Header_Brunch": {
+                    "_position": 0,
+                    "headerLevel": 0,
+                    "name": "Brunch",
+                    "type": "Header"
+                },
+                "Header_Diverses": {
+                    "_position": 1,
+                    "headerLevel": 1,
+                    "name": "Diverses",
+                    "type": "Header"
+                },
+                "Header_Diverses.1": {
+                    "_position": 68,
+                    "headerLevel": 1,
+                    "name": "Diverses",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte": {
+                    "_position": 13,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte",
+                    "type": "Header"
+                },
+                "Header_Kartoffeln": {
+                    "_position": 14,
+                    "headerLevel": 1,
+                    "name": "Kartoffeln",
+                    "type": "Header"
+                },
+                "Header_Pasta": {
+                    "_position": 31,
+                    "headerLevel": 1,
+                    "name": "Pasta",
+                    "type": "Header"
+                },
+                "Header_Reis": {
+                    "_position": 50,
+                    "headerLevel": 1,
+                    "name": "Reis",
+                    "type": "Header"
+                },
+                "Header_Sommersalate": {
+                    "_position": 85,
+                    "headerLevel": 1,
+                    "name": "Sommersalate",
+                    "type": "Header"
+                },
+                "Honig-Apfelwähe": {
+                    "_position": 6,
+                    "type": "Recipe"
+                },
+                "Hörnli + Ghackets": {
+                    "_position": 36,
+                    "type": "Recipe"
+                },
+                "Hörnli-Auflauf": {
+                    "_position": 37,
+                    "type": "Recipe"
+                },
+                "Kaiserschmarn": {
+                    "_position": 7,
+                    "type": "Recipe"
+                },
+                "Kartoffel-Kohlrabi Auflauf": {
+                    "_position": 17,
+                    "type": "Recipe"
+                },
+                "Kartoffel-Lauch-Gratin": {
+                    "_position": 18,
+                    "type": "Recipe"
+                },
+                "Kokos-Rind One-Pot": {
+                    "_position": 59,
+                    "type": "Recipe"
+                },
+                "Krautstiel Wok Nudeln": {
+                    "_position": 38,
+                    "type": "Recipe"
+                },
+                "Kräuterreis mit Auberginen-Piccata": {
+                    "_position": 58,
+                    "type": "Recipe"
+                },
+                "Lachs mit Salzkartoffeln": {
+                    "_position": 19,
+                    "type": "Recipe"
+                },
+                "Lachs-Käse-Wähe + Salat": {
                     "_position": 75,
                     "type": "Recipe"
                 },
-                "Sommerwähe": {
+                "Lasagne": {
+                    "_position": 39,
+                    "type": "Recipe"
+                },
+                "Lauch-Pilz-Lasagne": {
+                    "_position": 40,
+                    "type": "Recipe"
+                },
+                "Lauchrisotto + Fleisch": {
+                    "_position": 60,
+                    "type": "Recipe"
+                },
+                "Moussaka": {
+                    "_position": 20,
+                    "type": "Recipe"
+                },
+                "Müesli": {
+                    "_position": 10,
+                    "type": "Recipe"
+                },
+                "Nudel-Vogelnester": {
+                    "_position": 41,
+                    "type": "Recipe"
+                },
+                "Ofen-Kartoffel-Gemüse+Cipollata": {
+                    "_position": 22,
+                    "type": "Recipe"
+                },
+                "Ofen-Kartoffel-Gemüse+Poulet": {
+                    "_position": 23,
+                    "type": "Recipe"
+                },
+                "Ofen-Tortillas": {
                     "_position": 76,
                     "type": "Recipe"
                 },
-                "Spaghetti Bolognese": {
-                    "_position": 77,
+                "Omelette": {
+                    "_position": 8,
                     "type": "Recipe"
                 },
-                "Spaghetti Carbonara": {
-                    "_position": 78,
+                "One-Pot-Pasta": {
+                    "_position": 42,
                     "type": "Recipe"
                 },
-                "Spargel-Erdbeer-Salat": {
-                    "_position": 79,
+                "Pancakes": {
+                    "_position": 9,
                     "type": "Recipe"
                 },
-                "Spätzli mit Rahm-Geschnetzeltem": {
-                    "_position": 80,
-                    "type": "Recipe"
-                },
-                "Stocki mit Plätzli": {
-                    "_position": 81,
-                    "type": "Recipe"
-                },
-                "Süss-Sauer": {
-                    "_position": 82,
-                    "type": "Recipe"
-                },
-                "Taboulé": {
-                    "_position": 83,
-                    "type": "Recipe"
-                },
-                "Thai Pasta": {
-                    "_position": 84,
-                    "type": "Recipe"
-                },
-                "Thai Pasta Light": {
-                    "_position": 85,
-                    "type": "Recipe"
-                },
-                "Thai-Curry": {
+                "Pasta-Salat": {
                     "_position": 86,
                     "type": "Recipe"
                 },
-                "Toast Hawaii": {
+                "Pastetli mit Tofu / Champignons": {
+                    "_position": 78,
+                    "type": "Recipe"
+                },
+                "Penne mit Lachs + Spargel": {
+                    "_position": 43,
+                    "type": "Recipe"
+                },
+                "Pilz-Risotto": {
+                    "_position": 61,
+                    "type": "Recipe"
+                },
+                "Pizza": {
+                    "_position": 77,
+                    "type": "Recipe"
+                },
+                "Pommes + Cordon bleu": {
+                    "_position": 24,
+                    "type": "Recipe"
+                },
+                "Raclette": {
+                    "_position": 25,
+                    "type": "Recipe"
+                },
+                "Reispfanne italiana": {
+                    "_position": 62,
+                    "type": "Recipe"
+                },
+                "Ricotta-Spinat-Penne": {
+                    "_position": 44,
+                    "type": "Recipe"
+                },
+                "Risotto mit Chicorée-Piccata": {
+                    "_position": 64,
+                    "type": "Recipe"
+                },
+                "Riz Casimir": {
+                    "_position": 63,
+                    "type": "Recipe"
+                },
+                "Rosenkohl-Lauch-Kartoffeln": {
+                    "_position": 26,
+                    "type": "Recipe"
+                },
+                "Rösti mit Bratwurst": {
+                    "_position": 27,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit Fleisch": {
+                    "_position": 28,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit Ofen-Hack-Gemüse": {
+                    "_position": 30,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit gefüllten Pilzen": {
+                    "_position": 29,
+                    "type": "Recipe"
+                },
+                "Shakshuka": {
+                    "_position": 79,
+                    "type": "Recipe"
+                },
+                "Sommerfladen": {
+                    "_position": 80,
+                    "type": "Recipe"
+                },
+                "Sommerwähe": {
+                    "_position": 81,
+                    "type": "Recipe"
+                },
+                "Spaghetti Bolognese": {
+                    "_position": 45,
+                    "type": "Recipe"
+                },
+                "Spaghetti Carbonara": {
+                    "_position": 46,
+                    "type": "Recipe"
+                },
+                "Spargel-Erdbeer-Salat": {
                     "_position": 87,
                     "type": "Recipe"
                 },
-                "Tomatenrisotto + Fleisch": {
+                "Spätzli mit Rahm-Geschnetzeltem": {
+                    "_position": 82,
+                    "type": "Recipe"
+                },
+                "Stocki mit Plätzli": {
+                    "_position": 21,
+                    "type": "Recipe"
+                },
+                "Süss-Sauer": {
+                    "_position": 65,
+                    "type": "Recipe"
+                },
+                "Taboulé": {
                     "_position": 88,
                     "type": "Recipe"
                 },
+                "Thai Pasta": {
+                    "_position": 47,
+                    "type": "Recipe"
+                },
+                "Thai Pasta Light": {
+                    "_position": 48,
+                    "type": "Recipe"
+                },
+                "Thai-Curry": {
+                    "_position": 66,
+                    "type": "Recipe"
+                },
+                "Toast Hawaii": {
+                    "_position": 83,
+                    "type": "Recipe"
+                },
+                "Tomatenrisotto + Fleisch": {
+                    "_position": 67,
+                    "type": "Recipe"
+                },
                 "Wraps": {
-                    "_position": 89,
+                    "_position": 84,
                     "type": "Recipe"
                 },
                 "Zitronen-Lasagne": {
-                    "_position": 90,
+                    "_position": 49,
                     "type": "Recipe"
                 },
                 "Zopf + Spiegeleier + Speck": {
-                    "_position": 91,
+                    "_position": 11,
                     "type": "Recipe"
                 },
                 "Zopf mit Brie und Confiture": {
-                    "_position": 92,
+                    "_position": 12,
                     "type": "Recipe"
                 },
-                "header1": {
-                    "_position": 4,
-                    "headerLevel": 0,
-                    "type": "Header"
-                },
-                "header2": {
-                    "_position": 7,
-                    "headerLevel": 1,
-                    "type": "Header"
-                },
-                "header3": {
-                    "_position": 11,
-                    "headerLevel": 0,
-                    "type": "Header"
-                },
                 "Älplermagronen": {
-                    "_position": 0,
+                    "_position": 15,
                     "type": "Recipe"
                 }
             }

@@ -23,7 +23,6 @@ Item {
 	TextInputDialog {
 		id: dlgAddHeader
 		title: qsTr("Add header")
-		onCurrentTextChanged: currentTextAllowed = !modelRBConfigItems.existsHeader(outputText)
 		onAccepted: {
 			lvItems.currentIndex = modelRBConfigItems.addHeader(outputText, lvItems.currentIndex)
 			lvItems.positionViewAtIndex(lvItems.currentIndex, ListView.Center)
@@ -42,7 +41,6 @@ Item {
 	TextInputDialog {
 		id: dlgRenameHeader
 		title: qsTr("Rename header")
-		onCurrentTextChanged: currentTextAllowed = !modelRBConfigItems.existsHeader(outputText)
 		onAccepted: modelRBConfigItems.renameHeader(lvItems.currentIndex, outputText)
 	}
 

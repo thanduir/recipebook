@@ -311,10 +311,15 @@ void json::JsonWriter::writeRecipeBookConfigs(const RecipeBook& rRecipeBook, QJs
 				recipeItemObject[json::c_strConfigItemType] = helper::convertRBConfigType(type);
 				if(type == RecipeBookConfigItemType::Header)
 				{
+					recipeItemObject[json::c_strConfigItemHeaderName] = rItem.getName();
 					recipeItemObject[json::c_strConfigItemHeaderLevel] = rItem.getLevel();
-				}
 
-				itemsObject[rItem.getName()] = recipeItemObject;
+					itemsObject[rItem.getElementId().toString()] = recipeItemObject;
+				}
+				else
+				{
+					itemsObject[rItem.getName()] = recipeItemObject;
+				}
 			}
 			configObject[json::c_strConfigItems] = itemsObject;
 

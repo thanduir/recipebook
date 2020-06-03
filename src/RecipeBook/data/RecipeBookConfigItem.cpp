@@ -4,18 +4,18 @@
 
 using namespace recipebook;
 
-RBElementId RecipeBookConfigItem::getElementId(RecipeBookConfigItemType type, QString strName)
+RBElementId RecipeBookConfigItem::getElementId(RecipeBookConfigItemType type, QString strElementIdBase)
 {
 	switch(type)
 	{
 		case RecipeBookConfigItemType::Header:
 		{
-			return RBElementId("Header_" + strName);
+			return RBElementId("Header_" + strElementIdBase);
 		}
 
 		case RecipeBookConfigItemType::Recipe:
 		{
-			return RBElementId("Recipe_" + strName);
+			return RBElementId("Recipe_" + strElementIdBase);
 		}
 	}
 
@@ -30,10 +30,11 @@ RecipeBookConfigItem::RecipeBookConfigItem(const Recipe& rRecipe)
 {
 }
 
-RecipeBookConfigItem::RecipeBookConfigItem(QString strHeaderName, quint32 uiLevel)
+RecipeBookConfigItem::RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, quint32 uiLevel)
 :	m_Type(RecipeBookConfigItemType::Header),
 	m_pRecipe(nullptr),
 	m_HeaderName(strHeaderName),
+	m_HeaderIdBase(strElementIdBase),
 	m_uiLevel(uiLevel)
 {
 }
@@ -62,6 +63,16 @@ QString RecipeBookConfigItem::getName() const
 	}
 
 	return "";
+}
+
+QString RecipeBookConfigItem::getElementIdBase() const
+{
+	if(m_Type == RecipeBookConfigItemType::Header)
+	{
+		return m_HeaderIdBase;
+	}
+
+	return getName();
 }
 
 bool RecipeBookConfigItem::rename(QString newName)

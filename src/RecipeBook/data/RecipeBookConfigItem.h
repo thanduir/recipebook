@@ -17,12 +17,10 @@ namespace recipebook
 	class RecipeBookConfigItem
 	{
 	public:
-		static RBElementId getElementId(RecipeBookConfigItemType type, QString strName);
-
 		QString getName() const;
 		bool rename(QString newName);
 
-		RBElementId getElementId() const { return getElementId(m_Type, getName()); }
+		RBElementId getElementId() const { return getElementId(m_Type, getElementIdBase()); }
 		RecipeBookConfigItemType getType() const { return m_Type; }
 
 		const Recipe* getRecipe() const { return m_pRecipe; }
@@ -32,15 +30,19 @@ namespace recipebook
 
 	private:
 		explicit RecipeBookConfigItem(const Recipe& rRecipe);
-		RecipeBookConfigItem(QString strHeaderName, quint32 uiLevel);
+		RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, quint32 uiLevel);
 		RecipeBookConfigItem(const RecipeBookConfigItem& rOther);
 
 		void operator=(const RecipeBookConfigItem& rOther) = delete;
+
+		QString getElementIdBase() const;
+		static RBElementId getElementId(RecipeBookConfigItemType type, QString strElementIdBase);
 
 	private:
 		RecipeBookConfigItemType	m_Type;
 		const Recipe*				m_pRecipe = nullptr;
 		QString						m_HeaderName;
+		QString						m_HeaderIdBase;
 		qint32						m_uiLevel = -1;
 
 		friend class RecipeBookConfiguration;
