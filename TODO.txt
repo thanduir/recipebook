@@ -2,13 +2,13 @@ TODO
 ====
 
 4 Exporters
-	* Kochbuch-Exporter
-		- generate something similar to our recipebook, then save this as new reference!
-			
+	* Kochbuch-Exporter UI
+		- It should be possible to add the same header (same text) several times!
 		- export / generate button!
-		- Exporter Algo: Write and compile latex file
-			* first version should look very similar to current recipe book
-			* layout should be configurable to some degree
+
+	* Exporter Algo: Write and compile latex file
+		- first version should look very similar to current recipe book
+		- layout should be configurable to some degree
 		
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!

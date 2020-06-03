@@ -51,6 +51,7 @@ namespace recipebook::UI
 		int addHeader(QString strName, int pos);
 		int addRecipe(QString strName, int pos);
 		bool removeItem(int row);
+		void moveItem(int row, int target);
 		
 		void onDependentItemRemoved(int index);
 

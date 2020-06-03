@@ -432,6 +432,29 @@ bool ListModelRBConfigItems::removeItem(int row)
 	return bSuccess;
 }
 
+void ListModelRBConfigItems::moveItem(int row, int target)
+{
+	{
+		RBDataReadHandle handle(m_rRBDataHandler);
+		const RecipeBookConfiguration* pConfig = getConfig(handle);
+
+		if(pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount()
+			|| target < 0 || target >= (int)pConfig->getItemsCount()
+			|| row == target)
+			return;
+	}
+
+	beginMoveRows(QModelIndex(), row, row, QModelIndex(), target > row ? target + 1 : target);
+
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		RecipeBookConfiguration* pConfig = getConfig(handle);
+		pConfig->moveItem(pConfig->getItemAt(row), target);
+	}
+
+	endMoveRows();
+}
+
 void ListModelRBConfigItems::beginMove(int row)
 {
 	m_MoveFrom = row;
@@ -447,13 +470,7 @@ void ListModelRBConfigItems::applyMove()
 {
 	if(m_MoveFrom != m_MoveTo)
 	{
-		RBDataWriteHandle handle(m_rRBDataHandler);
-		RecipeBookConfiguration* pConfig = getConfig(handle);
-
-		if(pConfig != nullptr)
-		{
-			pConfig->moveItem(pConfig->getItemAt(m_MoveFrom), m_MoveTo);
-		}
+		moveItem(m_MoveFrom, m_MoveTo);
 	}
 
 	m_MoveFrom = -1;

@@ -15,6 +15,7 @@ Item {
 	onVisibleChanged: {
 		if(visible)
 		{
+			modelRBConfigItems.setCurrentConfig(currentConfig)
 			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
 		}
 	}
@@ -38,6 +39,13 @@ Item {
 		}
 	}
     
+	TextInputDialog {
+		id: dlgRenameHeader
+		title: qsTr("Rename header")
+		onCurrentTextChanged: currentTextAllowed = !modelRBConfigItems.existsHeader(outputText)
+		onAccepted: modelRBConfigItems.renameHeader(lvItems.currentIndex, outputText)
+	}
+
 	TextMessageDialog {
 		id: dlgRemoveItem
 		title: qsTr("Remove item")
@@ -227,7 +235,6 @@ Item {
 
 						from: 1
 						to: maxHeaderLevel+1
-						wheelEnabled: true
 						visible: isHeader
 			
 						value: headerLevel+1
@@ -311,6 +318,22 @@ Item {
 					dlgAddRecipes.allValuesFilterModel = filterModelUnusedRecipes;
 
 					dlgAddRecipes.open()
+				}
+			}
+
+			RoundButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/edit.svg"
+
+				ToolTip.delay: 1000
+				ToolTip.timeout: 5000
+				ToolTip.visible: hovered
+				ToolTip.text: qsTr("Rename header")
+
+				enabled: modelRBConfigItems.isHeader(lvItems.currentIndex)
+				onClicked: {
+					dlgRenameHeader.initialText = modelRBConfigItems.name(lvItems.currentIndex);
+					dlgRenameHeader.open()
 				}
 			}
 			
