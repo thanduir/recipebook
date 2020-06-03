@@ -3,10 +3,8 @@ TODO
 
 4 Exporters
 	* Kochbuch-Exporter
-		- recipe book configurations serialization (in normal json for now, but excluded in app config!)
-		
 		- generate something similar to our recipebook, then save this as new reference!
-
+			
 		- export / generate button!
 		- Exporter Algo: Write and compile latex file
 			* first version should look very similar to current recipe book
@@ -31,3 +29,4 @@ TODO
 Possibilities for later:
 a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
 b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)
+c. cmake based build system (and linux builds)?

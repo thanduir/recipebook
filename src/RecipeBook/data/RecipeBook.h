@@ -111,7 +111,7 @@ namespace recipebook
 
 		// Recipe book configurations
 				
-		RecipeBookConfiguration& addConfiguration(QString strName);
+		RecipeBookConfiguration& addConfiguration(QString strName, bool bAddAllRecipes = true);
 		void renameConfiguration(RecipeBookConfiguration& rConfig, QString strNewName);
 		bool existsConfiguration(QString strName) const;
 		bool removeConfiguration(const RecipeBookConfiguration& rConfig);

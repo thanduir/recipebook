@@ -1,8 +1,8 @@
 #include "StringConverter.h"
 #include <QException>
+#include "../../data/RecipeBookConfigItem.h"
 
 using namespace recipebook;
-using namespace recipebook::serialization;
 
 static const QString c_strSizeSmall			= "Small";
 static const QString c_strSizNormal			= "Normal";
@@ -21,7 +21,10 @@ static const QString c_strUnitDessertspoon	= "Dessertspoon";
 static const QString c_strUnitTeaspoon		= "Teaspoon";
 static const QString c_strUnitUnitless		= "Unitless";
 
-QString helper::convertSize(Size size)
+static const QString c_strConfigTypeHeader	= "Header";
+static const QString c_strConfigTypeRecipe	= "Recipe";
+
+QString serialization::helper::convertSize(Size size)
 {
 	switch(size)
 	{
@@ -39,7 +42,7 @@ QString helper::convertSize(Size size)
 	}
 }
 
-Size helper::convertSize(QString strSize)
+Size serialization::helper::convertSize(QString strSize)
 {
 	if(strSize == c_strSizeSmall)
 	{
@@ -59,7 +62,7 @@ Size helper::convertSize(QString strSize)
 	}
 }
 
-QString helper::convertStatus(Status status)
+QString serialization::helper::convertStatus(Status status)
 {
 	switch(status)
 	{
@@ -74,7 +77,7 @@ QString helper::convertStatus(Status status)
 	}
 }
 
-Status helper::convertStatus(QString strStatus)
+Status serialization::helper::convertStatus(QString strStatus)
 {
 	if(strStatus == c_strStatusNone)
 	{
@@ -90,7 +93,7 @@ Status helper::convertStatus(QString strStatus)
 	}
 }
 
-QString helper::convertUnit(Unit unit)
+QString serialization::helper::convertUnit(Unit unit)
 {
 	switch(unit)
 	{
@@ -126,7 +129,7 @@ QString helper::convertUnit(Unit unit)
 	}       
 }
 
-Unit helper::convertUnit(QString strUnit)
+Unit serialization::helper::convertUnit(QString strUnit)
 {
 	if(strUnit == c_strUnitCount)
 	{
@@ -163,6 +166,37 @@ Unit helper::convertUnit(QString strUnit)
 	else if(strUnit == c_strUnitUnitless)
 	{
 		return Unit::Unitless;
+	}
+	else
+	{
+		throw QException();
+	}
+}
+
+QString serialization::helper::convertRBConfigType(RecipeBookConfigItemType unit)
+{
+	switch(unit)
+	{
+	case RecipeBookConfigItemType::Header:
+		return c_strConfigTypeHeader;
+
+	case RecipeBookConfigItemType::Recipe:
+		return c_strConfigTypeRecipe;
+
+	default:
+		throw QException();
+	}
+}
+
+RecipeBookConfigItemType serialization::helper::convertRBConfigType(QString strType)
+{
+	if(strType == c_strConfigTypeHeader)
+	{
+		return RecipeBookConfigItemType::Header;
+	}
+	else if(strType == c_strConfigTypeRecipe)
+	{
+		return RecipeBookConfigItemType::Recipe;
 	}
 	else
 	{

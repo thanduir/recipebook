@@ -25,7 +25,6 @@ bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook&
 
 	QJsonDocument jsonDoc(QJsonDocument::fromJson(saveData));
     
-    
     if(jsonDoc.isArray())
     {
         // Version 1

@@ -11,6 +11,8 @@
 #include "data/ShoppingRecipe.h"
 #include "data/ShoppingListItem.h"
 #include "data/SortOrder.h"
+#include "data/RecipeBookConfiguration.h"
+#include "data/RecipeBookConfigItem.h"
 #include "../helper/StringConverter.h"
 #include "JsonGlobalConstants.h"
 #include "JsonFormatConstantsV2.h"
@@ -43,9 +45,9 @@ namespace
     }
 }
 
-json::JsonWriter::JsonWriter(QString strUID, bool bStripDescriptions)
+json::JsonWriter::JsonWriter(QString strUID, bool bJsonForApp)
 :   m_strUID(strUID),
-    m_bStripDescriptions(bStripDescriptions),
+	m_bJsonForApp(bJsonForApp),
 	m_bUseTempFile(true)
 {
 }
@@ -65,6 +67,7 @@ bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QFile& file)
     writeAlternativesTypes(rRecipeBook, rootObject);
     writeRecipes(rRecipeBook, rootObject);
     writeShoppongList(rRecipeBook, rootObject);
+	writeRecipeBookConfigs(rRecipeBook, rootObject);
 
     QJsonDocument jsonDoc(rootObject);
 
@@ -219,7 +222,7 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
         
         recipeObject[json::c_strRecipesNrPersons] = (int)rRecipe.getNumberOfPersons();
         
-        if(!m_bStripDescriptions)
+        if(!m_bJsonForApp)
         {
             recipeObject[json::c_strRecipesShortDesc] = rRecipe.getShortDescription();
             recipeObject[json::c_strRecipesText] = rRecipe.getRecipeText();
@@ -280,4 +283,44 @@ void json::JsonWriter::writeShoppongList(const RecipeBook& rRecipeBook, QJsonObj
     }
     
     rRootObject[json::c_strShoppinglistId] = objectRecipes;
+}
+
+void json::JsonWriter::writeRecipeBookConfigs(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
+{
+	QJsonObject objectConfigs;
+	if(!m_bJsonForApp)
+	{
+		for(quint32 j = 0; j < rRecipeBook.getConfigurationsCount(); ++j)
+		{
+			QJsonObject configObject;
+			const RecipeBookConfiguration& rConfig = rRecipeBook.getConfigurationAt(j);
+
+			configObject[json::c_strConfigTitle] = rConfig.getBookTitle();
+			configObject[json::c_strConfigSubtitle] = rConfig.getBookSubtitle();
+			configObject[json::c_strConfigFontSize] = (int)rConfig.getFontSize();
+
+			QJsonObject itemsObject;
+			for(quint32 i = 0; i < rConfig.getItemsCount(); ++i)
+			{
+				const RecipeBookConfigItem& rItem = rConfig.getItemAt(i);
+				QJsonObject recipeItemObject;
+
+				recipeItemObject[json::c_strConfigItemPosition] = (int)i;
+
+				RecipeBookConfigItemType type = rItem.getType();
+				recipeItemObject[json::c_strConfigItemType] = helper::convertRBConfigType(type);
+				if(type == RecipeBookConfigItemType::Header)
+				{
+					recipeItemObject[json::c_strConfigItemHeaderLevel] = rItem.getLevel();
+				}
+
+				itemsObject[rItem.getName()] = recipeItemObject;
+			}
+			configObject[json::c_strConfigItems] = itemsObject;
+
+			objectConfigs[rConfig.getName()] = configObject;
+		}
+	}
+
+	rRootObject[json::c_strRBConfigId] = objectConfigs;
 }

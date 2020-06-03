@@ -10,6 +10,7 @@ namespace recipebook::serialization::json
 	constexpr char* c_strIngredientsId					= "ingredients";
 	constexpr char* c_strRecipesId						= "recipes";
 	constexpr char* c_strShoppinglistId					= "shoppinglist";
+	constexpr char* c_strRBConfigId						= "z_recipebookconfig";
 
 	// metadata
 	constexpr char* c_strMetaDataId						= "id";
@@ -52,6 +53,17 @@ namespace recipebook::serialization::json
 	constexpr char* c_strRecipesGroup					= "alternativesGroup";
 	constexpr char* c_strRecipesItemEnabled				= "itemEnabled";
 	constexpr char* c_strRecipesPosition				= "_position";
+
+	// recipe book configurations
+	constexpr char* c_strConfigTitle					= "Title";
+	constexpr char* c_strConfigSubtitle					= "Subtitle";
+	constexpr char* c_strConfigFontSize					= "FontSize";
+	constexpr char* c_strConfigItems					= "items";
+
+	// recipe boook config items
+	constexpr char* c_strConfigItemPosition				= "_position";
+	constexpr char* c_strConfigItemType					= "type";
+	constexpr char* c_strConfigItemHeaderLevel			= "headerLevel";
 }
 
 #endif

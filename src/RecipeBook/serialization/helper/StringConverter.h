@@ -6,6 +6,11 @@
 #include "../../data/Status.h"
 #include "../../data/Unit.h"
 
+namespace recipebook
+{
+	enum class RecipeBookConfigItemType;
+}
+
 namespace recipebook::serialization::helper
 {
 	QString convertSize(Size size);
@@ -16,6 +21,9 @@ namespace recipebook::serialization::helper
 
 	QString convertUnit(Unit unit);
 	Unit convertUnit(QString strUnit);
+
+	QString convertRBConfigType(RecipeBookConfigItemType unit);
+	RecipeBookConfigItemType convertRBConfigType(QString strType);
 }
 
 #endif

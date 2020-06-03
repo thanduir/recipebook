@@ -44,7 +44,7 @@ namespace recipebook
 		void moveItem(const RecipeBookConfigItem& rItem, quint32 newPos);
 
 	private:
-		RecipeBookConfiguration(QString strName, const RecipeBook& rRecipeBook);
+		RecipeBookConfiguration(QString strName, const RecipeBook* pRecipeBook = nullptr);
 		RecipeBookConfiguration(QString strName, const RecipeBookConfiguration& rOther);
 		
 		void operator=(const RecipeBookConfiguration& rOther) = delete;

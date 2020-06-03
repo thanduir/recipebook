@@ -2,14 +2,20 @@
 #include "serialization/RecipeBookSerializerFactory.h"
 #include "data/RecipeBook.h"
 
-constexpr char* strFileInput		= "UnitTestData\\SerializeTest\\test.json";
+constexpr char* strFileInput			= "UnitTestData\\SerializeTest\\test.json";
 
-constexpr char* strFileReference	= "UnitTestData\\SerializeTest\\reference.json";
-constexpr char* strFileOutput1		= "UnitTestData\\SerializeTest\\z_output_1.json";
-constexpr char* strFileOutput2		= "UnitTestData\\SerializeTest\\z_output_2.json";
+constexpr char* strFileReference		= "UnitTestData\\SerializeTest\\reference.json";
+constexpr char* strFileOutput1			= "UnitTestData\\SerializeTest\\z_output_1.json";
+constexpr char* strFileOutput2			= "UnitTestData\\SerializeTest\\z_output_2.json";
 
-constexpr char* strFileReferenceApp	= "UnitTestData\\SerializeTest\\reference_app.json";
-constexpr char* strFileOutputApp	= "UnitTestData\\SerializeTest\\z_output_app.json";
+constexpr char* strFileReferenceApp		= "UnitTestData\\SerializeTest\\reference_app.json";
+constexpr char* strFileOutputApp		= "UnitTestData\\SerializeTest\\z_output_app.json";
+
+constexpr char* strFileInputConfigs			= "UnitTestData\\SerializeTest\\test_rbconfigs.json";
+constexpr char* strFileReferenceConfigs		= "UnitTestData\\SerializeTest\\reference_rbconfigs.json";
+constexpr char* strFileOutputConfigs		= "UnitTestData\\SerializeTest\\z_output_rbconfigs.json";
+constexpr char* strFileReferenceConfigsApp	= "UnitTestData\\SerializeTest\\reference_rbconfigs_app.json";
+constexpr char* strFileOutputConfigsApp		= "UnitTestData\\SerializeTest\\z_output_rbconfigs_app.json";
 
 void RBUnitTests::serializeTest()
 {
@@ -94,4 +100,59 @@ void RBUnitTests::serializeTestApp()
 
 	// Remove file after successful test
 	fileTest.remove();
+}
+
+void RBUnitTests::serializeTestRBConfigs()
+{
+	// Serialize test
+
+	QSharedPointer<recipebook::serialization::IRBReader> spReader = recipebook::serialization::SerializerFactory::getReader(recipebook::serialization::FileFormat::Json);
+	recipebook::serialization::RBMetaData metaData;
+	recipebook::RecipeBook recipeBook;
+	QFile fileIn(strFileInputConfigs);
+	QVERIFY(spReader->serialize(fileIn, metaData, recipeBook));
+
+	QSharedPointer<recipebook::serialization::IRBWriter> spWriter = recipebook::serialization::SerializerFactory::getWriter(recipebook::serialization::FileFormat::Json, metaData.strUID);
+	QFile fileOut(strFileOutputConfigs);
+	QVERIFY(spWriter->serialize(recipeBook, fileOut));
+
+	// Write file JsonForApp
+
+	QSharedPointer<recipebook::serialization::IRBWriter> spWriterApp = recipebook::serialization::SerializerFactory::getWriter(recipebook::serialization::FileFormat::JsonForApp, metaData.strUID);
+	QFile fileOutApp(strFileOutputConfigsApp);
+	QVERIFY(spWriterApp->serialize(recipeBook, fileOutApp));
+
+	// Verify output
+
+	QFile fileTest(strFileOutputConfigs);
+	fileTest.open(QIODevice::ReadOnly);
+	QString strTest = fileTest.readAll();
+	fileTest.close();
+
+	QFile fileRef(strFileReferenceConfigs);
+	fileRef.open(QIODevice::ReadOnly);
+	QString strRef = fileRef.readAll();
+	fileRef.close();
+
+	QVERIFY(strTest == strRef);
+
+	// Remove files after successful test
+	fileTest.remove();
+
+	// Verify output for apps
+
+	QFile fileTestApp(strFileOutputConfigsApp);
+	fileTestApp.open(QIODevice::ReadOnly);
+	QString strTestApp = fileTestApp.readAll();
+	fileTestApp.close();
+
+	QFile fileRefApp(strFileReferenceConfigsApp);
+	fileRefApp.open(QIODevice::ReadOnly);
+	QString strRefApp = fileRefApp.readAll();
+	fileRefApp.close();
+
+	QVERIFY(strTestApp == strRefApp);
+
+	// Remove files after successful test
+	fileTestApp.remove();
 }

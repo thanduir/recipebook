@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "f9bc48bf-9053-4d2f-a15b-4df440ad0d01",
+        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
         "version": 2
     },
     "alternativesTypes": {
@@ -1962,10 +1962,7 @@
     },
     "recipes": {
         "Asia Nudeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -2054,10 +2051,7 @@
             }
         },
         "Auberginen-Auflauf": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -2158,10 +2152,7 @@
             }
         },
         "Auberginen-Risotto": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -2250,10 +2241,7 @@
             }
         },
         "Bibimbap": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Chinakohl": {
                     "_position": 13,
@@ -2438,10 +2426,7 @@
             }
         },
         "Birnen-Nuss-Wähe": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Birnen": {
                     "_position": 0,
@@ -2542,10 +2527,7 @@
             }
         },
         "Blumenkohl-Wraps": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -2694,10 +2676,7 @@
             }
         },
         "Broccoli mit Reisnudeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Brokkoli": {
                     "_position": 0,
@@ -2810,10 +2789,7 @@
             }
         },
         "Broccoli-Peperoni-Nudeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -2950,10 +2926,7 @@
             }
         },
         "Chatschapuri": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -3018,10 +2991,7 @@
             }
         },
         "China-Gemüse mit sweet Tofu": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ahornsirup": {
                     "_position": 0,
@@ -3134,10 +3104,7 @@
             }
         },
         "Clafuti": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Brot": {
                     "_position": 0,
@@ -3238,10 +3205,7 @@
             }
         },
         "Curry Classic": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -3354,10 +3318,7 @@
             }
         },
         "Diverses Nicole": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Milch": {
                     "_position": 0,
@@ -3398,10 +3359,7 @@
             }
         },
         "Diverses Phil": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Chrömli": {
                     "_position": 0,
@@ -3442,10 +3400,7 @@
             }
         },
         "Edamame-Noodles": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -3534,10 +3489,7 @@
             }
         },
         "Fischsticks + Fenchel": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aceto Balsamico": {
                     "_position": 0,
@@ -3602,10 +3554,7 @@
             }
         },
         "Fotzelschnitten": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Apfelmus": {
                     "_position": 0,
@@ -3682,10 +3631,7 @@
             }
         },
         "Fruchtsalat / Kompott": {
-            "CookingTime": "00:30",
             "NrPersons": 4,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -3846,10 +3792,7 @@
             }
         },
         "Fruchtwähe": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -3926,10 +3869,7 @@
             }
         },
         "Frühlings-Spaghetti": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Frühlingszwiebeln": {
                     "_position": 0,
@@ -4018,10 +3958,7 @@
             }
         },
         "Frühlingsrisotto": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -4098,10 +4035,7 @@
             }
         },
         "Fusilli al Pollo": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -4202,10 +4136,7 @@
             }
         },
         "Gefüllte Peperoni": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Hackfleisch (gemischt)": {
                     "_position": 0,
@@ -4282,10 +4213,7 @@
             }
         },
         "Gnocchi mit Krautstiel": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bündnerfleisch": {
                     "_position": 0,
@@ -4338,10 +4266,7 @@
             }
         },
         "Gnocchi-Pilz-Pfanne": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Champignon": {
                     "_position": 0,
@@ -4394,10 +4319,7 @@
             }
         },
         "Gnocchi-Tomaten-Pfanne": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -4486,10 +4408,7 @@
             }
         },
         "Himbeer-Quark": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Birchermüesli": {
                     "_position": 0,
@@ -4542,10 +4461,7 @@
             }
         },
         "Honig-Apfelwähe": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Apfel": {
                     "_position": 0,
@@ -4646,10 +4562,7 @@
             }
         },
         "Hörnli + Ghackets": {
-            "CookingTime": "00:30",
             "NrPersons": 3,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bratensauce": {
                     "_position": 0,
@@ -4690,10 +4603,7 @@
             }
         },
         "Hörnli-Auflauf": {
-            "CookingTime": "00:30",
             "NrPersons": 3,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -4794,10 +4704,7 @@
             }
         },
         "Hüttenkäse": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Essiggürkchen": {
                     "_position": 0,
@@ -4874,10 +4781,7 @@
             }
         },
         "Kaiserschmarn": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Apfelmus": {
                     "_position": 0,
@@ -4954,10 +4858,7 @@
             }
         },
         "Kartoffel-Kohlrabi Auflauf": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5046,10 +4947,7 @@
             }
         },
         "Kartoffel-Lauch-Gratin": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Halbrahm": {
                     "_position": 0,
@@ -5138,10 +5036,7 @@
             }
         },
         "Kichererbsensalat": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Cherry-Tomaten": {
                     "_position": 0,
@@ -5230,10 +5125,7 @@
             }
         },
         "Kokos-Rind One-Pot": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5322,10 +5214,7 @@
             }
         },
         "Krautstiel Wok Nudeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Austernsauce": {
                     "_position": 0,
@@ -5402,10 +5291,7 @@
             }
         },
         "Kräuterreis mit Auberginen-Piccata": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -5494,10 +5380,7 @@
             }
         },
         "Lachs mit Salzkartoffeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Halbrahm": {
                     "_position": 0,
@@ -5550,10 +5433,7 @@
             }
         },
         "Lachs-Käse-Wähe + Salat": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -5690,10 +5570,7 @@
             }
         },
         "Lasagne": {
-            "CookingTime": "00:30",
             "NrPersons": 4,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -5842,10 +5719,7 @@
             }
         },
         "Lauch-Pilz-Lasagne": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Béchamelsauce": {
                     "_position": 0,
@@ -5910,10 +5784,7 @@
             }
         },
         "Lauchrisotto + Fleisch": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5990,10 +5861,7 @@
             }
         },
         "Moussaka": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -6118,10 +5986,7 @@
             }
         },
         "Mozzarella + Tomaten": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Mozzarella": {
                     "_position": 0,
@@ -6162,10 +6027,7 @@
             }
         },
         "Müesli": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Apfel": {
                     "_position": 0,
@@ -6218,10 +6080,7 @@
             }
         },
         "Nudel-Vogelnester": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -6286,10 +6145,7 @@
             }
         },
         "Ofen-Kartoffel-Gemüse+Cipollata": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -6366,10 +6222,7 @@
             }
         },
         "Ofen-Kartoffel-Gemüse+Poulet": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Karotten": {
                     "_position": 0,
@@ -6482,10 +6335,7 @@
             }
         },
         "Ofen-Tortillas": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 8,
@@ -6610,10 +6460,7 @@
             }
         },
         "Ofengemüse": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Fleischtomaten": {
                     "_position": 0,
@@ -6654,10 +6501,7 @@
             }
         },
         "Omelette": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Confiture": {
                     "_position": 0,
@@ -6734,10 +6578,7 @@
             }
         },
         "One-Pot-Pasta": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 6,
@@ -6838,10 +6679,7 @@
             }
         },
         "Pancakes": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Backpulver": {
                     "_position": 0,
@@ -6918,10 +6756,7 @@
             }
         },
         "Pasta-Salat": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Cranberries": {
                     "_position": 0,
@@ -6998,10 +6833,7 @@
             }
         },
         "Pastetli mit Tofu / Champignons": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Béchamelsauce": {
                     "_position": 0,
@@ -7102,10 +6934,7 @@
             }
         },
         "Penne mit Lachs + Spargel": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Crème Fraiche": {
                     "_position": 0,
@@ -7170,10 +6999,7 @@
             }
         },
         "Pilz-Risotto": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -7262,10 +7088,7 @@
             }
         },
         "Pizza": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -7390,10 +7213,7 @@
             }
         },
         "Pommes + Cordon bleu": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Cordon Bleu": {
                     "_position": 0,
@@ -7422,10 +7242,7 @@
             }
         },
         "Pouletflügeli mit Kichererbsen": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Cherry-Tomaten": {
                     "_position": 0,
@@ -7550,10 +7367,7 @@
             }
         },
         "Raclette": {
-            "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Birnen (Dose)": {
                     "_position": 0,
@@ -7606,10 +7420,7 @@
             }
         },
         "Reispfanne italiana": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -7698,10 +7509,7 @@
             }
         },
         "Ricotta-Spinat-Penne": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Basilikum (getrocknet)": {
                     "_position": 0,
@@ -7814,10 +7622,7 @@
             }
         },
         "Risotto mit Chicorée-Piccata": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Champignon (getrocknet)": {
                     "_position": 0,
@@ -7918,10 +7723,7 @@
             }
         },
         "Riz Casimir": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -8022,10 +7824,7 @@
             }
         },
         "Rosenkohl-Lauch-Kartoffeln": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -8114,10 +7913,7 @@
             }
         },
         "Rösti mit Bratwurst": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bratensauce": {
                     "_position": 0,
@@ -8158,10 +7954,7 @@
             }
         },
         "Salat": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Peperoni": {
                     "_position": 0,
@@ -8202,10 +7995,7 @@
             }
         },
         "Salzkartoffeln mit Fleisch": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Fleisch": {
                     "_position": 0,
@@ -8234,10 +8024,7 @@
             }
         },
         "Salzkartoffeln mit Ofen-Hack-Gemüse": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -8338,10 +8125,7 @@
             }
         },
         "Salzkartoffeln mit gefüllten Pilzen": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Champignon": {
                     "_position": 0,
@@ -8382,10 +8166,7 @@
             }
         },
         "Shakshuka": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Chili-Schote (rot)": {
                     "_position": 0,
@@ -8558,10 +8339,7 @@
             }
         },
         "Sommerfladen": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -8662,10 +8440,7 @@
             }
         },
         "Sommerwähe": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Curry": {
                     "_position": 0,
@@ -8802,10 +8577,7 @@
             }
         },
         "Spaghetti Bolognese": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -8930,10 +8702,7 @@
             }
         },
         "Spaghetti Carbonara": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -9010,10 +8779,7 @@
             }
         },
         "Spargel-Erdbeer-Salat": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aceto Balsamico": {
                     "_position": 0,
@@ -9102,10 +8868,7 @@
             }
         },
         "Spätzli mit Rahm-Geschnetzeltem": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Rahmsauce": {
                     "_position": 0,
@@ -9146,10 +8909,7 @@
             }
         },
         "Stocki mit Plätzli": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bratensauce": {
                     "_position": 0,
@@ -9226,10 +8986,7 @@
             }
         },
         "Süss-Sauer": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -9342,10 +9099,7 @@
             }
         },
         "Taboulé": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Couscous": {
                     "_position": 0,
@@ -9446,10 +9200,7 @@
             }
         },
         "Thai Pasta": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -9598,10 +9349,7 @@
             }
         },
         "Thai Pasta Light": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -9726,10 +9474,7 @@
             }
         },
         "Thai-Curry": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -9878,10 +9623,7 @@
             }
         },
         "Toast Hawaii": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -9946,10 +9688,7 @@
             }
         },
         "Tomatenrisotto + Fleisch": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -10062,10 +9801,7 @@
             }
         },
         "Wraps": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Avocado": {
                     "_position": 0,
@@ -10202,10 +9938,7 @@
             }
         },
         "Zitronen-Lasagne": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Basilikum-Pesto": {
                     "_position": 0,
@@ -10294,10 +10027,7 @@
             }
         },
         "Zopf + Spiegeleier + Speck": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -10350,10 +10080,7 @@
             }
         },
         "Zopf mit Brie und Confiture": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Brie": {
                     "_position": 0,
@@ -10406,10 +10133,7 @@
             }
         },
         "Älplermagronen": {
-            "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
             "items": {
                 "Apfel (rot) ": {
                     "_position": 0,

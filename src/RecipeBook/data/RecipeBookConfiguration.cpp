@@ -7,13 +7,16 @@
 
 using namespace recipebook;
 
-RecipeBookConfiguration::RecipeBookConfiguration(QString strName, const RecipeBook& rRecipeBook)
+RecipeBookConfiguration::RecipeBookConfiguration(QString strName, const RecipeBook* pRecipeBook)
 :	m_Name(strName),
 	m_Title(strName)
 {
-	for(quint32 i = 0; i < rRecipeBook.getRecipesCount(); ++i)
+	if(pRecipeBook != nullptr)
 	{
-		addRecipe(rRecipeBook.getRecipeAt(i));
+		for(quint32 i = 0; i < pRecipeBook->getRecipesCount(); ++i)
+		{
+			addRecipe(pRecipeBook->getRecipeAt(i));
+		}
 	}
 }
 

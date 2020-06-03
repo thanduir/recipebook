@@ -620,11 +620,11 @@ void RecipeBook::clearShoppingList()
 	m_ShoppingRecipes.clear();
 }
 
-RecipeBookConfiguration& RecipeBook::addConfiguration(QString strName)
+RecipeBookConfiguration& RecipeBook::addConfiguration(QString strName, bool bAddAllRecipes)
 {
-	return internal::sorted::addItem<RecipeBookConfiguration>(RecipeBookConfiguration::getElementId(strName), m_Configurations, [this, strName]()
+	return internal::sorted::addItem<RecipeBookConfiguration>(RecipeBookConfiguration::getElementId(strName), m_Configurations, [this, strName, bAddAllRecipes]()
 	{
-		return new RecipeBookConfiguration(strName, *this);
+		return new RecipeBookConfiguration(strName, bAddAllRecipes ? this : nullptr);
 	});
 }
 

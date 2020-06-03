@@ -247,6 +247,15 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 		}
 
 		QJsonObject recipe = rObject[strRecipeName].toObject();
+		if(!rObject.contains(strRecipeName))
+		{
+			// Bugfix for Qt 5.15: Sometimes object with similar names ("Frühlingsrisotto" and "Frühlings-Spaghetti") 
+			// seem to be confused when directly accessing the elements
+			// TODO: Try again with later Qt versions to see whether this workaround is still needed
+			QVariantMap map = rObject.toVariantMap();
+			recipe = map.value(strRecipeName, QJsonObject()).toJsonObject();
+		}
+		
 		uint32_t uiNrPersons = recipe[json::c_strRecipesNrPersons].toInt();
 
 		Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
