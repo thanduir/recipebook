@@ -47,6 +47,7 @@ Item {
 			lvRecipes.incrementCurrentIndex();
 			lvRecipes.decrementCurrentIndex();
 			modelRecipeItems.setRecipe(lvRecipes.currentIndex);
+			editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded()
 		}
 	}
 
@@ -144,6 +145,7 @@ Item {
 				forceActiveFocus()
 				lvRecipes.currentIndex = index
 				modelRecipeItems.setRecipe(filterModelRecipes.getRecipeIndex(index))
+				editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded()
 				lvCurrentRecipe.currentIndex = -1
 			}
 			width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
@@ -166,6 +168,7 @@ Item {
 					lvRecipes.currentIndex = -1;
 				}
 				modelRecipeItems.setRecipe(lvRecipes.currentIndex);
+				editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded()
 			}
 		}
 	}

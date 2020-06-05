@@ -19,8 +19,13 @@ RBLatexExporter::RBLatexExporter()
 {
 }
 
-bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface)
+bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount)
 {
+	if(uiCallCount == 0)
+	{
+		return true;
+	}
+
 	if(!QFile::exists(c_PdfLatexPath))
 	{
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't find latex pdf generator."), RBDialogInterface::DlgType::Error);
@@ -58,10 +63,16 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	myProcess->setWorkingDirectory(tempPath);
 	myProcess->connect(myProcess, 
 					   QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-					   [&rDlgInterface, strOutputFilename, tempPath, this](int exitCode, QProcess::ExitStatus exitStatus)
+					   [&rDlgInterface, strLatexCode, uiCallCount, strOutputFilename, tempPath, this](int exitCode, QProcess::ExitStatus exitStatus)
 	{
 		Q_UNUSED(exitCode);
 		Q_UNUSED(exitStatus);
+
+		if(uiCallCount > 1)
+		{
+			generatePdf(strLatexCode, strOutputFilename, rDlgInterface, uiCallCount - 1);
+			return;
+		}
 
 		if(QFile::exists(strOutputFilename))
 		{

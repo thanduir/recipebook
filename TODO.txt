@@ -1,16 +1,13 @@
 TODO
 ====
 
-4 Exporters
-	* Exporter Algo: Write and compile latex file
-		- first version should look very similar to current recipe book
-		- layout should be configurable to some degree
-		
+4. Exporters
+	* Improve layout of recipe book pdf		
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!
 		=> remove from .gitignore and commit!
-	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to a acceptable folder size
+	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to an acceptable folder size
 	* Export-class should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
 4.2 BUG: Group not together directly after inserting Bibimbap into shopping list!
 4.3 json app export (with unnecessary info removed)

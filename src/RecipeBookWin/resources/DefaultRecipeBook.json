@@ -1962,10 +1962,10 @@
     },
     "recipes": {
         "Asia Nudeln": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Titel. ;)",
+            "Text": "Pilze für 30 Min. einweichen; Wasser für Bouillon beiseite stellen.\nChinakohl in Streifen, Karotten in Scheibchen schneiden.\nFleisch in Streifen schneiden, mit etwas Öl anbraten.\nPasta al dente kochen.\nGemüse mit wenig Öl ca. 5-10 Minuten rührbraten, Bouillon, Sojasauce, Fleisch und Nudeln beigeben, verrühren und nochmals heiss werden lassen.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -2054,10 +2054,10 @@
             }
         },
         "Auberginen-Auflauf": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Italienisches, vegetarisches Mousakka",
+            "Text": "Auberginen in dünne Scheiben schneiden, mit Salz bestreuen und ruhen lassen.\nMozzarella in Scheiben schneiden.\nAuberginen abtupfen, auf ein Blech legen, mit Öl bestreichen und für 15-20 Minuten bei 200° im vorgeheizten Ofen vorbacken.\nKartoffeln kochen, abkühlen lassen und in dünne Scheiben schneiden.\nPelati, Püree und Gewürz zu einer sämigen Sauce einköcheln lassen.\nAuberginen, Kartoffeln und Mozzarella dachziegelartig in eine ausgebutterte, feuerfeste Form geben, Parmesan unter die Tomatensauce mischen und darüber giessen.\nFür 40 Minuten in der Mitte des Ofens bei 200° backen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -2158,10 +2158,10 @@
             }
         },
         "Auberginen-Risotto": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Erfrischendes Risotto mit Gemüse, vegetarisch. Kann Reste geben.",
+            "Text": "Auberginen schälen, selbige und Schalotten in Würfel schneiden.\nSchalotten und Auberginen in Öl anbraten. Reis dazu geben und einige Zeit mitbraten.\nBouillon dazugeben und 15-20 Minuten köcheln lassen.\nWürzen, Feta und Weisswein dazugeben, köcheln lassen, bis alles geschmolzen ist.\nVor dem Servieren Zitronenschale abreiben und mit etwas Saft daruntermischen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -2252,8 +2252,8 @@
         "Bibimbap": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Koreanisches Reisgericht",
+            "Text": "Reis separat kochen.\nSauce mischen, davon 2 EL zusammen mit der Maisstärke unter die Schnitzel-Streifen rühren.\nGemüse und Pilze in Streifen schneiden.\nIn einer Pfanne das Fleisch kräftig braten, in einer anderen Pfanne das Gemüse mit den Pilzen zusammen mit der restlichen Sauce braten. Zuletzt noch die Spiegeleier braten.\nGemüse über den Reis geben, mit den Spiegeleiern abschliessen.",
             "items": {
                 "Chinakohl": {
                     "_position": 13,
@@ -2438,10 +2438,10 @@
             }
         },
         "Birnen-Nuss-Wähe": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Kuchenteig in ein Blech legen, Boden einstechen und mit Haselnüssen und Schoggiwürfelchen bestreuen.\nBirnen schälen, längs halbieren und in Scheibchen schneiden; nebeneinander auf den Teig setzen und auffächern. Honig, Zitronensaft und Puderzucker verrühren, auf die Birnen streichen.\n30 Minuten bei 220° auf der untersten Rille des vorgeheizten Ofens backen.",
             "items": {
                 "Birnen": {
                     "_position": 0,
@@ -2542,10 +2542,10 @@
             }
         },
         "Blumenkohl-Wraps": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Haute-Cuisine Wraps.",
+            "Text": "Ofen auf 200° vorheizen. Peperoni in Schnitze schneiden. Peperoni und Blumenkohlröschen mit der Öl-Gewürz-Mischung marinieren und für ca. 25 Minuten in der Mitte des Ofens garen. Anschliessend in kleine Stücke hacken.\nPilze vierteln und in Butter braten.\nHuancaina-Sauce: Paprika, ¼ Peperoni, Schalotten und Chili-Schote kleinschneiden, in etwas Öl anrösten, mit der Hälfte des Halbrahms und Ricotta vermengen, pürieren und abschmecken.\nBlumenkohl-Crème: 150g des Blumenkohls separat weich kochen, die zweite Hälfte des Halbrahms, etwas Limettensaft, Salz und Cayenne-Pfeffer dazugeben und pürieren.\n¼ Chinakohl/Eisbergsalat grob hacken.\nTortillas mit Blumenkohl, Pilzen, Huancaina-Sauce, Blumenkohl-Crème und Chinakohl füllen.",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -2696,8 +2696,8 @@
         "Broccoli mit Reisnudeln": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "\"Trockenes\" Curry für die Übergangszeit.",
+            "Text": "Reisnudeln al dente kochen, abgiessen und unter fliessendem heissen Wasser kurz abspülen. Sojasauce und  Zitronensaft hinzugeben, salzen.\nZwiebel und Cashews mit wenig Öl andünsten, Currypaste hinzugeben und ca. 2 Minuten braten, dann die Kokosmilch und den Zitronensaft hinzufügen und 5 Minuten leicht köcheln lassen.\nBrokkoli in Röschen schneiden und in Salzwasser ca. 5 Minuten garen und nach dem Abgiessen mit etwas Sesamöl und Salz beträufeln.\nParallel dazu Falafeln braten / im Ofen wärmen.",
             "items": {
                 "Brokkoli": {
                     "_position": 0,
@@ -2812,8 +2812,8 @@
         "Broccoli-Peperoni-Nudeln": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "\"Asiatisch\" etwas anders.",
+            "Text": "Broccoli, Peperoni und Baumnüsse zerkleinern und danach mit der Orangenschale andämpfen.\nSojasosse, Honig, Bouillon und Orangensaft zum Gemüse geben, weiter köcheln lassen.\nDazu z. B. Reisnudeln und geschnetzeltes Poulet servieren.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -2952,8 +2952,8 @@
         "Chatschapuri": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Ei im Pizza-Schlafrock.",
+            "Text": "Feta und Mozzarella so klein wie möglich schneiden und mischen.\nTeig halbieren und zu Ovalen formen. Käsemischung in der Mitte verteilen. Teig am Rand ca. 3 cm einschlagen und die Enden eindrehen, so dass eine Blatt-Form entsteht. \nFür ca. 17 Minuten auf der untersten Rille des auf 240° vorgeheizten Ofen backen, dann kurz herausnehmen. Ei aufschlagen und in die Teig-Schiffchen platzieren, Eiweiss mit dem flüssigen Käse mischen, ohne den Dotter zu verletzen. Nochmals ca. 3 Minuten in der oberen Hälfte des Ofens fertig backen.\nDazu passt Salat (mit Mozzarella).",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -3134,10 +3134,10 @@
             }
         },
         "Clafuti": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Brot-Auflauf mit Früchten. Gibt Reste.",
+            "Text": "Brot grob zerkleinern, in der (warmen) Milch einlegen und später mit der Gabel zerstossen.\nEigelb mit Zucker mischen.\nEischnee separat schlagen.\nMandeln mit der Butter, Zitronenschale und dem Zimt \"schmelzen\".\nAlles mit den Früchten zusammenmischen, Eischnee unterheben, in eine ausgebutterte, feuerfeste Form geben.\nIm auf 180° vorgeheizten Ofen für ca. 45 Minuten backen (bei gefrorenem Obst etwas länger).",
             "items": {
                 "Brot": {
                     "_position": 0,
@@ -3240,8 +3240,8 @@
         "Curry Classic": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Riz Casimir mit Gemüse statt Früchten.",
+            "Text": "Reis kochen.\nFleisch separat anbraten, zum warmwerden kurz vor dem Servieren in die Sosse geben.\nGemüse klein schneiden und andämpfen. Kichererbsen, Currysosse und Kokosmilch dazugeben.",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -3442,10 +3442,10 @@
             }
         },
         "Edamame-Noodles": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Bohnen-Teigwaren",
+            "Text": "Gemüse und Zwiebel in kleine Würfel schneiden, in Olivenöl bei mittlerer Hitze 15 Minuten dünsten, würzen.\nNudeln gemäss Verpackungsangabe kochen, mit etwas Olivenöl beträufeln, Pesto darunter mischen.\nGemüse über die Nudeln kippen, Feta zerbröseln und darüber geben.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -3602,10 +3602,10 @@
             }
         },
         "Fotzelschnitten": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Gebratene Brotscheiben mit Apfelmus (o. Ä.).",
+            "Text": "Milch in einen Suppenteller giessen. Eier und Salz in einem weiteren Teller verrühren. Brotscheiben in beiden Schalen tunken.\nGetunkte Brotscheiben in einer Bratpfanne goldgelb backen.\nBrotscheiben mit Zimt und Zucker bestreuen, dazu Apfelmus (o. Ä.) servieren.",
             "items": {
                 "Apfelmus": {
                     "_position": 0,
@@ -3846,10 +3846,10 @@
             }
         },
         "Fruchtwähe": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Kuchenteig in ein Blech legen, Boden einstechen und mit Mandeln bestreuen.\nFrüchte waschen, aufschneiden und auf dem Teig verteilen.\n15 Minuten bei 220° auf der untersten Rille des Ofens backen. In der Zwischenzeit den Guss vorbereiten: Ei und Zucker in den Rahm geben, mischen.\nWähe aus dem Ofen nehmen und mit Guss übergiessen. Anschliessend nochmal ca. 20 Minuten weiter backen.",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -3928,8 +3928,8 @@
         "Frühlings-Spaghetti": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Kreative vegetarische Spaghetti.",
+            "Text": "Kohlrabi schälen und in kleine Würfelchen schneiden. (Frühlingszwiebeln in Ringe schneiden.)\nButter in einer Bratpfanne schmelzen lassen, Gemüse 5 Minuten dämpfen, Halbrahm dazu giessen und nochmals 5 Minuten köcheln lassen.\nSpaghetti parallel dazu al dente kochen, über den Spinat abgiessen und ca. 1dl Kochwasser auffangen.\nSpaghetti, Spinat und Kochwasser zum Kohlrabi geben, Käse darüber streuen und mischen, zuletzt Mandelstifte darüber geben.",
             "items": {
                 "Frühlingszwiebeln": {
                     "_position": 0,
@@ -4018,10 +4018,10 @@
             }
         },
         "Frühlingsrisotto": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Erfrischendes Risotto mit Gemüse, vegetarisch. Kann Reste geben.",
+            "Text": "Schalotten klein schneiden, Spinat und Kresse waschen.\nSchalotten in Öl anbraten, danach Reis dazu geben und einige Zeit mitbraten. Bouillon dazugeben und 15-20 Minuten köcheln lassen.\nGewürze, abgeriebene Zitronenschale, Zitronensaft, Frischkäse, Spinat und Kresse dazugeben, köcheln lassen, bis alles geschmolzen  / zusammengefallen ist.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -4098,10 +4098,10 @@
             }
         },
         "Fusilli al Pollo": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Spiralen mit Huhn",
+            "Text": "Pasta al dente kochen.\nHackfleisch, Zwiebel und Püree in etwas Öl anbraten, danach Tomätchen und Rahm beigeben, würzen, ca. 10 Minuten köcheln lassen und abschliessen den Jungspinat darunter mischen.\nVor dem Servieren mit den Pasta verrühren.",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -4202,10 +4202,10 @@
             }
         },
         "Gefüllte Peperoni": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:20",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Reis kochen.\nHackfleisch anbraten und Tomaten dazu geben. Einkochen lassen.\nReis und Hackfleischmischung verrühren.\nPeperoni rüsten und die Hälften in eine ofenfeste Form legen. Mit der Hackfleisch-Reis-Mischung füllen.\nMozzarella in Scheiben schneiden und auf den gefüllten Peperoni verteilen.\n45 Minuten bei 200° im Ofen lassen.",
             "items": {
                 "Hackfleisch (gemischt)": {
                     "_position": 0,
@@ -4284,8 +4284,8 @@
         "Gnocchi mit Krautstiel": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Capuns in anders.",
+            "Text": "Krautstiel und Bündnerfleisch in Streifen schneiden. \nGnocchi ca. 3 Min. in Öl braten, beiseite stellen und in der selbe Pfanne (oder separat) Krautstiel ca. 5 Minuten rührbraten.\nWasser und Rahm dazugiessen, aufkochen und bei reduzierter Hitze ca. 10. min köcheln lassen.\nAbschliessend Gnocchi zum heiss werden nochmals beigeben und zuletzt Bündnerfleisch darüber streuen.",
             "items": {
                 "Bündnerfleisch": {
                     "_position": 0,
@@ -4340,8 +4340,8 @@
         "Gnocchi-Pilz-Pfanne": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Gnocchi Prosciutto et Fungi",
+            "Text": "Pilze und Peperoni klein schneiden.\nGnocchi in einer Bratpfanne goldbraun anbraten, Pilze für ca. 10 Min. beigeben, alles beiseite stellen.\nPeperoni kurz andämpfen und würzen, Pelati dazu giessen und 10 Min. köcheln lassen, abschliessend alles nochmal zugeben und warm werden lassen.",
             "items": {
                 "Champignon": {
                     "_position": 0,
@@ -4396,8 +4396,8 @@
         "Gnocchi-Tomaten-Pfanne": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Gnocchi Bolognese",
+            "Text": "Tomätchen waschen und halbieren, Rucola waschen und klein zupfen / schneiden. Oliven in Ringe schneiden. \nGnocchi in Öl/Butter goldbraun braten, beiseite stellen.\nIn der selbe Pfanne das Hackfleisch bei starker Hitze anbraten und würzen. Pelati dazu giessen und 5 Minuten köcheln lassen.\nTomätchen und Oliven zur Hacksauce geben und nochmals ca. 3 Minuten köcheln lassen, bevor alles mit den Gnocchi vermischt wird. Vor dem Servieren mit Rucola und Parmesan bestreuen.",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -4542,10 +4542,10 @@
             }
         },
         "Honig-Apfelwähe": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Äpfel raffeln und zu etwas Zitronensaft in eine Schüssel geben. Ev. etwas Saft weggiessen.\nRosinen, Eier, Rahm und Honig nach Belieben dazugeben und alles vermischen.\nKuchenteig in ein Blech legen, Boden einstechen und mit Mandeln bestreuen. Apfel-Masse einfüllen.\n35 Minuten bei 220° auf der untersten Rille des Ofens backen.",
             "items": {
                 "Apfel": {
                     "_position": 0,
@@ -4692,8 +4692,8 @@
         "Hörnli-Auflauf": {
             "CookingTime": "00:30",
             "NrPersons": 3,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Pasta-Auflauf mit Gemüse. Gibt Reste.",
+            "Text": "Hörnli knapp al dente kochen. Bei Bedarf (und Zeit) Lauch (und Speck- oder Schinkenwürfelchen) separat vordünsten.\nHörnli, Fleischwürfelchen, Lauch und Petersilie mischen, in die vorbereitete Form geben.\nMilch, Rahm, Eier, Salz, Pfeffer und Muskatnuss mit dem Parmesan verrühren, darüber giessen. Mit dem restlichen Käse bestreuen. \nIn der Mitte des auf 200°C vorgeheizten Ofens 35-40 Minuten gratinieren. ",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -4874,10 +4874,10 @@
             }
         },
         "Kaiserschmarn": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Fluffiges Riesen-Omelette mit Rosinen und Apfelmus (o. Ä.).",
+            "Text": "In einer Schüssel Mehl, Zucker, Salz und Eigelb mit der Milch zu einem glatten, dickflüssigen Teig verrühren.\nDas Eiweiss separat zu einem steifen Schnee schlagen und danach zusammen mit den Rosinen unter den dickflüssigen Teig heben.\nButter in einer grossen, flachen Pfanne schmelzen, den Teig eingiessen, beide Seiten je ca. 7 Minuten bei mittlerer Temperatur (3) fest werden lassen. ODER Teigmasse auf einem Blech verteilen und für ca. 10 Min. in der Mitte des vorgeheizten Ofens bei 220° backen.\nAbschliessend den Teig mit Gabeln zerreissen.\nMit Apfelmus servieren.",
             "items": {
                 "Apfelmus": {
                     "_position": 0,
@@ -4954,10 +4954,10 @@
             }
         },
         "Kartoffel-Kohlrabi Auflauf": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Scheibchen Kuscheln",
+            "Text": "Kartoffeln und Kohlrabiviertel in 3 mm dünne Scheiben schneiden. Nacheinander für ca. 8 Minuten in Salzwasser vorgaren.\nMozzarella in Scheiben schneiden.\nStreifen von Kohlrabi, Kartoffeln und Mozzarella dachziegelartig in eine ausgebutterte, feuerfeste Form geben, Rahm-Bouillon-Gewürz-Mischung darüber giessen. Mit Sonnenblumenkernen bestreuen.\nFür 45 Minuten in der Mitte des Ofens bei 180° backen (10 Minuten weniger bei vorgeheiztem Ofen).",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5046,10 +5046,10 @@
             }
         },
         "Kartoffel-Lauch-Gratin": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Scheibchen Kuscheln",
+            "Text": "Kartoffeln in 1cm grosse Würfelchen und Lauch in ca. 5cm grosse Stücke schneiden. Kartoffeln in Salzwasser ca. 10 Minuten kochen, Lauch für 5 Min. beigeben. Danach abgiessen und in eine ausgebutterte, ofenfeste Form geben.\nRahm mit Salz und Pfeffer würzen, über die Kartoffeln und den Lauch giessen, Käse darauf verteilen.\nToastbrot in Stücke zerzupfen. Butter in einer Bratpfanne schmelzen, Toast darunter mischen und mit Petersilie würzen. Abschliessend über dem Gratin verteilen.\nFür 30 Minuten in der Mitte des auf 180° vorgeheizten Ofens backen.",
             "items": {
                 "Halbrahm": {
                     "_position": 0,
@@ -5230,10 +5230,10 @@
             }
         },
         "Kokos-Rind One-Pot": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Pfannensparendes Reisgericht",
+            "Text": "Pak Choi in dünne Längsstreifen schneiden.\nHackfleisch in Öl anbraten und würzen. Currypaste, Reis und Gemüse unter das Fleisch mischen. Kokosmilch und Wasser dazugiessen, aufkochen lassen, dann zugedeckt bei kleiner Hitze ca. 15 Minuten köcheln lassen.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5324,8 +5324,8 @@
         "Krautstiel Wok Nudeln": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Nudeln Spezial.",
+            "Text": "Krautstiel in Streifen schneiden und zusammen mit den Nudeln al dente kochen.\nFleisch im Öl anbraten, beiseite stellen und salzen.\nGemüse mit der Curry-Paste anbraten, (Koriander), Austernsosse, Fleisch und Nudeln beigeben und nochmals heiss werden lassen.",
             "items": {
                 "Austernsauce": {
                     "_position": 0,
@@ -5404,8 +5404,8 @@
         "Kräuterreis mit Auberginen-Piccata": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Vegetarische Reisbegleitung.",
+            "Text": "Reis im Salzwasser knapp weich kochen, abtropfen. Basilikum und Schnittlauch darunter mischen.\nAuberginen in ca. 1 cm dicke Scheiben schneiden, mit Öl, Salz / Pfeffer würzen und für 15 Minuten in den auf 180° vorgeheizten Ofen stecken, abkühlen lassen.\nMehl in einen flachen Teller geben, Ei und Käse in einem weiteren Teller zerquirlen. Auberginen nacheinander in beiden Tellern wenden.\nAuberginen portionenweise bei mittlerer Hitze in Butter beidseitig für ca. 3 Minuten braten. Zugedeckt warm halten (50° im Ofen).",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -5550,10 +5550,10 @@
             }
         },
         "Lachs-Käse-Wähe + Salat": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:45",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Teig ins Blech legen und einstechen.\nZwiebeln in Ringe schneiden, mit Käse, Quark und Ei mischen, mit Zitronenschale und Gewürz würzen.\nLachs in Würfel schneiden, grösserer Teil unter die Masse mischen, ¼ davon darauf verteilen.\nFür 35 Minuten auf der untersten Rille bei 220° im vorgeheizten Ofen backen.\nSalat dazu servieren.",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -5692,8 +5692,8 @@
         "Lasagne": {
             "CookingTime": "00:30",
             "NrPersons": 4,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Bolognese-Lasagne. Gibt Reste (resp. reicht für 2 Mahlzeiten).",
+            "Text": "Gemüse (und Zwiebel) in möglichst kleine Würfel schneiden.\nOlivenöl in einer Pfanne erhitzen, Hackfleisch anbraten und nach kurzer Zeit Gemüse dazugeben und mitdämpfen. Nach ca. 5 Minuten mit Pelati ablöschen, Tomatenpüree, Lorbeer und Bouillonwürfel beigeben.\nNach ca. 20 Minuten kochen mit etwas Rotwein, Oregano, Basilikum und Pfeffer abschmecken, beliebig lange weiter kochen lassen.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Sugo hinein geben und lose auf dem Boden der Form verteilen. Erste Schicht Lasagneplatten anordnen und mit einer Schicht Sugo bedecken. Zweite Schicht Lasagneplatten darüber anordnen, ½ der Béchamelsosse darübergeben und mit noch einer Schicht Sugo bedecken. Abschliessend  eine dritte Schicht Lasagneplatten anordnen und mit dem Rest der Béchamelsosse bedecken. Mozzarellascheiben und Parmesan darüber verteilen.\nBei 180° für 45 Minuten im Ofen backen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -5844,8 +5844,8 @@
         "Lauch-Pilz-Lasagne": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Grüne Version der klassischen Lasagne. Gibt Reste.",
+            "Text": "Lauch in Streifen schneiden und vordünsten.\nPilze kleinschneiden und in Butter anbraten, bis sie ihr Wasser verlieren, mit dem Lauch vermischen.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Béchamelsosse hinein geben und auf dem Boden der Form verteilen. Abwechselnd eine Lage Lasagneplatten und Pilz-Lauch-Mischung einfüllen, mit Sauce abschliessen. Mozzarella darauf verteilen.\nBei 200° für 45 Minuten im Ofen backen.",
             "items": {
                 "Béchamelsauce": {
                     "_position": 0,
@@ -5912,8 +5912,8 @@
         "Lauchrisotto + Fleisch": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Begleitendes Risotto mit integriertem Gemüse.",
+            "Text": "Lauch in Streifen schneiden.\nLauch für 5 Min. dämpfen, danach beiseite stellen.\nReis kurz anbraten, danach Bouillon dazugeben und 15-20 Minuten köcheln lassen.\nLauch, Butter und Käse unter das Risotto mischen.\nFleisch nach Wahl dazu braten.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -5990,10 +5990,10 @@
             }
         },
         "Moussaka": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Kartoffel-Auberginen Auflauf. Gibt Reste.",
+            "Text": "Auberginen in dünne Scheiben schneiden, mit Salz bestreuen und ruhen lassen.\nKartoffeln kochen, abkühlen lassen und in dünne Scheiben schneiden.\nAuberginen abtupfen, auf ein Blech legen, mit Öl bestreichen und für 15-20 Minuten bei 200° im vorgeheizten Ofen vorbacken.\nSolange das Fleisch mit der Zwiebel anbraten, Pelati, Püree und Gewürz beigeben. Kochen, bis die Flüssigkeit verdunstet ist.\nFeta in kleine Stücke schneiden, mit den Eiern und der Crème Fraîche vermischen.\nSchichtweise die Auberginen, Kartoffeln und das Hackfleisch in eine ausgebutterte, feuerfeste Form geben, jeweils mit Feta-Sauce abschliessen und noch mit Reibkäse bestreuen.\nFür 45 Minuten in der Mitte des Ofens bei 200° backen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -6218,10 +6218,10 @@
             }
         },
         "Nudel-Vogelnester": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Nudelgericht mit Wirz und Ei.",
+            "Text": "Wirz in schmale Streifen schneiden.\nNudeln im Salzwasser al dente Kochen, 3 Minuten vor Ende der Kochzeit den Wirz beifügen.\nBeides abtropfen, mit etwas Butter vermischen und leicht abkühlen lassen.\nÖl in einer Bratpfanne erhitzen, Nudeln zu vier Nestern formen und in die Pfanne setzen und anbraten.\nJe ein Ei pro Nest / Kuhle eingiessen, etwas Rahm dazu geben und bei mittlerer Hitze ca. 10 Minuten zugedeckt fertig braten.\nGewürzte Kresse darüber streuen und servieren.",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -6288,8 +6288,8 @@
         "Ofen-Kartoffel-Gemüse+Cipollata": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Grosses Blech mit Allem 2.0.",
+            "Text": "Ofen auf 220° vorheizen. Kartoffeln, längs halbierte Aubergine und Zucchetti in 5 mm dicke Scheiben schneiden und dann mit Öl, Käse, Salz und Pfeffer in einer Schüssel mischen, anschliessend auf einem Blech verteilen. \nCipollata darauf verteilen. Für ca. 25 Minuten in der Mitte das Ofens backen.\nRosmarin darüber geben.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -6368,8 +6368,8 @@
         "Ofen-Kartoffel-Gemüse+Poulet": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Grosses Blech mit Allem.",
+            "Text": "Ofen auf 220° vorheizen. Kartoffeln halbieren, Gemüse in Streifen schneiden und dann mit Öl, Salbei, Salz und Pfeffer in einer Schüssel mischen, anschliessend auf einem Blech verteilen. Zitrone in Schnitzen darüber verteilen. Für ca. 10 Minuten in der Mitte das Ofens backen.\nPouletbrüstchen flach drücken, Käse und Salbei darauf legen und mit Rohschinken umwickeln.\nPouletbrüstchen zum Rest auf das Blech legen und nochmals für 20 Minuten fertig backen.",
             "items": {
                 "Karotten": {
                     "_position": 0,
@@ -6484,8 +6484,8 @@
         "Ofen-Tortillas": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Wraps aus dem Ofen",
+            "Text": "Tomaten und Rahm in eine ofenfeste Form kippen. Würzen!\nGemüse und Avocado klein schneiden. Gemüse ca. 10 Minuten in Bouillon kochen. Danach alles  auf den Tortillas verteilen, diese aufrollen und in die Form legen.\nBratspeck und Käse über die Tortillas geben.\nIm vorgeheizten Ofen für 15 Minuten bei 220° backen.",
             "items": {
                 "Aubergine": {
                     "_position": 8,
@@ -6654,10 +6654,10 @@
             }
         },
         "Omelette": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Aufwändig aber lohnenswert.",
+            "Text": "Mehl und Salz in eine Schüssel geben, Milch und Wasser dazu giessen und verrühren. Eier verquirlen, beigeben und alles zu einem dünnen Teig vermischen. Mit Muskatnuss abschmecken. Ca. 30 Minuten ruhen lassen.\nEine beschichtete Bratpfanne mit Öl einpinseln. Ca. 1/8 des Teigs mit einem Schöpflöffel hineingeben. Unter Schwenken der Pfanne den Teig dünn auslaufen lassen. Nach Belieben zerkleinerten Schinken dazu streuen. Bei mittlerer Hitze Omelette beidseitig goldbraun backen. Zugedeckt warm halten (80° im Ofen). Auf diese Weise 8 Omeletten backen.",
             "items": {
                 "Confiture": {
                     "_position": 0,
@@ -6734,10 +6734,10 @@
             }
         },
         "One-Pot-Pasta": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:25",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Einfache Vegi-Pasta",
+            "Text": "Mozzarella und Aubergine / Peperoni in Würfelchen schneiden.\nSalzwasser in einer grossen Pfanne zum Kochen bringen, Pasta und Gemüse beigeben und kochen lassen, bis die Pasta al dente sind, grob abgiessen, zurück auf die Platte stellen.\nBasilikum (und Tomätchen) ca. 3 Minuten hinzugeben, vor dem Servieren noch den Mozzarella darunter mischen.",
             "items": {
                 "Aubergine": {
                     "_position": 6,
@@ -6838,10 +6838,10 @@
             }
         },
         "Pancakes": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Amerikanische Omeletten, mit früh dran denken.",
+            "Text": "Alle trockenen Zutaten vermischen, Eier und Milch separat verrühren und dann dazu geben. Butter schmelzen und abschliessend darunter mischen. Im Kühlschrank min. 30 Minuten (oder ab Vorabend) zugedeckt ruhen lassen.\nEine beschichtete Bratpfanne mit Butter einpinseln. Teig löffelweise bei mittlerer Hitze beidseitig goldbraun backen. Zugedeckt warm halten (80° im Ofen).\nDazu Fruchtsalat, Kompott oder Apfelmus servieren.",
             "items": {
                 "Backpulver": {
                     "_position": 0,
@@ -6997,11 +6997,11 @@
                 }
             }
         },
-        "Pastetli mit Tofu / Champignons": {
+        "Pastetli mit Tofu und Champignons": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Der Klassiker in vegetarisch.",
+            "Text": "Zwiebel, Tofu und Champignons klein schneiden. Tofu und Zwiebel in Öl anbraten, Pilze dazugeben und mit Wein ablöschen, alles einköcheln lassen und würzen. Béchamelsauce dazu geben und je nach Konsistenz noch grosszügig mit Milch verdünnen.\nPastetli füllen parallel dazu im auf 200° vorgeheizten Ofen für ca. 10 Min backen. Füllung warm halten und anschliessend auf die Pastetli verteilen.\nDazu passt Salat.",
             "items": {
                 "Béchamelsauce": {
                     "_position": 0,
@@ -7104,8 +7104,8 @@
         "Penne mit Lachs + Spargel": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Fischige Penne mit Stabgemüse",
+            "Text": "Gemüse rüsten und schräg in ca. 1 cm dicke Scheiben schneiden. Lachs in Streifen schneiden.\nPenne al dente kochen, abgiessen (etwas Pastawasser auffangen) und beiseite stellen.\nÖl in einer Pfanne erhitzen, Spargeln für ca. 5 Minuten andämpfen, Crème Fraiche und Pastawasser beigeben, nochmals 15 Minuten köcheln lassen.\nAbschliessend Penne, Lachs und Petersilie darunter mischen.",
             "items": {
                 "Crème Fraiche": {
                     "_position": 0,
@@ -7170,10 +7170,10 @@
             }
         },
         "Pilz-Risotto": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Klassischer Risotto mit Gemüse, vegetarisch. Kann Reste geben.",
+            "Text": "Zucchetti, Pilze und Schalotten klein schneiden.\nSchalotten und Pilze in Butter anbraten. Wenn das Wasser verdampft ist, Zucchetti und Reis dazu geben und einige Zeit mitbraten.\nBouillon dazugeben und 15-20 Minuten köcheln lassen.\nWürzen, Parmesan und Weisswein dazugeben, köcheln lassen, bis alles geschmolzen ist.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -7262,10 +7262,10 @@
             }
         },
         "Pizza": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Ein Klassiker mit diversen Abwandlungen.",
+            "Text": "Tomatensosse vorbereiten: Pelati mit Püree und Gewürz 5-10 Minuten köcheln lassen.\nMozzarella, Schinken und Peperoni (allenfalls auch Pilze) in Stücke schneiden.\nPizzateig belegen und für 30-35 Min. bei 220° in den Ofen stecken.",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -7389,11 +7389,11 @@
                 }
             }
         },
-        "Pommes + Cordon bleu": {
+        "Pommes und Cordon bleu": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "\"Restaurant-Essen\"",
+            "Text": "Pommes im vorgeheizten Ofen bei 200° für 24 Min. backen.\nBei ca. 14 Minuten Restzeit Bratpfanne mit etwas Öl erhitzen und Cordon Bleu braten.\nGemüse oder Salat nach Wahl dazu servieren.",
             "items": {
                 "Cordon Bleu": {
                     "_position": 0,
@@ -7403,6 +7403,18 @@
                         "max": -1,
                         "min": 360,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Ketchup": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -7424,8 +7436,8 @@
         "Pouletflügeli mit Kichererbsen": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Exotisches Blech mit Allem.",
+            "Text": "Ofen auf 200° vorheizen. Kicherbsen abspühlen, Kartoffeln in Würfeln schneiden, Tomaten halbieren, mit Kichererbsen, Öl, Mandelstiften und Gewürz mischen und auf einem Blech verteilen. \nÖl, Honig, Salz und Pfeffer in einer Schüssel verrühren. Poulet beigeben und gut mischen, auf der anderen Seite des Blechs verteilen. Für 30 min (Schenkel 40+ Min.) in der Mitte des Ofens backen. \nZitronenschale über die Kichererbsen reiben, Saft auspressen und darüber giessen. Pfefferminze grob schneiden und darüber streuen.",
             "items": {
                 "Cherry-Tomaten": {
                     "_position": 0,
@@ -7552,8 +7564,8 @@
         "Raclette": {
             "CookingTime": "00:30",
             "NrPersons": 1,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Schweizer Klassiker.",
+            "Text": "Kartoffeln schälen und weich kochen, halbieren und in eine eingeölte, ofenfeste Form leben. Käse darüber verteilen und bei 200° mit Grillfunktion ca. 20 Minuten in den Ofen geben.\nDosenbirnen und Gewürz dazu servieren.",
             "items": {
                 "Birnen (Dose)": {
                     "_position": 0,
@@ -7608,8 +7620,8 @@
         "Reispfanne italiana": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Kleine Stücke in dreierlei Farben.",
+            "Text": "Zwiebel hacken.\nZwiebel und Hackfleisch in Öl anbraten, Reis beigeben und mitdämpfen. Hitze reduzieren, Bouillon dazu giessen und ca. 15 Minuten köcheln lassen.\nZucchetti grob raffeln.\nHitze erhöhen, Zucchetti der Reis-Hack-Mischung beigeben und für 5 Minuten braten, mit Pfeffer und Thymian würzen.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -7700,8 +7712,8 @@
         "Ricotta-Spinat-Penne": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Grüne Hack-Penne an weisser Sauce.",
+            "Text": "Spinat mit etwas Wasser zugedeckt bei mittlerer Hitze dünsten, bis er aufgetaut ist. Danach abtropfen lassen und grob hacken. Tomaten in dünne Streifen schneiden.\nPenne al dente kochen. Parallel Hackfleisch mit Basilikum, Pfeffer und Salz verkneten.\nÖl in einer Pfanne erhitzen, Hackfleisch und Tomaten darin anbraten (ersteres in Knöllchen belassen). Spinat, Rahm, Pastawasser, Bouillon und Muskatnuss dazugeben und aufkochen.\nZuletzt Ricotta unter die Sauce rühren und danach die Penne zugeben und nochmals mischen.",
             "items": {
                 "Basilikum (getrocknet)": {
                     "_position": 0,
@@ -7816,8 +7828,8 @@
         "Risotto mit Chicorée-Piccata": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Vegetarische Reisbegleitung zum Zweiten.",
+            "Text": "Risotto in einer Bratpfanne andämpfen, mit Bouillon kochen und bei Koch-Halbzeit Weisswein dazu geben. Mit Parmesan und Gewürz abschmecken.\nChicorée waschen und längs halbieren, Strunk entfernen, danach rund 10 Minuten bei geringer Hitze in Milchwasser (50:50) köcheln lassen.\nGekochte Chicoréehälften flach drücken. Mehl in einen flachen Teller geben, Ei und Käse in einem weiteren Teller zerquirlen. Chicoréehälften nacheinander (1. Ei, 2. Mehl) in beiden Tellern wenden.\nChicoréehälften nacheinander bei mittlerer Hitze in Öl beidseitig für ca. 2.5 Minuten braten. Zugedeckt warm halten (80° im Ofen).",
             "items": {
                 "Champignon (getrocknet)": {
                     "_position": 0,
@@ -7920,8 +7932,8 @@
         "Riz Casimir": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "\"Schweizer\" Erfindung",
+            "Text": "Reis kochen.\nFrüchte (bis auf die Bananen) klein schneiden und in die Currysosse geben, alles warm werden lassen.\nFleisch separat anbraten, zum warmwerden kurz vor dem Servieren in die Sosse geben.\nBananen längs durchschneiden und in Butter und Honig anbraten.",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -8024,8 +8036,8 @@
         "Rosenkohl-Lauch-Kartoffeln": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Gericht, ähnlich dem Papet Vaudois.",
+            "Text": "Kartoffeln in Schnitze (8el) schneiden, Rosenkohl vierteln / Lauch in Scheiben zerteilen, Zwiebel hacken.\nSpeckwürfeli ohne Fett anbraten, Kartoffeln beigeben und nach 5 Minuten noch das Gemüse kurz mitdämpfen.\nBouillon und Rahm, sowie Safran beigeben und ca. 15 Minuten köcheln lassen, würzen.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -8236,8 +8248,8 @@
         "Salzkartoffeln mit Ofen-Hack-Gemüse": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Grosses Blech mit Kartoffeln",
+            "Text": "Zwiebel klein hacken, mit Hackfleisch, Petersilie, Senf, Mehl und Pfeffer / Salz in eine Schüssel geben und verkneten, danach ca. 8 Bällchen daraus formen und zum Gemüse auf das Blech legen.\nZucchetti in Stäbchen schneiden, Tomätchen und Mini-Peperoni halbieren, danach auf ein mit Backpapier belegtes Blech legen, mit etwas Öl beträufeln und würzen.\nHackbällchen und Gemüse ca. 25 Minuten in der Mitte das auf 180° vorgeheizten Ofens backen.\nKartoffeln schälen und in Würfel schneiden, im Salzwasser ca. 10 Minuten weich kochen, abgiessen und etwas Butter dazu geben.\nParallel zu den Kartoffeln die Pelati mit etwas Zucker, Salz und Basilikum min. 5 Minuten köcheln lassen. Zum Beträufeln der Ofenware servieren.",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -8340,8 +8352,8 @@
         "Salzkartoffeln mit gefüllten Pilzen": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Einfach und flexibel.",
+            "Text": "Kartoffeln schälen und in Würfel schneiden, im Salzwasser ca. 10 Minuten weich kochen, abgiessen und etwas Butter dazu geben.\nPlize putzen, Stiele grosszügig entfernen, so dass die Champignons ausgehöhlt sind. Mit dem Frischkäse füllen und auf ein mit Backpapier belegtes Blech legen. Für ca. 20 Minuten im auf 180° vorgeheizten Ofen backen.\nChampignon-Stiele in kleine Würfelchen schneiden und mit dem Salat / Gemüse servieren.\nStatt den Plizen; Fleisch oder Fisch – und Gemüse nach Wahl dazu servieren.",
             "items": {
                 "Champignon": {
                     "_position": 0,
@@ -8384,8 +8396,8 @@
         "Shakshuka": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Israelische Spezialität.",
+            "Text": "Tomaten, Zwiebeln, Chilli und Gemüse rüsten / klein schneiden.\nZwiebeln, Chilli und Gemüse in Öl andämpfen, Tomaten und Pelati nach wenigen Minuten beigeben, aufkochen und bei reduzierter Hitze ca. 15. Minuten köcheln lassen.\nDukkah, Zucker und Salz darunter rühren, danach Mulden in der Sauce formen und die aufgeschlagenen Eier hineinkippen. Zugedeckt für weitere 5 Minuten köcheln lassen.\nAbschliessend Eier salzen, Petersilie und Dill darüberstreuen.\nDazu passt (Fladen-)Brot.",
             "items": {
                 "Chili-Schote (rot)": {
                     "_position": 0,
@@ -8560,8 +8572,8 @@
         "Sommerfladen": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Kuchen-Pizza etwas anders.",
+            "Text": "Peperoni in feine Streifen schneiden, Tomätchen halbieren.\nTeig auf ein mit Backpapier belegtes Blech legen, mit saurem Halbrahm bestreichen. Käse, Peperoni, Tomaten und Speck darauf verteilen.\n15 - 20 Min. im auf 220° vorgeheizten Ofen backen. Vor dem Servieren noch würzen.",
             "items": {
                 "Datteltomaten": {
                     "_position": 0,
@@ -8662,10 +8674,10 @@
             }
         },
         "Sommerwähe": {
-            "CookingTime": "00:30",
+            "CookingTime": "01:00",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Zucchetti, Kartoffeln und Karotten raffeln und in eine Schüssel geben.\nQuark, Eier, Gewürz und Sonnenblumenkerne dazu geben und vermischen.\nKuchenteig in ein Blech legen, Boden einstechen und mit Käse bestreuen. Gemüse-Masse einfüllen.\nPeperoni in Streifen schneiden und dekorativ auf der Masse verteilen.\n35 Minuten bei 220° auf der untersten Rille des Ofens backen.",
             "items": {
                 "Curry": {
                     "_position": 0,
@@ -8804,8 +8816,8 @@
         "Spaghetti Bolognese": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Italienischer Klassiker. Gibt Sugo-Reste für ein weiteres Essen.",
+            "Text": "Gemüse (und Zwiebel) in möglichst kleine Würfel schneiden.\nOlivenöl in einer Pfanne erhitzen, Hackfleisch anbraten und nach kurzer Zeit Gemüse dazugeben und mitdämpfen. Nach ca. 5 Minuten mit Pelati ablöschen, Tomatenpüree, Lorbeer und Bouillonwürfel beigeben.\nNach ca. 20 Minuten kochen mit etwas Rotwein, Oregano, Basilikum und Pfeffer abschmecken, beliebig lange weiter kochen lassen.\n15 Minuten vor dem servieren Salzwasser aufkochen und Spaghetti al dente kochen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -8932,8 +8944,8 @@
         "Spaghetti Carbonara": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Spaghetti etwas anders.",
+            "Text": "Spaghetti knapp al dente kochen.\nSchinkenwürfelchen (und Peperoni) in einer Pfanne knusprig braten (und 8 Min. dämpfen).\nPfanne von der Platte nehmen; Pasta, Eier, Rahm, Pfeffer und Salz dazu geben und kräftig verrühren. Parmesan darunter mischen.\nEntweder Salat dazu servieren, oder dünne Peperonistreifchen mit den Schinkenwürfelchen weich dämpfen und zu den Spaghetti mischen.",
             "items": {
                 "Eier": {
                     "_position": 0,
@@ -9012,8 +9024,8 @@
         "Spargel-Erdbeer-Salat": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Haute-Cuisine Hauptgangsalat-Version mit Brot, auch – in kleineren Dimensionen – als Vorspeise geeignet. Saison: nur Mitte April bis Mitte Juni (Spargel)",
+            "Text": "Spargeln rüsten und schräg in ca. 3 cm dicke Scheiben schneiden. Erdbeeren vierteln, mit Acetocrème marinieren. Salat waschen und abtropfen lassen. Feta zerkrümeln.\nWenig Salz, 1 TL Zucker sowie 1 EL Butter in eine grosse Pfanne mit Wasser geben, dieses zum Kochen bringen. Spargeln hinein geben, kurz aufkochen lassen, dann die Hitze reduzieren. Bei schwacher Hitze je nach Dicke des Gemüses ca. 12-15 Minuten ziehen lassen. Nach dem Abgiessen mit Aceto marinieren und abkühlen lassen.\nSalatsauce mischen; Salat hineingeben und auf einem flachen Teller anrichten, Spargeln und Erdbeeren darauf drapieren, Fetakrümel abschliessend darübergeben.\nDazu Brot oder Chips servieren.",
             "items": {
                 "Aceto Balsamico": {
                     "_position": 0,
@@ -9104,8 +9116,8 @@
         "Spätzli mit Rahm-Geschnetzeltem": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Etwas flexibles Anderes.",
+            "Text": "Spätzli goldbraun braten.\nSeparat Fleisch anbraten und anschliessend Sauce in derselben Pfanne anrühren. Kurz köcheln lassen.\nSalat oder Gemüse nach Wahl dazu servieren.",
             "items": {
                 "Rahmsauce": {
                     "_position": 0,
@@ -9228,8 +9240,8 @@
         "Süss-Sauer": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Klassisch \"asiatisches\" Reisgericht",
+            "Text": "Ingwer, Zitronenschale und Zitronensaft ins Wasser geben. Reis / Nudeln separat kochen.\nEtwas Öl, wenig geriebener Ingwer, 1.5 EL Maizena, 1.5 EL Weissweinessig und 05. EL Sojasosse dem Pouletfleisch beigeben, mischen und 30 Min. kaltstellen. Danach braten und beiseite Stellen.\nGemüse und Ananas in wenig Öl andämpfen. Etwas Ananassaft, 1dl Wasser, 0.5 EL Maizena, 1.5 EL Weissweinessig, 1 EL Sojasosse, 1 EL Ketchup und 1.5 EL Rohzucker beigeben und gar kochen. Zuletzt Fleisch beigeben und nochmal heiss werden lassen.",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -9344,8 +9356,8 @@
         "Taboulé": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Orientalische Hauptgangsalat-Version.",
+            "Text": "Bouillon aufkochen. Pfanne vom Herd nehmen und Couscous zur Bouillon geben. Mischen und zugedeckt ca. 10 Minuten quellen lassen. Couscous mit einer Gabel auflockern und abkühlen lassen.\nTomaten und Peperoni in kleine Würfel schneiden. Pfefferminze und Petersilie fein hacken. Alles zum Couscous geben. Salatsauce (Zitronensaft, Essig, Öl) dazugeben und mischen. Mit Salz und Pfeffer abschmecken. ",
             "items": {
                 "Couscous": {
                     "_position": 0,
@@ -9446,10 +9458,10 @@
             }
         },
         "Thai Pasta": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Penne mit Gemüse an asiatischer Sosse, interpretiert nach dem Rezept von Kulinaristan.",
+            "Text": "Penne al dente kochen.\nPeperoni und Lauch klein schneiden. Karotten raffeln und die tiefgefrorenen Broccoli-Blümchen in warmem Wasser auftauen.\nGemüse in Sesamöl anbraten, Bouillonpulver dazu geben und mit etwas Wasser ablöschen. Köcheln lassen, bis alles halbwegs weich ist.\nKokosmilch, Erdnussbutter, Erdnüsse, Sambal Oelek und Curry-Paste hinzufügen, nochmals aufkochen. Schliesslich die Penne beigeben, vermischen und nochmal alles heiss werden lassen.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -9598,9 +9610,9 @@
             }
         },
         "Thai Pasta Light": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
-            "ShortDesc": "",
+            "ShortDesc": "Penne mit Gemüse an asiatischer Sosse, interpretiert nach dem Rezept von Kulinaristan – leichtere Version seit 2018.",
             "Text": "",
             "items": {
                 "Blumenkohl": {
@@ -9728,8 +9740,8 @@
         "Thai-Curry": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Das Curry ohne Curry!",
+            "Text": "Auberginen in Scheiben schneiden, diese vierteln; auf Haushaltspapier auslegen und mit Salz bestreuen. Peperoni in Streifen schneiden, Tomätchen halbieren. Ingwer hacken.\nHackfleisch mit 2 EL Sojasosse und etwas Salz verkneten, zu Kügelchen formen. Bei starker Hitze anbraten und beiseitestellen.\nAuberginen trockentupfen und dann in etwas Öl für 8 Min. braten, Peperoni und Kefen für 2 Min. mitbraten.\nKokosmilch, Bouillon, 2 EL Sojasauce und Ingwer zum Gemüse geben; mit Cayennepfeffer und Koriander würzen. Zugedeckt für 10 Min. köcheln lassen. Parallel dazu den Reis kochen.\nHackfleisch und Tomätchen dazu geben und nochmal 2 Min. heiss werden lassen.",
             "items": {
                 "Aubergine": {
                     "_position": 0,
@@ -9880,8 +9892,8 @@
         "Toast Hawaii": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Einfaches Pseudo-Raclette mit exotischem Hauch.",
+            "Text": "Toast auf ein mit Backpapier belegtes Blech legen. Schinken, eine Ananasscheibe und Käse darauf legen.\nBei 200° ca. 15 Minuten im vorgeheizten Ofen backen, bis der Käse geschmolzen und leicht braun geworden ist.",
             "items": {
                 "Ananas": {
                     "_position": 0,
@@ -9945,11 +9957,11 @@
                 }
             }
         },
-        "Tomatenrisotto + Fleisch": {
+        "Tomatenrisotto mit Fleisch": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Begleitendes Risotto mit integriertem Gemüse in Rot.",
+            "Text": "Tomaten (und Zwiebel) in Würfelchen schneiden.\nGemüse für 5 Min. dämpfen, Reis beigeben und kurz anbraten, anschliessend Bouillon nach und nach zugiessen und 15-20 Minuten köcheln lassen.\nButter und Käse unter das Risotto mischen.\nFleisch nach Wahl dazu braten.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -10064,8 +10076,8 @@
         "Wraps": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Mexikanischer \"Döner\"",
+            "Text": "Alle Zutaten klein schneiden und in Schälchen geben.\nTortillas nach Angaben auf der Verpackung im Ofen erwärmen.\nInhalt auf den Tortillas verteilen und anschliessen rollen.",
             "items": {
                 "Avocado": {
                     "_position": 0,
@@ -10204,8 +10216,8 @@
         "Zitronen-Lasagne": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Erfrischend andere Version der klassischen Lasagne.",
+            "Text": "Ricotta, Rahm, Milch und die Hälfte des Käses verrühren und salzen.\nBackofen auf 180° vorheizen. Zucchetti längs in ca. 3mm dicke Scheiben schneiden. Lasagneplatten, Pesto, Zucchetti und Ricotta-Crème lagenweise in eine ofenfeste Form schichten, mit einer Schicht Crème abschliessen.\nZitrone in dünne Scheiben schneiden, auf der Lasagne verteilen und mit dem restlichen Käse bestreuen.\nIn der Ofenmitte für 40-50 Minuten backen.",
             "items": {
                 "Basilikum-Pesto": {
                     "_position": 0,
@@ -10408,8 +10420,8 @@
         "Älplermagronen": {
             "CookingTime": "00:30",
             "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "",
+            "ShortDesc": "Kartoffel-Pasta-Gericht mit Käse und Speckwürfelchen. Gibt Reste.",
+            "Text": "Kartoffeln (und Äpfel) in Würfel schneiden.\nSpeck anbraten. Bouillon und Rahm dazu giessen, aufkochen.\nKartoffeln, (Apfel) und Teigwaren beigeben und bei mittlerer Hitze ca. 10 Minuten al dente kochen.\nKäse, Speck und Gewürz darunter mischen.\nAllenfalls Salat dazu servieren.",
             "items": {
                 "Apfel (rot) ": {
                     "_position": 0,
@@ -10951,379 +10963,367 @@
     "z_recipebookconfig": {
         "Standard": {
             "FontSize": 10,
-            "Subtitle": "Unser Kochbuch",
-            "Title": "Kochbuch",
+            "Subtitle": "von Nicole & Philippe",
+            "Title": "Das Kochbuch",
             "items": {
                 "Asia Nudeln": {
-                    "_position": 32,
-                    "type": "Recipe"
-                },
-                "Auberginen-Auflauf": {
-                    "_position": 16,
-                    "type": "Recipe"
-                },
-                "Auberginen-Risotto": {
-                    "_position": 51,
-                    "type": "Recipe"
-                },
-                "Bibimbap": {
-                    "_position": 53,
-                    "type": "Recipe"
-                },
-                "Birnen-Nuss-Wähe": {
-                    "_position": 2,
-                    "type": "Recipe"
-                },
-                "Blumenkohl-Wraps": {
-                    "_position": 69,
-                    "type": "Recipe"
-                },
-                "Broccoli mit Reisnudeln": {
-                    "_position": 54,
-                    "type": "Recipe"
-                },
-                "Broccoli-Peperoni-Nudeln": {
-                    "_position": 33,
-                    "type": "Recipe"
-                },
-                "Chatschapuri": {
-                    "_position": 70,
-                    "type": "Recipe"
-                },
-                "China-Gemüse mit sweet Tofu": {
-                    "_position": 52,
-                    "type": "Recipe"
-                },
-                "Clafuti": {
-                    "_position": 4,
-                    "type": "Recipe"
-                },
-                "Curry Classic": {
-                    "_position": 55,
-                    "type": "Recipe"
-                },
-                "Edamame-Noodles": {
-                    "_position": 71,
-                    "type": "Recipe"
-                },
-                "Fotzelschnitten": {
-                    "_position": 3,
-                    "type": "Recipe"
-                },
-                "Fruchtwähe": {
-                    "_position": 5,
-                    "type": "Recipe"
-                },
-                "Frühlings-Spaghetti": {
-                    "_position": 34,
-                    "type": "Recipe"
-                },
-                "Frühlingsrisotto": {
-                    "_position": 56,
-                    "type": "Recipe"
-                },
-                "Fusilli al Pollo": {
-                    "_position": 35,
-                    "type": "Recipe"
-                },
-                "Gefüllte Peperoni": {
-                    "_position": 57,
-                    "type": "Recipe"
-                },
-                "Gnocchi mit Krautstiel": {
-                    "_position": 72,
-                    "type": "Recipe"
-                },
-                "Gnocchi-Pilz-Pfanne": {
-                    "_position": 73,
-                    "type": "Recipe"
-                },
-                "Gnocchi-Tomaten-Pfanne": {
-                    "_position": 74,
-                    "type": "Recipe"
-                },
-                "Header_Brunch": {
-                    "_position": 0,
-                    "headerLevel": 0,
-                    "name": "Brunch",
-                    "type": "Header"
-                },
-                "Header_Diverses": {
-                    "_position": 1,
-                    "headerLevel": 1,
-                    "name": "Diverses",
-                    "type": "Header"
-                },
-                "Header_Diverses.1": {
-                    "_position": 68,
-                    "headerLevel": 1,
-                    "name": "Diverses",
-                    "type": "Header"
-                },
-                "Header_Hauptgerichte": {
-                    "_position": 13,
-                    "headerLevel": 0,
-                    "name": "Hauptgerichte",
-                    "type": "Header"
-                },
-                "Header_Kartoffeln": {
-                    "_position": 14,
-                    "headerLevel": 1,
-                    "name": "Kartoffeln",
-                    "type": "Header"
-                },
-                "Header_Pasta": {
-                    "_position": 31,
-                    "headerLevel": 1,
-                    "name": "Pasta",
-                    "type": "Header"
-                },
-                "Header_Reis": {
-                    "_position": 50,
-                    "headerLevel": 1,
-                    "name": "Reis",
-                    "type": "Header"
-                },
-                "Header_Sommersalate": {
-                    "_position": 85,
-                    "headerLevel": 1,
-                    "name": "Sommersalate",
-                    "type": "Header"
-                },
-                "Honig-Apfelwähe": {
-                    "_position": 6,
-                    "type": "Recipe"
-                },
-                "Hörnli + Ghackets": {
-                    "_position": 36,
-                    "type": "Recipe"
-                },
-                "Hörnli-Auflauf": {
-                    "_position": 37,
-                    "type": "Recipe"
-                },
-                "Kaiserschmarn": {
-                    "_position": 7,
-                    "type": "Recipe"
-                },
-                "Kartoffel-Kohlrabi Auflauf": {
-                    "_position": 17,
-                    "type": "Recipe"
-                },
-                "Kartoffel-Lauch-Gratin": {
-                    "_position": 18,
-                    "type": "Recipe"
-                },
-                "Kokos-Rind One-Pot": {
-                    "_position": 59,
-                    "type": "Recipe"
-                },
-                "Krautstiel Wok Nudeln": {
-                    "_position": 38,
-                    "type": "Recipe"
-                },
-                "Kräuterreis mit Auberginen-Piccata": {
-                    "_position": 58,
-                    "type": "Recipe"
-                },
-                "Lachs mit Salzkartoffeln": {
-                    "_position": 19,
-                    "type": "Recipe"
-                },
-                "Lachs-Käse-Wähe + Salat": {
-                    "_position": 75,
-                    "type": "Recipe"
-                },
-                "Lasagne": {
-                    "_position": 39,
-                    "type": "Recipe"
-                },
-                "Lauch-Pilz-Lasagne": {
-                    "_position": 40,
-                    "type": "Recipe"
-                },
-                "Lauchrisotto + Fleisch": {
-                    "_position": 60,
-                    "type": "Recipe"
-                },
-                "Moussaka": {
-                    "_position": 20,
-                    "type": "Recipe"
-                },
-                "Müesli": {
-                    "_position": 10,
-                    "type": "Recipe"
-                },
-                "Nudel-Vogelnester": {
-                    "_position": 41,
-                    "type": "Recipe"
-                },
-                "Ofen-Kartoffel-Gemüse+Cipollata": {
-                    "_position": 22,
-                    "type": "Recipe"
-                },
-                "Ofen-Kartoffel-Gemüse+Poulet": {
-                    "_position": 23,
-                    "type": "Recipe"
-                },
-                "Ofen-Tortillas": {
-                    "_position": 76,
-                    "type": "Recipe"
-                },
-                "Omelette": {
-                    "_position": 8,
-                    "type": "Recipe"
-                },
-                "One-Pot-Pasta": {
-                    "_position": 42,
-                    "type": "Recipe"
-                },
-                "Pancakes": {
-                    "_position": 9,
-                    "type": "Recipe"
-                },
-                "Pasta-Salat": {
-                    "_position": 86,
-                    "type": "Recipe"
-                },
-                "Pastetli mit Tofu / Champignons": {
-                    "_position": 78,
-                    "type": "Recipe"
-                },
-                "Penne mit Lachs + Spargel": {
-                    "_position": 43,
-                    "type": "Recipe"
-                },
-                "Pilz-Risotto": {
-                    "_position": 61,
-                    "type": "Recipe"
-                },
-                "Pizza": {
-                    "_position": 77,
-                    "type": "Recipe"
-                },
-                "Pommes + Cordon bleu": {
-                    "_position": 24,
-                    "type": "Recipe"
-                },
-                "Raclette": {
-                    "_position": 25,
-                    "type": "Recipe"
-                },
-                "Reispfanne italiana": {
-                    "_position": 62,
-                    "type": "Recipe"
-                },
-                "Ricotta-Spinat-Penne": {
-                    "_position": 44,
-                    "type": "Recipe"
-                },
-                "Risotto mit Chicorée-Piccata": {
-                    "_position": 64,
-                    "type": "Recipe"
-                },
-                "Riz Casimir": {
-                    "_position": 63,
-                    "type": "Recipe"
-                },
-                "Rosenkohl-Lauch-Kartoffeln": {
-                    "_position": 26,
-                    "type": "Recipe"
-                },
-                "Rösti mit Bratwurst": {
-                    "_position": 27,
-                    "type": "Recipe"
-                },
-                "Salzkartoffeln mit Fleisch": {
-                    "_position": 28,
-                    "type": "Recipe"
-                },
-                "Salzkartoffeln mit Ofen-Hack-Gemüse": {
                     "_position": 30,
                     "type": "Recipe"
                 },
-                "Salzkartoffeln mit gefüllten Pilzen": {
-                    "_position": 29,
+                "Auberginen-Auflauf": {
+                    "_position": 14,
                     "type": "Recipe"
                 },
-                "Shakshuka": {
-                    "_position": 79,
-                    "type": "Recipe"
-                },
-                "Sommerfladen": {
-                    "_position": 80,
-                    "type": "Recipe"
-                },
-                "Sommerwähe": {
-                    "_position": 81,
-                    "type": "Recipe"
-                },
-                "Spaghetti Bolognese": {
-                    "_position": 45,
-                    "type": "Recipe"
-                },
-                "Spaghetti Carbonara": {
-                    "_position": 46,
-                    "type": "Recipe"
-                },
-                "Spargel-Erdbeer-Salat": {
-                    "_position": 87,
-                    "type": "Recipe"
-                },
-                "Spätzli mit Rahm-Geschnetzeltem": {
-                    "_position": 82,
-                    "type": "Recipe"
-                },
-                "Stocki mit Plätzli": {
-                    "_position": 21,
-                    "type": "Recipe"
-                },
-                "Süss-Sauer": {
-                    "_position": 65,
-                    "type": "Recipe"
-                },
-                "Taboulé": {
-                    "_position": 88,
-                    "type": "Recipe"
-                },
-                "Thai Pasta": {
-                    "_position": 47,
-                    "type": "Recipe"
-                },
-                "Thai Pasta Light": {
-                    "_position": 48,
-                    "type": "Recipe"
-                },
-                "Thai-Curry": {
-                    "_position": 66,
-                    "type": "Recipe"
-                },
-                "Toast Hawaii": {
-                    "_position": 83,
-                    "type": "Recipe"
-                },
-                "Tomatenrisotto + Fleisch": {
-                    "_position": 67,
-                    "type": "Recipe"
-                },
-                "Wraps": {
-                    "_position": 84,
-                    "type": "Recipe"
-                },
-                "Zitronen-Lasagne": {
+                "Auberginen-Risotto": {
                     "_position": 49,
                     "type": "Recipe"
                 },
+                "Bibimbap": {
+                    "_position": 51,
+                    "type": "Recipe"
+                },
+                "Birnen-Nuss-Wähe": {
+                    "_position": 1,
+                    "type": "Recipe"
+                },
+                "Blumenkohl-Wraps": {
+                    "_position": 67,
+                    "type": "Recipe"
+                },
+                "Broccoli mit Reisnudeln": {
+                    "_position": 52,
+                    "type": "Recipe"
+                },
+                "Broccoli-Peperoni-Nudeln": {
+                    "_position": 31,
+                    "type": "Recipe"
+                },
+                "Chatschapuri": {
+                    "_position": 68,
+                    "type": "Recipe"
+                },
+                "China-Gemüse mit sweet Tofu": {
+                    "_position": 50,
+                    "type": "Recipe"
+                },
+                "Clafuti": {
+                    "_position": 3,
+                    "type": "Recipe"
+                },
+                "Curry Classic": {
+                    "_position": 53,
+                    "type": "Recipe"
+                },
+                "Edamame-Noodles": {
+                    "_position": 69,
+                    "type": "Recipe"
+                },
+                "Fotzelschnitten": {
+                    "_position": 2,
+                    "type": "Recipe"
+                },
+                "Fruchtwähe": {
+                    "_position": 4,
+                    "type": "Recipe"
+                },
+                "Frühlings-Spaghetti": {
+                    "_position": 32,
+                    "type": "Recipe"
+                },
+                "Frühlingsrisotto": {
+                    "_position": 54,
+                    "type": "Recipe"
+                },
+                "Fusilli al Pollo": {
+                    "_position": 33,
+                    "type": "Recipe"
+                },
+                "Gefüllte Peperoni": {
+                    "_position": 55,
+                    "type": "Recipe"
+                },
+                "Gnocchi mit Krautstiel": {
+                    "_position": 70,
+                    "type": "Recipe"
+                },
+                "Gnocchi-Pilz-Pfanne": {
+                    "_position": 71,
+                    "type": "Recipe"
+                },
+                "Gnocchi-Tomaten-Pfanne": {
+                    "_position": 72,
+                    "type": "Recipe"
+                },
+                "Header_Brunch - Diverses": {
+                    "_position": 0,
+                    "headerLevel": 0,
+                    "name": "Brunch - Diverses",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte - Diverses": {
+                    "_position": 66,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte - Diverses",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte - Kartoffeln": {
+                    "_position": 12,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte - Kartoffeln",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte - Pasta": {
+                    "_position": 29,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte - Pasta",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte - Reis": {
+                    "_position": 48,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte - Reis",
+                    "type": "Header"
+                },
+                "Header_Hauptgerichte - Sommersalate": {
+                    "_position": 83,
+                    "headerLevel": 0,
+                    "name": "Hauptgerichte - Sommersalate",
+                    "type": "Header"
+                },
+                "Honig-Apfelwähe": {
+                    "_position": 5,
+                    "type": "Recipe"
+                },
+                "Hörnli + Ghackets": {
+                    "_position": 34,
+                    "type": "Recipe"
+                },
+                "Hörnli-Auflauf": {
+                    "_position": 35,
+                    "type": "Recipe"
+                },
+                "Kaiserschmarn": {
+                    "_position": 6,
+                    "type": "Recipe"
+                },
+                "Kartoffel-Kohlrabi Auflauf": {
+                    "_position": 15,
+                    "type": "Recipe"
+                },
+                "Kartoffel-Lauch-Gratin": {
+                    "_position": 16,
+                    "type": "Recipe"
+                },
+                "Kokos-Rind One-Pot": {
+                    "_position": 57,
+                    "type": "Recipe"
+                },
+                "Krautstiel Wok Nudeln": {
+                    "_position": 36,
+                    "type": "Recipe"
+                },
+                "Kräuterreis mit Auberginen-Piccata": {
+                    "_position": 56,
+                    "type": "Recipe"
+                },
+                "Lachs mit Salzkartoffeln": {
+                    "_position": 17,
+                    "type": "Recipe"
+                },
+                "Lachs-Käse-Wähe + Salat": {
+                    "_position": 73,
+                    "type": "Recipe"
+                },
+                "Lasagne": {
+                    "_position": 37,
+                    "type": "Recipe"
+                },
+                "Lauch-Pilz-Lasagne": {
+                    "_position": 38,
+                    "type": "Recipe"
+                },
+                "Lauchrisotto + Fleisch": {
+                    "_position": 58,
+                    "type": "Recipe"
+                },
+                "Moussaka": {
+                    "_position": 18,
+                    "type": "Recipe"
+                },
+                "Müesli": {
+                    "_position": 9,
+                    "type": "Recipe"
+                },
+                "Nudel-Vogelnester": {
+                    "_position": 39,
+                    "type": "Recipe"
+                },
+                "Ofen-Kartoffel-Gemüse+Cipollata": {
+                    "_position": 20,
+                    "type": "Recipe"
+                },
+                "Ofen-Kartoffel-Gemüse+Poulet": {
+                    "_position": 21,
+                    "type": "Recipe"
+                },
+                "Ofen-Tortillas": {
+                    "_position": 74,
+                    "type": "Recipe"
+                },
+                "Omelette": {
+                    "_position": 7,
+                    "type": "Recipe"
+                },
+                "One-Pot-Pasta": {
+                    "_position": 40,
+                    "type": "Recipe"
+                },
+                "Pancakes": {
+                    "_position": 8,
+                    "type": "Recipe"
+                },
+                "Pasta-Salat": {
+                    "_position": 84,
+                    "type": "Recipe"
+                },
+                "Pastetli mit Tofu und Champignons": {
+                    "_position": 76,
+                    "type": "Recipe"
+                },
+                "Penne mit Lachs + Spargel": {
+                    "_position": 41,
+                    "type": "Recipe"
+                },
+                "Pilz-Risotto": {
+                    "_position": 59,
+                    "type": "Recipe"
+                },
+                "Pizza": {
+                    "_position": 75,
+                    "type": "Recipe"
+                },
+                "Pommes und Cordon bleu": {
+                    "_position": 22,
+                    "type": "Recipe"
+                },
+                "Raclette": {
+                    "_position": 23,
+                    "type": "Recipe"
+                },
+                "Reispfanne italiana": {
+                    "_position": 60,
+                    "type": "Recipe"
+                },
+                "Ricotta-Spinat-Penne": {
+                    "_position": 42,
+                    "type": "Recipe"
+                },
+                "Risotto mit Chicorée-Piccata": {
+                    "_position": 62,
+                    "type": "Recipe"
+                },
+                "Riz Casimir": {
+                    "_position": 61,
+                    "type": "Recipe"
+                },
+                "Rosenkohl-Lauch-Kartoffeln": {
+                    "_position": 24,
+                    "type": "Recipe"
+                },
+                "Rösti mit Bratwurst": {
+                    "_position": 25,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit Fleisch": {
+                    "_position": 26,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit Ofen-Hack-Gemüse": {
+                    "_position": 28,
+                    "type": "Recipe"
+                },
+                "Salzkartoffeln mit gefüllten Pilzen": {
+                    "_position": 27,
+                    "type": "Recipe"
+                },
+                "Shakshuka": {
+                    "_position": 77,
+                    "type": "Recipe"
+                },
+                "Sommerfladen": {
+                    "_position": 78,
+                    "type": "Recipe"
+                },
+                "Sommerwähe": {
+                    "_position": 79,
+                    "type": "Recipe"
+                },
+                "Spaghetti Bolognese": {
+                    "_position": 43,
+                    "type": "Recipe"
+                },
+                "Spaghetti Carbonara": {
+                    "_position": 44,
+                    "type": "Recipe"
+                },
+                "Spargel-Erdbeer-Salat": {
+                    "_position": 85,
+                    "type": "Recipe"
+                },
+                "Spätzli mit Rahm-Geschnetzeltem": {
+                    "_position": 80,
+                    "type": "Recipe"
+                },
+                "Stocki mit Plätzli": {
+                    "_position": 19,
+                    "type": "Recipe"
+                },
+                "Süss-Sauer": {
+                    "_position": 63,
+                    "type": "Recipe"
+                },
+                "Taboulé": {
+                    "_position": 86,
+                    "type": "Recipe"
+                },
+                "Thai Pasta": {
+                    "_position": 45,
+                    "type": "Recipe"
+                },
+                "Thai Pasta Light": {
+                    "_position": 46,
+                    "type": "Recipe"
+                },
+                "Thai-Curry": {
+                    "_position": 64,
+                    "type": "Recipe"
+                },
+                "Toast Hawaii": {
+                    "_position": 81,
+                    "type": "Recipe"
+                },
+                "Tomatenrisotto mit Fleisch": {
+                    "_position": 65,
+                    "type": "Recipe"
+                },
+                "Wraps": {
+                    "_position": 82,
+                    "type": "Recipe"
+                },
+                "Zitronen-Lasagne": {
+                    "_position": 47,
+                    "type": "Recipe"
+                },
                 "Zopf + Spiegeleier + Speck": {
-                    "_position": 11,
+                    "_position": 10,
                     "type": "Recipe"
                 },
                 "Zopf mit Brie und Confiture": {
-                    "_position": 12,
+                    "_position": 11,
                     "type": "Recipe"
                 },
                 "Älplermagronen": {
-                    "_position": 15,
+                    "_position": 13,
                     "type": "Recipe"
                 }
             }

@@ -121,6 +121,9 @@
     <ClCompile Include="RecipeBookExporter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RecipeBookExporterLatex.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -259,6 +262,9 @@
     </QtMoc>
     <QtMoc Include="RecipeBookExporter.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="RecipeBookExporterLatex.h">
+      <Filter>Exporter</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

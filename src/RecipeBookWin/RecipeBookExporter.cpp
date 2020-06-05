@@ -1,8 +1,10 @@
 #include "RecipeBookExporter.h"
 #include <QUrl>
 #include <QFileInfo>
+#include <QException>
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
+#include "RecipeBookExporterLatex.h"
 #include "UIStringConverter.h"
 
 using namespace recipebook;
@@ -32,40 +34,18 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 	QFileInfo fi(localFileName);
 	m_rSettings.setLastUsedRecipeBookConfigurationExportFolder(fi.absolutePath());
 
-	// TODO: Start latex generator with the correct data!
-	uiConfiguration;
-	/*// Read list
-
-	SortedShoppingList list;
+	RecipeBookExporterLatex exporter(m_rConverter);
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 		const RecipeBook& rRecipeBook = handle.data();
 
-		if(!rRecipeBook.existsSortOrder(strSortOrder))
+		if(uiConfiguration >= rRecipeBook.getConfigurationsCount())
 		{
-			return;
+			throw QException();
 		}
 
-		list.updateList(handle.data());
-		list.changeSortOrder(handle.data().getSortOrder(strSortOrder), SortedShoppingListOrdering::Combined);
+		exporter.generateLatex(rRecipeBook.getConfigurationAt(uiConfiguration));
 	}
 
-	// Generate pdf
-
-	switch(m_ExporterType)
-	{
-		case ExporterType::QtHtml:
-		{
-			ShoppingListExporterQtHtml exporter(m_rConverter);
-			exporter.exportShoppingList(localFileName, list);
-			break;
-		}
-
-		case ExporterType::Latex:
-		{
-			ShoppingListExporterLatex exporter(m_rConverter);
-			exporter.exportShoppingList(localFileName, list, m_rDlgInterface);
-			break;
-		}
-	}*/
+	exporter.exportRecipeBook(localFileName, m_rDlgInterface);
 }

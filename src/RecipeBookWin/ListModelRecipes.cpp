@@ -91,7 +91,6 @@ bool ListModelRecipes::isEverythingSet(int row) const
 	const Recipe& rRecipe = handle.data().getRecipeAt(row);
     
 	return rRecipe.getRecipeText() != "" 
-			&& rRecipe.getShortDescription() != "" 
 			&& rRecipe.getNumberOfPersons() > 0 
 			&& !rRecipe.getCookingTime().isNull()
 			&& rRecipe.getRecipeItemsCount() > 0;

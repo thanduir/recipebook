@@ -19,7 +19,7 @@ namespace recipebook
 	public:
 		RBLatexExporter();
 
-		bool generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface);
+		bool generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount = 1);
 
 	private:
 		void cleanUp();
