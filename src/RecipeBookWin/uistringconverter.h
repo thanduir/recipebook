@@ -53,6 +53,7 @@ private:
 	QStringList m_UnitToShortName;
 	QStringList m_UnitToPostfixes;
 	QStringList m_SizeToName;
+	QStringList m_SizeToNameUnitless;
 	QStringList m_ShoppingListOrderingToName;
 };
 

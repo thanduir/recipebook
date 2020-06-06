@@ -26,11 +26,11 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 		return true;
 	}
 
-	// TODO: Busy animation while processing? It doesn't really make sense to be able to click other things during this time...
-	//		-> BusyIndicator QML. But how to use this here (and interface correctly with the msg box started below)?
-
+	rDlgInterface.lockUI();
+	
 	if(!QFile::exists(c_PdfLatexPath))
 	{
+		rDlgInterface.unlockUI();
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't find latex pdf generator."), RBDialogInterface::DlgType::Error);
 		cleanUp();
 		return false;
@@ -41,6 +41,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	QString tempPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + c_texOutputFolder;
 	if(!QDir(tempPath).mkpath("."))
 	{
+		rDlgInterface.unlockUI();
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create folder for temporary files"), RBDialogInterface::DlgType::Error);
 		return false;
 	}
@@ -50,6 +51,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	QFile texFile(tempPath + c_tempTexFilename);
 	if (!texFile.open(QIODevice::WriteOnly))
 	{
+		rDlgInterface.unlockUI();
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create temporary file"), RBDialogInterface::DlgType::Error);
 		cleanUp();
         return false;
@@ -81,12 +83,15 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 		{
 			QFile::remove(strOutputFilename);
 		}
+		
 		if(QFile::copy(tempPath + c_tempPdfFilename, strOutputFilename))
 		{
+			rDlgInterface.unlockUI();
 			rDlgInterface.showMessageBox(tr("Pdf generated"), tr("Pdf successfully exported to<br>\"%1\"").arg(strOutputFilename), RBDialogInterface::DlgType::Information);
 		}
 		else
 		{
+			rDlgInterface.unlockUI();
 			rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Error during pdf creation."), RBDialogInterface::DlgType::Error);
 			qWarning("Couldn't copy shopping list pdf.");
 		}

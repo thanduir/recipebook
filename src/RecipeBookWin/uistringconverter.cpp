@@ -5,9 +5,13 @@ static constexpr char* c_strNoAlternativesGroup		= "-";
 static constexpr char* c_strStatusNone				= "None";
 static constexpr char* c_strStatusTaken				= "Taken";
 
-static constexpr char* c_strSizeSmall				= "Small";
-static constexpr char* c_strSizNormal				= "Normal";
-static constexpr char* c_strSizeLarge				= "Large";
+static constexpr char* c_strSizeSmall				= "small";
+static constexpr char* c_strSizeNormal				= "normal";
+static constexpr char* c_strSizeLarge				= "large";
+
+static constexpr char* c_strSizeUnitlessSmall		= "little";
+static constexpr char* c_strSizeUnitlessNormal		= "normal";
+static constexpr char* c_strSizeUnitlessLarge		= "plenty";
 
 static constexpr char* c_strUnitCount				= "Count";
 static constexpr char* c_strUnitKilogram			= "Kilogram";
@@ -54,8 +58,12 @@ UIStringConverter::UIStringConverter()
 	// Size
 
 	m_SizeToName.append(tr(c_strSizeSmall));
-	m_SizeToName.append(tr(c_strSizNormal));
+	m_SizeToName.append(tr(c_strSizeNormal));
 	m_SizeToName.append(tr(c_strSizeLarge));
+
+	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessSmall));
+	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessNormal));
+	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessLarge));
 
 	// Unit
 
@@ -102,7 +110,11 @@ QString UIStringConverter::getStringNoAlternativesGroup() const
 
 QString UIStringConverter::convertSize(recipebook::Size size, recipebook::Unit unit) const
 {
-	// TODO: Unit beachten! ("wenig Salz" vs. "kleine Aubergine")
+	if(unit == recipebook::Unit::Unitless)
+	{
+		return m_SizeToNameUnitless[(int)size];
+	}
+
 	return m_SizeToName[(int)size];
 }
 
@@ -116,6 +128,14 @@ recipebook::Size UIStringConverter::convertSize(QString strSize) const
 		}
 	}
 	
+	for(int i = 0; i < m_SizeToNameUnitless.size(); ++i)
+	{
+		if(m_SizeToNameUnitless[i] == strSize)
+		{
+			return (recipebook::Size)i;
+		}
+	}
+
 	return recipebook::Size::Normal;
 }
 

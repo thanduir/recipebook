@@ -2,8 +2,6 @@ TODO
 ====
 
 4. Exporters
-	* TODOs (RBLatexExporter::generatePdf: BusyIndicator, UiStringConverter)
-
 	* Need language options:
 		- program language in settings
 		- language setting in recipe book pdf generation page

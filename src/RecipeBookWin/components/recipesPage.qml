@@ -610,7 +610,7 @@ Item {
 						to: uiStrings.getSizesCount() - 1
                             
 						textFromValue: function(value, locale) {
-							return uiStrings.getSizeName(value, 0);
+							return uiStrings.getSizeName(value, amountUnit);
 						}
 						valueFromText: function(text, locale) {
 							return uiStrings.getSizeIndex(text);
