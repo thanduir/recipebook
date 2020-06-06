@@ -2,15 +2,23 @@ TODO
 ====
 
 4. Exporters
-	* Improve layout of recipe book pdf		
+	* Improve layout of recipe book pdf
+
+	* Need language options:
+		- program language in settings
+		- language setting in recipe book pdf generation page
+		-> https://wiki.qt.io/How_to_create_a_multi_language_application
+		-> https://stackoverflow.com/questions/15355156/is-it-possible-to-change-language-on-qt-at-runtime
+
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!
 		=> remove from .gitignore and commit!
 	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to an acceptable folder size
-	* Export-class should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
+	* Export-classes should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
 4.2 BUG: Group not together directly after inserting Bibimbap into shopping list!
 4.3 json app export (with unnecessary info removed)
+	-> as an option in the export dlg (file type selector)! 
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
 6. Merge functionality

@@ -92,6 +92,9 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 	stream << "\\usepackage{amssymb}\n";
 	stream << "\\usepackage{multicol}\n";
 	stream << "\\usepackage{enumitem}\n";
+	stream << "\\usepackage[clock]{ifsym}\n";
+	stream << "\\usepackage{fontawesome}\n";
+	stream << "\\usepackage{vwcol}\n";
 
 	stream << "\\usepackage{hyperref}\n";
 	stream << "\\hypersetup{colorlinks, citecolor = black, filecolor = black, linkcolor = black, urlcolor = black}\n";
@@ -144,88 +147,106 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 	stream << "\\end{document}\n";
 }
 
-void RecipeBookExporterLatex::addRecipe(QTextStream& rStream, quint32 uiCurrentLevel, const Recipe& rItem) const
+void RecipeBookExporterLatex::addRecipe(QTextStream& rStream, quint32 uiCurrentLevel, const Recipe& rRecipe) const
 {
-	rStream << getTitleTag(uiCurrentLevel) << "{" << rItem.getName() << "}\n";
+	rStream << getTitleTag(uiCurrentLevel) << "{" << rRecipe.getName() << "}\n";
 
-	rStream << escapeString(rItem.getShortDescription()) << "\n\n";
-
-	rStream << tr("For %1 persons.\n\n").arg(rItem.getNumberOfPersons());
-
-	if(rItem.getCookingTime().isValid())
+	QString strShortDesc = escapeString(rRecipe.getShortDescription());
+	
+	QString box = tr("\\faGroup\\, %1").arg(rRecipe.getNumberOfPersons());
+	if(rRecipe.getCookingTime().isValid())
 	{
 		QString duration;
-		if(rItem.getCookingTime().hour() > 0)
+		if(rRecipe.getCookingTime().hour() > 0)
 		{
-			duration = rItem.getCookingTime().toString("HH:mm") + tr("h");
+			duration = rRecipe.getCookingTime().toString("HH:mm") + tr("h");
 		}
 		else
 		{
-			duration = rItem.getCookingTime().toString("mm") + tr("min");
+			duration = rRecipe.getCookingTime().toString("mm") + tr("min");
 		}
-		rStream << tr("Cooking duration: %1.\n\n").arg(duration);
+		box += tr("\\,\\, \\Interval\\, %1\n\n").arg(duration);
 	}
 
+	if(strShortDesc.isEmpty())
+	{
+		rStream << "\\hfill" << box;
+	}
+	else
+	{
+		rStream << "\\vspace{0.5cm}\n\n";
+
+		rStream << "\\begin{vwcol} [widths = {0.75,0.25}, sep = .8cm, justify = flush, rule = 0pt, indent = 1em]\n";
+		rStream << strShortDesc;
+		rStream << "\\newpage\\hfill" << box;
+		rStream << "\\end{vwcol}\n";
+	}
+	
+	rStream << "\\vspace{0.5cm}\n\n";
+	rStream << "{\\hfil\\rule{0.75\\textwidth}{0.4pt}\\hfil\n\n";
 	rStream << "\\vspace{0.5cm}\n\n";
 
-	if(rItem.getRecipeText().isEmpty())
+	if(rRecipe.getRecipeText().isEmpty())
 	{
 		// We only have the recipe items, no text
-
-		rStream << "\\textbf{\n";
-		rStream << "\\begin{itemize}\n";
-		// TODO: Items with alternatives group should be grouped together separately in some way!
-		for(quint32 i = 0; i < rItem.getRecipeItemsCount(); ++i)
-		{
-			rStream << "\\item " << formatItem(rItem.getRecipeItemAt(i)) << "\n";
-		}
-		rStream << "\\end{itemize}\n";
-		rStream << "}\\vfill\n";
+		rStream << formatItems(rRecipe);
 	}
 	else
 	{
 		rStream << "\\begin{multicols}{2}\n";
-		rStream << "\\begin{itemize}[leftmargin=*,itemsep=1\\itemsep,parsep=1\\parsep,partopsep=1\\partopsep,topsep=0pt]\n";
-		// TODO: Items with alternatives group should be grouped together separately in some way!
-		for(quint32 i = 0; i < rItem.getRecipeItemsCount(); ++i)
-		{
-			rStream << "\\item " << formatItem(rItem.getRecipeItemAt(i)) << "\n";
-		}
-		rStream << "\\end{itemize}\\vfill\n";
-		rStream << "\\vfill\n\n";
+		rStream << formatItems(rRecipe);
+		rStream << "\\vfill\n\\vfill\n\n";
 
 		rStream << "\\columnbreak\n";
 
-		rStream << escapeString(rItem.getRecipeText()) << "\n\\vfill\n";
+		rStream << escapeString(rRecipe.getRecipeText()) << "\n\\vfill\n";
 
-		rStream << "\\end{multicols}\n\\vfill\n";
+		rStream << "\\end{multicols}\n";
 	}
+
+	rStream << "\\vspace{0.5cm}\n\n";
+	rStream << "{\\hfil\\rule{0.75\\textwidth}{0.4pt}\\hfil\n\n";
+	rStream << "\\vfill\n";
 }
 
-QString RecipeBookExporterLatex::formatItem(const RecipeItem& rItem) const
+QString RecipeBookExporterLatex::formatItems(const Recipe& rRecipe) const
 {
-	QString str;
-	if(rItem.isOptional())
+	QString str = "\\begin{itemize}[leftmargin=*,itemsep=1\\itemsep,parsep=1\\parsep,partopsep=1\\partopsep,topsep=0pt]\n";
+
+	// TODO: Items with alternatives group should be grouped together separately in some way!
+	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
-		str += "\\textit{";
-	}
-	else
-	{
-		str += "\\textbf{";
+		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
+
+		str += "\\item ";
+
+		if(rItem.isOptional())
+		{
+			str += "\\textit{";
+		}
+		else
+		{
+			str += "\\textbf{";
+		}
+
+		str += escapeString(m_rConverter.formatAmount(rItem.getAmount())) + " ";
+		if(rItem.getSize() != Size::Normal)
+		{
+			// TODO: This should depend on Unit ("eine Prise Salz", "wenig Salz" vs. "1 kleine Aubergine"). What about "kleine" vs. "kleiner" etc.?
+			str += escapeString(m_rConverter.convertSize(rItem.getSize())) + " ";
+		}
+		str += escapeString(rItem.getName());
+		str += "}";
+
+		if(!rItem.getAdditionalInfo().isEmpty())
+		{
+			str += " (" + escapeString(rItem.getAdditionalInfo()) + ")";
+		}
+
+		str += "\n";
 	}
 
-	str += escapeString(m_rConverter.formatAmount(rItem.getAmount())) + " ";
-	if(rItem.getSize() != Size::Normal)
-	{
-		str += escapeString(m_rConverter.convertSize(rItem.getSize())) + " ";
-	}
-	str += escapeString(rItem.getName());
-	str += "}";
+	str += "\\end{itemize}";
 
-	if(!rItem.getAdditionalInfo().isEmpty())
-	{
-		str += " (" + escapeString(rItem.getAdditionalInfo()) + ")";
-	}
-	
 	return str;
 }

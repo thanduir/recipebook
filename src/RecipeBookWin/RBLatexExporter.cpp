@@ -26,6 +26,9 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 		return true;
 	}
 
+	// TODO: Busy animation while processing? It doesn't really make sense to be able to click other things during this time...
+	//		-> BusyIndicator QML. But how to use this here (and interface correctly with the msg box started below)?
+
 	if(!QFile::exists(c_PdfLatexPath))
 	{
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't find latex pdf generator."), RBDialogInterface::DlgType::Error);

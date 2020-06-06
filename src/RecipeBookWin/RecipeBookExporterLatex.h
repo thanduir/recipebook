@@ -10,7 +10,6 @@ namespace recipebook
 {
 	class RecipeBookConfiguration;
 	class Recipe;
-	class RecipeItem;
 	class RBDialogInterface;
 
 	class RecipeBookExporterLatex : public QObject
@@ -24,8 +23,8 @@ namespace recipebook
 		void exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface);
 
 	private:
-		void addRecipe(QTextStream& rStream, quint32 uiCurrentLevel, const Recipe& rItem) const;
-		QString formatItem(const RecipeItem& rItem) const;
+		void addRecipe(QTextStream& rStream, quint32 uiCurrentLevel, const Recipe& rRecipe) const;
+		QString formatItems(const Recipe& rRecipe) const;
 
 	private:
 		QString m_Latex;
