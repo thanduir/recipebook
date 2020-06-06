@@ -5,6 +5,7 @@
 #include <data/RecipeBookConfigItem.h>
 #include <data/Recipe.h>
 #include <data/RecipeItem.h>
+#include <data/AlternativesType.h>
 #include "UIStringConverter.h"
 #include "RBLatexExporter.h"
 
@@ -68,9 +69,9 @@ RecipeBookExporterLatex::RecipeBookExporterLatex(const UIStringConverter& rConve
 
 void RecipeBookExporterLatex::exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface)
 {
-	// generateLatex needs to be called first
 	if(m_Latex.isEmpty())
 	{
+		// GenerateLatex not called before this?
 		throw QException();
 	}
 
@@ -213,10 +214,29 @@ QString RecipeBookExporterLatex::formatItems(const Recipe& rRecipe) const
 {
 	QString str = "\\begin{itemize}[leftmargin=*,itemsep=1\\itemsep,parsep=1\\parsep,partopsep=1\\partopsep,topsep=0pt]\n";
 
-	// TODO: Items with alternatives group should be grouped together separately in some way!
+	QString currentGroup;
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
 		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
+
+		// End of group?
+		if(!currentGroup.isEmpty() 
+		   && (!rItem.hasAlternativesGroup() || rItem.getAlternativesGroup().getName() != currentGroup))
+		{
+			// End current group
+			str += "\\end{itemize}";
+			currentGroup.clear();
+		}
+
+		// Begin of new group?
+		if(rItem.hasAlternativesGroup() && rItem.getAlternativesGroup().getName() != currentGroup)
+		{
+			currentGroup = rItem.getAlternativesGroup().getName();
+
+			// Start new group
+			str += "\\item \\textbf{" + rItem.getAlternativesGroup().getName() + "}\n";
+			str += "\\begin{itemize}[leftmargin=*,itemsep=1\\itemsep,parsep=1\\parsep,partopsep=1\\partopsep,topsep=0pt]\n";
+		}
 
 		str += "\\item ";
 
@@ -229,21 +249,39 @@ QString RecipeBookExporterLatex::formatItems(const Recipe& rRecipe) const
 			str += "\\textbf{";
 		}
 
-		str += escapeString(m_rConverter.formatAmount(rItem.getAmount())) + " ";
-		if(rItem.getSize() != Size::Normal)
+		QString amount = escapeString(m_rConverter.formatAmount(rItem.getAmount()));
+		if(!amount.isEmpty())
 		{
-			// TODO: This should depend on Unit ("eine Prise Salz", "wenig Salz" vs. "1 kleine Aubergine"). What about "kleine" vs. "kleiner" etc.?
-			str += escapeString(m_rConverter.convertSize(rItem.getSize())) + " ";
+			str += amount + " ";
 		}
+
 		str += escapeString(rItem.getName());
 		str += "}";
 
+		QString addText;
+		if(rItem.getSize() != Size::Normal)
+		{
+			addText += escapeString(m_rConverter.convertSize(rItem.getSize(), rItem.getAmount().getUnit()));
+		}
 		if(!rItem.getAdditionalInfo().isEmpty())
 		{
-			str += " (" + escapeString(rItem.getAdditionalInfo()) + ")";
+			if(!addText.isEmpty())
+			{
+				addText += ", ";
+			}
+			addText += escapeString(rItem.getAdditionalInfo());
+		}
+		if(!addText.isEmpty())
+		{
+			str += " (" + addText + ")";
 		}
 
 		str += "\n";
+	}
+
+	if(!currentGroup.isEmpty())
+	{
+		str += "\\end{itemize}\n";
 	}
 
 	str += "\\end{itemize}";

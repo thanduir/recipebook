@@ -15,7 +15,7 @@ Item {
 			}
 			cbxSortOrder.currentIndex = activeSortOrderIndex;
 			
-			var activeListOrdering = recipeBookSettings.getActiveListOrderingGoShopping() == shoppingListOrderingNames[1];
+			var activeListOrdering = recipeBookSettings.getActiveListOrderingGoShopping() == uiStrings.getShoppingListOrderingNameSeparate();
 			btnSeparateCollectedItems.checked = activeListOrdering;
 
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, btnSeparateCollectedItems.checked);
@@ -59,7 +59,7 @@ Item {
 
 		enabled: cbxSortOrder.count > 0
 		onClicked: {
-			recipeBookSettings.setActiveListOrderingGoShopping(checked ? shoppingListOrderingNames[1] : shoppingListOrderingNames[0]);
+			recipeBookSettings.setActiveListOrderingGoShopping(checked ? uiStrings.getShoppingListOrderingNameSeparate() : uiStrings.getShoppingListOrderingNameCombined());
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, checked);
 		}
 	}

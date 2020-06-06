@@ -469,7 +469,7 @@ Item {
 							{
 								text += "-" + amountMax;
 							}
-							text += " " + unitNamesShort[amountUnit];
+							text += " " + uiStrings.getUnitShortName(amountUnit);
 						}
 						if(sizeIndex != 1)
 						{
@@ -477,7 +477,7 @@ Item {
 							{
 								text = text + ", ";
 							}
-							text += sizeNames[sizeIndex]
+							text += uiStrings.getSizeName(sizeIndex, amountUnit)
 						}
 						if(additionalInfo != "")
 						{
@@ -528,7 +528,7 @@ Item {
 
 						ComboBox {
 							Layout.fillWidth: true
-							model: unitNames
+							model: uiStrings.getAllUnitNames()
 							currentIndex: amountUnit
 							onActivated: amountUnit = currentIndex
 						}
@@ -607,13 +607,13 @@ Item {
 					}
 					SpinBox { 
 						from: 0
-						to: sizeNames.length - 1
+						to: uiStrings.getSizesCount() - 1
                             
 						textFromValue: function(value, locale) {
-							return sizeNames[value];
+							return uiStrings.getSizeName(value, 0);
 						}
 						valueFromText: function(text, locale) {
-							return sizeNames.indexOf(text)
+							return uiStrings.getSizeIndex(text);
 						}
 
 						value: sizeIndex

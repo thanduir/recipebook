@@ -2,14 +2,14 @@ TODO
 ====
 
 4. Exporters
-	* Improve layout of recipe book pdf
+	* TODOs (RBLatexExporter::generatePdf: BusyIndicator, UiStringConverter)
 
 	* Need language options:
 		- program language in settings
 		- language setting in recipe book pdf generation page
 		-> https://wiki.qt.io/How_to_create_a_multi_language_application
 		-> https://stackoverflow.com/questions/15355156/is-it-possible-to-change-language-on-qt-at-runtime
-
+	
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path!
 		-> i probably also need to change app working dir for this to work!

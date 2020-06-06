@@ -278,7 +278,7 @@ Item {
 		ComboBox {
 			id: cbxUnit
 			Layout.fillWidth: true
-			model: unitNames
+			model: uiStrings.getAllUnitNames()
 			currentIndex: indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
 			onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
 		}

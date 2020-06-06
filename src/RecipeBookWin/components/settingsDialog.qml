@@ -51,7 +51,7 @@ Dialog {
 				ComboBox { 
 					id: cbxDefaultUnit
 					Layout.fillWidth: true
-					model: unitNames
+					model: uiStrings.getAllUnitNames()
 
 					onActivated: recipeBookSettings.setDefaultUnit(currentIndex)
 				}

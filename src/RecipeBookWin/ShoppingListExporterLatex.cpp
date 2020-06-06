@@ -128,7 +128,7 @@ QString ShoppingListExporterLatex::getItemAdditionalText(const GoShoppingListIte
 		QString addText;
 		if(rItem.getSize(0) != Size::Normal)
 		{
-			addText += m_rConverter.convertSize(rItem.getSize(0));
+			addText += m_rConverter.convertSize(rItem.getSize(0), rItem.getAmount(0).getUnit());
 		}
 		if(!rItem.getAdditionalInfo(0).isEmpty())
 		{
@@ -157,7 +157,7 @@ QString ShoppingListExporterLatex::getItemAdditionalText(const GoShoppingListIte
 				{
 					strText += ", ";
 				}
-				strText += m_rConverter.convertSize(rItem.getSize(i));
+				strText += m_rConverter.convertSize(rItem.getSize(i), rItem.getAmount(i).getUnit());
 			}
 
 			if(rItem.isOptional(i))

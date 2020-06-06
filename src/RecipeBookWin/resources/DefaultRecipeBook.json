@@ -152,7 +152,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Aprikosen": {
+        "Aprikose": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -220,7 +220,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Birnen": {
+        "Birne": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -517,7 +517,7 @@
                 "Migros"
             ]
         },
-        "Eier": {
+        "Ei": {
             "category": "Eier",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -603,7 +603,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Fleischtomaten": {
+        "Fleischtomate": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -774,7 +774,7 @@
                 "Migros"
             ]
         },
-        "Karotten": {
+        "Karotte": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -1078,7 +1078,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Nektarinen": {
+        "Nektarine": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -1096,7 +1096,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Orangen": {
+        "Orange": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -1742,7 +1742,7 @@
             "unavailableProvenances": [
             ]
         },
-        "Tomaten": {
+        "Tomate": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -1991,7 +1991,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -2267,7 +2267,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -2279,7 +2279,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -2443,7 +2443,7 @@
             "ShortDesc": "",
             "Text": "Kuchenteig in ein Blech legen, Boden einstechen und mit Haselnüssen und Schoggiwürfelchen bestreuen.\nBirnen schälen, längs halbieren und in Scheibchen schneiden; nebeneinander auf den Teig setzen und auffächern. Honig, Zitronensaft und Puderzucker verrühren, auf die Birnen streichen.\n30 Minuten bei 220° auf der untersten Rille des vorgeheizten Ofens backen.",
             "items": {
-                "Birnen": {
+                "Birne": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -2863,7 +2863,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Orangen": {
+                "Orange": {
                     "_position": 9,
                     "additionalInfo": "",
                     "alternativesGroup": "Orangen",
@@ -2955,7 +2955,7 @@
             "ShortDesc": "Ei im Pizza-Schlafrock.",
             "Text": "Feta und Mozzarella so klein wie möglich schneiden und mischen.\nTeig halbieren und zu Ovalen formen. Käsemischung in der Mitte verteilen. Teig am Rand ca. 3 cm einschlagen und die Enden eindrehen, so dass eine Blatt-Form entsteht. \nFür ca. 17 Minuten auf der untersten Rille des auf 240° vorgeheizten Ofen backen, dann kurz herausnehmen. Ei aufschlagen und in die Teig-Schiffchen platzieren, Eiweiss mit dem flüssigen Käse mischen, ohne den Dotter zu verletzen. Nochmals ca. 3 Minuten in der oberen Hälfte des Ofens fertig backen.\nDazu passt Salat (mit Mozzarella).",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3047,7 +3047,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3163,7 +3163,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3267,7 +3267,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3643,7 +3643,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3771,7 +3771,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Nektarinen": {
+                "Nektarine": {
                     "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3783,7 +3783,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Orangen": {
+                "Orange": {
                     "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -3851,7 +3851,7 @@
             "ShortDesc": "",
             "Text": "Kuchenteig in ein Blech legen, Boden einstechen und mit Mandeln bestreuen.\nFrüchte waschen, aufschneiden und auf dem Teig verteilen.\n15 Minuten bei 220° auf der untersten Rille des Ofens backen. In der Zwischenzeit den Guss vorbereiten: Ei und Zucker in den Rahm geben, mischen.\nWähe aus dem Ofen nehmen und mit Guss übergiessen. Anschliessend nochmal ca. 20 Minuten weiter backen.",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4559,7 +4559,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4695,7 +4695,7 @@
             "ShortDesc": "Pasta-Auflauf mit Gemüse. Gibt Reste.",
             "Text": "Hörnli knapp al dente kochen. Bei Bedarf (und Zeit) Lauch (und Speck- oder Schinkenwürfelchen) separat vordünsten.\nHörnli, Fleischwürfelchen, Lauch und Petersilie mischen, in die vorbereitete Form geben.\nMilch, Rahm, Eier, Salz, Pfeffer und Muskatnuss mit dem Parmesan verrühren, darüber giessen. Mit dem restlichen Käse bestreuen. \nIn der Mitte des auf 200°C vorgeheizten Ofens 35-40 Minuten gratinieren. ",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4823,7 +4823,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4859,7 +4859,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4891,7 +4891,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -5431,7 +5431,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -5555,7 +5555,7 @@
             "ShortDesc": "",
             "Text": "Teig ins Blech legen und einstechen.\nZwiebeln in Ringe schneiden, mit Käse, Quark und Ei mischen, mit Zitronenschale und Gewürz würzen.\nLachs in Würfel schneiden, grösserer Teil unter die Masse mischen, ¼ davon darauf verteilen.\nFür 35 Minuten auf der untersten Rille bei 220° im vorgeheizten Ofen backen.\nSalat dazu servieren.",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -5663,7 +5663,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 9,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -5743,7 +5743,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6019,7 +6019,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6147,7 +6147,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6223,7 +6223,7 @@
             "ShortDesc": "Nudelgericht mit Wirz und Ei.",
             "Text": "Wirz in schmale Streifen schneiden.\nNudeln im Salzwasser al dente Kochen, 3 Minuten vor Ende der Kochzeit den Wirz beifügen.\nBeides abtropfen, mit etwas Butter vermischen und leicht abkühlen lassen.\nÖl in einer Bratpfanne erhitzen, Nudeln zu vier Nestern formen und in die Pfanne setzen und anbraten.\nJe ein Ei pro Nest / Kuhle eingiessen, etwas Rahm dazu geben und bei mittlerer Hitze ca. 10 Minuten zugedeckt fertig braten.\nGewürzte Kresse darüber streuen und servieren.",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6371,7 +6371,7 @@
             "ShortDesc": "Grosses Blech mit Allem.",
             "Text": "Ofen auf 220° vorheizen. Kartoffeln halbieren, Gemüse in Streifen schneiden und dann mit Öl, Salbei, Salz und Pfeffer in einer Schüssel mischen, anschliessend auf einem Blech verteilen. Zitrone in Schnitzen darüber verteilen. Für ca. 10 Minuten in der Mitte das Ofens backen.\nPouletbrüstchen flach drücken, Käse und Salbei darauf legen und mit Rohschinken umwickeln.\nPouletbrüstchen zum Rest auf das Blech legen und nochmals für 20 Minuten fertig backen.",
             "items": {
-                "Karotten": {
+                "Karotte": {
                     "_position": 0,
                     "additionalInfo": "schlank",
                     "alternativesGroup": "",
@@ -6615,7 +6615,7 @@
             "ShortDesc": "",
             "Text": "",
             "items": {
-                "Fleischtomaten": {
+                "Fleischtomate": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6671,7 +6671,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6855,7 +6855,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6983,7 +6983,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -7855,7 +7855,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8199,7 +8199,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8353,7 +8353,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "Einfach und flexibel.",
-            "Text": "Kartoffeln schälen und in Würfel schneiden, im Salzwasser ca. 10 Minuten weich kochen, abgiessen und etwas Butter dazu geben.\nPlize putzen, Stiele grosszügig entfernen, so dass die Champignons ausgehöhlt sind. Mit dem Frischkäse füllen und auf ein mit Backpapier belegtes Blech legen. Für ca. 20 Minuten im auf 180° vorgeheizten Ofen backen.\nChampignon-Stiele in kleine Würfelchen schneiden und mit dem Salat / Gemüse servieren.\nStatt den Plizen; Fleisch oder Fisch – und Gemüse nach Wahl dazu servieren.",
+            "Text": "Kartoffeln schälen und in Würfel schneiden, im Salzwasser ca. 10 Minuten weich kochen, abgiessen und etwas Butter dazu geben.\nPilze putzen, Stiele grosszügig entfernen, so dass die Champignons ausgehöhlt sind. Mit dem Frischkäse füllen und auf ein mit Backpapier belegtes Blech legen. Für ca. 20 Minuten im auf 180° vorgeheizten Ofen backen.\nChampignon-Stiele in kleine Würfelchen schneiden und mit dem Salat / Gemüse servieren.\nStatt den Plizen; Fleisch oder Fisch – und Gemüse nach Wahl dazu servieren.",
             "items": {
                 "Champignon": {
                     "_position": 0,
@@ -8447,7 +8447,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8703,7 +8703,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Eier": {
+                "Ei": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8715,7 +8715,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8855,7 +8855,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -8947,7 +8947,7 @@
             "ShortDesc": "Spaghetti etwas anders.",
             "Text": "Spaghetti knapp al dente kochen.\nSchinkenwürfelchen (und Peperoni) in einer Pfanne knusprig braten (und 8 Min. dämpfen).\nPfanne von der Platte nehmen; Pasta, Eier, Rahm, Pfeffer und Salz dazu geben und kräftig verrühren. Parmesan darunter mischen.\nEntweder Salat dazu servieren, oder dünne Peperonistreifchen mit den Schinkenwürfelchen weich dämpfen und zu den Spaghetti mischen.",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -9431,7 +9431,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -9523,7 +9523,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -9613,7 +9613,7 @@
             "CookingTime": "00:40",
             "NrPersons": 2,
             "ShortDesc": "Penne mit Gemüse an asiatischer Sosse, interpretiert nach dem Rezept von Kulinaristan – leichtere Version seit 2018.",
-            "Text": "",
+            "Text": "Penne al dente kochen.\nPeperoni und Kohl klein schneiden. Karotten raffeln und die tiefgefrorenen Blumenkohl-Blümchen in warmem Wasser auftauen.\nGemüse in Sesamöl anbraten, Bouillonpulver dazu geben und mit Wasser ablöschen. Köcheln lassen, bis alles halbwegs weich ist.\nKokosmilch, Erdnussbutter und Curry-Paste hinzufügen, nochmals aufkochen. Schliesslich die Penne beigeben, vermischen und nochmal alles heiss werden lassen.",
             "items": {
                 "Blumenkohl": {
                     "_position": 0,
@@ -9675,7 +9675,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Karotten": {
+                "Karotte": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -10047,7 +10047,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -10163,7 +10163,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Tomaten": {
+                "Tomate": {
                     "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -10311,7 +10311,7 @@
             "ShortDesc": "",
             "Text": "",
             "items": {
-                "Eier": {
+                "Ei": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -10613,7 +10613,7 @@
             "DueDate": "2020-03-15",
             "ScalingFactor": 2,
             "items": {
-                "Eier": {
+                "Ei": {
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -10626,7 +10626,7 @@
                     "size": "Normal",
                     "status": "None"
                 },
-                "Karotten": {
+                "Karotte": {
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -10962,7 +10962,7 @@
     },
     "z_recipebookconfig": {
         "Standard": {
-            "FontSize": 10,
+            "FontSize": 12,
             "Subtitle": "von Nicole & Philippe",
             "Title": "Das Kochbuch",
             "items": {

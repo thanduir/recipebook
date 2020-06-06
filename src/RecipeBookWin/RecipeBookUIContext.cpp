@@ -256,13 +256,7 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	context->setContextProperty("shoppingListExporter", &m_ShoppingListExporter);
 	context->setContextProperty("recipeBookExporter", &m_RecipeBookExporter);
 
-	context->setContextProperty("unitNames", m_Converter.getAllUnitNames());
-	context->setContextProperty("unitNamesShort", m_Converter.getAllUnitShortNames());
-    
-	context->setContextProperty("sizeNames", m_Converter.getAllSizeNames());
-	context->setContextProperty("statusNames", m_Converter.getAllStatusNames());
-
-	context->setContextProperty("shoppingListOrderingNames", m_Converter.getAllShoppingListOrderingNames());
+	context->setContextProperty("uiStrings", &m_Converter);
 
 	context->setContextProperty("modelCategories", &m_ModelCategories);
 	context->setContextProperty("modelSortOrder", &m_ModelSortOrder);
