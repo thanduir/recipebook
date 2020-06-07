@@ -2,6 +2,10 @@ TODO
 ====
 
 4. Exporters
+	* Pdf layout changes:
+		- recipe items / recipe text: Possibly make the widths different? (recipe text col wider than the other)
+		- Larger font sizes on title page (-> Probably need a custom title page for this)
+
 	* Need language options:
 		- program language in settings
 		- language setting in recipe book pdf generation page

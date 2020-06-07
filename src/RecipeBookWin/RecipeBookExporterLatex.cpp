@@ -87,7 +87,7 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 	m_Latex.clear();
 	QTextStream stream(&m_Latex);
 
-	stream << "\\documentclass[a4paper," << rConfig.getFontSize() << "pt]{extbook}\n";
+	stream << "\\documentclass[a4paper,oneside," << rConfig.getFontSize() << "pt]{extbook}\n";
 	stream << "\\usepackage[utf8]{inputenc}\n";
 	stream << "\\usepackage{a4wide}\n";
 	stream << "\\usepackage{amssymb}\n";
@@ -103,12 +103,14 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 	stream << "\\setlength{\\parindent}{0em}\n";
 
 	stream << "\\setlength{\\columnseprule}{1pt}\n";
-
+	stream << "\\setlength{\\columnsep}{3em}\n";
+	
 	stream << "\\linespread {1.25}\\selectfont\n";
 
 	stream << "\\title{" << escapeString(rConfig.getBookTitle()) << "}\n";
 	stream << "\\author{" << escapeString(rConfig.getBookSubtitle()) << "}\n";
 
+	stream << "\\pagestyle{plain}\n";
 	stream << "\\begin{document}\n";
 
 	stream << "\\maketitle\n";
@@ -199,7 +201,7 @@ void RecipeBookExporterLatex::addRecipe(QTextStream& rStream, quint32 uiCurrentL
 		rStream << "\\vfill\n\\vfill\n\n";
 
 		rStream << "\\columnbreak\n";
-
+		
 		rStream << escapeString(rRecipe.getRecipeText()) << "\n\\vfill\n";
 
 		rStream << "\\end{multicols}\n";
