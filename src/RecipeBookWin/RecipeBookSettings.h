@@ -18,6 +18,9 @@ namespace recipebook
 		QString applicationRecipeBookAppsDataFolder() const;
 		QString getApplicationInstanceUID();
 
+		QString getCurrentAppLanguage() const;
+		void setCurrentAppLanguage(QString lang);
+
 		quint32 getDefaultUnit() const;
 		void setDefaultUnit(quint32 defaultUnit);
 

@@ -11,6 +11,8 @@ constexpr char* c_strAppRBSaveFilename				= "/RecipeBook.json";
 
 constexpr char* c_strAppInstanceUID					= "appInstanceUID";
 
+constexpr char* c_strAppCurrentLanguage				= "currentLanguage";
+
 constexpr char* c_strDefaultUnit					= "defaults/unit";
 constexpr char* c_strDefaultNrPersons				= "defaults/nrpersons";
 constexpr char* c_strDefaultCategory				= "defaults/category";
@@ -55,6 +57,23 @@ QString RecipeBookSettings::applicationRecipeBookSaveFile() const
 QString RecipeBookSettings::applicationRecipeBookAppsDataFolder() const
 {
 	return m_AppRBFilePath;
+}
+
+QString RecipeBookSettings::getCurrentAppLanguage() const
+{
+	QSettings settings;
+	if(!settings.contains(c_strAppCurrentLanguage))
+	{
+		return "";
+	}
+
+	return settings.value(c_strAppCurrentLanguage).toString();
+}
+
+void RecipeBookSettings::setCurrentAppLanguage(QString lang)
+{
+	QSettings settings;
+	settings.setValue(c_strAppCurrentLanguage, lang);
 }
 
 quint32 RecipeBookSettings::getDefaultUnit() const

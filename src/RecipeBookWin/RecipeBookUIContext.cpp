@@ -17,8 +17,9 @@ const int c_SaveIntervalSeconds = 60;
 
 RecipeBookUIContext::RecipeBookUIContext()
 :	m_RBData(),
-	m_Converter(),
-	m_Settings(),
+	m_Settings(), 
+	m_Translations(m_Settings),
+	m_Converter(),	
 	m_ModelCategories(m_RBData),
 	m_ModelSortOrder(m_RBData),
 	m_ModelSortOrders(m_RBData, m_Converter),
@@ -43,6 +44,7 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_SaveLock()
 {
 	m_DlgInterface.setQmlEngine(m_Engine);
+	m_Translations.setQmlEngine(m_Engine);
 
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
 	if(fileIn.exists())
@@ -252,6 +254,7 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	}
 
 	context->setContextProperty("recipeBookSettings", &m_Settings);
+	context->setContextProperty("RBLanguageManager", &m_Translations);
 
 	context->setContextProperty("shoppingListExporter", &m_ShoppingListExporter);
 	context->setContextProperty("recipeBookExporter", &m_RecipeBookExporter);

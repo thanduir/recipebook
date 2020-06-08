@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
+#include "RBTranslationManager.h"
 #include "ShoppingListExporter.h"
 #include "RecipeBookExporter.h"
 #include "ListModelCategories.h"
@@ -56,9 +57,10 @@ namespace recipebook::UI
 
 	private:
 		RBDataHandler m_RBData;
-		UIStringConverter m_Converter;
 
 		RecipeBookSettings m_Settings;
+		RBTranslationManager m_Translations;
+		UIStringConverter m_Converter;
 
 		ListModelCategories m_ModelCategories;
 		SortModelSortOrder m_ModelSortOrder;

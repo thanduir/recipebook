@@ -59,10 +59,16 @@
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtInstall>msvc2019_64</QtInstall>
     <QtModules>core;gui;printsupport;qml;quick;quickcontrols2</QtModules>
+    <QtRunLUpdateOnBuild>false</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>msvc2019_64</QtInstall>
     <QtModules>core;gui;printsupport;qml;quick;quickcontrols2</QtModules>
+    <QtRunLUpdateOnBuild>false</QtRunLUpdateOnBuild>
+    <QtLUpdateOptions>
+    </QtLUpdateOptions>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
@@ -119,6 +125,7 @@
     <ClCompile Include="ListModelShoppingRecipes.cpp" />
     <ClCompile Include="RBDialogInterface.cpp" />
     <ClCompile Include="RBLatexExporter.cpp" />
+    <ClCompile Include="RBTranslationManager.cpp" />
     <ClCompile Include="RecipeBookExporter.cpp" />
     <ClCompile Include="RecipeBookExporterLatex.cpp" />
     <ClCompile Include="RecipeBookSettings.cpp" />
@@ -153,6 +160,8 @@
     <None Include="components\textMessageDialog.qml" />
     <None Include="qtquickcontrols2.conf" />
     <None Include="recipebook.qml" />
+    <None Include="translations\recipebookwin_de.ts" />
+    <None Include="translations\recipebookwin_en.ts" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="uistringconverter.h" />
@@ -204,6 +213,7 @@
     <QtMoc Include="RBLatexExporter.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="RBTranslationManager.h" />
     <QtMoc Include="RecipeBookExporterLatex.h" />
     <QtMoc Include="RecipeBookExporter.h" />
     <QtMoc Include="ListModelRecipeBookConfigurations.h" />

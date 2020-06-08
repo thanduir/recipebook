@@ -33,12 +33,39 @@ Dialog {
 		anchors.fill: parent
 
 		GroupBox {
+			id: groupSettings
+
+			title: qsTr("Settings")
+			width: groupDefaultValues.width
+
+			GridLayout {
+				anchors.fill: parent
+        
+				columns: 2
+				columnSpacing: 50
+				rowSpacing: 10
+
+				Label { 
+					text: qsTr("Current language")
+				}
+				ComboBox { 
+					id: cbxLanguages
+					Layout.fillWidth: true
+					model: RBLanguageManager.availableLanguages()
+
+					onActivated: RBLanguageManager.setCurrentLanguageIndex(currentIndex)
+				}
+			}
+		}
+
+		GroupBox {
 			id: groupDefaultValues
+			anchors.top: groupSettings.bottom
+			anchors.topMargin: 24
 
 			title: qsTr("Default values")
 
 			GridLayout {
-				id: grid
 				anchors.fill: parent
         
 				columns: 2
@@ -140,6 +167,8 @@ Dialog {
 
 		cbxDefaulCategory.currentIndex = cbxDefaulCategory.indexOfValue(recipeBookSettings.getDefaultCategory());
 		cbxDefaultSortOrder.currentIndex = cbxDefaultSortOrder.indexOfValue(recipeBookSettings.getDefaultSortOrder());
+
+		cbxLanguages.currentIndex = cbxLanguages.indexOfValue(RBLanguageManager.getCurrentLanguageName());
 	}
 
 	footer: DialogButtonBox {

@@ -42,7 +42,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	if(!QDir(tempPath).mkpath("."))
 	{
 		rDlgInterface.unlockUI();
-		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create folder for temporary files"), RBDialogInterface::DlgType::Error);
+		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create folder for temporary files."), RBDialogInterface::DlgType::Error);
 		return false;
 	}
 
@@ -52,7 +52,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	if (!texFile.open(QIODevice::WriteOnly))
 	{
 		rDlgInterface.unlockUI();
-		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create temporary file"), RBDialogInterface::DlgType::Error);
+		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create temporary file."), RBDialogInterface::DlgType::Error);
 		cleanUp();
         return false;
     }

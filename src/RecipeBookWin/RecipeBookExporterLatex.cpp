@@ -156,7 +156,7 @@ void RecipeBookExporterLatex::addRecipe(QTextStream& rStream, quint32 uiCurrentL
 
 	QString strShortDesc = escapeString(rRecipe.getShortDescription());
 	
-	QString box = tr("\\faGroup\\, %1").arg(rRecipe.getNumberOfPersons());
+	QString box = QString("\\faGroup\\, %1").arg(rRecipe.getNumberOfPersons());
 	if(rRecipe.getCookingTime().isValid())
 	{
 		QString duration;
@@ -168,7 +168,7 @@ void RecipeBookExporterLatex::addRecipe(QTextStream& rStream, quint32 uiCurrentL
 		{
 			duration = rRecipe.getCookingTime().toString("mm") + tr("min");
 		}
-		box += tr("\\,\\, \\Interval\\, %1\n\n").arg(duration);
+		box += QString("\\,\\, \\Interval\\, %1\n\n").arg(duration);
 	}
 
 	if(strShortDesc.isEmpty())
