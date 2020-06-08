@@ -22,6 +22,7 @@ Item {
 		}
 
 		popupLock.open();
+		busyIndicator.running = true
 	}
 
 	function unlockUI() {
@@ -29,16 +30,17 @@ Item {
 			return;
 		}
 
+		busyIndicator.running = false
 		popupLock.close();
 	}
 
 	Popup {
 		id: popupLock
-
+		
 		modal: true
 
 		BusyIndicator {
-			running: popupLock.opend
+			id: busyIndicator
 		}
 
 		background: Rectangle {
