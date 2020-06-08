@@ -23,8 +23,9 @@ namespace recipebook::UI
 		void setQmlEngine(QQmlApplicationEngine& rEngine);
 
 	public slots:
-		QStringList availableLanguages() { return m_NamesOfAvailableLanguages; }
+		QStringList availableLanguages() const { return m_NamesOfAvailableLanguages; }
 		QString getCurrentLanguageName() const;
+		QString getCurrentLanguageCode() const;
 		void setCurrentLanguageIndex(int index);
 
 	private:

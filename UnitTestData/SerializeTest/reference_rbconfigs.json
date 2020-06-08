@@ -10951,6 +10951,7 @@
     "z_recipebookconfig": {
         "Standard": {
             "FontSize": 10,
+            "LanguageCode": "de",
             "Subtitle": "Unser Kochbuch",
             "Title": "Kochbuch",
             "items": {

@@ -2,6 +2,157 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>UIStringConverter</name>
+    <message>
+        <location filename="../uistringconverter.cpp" line="5"/>
+        <source>-</source>
+        <translation>-</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="9"/>
+        <source>None</source>
+        <translation>None</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="10"/>
+        <source>Taken</source>
+        <translation>Taken</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="17"/>
+        <source>small</source>
+        <translation>small</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="18"/>
+        <location filename="../uistringconverter.cpp" line="26"/>
+        <source>normal</source>
+        <translation>normal</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="19"/>
+        <source>large</source>
+        <translation>large</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="25"/>
+        <source>little</source>
+        <translation>little</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="27"/>
+        <source>plenty</source>
+        <translation>plenty</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="35"/>
+        <source>Count</source>
+        <translation>Count</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="36"/>
+        <source>Kilogram</source>
+        <translation>Kilogram</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="37"/>
+        <source>Gram</source>
+        <translation>Gram</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="38"/>
+        <source>Liter</source>
+        <translation>Liter</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="39"/>
+        <source>Deciliter</source>
+        <translation>Deciliter</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="40"/>
+        <source>Milliliter</source>
+        <translation>Milliliter</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="41"/>
+        <source>Dessertspoon</source>
+        <translation>Dessertspoon</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="42"/>
+        <source>Teaspoon</source>
+        <translation>Teaspoon</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="43"/>
+        <source>Unitless</source>
+        <translation>Unitless</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="55"/>
+        <source>Piece</source>
+        <translation>Piece</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="56"/>
+        <location filename="../uistringconverter.cpp" line="76"/>
+        <source>kg</source>
+        <translation>kg</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="57"/>
+        <location filename="../uistringconverter.cpp" line="77"/>
+        <source>g</source>
+        <translation>g</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="58"/>
+        <location filename="../uistringconverter.cpp" line="78"/>
+        <source>L</source>
+        <translation>L</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="59"/>
+        <location filename="../uistringconverter.cpp" line="79"/>
+        <source>dl</source>
+        <translation>dl</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="60"/>
+        <location filename="../uistringconverter.cpp" line="80"/>
+        <source>ml</source>
+        <translation>ml</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="61"/>
+        <location filename="../uistringconverter.cpp" line="81"/>
+        <source>ds</source>
+        <translation>ds</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="62"/>
+        <location filename="../uistringconverter.cpp" line="82"/>
+        <source>ts</source>
+        <translation>ts</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="75"/>
+        <source>x</source>
+        <translation>x</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="97"/>
+        <source>Combined</source>
+        <translation>Combined</translation>
+    </message>
+    <message>
+        <location filename="../uistringconverter.cpp" line="98"/>
+        <source>SeparateTakenItems</source>
+        <translation>SeparateTakenItems</translation>
+    </message>
+</context>
+<context>
     <name>categoriesPage</name>
     <message>
         <location filename="../components/categoriesPage.qml" line="13"/>
@@ -160,25 +311,25 @@
     <name>rbConfigPage</name>
     <message>
         <location filename="../components/rbConfigPage.qml" line="26"/>
-        <location filename="../components/rbConfigPage.qml" line="299"/>
+        <location filename="../components/rbConfigPage.qml" line="310"/>
         <source>Add header</source>
         <translation>Add header</translation>
     </message>
     <message>
         <location filename="../components/rbConfigPage.qml" line="35"/>
-        <location filename="../components/rbConfigPage.qml" line="311"/>
+        <location filename="../components/rbConfigPage.qml" line="322"/>
         <source>Add recipe</source>
         <translation>Add recipe</translation>
     </message>
     <message>
         <location filename="../components/rbConfigPage.qml" line="44"/>
-        <location filename="../components/rbConfigPage.qml" line="331"/>
+        <location filename="../components/rbConfigPage.qml" line="342"/>
         <source>Rename header</source>
         <translation>Rename header</translation>
     </message>
     <message>
         <location filename="../components/rbConfigPage.qml" line="50"/>
-        <location filename="../components/rbConfigPage.qml" line="347"/>
+        <location filename="../components/rbConfigPage.qml" line="358"/>
         <source>Remove item</source>
         <translation>Remove item</translation>
     </message>
@@ -208,12 +359,17 @@
         <translation>Font size</translation>
     </message>
     <message>
-        <location filename="../components/rbConfigPage.qml" line="385"/>
+        <location filename="../components/rbConfigPage.qml" line="130"/>
+        <source>Language</source>
+        <translation>Language</translation>
+    </message>
+    <message>
+        <location filename="../components/rbConfigPage.qml" line="396"/>
         <source>Generate PDF</source>
         <translation>Generate PDF</translation>
     </message>
     <message>
-        <location filename="../components/rbConfigPage.qml" line="395"/>
+        <location filename="../components/rbConfigPage.qml" line="406"/>
         <source>Generate recipe book pdf</source>
         <translation>Generate recipe book pdf</translation>
     </message>
@@ -281,6 +437,24 @@
     </message>
 </context>
 <context>
+    <name>recipebook::LatexLanguageManager</name>
+    <message>
+        <location filename="../LatexLanguageManager.cpp" line="7"/>
+        <source>English</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="../LatexLanguageManager.cpp" line="8"/>
+        <source>German</source>
+        <translation>German</translation>
+    </message>
+    <message>
+        <location filename="../LatexLanguageManager.cpp" line="9"/>
+        <source>French</source>
+        <translation>French</translation>
+    </message>
+</context>
+<context>
     <name>recipebook::RBLatexExporter</name>
     <message>
         <location filename="../RBLatexExporter.cpp" line="34"/>
@@ -332,12 +506,12 @@
 <context>
     <name>recipebook::RecipeBookExporterLatex</name>
     <message>
-        <location filename="../RecipeBookExporterLatex.cpp" line="165"/>
+        <location filename="../RecipeBookExporterLatex.cpp" line="167"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="../RecipeBookExporterLatex.cpp" line="169"/>
+        <location filename="../RecipeBookExporterLatex.cpp" line="171"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -353,15 +527,27 @@
 <context>
     <name>recipebook::ShoppingListExporterLatex</name>
     <message>
-        <location filename="../ShoppingListExporterLatex.cpp" line="169"/>
+        <location filename="../ShoppingListExporterLatex.cpp" line="55"/>
+        <source>Shopping list</source>
+        <translation>Shopping list</translation>
+    </message>
+    <message>
+        <location filename="../ShoppingListExporterLatex.cpp" line="173"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../ShoppingListExporterLatex.cpp" line="184"/>
+        <location filename="../ShoppingListExporterLatex.cpp" line="188"/>
         <source>\item %1 of those %2
 </source>
         <translation>\item %1 of those %2
+</translation>
+    </message>
+    <message>
+        <location filename="../ShoppingListExporterLatex.cpp" line="192"/>
+        <source>\item Also needed in a unitless amount
+</source>
+        <translation>\item Also needed in a unitless amount
 </translation>
     </message>
 </context>

@@ -5,6 +5,7 @@
 #include <data/GoShoppingListItem.h>
 #include "UIStringConverter.h"
 #include "RBLatexExporter.h"
+#include "LatexLanguageManager.h"
 
 using namespace recipebook;
 
@@ -13,22 +14,25 @@ ShoppingListExporterLatex::ShoppingListExporterLatex(const UIStringConverter& rC
 {
 }
 
-void ShoppingListExporterLatex::exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface)
+void ShoppingListExporterLatex::exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode)
 {
-	QString latexCode = generateLatex(rList);
+	QString latexCode = generateLatex(rList, languageCode);
 
 	// The exporter deletes itself after generation is complete
 	RBLatexExporter* pExporter = new RBLatexExporter();
 	pExporter->generatePdf(latexCode, strFilename, rDlgInterface);
 }
 
-QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
+QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list, QString languageCode)
 {
 	QString text;
 	QTextStream stream(&text);
 
+	LatexLanguageManager language;
+
 	stream << "\\documentclass[a4paper,9pt]{extarticle}\n";
 	stream << "\\usepackage[utf8]{inputenc}\n";
+	stream << language.getBabelStringFromLangCode(languageCode);
 	stream << "\\usepackage{xcolor}\n";
 	stream << "\\usepackage{a4wide}\n";
 	stream << "\\usepackage{amssymb}\n";
@@ -48,7 +52,7 @@ QString ShoppingListExporterLatex::generateLatex(const SortedShoppingList& list)
 	
 	stream << "\\pagestyle{empty}\n";
 
-	stream << "\\section*{Shopping list}\n";
+	stream << "\\section*{" << tr("Shopping list") << "}\n";
 
 	stream << "\\begin{multicols}{2}\n";
 
@@ -185,7 +189,7 @@ QString ShoppingListExporterLatex::getItemAdditionalText(const GoShoppingListIte
 			}
 			else if(rItem.getAmount(i).getUnit() == Unit::Unitless)
 			{
-				lines += "\\item Also needed in a unitless amount\n";
+				lines += tr("\\item Also needed in a unitless amount\n");
 			}
 				 
 		}

@@ -132,6 +132,9 @@
     <ClCompile Include="RBTranslationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LatexLanguageManager.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="recipebookwindow.qrc">
@@ -282,6 +285,9 @@
     </QtMoc>
     <QtMoc Include="RBTranslationManager.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LatexLanguageManager.h">
+      <Filter>Exporter</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

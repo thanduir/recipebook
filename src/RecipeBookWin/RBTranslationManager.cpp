@@ -82,6 +82,11 @@ QString RBTranslationManager::getCurrentLanguageName() const
 	return QLocale::languageToString(QLocale(lang).language());
 }
 
+QString RBTranslationManager::getCurrentLanguageCode() const
+{
+	return getCurrentLanguage();
+}
+
 void RBTranslationManager::setCurrentLanguageIndex(int index)
 {
 	if(index >= m_AvailableLanguages.size())

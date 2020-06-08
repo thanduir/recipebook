@@ -65,7 +65,7 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 		case ExporterType::Latex:
 		{
 			ShoppingListExporterLatex exporter(m_rConverter);
-			exporter.exportShoppingList(localFileName, list, m_rDlgInterface);
+			exporter.exportShoppingList(localFileName, list, m_rDlgInterface, m_rSettings.getCurrentAppLanguage());
 			break;
 		}
 	}

@@ -58,6 +58,7 @@ namespace recipebook::serialization::json
 	constexpr char* c_strConfigTitle					= "Title";
 	constexpr char* c_strConfigSubtitle					= "Subtitle";
 	constexpr char* c_strConfigFontSize					= "FontSize";
+	constexpr char* c_strConfigLanguageCode				= "LanguageCode";
 	constexpr char* c_strConfigItems					= "items";
 
 	// recipe boook config items

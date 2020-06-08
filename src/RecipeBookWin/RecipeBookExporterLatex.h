@@ -11,6 +11,7 @@ namespace recipebook
 	class RecipeBookConfiguration;
 	class Recipe;
 	class RBDialogInterface;
+	class LatexLanguageManager;
 
 	class RecipeBookExporterLatex : public QObject
 	{
@@ -19,7 +20,7 @@ namespace recipebook
 	public:
 		RecipeBookExporterLatex(const UIStringConverter& rConverter);
 
-		void generateLatex(const RecipeBookConfiguration& rConfig);
+		void generateLatex(const RecipeBookConfiguration& rConfig, const LatexLanguageManager& rLanguageManager);
 		void exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface);
 
 	private:

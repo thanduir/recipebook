@@ -111,6 +111,7 @@
     <ClCompile Include="FilterModelRecipeItems.cpp" />
     <ClCompile Include="FilterModelRecipes.cpp" />
     <ClCompile Include="FilterModelUnusedRecipes.cpp" />
+    <ClCompile Include="LatexLanguageManager.cpp" />
     <ClCompile Include="ListModelAlternativesGroups.cpp" />
     <ClCompile Include="FilterModelAlternativesTypes.cpp" />
     <ClCompile Include="ListModelCategories.cpp" />
@@ -219,6 +220,7 @@
     <QtMoc Include="ListModelRecipeBookConfigurations.h" />
     <QtMoc Include="ListModelRBConfigItems.h" />
     <QtMoc Include="FilterModelUnusedRecipes.h" />
+    <QtMoc Include="LatexLanguageManager.h" />
     <ClInclude Include="RBDialogInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,20 +2,15 @@ TODO
 ====
 
 4. Exporters
-	* Need language options:
-		- post build step to copy qm files!
-
-		- separate language setting in recipe book pdf generation page (how to do this in a useful way? Can a use a (different) translator locally?)
-			-> don't forget to also adjust languages in latex files!
-
-		- remove recipebook.qml from default settings and add to project specific-settings after VS Qt Addin updated! (add all qml files using wildcard if possible)
-
+	* post build step to copy qm files!
 	* Export-classes should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
 
 	* Pdf layout changes:
 		- recipe items / recipe text: Possibly make the widths different? (recipe text col wider than the other)
 		- Larger font sizes on title page (-> Probably need a custom title page for this)
 
+	* remove recipebook.qml from Qt default settings and add to project specific-settings after VS Qt Addin updated! (add all qml files using wildcard if possible)
+		(lupdate settings)
 	* Try to minimze miktex folder size and copy it to a final place!
 		-> Change pdflatex path in RBLatexExporter to final path (RELATIVE PATH SO THAT IT ALSO WORKS FOR INSTALLATIONS...)!
 		-> i probably also need to change app working dir for this to work!

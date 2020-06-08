@@ -10963,6 +10963,7 @@
     "z_recipebookconfig": {
         "Standard": {
             "FontSize": 12,
+            "LanguageCode": "de",
             "Subtitle": "von Nicole & Philippe",
             "Title": "Das Kochbuch",
             "items": {

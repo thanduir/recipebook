@@ -8,6 +8,7 @@
 #include <data/AlternativesType.h>
 #include "UIStringConverter.h"
 #include "RBLatexExporter.h"
+#include "LatexLanguageManager.h"
 
 using namespace recipebook;
 
@@ -82,13 +83,14 @@ void RecipeBookExporterLatex::exportRecipeBook(QString strFilename, const RBDial
 	m_Latex.clear();
 }
 
-void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConfig)
+void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConfig, const LatexLanguageManager& rLanguageManager)
 {
 	m_Latex.clear();
 	QTextStream stream(&m_Latex);
 
 	stream << "\\documentclass[a4paper,oneside," << rConfig.getFontSize() << "pt]{extbook}\n";
 	stream << "\\usepackage[utf8]{inputenc}\n";
+	stream << rLanguageManager.getBabelStringFromLangCode(rConfig.getLanguageCode());;
 	stream << "\\usepackage{a4wide}\n";
 	stream << "\\usepackage{amssymb}\n";
 	stream << "\\usepackage{multicol}\n";

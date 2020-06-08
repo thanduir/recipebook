@@ -44,7 +44,7 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 			throw QException();
 		}
 
-		exporter.generateLatex(rRecipeBook.getConfigurationAt(uiConfiguration));
+		exporter.generateLatex(rRecipeBook.getConfigurationAt(uiConfiguration), m_Languages);
 	}
 
 	exporter.exportRecipeBook(localFileName, m_rDlgInterface);

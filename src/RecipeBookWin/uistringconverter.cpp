@@ -1,106 +1,104 @@
 #include "uistringconverter.h"
 
-static constexpr char* c_strNoAlternativesGroup		= "-";
-
-static constexpr char* c_strStatusNone				= "None";
-static constexpr char* c_strStatusTaken				= "Taken";
-
-static constexpr char* c_strSizeSmall				= "small";
-static constexpr char* c_strSizeNormal				= "normal";
-static constexpr char* c_strSizeLarge				= "large";
-
-static constexpr char* c_strSizeUnitlessSmall		= "little";
-static constexpr char* c_strSizeUnitlessNormal		= "normal";
-static constexpr char* c_strSizeUnitlessLarge		= "plenty";
-
-static constexpr char* c_strUnitCount				= "Count";
-static constexpr char* c_strUnitKilogram			= "Kilogram";
-static constexpr char* c_strUnitGram				= "Gram";
-static constexpr char* c_strUnitLiter				= "Liter";
-static constexpr char* c_strUnitDeciliter			= "Deciliter";
-static constexpr char* c_strUnitMilliliter			= "Milliliter";
-static constexpr char* c_strUnitDessertspoon		= "Dessertspoon";
-static constexpr char* c_strUnitTeaspoon			= "Teaspoon";
-static constexpr char* c_strUnitUnitless			= "Unitless";
-
-static constexpr char* c_strUnitCountShort			= "Piece";
-static constexpr char* c_strUnitKilogramShort		= "kg";
-static constexpr char* c_strUnitGramShort			= "g";
-static constexpr char* c_strUnitLiterShort			= "L";
-static constexpr char* c_strUnitDeciliterShort		= "dl";
-static constexpr char* c_strUnitMilliliterShort		= "ml";
-static constexpr char* c_strUnitDessertspoonShort	= "ds";
-static constexpr char* c_strUnitTeaspoonShort		= "ts";
-static constexpr char* c_strUnitUnitlessShort		= "";
-
-static constexpr char* c_strUnitCountPostfix		= "x";
-static constexpr char* c_strUnitKilogramPostfix		= "kg";
-static constexpr char* c_strUnitGramPostfix			= "g";
-static constexpr char* c_strUnitLiterPostfix		= "L";
-static constexpr char* c_strUnitDeciliterPostfix	= "dl";
-static constexpr char* c_strUnitMilliliterPostfix	= "ml";
-static constexpr char* c_strUnitDessertspoonPostfix = "ds";
-static constexpr char* c_strUnitTeaspoonPostfix		= "ts";
-static constexpr char* c_strUnitUnitlessPostfix		= "";
-
-static constexpr char* c_strListOrderingCombined			= "Combined";
-static constexpr char* c_strListOrderingSeparateTakenItems	= "SeparateTakenItems";
-
 UIStringConverter::UIStringConverter()
 {
-	m_strNoAlternativesGroup = tr(c_strNoAlternativesGroup);
+	m_strNoAlternativesGroup = tr("-");
 
 	// Status
 
-	m_StatusToName.append(tr(c_strStatusNone));
-	m_StatusToName.append(tr(c_strStatusTaken));
+	const QString c_strStatusNone = tr("None");
+	const QString c_strStatusTaken = tr("Taken");
+
+	m_StatusToName.append(c_strStatusNone);
+	m_StatusToName.append(c_strStatusTaken);
 
 	// Size
 
-	m_SizeToName.append(tr(c_strSizeSmall));
-	m_SizeToName.append(tr(c_strSizeNormal));
-	m_SizeToName.append(tr(c_strSizeLarge));
+	const QString c_strSizeSmall = tr("small");
+	const QString c_strSizeNormal = tr("normal");
+	const QString c_strSizeLarge = tr("large");
 
-	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessSmall));
-	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessNormal));
-	m_SizeToNameUnitless.append(tr(c_strSizeUnitlessLarge));
+	m_SizeToName.append(c_strSizeSmall);
+	m_SizeToName.append(c_strSizeNormal);
+	m_SizeToName.append(c_strSizeLarge);
+
+	const QString c_strSizeUnitlessSmall = tr("little");
+	const QString c_strSizeUnitlessNormal = tr("normal");
+	const QString c_strSizeUnitlessLarge = tr("plenty");
+
+	m_SizeToNameUnitless.append(c_strSizeUnitlessSmall);
+	m_SizeToNameUnitless.append(c_strSizeUnitlessNormal);
+	m_SizeToNameUnitless.append(c_strSizeUnitlessLarge);
 
 	// Unit
 
-	m_UnitToName.append(tr(c_strUnitCount));
-	m_UnitToName.append(tr(c_strUnitKilogram));
-	m_UnitToName.append(tr(c_strUnitGram));
-	m_UnitToName.append(tr(c_strUnitLiter));
-	m_UnitToName.append(tr(c_strUnitDeciliter));
-	m_UnitToName.append(tr(c_strUnitMilliliter));
-	m_UnitToName.append(tr(c_strUnitDessertspoon));
-	m_UnitToName.append(tr(c_strUnitTeaspoon));
-	m_UnitToName.append(tr(c_strUnitUnitless));
+	const QString c_strUnitCount = tr("Count");
+	const QString c_strUnitKilogram = tr("Kilogram");
+	const QString c_strUnitGram = tr("Gram");
+	const QString c_strUnitLiter = tr("Liter");
+	const QString c_strUnitDeciliter = tr("Deciliter");
+	const QString c_strUnitMilliliter = tr("Milliliter");
+	const QString c_strUnitDessertspoon = tr("Dessertspoon");
+	const QString c_strUnitTeaspoon = tr("Teaspoon");
+	const QString c_strUnitUnitless = tr("Unitless");
 
-	m_UnitToShortName.append(tr(c_strUnitCountShort));
-	m_UnitToShortName.append(tr(c_strUnitKilogramShort));
-	m_UnitToShortName.append(tr(c_strUnitGramShort));
-	m_UnitToShortName.append(tr(c_strUnitLiterShort));
-	m_UnitToShortName.append(tr(c_strUnitDeciliterShort));
-	m_UnitToShortName.append(tr(c_strUnitMilliliterShort));
-	m_UnitToShortName.append(tr(c_strUnitDessertspoonShort));
-	m_UnitToShortName.append(tr(c_strUnitTeaspoonShort));
-	m_UnitToShortName.append(tr(c_strUnitUnitlessShort));
+	m_UnitToName.append(c_strUnitCount);
+	m_UnitToName.append(c_strUnitKilogram);
+	m_UnitToName.append(c_strUnitGram);
+	m_UnitToName.append(c_strUnitLiter);
+	m_UnitToName.append(c_strUnitDeciliter);
+	m_UnitToName.append(c_strUnitMilliliter);
+	m_UnitToName.append(c_strUnitDessertspoon);
+	m_UnitToName.append(c_strUnitTeaspoon);
+	m_UnitToName.append(c_strUnitUnitless);
 
-	m_UnitToPostfixes.append(tr(c_strUnitCountPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitKilogramPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitGramPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitLiterPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitDeciliterPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitMilliliterPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitDessertspoonPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitTeaspoonPostfix));
-	m_UnitToPostfixes.append(tr(c_strUnitUnitlessPostfix));	
+	const QString c_strUnitCountShort = tr("Piece");
+	const QString c_strUnitKilogramShort = tr("kg");
+	const QString c_strUnitGramShort = tr("g");
+	const QString c_strUnitLiterShort = tr("L");
+	const QString c_strUnitDeciliterShort = tr("dl");
+	const QString c_strUnitMilliliterShort = tr("ml");
+	const QString c_strUnitDessertspoonShort = tr("ds");
+	const QString c_strUnitTeaspoonShort = tr("ts");
+	const QString c_strUnitUnitlessShort = tr("");
+
+	m_UnitToShortName.append(c_strUnitCountShort);
+	m_UnitToShortName.append(c_strUnitKilogramShort);
+	m_UnitToShortName.append(c_strUnitGramShort);
+	m_UnitToShortName.append(c_strUnitLiterShort);
+	m_UnitToShortName.append(c_strUnitDeciliterShort);
+	m_UnitToShortName.append(c_strUnitMilliliterShort);
+	m_UnitToShortName.append(c_strUnitDessertspoonShort);
+	m_UnitToShortName.append(c_strUnitTeaspoonShort);
+	m_UnitToShortName.append(c_strUnitUnitlessShort);
+
+	const QString c_strUnitCountPostfix = tr("x");
+	const QString c_strUnitKilogramPostfix = tr("kg");
+	const QString c_strUnitGramPostfix = tr("g");
+	const QString c_strUnitLiterPostfix = tr("L");
+	const QString c_strUnitDeciliterPostfix = tr("dl");
+	const QString c_strUnitMilliliterPostfix = tr("ml");
+	const QString c_strUnitDessertspoonPostfix = tr("ds");
+	const QString c_strUnitTeaspoonPostfix = tr("ts");
+	const QString c_strUnitUnitlessPostfix = tr("");
+
+	m_UnitToPostfixes.append(c_strUnitCountPostfix);
+	m_UnitToPostfixes.append(c_strUnitKilogramPostfix);
+	m_UnitToPostfixes.append(c_strUnitGramPostfix);
+	m_UnitToPostfixes.append(c_strUnitLiterPostfix);
+	m_UnitToPostfixes.append(c_strUnitDeciliterPostfix);
+	m_UnitToPostfixes.append(c_strUnitMilliliterPostfix);
+	m_UnitToPostfixes.append(c_strUnitDessertspoonPostfix);
+	m_UnitToPostfixes.append(c_strUnitTeaspoonPostfix);
+	m_UnitToPostfixes.append(c_strUnitUnitlessPostfix);
 
 	// SortedShoppingListOrdering
 
-	m_ShoppingListOrderingToName.append(tr(c_strListOrderingCombined));
-	m_ShoppingListOrderingToName.append(tr(c_strListOrderingSeparateTakenItems));
+	const QString c_strListOrderingCombined = tr("Combined");
+	const QString c_strListOrderingSeparateTakenItems = tr("SeparateTakenItems");
+
+	m_ShoppingListOrderingToName.append(c_strListOrderingCombined);
+	m_ShoppingListOrderingToName.append(c_strListOrderingSeparateTakenItems);
 }
 
 QString UIStringConverter::getStringNoAlternativesGroup() const

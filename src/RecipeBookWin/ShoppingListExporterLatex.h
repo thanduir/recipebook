@@ -18,10 +18,10 @@ namespace recipebook
 	public:
 		ShoppingListExporterLatex(const UIStringConverter& rConverter);
 
-		void exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface);
+		void exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode);
 
 	private:
-		QString generateLatex(const SortedShoppingList& list);
+		QString generateLatex(const SortedShoppingList& list, QString languageCode);
 
 		QString formatItem(const GoShoppingListItem& rItem) const;
 		QString getItemAdditionalText(const GoShoppingListItem& rItem) const;
