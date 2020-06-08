@@ -3,7 +3,8 @@ TODO
 
 4. Exporters
 	* Need language options:
-		- post build step to copy qm files!		
+		- post build step to copy qm files!
+
 		- separate language setting in recipe book pdf generation page (how to do this in a useful way? Can a use a (different) translator locally?)
 			-> don't forget to also adjust languages in latex files!
 
