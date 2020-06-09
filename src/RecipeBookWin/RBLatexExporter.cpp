@@ -19,6 +19,11 @@ RBLatexExporter::RBLatexExporter()
 {
 }
 
+bool RBLatexExporter::exporterAvailable()
+{
+	return QFile::exists(c_PdfLatexPath);
+}
+
 bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount)
 {
 	if(uiCallCount == 0)

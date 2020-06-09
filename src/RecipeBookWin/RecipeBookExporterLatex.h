@@ -20,6 +20,8 @@ namespace recipebook
 	public:
 		RecipeBookExporterLatex(const UIStringConverter& rConverter);
 
+		static bool exportAvailable();
+
 		void generateLatex(const RecipeBookConfiguration& rConfig, const LatexLanguageManager& rLanguageManager);
 		void exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface);
 

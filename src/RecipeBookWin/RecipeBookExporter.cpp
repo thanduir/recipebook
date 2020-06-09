@@ -20,6 +20,11 @@ RecipeBookExporter::RecipeBookExporter(RBDataHandler& rRBDataHandler,
 {
 }
 
+bool RecipeBookExporter::exportAvailable() const
+{
+	return RecipeBookExporterLatex::exportAvailable();
+}
+
 QStringList RecipeBookExporter::getDlgNameFilters() const
 {
 	QStringList list;

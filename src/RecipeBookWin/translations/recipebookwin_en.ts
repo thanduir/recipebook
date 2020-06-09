@@ -519,7 +519,7 @@
 <context>
     <name>recipebook::ShoppingListExporter</name>
     <message>
-        <location filename="../ShoppingListExporter.cpp" line="27"/>
+        <location filename="../ShoppingListExporter.cpp" line="26"/>
         <source>pdf files (*.pdf)</source>
         <translation>pdf files (*.pdf)</translation>
     </message>
@@ -554,14 +554,12 @@
 <context>
     <name>recipebook::ShoppingListExporterQtHtml</name>
     <message>
-        <location filename="../ShoppingListExporterQtHtml .cpp" line="163"/>
         <source>Optional</source>
-        <translation>Optional</translation>
+        <translation type="vanished">Optional</translation>
     </message>
     <message>
-        <location filename="../ShoppingListExporterQtHtml .cpp" line="178"/>
         <source>&lt;li&gt;- %1 of those %2&lt;/li&gt;</source>
-        <translation>&lt;li&gt;- %1 of those %2&lt;/li&gt;</translation>
+        <translation type="vanished">&lt;li&gt;- %1 of those %2&lt;/li&gt;</translation>
     </message>
 </context>
 <context>

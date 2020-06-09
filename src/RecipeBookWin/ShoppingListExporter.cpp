@@ -5,7 +5,6 @@
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
 #include "UIStringConverter.h"
-#include "ShoppingListExporterQtHtml.h"
 #include "ShoppingListExporterLatex.h"
 
 using namespace recipebook;
@@ -26,6 +25,11 @@ QStringList ShoppingListExporter::getDlgNameFilters() const
 	QStringList list;
 	list.append(tr("pdf files (*.pdf)"));
 	return list;
+}
+
+bool ShoppingListExporter::exportAvailable() const
+{
+	return ShoppingListExporterLatex::exporterAvailable();
 }
 
 void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSortOrder)
@@ -53,20 +57,6 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 
 	// Generate pdf
 
-	switch(m_ExporterType)
-	{
-		case ExporterType::QtHtml:
-		{
-			ShoppingListExporterQtHtml exporter(m_rConverter);
-			exporter.exportShoppingList(localFileName, list);
-			break;
-		}
-
-		case ExporterType::Latex:
-		{
-			ShoppingListExporterLatex exporter(m_rConverter);
-			exporter.exportShoppingList(localFileName, list, m_rDlgInterface, m_rSettings.getCurrentAppLanguage());
-			break;
-		}
-	}
+	ShoppingListExporterLatex exporter(m_rConverter);
+	exporter.exportShoppingList(localFileName, list, m_rDlgInterface, m_rSettings.getCurrentAppLanguage());
 }

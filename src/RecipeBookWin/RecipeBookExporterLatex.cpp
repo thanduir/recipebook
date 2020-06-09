@@ -68,6 +68,11 @@ RecipeBookExporterLatex::RecipeBookExporterLatex(const UIStringConverter& rConve
 {
 }
 
+bool RecipeBookExporterLatex::exportAvailable()
+{
+	return RBLatexExporter::exporterAvailable();
+}
+
 void RecipeBookExporterLatex::exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface)
 {
 	if(m_Latex.isEmpty())

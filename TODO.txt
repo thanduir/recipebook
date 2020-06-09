@@ -1,27 +1,29 @@
 TODO
 ====
 
-4. Exporters
-	* post build step to copy qm files!
-	* Export-classes should have a (qml-readable) exportPossible-Method (with no QtHTtml-Exporter, it might just test the existance of the pdflatex executable)
-
+2. Exporters
 	* Pdf layout changes:
 		- recipe items / recipe text: Possibly make the widths different? (recipe text col wider than the other)
 		- Larger font sizes on title page (-> Probably need a custom title page for this)
 
-	* remove recipebook.qml from Qt default settings and add to project specific-settings after VS Qt Addin updated! (add all qml files using wildcard if possible)
-		(lupdate settings)
 	* Try to minimze miktex folder size and copy it to a final place!
-		-> Change pdflatex path in RBLatexExporter to final path (RELATIVE PATH SO THAT IT ALSO WORKS FOR INSTALLATIONS...)!
-		-> i probably also need to change app working dir for this to work!
+		(bkup in c:\miktex-portable)
 		=> remove from .gitignore and commit!
-	* Remove the QtHtml exporter? -> yes, if miktex can be reduced to an acceptable folder size
-4.2 BUG: Group not together directly after inserting Bibimbap into shopping list!
-4.3 json app export (with unnecessary info removed)
-	-> as an option in the export dlg (file type selector)! 
+
+3. Bugs / missing features
+	* BUG: Group not together directly after inserting Bibimbap into shopping list!
+	* json app export (with unnecessary info removed)
+		-> as an option in the export dlg (file type selector)!
+
+4. Change build system to cmake
+	* Improve files layout! Atm it's rather confusing...
+	* Change absolute paths in code to relative ones (in a way that works for release, debug and installations, i.e. avoid having to maintain copies in both folders!)
+		-> atm relevant (at least) for: pdflatex.exe (RBLatexExporter) and qm-Files (2x in RBTranslationManager)
+	* post build step to copy qm files!
+	* Remove VS Qt Tools Addin? (as it doesn't quite work as expected anyways..)
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
-	-> How about switching to cmake buildsystem?
+	-> using VS or Qt Creator for this?
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
@@ -32,4 +34,3 @@ TODO
 Possibilities for later:
 a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
 b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)
-c. cmake based build system (and linux builds)?

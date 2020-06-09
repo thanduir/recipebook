@@ -393,6 +393,8 @@ Item {
 
 			font.capitalization: Font.MixedCase
 
+			enabled: recipeBookExporter.exportAvailable()
+
 			text: qsTr("Generate PDF")
 
 			onClicked: {

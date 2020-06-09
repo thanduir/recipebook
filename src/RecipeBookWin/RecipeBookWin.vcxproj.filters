@@ -99,9 +99,6 @@
     <ClCompile Include="ShoppingListExporter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShoppingListExporterQtHtml .cpp">
-      <Filter>Exporter</Filter>
-    </ClCompile>
     <ClCompile Include="ShoppingListExporterLatex.cpp">
       <Filter>Exporter</Filter>
     </ClCompile>
@@ -255,9 +252,6 @@
     </QtMoc>
     <QtMoc Include="ShoppingListExporter.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="ShoppingListExporterQtHtml.h">
-      <Filter>Exporter</Filter>
     </QtMoc>
     <QtMoc Include="ShoppingListExporterLatex.h">
       <Filter>Exporter</Filter>

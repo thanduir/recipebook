@@ -132,7 +132,6 @@
     <ClCompile Include="RecipeBookSettings.cpp" />
     <ClCompile Include="ShoppingListExporter.cpp" />
     <ClCompile Include="ShoppingListExporterLatex.cpp" />
-    <ClCompile Include="ShoppingListExporterQtHtml .cpp" />
     <ClCompile Include="SortModelSortOrder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RecipeBookUIContext.cpp" />
@@ -203,9 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ShoppingListExporter.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="ShoppingListExporterQtHtml.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ShoppingListExporterLatex.h" />

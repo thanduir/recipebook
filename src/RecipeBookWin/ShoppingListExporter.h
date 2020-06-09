@@ -16,26 +16,18 @@ namespace recipebook
 		Q_OBJECT
 
 	public:
-		enum class ExporterType
-		{
-			QtHtml,
-			Latex
-		};
-
-	public:
 		ShoppingListExporter(RBDataHandler& rRBDataHandler, 
 							 RecipeBookSettings& rSettings, 
 							 const UIStringConverter& rConverter,
 							 const RBDialogInterface& rDlgInterface);
 
-		void setExporterType(ExporterType type) { m_ExporterType = type; }
-
 	public slots:
+		bool exportAvailable() const;
+
 		QStringList getDlgNameFilters() const;
 		void exportShoppingList(QString strFileURL, QString strSortOrder);
 
 	private:
-		ExporterType				m_ExporterType = ExporterType::Latex;
 		RBDataHandler&				m_rRBDataHandler;
 		RecipeBookSettings&			m_rSettings;
 		const UIStringConverter&	m_rConverter;

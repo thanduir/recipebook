@@ -14,6 +14,11 @@ ShoppingListExporterLatex::ShoppingListExporterLatex(const UIStringConverter& rC
 {
 }
 
+bool ShoppingListExporterLatex::exporterAvailable()
+{
+	return RBLatexExporter::exporterAvailable();
+}
+
 void ShoppingListExporterLatex::exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode)
 {
 	QString latexCode = generateLatex(rList, languageCode);

@@ -23,6 +23,8 @@ namespace recipebook
 						   const RBDialogInterface& rDlgInterface);
 
 	public slots:
+		bool exportAvailable() const;
+
 		QStringList getDlgNameFilters() const;
 		void exportRecipeBook(QString strFileURL, quint32 uiConfiguration);
 

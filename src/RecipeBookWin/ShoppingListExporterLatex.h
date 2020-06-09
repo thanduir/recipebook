@@ -20,6 +20,8 @@ namespace recipebook
 
 		void exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode);
 
+		static bool exporterAvailable();
+
 	private:
 		QString generateLatex(const SortedShoppingList& list, QString languageCode);
 

@@ -68,7 +68,7 @@ Item {
 		id: lvShoppingList
 		anchors.left: parent.left
 		anchors.top: cbxSortOrder.bottom 
-		anchors.bottom: btnExport.top
+		anchors.bottom: btnExport.visible ? btnExport.top : parent.bottom
 		anchors.topMargin: 48
 		anchors.leftMargin: 48
 		anchors.bottomMargin: 48
@@ -156,6 +156,8 @@ Item {
 		id: btnExport
 		anchors.bottom: parent.bottom
 		anchors.horizontalCenter: lvShoppingList.horizontalCenter
+
+		visible: shoppingListExporter.exportAvailable()
 
 		font.capitalization: Font.MixedCase
 
