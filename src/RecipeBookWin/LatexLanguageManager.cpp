@@ -6,15 +6,12 @@ LatexLanguageManager::LatexLanguageManager()
 {
 	m_LanguageNames.append(tr("English"));
 	m_LanguageNames.append(tr("German"));
-	m_LanguageNames.append(tr("French"));
 
 	m_LanguageCodes.append("en");
 	m_LanguageCodes.append("de");
-	m_LanguageCodes.append("fr");
 
 	m_LanguageLatexNames.append("");
 	m_LanguageLatexNames.append("ngerman");
-	m_LanguageLatexNames.append("french");
 }
 
 QString LatexLanguageManager::getBabelStringFromLangCode(QString code) const

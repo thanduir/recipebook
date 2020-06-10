@@ -118,8 +118,8 @@ Item {
 			text: qsTr("Font size") 
 		}
 		SpinBox { 
-			from: 8
-			to: 16
+			from: 10
+			to: 14
 			wheelEnabled: true
 			
 			value: modelRecipeBookConfigurations.fontSize(currentConfig)

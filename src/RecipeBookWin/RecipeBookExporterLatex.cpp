@@ -61,6 +61,36 @@ namespace
 			return "\\subsubsection";
 		}
 	}
+
+	QString createTitlePage(QString title, QString subtitle)
+	{
+		QString page;
+		page += "\\thispagestyle{empty}\n";
+		
+		page += "\\vspace*{\\fill}\n";
+		
+		page += "\\begin{center}\n";
+
+		page += "\\Huge \\textbf{" + escapeString(title) + "}\n\n";
+		
+		page += "\\vspace{2.0cm}\n\n";
+
+		page += "\\Large \\textbf{" + escapeString(subtitle) + "}\n\n";
+
+		page += "\\vspace{ 0.3cm }\n\n";
+
+		page += "\\today\n\n";
+		
+		page += "\\vspace{5.0cm}\n\n";
+
+		page += "\\end{center}\n";
+
+		page += "\\vspace*{\\fill}\n";
+
+		page += "\\newpage\n";
+
+		return page;
+	}
 }
 
 RecipeBookExporterLatex::RecipeBookExporterLatex(const UIStringConverter& rConverter)
@@ -114,13 +144,10 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 	
 	stream << "\\linespread {1.25}\\selectfont\n";
 
-	stream << "\\title{" << escapeString(rConfig.getBookTitle()) << "}\n";
-	stream << "\\author{" << escapeString(rConfig.getBookSubtitle()) << "}\n";
-
 	stream << "\\pagestyle{plain}\n";
 	stream << "\\begin{document}\n";
 
-	stream << "\\maketitle\n";
+	stream << createTitlePage(rConfig.getBookTitle(), rConfig.getBookSubtitle());
 
 	stream << "\\tableofcontents\n";
 	stream << "\\newpage\n";
