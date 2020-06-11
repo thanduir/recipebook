@@ -14,10 +14,7 @@ ShoppingRecipe::ShoppingRecipe(QString strName, const Recipe& rRecipe)
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{
 		const RecipeItem& rItem = rRecipe.getRecipeItemAt(i);
-		internal::sorted::addItem<ShoppingListItem>(rItem.getElementId(), m_Items, [this, &rItem]()
-		{
-			return new ShoppingListItem(*this, rItem);
-		});
+		addItem(rItem);
 	}
 }
 
@@ -43,7 +40,8 @@ ShoppingListItem& ShoppingRecipe::addItem(const Ingredient& rIngredient)
 
 ShoppingListItem& ShoppingRecipe::addItem(const RecipeItem& rItem)
 {
-	return internal::sorted::addItem<ShoppingListItem>(rItem.getElementId(), m_Items, [this, &rItem]()
+	const AlternativesType* pType = rItem.hasAlternativesGroup() ? &rItem.getAlternativesGroup() : nullptr;
+	return internal::sorted::addItem<ShoppingListItem>(ShoppingListItem::getElementId(&rItem.getIngredient(), pType), m_Items, [this, &rItem]()
 	{
 		return new ShoppingListItem(*this, rItem);
 	});

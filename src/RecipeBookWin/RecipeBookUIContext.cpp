@@ -1,5 +1,6 @@
 #include "RecipeBookUIContext.h"
 #include <QtGlobal>
+#include <QException>
 #include <QDir>
 #include <QTimer>
 #include <QUrl>
@@ -14,6 +15,33 @@ using namespace recipebook::UI;
 using namespace recipebook::serialization;
 
 const int c_SaveIntervalSeconds = 60;
+const FileFormat c_InternalFormat = FileFormat::Json;
+
+namespace
+{
+	QStringList getImportExportNameFilters(const RecipeBookUIContext& rContext)
+	{
+		QStringList list;
+		list.append(rContext.tr("Json files (*.json)"));
+		list.append(rContext.tr("Simplified json files for app (*.app.json)"));
+		return list;
+	}
+
+	FileFormat getFormatFromFileName(QFileInfo fileinfo)
+	{
+		QString ext = fileinfo.completeSuffix();
+		if(ext == "app.json")
+		{
+			return FileFormat::JsonForApp;
+		}
+		else if(ext == "json" || fileinfo.suffix() == "json")
+		{
+			return FileFormat::Json;
+		}
+
+		throw QException();
+	}
+}
 
 RecipeBookUIContext::RecipeBookUIContext()
 :	m_RBData(),
@@ -49,7 +77,7 @@ RecipeBookUIContext::RecipeBookUIContext()
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
 	if(fileIn.exists())
 	{
-		QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+		QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(c_InternalFormat);
 		RBMetaData metaData;
 
 		recipebook::RBDataWriteHandle handle(m_RBData, true);
@@ -138,7 +166,7 @@ void RecipeBookUIContext::slotSave()
 		return;
 	}
 
-	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(c_InternalFormat, m_Settings.getApplicationInstanceUID());
 	QFile fileOut(m_Settings.applicationRecipeBookSaveFile());
 
 	recipebook::RBDataReadHandle handle(m_RBData);
@@ -158,7 +186,7 @@ void RecipeBookUIContext::slotExport(QString strFileURL)
 	QFileInfo fi(localFileName);
 	m_Settings.setLastUsedExportFolder(fi.absolutePath());
 
-	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_Settings.getApplicationInstanceUID());
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(getFormatFromFileName(fi), m_Settings.getApplicationInstanceUID());
 	QFile fileOut(localFileName);
 
 	recipebook::RBDataReadHandle handle(m_RBData);
@@ -175,7 +203,7 @@ void RecipeBookUIContext::slotImport(QString strFileURL)
 	QFileInfo fi(localFileName);
 	m_Settings.setLastUsedImportFolder(fi.absolutePath());
 
-	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(getFormatFromFileName(fi));
 	RBMetaData metaData;
 	RecipeBook recipeBook;
 	QFile fileIn(localFileName);
@@ -195,7 +223,7 @@ void RecipeBookUIContext::slotImport(QString strFileURL)
 
 void RecipeBookUIContext::slotLoadDefaultData()
 {
-	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(c_InternalFormat);
 	RBMetaData metaData;
 	RecipeBook recipeBook;
 	QFile fileIn(":/files/DefaultRecipeBook.json");
@@ -252,6 +280,9 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	{
 		return false;
 	}
+
+	
+	context->setContextProperty("importExportFilters", getImportExportNameFilters(*this));
 
 	context->setContextProperty("recipeBookSettings", &m_Settings);
 	context->setContextProperty("RBLanguageManager", &m_Translations);

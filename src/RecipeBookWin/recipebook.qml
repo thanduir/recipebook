@@ -46,7 +46,7 @@ ApplicationWindow {
 
 					title: qsTr("Import file")
 					modality: Qt.WindowModal
-					nameFilters: [ qsTr("Json files (*.json)") ]
+					nameFilters: importExportFilters
 					selectExisting: true
 					selectMultiple: false
 					selectFolder: false
@@ -79,7 +79,7 @@ ApplicationWindow {
 
 					title: qsTr("Export data")
 					modality: Qt.WindowModal
-					nameFilters: [ qsTr("Json files (*.json)") ]
+					nameFilters: importExportFilters
 					selectExisting: false
 					selectMultiple: false
 					selectFolder: false

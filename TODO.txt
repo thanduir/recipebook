@@ -1,34 +1,22 @@
 TODO
 ====
 
-2. Exporters
-	* Pdf layout changes:
-		- recipe items / recipe text: Possibly make the widths different? (recipe text col wider than the other)
-		- Larger font sizes on title page (-> Probably need a custom title page for this)
-
-	* Try to minimze miktex folder size and copy it to a final place!
-		(bkup in c:\miktex-portable)
-		=> remove from .gitignore and commit!
-
-3. Bugs / missing features
-	* BUG: Group not together directly after inserting Bibimbap into shopping list!
-	* json app export (with unnecessary info removed)
-		-> as an option in the export dlg (file type selector)!
-
 4. Change build system to cmake
 	* Improve files layout! Atm it's rather confusing...
 	* Change absolute paths in code to relative ones (in a way that works for release, debug and installations, i.e. avoid having to maintain copies in both folders!)
 		-> atm relevant (at least) for: pdflatex.exe (RBLatexExporter) and qm-Files (2x in RBTranslationManager)
-	* post build step to copy qm files!
+		-> add miktex to git (and remove from .gitignore) after it reach its final resting place!
+	* post build step to copy qm files! -> or can i set the output folder for the qm files?
 	* Remove VS Qt Tools Addin? (as it doesn't quite work as expected anyways..)
+	* Make install ready version! (i.e. prepare it in such a way that i can just copy the release folder to install it? Or how to ensure new enough qt binaries?)
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
 	-> using VS or Qt Creator for this?
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
-7. TODOs
-8. UnitTests
+7. Data exchange between app and desktop program?
+8. TODOs, UnitTests
 9. Update and finalize Design.txt!
 
 Possibilities for later:
