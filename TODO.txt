@@ -9,10 +9,7 @@ TODO
 	* Change absolute paths in code to relative ones (in a way that works for release, debug and installations, i.e. avoid having to maintain copies in both folders!)
 		-> atm relevant (at least) for: pdflatex.exe (RBLatexExporter) and qm-Files (2x in RBTranslationManager)
 		-> add miktex to git (and remove from .gitignore) after it reach its final resting place!
-	* UNITTESTS:
-		- unittests shouldn't write to unittest dir anymore (to a temp folder?)
-		- should i add the files as a resource and read / load directly from there?
-	* post build step to copy qm files! -> or can i set the output folder for the qm files?
+	* fix UNITTESTS (CR/LF vs. LF...)
 	* Remove VS Qt Tools Addin? (as it doesn't quite work as expected anyways..)
 	* update .gitignore!
 

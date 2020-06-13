@@ -4,7 +4,6 @@ project(RecipeBook VERSION 0.5)
 
 # Qt path
 set(MY_QT_PATH "C:/Qt/5.15.0/msvc2019_64")
-#set(MY_QT_PATH "C:/Qt/5.15.0/mingw81_64")
 
 list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})
 

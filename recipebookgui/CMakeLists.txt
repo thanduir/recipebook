@@ -1,5 +1,9 @@
-find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 LinguistTools REQUIRED)
 
+qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}
+					   translations/recipebookgui_de.ts  
+					   translations/recipebookgui_en.ts)
+					   
 add_executable(recipebook WIN32
 			src/main.cpp src/RBDialogInterface.cpp src/RBTranslationManager.cpp 
 			src/RecipeBookSettings.cpp src/RecipeBookUIContext.cpp src/uistringconverter.cpp
@@ -18,11 +22,11 @@ add_executable(recipebook WIN32
 			src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
 			src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp
 			
+			${QM_FILES}
+			
 			recipebookgui.qrc)
 
 target_include_directories(recipebook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-
-# TODO: add Translations. Also to add_executable? (at least a seem to have to add LinguistTools to find_package, right?)
 
 set_target_properties(recipebook PROPERTIES DEBUG_POSTFIX "D")
 
@@ -32,6 +36,12 @@ find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
 add_custom_command(TARGET recipebook POST_BUILD
     COMMAND "${CMAKE_COMMAND}" -E
         env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}" 
-		--qmldir "${PROJECT_SOURCE_DIR}/recipebookgui/resources/qml-win" 
+		--qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-win"
 		"$<TARGET_FILE:recipebook>"
     COMMENT "Running windeployqt...")
+
+foreach(file_i ${QM_FILES})
+	add_custom_command(
+		TARGET recipebook POST_BUILD VERBATIM
+		COMMAND ${CMAKE_COMMAND} -E copy "${file_i}" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations/)
+endforeach(file_i)

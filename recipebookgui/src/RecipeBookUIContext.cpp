@@ -19,11 +19,11 @@ const FileFormat c_InternalFormat = FileFormat::Json;
 
 namespace
 {
-	QStringList getImportExportNameFilters(const RecipeBookUIContext& rContext)
+	QStringList getImportExportNameFilters()
 	{
 		QStringList list;
-		list.append(rContext.tr("Json files (*.json)"));
-		list.append(rContext.tr("Simplified json files for app (*.app.json)"));
+		list.append(RecipeBookUIContext::tr("Json files (*.json)"));
+		list.append(RecipeBookUIContext::tr("Simplified json files for app (*.app.json)"));
 		return list;
 	}
 
@@ -280,9 +280,8 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	{
 		return false;
 	}
-
 	
-	context->setContextProperty("importExportFilters", getImportExportNameFilters(*this));
+	context->setContextProperty("importExportFilters", getImportExportNameFilters());
 
 	context->setContextProperty("recipeBookSettings", &m_Settings);
 	context->setContextProperty("RBLanguageManager", &m_Translations);

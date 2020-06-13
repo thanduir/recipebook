@@ -24,12 +24,17 @@ QString RBLatexExporter::pdflatexExe()
 {
 	QString filePath = QApplication::applicationDirPath();
 	filePath.append(c_PdfLatexPath);
-	return filePath;
+	if(QFile::exists(filePath))
+	{
+		return filePath;
+	}
+
+	return "";
 }
 
 bool RBLatexExporter::exporterAvailable()
 {
-	return QFile::exists(pdflatexExe());
+	return !pdflatexExe().isEmpty();
 }
 
 bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount)
