@@ -1,0 +1,52 @@
+<RCC>
+    <qresource prefix="RecipeBookGUI">
+    </qresource>
+	<qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+		
+		<file alias="recipebook.qml">resources/qml-win/recipebook.qml</file>
+		<file alias="SettingsDialog.qml">resources/qml-win/settingsDialog.qml</file>
+		
+		<file alias="RecipesTab.qml">resources/qml-win/recipestab/recipesTab.qml</file>
+		<file alias="CategoriesPage.qml">resources/qml-win/recipestab/categoriesPage.qml</file>
+		<file alias="IngredientsPage.qml">resources/qml-win/recipestab/ingredientsPage.qml</file>
+		<file alias="RecipesPage.qml">resources/qml-win/recipestab/recipesPage.qml</file>	
+		
+		<file alias="ShoppingTab.qml">resources/qml-win/shoppingtab/shoppingTab.qml</file>		
+		<file alias="ShoppingListPage.qml">resources/qml-win/shoppingtab/shoppingListPage.qml</file>
+		<file alias="GoShoppingPage.qml">resources/qml-win/shoppingtab/goShoppingPage.qml</file>
+		
+		<file alias="CookbookTab.qml">resources/qml-win/recipebookstab/recipebooksTab.qml</file>
+		<file alias="RbConfigPage.qml">resources/qml-win/recipebookstab/rbConfigPage.qml</file>
+    </qresource>
+	<qresource prefix="/components">
+		<file alias="AppDlgInterface.qml">resources/qml-win/dialogs/appDlgInterface.qml</file>
+		<file alias="TextInputDialog.qml">resources/qml-win/dialogs/textInputDialog.qml</file>
+		<file alias="EditItemsListDialog.qml">resources/qml-win/dialogs/editItemsListDialog.qml</file>
+		<file alias="TextMessageDialog.qml">resources/qml-win/dialogs/textMessageDialog.qml</file>
+		<file alias="EditAlternativesGroupPane.qml">resources/qml-win/dialogs/editAlternativesGroupPane.qml</file>
+		<file alias="AddRecipesListDialog.qml">resources/qml-win/dialogs/addRecipesListDialog.qml</file>
+		<file alias="DateSelectionDialog.qml">resources/qml-win/dialogs/dateSelectionDialog.qml</file>
+    </qresource>
+	<qresource prefix="/files">
+		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>
+    </qresource>
+	<qresource prefix="/images">
+        <file alias="reorder.svg">resources/images/reorder.svg</file>
+		<file alias="edit.svg">resources/images/edit.svg</file>
+		<file alias="backspace.svg">resources/images/backspace.svg</file>		
+		<file alias="settings-white.svg">resources/images/settings-white.svg</file>
+		<file alias="export-file.svg">resources/images/export-file.svg</file>
+		<file alias="import-file.svg">resources/images/import-file.svg</file>
+		<file alias="merge.svg">resources/images/merge.svg</file>		
+		<file alias="add-black.svg">resources/images/add-black.svg</file>		
+		<file alias="remove.svg">resources/images/remove.svg</file>
+		<file alias="clear-black.svg">resources/images/clear-black.svg</file>
+		<file alias="copy-black.svg">resources/images/copy-black.svg</file>
+		<file alias="date-range.svg">resources/images/date-range.svg</file>
+		<file alias="list-black.svg">resources/images/list-black.svg</file>
+		<file alias="sort-black.svg">resources/images/sort-black.svg</file>
+		<file alias="cancel-black.svg">resources/images/cancel-black.svg</file>
+		<file alias="error-black.svg">resources/images/error-black.svg</file>
+    </qresource>
+</RCC>

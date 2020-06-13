@@ -1,5 +1,4 @@
-/Debug - x64
-/Release - x64
-*/Intermediate
-/.vs
-/miktex
+/build
+/bin
+/bin/Debug
+/bin/Release

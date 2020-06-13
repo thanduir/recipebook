@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="RBUnitTests">
+    </qresource>
+	<qresource prefix="/serializeTest">
+        <file alias="reference.qml">testdata/SerializeTest/reference.qml</file>		
+		<file alias="reference_app.qml">testdata/SerializeTest/reference_app.qml</file>	
+		<file alias="reference_rbconfigs.qml">testdata/SerializeTest/reference_rbconfigs.qml</file>	
+		<file alias="reference_rbconfigs_app.qml">testdata/SerializeTest/reference_rbconfigs_app.qml</file>	
+		<file alias="test.qml">testdata/SerializeTest/test.qml</file>	
+		<file alias="test_rbconfigs.qml">testdata/SerializeTest/test_rbconfigs.qml</file>	
+    </qresource>
+</RCC>
