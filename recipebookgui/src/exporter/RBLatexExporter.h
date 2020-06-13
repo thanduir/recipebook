@@ -25,6 +25,8 @@ namespace recipebook
 
 	private:
 		void cleanUp();
+
+		static QString pdflatexExe();
 	};
 }
 

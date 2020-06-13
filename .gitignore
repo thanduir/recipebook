@@ -2,3 +2,4 @@
 /bin/Debug
 /bin/Release
 /bin/translations/*
+/bin/texmfs/data/miktex/log/pdflatex.log

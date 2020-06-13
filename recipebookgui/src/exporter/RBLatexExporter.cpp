@@ -3,6 +3,7 @@
 #include <QStandardPaths>
 #include <QFile>
 #include <QProcess>
+#include <QApplication>
 #include "../RBDialogInterface.h"
 
 constexpr bool c_bRemoveTempFolder	= true;
@@ -11,7 +12,7 @@ constexpr char* c_texOutputFolder	= "/recipeBookTemp";
 constexpr char* c_tempTexFilename	= "/tempShoppingList.tex";
 constexpr char* c_tempPdfFilename	= "/tempShoppingList.pdf";
 
-constexpr char* c_PdfLatexPath		= "E:\\programming\\RecipeBook\\bin\\texmfs\\install\\miktex\\bin\\x64\\pdflatex.exe";
+constexpr char* c_PdfLatexPath		= "/../texmfs/install/miktex/bin/x64/pdflatex.exe";
 
 using namespace recipebook;
 
@@ -19,9 +20,16 @@ RBLatexExporter::RBLatexExporter()
 {
 }
 
+QString RBLatexExporter::pdflatexExe()
+{
+	QString filePath = QApplication::applicationDirPath();
+	filePath.append(c_PdfLatexPath);
+	return filePath;
+}
+
 bool RBLatexExporter::exporterAvailable()
 {
-	return QFile::exists(c_PdfLatexPath);
+	return QFile::exists(pdflatexExe());
 }
 
 bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount)
@@ -33,7 +41,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 
 	rDlgInterface.lockUI();
 	
-	if(!QFile::exists(c_PdfLatexPath))
+	if(!QFile::exists(pdflatexExe()))
 	{
 		rDlgInterface.unlockUI();
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't find latex pdf generator."), RBDialogInterface::DlgType::Error);
@@ -105,7 +113,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 		deleteLater();
 	});
 
-	myProcess->start(c_PdfLatexPath, arguments);
+	myProcess->start(pdflatexExe(), arguments);
 
 	return true;
 }
