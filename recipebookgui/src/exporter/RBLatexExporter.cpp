@@ -11,7 +11,7 @@ constexpr char* c_texOutputFolder	= "/recipeBookTemp";
 constexpr char* c_tempTexFilename	= "/tempShoppingList.tex";
 constexpr char* c_tempPdfFilename	= "/tempShoppingList.pdf";
 
-constexpr char* c_PdfLatexPath		= "E:\\programming\\RecipeBook\\miktex\\texmfs\\install\\miktex\\bin\\x64\\pdflatex.exe";
+constexpr char* c_PdfLatexPath		= "E:\\programming\\RecipeBook\\bin\\texmfs\\install\\miktex\\bin\\x64\\pdflatex.exe";
 
 using namespace recipebook;
 

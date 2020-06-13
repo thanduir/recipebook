@@ -1,0 +1,316 @@
+\chardef\bbl@bidimode\z@
+\DeclareOption{bidi=default}{\chardef\bbl@bidimode=\@ne}
+\DeclareOption{bidi=basic}{\chardef\bbl@bidimode=101 }
+\DeclareOption{bidi=basic-r}{\chardef\bbl@bidimode=102 }
+\DeclareOption{bidi=bidi}{\chardef\bbl@bidimode=201 }
+\DeclareOption{bidi=bidi-r}{\chardef\bbl@bidimode=202 }
+\DeclareOption{bidi=bidi-l}{\chardef\bbl@bidimode=203 }
+
+
+-------------------------------------
+
+% Activate preotf processes if required (bidi, digits).
+
+%
+% Add a handler (bidi, digits) just before luaoftload is applied, which
+% is loaded by default by LaTeX. Just in case, consider the possibility
+% it has not been loaded.
+%
+\ifodd\bbl@engine
+  \def\bbl@activate@preotf{%
+    \let\bbl@activate@preotf\relax  % only once
+    \directlua{
+      Babel = Babel or {}
+      %
+      function Babel.pre_otfload_v(head)
+        if Babel.numbers and Babel.digits_mapped then
+          head = Babel.numbers(head)
+        end
+        if Babel.bidi_enabled then
+          head = Babel.bidi(head, false, dir)
+        end
+        return head
+      end
+      %
+      function Babel.pre_otfload_h(head, gc, sz, pt, dir)
+        if Babel.numbers and Babel.digits_mapped then
+          head = Babel.numbers(head)
+        end
+        if Babel.bidi_enabled then
+          head = Babel.bidi(head, false, dir)
+        end
+        return head
+      end
+      %
+      luatexbase.add_to_callback('pre_linebreak_filter',
+        Babel.pre_otfload_v,
+        'Babel.pre_otfload_v',
+        luatexbase.priority_in_callback('pre_linebreak_filter',
+          'luaotfload.node_processor') or nil)
+      %
+      luatexbase.add_to_callback('hpack_filter',
+        Babel.pre_otfload_h,
+        'Babel.pre_otfload_h',
+        luatexbase.priority_in_callback('hpack_filter',
+          'luaotfload.node_processor') or nil)
+    }}
+\fi
+%    \end{macrocode}
+%
+% The basic setup. In luatex, the output is modified at a very low
+% level to set the |\bodydir| to the |\pagedir|.
+%
+%    \begin{macrocode}
+\bbl@trace{Loading basic (internal) bidi support}
+\ifodd\bbl@engine
+  \ifnum\bbl@bidimode>100 \ifnum\bbl@bidimode<200
+    \let\bbl@beforeforeign\leavevmode
+    \AtEndOfPackage{\EnableBabelHook{babel-bidi}}
+    \RequirePackage{luatexbase}
+    \directlua{
+      require('babel-data-bidi.lua')
+      require('babel-bidi-\bbl@tempa.lua')
+    }
+    \bbl@activate@preotf
+    % TODO - to locale_props, not as separate attribute
+    \newattribute\bbl@attr@dir
+    % TODO. I don't like it, hackish:
+    \bbl@exp{\output{\bodydir\pagedir\the\output}}
+    \AtEndOfPackage{\EnableBabelHook{babel-bidi}}
+  \fi
+\else
+  \ifnum\bbl@bidimode>100 \ifnum\bbl@bidimode<200
+    \bbl@error
+      {The bidi method `basic' is available only in\\%
+       luatex. I'll continue with `bidi=default', so\\%
+       expect wrong results}%
+      {See the manual for further details.}%
+    \let\bbl@beforeforeign\leavevmode
+    \AtEndOfPackage{%
+      \EnableBabelHook{babel-bidi}%
+      \bbl@xebidipar}
+  \fi
+  \def\bbl@loadxebidi#1{%
+    \ifx\RTLfootnotetext\@undefined
+      \AtEndOfPackage{% 
+        \EnableBabelHook{babel-bidi}%
+        \ifx\fontspec\@undefined
+          \usepackage{fontspec}% bidi needs fontspec 
+        \fi
+        \usepackage#1{bidi}}%
+    \fi}
+  \ifnum\bbl@bidimode>200
+    \ifcase\expandafter\@gobbletwo\the\bbl@bidimode\or
+      \bbl@tentative{bidi=bidi}
+      \bbl@loadxebidi{}
+    \or
+      \bbl@tentative{bidi=bidi-r}
+      \bbl@loadxebidi{[rldocument]}
+    \or
+      \bbl@tentative{bidi=bidi-l}
+      \bbl@loadxebidi{}
+    \fi
+  \fi
+\fi
+\ifnum\bbl@bidimode\@ne
+  \let\bbl@beforeforeign\leavevmode
+  \ifodd\bbl@engine
+    \newattribute\bbl@attr@dir
+    \bbl@exp{\output{\bodydir\pagedir\the\output}}%
+  \fi
+  \AtEndOfPackage{%
+    \EnableBabelHook{babel-bidi}%
+    \ifodd\bbl@engine\else
+      \bbl@xebidipar
+    \fi}
+\fi
+%    \end{macrocode}
+%
+% Now come the macros used to set the direction when a language is
+% switched. First the (mostly) common macros.
+%
+%    \begin{macrocode}
+\bbl@trace{Macros to switch the text direction}
+\def\bbl@alscripts{,Arabic,Syriac,Thaana,}
+\def\bbl@rscripts{% TODO. Base on codes ??
+  ,Imperial Aramaic,Avestan,Cypriot,Hatran,Hebrew,%
+  Old Hungarian,Old Hungarian,Lydian,Mandaean,Manichaean,%
+  Manichaean,Meroitic Cursive,Meroitic,Old North Arabian,%
+  Nabataean,N'Ko,Orkhon,Palmyrene,Inscriptional Pahlavi,%
+  Psalter Pahlavi,Phoenician,Inscriptional Parthian,Samaritan,%
+  Old South Arabian,}%
+\def\bbl@provide@dirs#1{%
+  \bbl@xin@{\csname bbl@sname@#1\endcsname}{\bbl@alscripts\bbl@rscripts}%
+  \ifin@
+    \global\bbl@csarg\chardef{wdir@#1}\@ne
+    \bbl@xin@{\csname bbl@sname@#1\endcsname}{\bbl@alscripts}%
+    \ifin@
+      \global\bbl@csarg\chardef{wdir@#1}\tw@  % useless in xetex
+    \fi
+  \else
+    \global\bbl@csarg\chardef{wdir@#1}\z@
+  \fi
+  \ifodd\bbl@engine
+    \bbl@csarg\ifcase{wdir@#1}%
+      \directlua{ Babel.locale_props[\the\localeid].textdir = 'l' }%
+    \or
+      \directlua{ Babel.locale_props[\the\localeid].textdir = 'r' }%
+    \or
+      \directlua{ Babel.locale_props[\the\localeid].textdir = 'al' }%
+    \fi
+  \fi}
+\def\bbl@switchdir{%
+  \bbl@ifunset{bbl@lsys@\languagename}{\bbl@provide@lsys{\languagename}}{}%
+  \bbl@ifunset{bbl@wdir@\languagename}{\bbl@provide@dirs{\languagename}}{}%
+  \bbl@exp{\\\bbl@setdirs\bbl@cl{wdir}}}
+\def\bbl@setdirs#1{% TODO - math
+  \ifcase\bbl@select@type % TODO - strictly, not the right test
+    \bbl@bodydir{#1}%
+    \bbl@pardir{#1}%
+  \fi
+  \bbl@textdir{#1}}
+% TODO. Only if \bbl@bidimode > 0?:
+\AddBabelHook{babel-bidi}{afterextras}{\bbl@switchdir}
+\DisableBabelHook{babel-bidi}
+%    \end{macrocode}
+%
+% Now the engine-dependent macros. TODO. Must be moved to the engine
+% files?
+%
+%    \begin{macrocode} 
+\ifodd\bbl@engine  % luatex=1
+  \chardef\bbl@thetextdir\z@
+  \chardef\bbl@thepardir\z@
+  \def\bbl@getluadir#1{%
+    \directlua{
+      if tex.#1dir == 'TLT' then
+        tex.sprint('0')
+      elseif tex.#1dir == 'TRT' then
+        tex.sprint('1')
+      end}}
+  \def\bbl@setluadir#1#2#3{% 1=text/par.. 2=\textdir.. 3=0 lr/1 rl
+    \ifcase#3\relax
+      \ifcase\bbl@getluadir{#1}\relax\else
+        #2 TLT\relax
+      \fi
+    \else
+      \ifcase\bbl@getluadir{#1}\relax
+        #2 TRT\relax
+      \fi
+    \fi}
+  \def\bbl@textdir#1{%
+    \bbl@setluadir{text}\textdir{#1}%
+    \chardef\bbl@thetextdir#1\relax
+    \setattribute\bbl@attr@dir{\numexpr\bbl@thepardir*3+#1}}
+  \def\bbl@pardir#1{%
+    \bbl@setluadir{par}\pardir{#1}%
+    \chardef\bbl@thepardir#1\relax}
+  \def\bbl@bodydir{\bbl@setluadir{body}\bodydir}
+  \def\bbl@pagedir{\bbl@setluadir{page}\pagedir}
+  \def\bbl@dirparastext{\pardir\the\textdir\relax}%   %%%%
+  % Sadly, we have to deal with boxes in math with basic.
+  % Activated every math with the package option bidi=:
+  \def\bbl@mathboxdir{%
+    \ifcase\bbl@thetextdir\relax
+      \everyhbox{\textdir TLT\relax}%
+    \else
+      \everyhbox{\textdir TRT\relax}%
+    \fi}
+  \frozen@everymath\expandafter{%
+    \expandafter\bbl@mathboxdir\the\frozen@everymath}
+  \frozen@everydisplay\expandafter{%
+    \expandafter\bbl@mathboxdir\the\frozen@everydisplay}
+\else % pdftex=0, xetex=2
+  \newcount\bbl@dirlevel
+  \chardef\bbl@thetextdir\z@
+  \chardef\bbl@thepardir\z@
+  \def\bbl@textdir#1{%
+    \ifcase#1\relax
+       \chardef\bbl@thetextdir\z@
+       \bbl@textdir@i\beginL\endL
+     \else
+       \chardef\bbl@thetextdir\@ne
+       \bbl@textdir@i\beginR\endR
+    \fi}
+  \def\bbl@textdir@i#1#2{%
+    \ifhmode
+      \ifnum\currentgrouplevel>\z@
+        \ifnum\currentgrouplevel=\bbl@dirlevel
+          \bbl@error{Multiple bidi settings inside a group}%
+            {I'll insert a new group, but expect wrong results.}%
+          \bgroup\aftergroup#2\aftergroup\egroup
+        \else
+          \ifcase\currentgrouptype\or % 0 bottom
+            \aftergroup#2% 1 simple {}
+          \or
+            \bgroup\aftergroup#2\aftergroup\egroup % 2 hbox
+          \or
+            \bgroup\aftergroup#2\aftergroup\egroup % 3 adj hbox
+          \or\or\or % vbox vtop align
+          \or
+            \bgroup\aftergroup#2\aftergroup\egroup % 7 noalign
+          \or\or\or\or\or\or % output math disc insert vcent mathchoice
+          \or
+            \aftergroup#2% 14 \begingroup
+          \else
+            \bgroup\aftergroup#2\aftergroup\egroup % 15 adj
+          \fi
+        \fi
+        \bbl@dirlevel\currentgrouplevel
+      \fi
+      #1%
+    \fi}
+  \def\bbl@pardir#1{\chardef\bbl@thepardir#1\relax}
+  \let\bbl@bodydir\@gobble
+  \let\bbl@pagedir\@gobble
+  \def\bbl@dirparastext{\chardef\bbl@thepardir\bbl@thetextdir}
+%    \end{macrocode}
+%
+% The following command is executed only if there is a right-to-left
+% script (once). It activates the |\everypar| hack for \xetex, to
+% properly handle the par direction. Note text and par dirs are
+% decoupled to some extent (although not completely).
+%
+%    \begin{macrocode}
+  \def\bbl@xebidipar{%
+    \let\bbl@xebidipar\relax
+    \TeXXeTstate\@ne
+    \def\bbl@xeeverypar{%
+      \ifcase\bbl@thepardir
+        \ifcase\bbl@thetextdir\else\beginR\fi
+      \else
+        {\setbox\z@\lastbox\beginR\box\z@}%
+      \fi}%
+    \let\bbl@severypar\everypar
+    \newtoks\everypar
+    \everypar=\bbl@severypar
+    \bbl@severypar{\bbl@xeeverypar\the\everypar}}
+  \ifnum\bbl@bidimode>200
+    \let\bbl@textdir@i\@gobbletwo
+    \let\bbl@xebidipar\@empty
+    \AddBabelHook{bidi}{foreign}{%
+      \def\bbl@tempa{\def\BabelText########1}%
+      \ifcase\bbl@thetextdir
+        \expandafter\bbl@tempa\expandafter{\BabelText{\LR{####1}}}%
+      \else
+        \expandafter\bbl@tempa\expandafter{\BabelText{\RL{####1}}}%
+      \fi}
+    \def\bbl@pardir##1{\ifcase##1\relax\setLR\else\setRL\fi}
+  \fi
+\fi
+%    \end{macrocode}
+%
+% A tool for weak L (mainly digits). We also disable warnings with
+% \textsf{hyperref}.
+%
+%    \begin{macrocode}
+\DeclareRobustCommand\babelsublr[1]{\leavevmode{\bbl@textdir\z@#1}}
+\AtBeginDocument{%
+  \ifx\pdfstringdefDisableCommands\@undefined\else
+    \ifx\pdfstringdefDisableCommands\relax\else
+      \pdfstringdefDisableCommands{\let\babelsublr\@firstofone}%
+    \fi
+  \fi}
+
+
+  
