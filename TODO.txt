@@ -1,21 +1,6 @@
 TODO
 ====
 
-4. Change build system to cmake
-	* Setup subdir CMakeLists.txt and make everything work / compile!
-		- librecipebook
-		- rbunittests
-		- recipebookgui
-	* Change absolute paths in code to relative ones (in a way that works for release, debug and installations, i.e. avoid having to maintain copies in both folders!)
-		-> atm relevant (at least) for: pdflatex.exe (RBLatexExporter) and qm-Files (2x in RBTranslationManager)
-		-> add miktex to git (and remove from .gitignore) after it reach its final resting place!
-	* fix UNITTESTS (CR/LF vs. LF...)
-	* Remove VS Qt Tools Addin? (as it doesn't quite work as expected anyways..)
-	* update .gitignore!
-
-	* test with different compilers? (msvc, cygwin-gcc)
-	* Make install ready version! (i.e. prepare it in such a way that i can just copy the release folder to install it? Or how to ensure new enough qt binaries?)
-
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
 	-> using VS or Qt Creator for this?
 

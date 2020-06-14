@@ -14,7 +14,7 @@ json::JsonReader::JsonReader()
 
 bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook)
 {
-	if (!file.open(QIODevice::ReadOnly))
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
         qWarning("Couldn't open save file.");
         return false;

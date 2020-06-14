@@ -67,7 +67,7 @@ bool RBLatexExporter::generatePdf(QString strLatexCode, QString strOutputFilenam
 	// Write tex file
 
 	QFile texFile(tempPath + c_tempTexFilename);
-	if (!texFile.open(QIODevice::WriteOnly))
+	if (!texFile.open(QIODevice::WriteOnly | QIODevice::Text))
 	{
 		rDlgInterface.unlockUI();
 		rDlgInterface.showMessageBox(tr("Pdf generation failed"), tr("Couldn't create temporary file."), RBDialogInterface::DlgType::Error);

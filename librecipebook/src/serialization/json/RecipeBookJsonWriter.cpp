@@ -116,7 +116,7 @@ bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QFile& file)
 
 bool json::JsonWriter::writeFile(QFile& file, const QJsonDocument& rJsonDoc)
 {
-	if (!file.open(QIODevice::WriteOnly))
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 	{
         qWarning("Couldn't open save file.");
         return false;

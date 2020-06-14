@@ -11,7 +11,6 @@ constexpr char* c_strFileInputConfigs			= "test_rbconfigs.json";
 constexpr char* c_strFileReferenceConfigs		= "reference_rbconfigs.json";
 constexpr char* c_strFileReferenceConfigsApp	= "reference_rbconfigs_app.json";
 
-// TODO: Where to save those?	
 constexpr char* c_strFileOutput1				= "z_output_1.json";
 constexpr char* c_strFileOutput2				= "z_output_2.json";
 constexpr char* c_strFileOutputApp				= "z_output_app.json";
@@ -50,17 +49,17 @@ void RBUnitTests::serializeTest()
 	// Verify output
 
 	QFile fileTest1(m_spTestDir->filePath(c_strFileOutput1));
-	fileTest1.open(QIODevice::ReadOnly);
+	fileTest1.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strTest1 = fileTest1.readAll();
 	fileTest1.close();
 	
 	QFile fileTest2(m_spTestDir->filePath(c_strFileOutput2));
-	fileTest2.open(QIODevice::ReadOnly);
+	fileTest2.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strTest2 = fileTest2.readAll();
 	fileTest1.close();
 
 	QFile fileRef(m_spTestDir->filePath(c_strFileReference));
-	fileRef.open(QIODevice::ReadOnly);
+	fileRef.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strRef = fileRef.readAll();
 	fileRef.close();
 
@@ -91,12 +90,12 @@ void RBUnitTests::serializeTestApp()
 	// Verify output
 
 	QFile fileTest(m_spTestDir->filePath(c_strFileOutputApp));
-	fileTest.open(QIODevice::ReadOnly);
+	fileTest.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strTest = fileTest.readAll();
 	fileTest.close();
 	
 	QFile fileRef(m_spTestDir->filePath(c_strFileReferenceApp));
-	fileRef.open(QIODevice::ReadOnly);
+	fileRef.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strRef = fileRef.readAll();
 	fileRef.close();
 
@@ -126,12 +125,12 @@ void RBUnitTests::serializeTestRBConfigs()
 	// Verify output
 
 	QFile fileTest(m_spTestDir->filePath(c_strFileOutputConfigs));
-	fileTest.open(QIODevice::ReadOnly);
+	fileTest.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strTest = fileTest.readAll();
 	fileTest.close();
 
 	QFile fileRef(m_spTestDir->filePath(c_strFileReferenceConfigs));
-	fileRef.open(QIODevice::ReadOnly);
+	fileRef.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strRef = fileRef.readAll();
 	fileRef.close();
 
@@ -140,12 +139,12 @@ void RBUnitTests::serializeTestRBConfigs()
 	// Verify output for apps
 
 	QFile fileTestApp(m_spTestDir->filePath(c_strFileOutputConfigsApp));
-	fileTestApp.open(QIODevice::ReadOnly);
+	fileTestApp.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strTestApp = fileTestApp.readAll();
 	fileTestApp.close();
 
 	QFile fileRefApp(m_spTestDir->filePath(c_strFileReferenceConfigsApp));
-	fileRefApp.open(QIODevice::ReadOnly);
+	fileRefApp.open(QIODevice::ReadOnly | QIODevice::Text);
 	QString strRefApp = fileRefApp.readAll();
 	fileRefApp.close();
 
