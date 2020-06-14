@@ -4,19 +4,20 @@
 #include "RecipeBookSettings.h"
 
 constexpr char* c_langFolder			= "/../translations";
+constexpr char* c_langFolderQt			= "/translations";
 constexpr char* c_LanguageFileBaseName = "recipebookgui_%1.qm";
 
 using namespace recipebook::UI;
 
 namespace
 {
-	void switchTranslator(QTranslator& translator, const QString& filename)
+	void switchTranslator(QTranslator& translator, bool bQt, const QString& filename)
 	{
 		qApp->removeTranslator(&translator);
 
 		// load the new translator
 		QString filePath = QApplication::applicationDirPath();
-		filePath.append(c_langFolder);
+		filePath.append(bQt ? c_langFolderQt : c_langFolder);
 		filePath.append("/").append(filename);
 
 		if(translator.load(filePath))
@@ -107,8 +108,8 @@ void RBTranslationManager::switchCurrentLanguage(QString lang)
 	QLocale locale = QLocale(lang);
 	QLocale::setDefault(locale);
 	QString languageName = QLocale::languageToString(locale.language());
-	switchTranslator(m_translator, QString(c_LanguageFileBaseName).arg(lang));
-	switchTranslator(m_translatorQt, QString("qt_%1.qm").arg(lang));
+	switchTranslator(m_translator, false, QString(c_LanguageFileBaseName).arg(lang));
+	switchTranslator(m_translatorQt, true, QString("qt_%1.qm").arg(lang));
 
 	m_rSettings.setCurrentAppLanguage(lang);
 
