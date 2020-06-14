@@ -30,11 +30,7 @@ namespace
 	FileFormat getFormatFromFileName(QFileInfo fileinfo)
 	{
 		QString ext = fileinfo.completeSuffix();
-		if(ext == "app.json")
-		{
-			return FileFormat::JsonForApp;
-		}
-		else if(ext == "json" || fileinfo.suffix() == "json")
+		if(ext == "json" || fileinfo.suffix() == "json")
 		{
 			return FileFormat::Json;
 		}

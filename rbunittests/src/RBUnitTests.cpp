@@ -5,16 +5,12 @@
 constexpr char* c_strFileInput					= "test.json";
 
 constexpr char* c_strFileReference				= "reference.json";
-constexpr char* c_strFileReferenceApp			= "reference_app.json";
 
 constexpr char* c_strFileInputConfigs			= "test_rbconfigs.json";
 constexpr char* c_strFileReferenceConfigs		= "reference_rbconfigs.json";
-constexpr char* c_strFileReferenceConfigsApp	= "reference_rbconfigs_app.json";
 
 constexpr char* c_strFileOutput1				= "z_output_1.json";
 constexpr char* c_strFileOutput2				= "z_output_2.json";
-constexpr char* c_strFileOutputApp				= "z_output_app.json";
-constexpr char* c_strFileOutputConfigsApp		= "z_output_rbconfigs_app.json";
 constexpr char* c_strFileOutputConfigs			= "z_output_rbconfigs.json";
 
 void RBUnitTests::initTestCase()
@@ -67,41 +63,6 @@ void RBUnitTests::serializeTest()
 	QVERIFY(strTest1 == strTest2);
 }
 
-void RBUnitTests::serializeTestApp()
-{
-	// Read base json (v1)
-	QSharedPointer<recipebook::serialization::IRBReader> spReader = recipebook::serialization::SerializerFactory::getReader(recipebook::serialization::FileFormat::Json);
-	recipebook::serialization::RBMetaData metaData;
-	recipebook::RecipeBook recipeBook;
-	QFile fileIn(m_spTestDir->filePath(c_strFileInput));
-	QVERIFY(spReader->serialize(fileIn, metaData, recipeBook));
-
-	// Write file JsonForApp
-	QSharedPointer<recipebook::serialization::IRBWriter> spWriter = recipebook::serialization::SerializerFactory::getWriter(recipebook::serialization::FileFormat::JsonForApp, metaData.strUID);
-	QFile fileOut(m_spTestDir->filePath(c_strFileOutputApp));
-	QVERIFY(spWriter->serialize(recipeBook, fileOut));
-
-	// Test read JsonForApp
-	recipebook::serialization::RBMetaData metaData2;
-	recipebook::RecipeBook recipeBook2;
-	QFile fileIn2(m_spTestDir->filePath(c_strFileOutputApp));
-	QVERIFY(spReader->serialize(fileIn2, metaData2, recipeBook2));
-
-	// Verify output
-
-	QFile fileTest(m_spTestDir->filePath(c_strFileOutputApp));
-	fileTest.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString strTest = fileTest.readAll();
-	fileTest.close();
-	
-	QFile fileRef(m_spTestDir->filePath(c_strFileReferenceApp));
-	fileRef.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString strRef = fileRef.readAll();
-	fileRef.close();
-
-	QVERIFY(strTest == strRef);
-}
-
 void RBUnitTests::serializeTestRBConfigs()
 {
 	// Serialize test
@@ -116,12 +77,6 @@ void RBUnitTests::serializeTestRBConfigs()
 	QFile fileOut(m_spTestDir->filePath(c_strFileOutputConfigs));
 	QVERIFY(spWriter->serialize(recipeBook, fileOut));
 
-	// Write file JsonForApp
-
-	QSharedPointer<recipebook::serialization::IRBWriter> spWriterApp = recipebook::serialization::SerializerFactory::getWriter(recipebook::serialization::FileFormat::JsonForApp, metaData.strUID);
-	QFile fileOutApp(m_spTestDir->filePath(c_strFileOutputConfigsApp));
-	QVERIFY(spWriterApp->serialize(recipeBook, fileOutApp));
-
 	// Verify output
 
 	QFile fileTest(m_spTestDir->filePath(c_strFileOutputConfigs));
@@ -135,18 +90,4 @@ void RBUnitTests::serializeTestRBConfigs()
 	fileRef.close();
 
 	QVERIFY(strTest == strRef);
-
-	// Verify output for apps
-
-	QFile fileTestApp(m_spTestDir->filePath(c_strFileOutputConfigsApp));
-	fileTestApp.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString strTestApp = fileTestApp.readAll();
-	fileTestApp.close();
-
-	QFile fileRefApp(m_spTestDir->filePath(c_strFileReferenceConfigsApp));
-	fileRefApp.open(QIODevice::ReadOnly | QIODevice::Text);
-	QString strRefApp = fileRefApp.readAll();
-	fileRefApp.close();
-
-	QVERIFY(strTestApp == strRefApp);
 }

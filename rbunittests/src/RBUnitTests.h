@@ -8,7 +8,6 @@ private slots:
 	void initTestCase();
 
 	void serializeTest();
-	void serializeTestApp();
 	void serializeTestRBConfigs();
 
 private:

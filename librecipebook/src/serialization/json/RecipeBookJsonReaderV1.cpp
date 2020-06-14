@@ -139,13 +139,16 @@ bool json::JsonReaderV1::readMetadata(const QJsonObject& rObject, RBMetaData& rM
 	}
 
 	QJsonArray originArray = rObject[json::c_strOriginId].toArray();
-	if(originArray.size() != 2)
+	if(!originArray.isEmpty())
 	{
-		qWarning("Invalid origin");
-		return false;
+		if(originArray.size() != 2)
+		{
+			qWarning("Invalid origin");
+			return false;
+		}
+		rMetaData.strOrigin = originArray[0].toString();
+		rMetaData.strUID = originArray[1].toString();
 	}
-	rMetaData.strOrigin = originArray[0].toString();
-	rMetaData.strUID = originArray[1].toString();
 
 	int iVersion = rObject[json::c_strVersion].toInt();
 	if(iVersion > c_uiSerializerVersion || iVersion < 0)

@@ -16,7 +16,7 @@ namespace recipebook::serialization::json
         virtual bool serialize(const RecipeBook& rRecipeBook, QFile& file) override final;
 
     private:
-        JsonWriter(QString strUID, bool bJsonForApp);
+        JsonWriter(QString strUID);
 
 		bool writeFile(QFile& file, const QJsonDocument& rJsonDoc);
 
@@ -35,7 +35,6 @@ namespace recipebook::serialization::json
 
     private:
         QString m_strUID;
-        bool m_bJsonForApp;
 		bool m_bUseTempFile;
     };
 }

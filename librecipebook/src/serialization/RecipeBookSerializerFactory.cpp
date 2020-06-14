@@ -10,10 +10,7 @@ QSharedPointer<IRBWriter> SerializerFactory::getWriter(FileFormat format, QStrin
 	switch(format)
 	{
 		case FileFormat::Json:
-			return QSharedPointer<json::JsonWriter>::create(strUID, false);
-
-		case FileFormat::JsonForApp:
-			return QSharedPointer<json::JsonWriter>::create(strUID, true);
+			return QSharedPointer<json::JsonWriter>::create(strUID);
 
 		default:
 			return nullptr;
@@ -25,7 +22,6 @@ QSharedPointer<IRBReader> SerializerFactory::getReader(FileFormat format)
 	switch(format)
 	{
 		case FileFormat::Json:
-		case FileFormat::JsonForApp:
 			return QSharedPointer<json::JsonReader>::create();
 
 		default:

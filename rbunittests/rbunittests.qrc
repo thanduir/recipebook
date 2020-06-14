@@ -3,9 +3,7 @@
     </qresource>
 	<qresource prefix="/serializeTest">
         <file alias="reference.json">testdata/SerializeTest/reference.json</file>		
-		<file alias="reference_app.json">testdata/SerializeTest/reference_app.json</file>	
 		<file alias="reference_rbconfigs.json">testdata/SerializeTest/reference_rbconfigs.json</file>	
-		<file alias="reference_rbconfigs_app.json">testdata/SerializeTest/reference_rbconfigs_app.json</file>	
 		<file alias="test.json">testdata/SerializeTest/test.json</file>	
 		<file alias="test_rbconfigs.json">testdata/SerializeTest/test_rbconfigs.json</file>	
     </qresource>

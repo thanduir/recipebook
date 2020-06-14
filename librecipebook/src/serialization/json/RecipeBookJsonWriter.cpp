@@ -45,9 +45,8 @@ namespace
     }
 }
 
-json::JsonWriter::JsonWriter(QString strUID, bool bJsonForApp)
+json::JsonWriter::JsonWriter(QString strUID)
 :   m_strUID(strUID),
-	m_bJsonForApp(bJsonForApp),
 	m_bUseTempFile(true)
 {
 }
@@ -222,12 +221,9 @@ void json::JsonWriter::writeRecipes(const RecipeBook& rRecipeBook, QJsonObject& 
         
         recipeObject[json::c_strRecipesNrPersons] = (int)rRecipe.getNumberOfPersons();
         
-        if(!m_bJsonForApp)
-        {
-            recipeObject[json::c_strRecipesShortDesc] = rRecipe.getShortDescription();
-            recipeObject[json::c_strRecipesText] = rRecipe.getRecipeText();
-            recipeObject[json::c_strRecipesCookingTime] = rRecipe.getCookingTime().toString("HH:mm");
-        }
+        recipeObject[json::c_strRecipesShortDesc] = rRecipe.getShortDescription();
+        recipeObject[json::c_strRecipesText] = rRecipe.getRecipeText();
+        recipeObject[json::c_strRecipesCookingTime] = rRecipe.getCookingTime().toString("HH:mm");
 
         QJsonObject recipeItemsObject;
         writeRecipeItems(rRecipe, recipeItemsObject);
@@ -288,44 +284,41 @@ void json::JsonWriter::writeShoppongList(const RecipeBook& rRecipeBook, QJsonObj
 void json::JsonWriter::writeRecipeBookConfigs(const RecipeBook& rRecipeBook, QJsonObject& rRootObject)
 {
 	QJsonObject objectConfigs;
-	if(!m_bJsonForApp)
+	for(quint32 j = 0; j < rRecipeBook.getConfigurationsCount(); ++j)
 	{
-		for(quint32 j = 0; j < rRecipeBook.getConfigurationsCount(); ++j)
+		QJsonObject configObject;
+		const RecipeBookConfiguration& rConfig = rRecipeBook.getConfigurationAt(j);
+
+		configObject[json::c_strConfigTitle] = rConfig.getBookTitle();
+		configObject[json::c_strConfigSubtitle] = rConfig.getBookSubtitle();
+		configObject[json::c_strConfigFontSize] = (int)rConfig.getFontSize();
+		configObject[json::c_strConfigLanguageCode] = rConfig.getLanguageCode();
+
+		QJsonObject itemsObject;
+		for(quint32 i = 0; i < rConfig.getItemsCount(); ++i)
 		{
-			QJsonObject configObject;
-			const RecipeBookConfiguration& rConfig = rRecipeBook.getConfigurationAt(j);
+			const RecipeBookConfigItem& rItem = rConfig.getItemAt(i);
+			QJsonObject recipeItemObject;
 
-			configObject[json::c_strConfigTitle] = rConfig.getBookTitle();
-			configObject[json::c_strConfigSubtitle] = rConfig.getBookSubtitle();
-			configObject[json::c_strConfigFontSize] = (int)rConfig.getFontSize();
-			configObject[json::c_strConfigLanguageCode] = rConfig.getLanguageCode();
+			recipeItemObject[json::c_strConfigItemPosition] = (int)i;
 
-			QJsonObject itemsObject;
-			for(quint32 i = 0; i < rConfig.getItemsCount(); ++i)
+			RecipeBookConfigItemType type = rItem.getType();
+			recipeItemObject[json::c_strConfigItemType] = helper::convertRBConfigType(type);
+			if(type == RecipeBookConfigItemType::Header)
 			{
-				const RecipeBookConfigItem& rItem = rConfig.getItemAt(i);
-				QJsonObject recipeItemObject;
+				recipeItemObject[json::c_strConfigItemHeaderName] = rItem.getName();
+				recipeItemObject[json::c_strConfigItemHeaderLevel] = rItem.getLevel();
 
-				recipeItemObject[json::c_strConfigItemPosition] = (int)i;
-
-				RecipeBookConfigItemType type = rItem.getType();
-				recipeItemObject[json::c_strConfigItemType] = helper::convertRBConfigType(type);
-				if(type == RecipeBookConfigItemType::Header)
-				{
-					recipeItemObject[json::c_strConfigItemHeaderName] = rItem.getName();
-					recipeItemObject[json::c_strConfigItemHeaderLevel] = rItem.getLevel();
-
-					itemsObject[rItem.getElementId().toString()] = recipeItemObject;
-				}
-				else
-				{
-					itemsObject[rItem.getName()] = recipeItemObject;
-				}
+				itemsObject[rItem.getElementId().toString()] = recipeItemObject;
 			}
-			configObject[json::c_strConfigItems] = itemsObject;
-
-			objectConfigs[rConfig.getName()] = configObject;
+			else
+			{
+				itemsObject[rItem.getName()] = recipeItemObject;
+			}
 		}
+		configObject[json::c_strConfigItems] = itemsObject;
+
+		objectConfigs[rConfig.getName()] = configObject;
 	}
 
 	rRootObject[json::c_strRBConfigId] = objectConfigs;
