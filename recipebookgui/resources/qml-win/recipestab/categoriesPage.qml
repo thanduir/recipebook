@@ -177,7 +177,7 @@ Item {
 
 				enabled: lvSortOrders.count > 0
 				onClicked: {
-					dlgRemoveSortOrder.msgText = qsTr("This will remove the sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\". Proceed?");
+					dlgRemoveSortOrder.msgText = qsTr("This will remove the sort order \"%1\". Proceed?").arg(modelSortOrders.name(lvSortOrders.currentIndex));
 					dlgRemoveSortOrder.open();
 				}
 			}
@@ -288,7 +288,7 @@ Item {
         
 		visible: lvSortOrders.currentIndex != -1
 
-		text: qsTr("Sort order \"" + modelSortOrders.name(lvSortOrders.currentIndex) + "\"")
+		text: qsTr("Sort order \"%1\"").arg(modelSortOrders.name(lvSortOrders.currentIndex))
 		font.bold: true
 	}
 
@@ -367,7 +367,7 @@ Item {
 
 				enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
 				onClicked: {
-					dlgRemoveCategory.msgText = qsTr("This will remove the category \"" + modelSortOrder.name(lvCategories.currentIndex) + "\" from all sort orders. Proceed?");
+					dlgRemoveCategory.msgText = qsTr("This will remove the category \"%1\" from all sort orders. Proceed?").arg(modelSortOrder.name(lvCategories.currentIndex));
 					dlgRemoveCategory.open();
 				}
 			}

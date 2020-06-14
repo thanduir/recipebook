@@ -1,8 +1,7 @@
 find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 LinguistTools REQUIRED)
 
-qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}
-					   translations/recipebookgui_de.ts  
-					   translations/recipebookgui_en.ts)
+set(TS_FILES translations/recipebookgui_de.ts translations/recipebookgui_en.ts)
+qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
 					   
 add_executable(recipebook WIN32
 			src/main.cpp src/RBDialogInterface.cpp src/RBTranslationManager.cpp 
@@ -22,6 +21,8 @@ add_executable(recipebook WIN32
 			src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
 			src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp
 			
+			${TS_FILES}
+
 			${QM_FILES}
 			
 			recipebookgui.qrc

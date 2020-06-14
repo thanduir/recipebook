@@ -113,7 +113,7 @@ Item {
 
 				enabled: bar.count > 0
 				onClicked: {
-					dlgRemoveConfig.msgText = qsTr("This will remove the recipe book configuration \"" + modelRecipeBookConfigurations.name(bar.currentIndex) + "\". Proceed?");
+					dlgRemoveConfig.msgText = qsTr("This will remove the recipe book configuration \"%1\". Proceed?").arg(modelRecipeBookConfigurations.name(bar.currentIndex));
 					dlgRemoveConfig.open();
 				}
 			}

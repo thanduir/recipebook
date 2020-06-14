@@ -19,7 +19,7 @@ ApplicationWindow {
 	TextMessageDialog {
 		id: dlgConfirmImportFile
 		title: qsTr("Import file")
-		msgText: qsTr("This will load the selected file, irrevocably replacing current data. Proceed?");
+		msgText: qsTr("This will load the selected file, replacing all current data irrevocably. Proceed?");
 		onAccepted: fileDialogImport.onImport(fileDialogImport.fileUrls)
 	}
 
@@ -137,8 +137,8 @@ ApplicationWindow {
 		ShoppingTab {
 			id: shoppingTab
 		}
-		CookbookTab {
-			id: cookbookTab
+		RecipebooksTab {
+			id: recipebooksTab
 		}
 	}
 }

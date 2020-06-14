@@ -5,28 +5,28 @@
         <file>qtquickcontrols2.conf</file>
 		
 		<file alias="recipebook.qml">resources/qml-win/recipebook.qml</file>
-		<file alias="SettingsDialog.qml">resources/qml-win/settingsDialog.qml</file>
+		<file alias="SettingsDialog.qml">resources/qml-win/SettingsDialog.qml</file>
 		
-		<file alias="RecipesTab.qml">resources/qml-win/recipestab/recipesTab.qml</file>
-		<file alias="CategoriesPage.qml">resources/qml-win/recipestab/categoriesPage.qml</file>
-		<file alias="IngredientsPage.qml">resources/qml-win/recipestab/ingredientsPage.qml</file>
-		<file alias="RecipesPage.qml">resources/qml-win/recipestab/recipesPage.qml</file>	
+		<file alias="RecipesTab.qml">resources/qml-win/recipestab/RecipesTab.qml</file>
+		<file alias="CategoriesPage.qml">resources/qml-win/recipestab/CategoriesPage.qml</file>
+		<file alias="IngredientsPage.qml">resources/qml-win/recipestab/IngredientsPage.qml</file>
+		<file alias="RecipesPage.qml">resources/qml-win/recipestab/RecipesPage.qml</file>	
 		
-		<file alias="ShoppingTab.qml">resources/qml-win/shoppingtab/shoppingTab.qml</file>		
-		<file alias="ShoppingListPage.qml">resources/qml-win/shoppingtab/shoppingListPage.qml</file>
-		<file alias="GoShoppingPage.qml">resources/qml-win/shoppingtab/goShoppingPage.qml</file>
+		<file alias="ShoppingTab.qml">resources/qml-win/shoppingtab/ShoppingTab.qml</file>		
+		<file alias="ShoppingListPage.qml">resources/qml-win/shoppingtab/ShoppingListPage.qml</file>
+		<file alias="GoShoppingPage.qml">resources/qml-win/shoppingtab/GoShoppingPage.qml</file>
 		
-		<file alias="CookbookTab.qml">resources/qml-win/recipebookstab/recipebooksTab.qml</file>
-		<file alias="RbConfigPage.qml">resources/qml-win/recipebookstab/rbConfigPage.qml</file>
+		<file alias="RecipebooksTab.qml">resources/qml-win/recipebookstab/RecipebooksTab.qml</file>
+		<file alias="RbConfigPage.qml">resources/qml-win/recipebookstab/RbConfigPage.qml</file>
     </qresource>
 	<qresource prefix="/components">
-		<file alias="AppDlgInterface.qml">resources/qml-win/dialogs/appDlgInterface.qml</file>
-		<file alias="TextInputDialog.qml">resources/qml-win/dialogs/textInputDialog.qml</file>
-		<file alias="EditItemsListDialog.qml">resources/qml-win/dialogs/editItemsListDialog.qml</file>
-		<file alias="TextMessageDialog.qml">resources/qml-win/dialogs/textMessageDialog.qml</file>
-		<file alias="EditAlternativesGroupPane.qml">resources/qml-win/dialogs/editAlternativesGroupPane.qml</file>
-		<file alias="AddRecipesListDialog.qml">resources/qml-win/dialogs/addRecipesListDialog.qml</file>
-		<file alias="DateSelectionDialog.qml">resources/qml-win/dialogs/dateSelectionDialog.qml</file>
+		<file alias="AppDlgInterface.qml">resources/qml-win/dialogs/AppDlgInterface.qml</file>
+		<file alias="TextInputDialog.qml">resources/qml-win/dialogs/TextInputDialog.qml</file>
+		<file alias="EditItemsListDialog.qml">resources/qml-win/dialogs/EditItemsListDialog.qml</file>
+		<file alias="TextMessageDialog.qml">resources/qml-win/dialogs/TextMessageDialog.qml</file>
+		<file alias="EditAlternativesGroupPane.qml">resources/qml-win/dialogs/EditAlternativesGroupPane.qml</file>
+		<file alias="AddRecipesListDialog.qml">resources/qml-win/dialogs/AddRecipesListDialog.qml</file>
+		<file alias="DateSelectionDialog.qml">resources/qml-win/dialogs/DateSelectionDialog.qml</file>
     </qresource>
 	<qresource prefix="/files">
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>

@@ -11,7 +11,7 @@ using namespace recipebook::UI;
 
 namespace
 {
-	void switchTranslator(QTranslator& translator, bool bQt, const QString& filename)
+	bool switchTranslator(QTranslator& translator, bool bQt, const QString& filename)
 	{
 		qApp->removeTranslator(&translator);
 
@@ -23,7 +23,10 @@ namespace
 		if(translator.load(filePath))
 		{
 			qApp->installTranslator(&translator);
+			return true;
 		}
+
+		return false;
 	}
 }
 

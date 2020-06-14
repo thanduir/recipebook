@@ -203,7 +203,7 @@ Item {
 
 				enabled: lvIngredients.count > 0 && filterModelIngredients.canIngredientBeRemoved(lvIngredients.currentIndex)
 				onClicked: {
-					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + filterModelIngredients.name(lvIngredients.currentIndex) + "\". Proceed?");
+					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"%1\". Proceed?").arg(filterModelIngredients.name(lvIngredients.currentIndex));
 					dlgRemoveIngredient.open();
 				}
 			}
@@ -218,7 +218,7 @@ Item {
 		anchors.topMargin: 24
         
 		visible: lvIngredients.count > 0 && lvIngredients.currentIndex != -1
-		text: qsTr("Ingredient \"" + filterModelIngredients.name(lvIngredients.currentIndex) + "\"")
+		text: qsTr("Ingredient \"%1\"").arg(filterModelIngredients.name(lvIngredients.currentIndex))
 		font.bold: true
 	}
 

@@ -63,7 +63,7 @@ Item {
 		anchors.topMargin: 24
 		anchors.leftMargin: 48
         
-		text: qsTr("Configuration \"" + modelRecipeBookConfigurations.name(currentConfig) + "\"")
+		text: qsTr("Configuration \"%1\"").arg(modelRecipeBookConfigurations.name(currentConfig))
 		font.bold: true
 	}
 
@@ -359,7 +359,7 @@ Item {
 
 				enabled: lvItems.count > 0
 				onClicked: {
-					dlgRemoveItem.msgText = qsTr("This will remove the item \"" + modelRBConfigItems.name(lvItems.currentIndex) + "\". Proceed?");
+					dlgRemoveItem.msgText = qsTr("This will remove the item \"%1\". Proceed?").arg(modelRBConfigItems.name(lvItems.currentIndex));
 					dlgRemoveItem.open();
 				}
 			}

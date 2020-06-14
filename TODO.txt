@@ -2,7 +2,8 @@ TODO
 ====
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
-	-> using VS or Qt Creator for this?
+	- https://doc.qt.io/qt-5/android-getting-started.html
+	-> use VS or Qt Creator for this? Qt Creator seems easier. I might also (first) try to use Qt Creator for the windows version.
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)

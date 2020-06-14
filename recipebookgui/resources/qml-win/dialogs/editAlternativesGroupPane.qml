@@ -162,7 +162,7 @@ Item {
 
 				enabled: lvValues.count > 0 && alternativesTypes.canTypeBeRemoved(lvValues.currentIndex)
 				onClicked: {
-					dlgRemoveRecipe.msgText = qsTr("This will remove the alternatives group \"" + alternativesTypes.name(lvValues.currentIndex) + "\". Proceed?");
+					dlgRemoveRecipe.msgText = qsTr("This will remove the alternatives group \"%1\". Proceed?").arg(alternativesTypes.name(lvValues.currentIndex));
 					dlgRemoveRecipe.open();
 				}
 			}

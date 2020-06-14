@@ -134,12 +134,14 @@ Dialog {
 
 				Button {
 					text: qsTr("Load default data")
+					font.capitalization: Font.MixedCase
 					Layout.alignment: Qt.AlignHCenter
 					onClicked: dlgLoadDefaultData.open()
 				}
 
 				Button {
 					text: qsTr("Reset all data")
+					font.capitalization: Font.MixedCase
 					Layout.alignment: Qt.AlignHCenter
 					onClicked: dlgResetData.open()
 				}

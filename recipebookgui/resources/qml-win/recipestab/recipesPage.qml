@@ -249,7 +249,7 @@ Item {
 
 				enabled: lvRecipes.currentIndex < lvRecipes.count && lvRecipes.currentIndex >= 0
 				onClicked: {
-					dlgRemoveRecipe.msgText = qsTr("This will remove the recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\". Proceed?");
+					dlgRemoveRecipe.msgText = qsTr("This will remove the recipe \"%1\". Proceed?").arg(filterModelRecipes.name(lvRecipes.currentIndex));
 					dlgRemoveRecipe.open();
 				}
 			}
@@ -265,7 +265,7 @@ Item {
         
 		visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
 
-		text: qsTr("Recipe \"" + filterModelRecipes.name(lvRecipes.currentIndex) + "\"")
+		text: qsTr("Recipe \"%1\"").arg(filterModelRecipes.name(lvRecipes.currentIndex))
 		font.bold: true
 	}
 
@@ -390,7 +390,7 @@ Item {
 
 		visible: lvRecipes.currentIndex != -1
 
-		text: "Rearrange recipe items"
+		text: qsTr("Rearrange recipe items")
 	}
 
 	// Edit recipe item list view
@@ -857,7 +857,7 @@ Item {
 
 				enabled: lvCurrentRecipe.visible && lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
 				onClicked: {
-					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"" + modelRecipeItems.name(lvCurrentRecipe.currentIndex) + "\". Proceed?");
+					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"%1\". Proceed?").arg(modelRecipeItems.name(lvCurrentRecipe.currentIndex));
 					dlgRemoveIngredient.open();
 				}
 			}
