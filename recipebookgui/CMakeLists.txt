@@ -24,7 +24,8 @@ add_executable(recipebook WIN32
 			
 			${QM_FILES}
 			
-			recipebookgui.qrc)
+			recipebookgui.qrc
+			icon/icon.rc)
 
 target_include_directories(recipebook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
