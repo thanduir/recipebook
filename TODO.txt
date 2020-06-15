@@ -2,8 +2,6 @@ TODO
 ====
 
 5. Investigate "recipebook as an app from the same codebase" (and implement if possible)
-	- try using (separately) Qt Creator for the windows version? (just as a test)
-	- first try with current UI? (just to see if it even works)
 	- Setup handling of different qmls for different target systems!
 	- I might need to add the qm files to the resources
 	- rethink app UI: Get rid of current ugly start screen!
