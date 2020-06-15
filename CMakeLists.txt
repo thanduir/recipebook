@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(RecipeBook VERSION 0.5)
+project(recipebook VERSION 0.5)
 
 # Qt path
-set(MY_QT_PATH "C:/Qt/5.15.0/msvc2019_64")
+if(ANDROID)
+    set(MY_QT_PATH "C:/Qt/5.15.0/android")
+else()
+    set(MY_QT_PATH "C:/Qt/5.15.0/msvc2019_64")
+endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})
 
@@ -23,10 +27,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin/Debug)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin/Release)
+if(NOT ANDROID)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin/Debug)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin/Release)
+endif()
 
 add_subdirectory(librecipebook)
-add_subdirectory(rbunittests)
 add_subdirectory(recipebookgui)
+
+if(NOT ANDROID)
+    add_subdirectory(rbunittests)
+endif()
