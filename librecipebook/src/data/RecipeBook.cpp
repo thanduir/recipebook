@@ -29,7 +29,7 @@ void RecipeBook::clearData()
 
 Category& RecipeBook::addCategory(QString strName)
 {
-	Category& rCategory = internal::sorted::addItem<Category>(Category::getElementId(strName), m_Categories, [strName, this]()
+    Category& rCategory = internal::sorted::addItem<Category>(Category::getElementId(strName), m_Categories, [strName]()
 	{
 		return new Category(strName);
 	});
@@ -356,7 +356,7 @@ quint32 RecipeBook::getIngredientIndex(QString strName) const
 
 AlternativesType& RecipeBook::addAlternativesType(QString strName)
 {
-	return internal::sorted::addItem<AlternativesType>(AlternativesType::getElementId(strName), m_AlternativesTypes, [strName, this]()
+    return internal::sorted::addItem<AlternativesType>(AlternativesType::getElementId(strName), m_AlternativesTypes, [strName]()
 	{
 		return new AlternativesType(strName);
 	});

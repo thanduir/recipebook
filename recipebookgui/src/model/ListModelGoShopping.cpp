@@ -3,7 +3,7 @@
 #include <data/RecipeBook.h>
 #include <data/GoShoppingListItem.h>
 #include <data/RBDataHandler.h>
-#include "../UIStringConverter.h"
+#include "../uistringconverter.h"
 
 using namespace recipebook::UI;
 

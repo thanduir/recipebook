@@ -3,9 +3,9 @@
 #include <QDir>
 #include "RecipeBookSettings.h"
 
-constexpr char* c_langFolder			= "/../translations";
-constexpr char* c_langFolderQt			= "/translations";
-constexpr char* c_LanguageFileBaseName = "recipebookgui_%1.qm";
+constexpr const char* c_langFolder              = "/../translations";
+constexpr const char* c_langFolderQt			= "/translations";
+constexpr const char* c_LanguageFileBaseName    = "recipebookgui_%1.qm";
 
 using namespace recipebook::UI;
 

@@ -4,7 +4,7 @@
 #include <QException>
 #include <data/RBDataHandler.h>
 #include "../RecipeBookSettings.h"
-#include "../UIStringConverter.h"
+#include "../uistringconverter.h"
 #include "RecipeBookExporterLatex.h"
 
 using namespace recipebook;

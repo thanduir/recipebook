@@ -2,22 +2,22 @@
 #include "serialization/RecipeBookSerializerFactory.h"
 #include "data/RecipeBook.h"
 
-constexpr char* c_strFileInput					= "test.json";
+constexpr const char* c_strFileInput				= "test.json";
 
-constexpr char* c_strFileReference				= "reference.json";
+constexpr const char* c_strFileReference			= "reference.json";
 
-constexpr char* c_strFileInputConfigs			= "test_rbconfigs.json";
-constexpr char* c_strFileReferenceConfigs		= "reference_rbconfigs.json";
+constexpr const char* c_strFileInputConfigs			= "test_rbconfigs.json";
+constexpr const char* c_strFileReferenceConfigs		= "reference_rbconfigs.json";
 
-constexpr char* c_strFileOutput1				= "z_output_1.json";
-constexpr char* c_strFileOutput2				= "z_output_2.json";
-constexpr char* c_strFileOutputConfigs			= "z_output_rbconfigs.json";
+constexpr const char* c_strFileOutput1				= "z_output_1.json";
+constexpr const char* c_strFileOutput2				= "z_output_2.json";
+constexpr const char* c_strFileOutputConfigs		= "z_output_rbconfigs.json";
 
 void RBUnitTests::initTestCase()
 {
 	m_spTestDir = QTest::qExtractTestData("serializeTest");
 
-	qDebug(m_spTestDir->path().toLatin1());
+    qDebug() << m_spTestDir->path().toLatin1();
 }
 
 void RBUnitTests::serializeTest()

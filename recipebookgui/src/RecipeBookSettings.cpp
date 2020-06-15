@@ -6,25 +6,25 @@
 
 using namespace recipebook;
 
-constexpr char* c_strAppRBSaveFilename				= "/RecipeBook.json";
+constexpr const char* c_strAppRBSaveFilename			= "/RecipeBook.json";
 
-constexpr char* c_strAppInstanceUID					= "appInstanceUID";
+constexpr const char* c_strAppInstanceUID				= "appInstanceUID";
 
-constexpr char* c_strAppCurrentLanguage				= "currentLanguage";
+constexpr const char* c_strAppCurrentLanguage			= "currentLanguage";
 
-constexpr char* c_strDefaultUnit					= "defaults/unit";
-constexpr char* c_strDefaultNrPersons				= "defaults/nrpersons";
-constexpr char* c_strDefaultCategory				= "defaults/category";
-constexpr char* c_strDefaultSortOrder				= "defaults/sortorder";
+constexpr const char* c_strDefaultUnit					= "defaults/unit";
+constexpr const char* c_strDefaultNrPersons				= "defaults/nrpersons";
+constexpr const char* c_strDefaultCategory				= "defaults/category";
+constexpr const char* c_strDefaultSortOrder				= "defaults/sortorder";
 
-constexpr char* c_strActiveSortOrderGoShopping		= "actives/sortorder_goshopping";
-constexpr char* c_strActiveListOrderingGoShopping	= "actives/listordering_goshopping";
+constexpr const char* c_strActiveSortOrderGoShopping	= "actives/sortorder_goshopping";
+constexpr const char* c_strActiveListOrderingGoShopping	= "actives/listordering_goshopping";
 
-constexpr char* c_strLastExportFolder				= "folders/lastexportfolder";
-constexpr char* c_strLastImportFolder				= "folders/lastimportfolder";
+constexpr const char* c_strLastExportFolder				= "folders/lastexportfolder";
+constexpr const char* c_strLastImportFolder				= "folders/lastimportfolder";
 
-constexpr char* c_strLastShoppingListExportFolder	= "folders/lastshoppinglistexportfolder";
-constexpr char* c_strLastRecipeBookConfigurationExportFolder = "folders/lastrecipebookconfigexportfolder";
+constexpr const char* c_strLastShoppingListExportFolder	= "folders/lastshoppinglistexportfolder";
+constexpr const char* c_strLastRecipeBookConfigurationExportFolder = "folders/lastrecipebookconfigexportfolder";
 
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 

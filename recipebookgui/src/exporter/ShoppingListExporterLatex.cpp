@@ -3,7 +3,7 @@
 #include <QException>
 #include <data/SortedShoppingList.h>
 #include <data/GoShoppingListItem.h>
-#include "../UIStringConverter.h"
+#include "../uistringconverter.h"
 #include "RBLatexExporter.h"
 #include "LatexLanguageManager.h"
 

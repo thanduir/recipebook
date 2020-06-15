@@ -6,7 +6,7 @@
 #include <data/Recipe.h>
 #include <data/RecipeItem.h>
 #include <data/AlternativesType.h>
-#include "../UIStringConverter.h"
+#include "../uistringconverter.h"
 #include "RBLatexExporter.h"
 #include "LatexLanguageManager.h"
 
@@ -31,14 +31,14 @@ namespace
 		text.replace("~", "\\textasciitilde");
 		text.replace("^", "\\textasciicircum");		
 
-		text.replace("ä", "\\\"a");
-		text.replace("Ä", "\\\"A");
+		text.replace("Ã¤", "\\\"a");
+		text.replace("Ã„", "\\\"A");
 
-		text.replace("ö", "\\\"o");
-		text.replace("Ö", "\\\"O");
+		text.replace("Ã¶", "\\\"o");
+		text.replace("Ã–", "\\\"O");
 
-		text.replace("ü", "\\\"u");
-		text.replace("Ü", "\\\"U");
+		text.replace("Ã¼", "\\\"u");
+		text.replace("Ãœ", "\\\"U");
 
 		return text;
 	}

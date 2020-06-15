@@ -4,7 +4,7 @@
 #include <data/SortedShoppingList.h>
 #include <data/RBDataHandler.h>
 #include "../RecipeBookSettings.h"
-#include "../UIStringConverter.h"
+#include "../uistringconverter.h"
 #include "ShoppingListExporterLatex.h"
 
 using namespace recipebook;

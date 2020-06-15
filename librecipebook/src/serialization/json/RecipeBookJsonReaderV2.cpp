@@ -134,7 +134,7 @@ bool json::JsonReaderV2::readMetadata(const QJsonObject& rObject, RBMetaData& rM
 	QString strSerializerID = rObject[json::c_strMetaDataId].toString();
 	if(strSerializerID != c_strProgramId)
 	{
-		qWarning("Invalid id " + strSerializerID.toLatin1() + ".");
+        qWarning() << "Invalid id " << qPrintable(strSerializerID) << ".";
 		return false;
 	}
 

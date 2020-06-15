@@ -48,7 +48,7 @@ namespace recipebook
 		bool moveGroupItemsTogether();
 
 	private:
-		explicit Recipe(QString strName, qint32 uiNrPersons) : m_NrPersons(uiNrPersons), m_Name(strName), m_CookingTime(0, 30) {}
+        explicit Recipe(QString strName, qint32 uiNrPersons) : m_Name(strName), m_NrPersons(uiNrPersons), m_CookingTime(0, 30) {}
 		Recipe(QString strName, const Recipe& rOther);
 
 		void operator=(const Recipe& rOther) = delete;

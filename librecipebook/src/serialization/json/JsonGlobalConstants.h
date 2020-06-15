@@ -3,9 +3,9 @@
 
 namespace recipebook::serialization::json
 {
-    constexpr char* c_strProgramId			= "ch.phwidmer.einkaufsliste";
-    constexpr char* c_strProgramType		= "windows";
-    constexpr int   c_uiSerializerVersion	= 2;
+    constexpr const char* c_strProgramId	= "ch.phwidmer.einkaufsliste";
+    constexpr const char* c_strProgramType	= "windows";
+    constexpr int c_uiSerializerVersion     = 2;
 }
 
 #endif

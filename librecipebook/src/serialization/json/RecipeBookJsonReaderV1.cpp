@@ -134,7 +134,7 @@ bool json::JsonReaderV1::readMetadata(const QJsonObject& rObject, RBMetaData& rM
 	QString strSerializerID = rObject[json::c_strId].toString();
 	if(strSerializerID != c_strProgramId)
 	{
-		qWarning("Invalid id " + strSerializerID.toLatin1() + ".");
+        qWarning() << "Invalid id " << strSerializerID.toLatin1() << ".";
 		return false;
 	}
 
@@ -165,7 +165,7 @@ bool json::JsonReaderV1::readCategories(const QJsonObject& rObject, RecipeBook& 
 	QString id = rObject[json::c_strId].toString();
 	if(id != json::c_strCategoriesId)
 	{
-		qWarning("Invalid categories id " + id.toLatin1() + ".");
+        qWarning() << "Invalid categories id " << id.toLatin1() << ".";
 		return false;
 	}
     
@@ -195,7 +195,7 @@ bool json::JsonReaderV1::readIngredients(const QJsonObject& rObject, RecipeBook&
 	QString id = rObject[json::c_strId].toString();
 	if(id != json::c_strIngredientsId)
 	{
-		qWarning("Invalid ingredients id " + id.toLatin1() + ".");
+        qWarning() << "Invalid ingredients id " << id.toLatin1() << ".";
 		return false;
 	}
 
@@ -237,7 +237,7 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 	QString id = rObject[json::c_strId].toString();
 	if(id != json::c_strRecipesId)
 	{
-		qWarning("Invalid recipes id " + id.toLatin1() + ".");
+        qWarning() << "Invalid recipes id " << id.toLatin1() << ".";
 		return false;
 	}
 
@@ -252,7 +252,7 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 		QJsonObject recipe = rObject[strRecipeName].toObject();
 		if(!rObject.contains(strRecipeName))
 		{
-			// Bugfix for Qt 5.15: Sometimes object with similar names ("Frühlingsrisotto" and "Frühlings-Spaghetti") 
+			// Bugfix for Qt 5.15: Sometimes object with similar names ("FrÃ¼hlingsrisotto" and "FrÃ¼hlings-Spaghetti") 
 			// seem to be confused when directly accessing the elements
 			// TODO: Try again with later Qt versions to see whether this workaround is still needed
 			QVariantMap map = rObject.toVariantMap();
@@ -328,7 +328,7 @@ bool json::JsonReaderV1::readShoppingList(const QJsonObject& rObject, RecipeBook
 	QString id = rObject[json::c_strId].toString();
 	if(id != json::c_strShoppinglistId)
 	{
-		qWarning("Invalid shoppinglist id " + id.toLatin1() + ".");
+        qWarning() << "Invalid shoppinglist id " << id.toLatin1() << ".";
 		return false;
 	}
 

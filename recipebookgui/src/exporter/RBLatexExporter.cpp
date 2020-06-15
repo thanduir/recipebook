@@ -8,11 +8,11 @@
 
 constexpr bool c_bRemoveTempFolder	= true;
 
-constexpr char* c_texOutputFolder	= "/recipeBookTemp";
-constexpr char* c_tempTexFilename	= "/tempShoppingList.tex";
-constexpr char* c_tempPdfFilename	= "/tempShoppingList.pdf";
+constexpr const char* c_texOutputFolder	= "/recipeBookTemp";
+constexpr const char* c_tempTexFilename	= "/tempShoppingList.tex";
+constexpr const char* c_tempPdfFilename	= "/tempShoppingList.pdf";
 
-constexpr char* c_PdfLatexPath		= "/../texmfs/install/miktex/bin/x64/pdflatex.exe";
+constexpr const char* c_PdfLatexPath	= "/../texmfs/install/miktex/bin/x64/pdflatex.exe";
 
 using namespace recipebook;
 
