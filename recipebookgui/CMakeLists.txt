@@ -1,4 +1,4 @@
-find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
 
 set(TS_FILES translations/recipebookgui_de.ts translations/recipebookgui_en.ts)
 
@@ -30,7 +30,7 @@ if(NOT ANDROID)
 
     set_target_properties(recipebook PROPERTIES DEBUG_POSTFIX "D")
 
-    target_link_libraries(recipebook librecipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2)
+    target_link_libraries(recipebook librecipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
     find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
     add_custom_command(TARGET recipebook POST_BUILD
@@ -53,7 +53,7 @@ else()
 
     target_include_directories(recipebook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
-    target_link_libraries(recipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2)
+    target_link_libraries(recipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
 endif()
 

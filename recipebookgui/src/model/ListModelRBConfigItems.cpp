@@ -131,6 +131,11 @@ void ListModelRBConfigItems::setDataChanged(int row, RBConfigItemsRoles role)
 
 qint32 ListModelRBConfigItems::getPreviousHeaderLevel(const RecipeBookConfiguration& rConfig, int row) const
 {
+    if(row <= 0)
+    {
+        return 0;
+    }
+
 	// Find correct level (the same as the previous header)
     for (quint32 i = (quint32)row - 1; i >= 0; --i)
 	{
