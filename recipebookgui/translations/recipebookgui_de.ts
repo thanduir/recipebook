@@ -512,89 +512,89 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="19"/>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="137"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="18"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="136"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="18"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="136"/>
         <source>Load default data</source>
         <translation>Alle Daten mit Standardwerten ersetzen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="20"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="19"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="19"/>
         <source>This will replace current data with the default data. Current data will be lost. Proceed?</source>
         <translation>Es werdeb alle Daten unwiderruflich ge löscht und mit den Standarddaten ersetzen. Fortfahren?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="26"/>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="144"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="25"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="143"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="25"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="143"/>
         <source>Reset all data</source>
         <translation>Alle Daten zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="27"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="26"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="26"/>
         <source>This will reset all data. Current data will be lost. Proceed?</source>
         <translation>Dies löscht allevorhandenen Daten unwiderruflich. Fortfahren?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="39"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="38"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="38"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="50"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="49"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="49"/>
         <source>Current language</source>
         <translation>Aktuelle Sprache</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="67"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="66"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="66"/>
         <source>Default values</source>
         <translation>Standardwerte</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="77"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="76"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="76"/>
         <source>Default unit</source>
         <translation>Standardeinheit</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="88"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="87"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="87"/>
         <source>Default number of persons</source>
         <translation>Standard # Personen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="101"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="100"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="100"/>
         <source>Default category</source>
         <translation>Standard-Kategorie</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="112"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="111"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="111"/>
         <source>Default sort order</source>
         <translation>Standard-Sortierreihenfolge</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="131"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="130"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="130"/>
         <source>Data</source>
         <translation>Daten</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="158"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="157"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="157"/>
         <source>Application instance UID: </source>
         <translation>Applikations-Instanz UID: </translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/SettingsDialog.qml" line="179"/>
+        <location filename="../resources/qml-android/SettingsDialog.qml" line="178"/>
         <location filename="../resources/qml-desktop/SettingsDialog.qml" line="178"/>
         <source>Close</source>
         <translation>Schliessen</translation>
@@ -935,15 +935,15 @@
     <name>recipebook</name>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="11"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="53"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="54"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="13"/>
         <source>RecipeBook</source>
         <translation>Kochbuch</translation>
     </message>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="15"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="110"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="121"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="111"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="122"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="21"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="36"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="47"/>
@@ -957,45 +957,45 @@
         <translation>Das Laden einer neuen Datei ersetzt die aktuellen Daten, wodurch die aktuellen Daten verloren gehen. Fortfahren?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="140"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="141"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="61"/>
         <source>Merge file</source>
         <translation>Dateien zusammenführen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="153"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="154"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="69"/>
         <source>Export</source>
         <translation>Exportieren</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="164"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="165"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="80"/>
         <source>Export data</source>
         <translation>Daten exportieren</translation>
     </message>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="22"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="183"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="184"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="94"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="103"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="60"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="61"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="112"/>
         <source>Recipes</source>
         <translation>Rezepte</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="61"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="62"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="115"/>
         <source>Shopping</source>
         <translation>Einkaufen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="62"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="63"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="118"/>
         <source>Recipe books</source>
         <translation>Kochbücher</translation>
