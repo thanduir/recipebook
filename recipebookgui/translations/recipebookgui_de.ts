@@ -591,7 +591,7 @@
     <message>
         <location filename="../resources/qml-desktop/shoppingtab/ShoppingListPage.qml" line="366"/>
         <source>Due date</source>
-        <translation type="unfinished">Min. Haltbarkeitsdatum</translation>
+        <translation>Min. Haltbarkeitsdatum</translation>
     </message>
     <message>
         <location filename="../resources/qml-desktop/shoppingtab/ShoppingListPage.qml" line="552"/>

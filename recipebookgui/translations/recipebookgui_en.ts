@@ -349,7 +349,7 @@
     <message>
         <location filename="../resources/qml-desktop/recipestab/RecipesPage.qml" line="393"/>
         <source>Rearrange recipe items</source>
-        <translation type="unfinished">Rearrange recipe items</translation>
+        <translation>Rearrange recipe items</translation>
     </message>
     <message>
         <location filename="../resources/qml-desktop/recipestab/RecipesPage.qml" line="524"/>

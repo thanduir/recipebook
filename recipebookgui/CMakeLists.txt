@@ -36,7 +36,7 @@ if(NOT ANDROID)
     add_custom_command(TARGET recipebook POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E
             env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
-                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-win"
+                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-desktop"
                     "$<TARGET_FILE:recipebook>"
         COMMENT "Running windeployqt...")
 
