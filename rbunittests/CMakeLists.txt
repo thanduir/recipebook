@@ -1,9 +1,5 @@
 find_package(Qt5Test REQUIRED)
 
-if (MSVC)
-    add_compile_options(/W3)
-endif()
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin_unittests)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin_unittests)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin_unittests)
@@ -23,3 +19,9 @@ add_custom_command(TARGET rbunittests POST_BUILD
         env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}" 
 		"$<TARGET_FILE:rbunittests>"
     COMMENT "Running windeployqt...")
+
+target_compile_options(rbunittests PRIVATE 
+					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
+					$<$<CXX_COMPILER_ID:MSVC>:
+						/W3 /WX>)

@@ -15,13 +15,6 @@ list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Warnings as errors and all warnings
-if (MSVC)
-    add_compile_options(/W4 /WX)
-else()
-    add_compile_options(-Wshadow -Wall -Wextra -pedantic -Werror)
-endif()
-
 # Enable Qt tools
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)

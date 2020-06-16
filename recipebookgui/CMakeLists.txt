@@ -56,3 +56,9 @@ else()
     target_link_libraries(recipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2)
 
 endif()
+
+target_compile_options(recipebook PRIVATE 
+					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
+					$<$<CXX_COMPILER_ID:MSVC>:
+						/W4 /WX>)

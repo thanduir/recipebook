@@ -47,4 +47,10 @@ else()
     target_include_directories(librecipebook PRIVATE "include")
 
     target_link_libraries(librecipebook Qt5::Core Qt5::Gui)
+
+	target_compile_options(librecipebook PRIVATE 
+					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
+					$<$<CXX_COMPILER_ID:MSVC>:
+						/W4 /WX>)
 endif()
