@@ -34,7 +34,7 @@ recipebook::ShoppingRecipe* ListModelShoppingListItems::getShoppingRecipe(recipe
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getShoppingRecipeAt(m_ShoppingRecipeIndex);
+    return &rHandle.data().getShoppingRecipeAt((quint32)m_ShoppingRecipeIndex);
 }
 
 const recipebook::ShoppingRecipe* ListModelShoppingListItems::getShoppingRecipe(recipebook::RBDataReadHandle& rHandle) const
@@ -43,7 +43,7 @@ const recipebook::ShoppingRecipe* ListModelShoppingListItems::getShoppingRecipe(
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getShoppingRecipeAt(m_ShoppingRecipeIndex);
+    return &rHandle.data().getShoppingRecipeAt((quint32)m_ShoppingRecipeIndex);
 }
 
 int ListModelShoppingListItems::rowCount(const QModelIndex& parent) const
@@ -60,7 +60,7 @@ int ListModelShoppingListItems::rowCount(const QModelIndex& parent) const
 	if(pRecipe == nullptr)
 		return 0;
 
-	return pRecipe->getItemsCount();
+    return (int)pRecipe->getItemsCount();
 }
 
 QVariant ListModelShoppingListItems::data(const QModelIndex& index, int iRole) const
@@ -222,7 +222,7 @@ QString ListModelShoppingListItems::name(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return "";
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.getName();
 }
 
@@ -232,9 +232,9 @@ bool ListModelShoppingListItems::firstInGroup(int row) const
 	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
-		return "";
+        return false;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 
 	if(!rItem.hasAlternativesGroup())
 	{
@@ -246,7 +246,7 @@ bool ListModelShoppingListItems::firstInGroup(int row) const
 		return rItem.hasAlternativesGroup();
 	}
 
-	const ShoppingListItem& rPrevItem = pRecipe->getItemAt(row - 1);
+    const ShoppingListItem& rPrevItem = pRecipe->getItemAt((quint32)row - 1);
 	if(!rPrevItem.hasAlternativesGroup())
 	{
 		return true;
@@ -260,9 +260,9 @@ bool ListModelShoppingListItems::lastInGroup(int row) const
 	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
-		return "";
+        return false;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 
 	if(!rItem.hasAlternativesGroup())
 	{
@@ -273,7 +273,7 @@ bool ListModelShoppingListItems::lastInGroup(int row) const
 	{
 		return rItem.hasAlternativesGroup();
 	}
-	const ShoppingListItem& rNextItem = pRecipe->getItemAt(row + 1);
+    const ShoppingListItem& rNextItem = pRecipe->getItemAt((quint32)row + 1);
 	if(!rNextItem.hasAlternativesGroup())
 	{
 		return true;
@@ -287,9 +287,9 @@ bool ListModelShoppingListItems::hasGroup(int row) const
 	const ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
-		return "";
+        return false;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 
 	return rItem.hasAlternativesGroup();
 }
@@ -307,7 +307,7 @@ quint32 ListModelShoppingListItems::amountUnit(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return 0;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return (quint32)rItem.getAmount().getUnit();
 }
 
@@ -319,7 +319,7 @@ float ListModelShoppingListItems::amountMin(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return -1.0f;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.getAmount().getQuantityMin();
 }
 
@@ -331,7 +331,7 @@ float ListModelShoppingListItems::amountMax(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return -1.0f;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.getAmount().getQuantityMax();
 }
 
@@ -343,7 +343,7 @@ bool ListModelShoppingListItems::amountIsRange(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 		return false;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.getAmount().isRange();
 }
 
@@ -355,7 +355,7 @@ QString ListModelShoppingListItems::additionalInfo(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return "";
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.getAdditionalInfo();
 }
 
@@ -367,8 +367,8 @@ quint32 ListModelShoppingListItems::sizeIndex(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return 1;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
-	return (int)rItem.getSize();
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
+    return (quint32)rItem.getSize();
 }
 
 bool ListModelShoppingListItems::optional(int row) const
@@ -379,7 +379,7 @@ bool ListModelShoppingListItems::optional(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return false;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.isOptional();
 }
 
@@ -391,7 +391,7 @@ QString ListModelShoppingListItems::group(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return "";
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 
 	if(rItem.hasAlternativesGroup())
 	{
@@ -409,7 +409,7 @@ QString ListModelShoppingListItems::groupColor(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return "";
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 
 	if(rItem.hasAlternativesGroup())
 	{
@@ -427,7 +427,7 @@ quint32 ListModelShoppingListItems::status(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return 0;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return (quint32)rItem.getStatus();
 }
     
@@ -439,7 +439,7 @@ bool ListModelShoppingListItems::isItemEnabled(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
 		return 0;
 
-	const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+    const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 	return rItem.isItemEnabled();
 }
 
@@ -452,7 +452,7 @@ void ListModelShoppingListItems::setAmountUnit(int row, quint32 uiUnit)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.getAmount().setUnit((Unit) uiUnit);
 	}
 
@@ -468,7 +468,7 @@ void ListModelShoppingListItems::setAmountMin(int row, float amount)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.getAmount().setQuantityMin(amount);
 	}
 
@@ -484,7 +484,7 @@ void ListModelShoppingListItems::setAmountMax(int row, float amount)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.getAmount().setQuantityMax(amount);
 	}
 
@@ -500,7 +500,7 @@ void ListModelShoppingListItems::setAmountIsRange(int row, bool bRange)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.getAmount().setIsRange(bRange);
 	}
 
@@ -517,7 +517,7 @@ void ListModelShoppingListItems::setAdditionalInfo(int row, QString text)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.setAdditionInfo(text);
 	}
 
@@ -533,7 +533,7 @@ void ListModelShoppingListItems::setSizeIndex(int row, quint32 index)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.setSize((Size) index);
 	}
 
@@ -549,7 +549,7 @@ void ListModelShoppingListItems::setOptional(int row, bool bOptional)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.setIsOptional(bOptional);
 	}
 
@@ -565,7 +565,7 @@ void ListModelShoppingListItems::setGroup(int row, QString group)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		if(group == m_rConverter.getStringNoAlternativesGroup())
 		{
 			rItem.resetAlternativesGroup();
@@ -594,7 +594,7 @@ void ListModelShoppingListItems::setStatus(int row, quint32 uiStatus)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.setStatus((Status) uiStatus);
 	}
 
@@ -611,7 +611,7 @@ void ListModelShoppingListItems::setItemEnabled(int row, bool bEnabled)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getItemsCount())
 			return;
 
-		ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.setItemEnabled(bEnabled);
 		bItemWithGroup = rItem.hasAlternativesGroup();
 	}
@@ -658,7 +658,7 @@ int ListModelShoppingListItems::addItem(QString strIngredient)
 			return -1;
 		}
 
-		index = pRecipe->getItemIndex(rIngredient);
+        index = (qint32)pRecipe->getItemIndex(rIngredient);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -691,7 +691,7 @@ bool ListModelShoppingListItems::removeItem(int row)
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
-		const ShoppingListItem& rItem = pRecipe->getItemAt(row);
+        const ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		bSuccess = pRecipe->removeItem(rItem);
 	}
 

@@ -61,7 +61,7 @@ RecipeBookConfigItem& RecipeBookConfiguration::addHeader(QString strName, quint3
 
 	return internal::unsorted::addItem<RecipeBookConfigItem>(idString, pos, m_Items, [strName, idStringBase, uiLevel]()
 	{
-		return new RecipeBookConfigItem(strName, idStringBase, uiLevel);
+        return new RecipeBookConfigItem(strName, idStringBase, (qint32)uiLevel);
 	});
 }
 
@@ -78,7 +78,7 @@ bool RecipeBookConfiguration::removeItem(quint32 pos)
 		return false;
 	}
 
-	m_Items.remove(pos);
+    m_Items.remove((int)pos);
 	return true;
 }
 
@@ -91,7 +91,7 @@ bool RecipeBookConfiguration::removeRecipe(const Recipe& rRecipe)
 
 quint32 RecipeBookConfiguration::getItemsCount() const
 {
-	return m_Items.size();
+    return (quint32)m_Items.size();
 }
 
 RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i)
@@ -100,7 +100,7 @@ RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Items.at(i).get();
+    return *m_Items.at((int)i).get();
 }
 
 const RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i) const
@@ -109,7 +109,7 @@ const RecipeBookConfigItem& RecipeBookConfiguration::getItemAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Items.at(i).get();
+    return *m_Items.at((int)i).get();
 }
 
 void RecipeBookConfiguration::moveItem(const RecipeBookConfigItem& rItem, quint32 newPos)
@@ -119,5 +119,5 @@ void RecipeBookConfiguration::moveItem(const RecipeBookConfigItem& rItem, quint3
 	{
 		throw QException();
 	}
-	m_Items.move(oldPos, newPos);
+    m_Items.move(oldPos, (int)newPos);
 }

@@ -12,10 +12,10 @@ Recipe::Recipe(QString strName, const Recipe& rOther)
 	m_RecipeText(rOther.getRecipeText()),
 	m_CookingTime(rOther.getCookingTime())
 {
-	for(int i = 0; i < rOther.m_RecipeItems.size(); ++i)
+    for(quint32 i = 0; i < (quint32)rOther.m_RecipeItems.size(); ++i)
 	{
 		const RecipeItem& rItem = rOther.getRecipeItemAt(i);
-		internal::unsorted::addItem<RecipeItem>(rItem.getElementId(), i, m_RecipeItems, [&rItem]()
+        internal::unsorted::addItem<RecipeItem>(rItem.getElementId(), -1, m_RecipeItems, [&rItem]()
 		{
 			return new RecipeItem(rItem);
 		});
@@ -53,7 +53,7 @@ const RecipeItem& Recipe::getRecipeItem(const Ingredient& rIngredient) const
 
 quint32 Recipe::getRecipeItemsCount() const
 {
-	return m_RecipeItems.size();
+    return (quint32)m_RecipeItems.size();
 }
 
 RecipeItem& Recipe::getRecipeItemAt(quint32 i)
@@ -62,7 +62,7 @@ RecipeItem& Recipe::getRecipeItemAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_RecipeItems.at(i).get();
+    return *m_RecipeItems.at((int)i).get();
 }
 
 const RecipeItem& Recipe::getRecipeItemAt(quint32 i) const
@@ -71,7 +71,7 @@ const RecipeItem& Recipe::getRecipeItemAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_RecipeItems.at(i).get();
+    return *m_RecipeItems.at((int)i).get();
 }
 
 void Recipe::moveRecipeItem(const RecipeItem& rItem, quint32 newPos)
@@ -81,12 +81,12 @@ void Recipe::moveRecipeItem(const RecipeItem& rItem, quint32 newPos)
 	{
 		throw QException();
 	}
-	m_RecipeItems.move(oldPos, newPos);
+    m_RecipeItems.move(oldPos, (int)newPos);
 }
 
-quint32 Recipe::getRecipeItemIndex(QString strName) const
+int Recipe::getRecipeItemIndex(QString strName) const
 {
-	return internal::unsorted::find(RecipeItem::getElementId(strName), m_RecipeItems);
+    return internal::unsorted::find(RecipeItem::getElementId(strName), m_RecipeItems);
 }
 
 bool Recipe::moveGroupItemsTogether()
@@ -117,7 +117,7 @@ bool Recipe::moveGroupItemsTogether()
 			QSharedPointer<RecipeItem> spPrevItem = m_RecipeItems.at(j-1);
 			if(recipebook::helper::lessThan(spCurrentItem->getElementId(), spPrevItem->getElementId()))
 			{
-				moveRecipeItem(*spCurrentItem, j-1);
+                moveRecipeItem(*spCurrentItem, (quint32)j-1);
 				bAlreadyCorrectlyOrdered = false;
 			}
 		}
@@ -139,7 +139,7 @@ bool Recipe::moveGroupItemsTogether()
 						break;
 					}
 				}
-				moveRecipeItem(*spCurrentItem, newPos);
+                moveRecipeItem(*spCurrentItem, (quint32)newPos);
 
 				firstAfterGroup += 1;
 				bAlreadyCorrectlyOrdered = false;

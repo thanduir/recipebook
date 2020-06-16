@@ -42,7 +42,7 @@ bool FilterModelUnusedRecipes::filterAcceptsRow(int source_row, const QModelInde
 			return false;
 		}
 		
-		const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(m_iConfig);
+        const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)m_iConfig);
 		if(rConfig.existsRecipe(handle.data().getRecipe(itemName)))
 		{
 			return false;

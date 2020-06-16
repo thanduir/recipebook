@@ -34,7 +34,7 @@ recipebook::Recipe* ListModelRecipeItems::getRecipe(recipebook::RBDataWriteHandl
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getRecipeAt(m_RecipeIndex);
+    return &rHandle.data().getRecipeAt((quint32)m_RecipeIndex);
 }
 
 const recipebook::Recipe* ListModelRecipeItems::getRecipe(recipebook::RBDataReadHandle& rHandle) const
@@ -43,7 +43,7 @@ const recipebook::Recipe* ListModelRecipeItems::getRecipe(recipebook::RBDataRead
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getRecipeAt(m_RecipeIndex);
+    return &rHandle.data().getRecipeAt((quint32)m_RecipeIndex);
 }
 
 int ListModelRecipeItems::rowCount(const QModelIndex& parent) const
@@ -58,7 +58,7 @@ int ListModelRecipeItems::rowCount(const QModelIndex& parent) const
 	RBDataReadHandle handle(m_rRBDataHandler);
 	const Recipe* pRecipe = getRecipe(handle);
 
-	return pRecipe->getRecipeItemsCount();
+    return (int)pRecipe->getRecipeItemsCount();
 }
 
 QVariant ListModelRecipeItems::data(const QModelIndex& index, int iRole) const
@@ -210,7 +210,7 @@ QString ListModelRecipeItems::name(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return "";
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.getName();
 }
 
@@ -222,7 +222,7 @@ QString ListModelRecipeItems::groupOrItemName(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return "";
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.hasAlternativesGroup() ? rItem.getAlternativesGroup().getName() : rItem.getName();
 }
 
@@ -232,9 +232,9 @@ bool ListModelRecipeItems::firstInGroup(int row) const
 	const Recipe* pRecipe = getRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return "";
+        return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 
 	if(!rItem.hasAlternativesGroup())
 	{
@@ -246,7 +246,7 @@ bool ListModelRecipeItems::firstInGroup(int row) const
 		return rItem.hasAlternativesGroup();
 	}
 
-	const RecipeItem& rPrevItem = pRecipe->getRecipeItemAt(row - 1);
+    const RecipeItem& rPrevItem = pRecipe->getRecipeItemAt((quint32)row - 1);
 	if(!rPrevItem.hasAlternativesGroup())
 	{
 		return true;
@@ -260,9 +260,9 @@ bool ListModelRecipeItems::lastInGroup(int row) const
 	const Recipe* pRecipe = getRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return "";
+        return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 
 	if(!rItem.hasAlternativesGroup())
 	{
@@ -273,7 +273,7 @@ bool ListModelRecipeItems::lastInGroup(int row) const
 	{
 		return rItem.hasAlternativesGroup();
 	}
-	const RecipeItem& rNextItem = pRecipe->getRecipeItemAt(row + 1);
+    const RecipeItem& rNextItem = pRecipe->getRecipeItemAt((quint32)row + 1);
 	if(!rNextItem.hasAlternativesGroup())
 	{
 		return true;
@@ -287,9 +287,9 @@ bool ListModelRecipeItems::hasGroup(int row) const
 	const Recipe* pRecipe = getRecipe(handle);
 
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
-		return "";
+        return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 
 	return rItem.hasAlternativesGroup();
 }
@@ -307,7 +307,7 @@ quint32 ListModelRecipeItems::amountUnit(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return 0;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return (quint32)rItem.getAmount().getUnit();
 }
 
@@ -319,7 +319,7 @@ float ListModelRecipeItems::amountMin(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return -1.0f;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.getAmount().getQuantityMin();
 }
 
@@ -331,7 +331,7 @@ float ListModelRecipeItems::amountMax(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return -1.0f;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.getAmount().getQuantityMax();
 }
 
@@ -343,7 +343,7 @@ bool ListModelRecipeItems::amountIsRange(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 		return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.getAmount().isRange();
 }
 
@@ -355,7 +355,7 @@ QString ListModelRecipeItems::additionalInfo(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return "";
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.getAdditionalInfo();
 }
 
@@ -367,8 +367,8 @@ quint32 ListModelRecipeItems::sizeIndex(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return 1;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
-	return (int)rItem.getSize();
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
+    return (quint32)rItem.getSize();
 }
 
 bool ListModelRecipeItems::optional(int row) const
@@ -379,7 +379,7 @@ bool ListModelRecipeItems::optional(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return false;
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 	return rItem.isOptional();
 }
 
@@ -391,7 +391,7 @@ QString ListModelRecipeItems::group(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return "";
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 
 	if(rItem.hasAlternativesGroup())
 	{
@@ -409,7 +409,7 @@ QString ListModelRecipeItems::groupColor(int row) const
 	if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
 		return "";
 
-	const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+    const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 
 	if(rItem.hasAlternativesGroup())
 	{
@@ -428,7 +428,7 @@ void ListModelRecipeItems::setAmountUnit(int row, quint32 uiUnit)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.getAmount().setUnit((Unit) uiUnit);
 	}
 
@@ -444,7 +444,7 @@ void ListModelRecipeItems::setAmountMin(int row, float amount)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.getAmount().setQuantityMin(amount);
 	}
 
@@ -460,7 +460,7 @@ void ListModelRecipeItems::setAmountMax(int row, float amount)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.getAmount().setQuantityMax(amount);
 	}
 
@@ -476,7 +476,7 @@ void ListModelRecipeItems::setAmountIsRange(int row, bool bRange)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.getAmount().setIsRange(bRange);
 	}
 
@@ -493,7 +493,7 @@ void ListModelRecipeItems::setAdditionalInfo(int row, QString text)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.setAdditionInfo(text);
 	}
 
@@ -509,7 +509,7 @@ void ListModelRecipeItems::setSizeIndex(int row, quint32 index)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.setSize((Size) index);
 	}
 
@@ -525,7 +525,7 @@ void ListModelRecipeItems::setOptional(int row, bool bOptional)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.setIsOptional(bOptional);
 	}
 
@@ -542,13 +542,13 @@ int ListModelRecipeItems::setGroup(int row, QString group)
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return -1;
 
-		RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		if(group == m_rConverter.getStringNoAlternativesGroup())
 		{
 			rItem.resetAlternativesGroup();
 			if(!pRecipe->moveGroupItemsTogether())
 			{
-				newRow = pRecipe->getRecipeItemIndex(rItem.getName());
+                newRow = (int)pRecipe->getRecipeItemIndex(rItem.getName());
 			}
 		}
 		else if(handle.data().existsAlternativesType(group))
@@ -556,7 +556,7 @@ int ListModelRecipeItems::setGroup(int row, QString group)
 			rItem.setAlternativesGroup(handle.data().getAlternativesType(group));
 			if(!pRecipe->moveGroupItemsTogether())
 			{
-				newRow = pRecipe->getRecipeItemIndex(rItem.getName());
+                newRow = (int)pRecipe->getRecipeItemIndex(rItem.getName());
 			}
 		}
 		else
@@ -613,7 +613,7 @@ int ListModelRecipeItems::addRecipeItem(QString strIngredient)
 			return -1;
 		}
 
-		index = pRecipe->getRecipeItemsCount();
+        index = (qint32)pRecipe->getRecipeItemsCount();
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -646,7 +646,7 @@ bool ListModelRecipeItems::removeItem(int row)
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		Recipe* pRecipe = getRecipe(handle);
-		const RecipeItem& rItem = pRecipe->getRecipeItemAt(row);
+        const RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		bSuccess = pRecipe->removeRecipeItem(rItem);
 	}
 
@@ -671,32 +671,32 @@ void ListModelRecipeItems::moveItem(int row, int target)
 			return;
 
 		// Determine correct source rows
-		const RecipeItem& rSourceItem = pRecipe->getRecipeItemAt(row);
+        const RecipeItem& rSourceItem = pRecipe->getRecipeItemAt((quint32)row);
 		if(rSourceItem.hasAlternativesGroup())
 		{
-			for(quint32 i = row; i < pRecipe->getRecipeItemsCount(); ++i)
+            for(quint32 i = (quint32)row; i < pRecipe->getRecipeItemsCount(); ++i)
 			{
 				const RecipeItem& rCurrentItem = pRecipe->getRecipeItemAt(i);
 				if(!rCurrentItem.hasAlternativesGroup() || &rCurrentItem.getAlternativesGroup() != &rSourceItem.getAlternativesGroup())
 				{
 					break;
 				}
-				groupEndIndex = i;
+                groupEndIndex = (int)i;
 			}
 		}
 
 		// Determine correct target index
-		const RecipeItem& rTargetItem = pRecipe->getRecipeItemAt(target);
+        const RecipeItem& rTargetItem = pRecipe->getRecipeItemAt((quint32)target);
 		if(rTargetItem.hasAlternativesGroup() && target > row)
 		{
-			for(quint32 i = target; i < pRecipe->getRecipeItemsCount(); ++i)
+            for(quint32 i = (quint32)target; i < pRecipe->getRecipeItemsCount(); ++i)
 			{
 				const RecipeItem& rCurrentItem = pRecipe->getRecipeItemAt(i);
 				if(!rCurrentItem.hasAlternativesGroup() || &rCurrentItem.getAlternativesGroup() != &rTargetItem.getAlternativesGroup())
 				{
 					break;
 				}
-				correctedTarget = i;
+                correctedTarget = (int)i;
 			}
 		}
 	}
@@ -710,7 +710,7 @@ void ListModelRecipeItems::moveItem(int row, int target)
 		int sourceRow = correctedTarget > row ? row : groupEndIndex;
 		for(int i = row; i <= groupEndIndex; ++i)
 		{
-			pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt(sourceRow), correctedTarget);
+            pRecipe->moveRecipeItem(pRecipe->getRecipeItemAt((quint32)sourceRow), (quint32)correctedTarget);
 		}
 	}
 

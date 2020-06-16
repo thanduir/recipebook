@@ -94,7 +94,7 @@ const ShoppingListItem& ShoppingRecipe::getItem(const Ingredient& rIngredient) c
 
 quint32 ShoppingRecipe::getItemsCount() const
 {
-	return m_Items.size();
+    return (quint32)m_Items.size();
 }
 
 ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i)
@@ -103,7 +103,7 @@ ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Items.at(i).get();
+    return *m_Items.at((int)i).get();
 }
 
 const ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i) const
@@ -112,12 +112,12 @@ const ShoppingListItem& ShoppingRecipe::getItemAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Items.at(i).get();
+    return *m_Items.at((int)i).get();
 }
 
 quint32 ShoppingRecipe::getItemIndex(const Ingredient& rIngredient) const
 {
-	return recipebook::internal::helper::findItem(ShoppingListItem::getElementId(&rIngredient, nullptr), m_Items);
+    return (quint32)recipebook::internal::helper::findItem(ShoppingListItem::getElementId(&rIngredient, nullptr), m_Items);
 }
 
 void ShoppingRecipe::onIngredientNameChanged(const Ingredient& rIngredient)

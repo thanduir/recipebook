@@ -17,7 +17,7 @@ int ListModelSortOrders::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getSortOrdersCount();
+    return (int)handle.data().getSortOrdersCount();
 }
 
 QVariant ListModelSortOrders::data(const QModelIndex& index, int iRole) const
@@ -45,7 +45,7 @@ QString ListModelSortOrders::name(int row) const
 	if(row < 0 || row >= (int) handle.data().getSortOrdersCount())
 		return "";
 
-	const SortOrder& rSortOrder = handle.data().getSortOrderAt(row);
+    const SortOrder& rSortOrder = handle.data().getSortOrderAt((quint32)row);
 	return rSortOrder.getName();
 }
 
@@ -63,7 +63,7 @@ int ListModelSortOrders::renameSortOrder(int row, QString newName)
 			return -1;
 		}
 
-		newIndex = handle.data().getSortOrderIndex(newName);
+        newIndex = (qint32)handle.data().getSortOrderIndex(newName);
 	}
 
 	if(row != newIndex)
@@ -79,7 +79,7 @@ int ListModelSortOrders::renameSortOrder(int row, QString newName)
 			newIndex -= 1;
 		}	
 
-		SortOrder& rSortOrder = handle.data().getSortOrderAt(row);
+        SortOrder& rSortOrder = handle.data().getSortOrderAt((quint32)row);
 		handle.data().renameSortOrder(rSortOrder, newName);
 	}
 
@@ -90,7 +90,7 @@ int ListModelSortOrders::renameSortOrder(int row, QString newName)
 
 	dataChanged(index(newIndex), index(newIndex));
 
-	emit sortOrderRenamed(newIndex);
+    emit sortOrderRenamed((quint32)newIndex);
 
 	return newIndex;
 }
@@ -116,7 +116,7 @@ int ListModelSortOrders::addSortOrder(QString strSortOrder)
 			return -1;
 		}
 
-		index = handle.data().getSortOrderIndex(strSortOrder);
+        index = (qint32)handle.data().getSortOrderIndex(strSortOrder);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -143,7 +143,7 @@ bool ListModelSortOrders::removeSortOrder(int row)
 	bool bSuccess = false;
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		const SortOrder& rSortOrder = handle.data().getSortOrderAt(row);
+        const SortOrder& rSortOrder = handle.data().getSortOrderAt((quint32)row);
 		bSuccess = handle.data().removeSortOrder(rSortOrder);
 	}
 	endRemoveRows();

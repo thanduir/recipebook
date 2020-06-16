@@ -25,7 +25,7 @@ int ListModelIngredients::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getIngredientsCount();
+    return (int)handle.data().getIngredientsCount();
 }
 
 QVariant ListModelIngredients::data(const QModelIndex& index, int iRole) const
@@ -54,7 +54,7 @@ QString ListModelIngredients::name(int row) const
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 	return rIngredient.getName();
 }
 
@@ -65,7 +65,7 @@ QString ListModelIngredients::category(int row) const
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 	return rIngredient.getCategory().getName();
 }
 
@@ -79,7 +79,7 @@ bool ListModelIngredients::provenanceAvailable(int row, QString strProvenance) c
 	if(!handle.data().existsSortOrder(strProvenance))
 		return false;
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 	const SortOrder& rOrder = handle.data().getSortOrder(strProvenance);
 	
 	return rIngredient.provenanceAvailable(rOrder);
@@ -92,7 +92,7 @@ QString ListModelIngredients::defaultUnit(int row) const
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return "";
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 	return  m_rConverter.convertUnit(rIngredient.getDefaultUnit());
 }
 
@@ -103,7 +103,7 @@ QStringList ListModelIngredients::listUsedInRecipes(int row) const
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return QStringList();
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 
 	QList<Recipe*> recipes;
 	QList<ShoppingRecipe*> shoppingRecipes;
@@ -131,7 +131,7 @@ QStringList ListModelIngredients::listUsedInShoppingRecipes(int row) const
 	if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 		return QStringList();
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 
 	QList<Recipe*> recipes;
 	QList<ShoppingRecipe*> shoppingRecipes;
@@ -164,7 +164,7 @@ void ListModelIngredients::setCategory(int row, QString newCategory)
 			return;
 
 		const Category& rCategory = handle.data().getCategory(newCategory);
-		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+        Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 		rIngredient.setCategory(rCategory);
 	}
 
@@ -179,7 +179,7 @@ void ListModelIngredients::setProvenanceAvailable(int row, QString strProvenance
 		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 			return;
 
-		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+        Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 		if(!handle.data().existsSortOrder(strProvenance))
 		{
 			return;
@@ -206,7 +206,7 @@ void ListModelIngredients::setDefaultUnit(int row, QString newDefaultUnit)
 			return;
 
 		Unit unit = m_rConverter.convertUnit(newDefaultUnit);
-		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+        Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 		rIngredient.setDefaultUnit(unit);
 	}
 
@@ -243,7 +243,7 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 			return -1;
 		}
 
-		newIndex = handle.data().getIngredientIndex(newName);
+        newIndex = (qint32)handle.data().getIngredientIndex(newName);
 	}
 
 	if(row != newIndex)
@@ -259,7 +259,7 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 			newIndex -= 1;
 		}
 
-		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+        Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 		handle.data().renameIngredient(rIngredient, newName);
 	}
 
@@ -270,7 +270,7 @@ int ListModelIngredients::renameIngredient(int row, QString newName)
 
 	dataChanged(index(newIndex), index(newIndex));
 
-	emit ingredientRenamed(row);
+    emit ingredientRenamed((quint32)row);
 
 	return newIndex;
 }
@@ -297,7 +297,7 @@ int ListModelIngredients::addIngredient(QString strIngredient)
 			return -1;
 		}
 
-		index = handle.data().getIngredientIndex(strIngredient);
+        index = (qint32)handle.data().getIngredientIndex(strIngredient);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -327,7 +327,7 @@ bool ListModelIngredients::existsIngredient(QString strIngredient) const
 int ListModelIngredients::indexOfIngredient(QString strIngredient) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getIngredientIndex(strIngredient);
+    return (int)handle.data().getIngredientIndex(strIngredient);
 }
 
 bool ListModelIngredients::canIngredientBeRemoved(int row) const
@@ -339,7 +339,7 @@ bool ListModelIngredients::canIngredientBeRemoved(int row) const
 		return false;
 	}
 
-	const Ingredient& rIngredient = handle.data().getIngredientAt(row);
+    const Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 	return !handle.data().isIngredientInUse(rIngredient);
 }
 
@@ -364,7 +364,7 @@ bool ListModelIngredients::removeIngredient(int row)
 
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		Ingredient& rIngredient = handle.data().getIngredientAt(row);
+        Ingredient& rIngredient = handle.data().getIngredientAt((quint32)row);
 		bSuccess = handle.data().removeIngredient(rIngredient);
 	}
 
@@ -380,7 +380,7 @@ void ListModelIngredients::onCategoryRenamed(quint32 row)
 	int ingredientsCount = 0;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		ingredientsCount = handle.data().getIngredientsCount();
+        ingredientsCount = (int)handle.data().getIngredientsCount();
 	}
 	dataChanged(index(0), index(ingredientsCount-1));
 }
@@ -392,7 +392,7 @@ void ListModelIngredients::onSortOrderRenamed(quint32 row)
 	int ingredientsCount = 0;
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		ingredientsCount = handle.data().getIngredientsCount();
+        ingredientsCount = (int)handle.data().getIngredientsCount();
 	}
 	dataChanged(index(0), index(ingredientsCount-1));
 }

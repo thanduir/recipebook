@@ -35,7 +35,7 @@ namespace
 			QString strUnit = amount[1].toString();
 
 			rItem.getAmount().setIsRange(false);
-			rItem.getAmount().setQuantityMin(dMin);
+            rItem.getAmount().setQuantityMin((float)dMin);
 
 			Unit unit = serialization::helper::convertUnit(strUnit);
 			rItem.getAmount().setUnit(unit);
@@ -48,16 +48,16 @@ namespace
 				return false;
 			}
 
-			double dMin = amountMinMax[0].toDouble();
+            double dMin = amountMinMax[0].toDouble();
 			double dMax = amountMinMax[1].toDouble();
 			QString strUnit = amountMinMax[2].toString();
 
 			bool bRange = dMax >= 0.0f;
 			rItem.getAmount().setIsRange(bRange);
-			rItem.getAmount().setQuantityMin(dMin);
+            rItem.getAmount().setQuantityMin((float)dMin);
 			if(bRange)
 			{
-				rItem.getAmount().setQuantityMax(dMax);
+                rItem.getAmount().setQuantityMax((float)dMax);
 			}
 
 			Unit unit = serialization::helper::convertUnit(strUnit);
@@ -183,7 +183,7 @@ bool json::JsonReaderV1::readCategories(const QJsonObject& rObject, RecipeBook& 
 		for(int i = 0; i < order.size(); ++i)
 		{
 			QString categoryName = order[i].toString();
-			rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), i);
+            rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), (quint32)i);
 		}
 	}
 
@@ -259,7 +259,7 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 			recipe = map.value(strRecipeName, QJsonObject()).toJsonObject();
 		}
 		
-		uint32_t uiNrPersons = recipe[json::c_strRecipesNrPersons].toInt();
+        uint32_t uiNrPersons = (quint32)recipe[json::c_strRecipesNrPersons].toInt();
 
 		Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
 		for(QString strRecipeItem : recipe.keys())
@@ -341,7 +341,7 @@ bool json::JsonReaderV1::readShoppingList(const QJsonObject& rObject, RecipeBook
 		}
 
 		QJsonObject recipe = rObject[strRecipeName].toObject();
-		float fScalingFactor = recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
+        float fScalingFactor = (float)recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
 		QString strDueDate = recipe[json::c_strShoppingRecipesDueDate].toString();
 
 		ShoppingRecipe& rRecipe = rRecipeBook.addNewShoppingRecipe(strRecipeName, fScalingFactor);

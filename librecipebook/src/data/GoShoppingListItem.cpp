@@ -131,7 +131,7 @@ Amount GoShoppingListItem::getAmount(quint32 i) const
 		throw QException();
 	}
 
-	return m_CombinedItems[i].m_Amount;
+    return m_CombinedItems[(int)i].m_Amount;
 }
 
 bool GoShoppingListItem::isOptional(quint32 i) const
@@ -141,7 +141,7 @@ bool GoShoppingListItem::isOptional(quint32 i) const
 		throw QException();
 	}
 
-	return m_CombinedItems[i].m_bOptional;
+    return m_CombinedItems[(int)i].m_bOptional;
 }
 
 Size GoShoppingListItem::getSize(quint32 i) const
@@ -151,7 +151,7 @@ Size GoShoppingListItem::getSize(quint32 i) const
 		throw QException();
 	}
 
-	return m_CombinedItems[i].m_Size;
+    return m_CombinedItems[(int)i].m_Size;
 }
 
 QString GoShoppingListItem::getAdditionalInfo(quint32 i) const
@@ -161,5 +161,5 @@ QString GoShoppingListItem::getAdditionalInfo(quint32 i) const
 		throw QException();
 	}
 
-	return m_CombinedItems[i].m_AdditionalInfo;
+    return m_CombinedItems[(int)i].m_AdditionalInfo;
 }

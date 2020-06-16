@@ -30,7 +30,7 @@ RecipeBookConfigItem::RecipeBookConfigItem(const Recipe& rRecipe)
 {
 }
 
-RecipeBookConfigItem::RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, quint32 uiLevel)
+RecipeBookConfigItem::RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, qint32 uiLevel)
 :	m_Type(RecipeBookConfigItemType::Header),
 	m_pRecipe(nullptr),
 	m_HeaderName(strHeaderName),

@@ -31,14 +31,14 @@ void SortModelSortOrder::setSortOrder(int row)
 bool SortModelSortOrder::lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	const Category& rCategoryLeft = handle.data().getCategoryAt(source_left.row()); 
-	const Category& rCategoryRight = handle.data().getCategoryAt(source_right.row()); 
+    const Category& rCategoryLeft = handle.data().getCategoryAt((quint32)source_left.row());
+    const Category& rCategoryRight = handle.data().getCategoryAt((quint32)source_right.row());
 
 	if(m_SortOrderIndex < 0 || m_SortOrderIndex >= (int) handle.data().getSortOrdersCount())
 	{
 		return source_left.row() < source_right.row();
 	}
-	const SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
+    const SortOrder& rOrder = handle.data().getSortOrderAt((quint32)m_SortOrderIndex);
 	return rOrder.getIndex(rCategoryLeft) < rOrder.getIndex(rCategoryRight);
 }
 
@@ -106,8 +106,8 @@ void SortModelSortOrder::applyMoveCategory()
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
 		if(m_SortOrderIndex >= 0 && m_SortOrderIndex < (int) handle.data().getSortOrdersCount())
 		{
-			SortOrder& rOrder = handle.data().getSortOrderAt(m_SortOrderIndex);
-			rOrder.moveCategory(rOrder.getItemAt(m_MoveFrom), m_MoveTo);
+            SortOrder& rOrder = handle.data().getSortOrderAt((quint32)m_SortOrderIndex);
+            rOrder.moveCategory(rOrder.getItemAt((quint32)m_MoveFrom), (quint32)m_MoveTo);
 		}
 	}
 

@@ -19,7 +19,7 @@ int ListModelShoppingRecipes::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getShoppingRecipesCount();
+    return (int)handle.data().getShoppingRecipesCount();
 }
 
 QVariant ListModelShoppingRecipes::data(const QModelIndex& index, int iRole) const
@@ -69,7 +69,7 @@ QString ListModelShoppingRecipes::name(int row) const
 	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 		return "";
 
-	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+    const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 	return rRecipe.getName();
 }
 
@@ -80,7 +80,7 @@ float ListModelShoppingRecipes::scalingFactor(int row) const
 	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 		return 0;
 
-	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+    const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 	return rRecipe.getScalingFactor();
 }
 
@@ -91,7 +91,7 @@ QDate ListModelShoppingRecipes::dueDate(int row) const
 	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 		return QDate();
 
-	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+    const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 	return rRecipe.getDueDate();
 }
 
@@ -102,7 +102,7 @@ bool ListModelShoppingRecipes::isDueDateSet(int row) const
 	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 		return false;
 
-	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+    const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 	return rRecipe.getDueDate().isValid();
 }
 
@@ -113,7 +113,7 @@ bool ListModelShoppingRecipes::everythingSet(int row) const
 	if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 		return true;
 
-	const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+    const ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 
 	QMap<QString, bool> mapGroups;
 	for(quint32 i = 0; i < rRecipe.getItemsCount(); ++i)
@@ -144,12 +144,12 @@ void ListModelShoppingRecipes::setScalingFactor(int row, float fFactor)
 		if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 			return;
 
-		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+        ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 		rRecipe.changeScalingFactor(fFactor);
 	}
 
 	setDataChanged(row, ShoppingRecipeRoles::ScalingFactorRole);
-	emit recipeScalingChanged(row);
+    emit recipeScalingChanged((quint32)row);
 }
 
 void ListModelShoppingRecipes::setDueDate(int row, QDate date)
@@ -160,7 +160,7 @@ void ListModelShoppingRecipes::setDueDate(int row, QDate date)
 		if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 			return;
 
-		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+        ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 		rRecipe.setDueDate(date);
 	}
 
@@ -175,7 +175,7 @@ void ListModelShoppingRecipes::resetDueDate(int row)
 		if(row < 0 || row >= (int) handle.data().getShoppingRecipesCount())
 			return;
 
-		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+        ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 		rRecipe.setDueDate(QDate());
 	}
 
@@ -196,7 +196,7 @@ int ListModelShoppingRecipes::renameRecipe(int row, QString newName)
 			return -1;
 		}
 
-		newIndex = handle.data().getShoppingRecipeIndex(newName);
+        newIndex = (qint32)handle.data().getShoppingRecipeIndex(newName);
 	}
 
 	if(row != newIndex)
@@ -212,7 +212,7 @@ int ListModelShoppingRecipes::renameRecipe(int row, QString newName)
 			newIndex -= 1;
 		}
 
-		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+        ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 		handle.data().renameShoppingRecipe(rRecipe, newName);
 	}
 
@@ -256,7 +256,7 @@ int ListModelShoppingRecipes::addFromRecipe(QString strRecipe)
             ++iNr;
         }
 
-		index = handle.data().getShoppingRecipeIndex(strShoppingRecipe);
+        index = (qint32)handle.data().getShoppingRecipeIndex(strShoppingRecipe);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -293,7 +293,7 @@ int ListModelShoppingRecipes::addNewRecipe(QString strRecipe)
 			return -1;
 		}
 
-		index = handle.data().getShoppingRecipeIndex(strRecipe);
+        index = (qint32)handle.data().getShoppingRecipeIndex(strRecipe);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -330,7 +330,7 @@ bool ListModelShoppingRecipes::removeRecipe(int row)
 
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt(row);
+        ShoppingRecipe& rRecipe = handle.data().getShoppingRecipeAt((quint32)row);
 		bSuccess = handle.data().removeShoppingRecipe(rRecipe);
 	}
 

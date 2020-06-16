@@ -32,10 +32,10 @@ namespace
 
 		bool bRange = dMax >= 0.0f;
 		rItem.getAmount().setIsRange(bRange);
-		rItem.getAmount().setQuantityMin(dMin);
+        rItem.getAmount().setQuantityMin((float)dMin);
 		if(bRange)
 		{
-			rItem.getAmount().setQuantityMax(dMax);
+            rItem.getAmount().setQuantityMax((float)dMax);
 		}
 		Unit unit = serialization::helper::convertUnit(strUnit);
 		rItem.getAmount().setUnit(unit);
@@ -181,7 +181,7 @@ bool json::JsonReaderV2::readCategories(const QJsonObject& rObject, RecipeBook& 
 		for(int i = 0; i < order.size(); ++i)
 		{
 			QString categoryName = order[i].toString();
-			rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), i);
+            rSortOrder.moveCategory(rRecipeBook.getCategory(categoryName), (quint32)i);
 		}
 	}
 
@@ -216,7 +216,7 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 	for(QString strRecipeName : rObject.keys())
 	{
 		QJsonObject recipe = rObject[strRecipeName].toObject();
-		uint32_t uiNrPersons = recipe[json::c_strRecipesNrPersons].toInt();
+        uint32_t uiNrPersons = (quint32)recipe[json::c_strRecipesNrPersons].toInt();
 
 		Recipe& rRecipe = rRecipeBook.addRecipe(strRecipeName, uiNrPersons);
 
@@ -255,7 +255,7 @@ bool json::JsonReaderV2::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 		// Sort items correctly
 		for(int i : indexMap.keys())
 		{
-			rRecipe.moveRecipeItem(*indexMap[i], i);
+            rRecipe.moveRecipeItem(*indexMap[i], (quint32)i);
 		}
 		if(m_bUseAlternativesGroupsSorting)
 		{
@@ -271,7 +271,7 @@ bool json::JsonReaderV2::readShoppingList(const QJsonObject& rObject, RecipeBook
 	for(QString strRecipeName : rObject.keys())
 	{
 		QJsonObject recipe = rObject[strRecipeName].toObject();
-		float fScalingFactor = recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
+        float fScalingFactor = (float)recipe[json::c_strShoppingRecipesScalingFactor].toDouble();
 		QString strDueDate = recipe[json::c_strShoppingRecipesDueDate].toString();
 
 		ShoppingRecipe& rRecipe = rRecipeBook.addNewShoppingRecipe(strRecipeName, fScalingFactor);
@@ -311,7 +311,7 @@ bool json::JsonReaderV2::readRecipeBookConfigs(const QJsonObject& rObject, Recip
 		
 		QString strTitle = config[json::c_strConfigTitle].toString();
 		QString strSubtitle = config[json::c_strConfigSubtitle].toString();
-		quint32 fontSize = config[json::c_strConfigFontSize].toInt();
+        quint32 fontSize = (quint32)config[json::c_strConfigFontSize].toInt();
 		QString langCode = config[json::c_strConfigLanguageCode].toString();
 
 		RecipeBookConfiguration& rConfig = rRecipeBook.addConfiguration(strConfigName, false);
@@ -333,9 +333,9 @@ bool json::JsonReaderV2::readRecipeBookConfigs(const QJsonObject& rObject, Recip
 			RecipeBookConfigItem* pItem = nullptr;
 			if(type == RecipeBookConfigItemType::Header)
 			{
-				qint32 uiLevel = item[c_strConfigItemHeaderLevel].toInt();
+                int uiLevel = item[c_strConfigItemHeaderLevel].toInt();
 				QString strName = item[c_strConfigItemHeaderName].toString();
-				pItem = &rConfig.addHeader(strName, uiLevel);
+                pItem = &rConfig.addHeader(strName, (quint32)uiLevel);
 			}
 			else if(type == RecipeBookConfigItemType::Recipe)
 			{
@@ -353,7 +353,7 @@ bool json::JsonReaderV2::readRecipeBookConfigs(const QJsonObject& rObject, Recip
 		// Sort items correctly
 		for(int i : indexMap.keys())
 		{
-			rConfig.moveItem(*indexMap[i], i);
+            rConfig.moveItem(*indexMap[i], (quint32)i);
 		}
 	}
 

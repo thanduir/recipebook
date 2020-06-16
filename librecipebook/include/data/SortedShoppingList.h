@@ -40,7 +40,7 @@ namespace recipebook
 		
 		void clearList();
 		
-		quint32 getItemsCount() const { return m_SortedListChecked.size() + m_SortedListUnchecked.size(); }
+        quint32 getItemsCount() const { return static_cast<quint32>(m_SortedListChecked.size() + m_SortedListUnchecked.size()); }
 		GoShoppingListItem& getItemAt(quint32 i);
 		const GoShoppingListItem& getItemAt(quint32 i) const;
 

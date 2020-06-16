@@ -23,7 +23,7 @@ int ListModelAlternativesGroups::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getAlternativesTypesCount() + 1;
+    return (int)handle.data().getAlternativesTypesCount() + 1;
 }
 
 QVariant ListModelAlternativesGroups::data(const QModelIndex& index, int iRole) const
@@ -66,7 +66,7 @@ QString ListModelAlternativesGroups::name(int row) const
 		return stringNoAlternativesGroup();
 	}
 
-	const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+    const AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 	return rType.getName();
 }
 
@@ -84,7 +84,7 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
 			return -1;
 		}
 
-		newIndex = handle.data().getAlternativesTypeIndex(newName);
+        newIndex = (qint32)handle.data().getAlternativesTypeIndex(newName);
 	}
 
 	if(row != newIndex)
@@ -100,7 +100,7 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
 			newIndex -= 1;
 		}
 
-		AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+        AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 		handle.data().renameAlternativesType(rType, newName);
 	}
 
@@ -111,7 +111,7 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
 
 	dataChanged(index(newIndex), index(newIndex));
 
-	emit alternativesGroupChanged(row);
+    emit alternativesGroupChanged((quint32)row);
 
 	return newIndex;
 }
@@ -123,7 +123,7 @@ QString ListModelAlternativesGroups::color(int row) const
 	if(row == c_uiRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
 		return "";
 
-	const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+    const AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 	return rType.getColor().name();
 }
 
@@ -135,7 +135,7 @@ void ListModelAlternativesGroups::setColor(int row, QString strColor)
 		if(row < 0 || row >= (int) handle.data().getIngredientsCount())
 			return;
 
-		AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+        AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 		rType.setColor(strColor);
 	}
 
@@ -143,7 +143,7 @@ void ListModelAlternativesGroups::setColor(int row, QString strColor)
 	rolesChanged.append((int)AlternativesGroupsRoles::ColorRole);
 	dataChanged(index(row), index(row), rolesChanged);
 
-	emit alternativesGroupChanged(row);
+    emit alternativesGroupChanged((quint32)row);
 }
 
 bool ListModelAlternativesGroups::canTypesBeAdded() const
@@ -167,7 +167,7 @@ int ListModelAlternativesGroups::addType(QString strType)
 			return -1;
 		}
 
-		index = handle.data().getAlternativesTypeIndex(strType) + 1;
+        index = (qint32)handle.data().getAlternativesTypeIndex(strType) + 1;
 	}
 	
 	beginInsertRows(QModelIndex(), index, index);
@@ -202,7 +202,7 @@ bool ListModelAlternativesGroups::canTypeBeRemoved(int row) const
 		return false;
 	}
 
-	const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+    const AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 	return !handle.data().isAlternativesTypeInUse(rType);
 }
 
@@ -227,7 +227,7 @@ bool ListModelAlternativesGroups::removeType(int row)
 
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		const AlternativesType& rType = handle.data().getAlternativesTypeAt(row - 1);
+        const AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
 		bSuccess = handle.data().removeAlternativesType(rType);
 	}
 
@@ -250,7 +250,7 @@ int ListModelAlternativesGroups::indexOf(QString strName) const
 		return -1;
 	}
 
-	return handle.data().getAlternativesTypeIndex(strName) + 1;
+    return (int)handle.data().getAlternativesTypeIndex(strName) + 1;
 }
 
 void ListModelAlternativesGroups::onDataReset()

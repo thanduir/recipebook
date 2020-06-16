@@ -130,7 +130,7 @@ const Category& RecipeBook::getDefaultCategory() const
 
 quint32 RecipeBook::getCategoriesCount() const 
 { 
-	return m_Categories.size(); 
+    return (quint32)m_Categories.size();
 }
 
 Category& RecipeBook::getCategoryAt(quint32 i)
@@ -139,7 +139,7 @@ Category& RecipeBook::getCategoryAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Categories.at(i).get();
+    return *m_Categories.at((int)i).get();
 }
 
 const Category& RecipeBook::getCategoryAt(quint32 i) const
@@ -148,13 +148,13 @@ const Category& RecipeBook::getCategoryAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Categories.at(i).get();
+    return *m_Categories.at((int)i).get();
 }
 
 quint32 RecipeBook::getCategoryIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(Category::getElementId(strName), m_Categories);
-	return iter - m_Categories.begin();
+    return static_cast<quint32>(iter - m_Categories.begin());
 }
 
 SortOrder& RecipeBook::addSortOrder(QString strName)
@@ -203,7 +203,7 @@ const SortOrder& RecipeBook::getSortOrder(QString strName) const
 
 quint32 RecipeBook::getSortOrdersCount() const 
 { 
-	return m_SortOrders.size(); 
+    return (quint32)m_SortOrders.size();
 }
 
 SortOrder& RecipeBook::getSortOrderAt(quint32 i)
@@ -212,7 +212,7 @@ SortOrder& RecipeBook::getSortOrderAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_SortOrders.at(i).get();
+    return *m_SortOrders.at((int)i).get();
 }
 
 const SortOrder& RecipeBook::getSortOrderAt(quint32 i) const
@@ -221,13 +221,13 @@ const SortOrder& RecipeBook::getSortOrderAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_SortOrders.at(i).get();
+    return *m_SortOrders.at((int)i).get();
 }
 
 quint32 RecipeBook::getSortOrderIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(SortOrder::getElementId(strName), m_SortOrders);
-	return iter - m_SortOrders.begin();
+    return static_cast<quint32>(iter - m_SortOrders.begin());
 }
 
 Ingredient& RecipeBook::addIngredient(QString strName, const Category& rCategory, Unit defaultUnit)
@@ -327,7 +327,7 @@ const Ingredient& RecipeBook::getIngredient(QString strName) const
 
 quint32 RecipeBook::getIngredientsCount() const 
 { 
-	return m_Ingredients.size(); 
+    return (quint32)m_Ingredients.size();
 }
 
 Ingredient& RecipeBook::getIngredientAt(quint32 i)
@@ -336,7 +336,7 @@ Ingredient& RecipeBook::getIngredientAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Ingredients.at(i).get();
+    return *m_Ingredients.at((int)i).get();
 }
 
 const Ingredient& RecipeBook::getIngredientAt(quint32 i) const
@@ -345,13 +345,13 @@ const Ingredient& RecipeBook::getIngredientAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Ingredients.at(i).get();
+    return *m_Ingredients.at((int)i).get();
 }
 
 quint32 RecipeBook::getIngredientIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(Ingredient::getElementId(strName), m_Ingredients);
-	return iter - m_Ingredients.begin();
+    return static_cast<quint32>(iter - m_Ingredients.begin());
 }
 
 AlternativesType& RecipeBook::addAlternativesType(QString strName)
@@ -438,7 +438,7 @@ const AlternativesType& RecipeBook::getAlternativesType(QString strName) const
 
 quint32 RecipeBook::getAlternativesTypesCount() const
 {
-	return m_AlternativesTypes.count();
+    return (quint32)m_AlternativesTypes.count();
 }
 
 AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i)
@@ -447,7 +447,7 @@ AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_AlternativesTypes.at(i).get();
+    return *m_AlternativesTypes.at((int)i).get();
 }
 
 const AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i) const
@@ -456,13 +456,13 @@ const AlternativesType& RecipeBook::getAlternativesTypeAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_AlternativesTypes.at(i).get();
+    return *m_AlternativesTypes.at((int)i).get();
 }
 
 quint32 RecipeBook::getAlternativesTypeIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(AlternativesType::getElementId(strName), m_AlternativesTypes);
-	return iter - m_AlternativesTypes.begin();
+    return static_cast<quint32>(iter - m_AlternativesTypes.begin());
 }
 
 Recipe& RecipeBook::addRecipe(QString strName, quint32 uiNrPersons)
@@ -516,7 +516,7 @@ const Recipe& RecipeBook::getRecipe(QString strName) const
 
 quint32 RecipeBook::getRecipesCount() const 
 { 
-	return m_Recipes.size(); 
+    return (quint32)m_Recipes.size();
 }
 
 Recipe& RecipeBook::getRecipeAt(quint32 i)
@@ -525,7 +525,7 @@ Recipe& RecipeBook::getRecipeAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Recipes.at(i).get();
+    return *m_Recipes.at((int)i).get();
 }
 
 const Recipe& RecipeBook::getRecipeAt(quint32 i) const
@@ -534,13 +534,13 @@ const Recipe& RecipeBook::getRecipeAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Recipes.at(i).get();
+    return *m_Recipes.at((int)i).get();
 }
 
 quint32 RecipeBook::getRecipeIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(Recipe::getElementId(strName), m_Recipes);
-	return iter - m_Recipes.begin();
+    return static_cast<quint32>(iter - m_Recipes.begin());
 }
 
 ShoppingRecipe& RecipeBook::addNewShoppingRecipe(QString strName, float fScalingFactor)
@@ -588,7 +588,7 @@ const ShoppingRecipe& RecipeBook::getShoppingRecipe(QString strName) const
 
 quint32 RecipeBook::getShoppingRecipesCount() const 
 { 
-	return m_ShoppingRecipes.size(); 
+    return (quint32)m_ShoppingRecipes.size();
 }
 
 ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i)
@@ -597,7 +597,7 @@ ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_ShoppingRecipes.at(i).get();
+    return *m_ShoppingRecipes.at((int)i).get();
 }
 
 const ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i) const
@@ -606,13 +606,13 @@ const ShoppingRecipe& RecipeBook::getShoppingRecipeAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_ShoppingRecipes.at(i).get();
+    return *m_ShoppingRecipes.at((int)i).get();
 }
 
 quint32 RecipeBook::getShoppingRecipeIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(ShoppingRecipe::getElementId(strName), m_ShoppingRecipes);
-	return iter - m_ShoppingRecipes.begin();
+    return static_cast<quint32>(iter - m_ShoppingRecipes.begin());
 }
 
 void RecipeBook::clearShoppingList()
@@ -665,7 +665,7 @@ const RecipeBookConfiguration& RecipeBook::getConfiguration(QString strName) con
 
 quint32 RecipeBook::getConfigurationsCount() const
 {
-	return m_Configurations.size();
+    return (quint32)m_Configurations.size();
 }
 
 RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i)
@@ -674,7 +674,7 @@ RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i)
 	{
 		throw QException();
 	}
-	return *m_Configurations.at(i).get();
+    return *m_Configurations.at((int)i).get();
 }
 
 const RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i) const
@@ -683,11 +683,11 @@ const RecipeBookConfiguration& RecipeBook::getConfigurationAt(quint32 i) const
 	{
 		throw QException();
 	}
-	return *m_Configurations.at(i).get();
+    return *m_Configurations.at((int)i).get();
 }
 
 quint32 RecipeBook::getConfigurationIndex(QString strName) const
 {
 	auto iter = recipebook::internal::helper::findItemSorted(RecipeBookConfiguration::getElementId(strName), m_Configurations);
-	return iter - m_Configurations.begin();
+    return static_cast<quint32>(iter - m_Configurations.begin());
 }

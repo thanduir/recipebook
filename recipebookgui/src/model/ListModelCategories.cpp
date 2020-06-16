@@ -15,7 +15,7 @@ int ListModelCategories::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getCategoriesCount();
+    return (int)handle.data().getCategoriesCount();
 }
 
 QVariant ListModelCategories::data(const QModelIndex& index, int iRole) const
@@ -43,7 +43,7 @@ QString ListModelCategories::name(int row) const
 	if(row < 0 || row >= (int)handle.data().getCategoriesCount())
 		return "";
 
-	const Category& rCategory = handle.data().getCategoryAt(row);
+    const Category& rCategory = handle.data().getCategoryAt((quint32)row);
 	return rCategory.getName();
 }
 
@@ -60,13 +60,13 @@ int ListModelCategories::renameCategory(int row, QString newName)
 			return -1;
 		}
 
-		Category& rCategory = handle.data().getCategoryAt(row);
+        Category& rCategory = handle.data().getCategoryAt((quint32)row);
 		handle.data().renameCategory(rCategory, newName);
 	}
 
 	dataChanged(index(row), index(row));
     
-	emit categoryRenamed(row);
+    emit categoryRenamed((quint32)row);
 
 	return row;
 }
@@ -92,7 +92,7 @@ int ListModelCategories::addCategory(QString strCategory)
 			return -1;
 		}
 
-		index = handle.data().getCategoryIndex(strCategory);
+        index = (qint32)handle.data().getCategoryIndex(strCategory);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -122,7 +122,7 @@ bool ListModelCategories::canCategoryBeRemoved(int row) const
 		return false;
 	}
 
-	const Category& rCategory = handle.data().getCategoryAt(row);
+    const Category& rCategory = handle.data().getCategoryAt((quint32)row);
 	return !handle.data().isCategoryInUse(rCategory);
 }
 
@@ -147,7 +147,7 @@ bool ListModelCategories::removeCategory(int row)
 
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		const Category& rCategory = handle.data().getCategoryAt(row);
+        const Category& rCategory = handle.data().getCategoryAt((quint32)row);
 		bSuccess = handle.data().removeCategory(rCategory);
 	}
 

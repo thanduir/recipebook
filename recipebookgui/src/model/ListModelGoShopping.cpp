@@ -40,7 +40,7 @@ int ListModelGoShopping::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 
-	return m_List.getItemsCount();
+    return (int)m_List.getItemsCount();
 }
 
 QVariant ListModelGoShopping::data(const QModelIndex& index, int iRole) const
@@ -136,7 +136,7 @@ QString ListModelGoShopping::name(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return "";
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() == GoShoppingListItemType::Toplevel_Header_CheckedItems)
 	{
 		return tr("Collected items");
@@ -147,7 +147,7 @@ QString ListModelGoShopping::name(int row) const
 	}
 	else
 	{
-		return m_List.getItemAt(row).getName();
+        return m_List.getItemAt((quint32)row).getName();
 	}
 }
 
@@ -156,7 +156,7 @@ bool ListModelGoShopping::isItemChecked(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return false;
 
-	return m_List.getItemAt(row).getStatus() == Status::Taken;
+    return m_List.getItemAt((quint32)row).getStatus() == Status::Taken;
 }
 
 QString ListModelGoShopping::itemHeader(int row) const
@@ -164,7 +164,7 @@ QString ListModelGoShopping::itemHeader(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return "";
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
 	{
 		return "";
@@ -196,7 +196,7 @@ bool ListModelGoShopping::isItemMultline(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return false;
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
 	{
 		return false;
@@ -210,7 +210,7 @@ QString ListModelGoShopping::itemAdditionalText(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return "";
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
 	{
 		return "";
@@ -298,7 +298,7 @@ bool ListModelGoShopping::isItemOptional(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return false;
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
 	{
 		return false;
@@ -312,7 +312,7 @@ QString ListModelGoShopping::getRecipeInfo(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return "";
 
-	const GoShoppingListItem& rItem = m_List.getItemAt(row);
+    const GoShoppingListItem& rItem = m_List.getItemAt((quint32)row);
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem)
 	{
 		return "";
@@ -368,7 +368,7 @@ recipebook::GoShoppingListItemType ListModelGoShopping::itemType(int row) const
 	if(row < 0 || row >= (int) m_List.getItemsCount())
 		return GoShoppingListItemType::IngredientListItem;
 
-	return m_List.getItemAt(row).getType();
+    return m_List.getItemAt((quint32)row).getType();
 }
 
 bool ListModelGoShopping::isTopLevelHeader(int row) const
@@ -399,7 +399,7 @@ void ListModelGoShopping::setItemChecked(int row, bool bChecked)
 		return;
 
 	Status status = bChecked ? Status::Taken : Status::None;
-	m_List.updateStatus(m_rRBDataHandler, row, status, this);
+    m_List.updateStatus(m_rRBDataHandler, (quint32)row, status, this);
 }
 
 void ListModelGoShopping::onDataReset()

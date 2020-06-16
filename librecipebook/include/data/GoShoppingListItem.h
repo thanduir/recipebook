@@ -41,7 +41,7 @@ namespace recipebook
 		const QVector<Amount>& getAmount() const { return m_Amount; }
 		bool isOptional() const { return m_bOptional; }
 
-		quint32 getCombinedItemsCount() const { return m_CombinedItems.size(); }
+        quint32 getCombinedItemsCount() const { return (quint32)m_CombinedItems.size(); }
 		Amount getAmount(quint32 i) const;
 		bool isOptional(quint32 i) const;
 		Size getSize(quint32 i) const;

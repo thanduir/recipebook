@@ -40,7 +40,7 @@ public slots:
 
 	QString getSizeName(quint32 uiIndex, quint32 uiUnit) const { return convertSize((recipebook::Size)uiIndex, (recipebook::Unit)uiUnit); }
 	quint32 getSizeIndex(QString strName) const { return (quint32)convertSize(strName); }
-	quint32 getSizesCount() const { return m_SizeToName.size(); }
+    quint32 getSizesCount() const { return (quint32)m_SizeToName.size(); }
 
 	QString getShoppingListOrderingNameCombined() const;
 	QString getShoppingListOrderingNameSeparate() const;

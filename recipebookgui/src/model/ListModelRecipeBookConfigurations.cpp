@@ -14,7 +14,7 @@ int ListModelRecipeBookConfigurations::rowCount(const QModelIndex& parent) const
 {
 	Q_UNUSED(parent);
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-	return handle.data().getConfigurationsCount();
+    return (int)handle.data().getConfigurationsCount();
 }
 
 QVariant ListModelRecipeBookConfigurations::data(const QModelIndex& index, int iRole) const
@@ -62,7 +62,7 @@ QString ListModelRecipeBookConfigurations::name(int row) const
 	if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 		return "";
 
-	const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 	return rConfig.getName();
 }
 
@@ -80,7 +80,7 @@ int ListModelRecipeBookConfigurations::renameConfiguration(int row, QString newN
 			return -1;
 		}
 
-		newIndex = handle.data().getConfigurationIndex(newName);
+        newIndex = (qint32)handle.data().getConfigurationIndex(newName);
 	}
 
 	if(row != newIndex)
@@ -96,7 +96,7 @@ int ListModelRecipeBookConfigurations::renameConfiguration(int row, QString newN
 			newIndex -= 1;
 		}	
 
-		RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		handle.data().renameConfiguration(rConfig, newName);
 	}
 
@@ -117,7 +117,7 @@ QString ListModelRecipeBookConfigurations::title(int row) const
 	if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 		return "";
 
-	const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 	return rConfig.getBookTitle();
 }
 
@@ -128,7 +128,7 @@ QString ListModelRecipeBookConfigurations::subtitle(int row) const
 	if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 		return "";
 
-	const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 	return rConfig.getBookSubtitle();
 }
 
@@ -139,7 +139,7 @@ quint32 ListModelRecipeBookConfigurations::fontSize(int row) const
 	if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 		return 0;
 
-	const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 	return rConfig.getFontSize();
 }
 
@@ -150,7 +150,7 @@ QString ListModelRecipeBookConfigurations::languageCode(int row) const
 	if(row < 0 || row >= (int)handle.data().getConfigurationsCount())
 		return 0;
 
-	const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 	return rConfig.getLanguageCode();
 }
 
@@ -170,7 +170,7 @@ void ListModelRecipeBookConfigurations::setTitle(int row, QString strTitle)
 		if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 			return;
 
-		RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		rConfig.setBookTitle(strTitle);
 	}
 
@@ -185,7 +185,7 @@ void ListModelRecipeBookConfigurations::setSubtitle(int row, QString strSubtitle
 		if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 			return;
 
-		RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		rConfig.setBookSubtitle(strSubtitle);
 	}
 
@@ -200,7 +200,7 @@ void ListModelRecipeBookConfigurations::setFontSize(int row, quint32 fontSize)
 		if(row < 0 || row >= (int) handle.data().getConfigurationsCount())
 			return;
 
-		RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		rConfig.setFontSize(fontSize);
 	}
 
@@ -215,7 +215,7 @@ void ListModelRecipeBookConfigurations::setLanguageCode(int row, QString strCode
 		if(row < 0 || row >= (int)handle.data().getConfigurationsCount())
 			return;
 
-		RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		rConfig.setLanguageCode(strCode);
 	}
 
@@ -243,7 +243,7 @@ int ListModelRecipeBookConfigurations::addConfiguration(QString strConfig)
 			return -1;
 		}
 
-		index = handle.data().getConfigurationIndex(strConfig);
+        index = (qint32)handle.data().getConfigurationIndex(strConfig);
 	}
 
 	beginInsertRows(QModelIndex(), index, index);
@@ -270,7 +270,7 @@ bool ListModelRecipeBookConfigurations::removeConfiguration(int row)
 	bool bSuccess = false;
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt(row);
+        const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
 		bSuccess = handle.data().removeConfiguration(rConfig);
 	}
 	endRemoveRows();

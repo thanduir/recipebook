@@ -30,7 +30,7 @@ namespace recipebook
 
 	private:
 		explicit RecipeBookConfigItem(const Recipe& rRecipe);
-		RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, quint32 uiLevel);
+        RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, qint32 uiLevel);
 		RecipeBookConfigItem(const RecipeBookConfigItem& rOther);
 
 		void operator=(const RecipeBookConfigItem& rOther) = delete;

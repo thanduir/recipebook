@@ -175,14 +175,14 @@ void SortedShoppingList::clearList()
 
 GoShoppingListItem& SortedShoppingList::getItemAt(quint32 i)
 {
-	quint32 sizeChecked = m_SortedListChecked.size();
+    quint32 sizeChecked = (quint32)m_SortedListChecked.size();
 	if(i < sizeChecked)
 	{
-		return *m_SortedListChecked[i];
+        return *m_SortedListChecked[(int)i];
 	}
 	else if(i < ((quint32)m_SortedListUnchecked.size() + sizeChecked))
 	{
-		return *m_SortedListUnchecked[i - sizeChecked];
+        return *m_SortedListUnchecked[static_cast<int>(i - sizeChecked)];
 	}
 
 	throw QException();
@@ -190,14 +190,14 @@ GoShoppingListItem& SortedShoppingList::getItemAt(quint32 i)
 
 const GoShoppingListItem& SortedShoppingList::getItemAt(quint32 i) const
 {
-	quint32 sizeChecked = m_SortedListChecked.size();
+    quint32 sizeChecked = (quint32)m_SortedListChecked.size();
 	if(i < sizeChecked)
 	{
-		return *m_SortedListChecked[i];
+        return *m_SortedListChecked[(int)i];
 	}
 	else if(i < ((quint32)m_SortedListUnchecked.size() + sizeChecked))
 	{
-		return *m_SortedListUnchecked[i - sizeChecked];
+        return *m_SortedListUnchecked[static_cast<int>(i - sizeChecked)];
 	}
 
 	throw QException();
@@ -221,7 +221,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 		}
 		if(pCallback)
 		{
-			pCallback->itemChanged(iItem);
+            pCallback->itemChanged((int)iItem);
 		}
 		return;
 	}
@@ -242,10 +242,10 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 		{
 			if(pCallback)
 			{
-				pCallback->beginRemoveItem(currentItemPos - 1);
+                pCallback->beginRemoveItem((int)currentItemPos - 1);
 			}
 
-			int posToRemove = currentItemPos - 1;
+            int posToRemove = (int)currentItemPos - 1;
 			if(posToRemove < m_SortedListChecked.size())
 			{
 				m_SortedListChecked.removeAt(posToRemove);
@@ -271,7 +271,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	QVector<QSharedPointer<GoShoppingListItem>>& rNewList = bChecked ? m_SortedListChecked : m_SortedListUnchecked;
 	GoShoppingListItemType type = bCompatible ? GoShoppingListItemType::Category_Header : GoShoppingListItemType::Incompatible_Items_Header;
 
-	quint32 headerPos = getItemIndex(strCategory, type, rNewList);
+    quint32 headerPos = (quint32)getItemIndex(strCategory, type, rNewList);
 	if(headerPos == (quint32)rNewList.size())
 	{
 		{
@@ -292,22 +292,22 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 
 				nextPos = getNextItemOfType(rNewList, type, nextPos+1);
 			}
-			headerPos = nextPos;
+            headerPos = (quint32)nextPos;
 
 			if(!bFound && type == GoShoppingListItemType::Category_Header)
 			{
-				headerPos = getNextItemOfType(rNewList, GoShoppingListItemType::Incompatible_Items_Header, 0);
+                headerPos = (quint32)getNextItemOfType(rNewList, GoShoppingListItemType::Incompatible_Items_Header, 0);
 			}
 		}
 
-		quint32 delta = bChecked ? 0 : m_SortedListChecked.size();
+        quint32 delta = bChecked ? 0 : (quint32)m_SortedListChecked.size();
 		if(pCallback)
 		{
-			pCallback->beginInsertItem(headerPos + delta);
+            pCallback->beginInsertItem(static_cast<int>(headerPos + delta));
 		}
 
 		QSharedPointer<GoShoppingListItem> spHeader(new GoShoppingListItem(type, strCategory));
-		rNewList.insert(headerPos, spHeader);
+        rNewList.insert((int)headerPos, spHeader);
 		if(currentItemPos >= headerPos + delta)
 		{
 			++currentItemPos;
@@ -322,7 +322,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	quint32 newItemPos = headerPos + 1;
 	for(; newItemPos < (quint32)rNewList.size(); ++newItemPos)
 	{
-		QSharedPointer<GoShoppingListItem> spCurrent = rNewList.at(newItemPos);
+        QSharedPointer<GoShoppingListItem> spCurrent = rNewList.at((int)newItemPos);
 		if(spCurrent->getType() != GoShoppingListItemType::IngredientListItem
 		   || helper::lessThan(rItem.getElementId(), spCurrent->getElementId()))
 		{
@@ -333,13 +333,13 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	// Move item to new position
 	if(pCallback)
 	{
-		quint32 delta = bChecked ? 0 : m_SortedListChecked.size();
-		pCallback->beginMoveItem(currentItemPos, newItemPos + delta);
+        quint32 delta = bChecked ? 0 : (quint32)m_SortedListChecked.size();
+        pCallback->beginMoveItem((int)currentItemPos, static_cast<int>(newItemPos + delta));
 	}
-	quint32 currentItemPosInList = rItem.getStatus() == Status::None ? currentItemPos - m_SortedListChecked.size() : currentItemPos;
-	QSharedPointer<GoShoppingListItem> spItem = rOldList.at(currentItemPosInList);
-	rOldList.removeAt(currentItemPosInList);
-	rNewList.insert(newItemPos, spItem);
+    quint32 currentItemPosInList = rItem.getStatus() == Status::None ? currentItemPos - (quint32)m_SortedListChecked.size() : currentItemPos;
+    QSharedPointer<GoShoppingListItem> spItem = rOldList.at((int)currentItemPosInList);
+    rOldList.removeAt((int)currentItemPosInList);
+    rNewList.insert((int)newItemPos, spItem);
 	if(pCallback)
 	{
 		pCallback->endMoveItem();
@@ -352,7 +352,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	}
 	if(pCallback)
 	{
-		quint32 delta = bChecked ? 0 : m_SortedListChecked.size();
-		pCallback->itemChanged(newItemPos + delta);
+        int delta = bChecked ? 0 : m_SortedListChecked.size();
+        pCallback->itemChanged((int)newItemPos + delta);
 	}
 }

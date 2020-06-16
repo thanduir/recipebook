@@ -161,9 +161,9 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 		{
 			case RecipeBookConfigItemType::Header:
 			{
-				stream << getTitleTag(rItem.getLevel()) << "{" << rItem.getName() << "}\n";
+                stream << getTitleTag((quint32)rItem.getLevel()) << "{" << rItem.getName() << "}\n";
 
-				uiCurrentLevel = rItem.getLevel() + 1;
+                uiCurrentLevel = (quint32)rItem.getLevel() + 1;
 				break;
 			}
 

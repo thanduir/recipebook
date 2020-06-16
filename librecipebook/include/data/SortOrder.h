@@ -16,7 +16,7 @@ namespace recipebook
 		QString getName() const { return m_Name; }
 		RBElementId getElementId() const { return getElementId(getName()); }
 
-		quint32 getItemsCount() const { return m_Categories.size(); }
+        quint32 getItemsCount() const { return (quint32)m_Categories.size(); }
 		const Category& getItemAt(quint32 i) const;
 
 		void moveCategory(const Category& category, quint32 newPos);

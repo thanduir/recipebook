@@ -30,7 +30,7 @@ recipebook::RecipeBookConfiguration* ListModelRBConfigItems::getConfig(recipeboo
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getConfigurationAt(m_CurrentConfig);
+    return &rHandle.data().getConfigurationAt((quint32)m_CurrentConfig);
 }
 
 const recipebook::RecipeBookConfiguration* ListModelRBConfigItems::getConfig(recipebook::RBDataReadHandle& rHandle) const
@@ -39,7 +39,7 @@ const recipebook::RecipeBookConfiguration* ListModelRBConfigItems::getConfig(rec
 	{
 		return nullptr;
 	}
-	return &rHandle.data().getConfigurationAt(m_CurrentConfig);
+    return &rHandle.data().getConfigurationAt((quint32)m_CurrentConfig);
 }
 
 int ListModelRBConfigItems::rowCount(const QModelIndex& parent) const
@@ -56,7 +56,7 @@ int ListModelRBConfigItems::rowCount(const QModelIndex& parent) const
 	if(pConfig == nullptr)
 		return 0;
 
-	return pConfig->getItemsCount();
+    return (int)pConfig->getItemsCount();
 }
 
 QVariant ListModelRBConfigItems::data(const QModelIndex& index, int iRole) const
@@ -132,11 +132,11 @@ void ListModelRBConfigItems::setDataChanged(int row, RBConfigItemsRoles role)
 qint32 ListModelRBConfigItems::getPreviousHeaderLevel(const RecipeBookConfiguration& rConfig, int row) const
 {
 	// Find correct level (the same as the previous header)
-	for (int i = (int)row - 1; i >= 0; --i)
+    for (quint32 i = (quint32)row - 1; i >= 0; --i)
 	{
 		if (rConfig.getItemAt(i).getType() == RecipeBookConfigItemType::Header)
 		{
-			return rConfig.getItemAt(i).getLevel();
+            return (qint32)rConfig.getItemAt(i).getLevel();
 		}
 	}
 
@@ -151,7 +151,7 @@ QString ListModelRBConfigItems::name(int row) const
 	if(pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount())
 		return "";
 
-	const RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
+    const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
 	return rItem.getName();
 }
 
@@ -174,7 +174,7 @@ bool ListModelRBConfigItems::isHeader(int row) const
 	if(pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount())
 		return false;
 
-	const RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
+    const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
 	return rItem.getType() == RecipeBookConfigItemType::Header;
 }
 
@@ -186,8 +186,8 @@ quint32 ListModelRBConfigItems::headerLevel(int row) const
 	if(pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount())
 		return 0;
 
-	const RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
-	return rItem.getLevel();
+    const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
+    return (quint32)rItem.getLevel();
 }
 
 quint32 ListModelRBConfigItems::maxHeaderLevel(int row) const
@@ -198,7 +198,7 @@ quint32 ListModelRBConfigItems::maxHeaderLevel(int row) const
 	if (pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount())
 		return 0;
 
-	return getPreviousHeaderLevel(*pConfig, row) + 1;
+    return (quint32)getPreviousHeaderLevel(*pConfig, row) + 1;
 }
 
 bool ListModelRBConfigItems::renameHeader(int row, QString newName)
@@ -210,7 +210,7 @@ bool ListModelRBConfigItems::renameHeader(int row, QString newName)
 		if(pConfig == nullptr || row < 0 || row >= (int) pConfig->getItemsCount())
 			return false;
 
-		RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
+        RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
 		if(rItem.getType() != RecipeBookConfigItemType::Header)
 		{
 			return false;
@@ -240,8 +240,8 @@ void ListModelRBConfigItems::setHeaderLevel(int row, quint32 level)
 		if(pConfig == nullptr || row < 0 || row >= (int) pConfig->getItemsCount())
 			return;
 
-		RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
-		rItem.setLevel(level);
+        RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
+        rItem.setLevel((qint32)level);
 	}
 
 	setDataChanged(row, RBConfigItemsRoles::HeaderLevelRole);
@@ -283,11 +283,11 @@ int ListModelRBConfigItems::addHeader(QString strName, int pos)
 
 		if(pos == -1)
 		{
-			pos = pConfig->getItemsCount();
+            pos = (int)pConfig->getItemsCount();
 		}
 
 		// Find the correct level (the same as the previous header)
-		uiLevel = getPreviousHeaderLevel(*pConfig, pos);
+        uiLevel = (quint32)getPreviousHeaderLevel(*pConfig, pos);
 	}
 
 	beginInsertRows(QModelIndex(), pos, pos);
@@ -327,7 +327,7 @@ int ListModelRBConfigItems::addRecipe(QString strName, int pos)
 
 		if(pos == -1)
 		{
-			pos = pConfig->getItemsCount();
+            pos = (int)pConfig->getItemsCount();
 		}
 	}
 
@@ -358,7 +358,7 @@ bool ListModelRBConfigItems::removeItem(int row)
 		if(pConfig == nullptr || row < 0 || row >= (int) pConfig->getItemsCount())
 			return false;
 
-		const RecipeBookConfigItem& rItem = pConfig->getItemAt(row);
+        const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
 		if (rItem.getType() == RecipeBookConfigItemType::Header)
 		{
 			bIsHeader = true;
@@ -372,7 +372,7 @@ bool ListModelRBConfigItems::removeItem(int row)
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		RecipeBookConfiguration* pConfig = getConfig(handle);
-		bSuccess = pConfig->removeItem(row);
+        bSuccess = pConfig->removeItem((quint32)row);
 	}
 
 	endRemoveRows();
@@ -400,7 +400,7 @@ bool ListModelRBConfigItems::removeItem(int row)
 						}
 
 						rItem.setLevel(rItem.getLevel() - 1);
-						changedLevels.append(i);
+                        changedLevels.append((int)i);
 					}
 				}
 			}
@@ -433,7 +433,7 @@ void ListModelRBConfigItems::moveItem(int row, int target)
 	{
 		RBDataWriteHandle handle(m_rRBDataHandler);
 		RecipeBookConfiguration* pConfig = getConfig(handle);
-		pConfig->moveItem(pConfig->getItemAt(row), target);
+        pConfig->moveItem(pConfig->getItemAt((quint32)row), (quint32)target);
 	}
 
 	endMoveRows();
