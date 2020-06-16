@@ -4,3 +4,4 @@
 /bin/texmfs/data/miktex/log/pdflatex.log
 /bin_unittests
 /.vs
+CMakeLists.txt.user
