@@ -29,8 +29,10 @@ ApplicationWindow {
     signal onClosingRecipeBook()
     onClosing: onClosingRecipeBook()
 
+    // TODO: The different pages should be able to add items here (and change the label)... But how to do this?
+    //      -> Add invisible dummy-buttons here that can be changed and connected to?
     header: ToolBar {
-        id: bar
+        id: mainBar
         width: parent.width
 
         ToolButton {
@@ -42,16 +44,17 @@ ApplicationWindow {
             display: AbstractButton.IconOnly
             icon.source: "qrc:/images/open-drawer.svg"
 
-            onClicked: drawer.open()
+            onClicked: drawerMainMenu.open()
         }
 
         Label {
+            id: lblCurrentTabName
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: btnOpenDrawer.right
             anchors.leftMargin: 20
 
             font.bold: true
-            text: qsTr("RecipeBook")
+            text: ""
         }
     }
 
@@ -64,16 +67,28 @@ ApplicationWindow {
     }
 
     Drawer {
-        id: drawer
+        id: drawerMainMenu
         width: 0.66 * parent.width
         height: parent.height
 
-        ListView {
-            id: mainTab
+        Label {
+            id: lblMainMenuHeader
             anchors.top: parent.top
             anchors.left: parent.left
+            anchors.topMargin: 24
+            anchors.leftMargin: 24
+
+            font.bold: true
+            text: qsTr("RecipeBook")
+        }
+
+        ListView {
+            id: mainTab
+            anchors.top: lblMainMenuHeader.bottom
+            anchors.left: parent.left
             anchors.right: parent.right
-            anchors.bottom: colBar.bottom
+            anchors.bottom: sideBar.bottom
+            anchors.topMargin: 24
 
             spacing: 5
 
@@ -85,6 +100,7 @@ ApplicationWindow {
 
                 onClicked: {
                     mainTab.currentIndex = index
+                    drawerMainMenu.close();
                 }
             }
 
@@ -94,7 +110,7 @@ ApplicationWindow {
         }
 
         ColumnLayout {
-            id: colBar
+            id: sideBar
 
             anchors.left: parent.left
             anchors.right: parent.right

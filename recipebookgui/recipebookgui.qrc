@@ -9,6 +9,7 @@
 		
 		<file alias="RecipesTab.qml">resources/qml-desktop/recipestab/RecipesTab.qml</file>
 		<file alias="CategoriesPage.qml">resources/qml-desktop/recipestab/CategoriesPage.qml</file>
+		<file alias="AlternativesTypesPage.qml">resources/qml-desktop/recipestab/AlternativesTypesPage.qml</file>
 		<file alias="IngredientsPage.qml">resources/qml-desktop/recipestab/IngredientsPage.qml</file>
 		<file alias="RecipesPage.qml">resources/qml-desktop/recipestab/RecipesPage.qml</file>	
 		
@@ -25,6 +26,7 @@
 		
 		<file alias="+android/RecipesTab.qml">resources/qml-android/recipestab/RecipesTab.qml</file>
 		<file alias="+android/CategoriesPage.qml">resources/qml-android/recipestab/CategoriesPage.qml</file>
+		<file alias="+android/AlternativesTypesPage.qml">resources/qml-android/recipestab/AlternativesTypesPage.qml</file>
 		<file alias="+android/IngredientsPage.qml">resources/qml-android/recipestab/IngredientsPage.qml</file>
 		<file alias="+android/RecipesPage.qml">resources/qml-android/recipestab/RecipesPage.qml</file>	
 		

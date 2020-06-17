@@ -373,37 +373,5 @@ Item {
 				}
 			}
 		}
-	}
-
-	ToolSeparator {
-		anchors.left: lvCategories.right
-		anchors.top: parent.top
-		anchors.bottom: parent.bottom
-		anchors.topMargin: 24
-		anchors.leftMargin: 12
-		anchors.bottomMargin: 24
-	}
-
-	Label {
-		id: labelAlternativesGroups
-        
-		anchors.left: paneAlternativesGroups.left
-		anchors.top: parent.top
-		anchors.topMargin: 24
-        
-		text: qsTr("Alternatives types")
-		font.bold: true
-	}
-
-	EditAlternativesGroupPane {
-		id: paneAlternativesGroups
-		anchors.left: lvCategories.right
-		anchors.top: labelAlternativesGroups.bottom
-		anchors.bottom: parent.bottom
-		anchors.right: parent.right
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 0
-		anchors.rightMargin: 48
-	}
+    }
 }
