@@ -9,25 +9,27 @@ import "components"
 Item {
 	id: categoriesTab
 
+    // TODO: Dialogs should be placed differently on android (avoid the keyboard, i.e. pos should be updated when the keyboard is (in)visible)!
 	TextInputDialog {
 		id: dlgAddSortOrder
-		title: qsTr("Add sort order")
-		onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
+        title: qsTr("Add sort order")
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
 		onAccepted: {
-			lvSortOrders.currentIndex = modelSortOrders.addSortOrder(outputText)
-			lvSortOrders.positionViewAtIndex(lvSortOrders.currentIndex, ListView.Center)
-			modelSortOrder.setSortOrder(lvSortOrders.currentIndex)
+            cbxSortOrders.currentIndex = modelSortOrders.addSortOrder(outputText)
+            cbxSortOrders.positionViewAtIndex(cbxSortOrders.currentIndex, ListView.Center)
+            modelSortOrder.setSortOrder(cbxSortOrders.currentIndex)
 		}
 	}
 
 	TextInputDialog {
 		id: dlgRenameSortOrder
 		title: qsTr("Rename sort order")
+        // TODO: This doesn't quite work (enabled not always updated correctly)!
 		onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
 		onAccepted: {
-			lvSortOrders.currentIndex = modelSortOrders.renameSortOrder(lvSortOrders.currentIndex, outputText)
-			lvSortOrders.positionViewAtIndex(lvSortOrders.currentIndex, ListView.Center)
-			modelSortOrder.setSortOrder(lvSortOrders.currentIndex)
+            cbxSortOrders.currentIndex = modelSortOrders.renameSortOrder(cbxSortOrders.currentIndex, outputText)
+            cbxSortOrders.positionViewAtIndex(cbxSortOrders.currentIndex, ListView.Center)
+            modelSortOrder.setSortOrder(cbxSortOrders.currentIndex)
 		}
 	}
     
@@ -35,10 +37,10 @@ Item {
 		id: dlgRemoveSortOrder
 		title: qsTr("Remove sort order")
 		onAccepted: {
-			modelSortOrders.removeSortOrder(lvSortOrders.currentIndex)
-			lvSortOrders.incrementCurrentIndex()
-			lvSortOrders.decrementCurrentIndex()
-			modelSortOrder.setSortOrder(lvSortOrders.currentIndex)
+            modelSortOrders.removeSortOrder(cbxSortOrders.currentIndex)
+            cbxSortOrders.incrementCurrentIndex()
+            cbxSortOrders.decrementCurrentIndex()
+            modelSortOrder.setSortOrder(cbxSortOrders.currentIndex)
 		}
 	}
 
@@ -71,120 +73,85 @@ Item {
 		}
 	}
 
-	Label {
-		id: labelSortOrders
-        
+    ComboBox {
+        id: cbxSortOrders
 		anchors.left: parent.left
-		anchors.top: parent.top
-		anchors.topMargin: 24
-		anchors.leftMargin: 48
-        
-		text: qsTr("Sort orders")
-		font.bold: true
-	}
+        anchors.right: btnAddSortOrder.left
+        anchors.top: parent.top
 
-	ListView {
-		id: lvSortOrders
-		anchors.left: parent.left
-		anchors.top: labelSortOrders.bottom 
-		anchors.bottom: groupSortOrders.top
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
-		width: 300
-
-		ScrollBar.vertical: ScrollBar { }
-		boundsBehavior: Flickable.StopAtBounds
-
-		spacing: 5
-		model: modelSortOrders
-		delegate: ItemDelegate {
-			highlighted: ListView.isCurrentItem
-			onClicked: {
-				lvSortOrders.currentIndex = index
-				modelSortOrder.setSortOrder(index)
-			}
-			width: lvSortOrders.width - lvSortOrders.leftMargin - lvSortOrders.rightMargin
-                
-			text: name
-		}
+        model: modelSortOrders
+        textRole: "name"
+        onActivated: modelSortOrder.setSortOrder(currentIndex)
 
 		Component.onCompleted: {
-			if(lvSortOrders.count > 0) {
-				lvSortOrders.currentIndex = 0;
+            if(cbxSortOrders.count > 0) {
+                cbxSortOrders.currentIndex = 0;
 				modelSortOrder.setSortOrder(0);
 			}
-		}
+        }
 
 		Connections {
 			target: modelSortOrders
 			function onModelReset() {
-				if(modelSortOrders.rowCount() <= lvSortOrders.currentIndex) {
-					lvSortOrders.currentIndex = -1;
+                if(modelSortOrders.rowCount() <= cbxSortOrders.currentIndex) {
+                    cbxSortOrders.currentIndex = -1;
 				}
-				else if(modelSortOrders.rowCount() > 0 && lvSortOrders.currentIndex == -1) {
-					lvSortOrders.currentIndex = 0;
+                else if(modelSortOrders.rowCount() > 0 && cbxSortOrders.currentIndex === -1) {
+                    cbxSortOrders.currentIndex = 0;
 				}
-				modelSortOrder.setSortOrder(lvSortOrders.currentIndex);
+                modelSortOrder.setSortOrder(cbxSortOrders.currentIndex);
 			}
 		}
 	}
 
-	Pane {
-		id: groupSortOrders
-		anchors.left: lvSortOrders.left
-		anchors.right: lvSortOrders.right
-		anchors.bottom: parent.bottom
+    RoundButton {
+        id: btnAddSortOrder
+        anchors.top: parent.top
+        anchors.right: parent.right
 
-		RowLayout {
-			anchors.centerIn: parent
-			spacing: 20
+        display: AbstractButton.IconOnly
+        icon.source: "qrc:/images/more-vert.svg"
 
-			RoundButton {
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+        onClicked: menuSortOrders.open()
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Add sort order")
+        Menu {
+            id: menuSortOrders
+            y: btnAddSortOrder.y
 
-				enabled: modelSortOrders.canSortOrdersBeAdded()
-				onClicked: dlgAddSortOrder.open()
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/edit.svg"
+            MenuItem {
+                text: qsTr("Add sort order")
+                enabled: modelSortOrders.canSortOrdersBeAdded()
+                onClicked: {
+                    dlgAddSortOrder.open()
+                    highlighted = false
+                }
+            }
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Rename sort order")
+            MenuItem {
+                text: qsTr("Rename sort order")
+                enabled: cbxSortOrders.currentIndex != -1
+                onClicked: {
+                    dlgRenameSortOrder.initialText = modelSortOrders.name(cbxSortOrders.currentIndex);
+                    dlgRenameSortOrder.open();
+                    highlighted = false
+                }
+            }
 
-				enabled: lvSortOrders.currentIndex != -1
-				onClicked: {
-					dlgRenameSortOrder.initialText = modelSortOrders.name(lvSortOrders.currentIndex);
-					dlgRenameSortOrder.open();
-				}
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/remove.svg"
+            MenuItem {
+                text: qsTr("Remove sort order")
+                enabled: cbxSortOrders.currentIndex != -1
+                onClicked: {
+                    dlgRemoveSortOrder.msgText = qsTr("This will remove the sort order \"%1\". Proceed?").arg(modelSortOrders.name(cbxSortOrders.currentIndex));
+                    dlgRemoveSortOrder.open();
+                    highlighted = false
+                }
+            }
+        }
+    }
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Remove sort order")
-
-				enabled: lvSortOrders.count > 0
-				onClicked: {
-					dlgRemoveSortOrder.msgText = qsTr("This will remove the sort order \"%1\". Proceed?").arg(modelSortOrders.name(lvSortOrders.currentIndex));
-					dlgRemoveSortOrder.open();
-				}
-			}
-		}
-	}
-
+    // TODO: Dragging should only be possible when grabbing the image!
+    // TODO: Scrolling should work everywhere except on the image (not only on the scrollbar)
+    // TODO: SwipeView with pages might collide with the swiping gestures i want to have here...
 	Component {
 		id: dragDelegate
 
@@ -278,32 +245,20 @@ Item {
 				}
 			}
 		}
-	}
-
-	Label {
-		id: labelCurrentSortOrder
-        
-		anchors.left: lvCategories.left
-		anchors.top: parent.top
-		anchors.topMargin: 24
-        
-		visible: lvSortOrders.currentIndex != -1
-
-		text: qsTr("Sort order \"%1\"").arg(modelSortOrders.name(lvSortOrders.currentIndex))
-		font.bold: true
-	}
+    }
 
 	ListView {
 		id: lvCategories
-		anchors.left: lvSortOrders.right
-		anchors.top: labelCurrentSortOrder.bottom
-		anchors.bottom: groupCategories.top
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
-		width: 400
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: cbxSortOrders.bottom
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 24
+        anchors.bottomMargin: 24
+        anchors.leftMargin: 24
+        anchors.rightMargin: 24
 
-		visible: lvSortOrders.currentIndex != -1
+        visible: cbxSortOrders.currentIndex != -1
 
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
@@ -317,61 +272,52 @@ Item {
 		}
 	}
 
-	Pane {
-		id: groupCategories
-		anchors.left: lvCategories.left
-		anchors.right: lvCategories.right
-		anchors.bottom: parent.bottom
-		anchors.topMargin: 48
-		
-		visible: lvSortOrders.currentIndex != -1
-		
-		RowLayout {
-			anchors.centerIn: parent
-			spacing: 20
+    // TODO: Add these methods somewhere!
+    /*
+        // TODO: How to add categories? Button at the top (might be confusing, though)? Hovering button (as in einkaufsliste) might be the best option here.
+        RoundButton {
+            display: AbstractButton.IconOnly
+            icon.source: "qrc:/images/add-black.svg"
 
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+            ToolTip.delay: 1000
+            ToolTip.timeout: 5000
+            ToolTip.visible: hovered
+            ToolTip.text: qsTr("Add category")
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Add category")
+            enabled: modelSortOrder.canCategoriesBeAdded()
+            onClicked: dlgAddCategory.open()
+        }
+        // TODO: Rename after long click on name!
+        RoundButton {
+            display: AbstractButton.IconOnly
+            icon.source: "qrc:/images/edit.svg"
 
-				enabled: modelSortOrder.canCategoriesBeAdded()
-				onClicked: dlgAddCategory.open()
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/edit.svg"
+            ToolTip.delay: 1000
+            ToolTip.timeout: 5000
+            ToolTip.visible: hovered
+            ToolTip.text: qsTr("Rename category")
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Rename category")
+            enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && lvCategories.currentIndex >= 0
+            onClicked: {
+                dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
+                dlgRenameCategory.open();
+            }
+        }
+        // TODO: Remove by swipe!
+        RoundButton {
+            display: AbstractButton.IconOnly
+            icon.source: "qrc:/images/remove.svg"
 
-				enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && lvCategories.currentIndex >= 0
-				onClicked: {
-					dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
-					dlgRenameCategory.open();
-				}
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/remove.svg"
+            ToolTip.delay: 1000
+            ToolTip.timeout: 5000
+            ToolTip.visible: hovered
+            ToolTip.text: qsTr("Remove category")
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Remove category")
-
-				enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
-				onClicked: {
-					dlgRemoveCategory.msgText = qsTr("This will remove the category \"%1\" from all sort orders. Proceed?").arg(modelSortOrder.name(lvCategories.currentIndex));
-					dlgRemoveCategory.open();
-				}
-			}
-		}
-    }
+            enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && modelSortOrder.canCategoryBeRemoved(lvCategories.currentIndex)
+            onClicked: {
+                dlgRemoveCategory.msgText = qsTr("This will remove the category \"%1\" from all sort orders. Proceed?").arg(modelSortOrder.name(lvCategories.currentIndex));
+                dlgRemoveCategory.open();
+            }
+        }
+    }*/
 }

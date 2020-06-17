@@ -2,9 +2,9 @@ TODO
 ====
 
 5. RecipeBook for android
-	- Add qm files to the resources!
 	- adjust qml files to smaller android screens:
 		* CategoriesPage
+		* AlternativesTypesPage
 		* IngredientsPage
 		* RecipesPage
 		
@@ -15,6 +15,8 @@ TODO
 		
 		* components / dialogs?
 		* import / export: can i use std dialogs or should i write my own?
+	- Change delete handling on android? (similar to current app instead of always asking for confirmation?)
+		-> maybe just for those that can be deleted by swiping?
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)

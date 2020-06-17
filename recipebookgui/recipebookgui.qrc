@@ -71,5 +71,6 @@
 		<file alias="cancel-black.svg">resources/images/cancel-black.svg</file>
 		<file alias="error-black.svg">resources/images/error-black.svg</file>
 		<file alias="open-drawer.svg">resources/images/open-drawer.svg</file>
+		<file alias="more-vert.svg">resources/images/more-vert.svg</file>		
     </qresource>
 </RCC>
