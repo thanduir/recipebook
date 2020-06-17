@@ -31,6 +31,7 @@ ApplicationWindow {
 
     // TODO: The different pages should be able to add items here (and change the label)... But how to do this?
     //      -> Add invisible dummy-buttons here that can be changed and connected to?
+    // TODO: Add left / right navigation buttons to switch between items in a submenu?
     header: ToolBar {
         id: mainBar
         width: parent.width
@@ -58,12 +59,10 @@ ApplicationWindow {
         }
     }
 
-    ListModel {
-        id: mainTabs
-
-        ListElement { name: qsTr("Recipes") }
-        ListElement { name: qsTr("Shopping") }
-        ListElement { name: qsTr("Recipe books") }
+    function selectPage(myIndex: int, text: string) {
+        stackMain.currentIndex = myIndex
+        lblCurrentTabName.text = text;
+        drawerMainMenu.close()
     }
 
     Drawer {
@@ -74,47 +73,96 @@ ApplicationWindow {
         Label {
             id: lblMainMenuHeader
             anchors.top: parent.top
-            anchors.left: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: 24
-            anchors.leftMargin: 24
 
             font.bold: true
             text: qsTr("RecipeBook")
         }
 
-        ListView {
-            id: mainTab
+        ColumnLayout {
+            id: sideBar
             anchors.top: lblMainMenuHeader.bottom
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.bottom: sideBar.bottom
+            anchors.bottom: parent.bottom
             anchors.topMargin: 24
 
-            spacing: 5
-
-            model: mainTabs
-            delegate: ItemDelegate {
-                highlighted: ListView.isCurrentItem
-                text: name
-                width: parent.width
-
-                onClicked: {
-                    mainTab.currentIndex = index
-                    drawerMainMenu.close();
-                }
-            }
-
             Component.onCompleted: {
-                mainTab.currentIndex = 1;
+                selectPage(3, pageRecipes.text)
             }
-        }
 
-        ColumnLayout {
-            id: sideBar
+            ItemDelegate {
+                Layout.fillWidth: true
+                font.bold: true
+                text: qsTr("Recipes")
 
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
+                onClicked: selectPage(3, pageRecipes.text)
+            }
+
+            ItemDelegate {
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Sort orders")
+
+                onClicked: selectPage(0, text)
+            }
+            ItemDelegate {
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Alternatives types")
+
+                onClicked: selectPage(1, text)
+            }
+            ItemDelegate {
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Ingredients")
+
+                onClicked: selectPage(2, text)
+            }
+            ItemDelegate {
+                id: pageRecipes
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Recipes")
+
+                onClicked: selectPage(3, text)
+            }
+
+            ItemDelegate {
+                Layout.fillWidth: true
+                font.bold: true
+                text: qsTr("Shopping")
+
+                onClicked: selectPage(4, pageShoppingList.text)
+            }
+
+            ItemDelegate {
+                id: pageShoppingList
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Shopping list")
+
+                onClicked: selectPage(4, text)
+            }
+            ItemDelegate {
+                Layout.fillWidth: true
+                Layout.leftMargin: 24
+                text: qsTr("Go shopping")
+
+                onClicked: selectPage(5, text)
+            }
+
+            ItemDelegate {
+                Layout.fillWidth: true
+                font.bold: true
+                text: qsTr("Recipe books")
+
+                onClicked: selectPage(6, text)
+            }
+
+            Item { Layout.fillHeight: true }
 
             ToolSeparator {
                 Layout.fillWidth: true
@@ -204,7 +252,8 @@ ApplicationWindow {
         }
     }
 
-    StackLayout {
+   StackLayout {
+        id: stackMain
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.bottom: parent.bottom
@@ -214,14 +263,28 @@ ApplicationWindow {
         anchors.right: parent.right
         anchors.rightMargin: 10
 
-        currentIndex: mainTab.currentIndex
+        CategoriesPage {
+            id: categoriesPage
+        }
+        AlternativesTypesPage {
+            id: alternativesTypesPage
+        }
+        IngredientsPage {
+            id: ingredientsPage
+        }
+        RecipesPage {
+            id: recipesPage
+        }
 
-        RecipesTab {
-            id: recipesTab
+
+        ShoppingListPage {
+            id: shoppingListPage
         }
-        ShoppingTab {
-            id: shoppingTab
+        GoShoppingPage {
+            id: goShoppingPage
         }
+
+
         RecipebooksTab {
             id: recipebooksTab
         }

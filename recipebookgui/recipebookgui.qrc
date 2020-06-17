@@ -24,13 +24,11 @@
 		<file alias="+android/recipebook.qml">resources/qml-android/recipebook.qml</file>
 		<file alias="+android/SettingsDialog.qml">resources/qml-android/SettingsDialog.qml</file>
 		
-		<file alias="+android/RecipesTab.qml">resources/qml-android/recipestab/RecipesTab.qml</file>
 		<file alias="+android/CategoriesPage.qml">resources/qml-android/recipestab/CategoriesPage.qml</file>
 		<file alias="+android/AlternativesTypesPage.qml">resources/qml-android/recipestab/AlternativesTypesPage.qml</file>
 		<file alias="+android/IngredientsPage.qml">resources/qml-android/recipestab/IngredientsPage.qml</file>
 		<file alias="+android/RecipesPage.qml">resources/qml-android/recipestab/RecipesPage.qml</file>	
 		
-		<file alias="+android/ShoppingTab.qml">resources/qml-android/shoppingtab/ShoppingTab.qml</file>		
 		<file alias="+android/ShoppingListPage.qml">resources/qml-android/shoppingtab/ShoppingListPage.qml</file>
 		<file alias="+android/GoShoppingPage.qml">resources/qml-android/shoppingtab/GoShoppingPage.qml</file>
 		
