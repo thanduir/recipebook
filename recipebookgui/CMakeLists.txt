@@ -39,13 +39,6 @@ if(NOT ANDROID)
                     --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-desktop"
                     "$<TARGET_FILE:recipebook>"
         COMMENT "Running windeployqt...")
-
-    foreach(file_i ${QM_FILES})
-            add_custom_command(
-                    TARGET recipebook POST_BUILD VERBATIM
-                    COMMAND ${CMAKE_COMMAND} -E copy "${file_i}" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/translations/)
-    endforeach(file_i)
-
 else()
 
     add_library(recipebook SHARED ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
@@ -56,6 +49,12 @@ else()
     target_link_libraries(recipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
 endif()
+
+foreach(file_i ${QM_FILES})
+        add_custom_command(
+                TARGET recipebook POST_BUILD VERBATIM
+                COMMAND ${CMAKE_COMMAND} -E copy "${file_i}" ${CMAKE_CURRENT_SOURCE_DIR}/translations/)
+endforeach(file_i)
 
 target_compile_options(recipebook PRIVATE 
 					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:

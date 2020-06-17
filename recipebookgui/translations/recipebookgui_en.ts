@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AlternativesTypesPage</name>
+    <message>
+        <location filename="../resources/qml-android/recipestab/AlternativesTypesPage.qml" line="19"/>
+        <source>Alternatives types</source>
+        <translation>Alternatives types</translation>
+    </message>
+</context>
+<context>
     <name>CategoriesPage</name>
     <message>
         <location filename="../resources/qml-android/recipestab/CategoriesPage.qml" line="14"/>
@@ -76,7 +84,6 @@
         <translation>This will remove the category &quot;%1&quot; from all sort orders. Proceed?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/CategoriesPage.qml" line="394"/>
         <location filename="../resources/qml-desktop/recipestab/CategoriesPage.qml" line="393"/>
         <source>Alternatives types</source>
         <translation>Alternatives types</translation>
@@ -494,19 +501,27 @@
 <context>
     <name>RecipesTab</name>
     <message>
+        <location filename="../resources/qml-android/recipestab/RecipesTab.qml" line="32"/>
         <location filename="../resources/qml-desktop/recipestab/RecipesTab.qml" line="18"/>
         <source>Recipes</source>
         <translation>Recipes</translation>
     </message>
     <message>
+        <location filename="../resources/qml-android/recipestab/RecipesTab.qml" line="28"/>
         <location filename="../resources/qml-desktop/recipestab/RecipesTab.qml" line="26"/>
         <source>Ingredients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
+        <location filename="../resources/qml-android/recipestab/RecipesTab.qml" line="20"/>
         <location filename="../resources/qml-desktop/recipestab/RecipesTab.qml" line="35"/>
         <source>Sort orders</source>
         <translation>Sort orders</translation>
+    </message>
+    <message>
+        <location filename="../resources/qml-android/recipestab/RecipesTab.qml" line="24"/>
+        <source>Alternatives types</source>
+        <translation>Alternatives types</translation>
     </message>
 </context>
 <context>
@@ -770,11 +785,13 @@
 <context>
     <name>ShoppingTab</name>
     <message>
+        <location filename="../resources/qml-android/shoppingtab/ShoppingTab.qml" line="20"/>
         <location filename="../resources/qml-desktop/shoppingtab/ShoppingTab.qml" line="21"/>
         <source>Go shopping</source>
         <translation>Go shopping</translation>
     </message>
     <message>
+        <location filename="../resources/qml-android/shoppingtab/ShoppingTab.qml" line="16"/>
         <location filename="../resources/qml-desktop/shoppingtab/ShoppingTab.qml" line="30"/>
         <source>Shopping list</source>
         <translation>Shopping list</translation>
@@ -935,15 +952,15 @@
     <name>recipebook</name>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="11"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="54"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="82"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="13"/>
         <source>RecipeBook</source>
         <translation>RecipeBook</translation>
     </message>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="15"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="111"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="122"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="127"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="138"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="21"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="36"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="47"/>
@@ -957,45 +974,45 @@
         <translation>This will load the selected file, replacing all current data irrevocably. Proceed?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="141"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="157"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="61"/>
         <source>Merge file</source>
         <translation>Merge file</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="154"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="170"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="69"/>
         <source>Export</source>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="165"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="181"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="80"/>
         <source>Export data</source>
         <translation>Export data</translation>
     </message>
     <message>
         <location filename="../resources/qml-android/recipebook.qml" line="22"/>
-        <location filename="../resources/qml-android/recipebook.qml" line="184"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="200"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="94"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="103"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="61"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="64"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="112"/>
         <source>Recipes</source>
         <translation>Recipes</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="62"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="65"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="115"/>
         <source>Shopping</source>
         <translation>Shopping</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipebook.qml" line="63"/>
+        <location filename="../resources/qml-android/recipebook.qml" line="66"/>
         <location filename="../resources/qml-desktop/recipebook.qml" line="118"/>
         <source>Recipe books</source>
         <translation>Recipe books</translation>

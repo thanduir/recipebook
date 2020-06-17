@@ -49,6 +49,10 @@
 	<qresource prefix="/files">
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>
     </qresource>
+	<qresource prefix="/translations">
+		<file alias="recipebookgui_en.qm">translations/recipebookgui_en.qm</file>
+		<file alias="recipebookgui_de.qm">translations/recipebookgui_de.qm</file>
+    </qresource>
 	<qresource prefix="/images">
         <file alias="reorder.svg">resources/images/reorder.svg</file>
 		<file alias="edit.svg">resources/images/edit.svg</file>

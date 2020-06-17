@@ -3,7 +3,7 @@
 #include <QDir>
 #include "RecipeBookSettings.h"
 
-constexpr const char* c_langFolder              = "/../translations";
+constexpr const char* c_langFolder              = ":/translations";
 constexpr const char* c_langFolderQt			= "/translations";
 constexpr const char* c_LanguageFileBaseName    = "recipebookgui_%1.qm";
 
@@ -15,10 +15,18 @@ namespace
 	{
 		qApp->removeTranslator(&translator);
 
-		// load the new translator
-		QString filePath = QApplication::applicationDirPath();
-		filePath.append(bQt ? c_langFolderQt : c_langFolder);
-		filePath.append("/").append(filename);
+		QString filePath;
+		if(bQt)
+		{
+			filePath = QApplication::applicationDirPath();
+			filePath.append(c_langFolderQt);
+			filePath.append("/").append(filename);
+		}
+		else
+		{
+			filePath = c_langFolder;
+			filePath.append("/").append(filename);
+		}
 
 		if(translator.load(filePath))
 		{
@@ -46,10 +54,7 @@ void RBTranslationManager::setQmlEngine(QQmlApplicationEngine& rEngine)
 
 void RBTranslationManager::generateLanguagesList()
 {
-	QString langPath = QApplication::applicationDirPath();
-	langPath.append(c_langFolder);
-
-	QDir dir(langPath);
+	QDir dir(c_langFolder);
 	QStringList filenames = dir.entryList(QStringList(QString(c_LanguageFileBaseName).arg("*")));
 
 	m_AvailableLanguages.clear();
