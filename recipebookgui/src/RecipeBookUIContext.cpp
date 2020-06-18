@@ -168,7 +168,7 @@ void RecipeBookUIContext::slotSave()
 	recipebook::RBDataReadHandle handle(m_RBData);
 	if(!spWriter->serialize(handle.data(), fileOut))
 	{
-		qCritical("Couldn't write recipe book file \"%1\"", qUtf8Printable(m_Settings.applicationRecipeBookAppsDataFolder()));
+        qCritical("Couldn't write recipe book file \"%s\"", qUtf8Printable(m_Settings.applicationRecipeBookAppsDataFolder()));
 		m_DlgInterface.showMessageBox(tr("Error saving current data"), 
 									  tr("Couldn't write recipe book file:\n\"%1\"").arg(m_Settings.applicationRecipeBookAppsDataFolder()), 
 									  RBDialogInterface::DlgType::Error);
@@ -191,7 +191,7 @@ void RecipeBookUIContext::slotExport(QString strFileURL)
 	recipebook::RBDataReadHandle handle(m_RBData);
 	if(!spWriter->serialize(handle.data(), fileOut))
 	{
-		qCritical("Couldn't export to file \"%1\"", qUtf8Printable(localFileName));
+        qCritical("Couldn't export to file \"%s\"", qUtf8Printable(localFileName));
 		m_DlgInterface.showMessageBox(tr("Error during file export"), 
 									  tr("Couldn't export to file:\n\"%1\"").arg(localFileName), 
 									  RBDialogInterface::DlgType::Error);
@@ -211,7 +211,7 @@ void RecipeBookUIContext::slotImport(QString strFileURL)
 	QFile fileIn(localFileName);
 	if(!spReader->serialize(fileIn, metaData, recipeBook))
 	{
-		qCritical("Couldn't import file \"%1\"", qUtf8Printable(localFileName));
+        qCritical("Couldn't import file \"%s\"", qUtf8Printable(localFileName));
 		m_DlgInterface.showMessageBox(tr("Error during file import"),
 									  tr("Couldn't import file:\n\"%1\"").arg(localFileName),
 									  RBDialogInterface::DlgType::Error);

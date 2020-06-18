@@ -15,6 +15,7 @@ TODO
 		
 		* components / dialogs?
 		* import / export: can i use std dialogs or should i write my own?
+	- Make emulator (x86) work for android variant (with relatively small sceen)!
 	- Change delete handling on android? (similar to current app instead of always asking for confirmation?)
 		-> maybe just for those that can be deleted by swiping?
 
