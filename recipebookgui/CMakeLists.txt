@@ -22,41 +22,41 @@ qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
 
 if(NOT ANDROID)
 
-    add_executable(recipebook WIN32 ${RECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
+    add_executable(RecipeBook WIN32 ${RECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
                                     recipebookgui.qrc
                                     icon/icon.rc)
 
-    target_include_directories(recipebook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
+    target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
-    set_target_properties(recipebook PROPERTIES DEBUG_POSTFIX "D")
+    set_target_properties(RecipeBook PROPERTIES DEBUG_POSTFIX "D")
 
-    target_link_libraries(recipebook librecipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
+    target_link_libraries(RecipeBook librecipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
     find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
-    add_custom_command(TARGET recipebook POST_BUILD
+    add_custom_command(TARGET RecipeBook POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E
             env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
                     --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-desktop"
-                    "$<TARGET_FILE:recipebook>"
+                    "$<TARGET_FILE:RecipeBook>"
         COMMENT "Running windeployqt...")
 else()
 
-    add_library(recipebook SHARED ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
+    add_library(RecipeBook SHARED ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
                             recipebookgui.qrc)
 
-    target_include_directories(recipebook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
+    target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
-    target_link_libraries(recipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
+    target_link_libraries(RecipeBook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
 endif()
 
 foreach(file_i ${QM_FILES})
         add_custom_command(
-                TARGET recipebook POST_BUILD VERBATIM
+                TARGET RecipeBook POST_BUILD VERBATIM
                 COMMAND ${CMAKE_COMMAND} -E copy "${file_i}" ${CMAKE_CURRENT_SOURCE_DIR}/translations/)
 endforeach(file_i)
 
-target_compile_options(recipebook PRIVATE 
+target_compile_options(RecipeBook PRIVATE
 					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
 						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
 					$<$<CXX_COMPILER_ID:MSVC>:
