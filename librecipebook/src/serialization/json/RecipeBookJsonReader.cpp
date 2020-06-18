@@ -30,7 +30,7 @@ bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook&
         // Version 1
         QJsonArray rootArray = jsonDoc.array();
         json::JsonReaderV1 reader;
-        reader.read(rootArray, rMetaData, rRecipeBook);
+		return reader.read(rootArray, rMetaData, rRecipeBook);
     }
     else
     {
@@ -38,8 +38,6 @@ bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook&
         QJsonObject rootObject = jsonDoc.object();
         json::JsonReaderV2 reader;
 		reader.setUseAlternativesGroupsSorting(m_bUseAlternativesGroupsSorting);
-        reader.read(rootObject, rMetaData, rRecipeBook);
+        return reader.read(rootObject, rMetaData, rRecipeBook);
     }
-    
-	return true;
 }
