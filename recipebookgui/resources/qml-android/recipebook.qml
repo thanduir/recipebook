@@ -6,6 +6,8 @@ import QtQuick.Layouts 1.14
 
 import "components"
 
+// TODO: Crash on import old file (from einkaufsliste)
+// TODO: Adjust to small screens (e.g. my phone)
 ApplicationWindow {
     visible: true
     title: qsTr("RecipeBook")
@@ -27,6 +29,7 @@ ApplicationWindow {
     }
 
     signal onClosingRecipeBook()
+    // TODO: This might not work on phones (at least data changes didn't seem to get saved on phone...)
     onClosing: onClosingRecipeBook()
 
     // TODO: The different pages should be able to add items here (and change the label)... But how to do this?
@@ -55,7 +58,7 @@ ApplicationWindow {
             anchors.leftMargin: 20
 
             font.bold: true
-            text: ""
+            text: pageShoppingList.text
         }
     }
 
@@ -88,16 +91,12 @@ ApplicationWindow {
             anchors.bottom: parent.bottom
             anchors.topMargin: 24
 
-            Component.onCompleted: {
-                selectPage(3, pageRecipes.text)
-            }
-
             ItemDelegate {
                 Layout.fillWidth: true
                 font.bold: true
                 text: qsTr("Recipes")
 
-                onClicked: selectPage(3, pageRecipes.text)
+                onClicked: selectPage(2, pageRecipes.text)
             }
 
             ItemDelegate {
@@ -105,21 +104,21 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Sort orders")
 
-                onClicked: selectPage(0, text)
+                onClicked: selectPage(5, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Alternatives types")
 
-                onClicked: selectPage(1, text)
+                onClicked: selectPage(4, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Ingredients")
 
-                onClicked: selectPage(2, text)
+                onClicked: selectPage(3, text)
             }
             ItemDelegate {
                 id: pageRecipes
@@ -127,7 +126,7 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Recipes")
 
-                onClicked: selectPage(3, text)
+                onClicked: selectPage(2, text)
             }
 
             ItemDelegate {
@@ -135,7 +134,7 @@ ApplicationWindow {
                 font.bold: true
                 text: qsTr("Shopping")
 
-                onClicked: selectPage(4, pageShoppingList.text)
+                onClicked: selectPage(0, pageShoppingList.text)
             }
 
             ItemDelegate {
@@ -144,14 +143,14 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Shopping list")
 
-                onClicked: selectPage(4, text)
+                onClicked: selectPage(0, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Go shopping")
 
-                onClicked: selectPage(5, text)
+                onClicked: selectPage(1, text)
             }
 
             ItemDelegate {
@@ -164,7 +163,85 @@ ApplicationWindow {
 
             Item { Layout.fillHeight: true }
 
-            ToolSeparator {
+            // TODO: For (smaller) phones, everything below should be converted to buttons only. I might also try to decrease spaces between the items above for the same reason.
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: true
+                Layout.leftMargin: 12
+                Layout.rightMargin: 12
+                Layout.bottomMargin: 12
+
+                spacing: 10
+
+                RoundButton {
+                    display: AbstractButton.IconOnly
+
+                    text: qsTr("Import file")
+                    icon.source: "qrc:/images/import-file.svg"
+                    onClicked: {
+                        fileDialogImport.folder = "file:///" + recipeBookSettings.lastUsedImportFolder()
+                        fileDialogImport.open()
+                    }
+
+                    FileDialog {
+                        id: fileDialogImport
+                        objectName: "fileDialogImport"
+
+                        title: qsTr("Import file")
+                        modality: Qt.WindowModal
+                        nameFilters: importExportFilters
+                        selectExisting: true
+                        selectMultiple: false
+                        selectFolder: false
+                        signal onImport(filename: string)
+                        onAccepted: dlgConfirmImportFile.open()
+                    }
+                }
+
+                RoundButton {
+                    display: AbstractButton.IconOnly
+
+                    text: qsTr("Merge file")
+                    icon.source: "qrc:/images/merge.svg"
+                    enabled: false
+                }
+
+                RoundButton {
+                    display: AbstractButton.IconOnly
+
+                    text: qsTr("Export")
+                    icon.source: "qrc:/images/export-file.svg"
+                    onClicked: {
+                        fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedExportFolder()
+                        fileDialogExport.open()
+                    }
+
+                    FileDialog {
+                        id: fileDialogExport
+                        objectName: "fileDialogExport"
+
+                        title: qsTr("Export data")
+                        modality: Qt.WindowModal
+                        nameFilters: importExportFilters
+                        selectExisting: false
+                        selectMultiple: false
+                        selectFolder: false
+                        signal onExport(filename: string)
+                        onAccepted: onExport(fileDialogExport.fileUrls)
+                    }
+                }
+
+                RoundButton {
+                    display: AbstractButton.IconOnly
+
+                    text: qsTr("Settings")
+                    icon.source: "qrc:/images/settings-white.svg"
+                    onClicked: dlgSettings.open()
+                }
+
+            }
+
+            /*ToolSeparator {
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
             }
@@ -248,7 +325,7 @@ ApplicationWindow {
                 text: qsTr("Settings")
                 icon.source: "qrc:/images/settings-white.svg"
                 onClicked: dlgSettings.open()
-            }
+            }*/
         }
     }
 
@@ -263,25 +340,25 @@ ApplicationWindow {
         anchors.right: parent.right
         anchors.rightMargin: 10
 
-        CategoriesPage {
-            id: categoriesPage
-        }
-        AlternativesTypesPage {
-            id: alternativesTypesPage
-        }
-        IngredientsPage {
-            id: ingredientsPage
-        }
-        RecipesPage {
-            id: recipesPage
-        }
-
-
         ShoppingListPage {
             id: shoppingListPage
         }
         GoShoppingPage {
             id: goShoppingPage
+        }
+
+
+        RecipesPage {
+            id: recipesPage
+        }
+        IngredientsPage {
+            id: ingredientsPage
+        }
+        AlternativesTypesPage {
+            id: alternativesTypesPage
+        }
+        CategoriesPage {
+            id: categoriesPage
         }
 
 

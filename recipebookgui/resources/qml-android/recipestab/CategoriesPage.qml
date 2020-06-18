@@ -5,7 +5,6 @@ import QtQml.Models 2.1
 
 import "components"
 
-// TODO: ANPASSEN!
 Item {
 	id: categoriesTab
 
