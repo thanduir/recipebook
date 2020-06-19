@@ -2,9 +2,9 @@ TODO
 ====
 
 5. RecipeBook for android
+	- Add "placeholderText" to everywhere it makes sense!
 	- adjust qml files to smaller android screens:
 		* AlternativesTypesPage
-		* IngredientsPage
 		* RecipesPage
 		
 		* ShoppingListPage
@@ -14,11 +14,12 @@ TODO
 		
 		* components / dialogs?
 		* import / export: can i use std dialogs or should i write my own?
-	- TODOss
+	- TODOs
 	- Make emulator (x86) work for android variant (with relatively small sceen)!
 	- Adjust everything to smaller screens!
 	- Change delete handling on android? (similar to current app instead of always asking for confirmation?)
 		-> maybe just for those that can be deleted by swiping?
+	- improve startup time as much as possible (-> qt exmaples seem to load much faster!)
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)

@@ -55,6 +55,8 @@ Item {
 		anchors.topMargin: 24
 		selectByMouse: true
 
+		placeholderText: qsTr("Filter ingredients")
+
 		onTextEdited: {
 			filterModelIngredients.setFilterString(text);
 			lvIngredients.currentIndex = -1

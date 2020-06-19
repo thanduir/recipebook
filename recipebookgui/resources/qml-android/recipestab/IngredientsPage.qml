@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.14
 
 import "components"
 
-// TODO: ANPASSEN!
 Item {
     
 	TextInputDialog {
@@ -27,34 +26,21 @@ Item {
 		}
 	}
     
-	TextMessageDialog {
-		id: dlgRemoveIngredient
-		title: qsTr("Remove ingredient")
-		onAccepted: {
-			filterModelIngredients.removeIngredient(lvIngredients.currentIndex)
-			lvIngredients.currentIndex = -1
-		}
-	}
+    TextMessageDialog {
+        id: dlgCantRemoveIngredient
+        title: qsTr("Ingredient can't be removed")
+        okOnly: true
+    }
 
-	Label {
-		id: labelIngredients
-        
-		anchors.left: parent.left
-		anchors.top: parent.top
-		anchors.topMargin: 24
-		anchors.leftMargin: 48
-        
-		text: qsTr("Ingredients")
-		font.bold: true
-	}
-
-	TextField { 
+    // TODO: Textfield handling doesn't work as expected on android tablet for some reason
+    TextField {
 		id: textFilterIngredients
 		anchors.left: lvIngredients.left
 		anchors.right: lvIngredients.right
-		anchors.top: labelIngredients.bottom
-		anchors.topMargin: 24
-		selectByMouse: true
+        anchors.top: parent.top
+        selectByMouse: true
+
+        placeholderText: qsTr("Filter ingredients")
 
 		onTextEdited: {
 			filterModelIngredients.setFilterString(text);
@@ -87,206 +73,241 @@ Item {
 	ListView {
 		id: lvIngredients
 		anchors.left: parent.left
+        anchors.right: parent.right
 		anchors.top: textFilterIngredients.bottom 
-		anchors.bottom: paneIngredients.top
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
-
-		width: 400
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 24
+        anchors.bottomMargin: 24
 
 		boundsBehavior: Flickable.StopAtBounds
 		ScrollBar.vertical: ScrollBar { }
 
-		spacing: 5
+        Component.onCompleted: lvIngredients.currentIndex = -1
+        Connections {
+            target: modelIngredients
+            function onModelReset() {
+                lvIngredients.currentIndex = -1
+            }
+        }
+
+        remove: Transition {
+            SequentialAnimation {
+                PauseAnimation { duration: 125 }
+                NumberAnimation { property: "height"; to: 0; easing.type: Easing.InOutQuad }
+            }
+        }
+
+        displaced: Transition {
+            SequentialAnimation {
+                PauseAnimation { duration: 125 }
+                NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+            }
+        }
+
+        spacing: 0
 		model: filterModelIngredients
-		delegate: ItemDelegate {
-			width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
-			highlighted: ListView.isCurrentItem
-			onClicked: lvIngredients.currentIndex = index
+        delegate: SwipeDelegate {
+            id: listIngredientsItem
+            highlighted: ListView.isCurrentItem
+            width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
+            onClicked: lvIngredients.currentIndex == index ? lvIngredients.currentIndex = -1 : lvIngredients.currentIndex = index
+            height: listIngredientsItemGroup.height
                 
 			Item {
-				anchors.fill: parent
+                id: listIngredientsItemGroup
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.topMargin: 10
 
+                height: listItemDelegateName.height + 30 + (highlighted ? listItemGridIngredient.height : 0)
+
+                // Ingredient name
 				Label {
 					id: listItemDelegateName
 					anchors.left: parent.left
 					anchors.leftMargin: 10
                         
 					text: name
-					verticalAlignment: Text.AlignVCenter
-					height: parent.height
+                    verticalAlignment: Text.AlignVCenter
+
+                    font.strikeout: listIngredientsItem.swipe.complete
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        onPressAndHold: {
+                            if(listIngredientsItem.highlighted)
+                            {
+                                dlgRenameIngredient.initialText = filterModelIngredients.name(lvIngredients.currentIndex);
+                                dlgRenameIngredient.open();
+                            }
+                        }
+                        onClicked: listIngredientsItem.clicked()
+                    }
 				}
 
+                // Summary for inactive ingredients
 				Label {
 					anchors.left: listItemDelegateName.right
 					color: "gray"
 					text: " (" + category + ", " + defaultUnit + ")"
 					verticalAlignment: Text.AlignVCenter
-					height: parent.height
-					width: parent.width - listItemDelegateName.width - 10
+                    width: parent.width - listItemDelegateName.width - 10
 					wrapMode: Label.WordWrap
+                    visible: !listIngredientsItem.highlighted && !listIngredientsItem.swipe.complete
 				}
-			}
-		}
 
-		Connections {
-			target: modelIngredients
-			function onModelReset() {
-				if(modelIngredients.rowCount() == 0) {
-					lvIngredients.currentIndex = -1
-				}
+                // Extended information for active ingredient
+                GridLayout {
+                    id: listItemGridIngredient
+                    visible: listIngredientsItem.highlighted
+
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: listItemDelegateName.bottom
+                    anchors.leftMargin: 20
+                    anchors.rightMargin: 10
+                    anchors.topMargin: 10
+
+                    columns: 2
+                    columnSpacing: 10
+
+                    Label {
+                        text: qsTr("Category")
+                    }
+                    ComboBox {
+                        Layout.fillWidth: true
+                        model: modelCategories
+                        currentIndex: indexOfValue(filterModelIngredients.category(lvIngredients.currentIndex))
+                        onActivated: filterModelIngredients.setCategory(lvIngredients.currentIndex, currentText)
+                    }
+
+                    Label {
+                        Layout.rightMargin: 50
+                        Layout.topMargin: 15
+                        Layout.alignment: Qt.AlignTop
+                        text: qsTr("Provenance")
+                    }
+                    GridView {
+                        id: lvSortOrders
+                        Layout.fillWidth: true
+                        height: 100
+                        cellWidth: 155
+                        cellHeight: 40
+                        flow: GridView.FlowTopToBottom
+
+                        ScrollBar.horizontal: ScrollBar { }
+
+                        model: modelSortOrders
+                        delegate: CheckBox {
+                            id: cbxItemName
+                            text: name
+
+                            width: lvSortOrders.cellWidth
+
+                            checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
+                            onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
+
+                        }
+                    }
+
+                    Label { text: qsTr("Unit") }
+                    ComboBox {
+                        id: cbxUnit
+                        Layout.fillWidth: true
+                        model: uiStrings.getAllUnitNames()
+                        currentIndex: indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
+                        onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
+                    }
+                }
 			}
-		}
+
+            Timer {
+                id: undoTimer
+                interval: 2750
+                onTriggered: {
+                    filterModelIngredients.removeIngredient(index)
+                }
+            }
+
+            swipe.onCompleted: {
+                if(!filterModelIngredients.canIngredientBeRemoved(index))
+                {
+                    listIngredientsItem.swipe.close()
+                    dlgCantRemoveIngredient.msgText = qsTr("Ingredient \"%1\" is still in use and can't be removed.").arg(name);
+                    dlgCantRemoveIngredient.open();
+                }
+                else
+                {
+                    undoTimer.start()
+                    if(index == lvIngredients.currentIndex)
+                    {
+                        lvIngredients.currentIndex = -1
+                    }
+                }
+            }
+
+            swipe.right: Rectangle {
+                width: parent.width
+                height: parent.height
+
+                clip: true
+                color: "red"
+
+                Image {
+                    anchors.right: parent.right
+                    anchors.rightMargin: 24
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+
+                    visible: !listIngredientsItem.swipe.complete
+
+                    fillMode: Image.PreserveAspectFit
+                    source: "qrc:/images/remove.svg"
+                }
+                RoundButton {
+                    text: "Undo removal"
+
+                    anchors.right: parent.right
+                    onClicked: {
+                        console.log("btn undo");
+                        undoTimer.stop()
+                        listIngredientsItem.swipe.close()
+                    }
+
+                    visible: listIngredientsItem.swipe.complete
+                }
+            }
+        }
 	}
 
-	Pane {
-		id: paneIngredients
-		anchors.bottom: parent.bottom
-		anchors.left: lvIngredients.left
-		anchors.right: lvIngredients.right
-		anchors.leftMargin: 48
-		anchors.rightMargin: 48
-		anchors.bottomMargin: 10
+    /*
+    // TODO: Where to put this? Button in header row? Floating action button?
+    RoundButton {
+        id: buttonAdd
 
-		RowLayout {
-			anchors.centerIn: parent
-			spacing: 20
-        
-			RoundButton {
-				id: buttonAdd
+        display: AbstractButton.IconOnly
+        icon.source: "qrc:/images/add-black.svg"
 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+        ToolTip.delay: 1000
+        ToolTip.timeout: 5000
+        ToolTip.visible: hovered
+        ToolTip.text: qsTr("Add ingredient")
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Add ingredient")
-				
-				onVisibleChanged: {
-					if(visible)
-					{
-						enabled = filterModelIngredients.canIngredientsBeAdded();
-					}
-				}
-				onClicked: dlgAddIngredient.open()
-			}
+        onVisibleChanged: {
+            if(visible)
+            {
+                enabled = filterModelIngredients.canIngredientsBeAdded();
+            }
+        }
+        onClicked: dlgAddIngredient.open()
+    }
 
-			RoundButton {
-				id: buttonRename
-
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/edit.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Rename ingredient")
-
-				enabled: lvIngredients.currentIndex != -1
-				onClicked: {
-					dlgRenameIngredient.initialText = filterModelIngredients.name(lvIngredients.currentIndex);
-					dlgRenameIngredient.open();
-				}
-			}
-
-			RoundButton {
-				id: buttonRemove
-
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/remove.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Remove ingredient")
-
-				enabled: lvIngredients.count > 0 && filterModelIngredients.canIngredientBeRemoved(lvIngredients.currentIndex)
-				onClicked: {
-					dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"%1\". Proceed?").arg(filterModelIngredients.name(lvIngredients.currentIndex));
-					dlgRemoveIngredient.open();
-				}
-			}
-		}
-	}
-
-	Label {
-		id: labelCurrentSortOrder
-        
-		anchors.left: grid.left
-		anchors.top: parent.top
-		anchors.topMargin: 24
-        
-		visible: lvIngredients.count > 0 && lvIngredients.currentIndex != -1
-		text: qsTr("Ingredient \"%1\"").arg(filterModelIngredients.name(lvIngredients.currentIndex))
-		font.bold: true
-	}
-
-	GridLayout {
-		id: grid
-		anchors.left: lvIngredients.right
-		anchors.top: labelCurrentSortOrder.bottom
-		anchors.right: parent.right
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
-		anchors.rightMargin: 48
-        
-		visible: lvIngredients.count > 0 && lvIngredients.currentIndex != -1
-		columns: 2
-
-		Label { 
-			text: qsTr("Category")
-		}
-		ComboBox {
-			Layout.fillWidth: true
-			model: modelCategories
-			currentIndex: indexOfValue(filterModelIngredients.category(lvIngredients.currentIndex))
-			onActivated: filterModelIngredients.setCategory(lvIngredients.currentIndex, currentText)
-		}
-
-		Label { 
-			Layout.rightMargin: 50
-			Layout.topMargin: 15
-			Layout.alignment: Qt.AlignTop
-			text: qsTr("Provenance")
-		}
-		GridView {
-			id: lvSortOrders
-			Layout.fillWidth: true
-			height: 100
-			cellWidth: 155
-			cellHeight: 40
-			flow: GridView.FlowTopToBottom
-
-			ScrollBar.horizontal: ScrollBar { }
-
-			model: modelSortOrders
-			delegate: CheckBox {
-				id: cbxItemName                        
-				text: name
-
-				width: lvSortOrders.cellWidth
-
-				checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
-				onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
-				
-			}			
-		}
-
-		Label { text: qsTr("Unit") }
-		ComboBox {
-			id: cbxUnit
-			Layout.fillWidth: true
-			model: uiStrings.getAllUnitNames()
-			currentIndex: indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
-			onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
-		}
-
-		Item { height: 10; Layout.columnSpan: 2 }
-
-		Label { 
+    // TODO: What to do with these "Used in ..."?
+    //          -> Maybe an information button that shows a popup when clicked?
+    /*GridLayout {
+        Label {
 			Layout.topMargin: 24
 			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
 
@@ -329,5 +350,5 @@ Item {
 				text: modelData
 			}
 		}
-	}
+    }*/
 }

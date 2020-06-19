@@ -47,6 +47,27 @@ QVariant ListModelIngredients::data(const QModelIndex& index, int iRole) const
 	return QVariant();
 }
 
+bool ListModelIngredients::setData(const QModelIndex& index, const QVariant& value, int iRole)
+{
+	IngredientRoles role = static_cast<IngredientRoles>(iRole);
+	if(role == IngredientRoles::NameRole)
+	{
+		return false;
+	}
+	else if(role == IngredientRoles::CategoryRole)
+	{
+		setCategory(index.row(), value.toString());
+		return true;
+	}
+	else if(role == IngredientRoles::DefaultUnitRole)
+	{
+		setDefaultUnit(index.row(), value.toString());
+		return true;
+	}
+
+	return false;
+}
+
 QString ListModelIngredients::name(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
