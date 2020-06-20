@@ -128,7 +128,6 @@
     <name>IngredientsPage</name>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="12"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="165"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="11"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="164"/>
         <source>Add ingredient</source>
@@ -136,7 +135,6 @@
     </message>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="22"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="185"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="21"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="184"/>
         <source>Rename ingredient</source>
@@ -144,56 +142,47 @@
     </message>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="32"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="203"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="31"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="202"/>
         <source>Remove ingredient</source>
         <translation>Zutat löschen</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="47"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="46"/>
         <source>Ingredients</source>
         <translation>Zutaten</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="207"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="206"/>
         <source>This will remove the ingredient &quot;%1&quot;. Proceed?</source>
         <translation>Zutat &quot;%1&quot; wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="222"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="221"/>
         <source>Ingredient &quot;%1&quot;</source>
         <translation>Zutat &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="240"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="239"/>
         <source>Category</source>
         <translation>Kategorie</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="253"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="252"/>
         <source>Provenance</source>
         <translation>Herkunft</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="278"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="277"/>
         <source>Unit</source>
         <translation>Einheit</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="293"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="292"/>
         <source>Used in recipes</source>
         <translation>In Rezepten verwendet</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="315"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="314"/>
         <source>Used in shopping list</source>
         <translation>In Einkaufslisten verwendet</translation>
@@ -1202,45 +1191,48 @@
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="172"/>
         <source>Error saving current data</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Speichern</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="173"/>
         <source>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kochbuch-Datei konnte nicht geschrieben werden:
+&quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="195"/>
         <source>Error during file export</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler während des Exportierens</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="196"/>
         <source>Couldn&apos;t export to file:
 &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei konnte nicht exportiert werden:
+&quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="215"/>
         <source>Error during file import</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler während des Importierens</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="216"/>
         <source>Couldn&apos;t import file:
 &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei konnte nicht importiert werden:
+&quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="238"/>
         <source>Error loading default data</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Laden der Standardwerte</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="239"/>
         <source>Couldn&apos;t load default data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardwerte konnten nicht geladen werden.</translation>
     </message>
 </context>
 </TS>

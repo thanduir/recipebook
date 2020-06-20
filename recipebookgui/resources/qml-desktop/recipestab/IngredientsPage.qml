@@ -290,13 +290,16 @@ Item {
 		Label { 
 			Layout.topMargin: 24
 			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+			visible: gridUsedInRecipes.count > 0
 
 			text: qsTr("Used in recipes") 
 		}
 		GridView {
+			id: gridUsedInRecipes
 			Layout.topMargin: 24
 			Layout.fillWidth: true
 			height: 200
+			visible: count > 0
 
 			cellWidth: 275
 			cellHeight: 30
@@ -312,13 +315,16 @@ Item {
 		Label { 
 			Layout.topMargin: 24
 			Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+			visible: gridUsedInShoppingRecipes.count > 0
 
 			text: qsTr("Used in shopping list") 
 		}
 		GridView {
+			id: gridUsedInShoppingRecipes
 			Layout.topMargin: 24
 			Layout.fillWidth: true
 			height: 150
+			visible: count > 0
 
 			cellWidth: 275
 			cellHeight: 40

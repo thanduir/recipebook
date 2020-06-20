@@ -93,6 +93,7 @@ Item {
 		anchors.top: labelRecipes.bottom
 		anchors.topMargin: 24
 		selectByMouse: true
+		placeholderText: qsTr("Filter recipes")
 
 		onTextEdited: {
 			filterModelRecipes.setFilterString(text);
@@ -347,6 +348,7 @@ Item {
 		ToolTip.timeout: 3000
 		ToolTip.visible: hovered
 		ToolTip.text: qsTr("Short description")
+		placeholderText: qsTr("Recipe short description")
 
 		text: filterModelRecipes.shortDescription(lvRecipes.currentIndex)
 		onEditingFinished: filterModelRecipes.setShortDescription(lvRecipes.currentIndex, text)
@@ -376,6 +378,7 @@ Item {
 			ToolTip.timeout: 3000
 			ToolTip.visible: hovered
 			ToolTip.text: qsTr("Recipe text")
+			placeholderText: qsTr("Recipe text")
 
 			text: filterModelRecipes.recipeText(lvRecipes.currentIndex)
 			onEditingFinished: filterModelRecipes.setRecipeText(lvRecipes.currentIndex, text)

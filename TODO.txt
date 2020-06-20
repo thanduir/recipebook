@@ -2,7 +2,6 @@ TODO
 ====
 
 5. RecipeBook for android
-	- Add "placeholderText" to everywhere it makes sense!
 	- adjust qml files to smaller android screens:
 		* AlternativesTypesPage
 		* RecipesPage

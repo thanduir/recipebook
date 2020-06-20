@@ -8,7 +8,7 @@ import "components"
 Item {
 	id: categoriesTab
 
-    // TODO: Dialogs should be placed differently on android (avoid the keyboard, i.e. pos should be updated when the keyboard is (in)visible)!
+    // TODO: Dialogs with text input should be placed differently on android (avoid the keyboard, i.e. pos should be updated when the keyboard is (in)visible)!
 	TextInputDialog {
 		id: dlgAddSortOrder
         title: qsTr("Add sort order")
@@ -254,8 +254,6 @@ Item {
         anchors.bottom: parent.bottom
         anchors.topMargin: 24
         anchors.bottomMargin: 24
-        anchors.leftMargin: 24
-        anchors.rightMargin: 24
 
         visible: cbxSortOrders.currentIndex != -1
 

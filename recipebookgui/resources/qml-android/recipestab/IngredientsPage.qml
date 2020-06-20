@@ -248,7 +248,7 @@ Item {
                 }
             }
 
-            swipe.right: Rectangle {
+            swipe.left: Rectangle {
                 width: parent.width
                 height: parent.height
 

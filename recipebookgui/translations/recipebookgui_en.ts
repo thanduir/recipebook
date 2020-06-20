@@ -128,7 +128,6 @@
     <name>IngredientsPage</name>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="12"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="165"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="11"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="164"/>
         <source>Add ingredient</source>
@@ -136,7 +135,6 @@
     </message>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="22"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="185"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="21"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="184"/>
         <source>Rename ingredient</source>
@@ -144,56 +142,47 @@
     </message>
     <message>
         <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="32"/>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="203"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="31"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="202"/>
         <source>Remove ingredient</source>
         <translation>Remove ingredient</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="47"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="46"/>
         <source>Ingredients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="207"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="206"/>
         <source>This will remove the ingredient &quot;%1&quot;. Proceed?</source>
         <translation>This will remove the ingredient &quot;%1&quot;. Proceed?</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="222"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="221"/>
         <source>Ingredient &quot;%1&quot;</source>
         <translation>Ingredient &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="240"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="239"/>
         <source>Category</source>
         <translation>Category</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="253"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="252"/>
         <source>Provenance</source>
         <translation>Provenance</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="278"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="277"/>
         <source>Unit</source>
         <translation>Unit</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="293"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="292"/>
         <source>Used in recipes</source>
         <translation>Used in recipes</translation>
     </message>
     <message>
-        <location filename="../resources/qml-android/recipestab/IngredientsPage.qml" line="315"/>
         <location filename="../resources/qml-desktop/recipestab/IngredientsPage.qml" line="314"/>
         <source>Used in shopping list</source>
         <translation>Used in shopping list</translation>
@@ -1193,7 +1182,7 @@
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="26"/>
         <source>Simplified json files for app (*.app.json)</source>
-        <translation>Simplified json files for app (*.app.json)</translation>
+        <translation type="unfinished">Simplified json files for app (*.app.json)</translation>
     </message>
     <message>
         <location filename="../src/RecipeBookUIContext.cpp" line="172"/>
