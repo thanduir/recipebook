@@ -18,7 +18,7 @@ set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslation
                         src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
                         src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp)
 
-qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
+qt5_create_translation(QM_FILES resources/qml-desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
 
 if(NOT ANDROID)
 
