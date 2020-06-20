@@ -13,6 +13,7 @@ TODO
 		
 		* import / export: can i use std dialogs or should i write my own?
 	- TODOs
+	- qml warnings
 	- Make emulator (x86) work for android variant (with relatively small sceen)!
 	- Adjust everything to smaller screens!
 	- Make sure all features of the desktop app (and the einkaufsliste app) are present on android
