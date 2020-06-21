@@ -4,14 +4,13 @@ TODO
 5. RecipeBook for android
 	- adjust qml files to smaller android screens:
 		* AlternativesTypesPage
-			-> remove component in "dialogs" and add move code to AlternativesTypesPage (and adjust android version of this)!
-		* RecipesPage
-		
+		* RecipesPage		
 		* ShoppingListPage
 		
 		* RecipebooksTab + RbConfigPage
 		
 		* import / export: can i use std dialogs or should i write my own?
+	- components in qml-desktop/dialogs should either not be used in android or moved to a common directory!
 	- TODOs
 	- qml warnings
 	- Make emulator (x86) work for android variant (with relatively small sceen)!

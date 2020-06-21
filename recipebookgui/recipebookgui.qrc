@@ -40,7 +40,6 @@
 		<file alias="TextInputDialog.qml">resources/qml-desktop/dialogs/TextInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">resources/qml-desktop/dialogs/EditItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">resources/qml-desktop/dialogs/TextMessageDialog.qml</file>
-		<file alias="EditAlternativesGroupPane.qml">resources/qml-desktop/dialogs/EditAlternativesGroupPane.qml</file>
 		<file alias="AddRecipesListDialog.qml">resources/qml-desktop/dialogs/AddRecipesListDialog.qml</file>
 		<file alias="DateSelectionDialog.qml">resources/qml-desktop/dialogs/DateSelectionDialog.qml</file>
     </qresource>

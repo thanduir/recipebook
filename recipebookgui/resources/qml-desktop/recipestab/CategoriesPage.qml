@@ -394,7 +394,7 @@ Item {
 		font.bold: true
 	}
 
-	EditAlternativesGroupPane {
+	AlternativesTypesPage {
 		id: paneAlternativesGroups
 		anchors.left: lvCategories.right
 		anchors.top: labelAlternativesGroups.bottom
