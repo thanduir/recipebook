@@ -27,8 +27,6 @@ ApplicationWindow {
     // TODO: This might not work on phones (at least data changes didn't seem to get saved on phone...)
     onClosing: onClosingRecipeBook()
 
-    // TODO: The different pages should be able to add items here (and change the label)... But how to do this?
-    //      -> Add invisible dummy-buttons here that can be changed and connected to?
     // TODO: Add left / right navigation buttons to switch between items in a submenu?
     header: ToolBar {
         id: mainBar
@@ -55,12 +53,22 @@ ApplicationWindow {
             font.bold: true
             text: pageShoppingList.text
         }
+
+        Loader {
+            anchors.right: parent.right
+            //anchors.left: lblCurrentTabName.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+
+            id: headerSubpageSpace
+        }
     }
 
     function selectPage(myIndex: int, text: string) {
-        stackMain.currentIndex = myIndex
+        headerSubpageSpace.sourceComponent = undefined
+        stackMain.currentIndex = myIndex;
         lblCurrentTabName.text = text;
-        drawerMainMenu.close()
+        drawerMainMenu.close();
     }
 
     Drawer {
@@ -158,7 +166,6 @@ ApplicationWindow {
 
             Item { Layout.fillHeight: true }
 
-            // TODO: For (smaller) phones, everything below should be converted to buttons only. I might also try to decrease spaces between the items above for the same reason.
             RowLayout {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true

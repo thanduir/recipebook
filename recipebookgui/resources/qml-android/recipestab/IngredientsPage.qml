@@ -32,6 +32,37 @@ Item {
         okOnly: true
     }
 
+    // Header Component
+
+    onVisibleChanged: {
+        if(visible)
+        {
+            headerSubpageSpace.sourceComponent = ingredientHeaderComponent;
+        }
+    }
+
+    Component {
+        id: ingredientHeaderComponent
+
+        ToolButton {
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+
+            display: AbstractButton.IconOnly
+            icon.source: "qrc:/images/add-black.svg"
+
+            onVisibleChanged: {
+                if(visible)
+                {
+                    enabled = filterModelIngredients.canIngredientsBeAdded();
+                }
+            }
+            onClicked: dlgAddIngredient.open()
+        }
+    }
+
+    // Main page
+
     // TODO: Textfield handling doesn't work as expected on android tablet for some reason
     TextField {
 		id: textFilterIngredients
@@ -343,26 +374,4 @@ Item {
             }
         }
 	}
-
-    /*
-    // TODO: Where to put this? Button in header row? Floating action button?
-    RoundButton {
-        id: buttonAdd
-
-        display: AbstractButton.IconOnly
-        icon.source: "qrc:/images/add-black.svg"
-
-        ToolTip.delay: 1000
-        ToolTip.timeout: 5000
-        ToolTip.visible: hovered
-        ToolTip.text: qsTr("Add ingredient")
-
-        onVisibleChanged: {
-            if(visible)
-            {
-                enabled = filterModelIngredients.canIngredientsBeAdded();
-            }
-        }
-        onClicked: dlgAddIngredient.open()
-    }*/
 }
