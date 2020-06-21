@@ -2,7 +2,6 @@ import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 
-// TODO: ANPASSEN!
 Item {
 	onVisibleChanged: {
 		if(visible)
@@ -10,13 +9,13 @@ Item {
 			modelGoShopping.updateList();
 
 			var activeSortOrderIndex = cbxSortOrder.indexOfValue(recipeBookSettings.getActiveSortOrderGoShopping());
-			if(activeSortOrderIndex == -1)
+            if(activeSortOrderIndex === -1)
 			{
 				activeSortOrderIndex = 0;
 			}
 			cbxSortOrder.currentIndex = activeSortOrderIndex;
 			
-			var activeListOrdering = recipeBookSettings.getActiveListOrderingGoShopping() == uiStrings.getShoppingListOrderingNameSeparate();
+            var activeListOrdering = recipeBookSettings.getActiveListOrderingGoShopping() === uiStrings.getShoppingListOrderingNameSeparate();
 			btnSeparateCollectedItems.checked = activeListOrdering;
 
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, btnSeparateCollectedItems.checked);
@@ -29,7 +28,6 @@ Item {
 		anchors.left: lvShoppingList.left
 		anchors.right: btnSeparateCollectedItems.left
 		anchors.top: parent.top
-		anchors.topMargin: 24
 		anchors.rightMargin: 10
 
 		model: modelSortOrders
@@ -68,12 +66,11 @@ Item {
 	ListView {
 		id: lvShoppingList
 		anchors.left: parent.left
+        anchors.right: parent.right
 		anchors.top: cbxSortOrder.bottom 
-		anchors.bottom: btnExport.visible ? btnExport.top : parent.bottom
-		anchors.topMargin: 48
-		anchors.leftMargin: 48
-		anchors.bottomMargin: 48
-		width: 400
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 24
+        anchors.bottomMargin: 24
 
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
@@ -86,7 +83,6 @@ Item {
 			NumberAnimation { properties: "x,y"; duration: 300; easing.type: Easing.InCubic }
 		}
 
-		spacing: 5
 		model: modelGoShopping
 		delegate: ItemDelegate {
 			width: lvShoppingList.width - lvShoppingList.leftMargin - lvShoppingList.rightMargin
@@ -98,14 +94,15 @@ Item {
 				anchors.left: parent.left
 				anchors.right: parent.right
 				anchors.top: parent.top
-				anchors.topMargin: 10
+                anchors.topMargin: 10
 
 				height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
 
-				ToolTip.delay: 1000
+                // TODO: What to do with this overlay text?
+                /*ToolTip.delay: 1000
 				ToolTip.timeout: 5000
 				ToolTip.visible: hovered && normalItem
-				ToolTip.text: itemRecipeInfo
+                ToolTip.text: itemRecipeInfo*/
 
 				Label {
 					id: listItemName
@@ -151,34 +148,5 @@ Item {
 				}
 			}
 		}
-	}
-
-	Button {
-		id: btnExport
-		anchors.bottom: parent.bottom
-		anchors.horizontalCenter: lvShoppingList.horizontalCenter
-
-		visible: shoppingListExporter.exportAvailable()
-
-		font.capitalization: Font.MixedCase
-
-		text: "Export shopping list"
-
-		onClicked: {
-			fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedShoppingListExportFolder()
-			fileDialogExport.open()
-		}
-
-		FileDialog {
-			id: fileDialogExport
-
-			title: qsTr("Export shopping list")
-			modality: Qt.WindowModal
-			nameFilters: shoppingListExporter.getDlgNameFilters()
-			selectExisting: false
-			selectMultiple: false
-			selectFolder: false
-			onAccepted: shoppingListExporter.exportShoppingList(fileUrls, cbxSortOrder.currentText)
-		}
-	}
+    }
 }
