@@ -6,7 +6,7 @@ import QtQml.Models 2.1
 import "components"
 
 Item {
-	id: categoriesTab
+    id: categoriesPage
 
     // TODO: Dialogs with text input should be placed differently on android (avoid the keyboard, i.e. pos should be updated when the keyboard is (in)visible)!
 	TextInputDialog {
@@ -23,8 +23,7 @@ Item {
 	TextInputDialog {
 		id: dlgRenameSortOrder
 		title: qsTr("Rename sort order")
-        // TODO: This doesn't quite work (enabled not always updated correctly)!
-		onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
+        onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
 		onAccepted: {
             cbxSortOrders.currentIndex = modelSortOrders.renameSortOrder(cbxSortOrders.currentIndex, outputText)
             cbxSortOrders.positionViewAtIndex(cbxSortOrders.currentIndex, ListView.Center)
@@ -71,6 +70,35 @@ Item {
 			lvCategories.decrementCurrentIndex()
 		}
 	}
+
+    // Header Component
+
+    onVisibleChanged: {
+        if(visible)
+        {
+            headerSubpageSpace.sourceComponent = categoriesHeaderComponent;
+        }
+    }
+
+    Component {
+        id: categoriesHeaderComponent
+
+        ToolButton {
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+
+            display: AbstractButton.IconOnly
+            icon.source: "qrc:/images/add-black.svg"
+
+            onVisibleChanged: {
+                if(visible)
+                {
+                    enabled = modelSortOrder.canCategoriesBeAdded()
+                }
+            }
+            onClicked: dlgAddCategory.open()
+        }
+    }
 
     ComboBox {
         id: cbxSortOrders
@@ -148,8 +176,6 @@ Item {
         }
     }
 
-    // TODO: Dragging should only be possible when grabbing the image!
-    // TODO: Scrolling should work everywhere except on the image (not only on the scrollbar)
     // TODO: SwipeView with pages might collide with the swiping gestures i want to have here...
 	Component {
 		id: dragDelegate
@@ -159,7 +185,9 @@ Item {
 
 			property bool held: false
 
-			anchors { left: parent != null ? parent.left : undefined; right: parent != null ? parent.right : undefined }
+            anchors.left: parent != null ? parent.left : undefined;
+            anchors.leftMargin: 15
+            width: reorderImage.height
 			height: content.height
 
 			drag.target: held ? content : undefined
@@ -168,37 +196,36 @@ Item {
 			onPressed: {
 				held = true
 				modelSortOrder.beginMoveCategory(index);
-				lvCategories.currentIndex = -1
 			}
 			onReleased: {
 				held = false
 				modelSortOrder.applyMoveCategory();
-			}
-			onClicked: lvCategories.currentIndex = index
+            }
             
 			Rectangle {
 				id: content
 
-				anchors.horizontalCenter: parent.horizontalCenter
-				anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
 
-				width: dragArea.width; 
+                anchors.leftMargin: -15
+                width: lvCategories.width - lvCategories.leftMargin - lvCategories.rightMargin
 				height: column.implicitHeight + 50
 
-				color: dragArea.held || lvCategories.currentIndex == index ? "lightgray" : "transparent"
+                color: dragArea.held ? "lightgray" : "transparent"
                 
 				Drag.active: dragArea.held
 				Drag.source: dragArea
-				Drag.hotSpot.x: width / 2
-				Drag.hotSpot.y: height / 2
+                Drag.hotSpot.x: dragArea.width / 2
+                Drag.hotSpot.y: dragArea.height / 2
 
 				states: State {
 					when: dragArea.held
 
-					ParentChange { target: content; parent: categoriesTab }
+                    ParentChange { target: content; parent: categoriesPage }
 					AnchorChanges {
 						target: content
-						anchors { horizontalCenter: undefined; verticalCenter: undefined }
+                        anchors { verticalCenter: undefined; left: undefined; }
 					}
 				}
 
@@ -211,9 +238,9 @@ Item {
 						id: reorderImage
 						anchors.verticalCenter: parent.verticalCenter
 						anchors.left: parent.left
+                        anchors.leftMargin: 15
 						height: labelColumn.implicitHeight + 10
 						verticalAlignment: Image.AlignVCenter
-						anchors.margins: 15
 
 						fillMode: Image.PreserveAspectFit
 						source: "qrc:/images/reorder.svg"
@@ -227,22 +254,30 @@ Item {
 						anchors.margins: 15
 
 						verticalAlignment: Text.AlignVCenter
-						text: modelData
+                        text: modelData
 
-                        
+                        MouseArea {
+                            anchors.fill: parent
+                            onPressAndHold: {
+                                lvCategories.currentIndex = index
+                                dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
+                                dlgRenameCategory.open();
+
+                            }
+                        }
 					}
 				}
-			}
+            }
 
-			DropArea {
-				anchors { fill: parent; margins: 15 }
+            DropArea {
+                anchors { fill: parent; }
 
-				onEntered: {
-					modelSortOrder.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
-					categoriesDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
-														dragArea.DelegateModel.itemsIndex);
-				}
-			}
+                onEntered: {
+                    modelSortOrder.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
+                    categoriesDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
+                                                        dragArea.DelegateModel.itemsIndex);
+                }
+            }
 		}
     }
 
@@ -260,8 +295,7 @@ Item {
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
 
-		spacing: 5
-		model: DelegateModel {
+        model: DelegateModel {
 			id: categoriesDelegateModel
 
 			model: modelSortOrder
@@ -269,37 +303,7 @@ Item {
 		}
 	}
 
-    // TODO: Add these methods somewhere!
     /*
-        // TODO: How to add categories? Button at the top (might be confusing, though)? Hovering button (as in einkaufsliste) might be the best option here.
-        RoundButton {
-            display: AbstractButton.IconOnly
-            icon.source: "qrc:/images/add-black.svg"
-
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
-            ToolTip.visible: hovered
-            ToolTip.text: qsTr("Add category")
-
-            enabled: modelSortOrder.canCategoriesBeAdded()
-            onClicked: dlgAddCategory.open()
-        }
-        // TODO: Rename after long click on name!
-        RoundButton {
-            display: AbstractButton.IconOnly
-            icon.source: "qrc:/images/edit.svg"
-
-            ToolTip.delay: 1000
-            ToolTip.timeout: 5000
-            ToolTip.visible: hovered
-            ToolTip.text: qsTr("Rename category")
-
-            enabled: lvCategories.count > 0 && lvCategories.currentIndex != -1 && lvCategories.currentIndex >= 0
-            onClicked: {
-                dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
-                dlgRenameCategory.open();
-            }
-        }
         // TODO: Remove by swipe!
         RoundButton {
             display: AbstractButton.IconOnly
