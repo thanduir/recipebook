@@ -189,7 +189,6 @@ Item {
 			property bool held: false
 
 			anchors.left: parent != null ? parent.left : undefined;
-			anchors.leftMargin: 15
 			width: reorderImage.height
 			height: content.height
 
@@ -211,7 +210,6 @@ Item {
 				anchors.left: parent.left
 				anchors.verticalCenter: parent.verticalCenter
 
-				anchors.leftMargin: -15
 				width: lvCategories.width - lvCategories.leftMargin - lvCategories.rightMargin
 				height: column.implicitHeight + 40
 
@@ -241,7 +239,6 @@ Item {
 						id: reorderImage
 						anchors.verticalCenter: parent.verticalCenter
 						anchors.left: parent.left
-						anchors.leftMargin: 15
 						height: labelColumn.implicitHeight + 10
 						verticalAlignment: Image.AlignVCenter
 
