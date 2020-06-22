@@ -3,7 +3,6 @@ TODO
 
 5. RecipeBook for android
 	- adjust qml files to smaller android screens:
-		* AlternativesTypesPage
 		* RecipesPage		
 		* ShoppingListPage
 		

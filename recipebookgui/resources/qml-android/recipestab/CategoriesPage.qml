@@ -255,6 +255,7 @@ Item {
 						verticalAlignment: Text.AlignVCenter
 						text: modelData
 
+						// TODO: This prevents swipe on label!
 						MouseArea {
 							anchors.fill: parent
 							onPressAndHold: {

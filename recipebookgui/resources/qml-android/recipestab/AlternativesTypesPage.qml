@@ -36,11 +36,8 @@ Item {
 	ColorDialog {
 		id: colorDialog
 
-		x: (parent.width - width) / 2
-		y: (parent.height - height) / 2
-
 		title: "Choose alternatives group color"
-		modality: Qt.ApplicationModal // Qt.WindowModal
+		modality: Qt.WindowModal
 		property int currentIndex: -1
 		onAccepted: {
 			alternativesTypes.setColor(currentIndex, colorDialog.color)
@@ -127,6 +124,7 @@ Item {
 					text: name
 					verticalAlignment: Text.AlignVCenter
 
+					// TODO: This prevents swipe on label!
 					MouseArea {
 						anchors.fill: parent
 						onPressAndHold: {
