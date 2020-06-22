@@ -5,7 +5,6 @@ import QtQuick.Layouts 1.14
 
 import "components"
 
-// TODO: Anpassen
 Item {
 	TextInputDialog {
 		id: dlgAddType
@@ -28,56 +27,96 @@ Item {
 	}
     
 	TextMessageDialog {
-		id: dlgRemoveRecipe
-		title: qsTr("Remove alternatives group")
-		onAccepted: {
-			alternativesTypes.removeType(lvValues.currentIndex)
-			lvValues.currentIndex = -1
-		}
+		id: dlgCantRemoveAlternativesGroup
+		title: qsTr("Ingredient can't be removed")
+		okOnly: true
 	}
 
+	// TODO: This crashes on android tablet (click on ok / cancel) and is wrongly positioned!
 	ColorDialog {
 		id: colorDialog
+
+		x: (parent.width - width) / 2
+		y: (parent.height - height) / 2
+
 		title: "Choose alternatives group color"
-		modality: Qt.WindowModal
+		modality: Qt.ApplicationModal // Qt.WindowModal
 		property int currentIndex: -1
 		onAccepted: {
 			alternativesTypes.setColor(currentIndex, colorDialog.color)
 		}
 	}
 
+	// Header Component
+
+	onVisibleChanged: {
+		if(visible)
+		{
+			headerSubpageSpace.sourceComponent = alternativesTypesHeaderComponent;
+		}
+	}
+
+	Component {
+		id: alternativesTypesHeaderComponent
+
+		ToolButton {
+			anchors.right: parent.right
+			anchors.rightMargin: 10
+
+			display: AbstractButton.IconOnly
+			icon.source: "qrc:/images/add-black.svg"
+
+			onVisibleChanged: {
+				if(visible)
+				{
+					enabled = alternativesTypes.canTypesBeAdded()
+				}
+			}
+			onClicked: dlgAddType.open()
+		}
+	}
+
+	// Main page
+
 	ListView {
 		id: lvValues
 		anchors.top: parent.top
 		anchors.left: parent.left
 		anchors.right: parent.right
-		anchors.bottom: groupButtons.top
-		topMargin: 5
-		leftMargin: 5
-		rightMargin: 5
-		anchors.bottomMargin: 48
+		anchors.bottom: parent.bottom
+		anchors.topMargin: 24
+		anchors.bottomMargin: 24
 
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
 
-		spacing: 5
+		remove: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "height"; to: 0; easing.type: Easing.InOutQuad }
+			}
+		}
+
+		displaced: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+			}
+		}
+
 		model: alternativesTypes
 
-		delegate: ItemDelegate {
+		delegate: SwipeDelegate {
 			id: listItemRecipeItem
-			highlighted: ListView.isCurrentItem
-			onPressed: lvValues.currentIndex = index
 			width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
 			height: listItem.height
 
-			Item {
+			contentItem: Item {
 				id: listItem
-				anchors.left: listItemRecipeItem.left
-				anchors.right: listItemRecipeItem.right
 				anchors.top: listItemRecipeItem.top
-				anchors.topMargin: 15
+				anchors.topMargin: 10
 
-				height: labelGroupName.height + 30
+				height: labelGroupName.height + 20
 					
 				// group name
 				Label {
@@ -87,6 +126,14 @@ Item {
                         
 					text: name
 					verticalAlignment: Text.AlignVCenter
+
+					MouseArea {
+						anchors.fill: parent
+						onPressAndHold: {
+							dlgRenameType.initialText = alternativesTypes.name(index);
+							dlgRenameType.open();
+						}
+					}
 				}
 
 				// group symbol
@@ -112,61 +159,65 @@ Item {
 					}
 				}
 			}
-		}
-	}
 
-	Pane {
-		id: groupButtons
-		anchors.left: parent.left
-		anchors.right: parent.right
-		anchors.bottom: parent.bottom
-
-		RowLayout {
-			anchors.centerIn: parent
-			spacing: 20
-                    
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Add alternatives group")
-
-				enabled: alternativesTypes.canTypesBeAdded()
-				onClicked: dlgAddType.open()
-			}
-
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/edit.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Rename alternatives group")
-
-				enabled: lvValues.count > 0 && lvValues.currentIndex != -1
-				onClicked: {
-					dlgRenameType.initialText = alternativesTypes.name(lvValues.currentIndex);
-					dlgRenameType.open();
+			Timer {
+				id: undoTimer
+				interval: 2750
+				onTriggered: {
+					alternativesTypes.removeType(index)
 				}
 			}
 
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/remove.svg"
+			swipe.onCompleted: {
+				if(!alternativesTypes.canTypeBeRemoved(index))
+				{
+					listItemRecipeItem.swipe.close()
+					dlgCantRemoveAlternativesGroup.msgText = qsTr("Alternatives group \"%1\" is still in use and can't be removed.").arg(name);
+					dlgCantRemoveAlternativesGroup.open();
+				}
+				else
+				{
+					undoTimer.start()
+				}
+			}
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Remove alternatives group")
+			swipe.left: Rectangle {
+				width: parent.width
+				height: parent.height
 
-				enabled: lvValues.count > 0 && alternativesTypes.canTypeBeRemoved(lvValues.currentIndex)
-				onClicked: {
-					dlgRemoveRecipe.msgText = qsTr("This will remove the alternatives group \"%1\". Proceed?").arg(alternativesTypes.name(lvValues.currentIndex));
-					dlgRemoveRecipe.open();
+				clip: true
+				color: "darkgray"
+
+				Image {
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+					anchors.verticalCenter: parent.verticalCenter
+
+					visible: !listItemRecipeItem.swipe.complete
+
+					fillMode: Image.PreserveAspectFit
+					source: "qrc:/images/remove.svg"
+				}
+				Label {
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+					anchors.verticalCenter: parent.verticalCenter
+					text: qsTr("Alternatives group \"%1\" removed").arg(name)
+
+					visible: listItemRecipeItem.swipe.complete
+				}
+				RoundButton {
+					text: qsTr("Undo")
+
+					anchors.right: parent.right
+					anchors.verticalCenter: parent.verticalCenter
+
+					onClicked: {
+						undoTimer.stop()
+						listItemRecipeItem.swipe.close()
+					}
+
+					visible: listItemRecipeItem.swipe.complete
 				}
 			}
 		}

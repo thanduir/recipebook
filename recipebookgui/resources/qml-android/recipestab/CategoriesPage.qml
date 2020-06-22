@@ -294,6 +294,20 @@ Item {
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
 
+		remove: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "height"; to: 0; easing.type: Easing.InOutQuad }
+			}
+		}
+
+		displaced: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+			}
+		}
+
 		model: DelegateModel {
 			id: categoriesDelegateModel
 
