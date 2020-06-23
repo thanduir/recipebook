@@ -9,7 +9,7 @@ TODO
 		* RecipebooksTab + RbConfigPage
 		
 		* import / export: can i use std dialogs or should i write my own?
-	- components in qml-desktop/dialogs should either not be used in android or moved to a common directory!
+	- android: "back" button should open side panel, if it isn't open, and close the app if it is open.
 	- TODOs
 	- qml warnings
 	- Make emulator (x86) work for android variant (with relatively small sceen)!

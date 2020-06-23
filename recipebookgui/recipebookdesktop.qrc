@@ -1,0 +1,59 @@
+<RCC>
+    <qresource prefix="RecipeBookGUI">
+    </qresource>
+	<qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+		
+		<file alias="recipebook.qml">qml/desktop/recipebook.qml</file>		
+		<file alias="SettingsDialog.qml">qml/desktop/SettingsDialog.qml</file>
+		
+		<file alias="RecipesTab.qml">qml/desktop/recipestab/RecipesTab.qml</file>
+		<file alias="CategoriesPage.qml">qml/desktop/recipestab/CategoriesPage.qml</file>
+		<file alias="AlternativesTypesPage.qml">qml/desktop/recipestab/AlternativesTypesPage.qml</file>
+		<file alias="IngredientsPage.qml">qml/desktop/recipestab/IngredientsPage.qml</file>
+		<file alias="RecipesPage.qml">qml/desktop/recipestab/RecipesPage.qml</file>	
+		
+		<file alias="ShoppingTab.qml">qml/desktop/shoppingtab/ShoppingTab.qml</file>		
+		<file alias="ShoppingListPage.qml">qml/desktop/shoppingtab/ShoppingListPage.qml</file>
+		<file alias="GoShoppingPage.qml">qml/desktop/shoppingtab/GoShoppingPage.qml</file>
+		
+		<file alias="RecipebooksTab.qml">qml/desktop/recipebookstab/RecipebooksTab.qml</file>
+		<file alias="RbConfigPage.qml">qml/desktop/recipebookstab/RbConfigPage.qml</file>
+    </qresource>
+	<qresource prefix="/components">
+		<file alias="AppDlgInterface.qml">qml/components/AppDlgInterface.qml</file>
+		<file alias="TextInputDialog.qml">qml/components/TextInputDialog.qml</file>
+		<file alias="EditItemsListDialog.qml">qml/components/EditItemsListDialog.qml</file>
+		<file alias="TextMessageDialog.qml">qml/components/TextMessageDialog.qml</file>
+		<file alias="AddRecipesListDialog.qml">qml/components/AddRecipesListDialog.qml</file>
+		<file alias="DateSelectionDialog.qml">qml/components/DateSelectionDialog.qml</file>
+    </qresource>
+	<qresource prefix="/files">
+		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>
+    </qresource>
+	<qresource prefix="/translations">
+		<file alias="recipebookgui_en.qm">translations/recipebookgui_en.qm</file>
+		<file alias="recipebookgui_de.qm">translations/recipebookgui_de.qm</file>
+    </qresource>
+	<qresource prefix="/images">
+        <file alias="reorder.svg">images/reorder.svg</file>
+		<file alias="edit.svg">images/edit.svg</file>
+		<file alias="backspace.svg">images/backspace.svg</file>		
+		<file alias="settings-white.svg">images/settings-white.svg</file>
+		<file alias="export-file.svg">images/export-file.svg</file>
+		<file alias="import-file.svg">images/import-file.svg</file>
+		<file alias="merge.svg">images/merge.svg</file>		
+		<file alias="add-black.svg">images/add-black.svg</file>		
+		<file alias="remove.svg">images/remove.svg</file>
+		<file alias="clear-black.svg">images/clear-black.svg</file>
+		<file alias="copy-black.svg">images/copy-black.svg</file>
+		<file alias="date-range.svg">images/date-range.svg</file>
+		<file alias="list-black.svg">images/list-black.svg</file>
+		<file alias="sort-black.svg">images/sort-black.svg</file>
+		<file alias="cancel-black.svg">images/cancel-black.svg</file>
+		<file alias="error-black.svg">images/error-black.svg</file>
+		<file alias="open-drawer.svg">images/open-drawer.svg</file>
+		<file alias="more-vert.svg">images/more-vert.svg</file>
+		<file alias="info.svg">images/info.svg</file>
+    </qresource>
+</RCC>

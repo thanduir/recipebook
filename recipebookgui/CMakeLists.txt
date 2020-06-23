@@ -18,12 +18,12 @@ set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslation
                         src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
                         src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp)
 
-qt5_create_translation(QM_FILES resources/qml-desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
+qt5_create_translation(QM_FILES qml/desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
 
 if(NOT ANDROID)
 
     add_executable(RecipeBook WIN32 ${RECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
-                                    recipebookgui.qrc
+		                            recipebookdesktop.qrc
                                     icon/icon.rc)
 
     target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
@@ -36,13 +36,13 @@ if(NOT ANDROID)
     add_custom_command(TARGET RecipeBook POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E
             env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
-                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/resources/qml-desktop"
+                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/qml"
                     "$<TARGET_FILE:RecipeBook>"
         COMMENT "Running windeployqt...")
 else()
 
     add_library(RecipeBook SHARED ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
-                            recipebookgui.qrc)
+		                    recipebookandroid.qrc)
 
     target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
