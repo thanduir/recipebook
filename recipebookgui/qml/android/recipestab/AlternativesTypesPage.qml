@@ -102,27 +102,23 @@ Item {
 		}
 
 		model: alternativesTypes
-
 		delegate: SwipeDelegate {
 			id: listItemRecipeItem
 			width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
-			height: listItem.height
 
 			contentItem: Item {
 				id: listItem
 				anchors.top: listItemRecipeItem.top
-				anchors.topMargin: 10
-
-				height: labelGroupName.height + 20
+				anchors.topMargin: 5
 					
 				// group name
 				Label {
 					id: labelGroupName
 					anchors.left: parent.left
 					anchors.leftMargin: 10
+					anchors.verticalCenter: parent.verticalCenter
                         
 					text: name
-					verticalAlignment: Text.AlignVCenter
 
 					// TODO: This prevents swipe on label!
 					MouseArea {
@@ -139,7 +135,7 @@ Item {
 					id: rowGroupHeaderButtons
 					anchors.right: listItem.right
 					anchors.top: parent.top
-					anchors.topMargin: 0
+					anchors.topMargin: 10
 					anchors.rightMargin: 10
 					width: 20
 					height: width

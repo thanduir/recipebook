@@ -135,7 +135,7 @@ Item {
             }
         }
 
-        // TODO: Binding loop for height... Why?
+		// TODO: Binding loop for height... Why? -> shouldn't set height in SwipeDelegate, but need it for expand on click..
         spacing: 0
 		model: filterModelIngredients
         delegate: SwipeDelegate {
@@ -143,7 +143,7 @@ Item {
             highlighted: ListView.isCurrentItem
             width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
             onClicked: lvIngredients.currentIndex == index ? lvIngredients.currentIndex = -1 : lvIngredients.currentIndex = index
-            height: listIngredientsItemGroup.height
+			height: listIngredientsItemGroup.height
                 
             contentItem: Item {
                 id: listIngredientsItemGroup
