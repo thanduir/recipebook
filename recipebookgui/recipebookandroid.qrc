@@ -18,7 +18,8 @@
 		<file alias="GoShoppingPage.qml">qml/android/shoppingtab/GoShoppingPage.qml</file>
 		
 		<file alias="RecipebooksTab.qml">qml/android/recipebookstab/RecipebooksTab.qml</file>
-		<file alias="RbConfigPage.qml">qml/android/recipebookstab/RbConfigPage.qml</file>
+		<file alias="RbConfigContentPage.qml">qml/android/recipebookstab/RbConfigContentPage.qml</file>
+		<file alias="RbConfigDetailsPage.qml">qml/android/recipebookstab/RbConfigDetailsPage.qml</file>
     </qresource>
 	<qresource prefix="/components">
 		<file alias="AppDlgInterface.qml">qml/components/AppDlgInterface.qml</file>

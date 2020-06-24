@@ -4,15 +4,14 @@ import QtQuick.Layouts 1.14
 
 import "components"
 
-// TODO: ANPASSEN!
 Item {
 	TextInputDialog {
 		id: dlgAddConfig
 		title: qsTr("Add recipe book configuration")
 		onCurrentTextChanged: currentTextAllowed = !modelRecipeBookConfigurations.existsConfiguration(outputText)
 		onAccepted: {
-			bar.currentIndex = modelRecipeBookConfigurations.addConfiguration(outputText)
-			modelRBConfigItems.setCurrentConfig(bar.currentIndex)
+			cbxCurrentConfiguration.currentIndex = modelRecipeBookConfigurations.addConfiguration(outputText)
+			modelRBConfigItems.setCurrentConfig(cbxCurrentConfiguration.currentIndex)
 		}
 	}
 
@@ -21,8 +20,8 @@ Item {
 		title: qsTr("Rename recipe book configuration")
 		onCurrentTextChanged: currentTextAllowed = !modelSortOrders.existsSortOrder(outputText)
 		onAccepted: {
-			bar.currentIndex = modelRecipeBookConfigurations.renameConfiguration(bar.currentIndex, outputText)
-			modelRBConfigItems.setCurrentConfig(bar.currentIndex)
+			cbxCurrentConfiguration.currentIndex = modelRecipeBookConfigurations.renameConfiguration(cbxCurrentConfiguration.currentIndex, outputText)
+			modelRBConfigItems.setCurrentConfig(cbxCurrentConfiguration.currentIndex)
 		}
 	}
     
@@ -30,101 +29,109 @@ Item {
 		id: dlgRemoveConfig
 		title: qsTr("Remove recipe book configuration")
 		onAccepted: {
-			modelRecipeBookConfigurations.removeConfiguration(bar.currentIndex)
-			bar.incrementCurrentIndex()
-			bar.decrementCurrentIndex()
-			modelRBConfigItems.setCurrentConfig(bar.currentIndex)
+			modelRecipeBookConfigurations.removeConfiguration(cbxCurrentConfiguration.currentIndex)
+			cbxCurrentConfiguration.incrementCurrentIndex()
+			cbxCurrentConfiguration.decrementCurrentIndex()
+			modelRBConfigItems.setCurrentConfig(cbxCurrentConfiguration.currentIndex)
 		}
 	}
 
-	TabBar {
-		id: bar
-		width: parent.height - groupConfigurations.height
-		transform: [
-			Rotation { origin.x: 0; origin.y: 0; angle: -90},
-			Translate { y: parent.height / 2 - groupConfigurations.height / 2 + bar.width / 2; x: 0 }
-		]
-        
-		Repeater {
-			id: tabBtnRepeater
+	RowLayout {
+		id: rowCurrentConfiguration
+
+		anchors.left: parent.left
+		anchors.right: parent.right
+		anchors.top: parent.top
+
+		ComboBox {
+			id: cbxCurrentConfiguration
+			Layout.fillWidth: true
 
 			model: modelRecipeBookConfigurations
+			textRole: "name"
+			onActivated: modelRBConfigItems.setCurrentConfig(index)
 
-			TabButton {
-				font.capitalization: Font.MixedCase
-				text: name
+			Component.onCompleted: {
+				if(cbxCurrentConfiguration.count > 0) {
+					cbxCurrentConfiguration.currentIndex = 0;
+					modelRBConfigItems.setCurrentConfig(0);
+				}
+			}
+		}
 
-				background: Rectangle {
-					color: bar.currentIndex == index ? "lightgray" : "transparent"
+		RoundButton {
+			id: btnAddConfiguration
+
+			display: AbstractButton.IconOnly
+			icon.source: "qrc:/images/more-vert.svg"
+
+			onClicked: menuConfigurations.open()
+
+			Menu {
+				id: menuConfigurations
+				y: btnAddConfiguration.y
+
+				MenuItem {
+					text: qsTr("Add recipe book configuration")
+					enabled: modelRecipeBookConfigurations.canConfigurationBeAdded()
+					onClicked: {
+						dlgAddConfig.open()
+						highlighted = false
+					}
 				}
 
-				onClicked: {
-					modelRBConfigItems.setCurrentConfig(index)
+				MenuItem {
+					text: qsTr("Rename recipe book configuration")
+					enabled: cbxCurrentConfiguration.currentIndex !== -1
+					onClicked: {
+						dlgRenameConfig.initialText = modelRecipeBookConfigurations.name(cbxCurrentConfiguration.currentIndex);
+						dlgRenameConfig.open();
+						highlighted = false
+					}
+				}
+
+				MenuItem {
+					text: qsTr("Remove recipe book configuration")
+					enabled: cbxCurrentConfiguration.currentIndex !== -1
+					onClicked: {
+						dlgRemoveConfig.msgText = qsTr("This will remove the recipe book configuration \"%1\". Proceed?").arg(modelRecipeBookConfigurations.name(cbxCurrentConfiguration.currentIndex));
+						dlgRemoveConfig.open();
+						highlighted = false
+					}
 				}
 			}
 		}
 	}
 
-	Pane {
-		id: groupConfigurations
+	SwipeView {
+		id: swipeView
+
+		currentIndex: 0
+		anchors.top: rowCurrentConfiguration.bottom
 		anchors.left: parent.left
-		anchors.bottom: parent.bottom
-		anchors.leftMargin: -16
-		anchors.bottomMargin: -16
+		anchors.right: parent.right
+		anchors.bottom: indicator.top
 
-		ColumnLayout {
-			anchors.centerIn: parent
-			spacing: 0
+		RbConfigContentPage {
+			id: configContent
 
-			RoundButton {
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+			currentConfig: cbxCurrentConfiguration.currentIndex
+		}
+		RbConfigDetailsPage {
+			id: configDetails
 
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Add recipe book configuration")
-
-				enabled: modelRecipeBookConfigurations.canConfigurationBeAdded()
-				onClicked: dlgAddConfig.open()
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/edit.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Rename recipe book configuration")
-
-				enabled: bar.currentIndex != -1
-				onClicked: {
-					dlgRenameConfig.initialText = modelRecipeBookConfigurations.name(bar.currentIndex);
-					dlgRenameConfig.open();
-				}
-			}
-			RoundButton { 
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/remove.svg"
-
-				ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered
-				ToolTip.text: qsTr("Remove recipe book configuration")
-
-				enabled: bar.count > 0
-				onClicked: {
-					dlgRemoveConfig.msgText = qsTr("This will remove the recipe book configuration \"%1\". Proceed?").arg(modelRecipeBookConfigurations.name(bar.currentIndex));
-					dlgRemoveConfig.open();
-				}
-			}
+			currentConfig: cbxCurrentConfiguration.currentIndex
 		}
 	}
 
-	RbConfigPage {
-		anchors.fill: parent        
-		anchors.leftMargin: bar.height
+	PageIndicator {
+		id: indicator
 
-		currentConfig: bar.currentIndex
+		anchors.bottom: parent.bottom
+
+		count: swipeView.count
+		currentIndex: swipeView.currentIndex
+
+		anchors.horizontalCenter: parent.horizontalCenter
 	}
 }
