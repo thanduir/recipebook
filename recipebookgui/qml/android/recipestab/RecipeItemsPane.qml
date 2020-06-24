@@ -3,22 +3,9 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQml.Models 2.14
 
-import "components"
-
 Item {
 
 	property int currentRecipe : -1
-
-	// Recipe item dialog
-
-	TextMessageDialog {
-		id: dlgRemoveIngredient
-		title: qsTr("Remove ingredient")
-		onAccepted: {
-			modelRecipeItems.removeItem(lvCurrentRecipe.currentIndex)
-			lvCurrentRecipe.currentIndex = -1
-		}
-	}
 
 	// Pane
 
@@ -72,23 +59,33 @@ Item {
 		anchors.bottomMargin: 24
 		// TODO: visible: !idRearrangeCurrentItems.checked
 
+		remove: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "height"; to: 0; easing.type: Easing.InOutQuad }
+			}
+		}
+
+		displaced: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+			}
+		}
+
 		spacing: 0
 		model: modelRecipeItems
-		delegate: ItemDelegate {
+		delegate: SwipeDelegate {
 			id: listItemRecipeItem
 			highlighted: ListView.isCurrentItem
 			onClicked: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
 			width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
 			height: listItemRecipeItemGroup.height
 
-			Item {
+			contentItem: Item {
 				id: listItemRecipeItemGroup
-				anchors.left: parent.left
-				anchors.right: parent.right
-				anchors.top: parent.top
-				anchors.topMargin: 10
 
-				height: listItemRecipeItemName.height + 30 + (highlighted ? listItemGridRecipeItem.height : 0)
+				height: listItemRecipeItemName.height + 20 + (highlighted ? listItemGridRecipeItem.height + 10 : 0)
 
 				// Group bar
 				Rectangle {
@@ -319,24 +316,66 @@ Item {
 					}
 				}
 			}
+
+			Timer {
+				id: undoTimer
+				interval: 2750
+				onTriggered: {
+					modelRecipeItems.removeItem(index)
+				}
+			}
+
+			swipe.onCompleted: {
+				undoTimer.start()
+				if(index == lvCurrentRecipe.currentIndex)
+				{
+					lvCurrentRecipe.currentIndex = -1
+				}
+			}
+
+			swipe.left: Rectangle {
+				width: parent.width
+				height: parent.height
+
+				clip: true
+				color: "darkgray"
+
+				Image {
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+					anchors.verticalCenter: parent.verticalCenter
+
+					visible: !listItemRecipeItem.swipe.complete
+
+					fillMode: Image.PreserveAspectFit
+					source: "qrc:/images/remove.svg"
+				}
+				Label {
+					anchors.left: parent.left
+					anchors.leftMargin: 10
+					anchors.verticalCenter: parent.verticalCenter
+					text: qsTr("Ingredient \"%1\" removed").arg(name)
+
+					visible: listItemRecipeItem.swipe.complete
+				}
+				RoundButton {
+					text: qsTr("Undo")
+
+					anchors.right: parent.right
+					anchors.verticalCenter: parent.verticalCenter
+
+					onClicked: {
+						undoTimer.stop()
+						listItemRecipeItem.swipe.close()
+					}
+
+					visible: listItemRecipeItem.swipe.complete
+				}
+			}
 		}
 	}
 
-	/*
-	// TODO: Is this compatible with the SwipeView?
-	RoundButton {
-		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/remove.svg"
-
-		enabled: lvCurrentRecipe.visible && lvCurrentRecipe.count > 0 && lvCurrentRecipe.currentIndex != -1
-		onClicked: {
-			dlgRemoveIngredient.msgText = qsTr("This will remove the ingredient \"%1\". Proceed?").arg(modelRecipeItems.name(lvCurrentRecipe.currentIndex));
-			dlgRemoveIngredient.open();
-		}
-	}
-	*/
-
-	// TODO: Can i combine these or should the remain similar to before? (problem: move whole groups instead of single elements and how to show this...)
+	// TODO: Can i combine these or should they remain similar to before? (problem: move whole groups instead of single elements and how to show this...)
 	// Rearrange recipe item list moveable delegate
 	/*Component {
 		id: dragDelegate
