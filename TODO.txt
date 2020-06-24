@@ -18,6 +18,8 @@ TODO
 	- Adjust everything to smaller screens!
 	- improve startup time as much as possible (-> qt exmaples seem to load much faster!)
 
+	- desktop: Merge reorder and edit for recipe items?
+
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
 7. Data exchange between app and desktop program?

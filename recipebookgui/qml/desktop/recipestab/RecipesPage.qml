@@ -363,14 +363,11 @@ Item {
 		anchors.bottomMargin: 12
 		anchors.rightMargin: 24
 
+		width: 375
+
 		visible: lvRecipes.count > 0 && lvRecipes.currentIndex != -1
         
 		TextArea { 
-			anchors.top: parent.top
-			anchors.left: parent.left
-			anchors.bottom: parent.bottom
-			width: 375
-
 			wrapMode: TextEdit.Wrap
 			selectByMouse: true
 

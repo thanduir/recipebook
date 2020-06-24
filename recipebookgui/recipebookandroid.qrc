@@ -11,6 +11,8 @@
 		<file alias="AlternativesTypesPage.qml">qml/android/recipestab/AlternativesTypesPage.qml</file>
 		<file alias="IngredientsPage.qml">qml/android/recipestab/IngredientsPage.qml</file>
 		<file alias="RecipesPage.qml">qml/android/recipestab/RecipesPage.qml</file>	
+		<file alias="RecipeDetailsPane.qml">qml/android/recipestab/RecipeDetailsPane.qml</file>	
+		<file alias="RecipeItemsPane.qml">qml/android/recipestab/RecipeItemsPane.qml</file>	
 		
 		<file alias="ShoppingListPage.qml">qml/android/shoppingtab/ShoppingListPage.qml</file>
 		<file alias="GoShoppingPage.qml">qml/android/shoppingtab/GoShoppingPage.qml</file>
