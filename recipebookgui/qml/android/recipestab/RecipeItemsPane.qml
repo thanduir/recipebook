@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.14
 import QtQml.Models 2.14
 
 Item {
+	id: recipeItemsPage
 
 	property int currentRecipe : -1
 
@@ -36,28 +37,26 @@ Item {
 		}
 	}
 
-	// TODO?
-	/*Switch {
+	Switch {
 		id: idRearrangeCurrentItems
 		anchors.right: lvCurrentRecipe.right
-		anchors.top: parent.top
-		anchors.topMargin: 24
+		anchors.top: grid.bottom
 
 		visible: currentRecipe != -1
 
 		text: qsTr("Rearrange recipe items")
-	}*/
+	}
 
 	// Edit recipe item list view
 	ListView {
 		id: lvCurrentRecipe
 		anchors.left: parent.left
 		anchors.right: parent.right
-		anchors.top: grid.bottom
+		anchors.top: idRearrangeCurrentItems.bottom
 		anchors.bottom: parent.bottom
 		anchors.topMargin: 24
 		anchors.bottomMargin: 24
-		// TODO: visible: !idRearrangeCurrentItems.checked
+		visible: !idRearrangeCurrentItems.checked
 
 		remove: Transition {
 			SequentialAnimation {
@@ -73,6 +72,7 @@ Item {
 			}
 		}
 
+		// TODO: Binding loop for height... Why? -> shouldn't set height in SwipeDelegate, but need it for expand on click..
 		spacing: 0
 		model: modelRecipeItems
 		delegate: SwipeDelegate {
@@ -93,8 +93,8 @@ Item {
 					anchors.left: parent.left
 					anchors.top: parent.top
 					anchors.bottom: parent.bottom
-					anchors.topMargin: -10
-					anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
+					//anchors.topMargin: -10
+					//anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
 
 					visible: hasGroup
 					color: groupColor
@@ -105,7 +105,7 @@ Item {
 				Label {
 					id: listItemRecipeItemName
 					anchors.left: hasGroup ? groupBar.right : parent.left
-					anchors.leftMargin: 10
+					anchors.leftMargin: hasGroup ? 5 : 0
 
 					font.bold: !optional
 					font.italic: optional
@@ -375,9 +375,8 @@ Item {
 		}
 	}
 
-	// TODO: Can i combine these or should they remain similar to before? (problem: move whole groups instead of single elements and how to show this...)
 	// Rearrange recipe item list moveable delegate
-	/*Component {
+	Component {
 		id: dragDelegate
 
 		MouseArea {
@@ -420,7 +419,7 @@ Item {
 				states: State {
 					when: dragArea.held
 
-					ParentChange { target: content; parent: recipesTab }
+					ParentChange { target: content; parent: recipeItemsPage }
 					AnchorChanges {
 						target: content
 						anchors { horizontalCenter: undefined; verticalCenter: undefined }
@@ -493,15 +492,10 @@ Item {
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.top: idRearrangeCurrentItems.bottom
-		anchors.bottom: paneCurrentRecipe.top
+		anchors.bottom: parent.bottom
 		anchors.topMargin: 24
-		anchors.leftMargin: 24
-		anchors.bottomMargin: 48
-		width: 400
-		visible: idRearrangeCurrentItems.checked
-
-		ScrollBar.vertical: ScrollBar { }
-		boundsBehavior: Flickable.StopAtBounds
+		anchors.bottomMargin: 24
+		visible:  idRearrangeCurrentItems.checked
 
 		spacing: 0
 		model: DelegateModel {
@@ -510,7 +504,5 @@ Item {
 			model: filterModelRecipeItems
 			delegate: dragDelegate
 		}
-	}*/
-
-
+	}
 }
