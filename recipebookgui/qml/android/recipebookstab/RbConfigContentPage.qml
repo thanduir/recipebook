@@ -100,15 +100,15 @@ Item {
 
 	// Rearrange recipe items and headers
 
-	Component {
-		id: dragDelegate
+	component MyDragDelegate : Item {
 
 		MouseArea {
 			id: dragArea
 
 			property bool held: false
 
-			anchors { left: parent != null ? parent.left : undefined; right: parent != null ? parent.right : undefined }
+			anchors.left: parent != null ? parent.left : undefined;
+			width: reorderImage.height
 			height: content.height
 
 			drag.target: held ? content : undefined
@@ -132,18 +132,18 @@ Item {
 			Rectangle {
 				id: content
 
-				anchors.horizontalCenter: parent.horizontalCenter
+				anchors.left: parent.left
 				anchors.verticalCenter: parent.verticalCenter
 
-				width: dragArea.width; 
+				width: lvItems.width - lvItems.leftMargin - lvItems.rightMargin
 				height: column.implicitHeight + 47
 
 				color: dragArea.held ? "lightgray" : "transparent"
-                
+
 				Drag.active: dragArea.held
-				Drag.source: dragArea
-				Drag.hotSpot.x: width / 2
-				Drag.hotSpot.y: height / 2
+				Drag.source: swipeDelegate
+				Drag.hotSpot.x: dragArea.width / 2
+				Drag.hotSpot.y: dragArea.height / 2
 
 				states: State {
 					when: dragArea.held
@@ -151,7 +151,7 @@ Item {
 					ParentChange { target: content; parent: rbConfigContentPage }
 					AnchorChanges {
 						target: content
-						anchors { horizontalCenter: undefined; verticalCenter: undefined }
+						anchors { verticalCenter: undefined; left: undefined; }
 					}
 				}
 
@@ -168,7 +168,7 @@ Item {
 						anchors.left: parent.left
 						height: labelColumn.implicitHeight + 10
 						verticalAlignment: Image.AlignVCenter
-						anchors.margins: 15
+
 						visible: !isHeader
 
 						fillMode: Image.PreserveAspectFit
@@ -180,8 +180,7 @@ Item {
 						id: labelColumn
 						anchors.verticalCenter: parent.verticalCenter
 						anchors.left: !isHeader ? reorderImage.right : parent.left
-
-						anchors.margins: 15
+						anchors.leftMargin: 15
 
 						verticalAlignment: Text.AlignVCenter
 						font.bold: isHeader
@@ -199,7 +198,7 @@ Item {
 						}
 					}
 
-					SpinBox { 
+					SpinBox {
 						anchors.verticalCenter: parent.verticalCenter
 						anchors.right: parent.right
 						anchors.rightMargin: 24
@@ -215,12 +214,12 @@ Item {
 			}
 
 			DropArea {
-				anchors { fill: parent; margins: 15 }
+				anchors { fill: parent }
 
 				onEntered: {
-					modelRBConfigItems.updateMoveTarget(dragArea.DelegateModel.itemsIndex);
-					rearrangeCurrentItemDelegateModel.items.move(drag.source.DelegateModel.itemsIndex,
-																 dragArea.DelegateModel.itemsIndex);
+					modelRBConfigItems.updateMoveTarget(swipeDelegate.itemsIndex);
+					rearrangeCurrentItemDelegateModel.items.move(drag.source.itemsIndex,
+														swipeDelegate.itemsIndex);
 				}
 			}
 		}
@@ -233,31 +232,89 @@ Item {
 		anchors.topMargin: 24
 		anchors.bottomMargin: 24
 		
-		spacing: 0
+		remove: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "height"; to: 0; easing.type: Easing.InOutQuad }
+			}
+		}
+
+		displaced: Transition {
+			SequentialAnimation {
+				PauseAnimation { duration: 125 }
+				NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+			}
+		}
+
 		model: DelegateModel {
 			id: rearrangeCurrentItemDelegateModel
 
 			model: modelRBConfigItems
-			delegate: dragDelegate
+			delegate: SwipeDelegate {
+				id: swipeDelegate
+				property int itemsIndex : DelegateModel.itemsIndex
+
+				width: lvItems.width - lvItems.leftMargin - lvItems.rightMargin
+
+				contentItem: MyDragDelegate {
+					id: dragDelegate
+
+				}
+
+				Timer {
+					id: undoTimer
+					interval: 2750
+					onTriggered: {
+						modelRBConfigItems.removeItem(index)
+						lvItems.currentIndex = -1
+						headerSubpageSpace.item.btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
+					}
+				}
+
+				swipe.onCompleted: {
+					undoTimer.start()
+				}
+
+				swipe.left: Rectangle {
+					width: parent.width
+					height: parent.height
+
+					clip: true
+					color: "darkgray"
+
+					Image {
+						anchors.left: parent.left
+						anchors.leftMargin: 10
+						anchors.verticalCenter: parent.verticalCenter
+
+						visible: !swipeDelegate.swipe.complete
+
+						fillMode: Image.PreserveAspectFit
+						source: "qrc:/images/remove.svg"
+					}
+					Label {
+						anchors.left: parent.left
+						anchors.leftMargin: 10
+						anchors.verticalCenter: parent.verticalCenter
+						text: qsTr("Item \"%1\" removed").arg(name)
+
+						visible: swipeDelegate.swipe.complete
+					}
+					RoundButton {
+						text: qsTr("Undo")
+
+						anchors.right: parent.right
+						anchors.verticalCenter: parent.verticalCenter
+
+						onClicked: {
+							undoTimer.stop()
+							swipeDelegate.swipe.close()
+						}
+
+						visible: swipeDelegate.swipe.complete
+					}
+				}
+			}
 		}
 	}
-
-	/*
-	// TODO: THIS!
-	RoundButton {
-		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/remove.svg"
-
-		ToolTip.delay: 1000
-		ToolTip.timeout: 5000
-		ToolTip.visible: hovered
-		ToolTip.text: qsTr("Remove item")
-
-		enabled: lvItems.count > 0
-		onClicked: {
-			dlgRemoveItem.msgText = qsTr("This will remove the item \"%1\". Proceed?").arg(modelRBConfigItems.name(lvItems.currentIndex));
-			dlgRemoveItem.open();
-		}
-	}
-	*/
 }

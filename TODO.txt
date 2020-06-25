@@ -3,8 +3,6 @@ TODO
 
 5. RecipeBook for android
 	- adjust qml files to smaller android screens:
-		* RecipebooksTab + RbConfigPage
-		
 		* ShoppingListPage
 		
 		* import / export: can i use std dialogs or should i write my own?
