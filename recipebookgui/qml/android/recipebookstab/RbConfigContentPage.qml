@@ -12,20 +12,12 @@ Item {
 	
 	visible: currentConfig != -1
 
-	onVisibleChanged: {
-		if(visible)
-		{
-			modelRBConfigItems.setCurrentConfig(currentConfig)
-			// TODO: btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
-		}
-	}
-
 	TextInputDialog {
 		id: dlgAddHeader
 		title: qsTr("Add header")
 		onAccepted: {
-			lvItems.currentIndex = modelRBConfigItems.addHeader(outputText, lvItems.currentIndex)
-			lvItems.positionViewAtIndex(lvItems.currentIndex, ListView.Center)
+			modelRBConfigItems.addHeader(outputText, -1)
+			lvItems.positionViewAtEnd();
 		}
 	}
 
@@ -34,7 +26,8 @@ Item {
 		title: qsTr("Add recipe")
 		onListChanged: {
 			lvItems.currentIndex = -1;
-			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded();
+			lvItems.positionViewAtEnd();
+			headerSubpageSpace.item.btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded();
 		}
 	}
     
@@ -50,7 +43,58 @@ Item {
 		onAccepted: {
 			modelRBConfigItems.removeItem(lvItems.currentIndex)
 			lvItems.currentIndex = -1
-			btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
+			headerSubpageSpace.item.btnAddRecipe.enabled = modelRBConfigItems.canRecipesBeAdded()
+		}
+	}
+
+	// Header Component
+
+	onVisibleChanged: {
+		if(visible)
+		{
+			modelRBConfigItems.setCurrentConfig(currentConfig)
+			headerSubpageSpace.sourceComponent = rbConfigsHeaderComponent;
+		}
+	}
+
+	Component {
+		id: rbConfigsHeaderComponent
+
+		RowLayout {
+			anchors.right: parent.right
+			anchors.rightMargin: 10
+
+			property alias btnAddRecipe: btnAddRecipeInternal
+
+			ToolButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+				icon.color: "yellow"
+
+				onClicked: dlgAddHeader.open()
+			}
+
+			ToolButton {
+				id: btnAddRecipeInternal
+
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				onVisibleChanged: {
+					if(visible)
+					{
+						enabled = modelRBConfigItems.canRecipesBeAdded()
+					}
+				}
+				onClicked: {
+					filterModelUnusedRecipes.setRecipeBookConfiguration(currentConfig)
+
+					dlgAddRecipes.editListModel = modelRBConfigItems;
+					dlgAddRecipes.allValuesFilterModel = filterModelUnusedRecipes;
+
+					dlgAddRecipes.open()
+				}
+			}
 		}
 	}
 
@@ -198,41 +242,8 @@ Item {
 		}
 	}
 
-	// TODO: THESE!
 	/*
-	RoundButton {
-		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/add-black.svg"
-		icon.color: "blue"
-
-		ToolTip.delay: 1000
-		ToolTip.timeout: 5000
-		ToolTip.visible: hovered
-		ToolTip.text: qsTr("Add header")
-
-		onClicked: dlgAddHeader.open()
-	}
-	RoundButton {
-		id: btnAddRecipe
-		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/add-black.svg"
-
-		ToolTip.delay: 1000
-		ToolTip.timeout: 5000
-		ToolTip.visible: hovered
-		ToolTip.text: qsTr("Add recipe")
-
-		enabled: modelRBConfigItems.canRecipesBeAdded()
-		onClicked: {
-			filterModelUnusedRecipes.setRecipeBookConfiguration(currentConfig)
-
-			dlgAddRecipes.editListModel = modelRBConfigItems;
-			dlgAddRecipes.allValuesFilterModel = filterModelUnusedRecipes;
-
-			dlgAddRecipes.open()
-		}
-	}
-
+	// TODO: THIS!
 	RoundButton {
 		display: AbstractButton.IconOnly
 		icon.source: "qrc:/images/remove.svg"
