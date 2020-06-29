@@ -98,7 +98,7 @@ Item {
 
 				height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
 
-                // TODO: What to do with this overlay text?
+				// TODO: What to do with this overlay text? Maybe as a popup on click on an info button?
                 /*ToolTip.delay: 1000
 				ToolTip.timeout: 5000
 				ToolTip.visible: hovered && normalItem

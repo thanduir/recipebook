@@ -9,8 +9,11 @@
 
 using namespace recipebook::UI;
 
-ListModelShoppingRecipes::ListModelShoppingRecipes(recipebook::RBDataHandler& rRBDataHandler, const recipebook::RecipeBookSettings& rSettings)
+ListModelShoppingRecipes::ListModelShoppingRecipes(recipebook::RBDataHandler& rRBDataHandler, 
+												   const UIStringConverter& rConverter, 
+												   const recipebook::RecipeBookSettings& rSettings)
 :	m_rRBDataHandler(rRBDataHandler),
+	m_rConverter(rConverter),
 	m_rSettings(rSettings)
 {
 }
@@ -337,6 +340,13 @@ bool ListModelShoppingRecipes::removeRecipe(int row)
 	endRemoveRows();
 
 	return bSuccess;
+}
+
+ListModelShoppingListItems* ListModelShoppingRecipes::getItemsModel(int row)
+{
+	ListModelShoppingListItems* items = new ListModelShoppingListItems(m_rRBDataHandler, m_rConverter);
+	items->setShoppingRecipe(row);
+	return items;
 }
 
 void ListModelShoppingRecipes::resetShoppingList()

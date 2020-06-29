@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <QDate>
+#include "ListModelShoppingListItems.h"
 
 namespace recipebook
 {
@@ -26,7 +27,7 @@ namespace recipebook::UI
 		};
 
 	public:
-		ListModelShoppingRecipes(RBDataHandler& rRBDataHandler, const RecipeBookSettings& rSettings);
+		ListModelShoppingRecipes(RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter, const RecipeBookSettings& rSettings);
 
 		virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -65,6 +66,8 @@ namespace recipebook::UI
 
 		void onItemEnabledChanged(int row);
 
+		ListModelShoppingListItems* getItemsModel(int row);
+
 	signals:
 		void recipeScalingChanged(quint32 index);
 
@@ -76,6 +79,7 @@ namespace recipebook::UI
 
 	private:
 		RBDataHandler& m_rRBDataHandler;
+		const UIStringConverter& m_rConverter;
 		const RecipeBookSettings& m_rSettings;
 
 		QMap<QString, quint32> m_AddListValues;

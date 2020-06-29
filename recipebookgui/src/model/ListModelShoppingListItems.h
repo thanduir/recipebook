@@ -2,6 +2,7 @@
 #define RECIPEBOOK_LISTMODEL_SHOPPINGLISTITEMS_H
 
 #include <QAbstractListModel>
+#include <QQmlEngine>
 
 class UIStringConverter;
 
@@ -19,6 +20,8 @@ namespace recipebook::UI
 	class ListModelShoppingListItems : public QAbstractListModel
 	{
 		Q_OBJECT
+		QML_ELEMENT
+
 	public:
 		enum class ShoppingListItemsRoles : int
 		{
@@ -39,7 +42,7 @@ namespace recipebook::UI
 
 	public:
 		ListModelShoppingListItems(RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter);
-
+		
 		virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 		virtual bool setData(const QModelIndex& index, const QVariant& value, int role) override;

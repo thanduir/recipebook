@@ -55,7 +55,7 @@ RecipeBookUIContext::RecipeBookUIContext()
 	m_FilterModelRecipes(),
 	m_ModelRecipeItems(m_RBData, m_Converter),
 	m_FilterModelRecipeItems(),
-	m_ModelShoppingRecipes(m_RBData, m_Settings),
+	m_ModelShoppingRecipes(m_RBData, m_Converter, m_Settings),
 	m_ModelShoppingListItems(m_RBData, m_Converter),
 	m_ModelGoShopping(m_RBData, m_Converter),
 	m_ModelConfigurations(m_RBData),
@@ -289,7 +289,9 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 		return false;
 	}
 	
-	context->setContextProperty("importExportFilters", getImportExportNameFilters());
+    qRegisterMetaType<ListModelShoppingListItems*>("ListModelShoppingListItems *");
+
+    context->setContextProperty("importExportFilters", getImportExportNameFilters());
 
 	context->setContextProperty("recipeBookSettings", &m_Settings);
 	context->setContextProperty("RBLanguageManager", &m_Translations);

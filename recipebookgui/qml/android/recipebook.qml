@@ -65,9 +65,12 @@ ApplicationWindow {
     }
 
     function selectPage(myIndex: int, text: string) {
-        headerSubpageSpace.sourceComponent = undefined
-        stackMain.currentIndex = myIndex;
-        lblCurrentTabName.text = text;
+		if(myIndex !== stackMain.currentIndex)
+		{
+			headerSubpageSpace.sourceComponent = undefined
+			stackMain.currentIndex = myIndex;
+		}
+		lblCurrentTabName.text = text;
         drawerMainMenu.close();
     }
 
