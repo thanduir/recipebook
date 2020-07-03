@@ -32,7 +32,7 @@ Item {
 		okOnly: true
 	}
 
-	// TODO: This crashes on android tablet (click on ok / cancel) and is wrongly positioned!
+	// TODO: This crashes on android (click on ok / cancel) and is wrongly positioned!
 	ColorDialog {
 		id: colorDialog
 

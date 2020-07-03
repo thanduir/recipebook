@@ -2,6 +2,8 @@ import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 
+import "components"
+
 Item {
 	onVisibleChanged: {
 		if(visible)
@@ -20,6 +22,12 @@ Item {
 
 			modelGoShopping.setSortOrder(cbxSortOrder.currentText, btnSeparateCollectedItems.checked);
 		}
+	}
+
+	TextMessageDialog {
+		id: dlgItemRecipeInfo
+		title: qsTr("")
+		okOnly: true
 	}
 
 	ComboBox {
@@ -86,7 +94,6 @@ Item {
 		model: modelGoShopping
 		delegate: ItemDelegate {
 			width: lvShoppingList.width - lvShoppingList.leftMargin - lvShoppingList.rightMargin
-			highlighted: ListView.isCurrentItem
 			height: listItemParent.height
 
 			Item {
@@ -97,12 +104,6 @@ Item {
                 anchors.topMargin: 10
 
 				height: listItemName.height + 20 + (normalItem && itemMultiline ? listItemAdditionalText.height - 20 : 0)
-
-				// TODO: What to do with this overlay text? Maybe as a popup on click on an info button?
-                /*ToolTip.delay: 1000
-				ToolTip.timeout: 5000
-				ToolTip.visible: hovered && normalItem
-                ToolTip.text: itemRecipeInfo*/
 
 				Label {
 					id: listItemName
@@ -131,6 +132,12 @@ Item {
 
 					checked: itemChecked
 					onClicked: itemChecked = checked
+
+					onPressAndHold: {
+						dlgItemRecipeInfo.title = name
+						dlgItemRecipeInfo.msgText = itemRecipeInfo
+						dlgItemRecipeInfo.open()
+					}
 				}
 
 				Label {
