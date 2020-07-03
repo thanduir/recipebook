@@ -63,7 +63,6 @@ Item {
 
     // Main page
 
-    // TODO: Textfield handling doesn't work as expected on android tablet for some reason
     TextField {
 		id: textFilterIngredients
 		anchors.left: lvIngredients.left
@@ -135,19 +134,18 @@ Item {
             }
         }
 
-		// TODO: Binding loop for height... Why? -> shouldn't set height in SwipeDelegate, but need it for expand on click..
-        spacing: 0
+		spacing: 0
 		model: filterModelIngredients
-        delegate: SwipeDelegate {
+		delegate: SwipeDelegate {
             id: listIngredientsItem
             highlighted: ListView.isCurrentItem
             width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
             onClicked: lvIngredients.currentIndex == index ? lvIngredients.currentIndex = -1 : lvIngredients.currentIndex = index
-			height: listIngredientsItemGroup.height
-                
-            contentItem: Item {
-                id: listIngredientsItemGroup
-                height: listItemDelegateName.height + 20 + (highlighted ? listItemGridIngredient.height + 10 : 0)
+
+			implicitHeight: listIngredientsItemGroup.implicitHeight
+			contentItem: Item {
+				id: listIngredientsItemGroup
+				implicitHeight: listItemDelegateName.height + 15 + (highlighted ? listItemGridIngredient.height + 10 : 0)
 
                 // Ingredient name
 				Label {
@@ -202,7 +200,7 @@ Item {
                     visible: listIngredientsItem.highlighted && gridUsedInRecipes.count > 0
                     onClicked: popupUsedIn.open()
 
-                    Popup {
+					Dialog {
                         id: popupUsedIn
 
                         anchors.centerIn: Overlay.overlay
@@ -242,6 +240,14 @@ Item {
                                 text: modelData
                             }
                         }
+
+						footer: DialogButtonBox {
+							Button {
+								text: qsTr("Close")
+								DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+								flat: true
+							}
+						}
                     }
                 }
 
@@ -305,10 +311,10 @@ Item {
                         currentIndex: indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
                         onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
                     }
-                }
+				}
 			}
 
-            Timer {
+			Timer {
                 id: undoTimer
                 interval: 2750
                 onTriggered: {
@@ -371,7 +377,7 @@ Item {
 
                     visible: listIngredientsItem.swipe.complete
                 }
-            }
+			}
         }
 	}
 }

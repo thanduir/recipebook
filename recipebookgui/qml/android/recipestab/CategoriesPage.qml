@@ -8,7 +8,6 @@ import "components"
 Item {
 	id: categoriesPage
 
-	// TODO: Dialogs with text input should be placed differently on android (avoid the keyboard, i.e. pos should be updated when the keyboard is (in)visible)!
 	TextInputDialog {
 		id: dlgAddSortOrder
 		title: qsTr("Add sort order")

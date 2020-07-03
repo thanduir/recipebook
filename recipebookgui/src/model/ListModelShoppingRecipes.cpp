@@ -346,6 +346,10 @@ ListModelShoppingListItems* ListModelShoppingRecipes::getItemsModel(int row)
 {
 	ListModelShoppingListItems* items = new ListModelShoppingListItems(m_rRBDataHandler, m_rConverter);
 	items->setShoppingRecipe(row);
+
+	connect(items, SIGNAL(shoppingitemEnabledChanged(int)),
+			this, SLOT(onItemEnabledChanged(int)));
+
 	return items;
 }
 

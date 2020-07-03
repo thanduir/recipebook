@@ -7,9 +7,8 @@ import QtQuick.Layouts 1.14
 import "components"
 
 // TODO: Crash on import old file (from einkaufsliste)
-// TODO: Adjust to small screens (e.g. my phone)
 ApplicationWindow {
-    visible: true
+	visible: true
     title: qsTr("RecipeBook")
 
     TextMessageDialog {
@@ -24,10 +23,9 @@ ApplicationWindow {
     }
 
     signal onClosingRecipeBook()
-    // TODO: This might not work on phones (at least data changes didn't seem to get saved on phone...)
-    onClosing: onClosingRecipeBook()
+	onClosing: onClosingRecipeBook()
 
-    // TODO: Add left / right navigation buttons to switch between items in a submenu?
+	// TODO: Add left / right navigation buttons to switch between items in a submenu? Sometimes there is not enough space though
     header: ToolBar {
         id: mainBar
         width: parent.width
@@ -48,15 +46,13 @@ ApplicationWindow {
             id: lblCurrentTabName
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: btnOpenDrawer.right
-            anchors.leftMargin: 20
 
             font.bold: true
             text: pageShoppingList.text
         }
 
         Loader {
-            anchors.right: parent.right
-            //anchors.left: lblCurrentTabName.right
+			anchors.right: parent.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
 
@@ -76,10 +72,10 @@ ApplicationWindow {
 
     Drawer {
         id: drawerMainMenu
-        width: 0.66 * parent.width
+		width: 0.75 * parent.width
         height: parent.height
 
-        Label {
+		Label {
             id: lblMainMenuHeader
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
@@ -188,6 +184,7 @@ ApplicationWindow {
                         fileDialogImport.open()
                     }
 
+					// TODO: Change so that it works similar to ShoppingList app!
                     FileDialog {
                         id: fileDialogImport
                         objectName: "fileDialogImport"
@@ -221,6 +218,7 @@ ApplicationWindow {
                         fileDialogExport.open()
                     }
 
+					// TODO: Change so that it works similar to ShoppingList app!
                     FileDialog {
                         id: fileDialogExport
                         objectName: "fileDialogExport"
@@ -266,7 +264,6 @@ ApplicationWindow {
             id: goShoppingPage
         }
 
-
         RecipesPage {
             id: recipesPage
         }
@@ -279,7 +276,6 @@ ApplicationWindow {
         CategoriesPage {
             id: categoriesPage
         }
-
 
         RecipebooksTab {
             id: recipebooksTab

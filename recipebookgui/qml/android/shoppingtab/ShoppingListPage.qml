@@ -159,8 +159,6 @@ Item {
 		anchors.right: parent.right
 		anchors.top: parent.top
 		anchors.bottom: parent.bottom
-		anchors.topMargin: 24
-		anchors.bottomMargin: 24
 
 		ScrollBar.vertical: ScrollBar { }
 		boundsBehavior: Flickable.StopAtBounds
@@ -184,11 +182,11 @@ Item {
 		delegate: SwipeDelegate {
 			id: listRecipeItem
 			width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
-			height: listRecipesItemGroup.height
+			implicitHeight: listRecipesItemGroup.implicitHeight
 
 			contentItem: Item {
 				id: listRecipesItemGroup
-				height: listItemRecipesName.height + grid.height + lvRecipeItems.height + 5
+				implicitHeight: listItemRecipesName.height + grid.height + lvRecipeItems.height + 5
 
 				Label {
 					id: listItemRecipesName
@@ -331,6 +329,7 @@ Item {
 				// Recipe items
 
 				// TODO: Move this into a separate component (for code clarity / simplicity)
+				// TODO: First item is always open, when this gets visible!?
 				ListView {
 					id: lvRecipeItems
 					anchors.left: parent.left
@@ -366,17 +365,19 @@ Item {
 						highlighted: ListView.isCurrentItem
 						onClicked: lvRecipeItems.currentIndex == index || !listItemRecipeItemName.checked ? lvRecipeItems.currentIndex = -1 : lvRecipeItems.currentIndex = index
 						width: lvRecipeItems.width - lvRecipeItems.leftMargin - lvRecipeItems.rightMargin
-						height: listItemRecipeItemGroup.height
+						implicitHeight: listItemRecipeItemGroup.implicitHeight
 
 						contentItem: Item {
 							id: listItemRecipeItemGroup
-							height: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : 0)
+							implicitHeight: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : 0)
 
 							Rectangle {
 								id: groupBar
 								anchors.left: parent.left
 								anchors.top: parent.top
 								anchors.bottom: parent.bottom
+								anchors.topMargin: -8
+								anchors.bottomMargin: -8
 
 								visible: hasGroup
 								color: groupColor
@@ -388,8 +389,7 @@ Item {
 								id: listItemRecipeItemName
 								anchors.top: parent.top
 								anchors.left: hasGroup ? groupBar.right : parent.left
-								anchors.topMargin: 0
-								anchors.leftMargin: 5
+								anchors.topMargin: -10
 
 								font.bold: checked
 								font.italic: optional

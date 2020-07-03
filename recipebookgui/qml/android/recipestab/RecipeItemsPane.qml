@@ -72,7 +72,6 @@ Item {
 			}
 		}
 
-		// TODO: Binding loop for height... Why? -> shouldn't set height in SwipeDelegate, but need it for expand on click..
 		spacing: 0
 		model: modelRecipeItems
 		delegate: SwipeDelegate {
@@ -80,12 +79,11 @@ Item {
 			highlighted: ListView.isCurrentItem
 			onClicked: lvCurrentRecipe.currentIndex == index ? lvCurrentRecipe.currentIndex = -1 : lvCurrentRecipe.currentIndex = index
 			width: lvCurrentRecipe.width - lvCurrentRecipe.leftMargin - lvCurrentRecipe.rightMargin
-			height: listItemRecipeItemGroup.height
+			implicitHeight: listItemRecipeItemGroup.implicitHeight
 
 			contentItem: Item {
 				id: listItemRecipeItemGroup
-
-				height: listItemRecipeItemName.height + 20 + (highlighted ? listItemGridRecipeItem.height + 10 : 0)
+				implicitHeight: listItemRecipeItemName.height + 15 + (highlighted ? listItemGridRecipeItem.height + 10 : 0)
 
 				// Group bar
 				Rectangle {
@@ -93,8 +91,8 @@ Item {
 					anchors.left: parent.left
 					anchors.top: parent.top
 					anchors.bottom: parent.bottom
-					//anchors.topMargin: -10
-					//anchors.bottomMargin: modelRecipeItems.lastInGroup(index) ? 10 : 0
+					anchors.topMargin: -8
+					anchors.bottomMargin: -8
 
 					visible: hasGroup
 					color: groupColor
