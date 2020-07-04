@@ -2,13 +2,9 @@ TODO
 ====
 
 5. RecipeBook for android
+	- DateSelectionDialog: I might have to replace the Controls 1 Calendar with a custom built one based on Qt Labs
+		-> Do separate implementation, based on ListView + CalendarModel (Qt labs)!
 	- TODOs
-	- test all components on android (those that are actually used at least)!
-		* AddRecipesListDialog -> needs adjustment
-		* DateSelectionDialog -> needs adjustment, everything too large...
-		* EditItemsListDialog
-		* TextInputDialog
-		* TextMessageDialog
 	- qml warnings
 	- Textfield handling doesn't work as expected on android tablet for some reason
 	- import / export: can i use std dialogs or should i write my own?

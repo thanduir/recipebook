@@ -10,11 +10,13 @@ Dialog {
 
 	property var allValuesFilterModel: []
 	property var editListModel: []
-    
+
+	property var largeScreen : addRecipesListDlg.parent.width > 400
+
 	signal listChanged
 
 	Item {
-		implicitWidth: 400
+		implicitWidth: largeScreen ? 400 : 300
 		implicitHeight: lvValues.implicitHeight + textFilter.implicitHeight
 
 		TextField { 
@@ -73,7 +75,7 @@ Dialog {
 						anchors.left: parent.left
 						anchors.leftMargin: 10
                         
-						width: 210
+						width: largeScreen ? 210 : 180
 						elide: Text.ElideRight
 
 						text: name
@@ -86,11 +88,11 @@ Dialog {
 					SpinBox {
 						id: spinBoxListItem
 						anchors.right: parent.right
-						anchors.rightMargin: 24
+						anchors.rightMargin: largeScreen ? 24 : 0
 
 						from: 0
 						to: 50
-						width: 150
+						width: largeScreen ? 150 : 120
 
 						value: editListModel.getInsertionsCount(name)
 						onValueModified: editListModel.changeState(name, value)

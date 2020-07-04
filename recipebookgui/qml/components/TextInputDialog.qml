@@ -5,7 +5,7 @@ Dialog {
 	modal: true
 
 	x: (parent.width - width) / 2
-	y: (parent.height - height) / 2
+	y: Qt.inputMethod.keyboardRectangle.y === 0 ? (parent.height - height) / 2 : 50
 	width: 300
 
 	property string initialText: ""

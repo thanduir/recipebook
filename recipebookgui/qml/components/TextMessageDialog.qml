@@ -7,7 +7,7 @@ Dialog {
 
 	x: (parent.width - width) / 2
 	y: (parent.height - height) / 2
-	width: 360
+	width: parent.width > 380 ? 360 : parent.width - 20
 
 	property alias msgText: dlgAskLabel.text
 	property bool errorIcon: false
