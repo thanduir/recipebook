@@ -11,7 +11,7 @@ Dialog {
 	property var allValuesFilterModel: []
 	property var editListModel: []
 
-	property var largeScreen : addRecipesListDlg.parent.width > 400
+	property var largeScreen : parent.width > 400
 
 	signal listChanged
 

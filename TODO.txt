@@ -2,8 +2,6 @@ TODO
 ====
 
 5. RecipeBook for android
-	- DateSelectionDialog: I might have to replace the Controls 1 Calendar with a custom built one based on Qt Labs
-		-> Do separate implementation, based on ListView + CalendarModel (Qt labs)!
 	- TODOs
 	- qml warnings
 	- Textfield handling doesn't work as expected on android tablet for some reason
