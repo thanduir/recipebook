@@ -83,7 +83,6 @@ Item {
 
 	DateSelectionDialog {
 		id: dlgDateSelection
-		title: qsTr("Select date")
 		onAccepted: {
 			modelShoppingRecipes.setDueDate(lvRecipes.currentIndex, selectedDate)
 			var oldIndex = lvRecipes.currentIndex

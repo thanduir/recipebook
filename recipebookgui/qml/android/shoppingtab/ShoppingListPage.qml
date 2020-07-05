@@ -67,8 +67,7 @@ Item {
 
 	DateSelectionDialog {
 		id: dlgDateSelection
-		title: qsTr("Select date")
-
+		
 		property int myIndex : -1
 		onAccepted: {
 			modelShoppingRecipes.setDueDate(myIndex, selectedDate)

@@ -4,7 +4,6 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import Qt.labs.calendar 1.0
 
-// TODO: Test on android tablet and phone
 Dialog {
 	id: dlgCalendar
 	modal: true
@@ -24,17 +23,19 @@ Dialog {
 		if (myDate.getDate() !== d) {
 			myDate.setDate(0);
 		}
-		return myDate
+		return myDate;
 	}
 
-	// TODO: Improve layout!
 	header: Label {
+		anchors.top: parent.top
+		anchors.topMargin: 10
+
 		height: 30
 
 		font.bold: true
 		verticalAlignment: Text.AlignVCenter
 		horizontalAlignment: Text.AlignHCenter
-		text: formatDate(listview.model.monthAt(listview.currentIndex), listview.model.yearAt(listview.currentIndex))
+		text: listview.model !== undefined ? formatDate(listview.model.monthAt(listview.currentIndex), listview.model.yearAt(listview.currentIndex)) : "";
 
 		function formatDate(month: int, year: int)
 		{
@@ -57,12 +58,6 @@ Dialog {
 		highlightRangeMode: ListView.StrictlyEnforceRange
 
 		property date selectedDate: new Date()
-
-		model: CalendarModel {
-			id: calendarModel
-			from: minimumDate
-			to: maximumDate
-		}
 
 		delegate: GridLayout {
 			width: listview.width
@@ -109,8 +104,6 @@ Dialog {
 						id: dayText
 						anchors.centerIn: parent
 						text: model.day
-						scale: highlighted ? 1.25 : 1
-						Behavior on scale { NumberAnimation { duration: 150 } }
 						color: parent.enabled ? "black" : "gray"
 					}
 					MouseArea {
@@ -125,6 +118,19 @@ Dialog {
 		}
 
 		ScrollIndicator.horizontal: ScrollIndicator { }
+	}
+
+	Component {
+		id: calendarModelComponent
+		CalendarModel {
+			id: calendarModel
+			from: minimumDate
+			to: maximumDate
+		}
+	}
+
+	onAboutToShow: {
+		listview.model = calendarModelComponent.createObject(parent);
 	}
 
 	footer: DialogButtonBox {
