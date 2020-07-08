@@ -6,7 +6,6 @@ import QtQuick.Layouts 1.14
 
 import "components"
 
-// TODO: Crash on import old file (from einkaufsliste)
 ApplicationWindow {
 	visible: true
     title: qsTr("RecipeBook")
@@ -25,8 +24,7 @@ ApplicationWindow {
     signal onClosingRecipeBook()
 	onClosing: onClosingRecipeBook()
 
-	// TODO: Add left / right navigation buttons to switch between items in a submenu? Sometimes there is not enough space though
-    header: ToolBar {
+	header: ToolBar {
         id: mainBar
         width: parent.width
 

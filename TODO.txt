@@ -2,18 +2,22 @@ TODO
 ====
 
 5. RecipeBook for android
-	- TODOs in recipebook.qml
-	- qml warnings
-	- Textfield handling doesn't work as expected on android tablet for some reason
 	- import / export: can i use std dialogs or should i write my own?
 		-> Need something else, probably just similar to the current app! (Permissions!)
 			(use RecipeBookSettings::applicationRecipeBookAppsDataFolder() after verifying that it actually gives the correct directory)
+	- qml warnings
+	- Bug: Crash on import old file (from einkaufsliste)! (android only? Or on all devices?)
+	- Textfield handling doesn't work as expected on android tablet for some reason
+
 	- android: "back" button should open side panel, if it isn't open, and close the app if it is open.
 	- Make emulator (x86) work for android variant (with relatively small sceen)!
-	- Make sure all features of the desktop app (and the einkaufsliste app) are present on android
+	- icon on android!
 	
+	- Make sure all features of the desktop app (and the einkaufsliste app) are present on android
 	- Adjust to and test everything on smaller screens!
-	- improve startup time as much as possible (-> qt exmaples seem to load much faster!)
+	- How to handle activity reloads (when app is minimized or similar)?
+	- Save interval on android? When is "onClosing" actually called? Is data (nearly) always saved atm or do i need improvements?
+	- improve startup time on android as much as possible (-> qt exmaples seem to load much faster!)
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
