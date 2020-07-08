@@ -106,6 +106,11 @@ Item {
 			id: listItemRecipeItem
 			width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin
 
+			onPressAndHold: {
+				dlgRenameType.initialText = alternativesTypes.name(index);
+				dlgRenameType.open();
+			}
+
 			contentItem: Item {
 				id: listItem
 				anchors.top: listItemRecipeItem.top
@@ -119,15 +124,6 @@ Item {
 					anchors.verticalCenter: parent.verticalCenter
                         
 					text: name
-
-					// TODO: This prevents swipe on label!
-					MouseArea {
-						anchors.fill: parent
-						onPressAndHold: {
-							dlgRenameType.initialText = alternativesTypes.name(index);
-							dlgRenameType.open();
-						}
-					}
 				}
 
 				// group symbol

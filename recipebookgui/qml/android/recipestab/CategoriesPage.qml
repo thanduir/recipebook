@@ -253,17 +253,6 @@ Item {
 
 						verticalAlignment: Text.AlignVCenter
 						text: modelData
-
-						// TODO: This prevents swipe on label!
-						MouseArea {
-							anchors.fill: parent
-							onPressAndHold: {
-								lvCategories.currentIndex = index
-								dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
-								dlgRenameCategory.open();
-
-							}
-						}
 					}
 				}
 			}
@@ -317,6 +306,13 @@ Item {
 				property int itemsIndex : DelegateModel.itemsIndex
 
 				width: lvCategories.width - lvCategories.leftMargin - lvCategories.rightMargin
+
+				onPressAndHold: {
+					lvCategories.currentIndex = index
+					dlgRenameCategory.initialText = modelSortOrder.name(lvCategories.currentIndex);
+					dlgRenameCategory.open();
+
+				}
 
 				contentItem: MyDragDelegate {
 					id: dragDelegate

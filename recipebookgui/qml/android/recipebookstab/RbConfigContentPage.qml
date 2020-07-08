@@ -185,17 +185,6 @@ Item {
 						verticalAlignment: Text.AlignVCenter
 						font.bold: isHeader
 						text: name
-
-						// TODO: This prevents swipe on label!
-						MouseArea {
-							anchors.fill: parent
-							enabled: isHeader
-							onPressAndHold: {
-								lvItems.currentIndex = index
-								dlgRenameHeader.initialText = modelRBConfigItems.name(lvItems.currentIndex);
-								dlgRenameHeader.open()
-							}
-						}
 					}
 
 					SpinBox {
@@ -255,6 +244,18 @@ Item {
 				property int itemsIndex : DelegateModel.itemsIndex
 
 				width: lvItems.width - lvItems.leftMargin - lvItems.rightMargin
+
+				onPressAndHold: {
+					if(!isHeader)
+					{
+						mouse.accept = false
+						return;
+					}
+
+					lvItems.currentIndex = index
+					dlgRenameHeader.initialText = modelRBConfigItems.name(lvItems.currentIndex);
+					dlgRenameHeader.open()
+				}
 
 				contentItem: MyDragDelegate {
 					id: dragDelegate
