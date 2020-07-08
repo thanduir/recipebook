@@ -153,7 +153,7 @@ Item {
 			anchors.topMargin: 24
 			anchors.bottomMargin: 24
 
-			ScrollBar.vertical: ScrollBar { }
+			ScrollIndicator.vertical: ScrollIndicator { }
 			boundsBehavior: Flickable.StopAtBounds
 
 			remove: Transition {

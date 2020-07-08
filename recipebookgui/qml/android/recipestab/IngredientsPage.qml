@@ -110,7 +110,7 @@ Item {
         anchors.bottomMargin: 24
 
 		boundsBehavior: Flickable.StopAtBounds
-		ScrollBar.vertical: ScrollBar { }
+		ScrollIndicator.vertical: ScrollIndicator { }
 
         Component.onCompleted: lvIngredients.currentIndex = -1
         Connections {
@@ -233,7 +233,7 @@ Item {
                             cellWidth: 275
                             cellHeight: 30
                             flow: GridView.FlowLeftToRight
-                            ScrollBar.vertical: ScrollBar { }
+                            ScrollIndicator.vertical: ScrollIndicator { }
 
                             model: filterModelIngredients.listUsedInRecipes(lvIngredients.currentIndex)
                             delegate: Label {
@@ -288,8 +288,8 @@ Item {
                         cellHeight: 40
                         flow: GridView.FlowTopToBottom
 
-                        ScrollBar.horizontal: ScrollBar { }
-
+                        ScrollIndicator.horizontal: ScrollIndicator { }
+						
                         model: modelSortOrders
                         delegate: CheckBox {
                             id: cbxItemName

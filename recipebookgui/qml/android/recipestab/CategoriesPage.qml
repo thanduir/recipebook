@@ -280,7 +280,7 @@ Item {
 
 		visible: cbxSortOrders.currentIndex != -1
 
-		ScrollBar.vertical: ScrollBar { }
+		ScrollIndicator.vertical: ScrollIndicator { }
 		boundsBehavior: Flickable.StopAtBounds
 
 		remove: Transition {

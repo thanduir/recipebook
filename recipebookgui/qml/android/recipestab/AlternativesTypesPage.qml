@@ -32,8 +32,8 @@ Item {
 		okOnly: true
 	}
 
-	// TODO: This crashes on android (click on ok / cancel) and is wrongly positioned!
-	ColorDialog {
+	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets at the moment, however)
+	/*ColorDialog {
 		id: colorDialog
 
 		title: "Choose alternatives group color"
@@ -42,7 +42,7 @@ Item {
 		onAccepted: {
 			alternativesTypes.setColor(currentIndex, colorDialog.color)
 		}
-	}
+	}*/
 
 	// Header Component
 
@@ -84,7 +84,7 @@ Item {
 		anchors.topMargin: 24
 		anchors.bottomMargin: 24
 
-		ScrollBar.vertical: ScrollBar { }
+		ScrollIndicator.vertical: ScrollIndicator { }
 		boundsBehavior: Flickable.StopAtBounds
 
 		remove: Transition {
@@ -139,14 +139,14 @@ Item {
 
 					color: typeColor
 
-					MouseArea {
+					/*MouseArea {
 						anchors.fill: parent
 						onClicked: { 
 							colorDialog.currentColor = typeColor
 							colorDialog.currentIndex = index
 							colorDialog.open();
 						}
-					}
+					}*/
 				}
 			}
 

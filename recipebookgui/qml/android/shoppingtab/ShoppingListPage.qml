@@ -159,7 +159,7 @@ Item {
 		anchors.top: parent.top
 		anchors.bottom: parent.bottom
 
-		ScrollBar.vertical: ScrollBar { }
+		ScrollIndicator.vertical: ScrollIndicator { }
 		boundsBehavior: Flickable.StopAtBounds
 
 		remove: Transition {
@@ -327,8 +327,6 @@ Item {
 
 				// Recipe items
 
-				// TODO: Move this into a separate component (for code clarity / simplicity)
-				// TODO: First item is always open, when this gets visible!?
 				ListView {
 					id: lvRecipeItems
 					anchors.left: parent.left
@@ -340,8 +338,6 @@ Item {
 					implicitHeight: lvRecipeItems.contentItem.childrenRect.height
 
 					keyNavigationEnabled: false
-
-					onVisibleChanged: currentIndex = -1;
 
 					remove: Transition {
 						SequentialAnimation {
