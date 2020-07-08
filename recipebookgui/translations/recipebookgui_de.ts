@@ -889,7 +889,7 @@
         <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="279"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="365"/>
         <source>Due date</source>
-        <translation>Min. Haltbarkeitsdatum</translation>
+        <translation type="unfinished">Min. Ablaufdatum</translation>
     </message>
     <message>
         <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="469"/>

@@ -275,7 +275,7 @@ Item {
 					}
 
 					Label {
-						Layout.rightMargin: 50
+						Layout.rightMargin: 20
 						text: qsTr("Due date")
 					}
 					RowLayout {
@@ -373,6 +373,7 @@ Item {
 								anchors.bottom: parent.bottom
 								anchors.topMargin: -8
 								anchors.bottomMargin: -8
+								anchors.leftMargin: -10
 
 								visible: hasGroup
 								color: groupColor
@@ -385,6 +386,7 @@ Item {
 								anchors.top: parent.top
 								anchors.left: hasGroup ? groupBar.right : parent.left
 								anchors.topMargin: -10
+								anchors.leftMargin: hasGroup ? 0 :  -15
 
 								font.bold: checked
 								font.italic: optional
