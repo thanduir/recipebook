@@ -26,7 +26,6 @@ Item {
 
 	TextMessageDialog {
 		id: dlgItemRecipeInfo
-		title: qsTr("")
 		okOnly: true
 	}
 
