@@ -28,6 +28,7 @@
 		<file alias="TextMessageDialog.qml">qml/components/TextMessageDialog.qml</file>
 		<file alias="AddRecipesListDialog.qml">qml/components/AddRecipesListDialog.qml</file>
 		<file alias="DateSelectionDialog.qml">qml/components/DateSelectionDialog.qml</file>
+		<file alias="InputFromListDialog.qml">qml/components/InputFromListDialog.qml</file>
     </qresource>
 	<qresource prefix="/files">
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>

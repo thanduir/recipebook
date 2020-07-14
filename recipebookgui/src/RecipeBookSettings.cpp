@@ -3,6 +3,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QUuid>
+#include <QDir>
 
 using namespace recipebook;
 
@@ -35,6 +36,7 @@ RecipeBookSettings::RecipeBookSettings()
 	QCoreApplication::setApplicationName("RecipeBook");
 
 	m_AppRBFilePath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+	m_AndroidDataPath = QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)[1];
 }
 
 QString RecipeBookSettings::getApplicationInstanceUID()
@@ -56,6 +58,17 @@ QString RecipeBookSettings::applicationRecipeBookSaveFile() const
 QString RecipeBookSettings::applicationRecipeBookAppsDataFolder() const
 {
 	return m_AppRBFilePath;
+}
+
+QString RecipeBookSettings::applicationUserFilesPathAndroid() const
+{
+	return m_AndroidDataPath;
+}
+
+QStringList RecipeBookSettings::getCurrentFilenamesAndroid() const
+{
+	QDir dir(m_AndroidDataPath);
+	return dir.entryList(QStringList("*.json"));
 }
 
 QString RecipeBookSettings::getCurrentAppLanguage() const

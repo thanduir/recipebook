@@ -18,6 +18,9 @@ namespace recipebook
 		QString applicationRecipeBookAppsDataFolder() const;
 		QString getApplicationInstanceUID();
 
+		QString applicationUserFilesPathAndroid() const;
+		QStringList getCurrentFilenamesAndroid() const;
+
 		QString getCurrentAppLanguage() const;
 		void setCurrentAppLanguage(QString lang);
 
@@ -57,6 +60,7 @@ namespace recipebook
 
 	private:
 		QString m_AppRBFilePath;
+		QString m_AndroidDataPath;
 	};
 }
 

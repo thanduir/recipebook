@@ -2,22 +2,23 @@ TODO
 ====
 
 5. RecipeBook for android
-	- import / export: can i use std dialogs or should i write my own?
-		-> Need something else, probably just similar to the current app! (Permissions!)
-			(use RecipeBookSettings::applicationRecipeBookAppsDataFolder() after verifying that it actually gives the correct directory)
 	- qml warnings
+	- file export: ask user if file overwritten!
 	- Bug: Crash on import old file (from einkaufsliste)! (android only? Or on all devices?)
-	- Textfield handling doesn't work as expected on android tablet for some reason
-
+	
 	- android: "back" button should open side panel, if it isn't open, and close the app if it is open.
 	- Make emulator (x86) work for android variant (with relatively small sceen)!
-	- icon on android!
+	- manifest file + icon on android! Can i (with this) also fix the wrong app name prefix (org.qtproject.example.RecipeBook)
 	
 	- Make sure all features of the desktop app (and the einkaufsliste app) are present on android
 	- Adjust to and test everything on smaller screens!
+	- improve performance of scrolling (ingredients + shopping list) and item filtering (ingredients)!
+	- rework shopping list page
+	- settings on small screens!
 	- How to handle activity reloads (when app is minimized or similar)?
 	- Save interval on android? When is "onClosing" actually called? Is data (nearly) always saved atm or do i need improvements?
-	- improve startup time on android as much as possible (-> qt exmaples seem to load much faster!)
+	- (optional?) start screen?
+	- improve startup time on android as much as possible (-> qt examples seem to load much faster!)
 
 6. Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
@@ -28,3 +29,4 @@ TODO
 Possibilities for later:
 a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
 b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)
+c. Drag'n'drop file load support on desktop?

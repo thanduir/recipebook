@@ -180,7 +180,16 @@ void RecipeBookUIContext::slotSave()
 
 void RecipeBookUIContext::slotExport(QString strFileURL)
 {
-	QString localFileName = QUrl(strFileURL).toLocalFile();
+    QString localFileName;
+	if(m_bOnAndroid)
+	{
+		// On android, the user only choses the filename, while the directory is being kept fixed.
+        localFileName = m_Settings.applicationUserFilesPathAndroid() + "/" +  strFileURL;
+	}
+    else
+    {
+        localFileName = QUrl(strFileURL).toLocalFile();
+    }
 
 	QFileInfo fi(localFileName);
 	m_Settings.setLastUsedExportFolder(fi.absolutePath());
@@ -200,7 +209,16 @@ void RecipeBookUIContext::slotExport(QString strFileURL)
 
 void RecipeBookUIContext::slotImport(QString strFileURL)
 {
-	QString localFileName = QUrl(strFileURL).toLocalFile();
+    QString localFileName;
+	if(m_bOnAndroid)
+	{
+		// On android, the user only choses the filename, while the directory is being kept fixed.
+        localFileName = m_Settings.applicationUserFilesPathAndroid() + "/" + strFileURL;
+	}
+    else
+    {
+        localFileName = QUrl(strFileURL).toLocalFile();
+    }
 
 	QFileInfo fi(localFileName);
 	m_Settings.setLastUsedImportFolder(fi.absolutePath());

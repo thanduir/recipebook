@@ -8,13 +8,34 @@ import "components"
 
 ApplicationWindow {
 	visible: true
-    title: qsTr("RecipeBook")
+	title: qsTr("RecipeBook")
+
+	InputFromListDialog {
+		id: fileDialogExport
+		objectName: "fileDialogExport"
+		title: qsTr("Export data")
+		listInputOnly: false
+		// TODO: Add file exists check!
+		signal onExport(filename: string)
+		onAccepted: onExport(outputText)
+	}
+
+	InputFromListDialog {
+		id: fileDialogImport
+		objectName: "fileDialogImport"
+
+		title: qsTr("Import file")
+		listInputOnly: true
+
+		signal onImport(filename: string)
+		onAccepted: dlgConfirmImportFile.open()
+	}
 
     TextMessageDialog {
         id: dlgConfirmImportFile
         title: qsTr("Import file")
         msgText: qsTr("This will load the selected file, replacing all current data irrevocably. Proceed?");
-        onAccepted: fileDialogImport.onImport(fileDialogImport.fileUrls)
+		onAccepted: fileDialogImport.onImport(fileDialogImport.outputText)
     }
 
     AppDlgInterface {
@@ -178,24 +199,9 @@ ApplicationWindow {
                     text: qsTr("Import file")
                     icon.source: "qrc:/images/import-file.svg"
                     onClicked: {
-                        fileDialogImport.folder = "file:///" + recipeBookSettings.lastUsedImportFolder()
+						fileDialogImport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
                         fileDialogImport.open()
-                    }
-
-					// TODO: Change so that it works similar to ShoppingList app!
-                    FileDialog {
-                        id: fileDialogImport
-                        objectName: "fileDialogImport"
-
-                        title: qsTr("Import file")
-                        modality: Qt.WindowModal
-                        nameFilters: importExportFilters
-                        selectExisting: true
-                        selectMultiple: false
-                        selectFolder: false
-                        signal onImport(filename: string)
-                        onAccepted: dlgConfirmImportFile.open()
-                    }
+					}
                 }
 
                 RoundButton {
@@ -212,24 +218,9 @@ ApplicationWindow {
                     text: qsTr("Export")
                     icon.source: "qrc:/images/export-file.svg"
                     onClicked: {
-                        fileDialogExport.folder = "file:///" + recipeBookSettings.lastUsedExportFolder()
-                        fileDialogExport.open()
-                    }
-
-					// TODO: Change so that it works similar to ShoppingList app!
-                    FileDialog {
-                        id: fileDialogExport
-                        objectName: "fileDialogExport"
-
-                        title: qsTr("Export data")
-                        modality: Qt.WindowModal
-                        nameFilters: importExportFilters
-                        selectExisting: false
-                        selectMultiple: false
-                        selectFolder: false
-                        signal onExport(filename: string)
-                        onAccepted: onExport(fileDialogExport.fileUrls)
-                    }
+						fileDialogExport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
+						fileDialogExport.open()
+					}
                 }
 
                 RoundButton {
