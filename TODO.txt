@@ -3,10 +3,7 @@ TODO
 
 5. RecipeBook for android
 	- qml warnings
-	- file export: ask user if file overwritten!
 	- Bug: Crash on import old file (from einkaufsliste)! (android only? Or on all devices?)
-	
-	- android: "back" button should open side panel, if it isn't open, and close the app if it is open.
 	- Make emulator (x86) work for android variant (with relatively small sceen)!
 	- manifest file + icon on android! Can i (with this) also fix the wrong app name prefix (org.qtproject.example.RecipeBook)
 	
@@ -14,10 +11,11 @@ TODO
 	- Adjust to and test everything on smaller screens!
 	- improve performance of scrolling (ingredients + shopping list) and item filtering (ingredients)!
 	- rework shopping list page
-	- settings on small screens!
+	- settings page on small screens (and with different languages)!
 	- How to handle activity reloads (when app is minimized or similar)?
 	- Save interval on android? When is "onClosing" actually called? Is data (nearly) always saved atm or do i need improvements?
 	- (optional?) start screen?
+	- android: "back" button should open side panel, if it isn't open, and close the app if it is open. (or at least: don't close app on settings screen)
 	- improve startup time on android as much as possible (-> qt examples seem to load much faster!)
 
 6. Merge functionality

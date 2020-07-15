@@ -183,6 +183,11 @@ void RecipeBookUIContext::slotExport(QString strFileURL)
     QString localFileName;
 	if(m_bOnAndroid)
 	{
+		if(!strFileURL.endsWith(".json"))
+		{
+			strFileURL += ".json";
+		}
+
 		// On android, the user only choses the filename, while the directory is being kept fixed.
         localFileName = m_Settings.applicationUserFilesPathAndroid() + "/" +  strFileURL;
 	}
@@ -212,6 +217,11 @@ void RecipeBookUIContext::slotImport(QString strFileURL)
     QString localFileName;
 	if(m_bOnAndroid)
 	{
+		if(!strFileURL.endsWith(".json"))
+		{
+			strFileURL += ".json";
+		}
+
 		// On android, the user only choses the filename, while the directory is being kept fixed.
         localFileName = m_Settings.applicationUserFilesPathAndroid() + "/" + strFileURL;
 	}

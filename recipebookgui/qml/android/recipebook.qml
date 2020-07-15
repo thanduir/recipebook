@@ -15,9 +15,24 @@ ApplicationWindow {
 		objectName: "fileDialogExport"
 		title: qsTr("Export data")
 		listInputOnly: false
-		// TODO: Add file exists check!
 		signal onExport(filename: string)
-		onAccepted: onExport(outputText)
+		onAccepted: {
+			if(listItems.includes(outputText))
+			{
+				dlgConfirmExportFileOverwrite.open()
+			}
+			else
+			{
+				onExport(outputText);
+			}
+		}
+	}
+
+	TextMessageDialog {
+		id: dlgConfirmExportFileOverwrite
+		title: qsTr("Export file")
+		msgText: qsTr("The file \"%1\" already exists. Overwrite?").arg(fileDialogExport.outputText);
+		onAccepted: fileDialogExport.onExport(fileDialogExport.outputText)
 	}
 
 	InputFromListDialog {
