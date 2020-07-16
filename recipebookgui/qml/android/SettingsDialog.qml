@@ -33,10 +33,10 @@ Item {
     }
 
     Flickable {
-        anchors.horizontalCenter: parent.horizontalCenter
+		anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        width: paneSettings.width
+		width: paneSettings.width
 
         contentWidth: paneSettings.width
         contentHeight: paneSettings.height
@@ -44,25 +44,21 @@ Item {
 
         Pane {
             id: paneSettings
-
             anchors.top: parent.top
-            width: groupDefaultValues.width + 12
-            height: groupSettings.height + groupDefaultValues.height + groupData.height + rowUID.height + 48 + 12
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: groupDefaultValues.width + 12
+			height: groupSettings.height + groupDefaultValues.height + groupData.height + rowUID.height + 48 + 12 + 36
 
             GroupBox {
                 id: groupSettings
+				anchors.horizontalCenter: parent.horizontalCenter
 
                 title: qsTr("Settings")
-                width: groupDefaultValues.width
 
-                GridLayout {
+				ColumnLayout {
                     anchors.fill: parent
 
-                    columns: 2
-                    columnSpacing: 10
-                    rowSpacing: 0
-
-                    Label {
+					Label {
                         text: qsTr("Current language")
                     }
                     ComboBox {
@@ -78,18 +74,15 @@ Item {
             GroupBox {
                 id: groupDefaultValues
                 anchors.top: groupSettings.bottom
-                anchors.topMargin: 12
+				anchors.topMargin: 24
+				anchors.horizontalCenter: parent.horizontalCenter
 
-                title: qsTr("Default values")
+				title: qsTr("Default values")
 
-                GridLayout {
+				ColumnLayout {
                     anchors.fill: parent
 
-                    columns: 2
-                    columnSpacing: 5
-                    rowSpacing: 0
-
-                    Label {
+					Label {
                         text: qsTr("Default unit")
                     }
                     ComboBox {
@@ -140,11 +133,10 @@ Item {
             GroupBox {
                 id: groupData
                 anchors.top: groupDefaultValues.bottom
-                anchors.topMargin: 12
+				anchors.topMargin: 24
+				anchors.horizontalCenter: parent.horizontalCenter
 
-                width: groupDefaultValues.width
-
-                title: qsTr("Data")
+				title: qsTr("Data")
 
                 ColumnLayout {
                     anchors.centerIn: parent
@@ -165,10 +157,10 @@ Item {
                 }
             }
 
-            RowLayout {
+			ColumnLayout {
                 id: rowUID
                 anchors.top: groupData.bottom
-                anchors.topMargin: 24
+				anchors.topMargin: 36
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Label {
