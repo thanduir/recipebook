@@ -14,7 +14,8 @@
 using namespace recipebook::UI;
 using namespace recipebook::serialization;
 
-const int c_SaveIntervalSeconds = 60;
+const int c_SaveIntervalDesktopSeconds = 60;
+const int c_SaveIntervalAndroidSeconds = 15;
 const FileFormat c_InternalFormat = FileFormat::Json;
 
 namespace
@@ -39,8 +40,9 @@ namespace
 	}
 }
 
-RecipeBookUIContext::RecipeBookUIContext()
-:	m_RBData(),
+RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
+:	m_bOnAndroid(bOnAndroid),
+	m_RBData(),
 	m_Settings(), 
 	m_Translations(m_Settings),
 	m_Converter(),	
@@ -138,7 +140,8 @@ RecipeBookUIContext::RecipeBookUIContext()
 	// Enable periodic saving routine
 	QTimer *pTimer = new QTimer(this);
 	connect(pTimer, SIGNAL(timeout()), this, SLOT(slotSave()));
-	pTimer->start(c_SaveIntervalSeconds * 1000);
+	const int saveIntervalSeconds = m_bOnAndroid ? c_SaveIntervalAndroidSeconds : c_SaveIntervalDesktopSeconds;
+	pTimer->start(saveIntervalSeconds * 1000);
 }
 
 void RecipeBookUIContext::slotSave()

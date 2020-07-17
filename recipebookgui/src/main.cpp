@@ -17,8 +17,7 @@ int main(int argc, char *argv[])
 	bAndroid = true;
 #endif
 
-	recipebook::UI::RecipeBookUIContext dataHandler;
-	dataHandler.setOnAndroid(bAndroid);
+	recipebook::UI::RecipeBookUIContext dataHandler(bAndroid);
 	if(!dataHandler.setupQml())
 	{
 		return -1;

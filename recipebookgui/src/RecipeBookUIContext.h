@@ -37,9 +37,8 @@ namespace recipebook::UI
 		Q_OBJECT
 
 	public:
-		RecipeBookUIContext();
+		RecipeBookUIContext(bool bOnAndroid);
 
-		void setOnAndroid(bool bOnAndroid) { m_bOnAndroid = bOnAndroid; }
 		bool setupQml();
 
 	public slots:
@@ -57,7 +56,7 @@ namespace recipebook::UI
 		bool setupConnections(QObject* pRoot);
 
 	private:
-		bool m_bOnAndroid = false;
+		bool m_bOnAndroid;
 
 		RBDataHandler m_RBData;
 
