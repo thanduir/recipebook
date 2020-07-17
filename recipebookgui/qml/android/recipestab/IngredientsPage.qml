@@ -140,12 +140,23 @@ Item {
             id: listIngredientsItem
             highlighted: ListView.isCurrentItem
             width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
-            onClicked: lvIngredients.currentIndex == index ? lvIngredients.currentIndex = -1 : lvIngredients.currentIndex = index
+			onClicked: {
+				if(lvIngredients.currentIndex == index)
+				{
+					lvIngredients.currentIndex = -1;
+					laoderExtendedInfo.sourceComponent = undefined;
+				}
+				else
+				{
+					lvIngredients.currentIndex = index;
+					laoderExtendedInfo.sourceComponent = componentExtendedInfo;
+				}
+			}
 
 			implicitHeight: listIngredientsItemGroup.implicitHeight
 			contentItem: Item {
 				id: listIngredientsItemGroup
-				implicitHeight: listItemDelegateName.height + 15 + (highlighted ? listItemGridIngredient.height + 10 : 0)
+				implicitHeight: listItemDelegateName.height + 15 + (highlighted ? laoderExtendedInfo.height + 10 : 0)
 
                 // Ingredient name
 				Label {
@@ -251,66 +262,81 @@ Item {
                     }
                 }
 
-                // Extended information for active ingredient
-                GridLayout {
-                    id: listItemGridIngredient
-                    visible: listIngredientsItem.highlighted
+				Loader {
+					anchors.left: parent.left
+					anchors.right: parent.right
+					anchors.top: listItemDelegateName.bottom
 
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: listItemDelegateName.bottom
-                    anchors.leftMargin: 10
-                    anchors.topMargin: 10
+					id: laoderExtendedInfo
+				}
 
-                    columns: 2
+				// Extended information for active ingredient
+				Component {
+					id: componentExtendedInfo
 
-                    Label {
-                        text: qsTr("Category")
-                    }
-                    ComboBox {
-                        Layout.fillWidth: true
-                        model: modelCategories
-                        currentIndex: indexOfValue(filterModelIngredients.category(lvIngredients.currentIndex))
-                        onActivated: filterModelIngredients.setCategory(lvIngredients.currentIndex, currentText)
-                    }
+					GridLayout {
+						id: listItemGridIngredient
 
-                    Label {
-                        Layout.rightMargin: 25
-                        Layout.topMargin: 10
-                        Layout.alignment: Qt.AlignTop
-                        text: qsTr("Provenance")
-                    }
-                    GridView {
-                        id: lvSortOrders
-                        Layout.fillWidth: true
-                        height: 80
-                        cellWidth: 155
-                        cellHeight: 40
-                        flow: GridView.FlowTopToBottom
+						Component.onCompleted: {
+							cbxCategory.currentIndex = cbxCategory.indexOfValue(filterModelIngredients.category(lvIngredients.currentIndex))
+							cbxUnit.currentIndex = cbxUnit.indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
+						}
 
-                        ScrollIndicator.horizontal: ScrollIndicator { }
-						
-                        model: modelSortOrders
-                        delegate: CheckBox {
-                            id: cbxItemName
-                            text: name
+						anchors.left: parent.left
+						anchors.right: parent.right
+						anchors.top: parent.top
+						anchors.leftMargin: 10
+						anchors.topMargin: 10
 
-                            width: lvSortOrders.cellWidth
+						columns: 2
 
-                            checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
-                            onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
+						Label {
+							text: qsTr("Category")
+						}
+						ComboBox {
+							id: cbxCategory
+							Layout.fillWidth: true
+							model: modelCategories
+							onActivated: filterModelIngredients.setCategory(lvIngredients.currentIndex, currentText)
+						}
 
-                        }
-                    }
+						Label {
+							Layout.rightMargin: 25
+							Layout.topMargin: 10
+							Layout.alignment: Qt.AlignTop
+							text: qsTr("Provenance")
+						}
+						GridView {
+							id: lvSortOrders
+							Layout.fillWidth: true
+							height: 80
+							cellWidth: 155
+							cellHeight: 40
+							flow: GridView.FlowTopToBottom
 
-                    Label { text: qsTr("Unit") }
-                    ComboBox {
-                        id: cbxUnit
-                        Layout.fillWidth: true
-                        model: uiStrings.getAllUnitNames()
-                        currentIndex: indexOfValue(filterModelIngredients.defaultUnit(lvIngredients.currentIndex))
-                        onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
-                    }
+							ScrollIndicator.horizontal: ScrollIndicator { }
+
+							model: modelSortOrders
+							delegate: CheckBox {
+								id: cbxItemName
+								text: name
+
+								width: lvSortOrders.cellWidth
+
+								checked: filterModelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
+								onClicked: filterModelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
+
+							}
+						}
+
+						Label { text: qsTr("Unit") }
+						ComboBox {
+							id: cbxUnit
+							Layout.fillWidth: true
+							model: uiStrings.getAllUnitNames()
+							onActivated: filterModelIngredients.setDefaultUnit(lvIngredients.currentIndex, currentText)
+						}
+					}
 				}
 			}
 

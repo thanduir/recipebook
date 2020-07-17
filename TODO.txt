@@ -2,15 +2,16 @@ TODO
 ====
 
 5. RecipeBook for android
-	- improve performance of scrolling (ingredients + shopping list) and item filtering (ingredients)!
-	- improve shopping list page
+	- improve shopping list page (visual arrangement and scrolling performance)!
 	
 	- (optional?) start screen?
 	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
 
-	- Make sure all features of the desktop app (and the einkaufsliste app) are present on android
-	- Adjust to and test everything on smaller screens!
-	- improve startup time on android as much as possible (-> qt examples seem to load much faster!)
+	- Adjust everything to smaller screens!
+	- improve startup time on android as much as possible (-> qt examples seem to load much faster, but they have much simpler qml...! 
+		-> maybe a dedicated startup screen already helps?)
+	
+	- Test everything!
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 

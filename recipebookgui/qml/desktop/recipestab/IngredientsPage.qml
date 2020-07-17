@@ -270,8 +270,8 @@ Item {
 
 				width: lvSortOrders.cellWidth
 
-				checked: modelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
-				onClicked: modelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
+				checked: filterModelIngredients.provenanceAvailable(lvIngredients.currentIndex, name)
+				onClicked: filterModelIngredients.setProvenanceAvailable(lvIngredients.currentIndex, name, checked)
 				
 			}			
 		}
