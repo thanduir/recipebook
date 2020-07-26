@@ -1,6 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
+import QtQuick.Controls.Material 2.4
 
 import "components"
 
@@ -72,6 +73,10 @@ Item {
 		onAccepted: {
 			modelShoppingRecipes.setDueDate(myIndex, selectedDate)
 		}
+		onReset: {
+			modelShoppingRecipes.resetDueDate(myIndex);
+			close();
+		}
 	}
 
 	// Recipe items dialogs
@@ -107,51 +112,71 @@ Item {
 
 			ToolButton {
 				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/clear-black.svg"
-				Layout.rightMargin: 20
+				icon.source: "qrc:/images/undo.svg"
 
 				onClicked: {
 					dlgClearShoppingList.msgText = qsTr("This will remove all recipes from the list. Proceed?");
 					dlgClearShoppingList.open();
 				}
 			}
+		}
+	}
 
-			ToolButton {
-				id: buttonAddFromRecipe
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+	// Floating action buttons
 
-				onVisibleChanged: {
-					if(visible)
-					{
-						enabled = modelShoppingRecipes.canShoppingRecipesBeAddedFromRecipes()
-					}
-				}
-				onClicked: {
-					dlgAddExistingRecipes.editListModel = modelShoppingRecipes;
-					dlgAddExistingRecipes.allValuesFilterModel = filterModelRecipes;
-					dlgAddExistingRecipes.open();
-				}
-			}
+	RoundButton {
+		id: buttonAddFromRecipe
+		anchors.right: parent.right
+		anchors.rightMargin: 5
+		anchors.bottom: parent.bottom
+		z: 1
+		scale: 1.5
 
-			ToolButton {
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
-				icon.color: "yellow"
+		Material.background: Material.Indigo
 
-				onVisibleChanged: {
-					if(visible)
-					{
-						enabled = modelShoppingRecipes.canNewShoppingRecipesBeAdded()
-					}
-				}
-				onClicked: dlgAddNewRecipe.open()
+		display: AbstractButton.IconOnly
+		icon.source: "qrc:/images/add-black.svg"
+		icon.color: "white"
+
+		onVisibleChanged: {
+			if(visible)
+			{
+				enabled = modelShoppingRecipes.canShoppingRecipesBeAddedFromRecipes()
 			}
 		}
+		onClicked: {
+			dlgAddExistingRecipes.editListModel = modelShoppingRecipes;
+			dlgAddExistingRecipes.allValuesFilterModel = filterModelRecipes;
+			dlgAddExistingRecipes.open();
+		}
+	}
+
+	RoundButton {
+		anchors.right: parent.right
+		anchors.rightMargin: 5
+		anchors.bottom: buttonAddFromRecipe.top
+		anchors.bottomMargin: 10
+		z: 1
+		scale: 1.33
+
+		Material.background: Material.Indigo
+
+		display: AbstractButton.IconOnly
+		icon.source: "qrc:/images/add-black.svg"
+		icon.color: "white"
+
+		onVisibleChanged: {
+			if(visible)
+			{
+				enabled = modelShoppingRecipes.canNewShoppingRecipesBeAdded()
+			}
+		}
+		onClicked: dlgAddNewRecipe.open()
 	}
 
 	// Main page
 
+	// TODO: Improve this (visual arrangement (buttons on top, general layout) and scrolling performance)!
 	ListView {
 		id: lvRecipes
 		anchors.left: parent.left
@@ -256,7 +281,7 @@ Item {
 						property int decimals: 2
 						property real realValue: value / 100
 
-						value: modelShoppingRecipes.scalingFactor(index) * 100
+						value: scalingFactor * 100
 						onValueModified: modelShoppingRecipes.setScalingFactor(index, value / 100)
 
 						validator: DoubleValidator {
@@ -278,12 +303,14 @@ Item {
 						Layout.rightMargin: 20
 						text: qsTr("Due date")
 					}
-					RowLayout {
+					Label {
+						Layout.leftMargin: 10
 						Layout.fillWidth: true
+						text: dueDateSet ? dueDate.toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy") : qsTr("None")
+						font.underline: true
 
-						RoundButton {
-							display: AbstractButton.IconOnly
-							icon.source: "qrc:/images/date-range.svg"
+						MouseArea {
+							anchors.fill: parent
 
 							onClicked: {
 								var currentDate = new Date();
@@ -292,34 +319,6 @@ Item {
 								dlgDateSelection.selectedDate = selDate;
 								dlgDateSelection.myIndex = index;
 								dlgDateSelection.open();
-							}
-						}
-
-						Label {
-							Layout.leftMargin: 10
-							Layout.fillWidth: true
-							rightPadding: 10
-							text: modelShoppingRecipes.dueDate(index).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
-						}
-
-						Item {
-							height: parent.height
-							Layout.fillWidth: true
-							Layout.rightMargin: 20
-
-							RoundButton {
-								anchors.centerIn: parent
-								display: AbstractButton.IconOnly
-								icon.source: "qrc:/images/cancel-black.svg"
-								height: 40
-								width: height
-								padding: 10
-
-								visible: modelShoppingRecipes.isDueDateSet(index)
-
-								onClicked: {
-									modelShoppingRecipes.resetDueDate(index)
-								}
 							}
 						}
 					}

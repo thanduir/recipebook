@@ -135,6 +135,6 @@ Dialog {
 
 	footer: DialogButtonBox {
 		id: buttons
-		standardButtons: Dialog.Ok | Dialog.Cancel
+		standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Reset
 	}
 }

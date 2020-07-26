@@ -56,5 +56,6 @@
 		<file alias="open-drawer.svg">images/open-drawer.svg</file>
 		<file alias="more-vert.svg">images/more-vert.svg</file>
 		<file alias="info.svg">images/info.svg</file>
+		<file alias="undo.svg">images/undo.svg</file>
     </qresource>
 </RCC>

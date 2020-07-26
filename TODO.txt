@@ -2,14 +2,16 @@ TODO
 ====
 
 5. RecipeBook for android
-	- improve shopping list page (visual arrangement and scrolling performance)!
+	- RANGE BUTTONS DESTROY LAYOUT (on android at least)!
+	- ON ANDROID, THERE SHOULD BE NO ScrollBar IN EditIngredientsList AND AddRecipesListDialog (-> check all list-based components!)
 	
 	- (optional?) start screen?
 	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
 
-	- Adjust everything to smaller screens!
-	- improve startup time on android as much as possible (-> qt examples seem to load much faster, but they have much simpler qml...! 
-		-> maybe a dedicated startup screen already helps?)
+	- Verify that everything works fine on smaller screens
+	- improve startup time on android as much as possible 
+		-> qt examples seem to load much faster, but they have much simpler qml...! 
+		-> maybe a dedicated startup screen already helps?
 	
 	- Test everything!
 	

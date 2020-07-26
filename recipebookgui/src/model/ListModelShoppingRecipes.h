@@ -23,6 +23,7 @@ namespace recipebook::UI
 			NameRole = Qt::UserRole + 1,
 			ScalingFactorRole,
 			DueDateRole,
+			DueDateSetRole,
 			EverythingSetRole
 		};
 

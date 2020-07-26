@@ -206,45 +206,45 @@
         <translation>Filter ingredients</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="218"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="229"/>
         <source>%1 is used in the following recipes:</source>
         <translation>%1 is used in the following recipes:</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="246"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="257"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="268"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="294"/>
         <location filename="../qml/desktop/recipestab/IngredientsPage.qml" line="241"/>
         <source>Category</source>
         <translation>Category</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="281"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="307"/>
         <location filename="../qml/desktop/recipestab/IngredientsPage.qml" line="254"/>
         <source>Provenance</source>
         <translation>Provenance</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="306"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="332"/>
         <location filename="../qml/desktop/recipestab/IngredientsPage.qml" line="279"/>
         <source>Unit</source>
         <translation>Unit</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="329"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="355"/>
         <source>Ingredient &quot;%1&quot; is still in use and can&apos;t be removed.</source>
         <translation>Ingredient &quot;%1&quot; is still in use and can&apos;t be removed.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="363"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="389"/>
         <source>Ingredient &quot;%1&quot; removed</source>
         <translation>Ingredient &quot;%1&quot; removed</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="368"/>
+        <location filename="../qml/android/recipestab/IngredientsPage.qml" line="394"/>
         <source>Undo</source>
         <translation>Undo</translation>
     </message>
@@ -1380,58 +1380,58 @@
 <context>
     <name>recipebook::UI::RecipeBookUIContext</name>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="25"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="26"/>
         <source>Json files (*.json)</source>
         <translation>Json files (*.json)</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="26"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="27"/>
         <source>Simplified json files for app (*.app.json)</source>
         <translation>Simplified json files for app (*.app.json)</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="172"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="175"/>
         <source>Error saving current data</source>
         <translation>Error saving current data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="173"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="176"/>
         <source>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="209"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="212"/>
         <source>Error during file export</source>
         <translation>Error during file export</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="210"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="213"/>
         <source>Couldn&apos;t export to file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t export to file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="243"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="246"/>
         <source>Error during file import</source>
         <translation>Error during file import</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="244"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="247"/>
         <source>Couldn&apos;t import file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t import file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="266"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="269"/>
         <source>Error loading default data</source>
         <translation>Error loading default data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="267"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="270"/>
         <source>Couldn&apos;t load default data.</source>
         <translation>Couldn&apos;t load default data.</translation>
     </message>

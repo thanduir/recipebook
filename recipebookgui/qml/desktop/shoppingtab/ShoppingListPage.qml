@@ -88,6 +88,13 @@ Item {
 			var oldIndex = lvRecipes.currentIndex
 			lvRecipes.currentIndex = -1
 			lvRecipes.currentIndex = oldIndex
+		}		
+		onReset: {
+			modelShoppingRecipes.resetDueDate(lvRecipes.currentIndex);
+			close();
+			var oldIndex = lvRecipes.currentIndex
+			lvRecipes.currentIndex = -1
+			lvRecipes.currentIndex = oldIndex
 		}
 	}
 
@@ -133,7 +140,7 @@ Item {
 		anchors.right: lvRecipes.right
 
 		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/clear-black.svg"
+		icon.source: "qrc:/images/undo.svg"
 
 		ToolTip.delay: 1000
 		ToolTip.timeout: 5000
@@ -364,50 +371,21 @@ Item {
 			Layout.rightMargin: 50
 			text: qsTr("Due date")
 		}
-		RowLayout { 
+		Label {
+			Layout.leftMargin: 10
 			Layout.fillWidth: true
+			text: modelShoppingRecipes.isDueDateSet(lvRecipes.currentIndex) ? modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy") : qsTr("None")
+			font.underline: true
 
-			RoundButton {
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/date-range.svg"
-				
+			MouseArea {
+				anchors.fill: parent
+
 				onClicked: {
 					var currentDate = new Date();
 					var selDate = modelShoppingRecipes.dueDate(lvRecipes.currentIndex);
 					dlgDateSelection.minimumDate = selDate < currentDate ? selDate : currentDate;
 					dlgDateSelection.selectedDate = selDate;
 					dlgDateSelection.open();
-				}
-			}
-			
-			Label {
-				Layout.leftMargin: 10
-				Layout.fillWidth: true
-				rightPadding: 10
-				text: modelShoppingRecipes.dueDate(lvRecipes.currentIndex).toLocaleDateString(Qt.locale(), "ddd, dd.MM.yyyy")
-			}
-
-			Item {
-				height: parent.height
-				Layout.fillWidth: true
-				Layout.rightMargin: 20
-
-				RoundButton {
-					anchors.centerIn: parent
-					display: AbstractButton.IconOnly
-					icon.source: "qrc:/images/cancel-black.svg"
-					height: 40
-					width: height				
-					padding: 10
-
-					visible: modelShoppingRecipes.isDueDateSet(lvRecipes.currentIndex)
-
-					onClicked: {
-						modelShoppingRecipes.resetDueDate(lvRecipes.currentIndex)
-						var oldIndex = lvRecipes.currentIndex
-						lvRecipes.currentIndex = -1
-						lvRecipes.currentIndex = oldIndex
-					}
 				}
 			}
 		}

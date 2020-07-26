@@ -40,6 +40,10 @@ QVariant ListModelShoppingRecipes::data(const QModelIndex& index, int iRole) con
 	{
 		return dueDate(index.row());
 	}
+	else if(role == ShoppingRecipeRoles::DueDateSetRole)
+	{
+		return isDueDateSet(index.row());
+	}
 	else if(role == ShoppingRecipeRoles::EverythingSetRole)
 	{
 		return everythingSet(index.row());
@@ -54,6 +58,7 @@ QHash<int, QByteArray> ListModelShoppingRecipes::roleNames() const
 	roles[(int)ShoppingRecipeRoles::NameRole] = "name";
 	roles[(int)ShoppingRecipeRoles::ScalingFactorRole] = "scalingFactor";
 	roles[(int)ShoppingRecipeRoles::DueDateRole] = "dueDate";
+	roles[(int)ShoppingRecipeRoles::DueDateSetRole] = "dueDateSet";
 	roles[(int)ShoppingRecipeRoles::EverythingSetRole] = "everythingSet";
 	return roles;
 }
@@ -167,6 +172,7 @@ void ListModelShoppingRecipes::setDueDate(int row, QDate date)
 		rRecipe.setDueDate(date);
 	}
 
+	setDataChanged(row, ShoppingRecipeRoles::DueDateSetRole);
 	setDataChanged(row, ShoppingRecipeRoles::DueDateRole);
 }
 
@@ -182,6 +188,7 @@ void ListModelShoppingRecipes::resetDueDate(int row)
 		rRecipe.setDueDate(QDate());
 	}
 
+	setDataChanged(row, ShoppingRecipeRoles::DueDateSetRole);
 	setDataChanged(row, ShoppingRecipeRoles::DueDateRole);
 }
 
@@ -349,6 +356,9 @@ ListModelShoppingListItems* ListModelShoppingRecipes::getItemsModel(int row)
 
 	connect(items, SIGNAL(shoppingitemEnabledChanged(int)),
 			this, SLOT(onItemEnabledChanged(int)));
+
+	connect(this, SIGNAL(recipeScalingChanged(quint32)),
+			items, SLOT(onDependentItemChanged(quint32)));
 
 	return items;
 }
