@@ -151,6 +151,7 @@ Item {
 		}
 	}
 
+	// TODO: Different symbol?
 	RoundButton {
 		anchors.right: parent.right
 		anchors.rightMargin: 5
@@ -176,7 +177,7 @@ Item {
 
 	// Main page
 
-	// TODO: Improve this (visual arrangement (buttons on top, general layout) and scrolling performance)!
+	// TODO: Improve scroll performance!
 	ListView {
 		id: lvRecipes
 		anchors.left: parent.left
@@ -212,9 +213,33 @@ Item {
 				id: listRecipesItemGroup
 				implicitHeight: listItemRecipesName.height + grid.height + lvRecipeItems.height + 5
 
+				RoundButton {
+					id: buttonEditRecipeItems
+					anchors.top: parent.top
+					anchors.left: parent.left
+					anchors.leftMargin: -20
+					anchors.topMargin: -16
+
+					display: AbstractButton.IconOnly
+					icon.source: "qrc:/images/list-black.svg"
+					flat: true
+
+					onVisibleChanged: {
+						if(visible)
+						{
+							enabled = lvRecipeItems.model.canItemsBeAdded()
+						}
+					}
+					onClicked: {
+						dlgEditShoppingListItemsList.editListModel = lvRecipeItems.model;
+						dlgEditShoppingListItemsList.allValuesFilterModel = filterModelIngredients;
+						dlgEditShoppingListItemsList.open();
+					}
+				}
+
 				Label {
 					id: listItemRecipesName
-					anchors.left: parent.left
+					anchors.left: buttonEditRecipeItems.right
 					anchors.right: parent.right
 					anchors.top: parent.top
 
@@ -235,27 +260,7 @@ Item {
 					}
 				}
 
-				RoundButton {
-					anchors.top: listItemRecipesName.top
-					anchors.right: parent.right
-					anchors.topMargin: -10
-					anchors.rightMargin: -10
 
-					display: AbstractButton.IconOnly
-					icon.source: "qrc:/images/list-black.svg"
-
-					onVisibleChanged: {
-						if(visible)
-						{
-							enabled = lvRecipeItems.model.canItemsBeAdded()
-						}
-					}
-					onClicked: {
-						dlgEditShoppingListItemsList.editListModel = lvRecipeItems.model;
-						dlgEditShoppingListItemsList.allValuesFilterModel = filterModelIngredients;
-						dlgEditShoppingListItemsList.open();
-					}
-				}
 
 				// Additional recipe data
 
@@ -264,6 +269,7 @@ Item {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					anchors.top: listItemRecipesName.bottom
+					anchors.topMargin: -5
 
 					columns: 2
 
@@ -331,10 +337,10 @@ Item {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					anchors.top: grid.bottom
-					anchors.topMargin: 5
+					anchors.topMargin: 10
 
 					interactive: false
-					implicitHeight: lvRecipeItems.contentItem.childrenRect.height
+					implicitHeight: lvRecipeItems.contentItem.childrenRect.height + 20
 
 					keyNavigationEnabled: false
 
@@ -363,7 +369,7 @@ Item {
 
 						contentItem: Item {
 							id: listItemRecipeItemGroup
-							implicitHeight: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : 0)
+							implicitHeight: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : -20)
 
 							Rectangle {
 								id: groupBar
@@ -384,12 +390,11 @@ Item {
 								id: listItemRecipeItemName
 								anchors.top: parent.top
 								anchors.left: hasGroup ? groupBar.right : parent.left
-								anchors.topMargin: -10
+								anchors.topMargin: -18
 								anchors.leftMargin: hasGroup ? 0 :  -15
 
-								font.bold: checked
 								font.italic: optional
-								text: name
+								text: checked ? name : "<font color=\"gray\">" + name + "</font>"
 
 								checked: itemEnabled
 								onClicked: {
