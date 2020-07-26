@@ -177,7 +177,6 @@ Item {
 
 	// Main page
 
-	// TODO: Improve scroll performance!
 	ListView {
 		id: lvRecipes
 		anchors.left: parent.left
@@ -213,6 +212,7 @@ Item {
 				id: listRecipesItemGroup
 				implicitHeight: listItemRecipesName.height + grid.height + lvRecipeItems.height + 5
 
+				// TODO: Change to make it more obvious that this is actually clickable
 				RoundButton {
 					id: buttonEditRecipeItems
 					anchors.top: parent.top
@@ -332,6 +332,7 @@ Item {
 
 				// Recipe items
 
+				// TODO: First item always active at first. Why?
 				ListView {
 					id: lvRecipeItems
 					anchors.left: parent.left
@@ -363,13 +364,25 @@ Item {
 					delegate: SwipeDelegate {
 						id: listItemRecipeItem
 						highlighted: ListView.isCurrentItem
-						onClicked: lvRecipeItems.currentIndex == index || !listItemRecipeItemName.checked ? lvRecipeItems.currentIndex = -1 : lvRecipeItems.currentIndex = index
 						width: lvRecipeItems.width - lvRecipeItems.leftMargin - lvRecipeItems.rightMargin
 						implicitHeight: listItemRecipeItemGroup.implicitHeight
 
+						onClicked: {
+							if(lvRecipeItems.currentIndex == index)
+							{
+								lvRecipeItems.currentIndex = -1;
+								laoderExtendedInfo.sourceComponent = undefined;
+							}
+							else
+							{
+								lvRecipeItems.currentIndex = index;
+								laoderExtendedInfo.sourceComponent = componentExtendedInfo;
+							}
+						}
+
 						contentItem: Item {
 							id: listItemRecipeItemGroup
-							implicitHeight: listItemRecipeItemName.height + (highlighted ? listItemGridRecipeItem.height : -20)
+							implicitHeight: listItemRecipeItemName.height + (highlighted ? laoderExtendedInfo.height : -20)
 
 							Rectangle {
 								id: groupBar
@@ -456,138 +469,150 @@ Item {
 							}
 
 							// Extended information for active ingredient elements
-							GridLayout {
-								id: listItemGridRecipeItem
-								visible: listItemRecipeItem.highlighted
-
+							Loader {
 								anchors.left: parent.left
 								anchors.right: parent.right
 								anchors.top: listItemRecipeItemName.bottom
-								anchors.leftMargin: 20
-								anchors.rightMargin: 10
 
-								columns: 2
-								columnSpacing: 10
+								id: laoderExtendedInfo
+							}
 
-								Label {
-									text: qsTr("Amount")
-								}
-								RowLayout {
-									Layout.fillWidth: true
+							// Extended information for active ingredient
+							Component {
+								id: componentExtendedInfo
 
-									ComboBox {
+								GridLayout {
+									id: listItemGridRecipeItem
+
+									anchors.left: parent.left
+									anchors.right: parent.right
+									anchors.top: parent.top
+									anchors.leftMargin: 20
+									anchors.rightMargin: 10
+
+									columns: 2
+									columnSpacing: 10
+
+									Label {
+										text: qsTr("Amount")
+									}
+									RowLayout {
 										Layout.fillWidth: true
-										model: uiStrings.getAllUnitNames()
-										currentIndex: amountUnit
-										onActivated: amountUnit = currentIndex
+
+										ComboBox {
+											Layout.fillWidth: true
+											model: uiStrings.getAllUnitNames()
+											currentIndex: amountUnit
+											onActivated: amountUnit = currentIndex
+										}
+
+										CheckBox {
+											visible: amountUnit !== modelShoppingListItems.indexUnitUnitless()
+
+											text: qsTr("Range")
+											checked: amountIsRange
+
+											onClicked: amountIsRange = checked
+										}
 									}
 
-									CheckBox {
+									Label {
 										visible: amountUnit !== modelShoppingListItems.indexUnitUnitless()
-
-										text: qsTr("Range")
-										checked: amountIsRange
-
-										onClicked: amountIsRange = checked
+										text: " "
 									}
-								}
+									RowLayout {
+										visible: amountUnit !== modelShoppingListItems.indexUnitUnitless()
+										spacing: 20
 
-								Label {
-									visible: amountUnit !== modelShoppingListItems.indexUnitUnitless()
-									text: " "
-								}
-								RowLayout {
-									visible: amountUnit !== modelShoppingListItems.indexUnitUnitless()
-									spacing: 20
+										Label {
+											visible: amountIsRange
+											text: qsTr("Min.")
+										}
+										TextField {
+											Layout.preferredWidth: 75
+											selectByMouse: true
+											horizontalAlignment: TextInput.AlignRight
+											onFocusChanged: {
+												if(focus)
+													selectAll()
+											}
+
+											text: roundValue(amountMin)
+											validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+											onEditingFinished: {
+												if(amountIsRange && text > amountMax)
+												{
+													text = amountMax;
+												}
+												amountMin = text;
+											}
+										}
+
+										Label {
+											visible: amountIsRange
+											text: qsTr("Max.")
+										}
+										TextField {
+											Layout.preferredWidth: 75
+											visible: amountIsRange
+
+											selectByMouse: true
+											horizontalAlignment: TextInput.AlignRight
+											onFocusChanged: {
+												if(focus)
+													selectAll()
+											}
+
+											validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+											text: amountMax
+											onEditingFinished: {
+												if(amountIsRange && text < amountMin)
+												{
+													text = amountMin;
+												}
+												amountMax = roundValue(text)
+											}
+										}
+									}
 
 									Label {
-										visible: amountIsRange
-										text: qsTr("Min.")
+										text: qsTr("Size")
 									}
-									TextField {
-										Layout.preferredWidth: 75
-										selectByMouse: true
-										horizontalAlignment: TextInput.AlignRight
-										onFocusChanged: {
-											if(focus)
-												selectAll()
+									SpinBox {
+										from: 0
+										to: uiStrings.getSizesCount() - 1
+
+										textFromValue: function(value, locale) {
+											return uiStrings.getSizeName(value, amountUnit);
+										}
+										valueFromText: function(text, locale) {
+											return uiStrings.getSizeIndex(text);
 										}
 
-										text: roundValue(amountMin)
-										validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-										onEditingFinished: {
-											if(amountIsRange && text > amountMax)
-											{
-												text = amountMax;
-											}
-											amountMin = text;
-										}
+										value: sizeIndex
+										onValueModified: sizeIndex = value
 									}
 
 									Label {
-										visible: amountIsRange
-										text: qsTr("Max.")
+										text: qsTr("Add. Info")
 									}
 									TextField {
-										Layout.preferredWidth: 75
-										visible: amountIsRange
-
+										Layout.fillWidth: true
 										selectByMouse: true
-										horizontalAlignment: TextInput.AlignRight
-										onFocusChanged: {
-											if(focus)
-												selectAll()
-										}
 
-										validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-										text: amountMax
-										onEditingFinished: {
-											if(amountIsRange && text < amountMin)
-											{
-												text = amountMin;
-											}
-											amountMax = roundValue(text)
-										}
-									}
-								}
-
-								Label {
-									text: qsTr("Size")
-								}
-								SpinBox {
-									from: 0
-									to: uiStrings.getSizesCount() - 1
-
-									textFromValue: function(value, locale) {
-										return uiStrings.getSizeName(value, amountUnit);
-									}
-									valueFromText: function(text, locale) {
-										return uiStrings.getSizeIndex(text);
+										text: additionalInfo
+										onEditingFinished: additionalInfo = text
 									}
 
-									value: sizeIndex
-									onValueModified: sizeIndex = value
-								}
+									Label {
+										text: " "
+									}
+									CheckBox {
+										text: qsTr("Optional")
+										checked: optional
 
-								Label {
-									text: qsTr("Add. Info")
-								}
-								TextField {
-									Layout.fillWidth: true
-									selectByMouse: true
-
-									text: additionalInfo
-									onEditingFinished: additionalInfo = text
-								}
-
-								Label {
-									text: " "
-								}
-								CheckBox {
-									text: qsTr("Optional")
-									checked: optional
-
-									onClicked: optional = checked
+										onClicked: optional = checked
+									}
 								}
 							}
 						}
