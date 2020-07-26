@@ -529,7 +529,7 @@ Item {
 											text: qsTr("Min.")
 										}
 										TextField {
-											Layout.preferredWidth: 75
+											Layout.preferredWidth: 32
 											selectByMouse: true
 											horizontalAlignment: TextInput.AlignRight
 											onFocusChanged: {
@@ -553,7 +553,7 @@ Item {
 											text: qsTr("Max.")
 										}
 										TextField {
-											Layout.preferredWidth: 75
+											Layout.preferredWidth: 32
 											visible: amountIsRange
 
 											selectByMouse: true

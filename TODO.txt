@@ -3,7 +3,7 @@ TODO
 
 5. RecipeBook for android
 	- TODOs in shopping list page
-	- RANGE BUTTONS DESTROY LAYOUT (on android at least)!
+	
 	- ON ANDROID, THERE SHOULD BE NO ScrollBar IN EditIngredientsList AND AddRecipesListDialog (-> check all list-based components!)
 	
 	- (optional?) start screen?
