@@ -55,6 +55,7 @@ Item {
     
 	EditItemsListDialog {
 		id: dlgEditRecipeItemsList
+		useScrollBars: true
 		title: qsTr("Edit ingredients list")
 
 		onListChanged: {

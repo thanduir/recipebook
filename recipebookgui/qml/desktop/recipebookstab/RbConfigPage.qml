@@ -32,6 +32,7 @@ Item {
 
 	EditItemsListDialog {
 		id: dlgAddRecipes
+		useScrollBars: true
 		title: qsTr("Add recipe")
 		onListChanged: {
 			lvItems.currentIndex = -1;

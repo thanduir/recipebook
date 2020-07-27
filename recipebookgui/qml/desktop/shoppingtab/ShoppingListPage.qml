@@ -30,6 +30,7 @@ Item {
 
 	AddRecipesListDialog {
 		id: dlgAddExistingRecipes
+		useScrollBars: true
 		title: qsTr("Add existing recipes")
 
 		onListChanged: {
@@ -102,6 +103,7 @@ Item {
 
 	EditItemsListDialog {
 		id: dlgEditShoppingListItemsList
+		useScrollBars: true
 		title: qsTr("Edit ingredients list")
 
 		onListChanged: {

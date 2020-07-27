@@ -10,6 +10,7 @@ Dialog {
 
 	property var allValuesFilterModel: []
 	property var editListModel: []
+	property bool useScrollBars: true
 
 	property var largeScreen : parent.width > 400
 
@@ -63,7 +64,8 @@ Dialog {
 
 			implicitHeight: 400
 
-			ScrollBar.vertical: ScrollBar { }
+			ScrollBar.vertical: ScrollBar { visible: useScrollBars }
+			ScrollIndicator.vertical: ScrollIndicator { visible: !useScrollBars }
 
 			delegate: ItemDelegate {
 				width: lvValues.width - lvValues.leftMargin - lvValues.rightMargin

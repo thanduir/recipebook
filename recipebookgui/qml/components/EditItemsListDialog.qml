@@ -11,6 +11,7 @@ Dialog {
 	property var allValuesFilterModel: []
 	property var editListModel: []
 	property int initialyHighlightedIndex: -1
+	property bool useScrollBars: true
     
 	signal listChanged
 
@@ -62,7 +63,8 @@ Dialog {
 
 			implicitHeight: 400
 
-			ScrollBar.vertical: ScrollBar { }
+			ScrollBar.vertical: ScrollBar { visible: useScrollBars }
+			ScrollIndicator.vertical: ScrollIndicator { visible: !useScrollBars }
 
 			model: allValuesFilterModel
 			delegate: CheckDelegate {

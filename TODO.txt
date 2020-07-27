@@ -2,9 +2,7 @@ TODO
 ====
 
 5. RecipeBook for android
-	- ON ANDROID, THERE SHOULD BE NO ScrollBar IN EditIngredientsList AND AddRecipesListDialog (-> check all list-based components!)
-	
-	- (optional?) start screen?
+	- (optional?) start screen
 	
 	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
 	- Verify that everything works fine on smaller screens
