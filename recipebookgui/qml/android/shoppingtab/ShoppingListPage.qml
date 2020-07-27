@@ -414,9 +414,6 @@ Item {
 								anchors.topMargin: -18
 								anchors.leftMargin: hasGroup ? 0 :  -15
 
-								font.italic: optional
-								text: checked ? name : "<font color=\"gray\">" + name + "</font>"
-
 								checked: itemEnabled
 								onClicked: {
 									itemEnabled = checked
@@ -426,6 +423,15 @@ Item {
 										lvRecipeItems.currentIndex = -1;
 									}
 								}
+							}
+
+							Label {
+								id: labelListItemRecipeItemName
+								anchors.verticalCenter: listItemRecipeItemName.verticalCenter
+								anchors.left: listItemRecipeItemName.right
+
+								font.italic: optional
+								text: listItemRecipeItemName.checked ? name : "<font color=\"gray\">" + name + "</font>"
 							}
 
 							// Summary for inactive ingredients
@@ -465,13 +471,13 @@ Item {
 									return text;
 								}
 
-								anchors.left: listItemRecipeItemName.right
+								anchors.left: labelListItemRecipeItemName.right
 								anchors.verticalCenter: listItemRecipeItemName.verticalCenter
 								color: "gray"
 								text: recipeItemSmallDesc(index)
 								verticalAlignment: Text.AlignVCenter
 								font.italic: optional
-								width: parent.width - listItemRecipeItemName.width - 10
+								width: parent.width - listItemRecipeItemName.width - labelListItemRecipeItemName.width - 10
 								wrapMode: Label.WordWrap
 								visible: !listItemRecipeItem.highlighted
 							}

@@ -3,8 +3,7 @@ TODO
 
 5. RecipeBook for android
 	- ON ANDROID, THERE SHOULD BE NO ScrollBar IN EditIngredientsList AND AddRecipesListDialog (-> check all list-based components!)
-	- ShoppingListPage: ComboBox only for square (+ label next to it)? Then you can click on the name to open item (and i could make it swipeable)!
-
+	
 	- (optional?) start screen?
 	
 	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
