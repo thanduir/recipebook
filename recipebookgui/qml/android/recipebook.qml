@@ -58,7 +58,17 @@ ApplicationWindow {
     }
 
     signal onClosingRecipeBook()
-	onClosing: onClosingRecipeBook()
+	onClosing: {
+		if(stackMain.currentIndex != 0)
+		{
+			selectPage(0, lblMainMenuHeader.text)
+			close.accepted = false;
+		}
+		else
+		{
+			onClosingRecipeBook()
+		}
+	}
 
 	header: ToolBar {
         id: mainBar
@@ -69,6 +79,8 @@ ApplicationWindow {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+
+			enabled: stackMain.currentIndex != 0
 
             display: AbstractButton.IconOnly
             icon.source: "qrc:/images/open-drawer.svg"
@@ -108,6 +120,7 @@ ApplicationWindow {
         id: drawerMainMenu
 		width: 0.75 * parent.width
         height: parent.height
+		interactive: stackMain.currentIndex != 0
 
 		Label {
             id: lblMainMenuHeader

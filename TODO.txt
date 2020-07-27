@@ -2,11 +2,8 @@ TODO
 ====
 
 5. RecipeBook for android
-	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
-	- ShoppingListPage: + / - buttons for "# persons" rather large...
-	
-	- Verify that everything works fine on smaller screens
-	- Test everything!
+	- Test everything on small screen!
+		* ShoppingListPage: + / - buttons for "# persons" rather large...
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
