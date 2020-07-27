@@ -56,6 +56,10 @@ Item {
 			modelRBConfigItems.setCurrentConfig(currentConfig)
 			headerSubpageSpace.sourceComponent = rbConfigsHeaderComponent;
 		}
+		else
+		{
+			headerSubpageSpace.sourceComponent = undefined
+		}
 	}
 
 	Component {

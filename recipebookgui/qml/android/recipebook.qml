@@ -102,7 +102,7 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
 
-            id: headerSubpageSpace
+			id: headerSubpageSpace
         }
     }
 
