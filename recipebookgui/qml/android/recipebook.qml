@@ -82,7 +82,7 @@ ApplicationWindow {
             anchors.left: btnOpenDrawer.right
 
             font.bold: true
-            text: pageShoppingList.text
+			text: lblMainMenuHeader.text
         }
 
         Loader {
@@ -94,7 +94,7 @@ ApplicationWindow {
         }
     }
 
-    function selectPage(myIndex: int, text: string) {
+	function selectPage(myIndex: int, text: string) {
 		if(myIndex !== stackMain.currentIndex)
 		{
 			headerSubpageSpace.sourceComponent = undefined
@@ -117,6 +117,11 @@ ApplicationWindow {
 
             font.bold: true
             text: qsTr("RecipeBook")
+
+			MouseArea {
+				anchors.fill: parent
+				onClicked: selectPage(0, lblMainMenuHeader.text)
+			}
         }
 
         ColumnLayout {
@@ -132,7 +137,7 @@ ApplicationWindow {
                 font.bold: true
                 text: qsTr("Recipes")
 
-                onClicked: selectPage(2, pageRecipes.text)
+				onClicked: selectPage(3, pageRecipes.text)
             }
 
             ItemDelegate {
@@ -140,21 +145,21 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Sort orders")
 
-                onClicked: selectPage(5, text)
+				onClicked: selectPage(6, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Alternatives types")
 
-                onClicked: selectPage(4, text)
+				onClicked: selectPage(5, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Ingredients")
 
-                onClicked: selectPage(3, text)
+				onClicked: selectPage(4, text)
             }
             ItemDelegate {
                 id: pageRecipes
@@ -162,7 +167,7 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Recipes")
 
-                onClicked: selectPage(2, text)
+				onClicked: selectPage(3, text)
             }
 
             ItemDelegate {
@@ -170,7 +175,7 @@ ApplicationWindow {
                 font.bold: true
                 text: qsTr("Shopping")
 
-                onClicked: selectPage(0, pageShoppingList.text)
+				onClicked: selectPage(1, pageShoppingList.text)
             }
 
             ItemDelegate {
@@ -179,14 +184,14 @@ ApplicationWindow {
                 Layout.leftMargin: 24
                 text: qsTr("Shopping list")
 
-                onClicked: selectPage(0, text)
+				onClicked: selectPage(1, text)
             }
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
                 text: qsTr("Go shopping")
 
-                onClicked: selectPage(1, text)
+				onClicked: selectPage(2, text)
             }
 
             ItemDelegate {
@@ -194,61 +199,62 @@ ApplicationWindow {
                 font.bold: true
                 text: qsTr("Recipe books")
 
-                onClicked: selectPage(6, text)
+				onClicked: selectPage(7, text)
             }
 
             Item { Layout.fillHeight: true }
 
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                Layout.leftMargin: 12
-                Layout.rightMargin: 12
-                Layout.bottomMargin: 12
-
-                spacing: 10
-
-                RoundButton {
-                    display: AbstractButton.IconOnly
-
-                    text: qsTr("Import file")
-                    icon.source: "qrc:/images/import-file.svg"
-                    onClicked: {
-						fileDialogImport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
-                        fileDialogImport.open()
-					}
-                }
-
-                RoundButton {
-                    display: AbstractButton.IconOnly
-
-                    text: qsTr("Merge file")
-                    icon.source: "qrc:/images/merge.svg"
-                    enabled: false
-                }
-
-                RoundButton {
-                    display: AbstractButton.IconOnly
-
-                    text: qsTr("Export")
-                    icon.source: "qrc:/images/export-file.svg"
-                    onClicked: {
-						fileDialogExport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
-						fileDialogExport.open()
-					}
-                }
-
-                RoundButton {
-                    display: AbstractButton.IconOnly
-
-                    text: qsTr("Settings")
-                    icon.source: "qrc:/images/settings-white.svg"
-                    onClicked: selectPage(7, text)
-                }
-
-            }
+			MenuButtonRow {
+				Layout.alignment: Qt.AlignHCenter
+				Layout.fillWidth: true
+				Layout.leftMargin: 12
+				Layout.rightMargin: 12
+				Layout.bottomMargin: 12
+			}
         }
     }
+
+	component MenuButtonRow: RowLayout {
+		spacing: 10
+
+		RoundButton {
+			display: AbstractButton.IconOnly
+
+			text: qsTr("Import file")
+			icon.source: "qrc:/images/import-file.svg"
+			onClicked: {
+				fileDialogImport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
+				fileDialogImport.open()
+			}
+		}
+
+		RoundButton {
+			display: AbstractButton.IconOnly
+
+			text: qsTr("Merge file")
+			icon.source: "qrc:/images/merge.svg"
+			enabled: false
+		}
+
+		RoundButton {
+			display: AbstractButton.IconOnly
+
+			text: qsTr("Export")
+			icon.source: "qrc:/images/export-file.svg"
+			onClicked: {
+				fileDialogExport.listItems = recipeBookSettings.getCurrentFilenamesAndroid()
+				fileDialogExport.open()
+			}
+		}
+
+		RoundButton {
+			display: AbstractButton.IconOnly
+
+			text: qsTr("Settings")
+			icon.source: "qrc:/images/settings-white.svg"
+			onClicked: selectPage(8, text)
+		}
+	}
 
    StackLayout {
         id: stackMain
@@ -260,6 +266,10 @@ ApplicationWindow {
         anchors.leftMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 10
+
+		StartPage {
+			id: startPage
+		}
 
         ShoppingListPage {
             id: shoppingListPage
@@ -288,5 +298,94 @@ ApplicationWindow {
         SettingsDialog {
             id: settingsTab
         }
-    }
+	}
+
+	component StartPage : Item {
+	   ColumnLayout {
+			anchors.horizontalCenter: parent.horizontalCenter
+			spacing: 15
+
+			GroupBox {
+				title: qsTr("Recipes")
+				implicitWidth: 200
+
+				ColumnLayout {
+					anchors.horizontalCenter: parent.horizontalCenter
+
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Sort orders")
+
+						onClicked: selectPage(6, text)
+					}
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Alternatives types")
+
+						onClicked: selectPage(5, text)
+					}
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Ingredients")
+
+						onClicked: selectPage(4, text)
+					}
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Recipes")
+
+						onClicked: selectPage(3, text)
+					}
+				}
+			}
+
+			GroupBox {
+				title: qsTr("Shopping")
+				implicitWidth: 200
+
+				ColumnLayout {
+					anchors.horizontalCenter: parent.horizontalCenter
+
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Shopping list")
+
+						onClicked: selectPage(1, text)
+					}
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Go shopping")
+
+						onClicked: selectPage(2, text)
+					}
+				}
+			}
+
+			GroupBox {
+				title: qsTr("Recipe books")
+				implicitWidth: 200
+
+				ColumnLayout {
+					anchors.horizontalCenter: parent.horizontalCenter
+
+					RoundButton {
+						Layout.alignment: Qt.AlignHCenter
+						display: AbstractButton.TextOnly
+						text: qsTr("Recipe books")
+
+						onClicked: selectPage(7, text)
+					}
+				}
+			}
+
+			MenuButtonRow {
+			}
+	   }
+   }
 }
