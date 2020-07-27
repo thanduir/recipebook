@@ -135,7 +135,7 @@ Item {
 		Material.background: Material.Indigo
 
 		display: AbstractButton.IconOnly
-		icon.source: "qrc:/images/add-black.svg"
+		icon.source: "qrc:/images/list_add.svg"
 		icon.color: "white"
 
 		onVisibleChanged: {
@@ -151,7 +151,6 @@ Item {
 		}
 	}
 
-	// TODO: Different symbol?
 	RoundButton {
 		anchors.right: parent.right
 		anchors.rightMargin: 5
@@ -212,7 +211,6 @@ Item {
 				id: listRecipesItemGroup
 				implicitHeight: listItemRecipesName.height + grid.height + lvRecipeItems.height + 5
 
-				// TODO: Change to make it more obvious that this is actually clickable
 				RoundButton {
 					id: buttonEditRecipeItems
 					anchors.top: parent.top
@@ -332,7 +330,6 @@ Item {
 
 				// Recipe items
 
-				// TODO: First item always active at first. Why?
 				ListView {
 					id: lvRecipeItems
 					anchors.left: parent.left
@@ -359,23 +356,34 @@ Item {
 						}
 					}
 
+					// ListView.isCurrentItem doesn't seem to work correctly. Use this as a work around until it is fixed in Qt (QTBUG-39146?)
+					property int highlightedIndex: -1
+
 					spacing: 0
 					model: modelShoppingRecipes.getItemsModel(index)
 					delegate: SwipeDelegate {
 						id: listItemRecipeItem
-						highlighted: ListView.isCurrentItem
+
+						highlighted: lvRecipeItems.highlightedIndex == index
 						width: lvRecipeItems.width - lvRecipeItems.leftMargin - lvRecipeItems.rightMargin
 						implicitHeight: listItemRecipeItemGroup.implicitHeight
 
+						Component.onCompleted: {
+							lvRecipeItems.currentIndex = -1
+							lvRecipeItems.highlightedIndex = -1
+						}
+
 						onClicked: {
-							if(lvRecipeItems.currentIndex == index)
+							if(lvRecipeItems.highlightedIndex == index)
 							{
 								lvRecipeItems.currentIndex = -1;
+								lvRecipeItems.highlightedIndex = -1;
 								laoderExtendedInfo.sourceComponent = undefined;
 							}
 							else
 							{
 								lvRecipeItems.currentIndex = index;
+								lvRecipeItems.highlightedIndex = index
 								laoderExtendedInfo.sourceComponent = componentExtendedInfo;
 							}
 						}

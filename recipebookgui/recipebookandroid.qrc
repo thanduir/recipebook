@@ -58,5 +58,6 @@
 		<file alias="more-vert.svg">images/more-vert.svg</file>
 		<file alias="info.svg">images/info.svg</file>
 		<file alias="undo.svg">images/undo.svg</file>
+		<file alias="list_add.svg">images/list_add.svg</file>
     </qresource>
 </RCC>

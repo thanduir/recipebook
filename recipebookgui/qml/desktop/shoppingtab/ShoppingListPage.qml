@@ -235,7 +235,7 @@ Item {
 			RoundButton {
 				id: buttonAddFromRecipe
 				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
+				icon.source: "qrc:/images/list_add.svg"
 
 				ToolTip.delay: 1000
 				ToolTip.timeout: 5000

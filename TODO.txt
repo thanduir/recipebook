@@ -2,17 +2,18 @@ TODO
 ====
 
 5. RecipeBook for android
-	- TODOs in shopping list page
-	
 	- ON ANDROID, THERE SHOULD BE NO ScrollBar IN EditIngredientsList AND AddRecipesListDialog (-> check all list-based components!)
-	
-	- (optional?) start screen?
-	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
+	- ShoppingListPage: ComboBox only for square (+ label next to it)? Then you can click on the name to open item (and i could make it swipeable)!
 
+	- (optional?) start screen?
+	
+	- android: what exactly should the back button do in which cases? (open / close side panel? close app? go to "start screen"? What should happen on settings screen?)
 	- Verify that everything works fine on smaller screens
-	- improve startup time on android as much as possible 
+	- improve startup time on android if possible 
 		-> qt examples seem to load much faster, but they have much simpler qml...! 
 		-> maybe a dedicated startup screen already helps?
+	
+	- ShoppingListPage: + / - buttons for "# persons" rather large...
 	
 	- Test everything!
 	
