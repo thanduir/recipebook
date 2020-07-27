@@ -306,7 +306,9 @@ ApplicationWindow {
 			spacing: 15
 
 			GroupBox {
+				Layout.alignment: Qt.AlignHCenter
 				title: qsTr("Recipes")
+				font.bold: true
 				implicitWidth: 200
 
 				ColumnLayout {
@@ -315,6 +317,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Sort orders")
 
 						onClicked: selectPage(6, text)
@@ -322,6 +325,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Alternatives types")
 
 						onClicked: selectPage(5, text)
@@ -329,6 +333,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Ingredients")
 
 						onClicked: selectPage(4, text)
@@ -336,6 +341,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Recipes")
 
 						onClicked: selectPage(3, text)
@@ -345,6 +351,8 @@ ApplicationWindow {
 
 			GroupBox {
 				title: qsTr("Shopping")
+				Layout.alignment: Qt.AlignHCenter
+				font.bold: true
 				implicitWidth: 200
 
 				ColumnLayout {
@@ -353,6 +361,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Shopping list")
 
 						onClicked: selectPage(1, text)
@@ -360,6 +369,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Go shopping")
 
 						onClicked: selectPage(2, text)
@@ -369,6 +379,8 @@ ApplicationWindow {
 
 			GroupBox {
 				title: qsTr("Recipe books")
+				Layout.alignment: Qt.AlignHCenter
+				font.bold: true
 				implicitWidth: 200
 
 				ColumnLayout {
@@ -377,6 +389,7 @@ ApplicationWindow {
 					RoundButton {
 						Layout.alignment: Qt.AlignHCenter
 						display: AbstractButton.TextOnly
+						font.bold: false
 						text: qsTr("Recipe books")
 
 						onClicked: selectPage(7, text)
@@ -385,6 +398,7 @@ ApplicationWindow {
 			}
 
 			MenuButtonRow {
+				Layout.alignment: Qt.AlignHCenter
 			}
 	   }
    }
