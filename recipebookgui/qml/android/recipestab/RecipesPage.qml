@@ -299,17 +299,6 @@ Item {
 		anchors.right: parent.right
 		anchors.top: parent.top
 
-		Button {
-			Layout.fillWidth: true
-
-			enabled: modelRecipes.rowCount() > 0
-
-			text: filterModelRecipes.name(lvRecipes.currentIndex)
-			font.bold: true
-
-			onClicked: popupRecipes.open()
-		}
-
 		RoundButton {
 			id: editIngredientsListButton
 			display: AbstractButton.IconOnly
@@ -318,6 +307,13 @@ Item {
 			onVisibleChanged: {
 				if(visible)
 				{
+					if(lvRecipes.currentIndex === -1 && lvRecipes.count > 0)
+					{
+						lvRecipes.currentIndex = 0;
+						modelRecipeItems.setRecipe(0);
+						recipeItems.currentRecipe = 0;
+						recipeDetails.currentRecipe = 0;
+					}
 					enabled = modelRecipeItems.canRecipeItemsBeAdded()
 				}
 			}
@@ -329,6 +325,17 @@ Item {
 
 				dlgEditRecipeItemsList.open();
 			}
+		}
+
+		Button {
+			Layout.fillWidth: true
+
+			enabled: modelRecipes.rowCount() > 0
+
+			text: filterModelRecipes.name(lvRecipes.currentIndex)
+			font.bold: true
+
+			onClicked: popupRecipes.open()
 		}
 	}
 

@@ -316,7 +316,6 @@ Item {
 
 				contentItem: MyDragDelegate {
 					id: dragDelegate
-
 				}
 
 				Timer {

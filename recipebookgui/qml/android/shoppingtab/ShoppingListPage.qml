@@ -645,6 +645,8 @@ Item {
 							{
 								lvRecipeItems.currentIndex = -1
 							}
+							listItemRecipeItem.contentItem.visible = false
+							listItemRecipeItem.background.visible = false
 						}
 
 						swipe.left: Rectangle {
@@ -681,6 +683,8 @@ Item {
 								onClicked: {
 									undoTimerRecipeItems.stop()
 									listItemRecipeItem.swipe.close()
+									listItemRecipeItem.contentItem.visible = true
+									listItemRecipeItem.background.visible = true
 								}
 
 								visible: listItemRecipeItem.swipe.complete

@@ -33,6 +33,7 @@ Dialog {
 					dlgTextField.text = text;
 					buttons.standardButton(Dialog.Ok).enabled = true;
 				}
+
 				highlighted: ListView.isCurrentItem
 
 				text: modelData

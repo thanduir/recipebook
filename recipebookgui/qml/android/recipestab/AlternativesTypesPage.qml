@@ -111,17 +111,20 @@ Item {
 				dlgRenameType.open();
 			}
 
+			implicitHeight: listItem.implicitHeight
+
 			contentItem: Item {
 				id: listItem
 				anchors.top: listItemRecipeItem.top
-				anchors.topMargin: 5
-					
+				implicitHeight: labelGroupName.implicitHeight + 20
+
 				// group name
 				Label {
 					id: labelGroupName
 					anchors.left: parent.left
 					anchors.leftMargin: 10
-					anchors.verticalCenter: parent.verticalCenter
+					anchors.top: parent.top
+					anchors.topMargin: 10
                         
 					text: name
 				}
@@ -130,9 +133,9 @@ Item {
 				Rectangle {
 					id: rowGroupHeaderButtons
 					anchors.right: listItem.right
-					anchors.top: parent.top
-					anchors.topMargin: 10
 					anchors.rightMargin: 10
+					anchors.top: parent.top
+					anchors.topMargin: 8
 					width: 20
 					height: width
 					radius: 0.5 * width

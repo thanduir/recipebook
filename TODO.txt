@@ -3,7 +3,14 @@ TODO
 
 5. RecipeBook for android
 	- Test everything on small screen!
-		* ShoppingListPage: + / - buttons for "# persons" rather large...
+		* ingredients page: after adding new ingredients, its not correctly opened! (probably missing a component assignment)
+			- the same happens for renames! (and probably also in shopping list page for recipe items)
+			-> missing component assignment, but how to actually do this when just setting the highlighted element?
+			-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
+		* shopping list page: 
+			* swipe to delete doesn't work on recipe header line...
+			* list height not correctly updated after removal of recipe
+			* + / - buttons for "# persons" rather large...
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
