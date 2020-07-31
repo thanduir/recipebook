@@ -240,7 +240,6 @@ Item {
 				Label {
 					id: listItemRecipesName
 					anchors.left: buttonEditRecipeItems.right
-					anchors.right: parent.right
 					anchors.top: parent.top
 
 					text: name

@@ -8,9 +8,13 @@ TODO
 			-> missing component assignment, but how to actually do this when just setting the highlighted element?
 			-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
 		* shopping list page: 
-			* swipe to delete doesn't work on recipe header line...
 			* list height not correctly updated after removal of recipe
 			* + / - buttons for "# persons" rather large...
+			* space not quite used till the end (add. info gets linebreaks too early)
+
+		* shopping list / recipe item details: 
+			- item number (min and max) should have +/- buttons as in old app!
+			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
@@ -24,3 +28,4 @@ Possibilities for later:
 a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
 b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)
 c. Drag'n'drop file load support on desktop?
+d. shopping list page: recipes sortable by due date?
