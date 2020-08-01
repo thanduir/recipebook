@@ -153,7 +153,7 @@ Item {
 					text: recipeItemSmallDesc(index)
 					verticalAlignment: Text.AlignVCenter
 					font.italic: optional
-					width: parent.width - listItemRecipeItemName.width - 10
+					width: parent.width - listItemRecipeItemName.width + 10
 					wrapMode: Label.WordWrap
 					visible: !listItemRecipeItem.highlighted
 				}

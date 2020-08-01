@@ -7,10 +7,9 @@ TODO
 			- the same happens for renames! (and probably also in shopping list page for recipe items)
 			-> missing component assignment, but how to actually do this when just setting the highlighted element?
 			-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
+		
 		* shopping list page: 
-			* list height not correctly updated after removal of recipe
-			* + / - buttons for "# persons" rather large...
-			* space not quite used till the end (add. info gets linebreaks too early)
+			- # persons: + / - buttons rather large...
 
 		* shopping list / recipe item details: 
 			- item number (min and max) should have +/- buttons as in old app!
