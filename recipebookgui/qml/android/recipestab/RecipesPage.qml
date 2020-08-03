@@ -177,13 +177,14 @@ Item {
 
 				highlighted: ListView.isCurrentItem
 				onClicked: {
-					forceActiveFocus()
-					lvRecipes.currentIndex = index
-					var recipeIndex = filterModelRecipes.getRecipeIndex(index)
+					forceActiveFocus();
+					lvRecipes.currentIndex = index;
+					var recipeIndex = filterModelRecipes.getRecipeIndex(index);
 					modelRecipeItems.setRecipe(recipeIndex)
 					recipeItems.currentRecipe = recipeIndex;
 					recipeDetails.currentRecipe = recipeIndex;
-					editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded()
+					editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded();
+					popupRecipes.close();
 				}
 				onPressAndHold: {
 					dlgRenameRecipe.initialText = filterModelRecipes.name(index);

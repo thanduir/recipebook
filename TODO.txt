@@ -3,17 +3,19 @@ TODO
 
 5. RecipeBook for android
 	- Test everything on small screen!
+		
+		* shopping list / recipe item details: 
+			- item number (min and max) should have +/- buttons as in old app!
+			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
+			- häckchen in shopping list dialog verwirrend
+				-> löschen per swipe entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
+			- "edit ingredients": Should elements directly be added after click? at least this dialog should only be closeable, no "cancel"
+			- "edit ingredients": Close button hidden by keyboard
+
 		* ingredients page: after adding new ingredients, its not correctly opened! (probably missing a component assignment)
 			- the same happens for renames! (and probably also in shopping list page for recipe items)
 			-> missing component assignment, but how to actually do this when just setting the highlighted element?
 			-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
-		
-		* shopping list page: 
-			- # persons: + / - buttons rather large...
-
-		* shopping list / recipe item details: 
-			- item number (min and max) should have +/- buttons as in old app!
-			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 

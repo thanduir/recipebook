@@ -883,7 +883,7 @@
         <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="246"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="332"/>
         <source>Number of persons</source>
-        <translation>Anzahl Personen</translation>
+        <translation># Personen</translation>
     </message>
     <message>
         <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="279"/>

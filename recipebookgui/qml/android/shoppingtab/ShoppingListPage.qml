@@ -92,6 +92,16 @@ Item {
 		}
 	}
 
+	SpinnerInputDialog {
+		id: dlgSpinnerNrPersons
+		title: qsTr("Change number of persons")
+
+		property int currentIndex: -1
+		onSelectedValueChanged: {
+			modelShoppingRecipes.setScalingFactor(currentIndex, dlgSpinnerNrPersons.currentValue)
+		}
+	}
+
 	// Header Component
 
 	Component.onCompleted: {
@@ -259,8 +269,6 @@ Item {
 					}
 				}
 
-
-
 				// Additional recipe data
 
 				GridLayout {
@@ -268,39 +276,30 @@ Item {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					anchors.top: listItemRecipesName.bottom
-					anchors.topMargin: -5
+					anchors.topMargin: 5
 
 					columns: 2
 
 					Label {
 						text: qsTr("Number of persons")
 					}
-					SpinBox {
-						id: spinboxScalingFactor
-						from: 1 * 100
-						to: 50 * 100
-						stepSize: 100
-						editable: true
-						wheelEnabled: true
+					Label {
+						Layout.leftMargin: 10
+						Layout.fillWidth: true
+						text: Number(scalingFactor).toLocaleString(Qt.locale("en_US"), 'f', 2)
+						font.underline: true
 
-						property int decimals: 2
-						property real realValue: value / 100
+						MouseArea {
+							anchors.fill: parent
 
-						value: scalingFactor * 100
-						onValueModified: modelShoppingRecipes.setScalingFactor(index, value / 100)
-
-						validator: DoubleValidator {
-							bottom: Math.min(spinboxScalingFactor.from, spinboxScalingFactor.to)
-							top:  Math.max(spinboxScalingFactor.from, spinboxScalingFactor.to)
-							locale: "en_US"
-						}
-
-						textFromValue: function(value, locale) {
-							return Number(value / 100).toLocaleString(Qt.locale("en_US"), 'f', spinboxScalingFactor.decimals)
-						}
-
-						valueFromText: function(text, locale) {
-							return Number.fromLocaleString(Qt.locale("en_US"), text) * 100
+							onClicked: {
+								dlgSpinnerNrPersons.currentIndex = index
+								dlgSpinnerNrPersons.from = 1;
+								dlgSpinnerNrPersons.stepSize = 1;
+								dlgSpinnerNrPersons.to = 50;
+								dlgSpinnerNrPersons.currentValue = scalingFactor;
+								dlgSpinnerNrPersons.open();
+							}
 						}
 					}
 
