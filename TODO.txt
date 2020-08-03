@@ -8,8 +8,7 @@ TODO
 			- item number (min and max) should have +/- buttons as in old app!
 			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
 			- häckchen in shopping list dialog verwirrend
-				-> löschen per swipe entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
-			- "edit ingredients": Should elements directly be added after click? at least this dialog should only be closeable, no "cancel"
+				-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
 			- "edit ingredients": Close button hidden by keyboard
 
 		* ingredients page: after adding new ingredients, its not correctly opened! (probably missing a component assignment)

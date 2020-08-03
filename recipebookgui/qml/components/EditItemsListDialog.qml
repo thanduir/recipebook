@@ -78,8 +78,11 @@ Dialog {
 	}
 
 	footer: DialogButtonBox {
-		id: buttons
-		standardButtons: Dialog.Ok | Dialog.Cancel
+		Button {
+			text: qsTr("Close")
+			DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+			flat: true
+		}
 	}
 
 	onAboutToShow: {
@@ -94,11 +97,10 @@ Dialog {
 		}
 	}
 
-	onAccepted: {
+	onAboutToHide: {
 		if(editListModel.applyEditList())
 		{
 			listChanged();
 		}
 	}
-	onRejected: editListModel.cancelEditList()
 }
