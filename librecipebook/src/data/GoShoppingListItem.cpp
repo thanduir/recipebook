@@ -46,7 +46,7 @@ bool GoShoppingListItem::itemCompatible(const ShoppingListItem& rItem, const Com
 void GoShoppingListItem::addShoppingListItem(ShoppingListItem& rItem, QDate dueDate)
 {
 	// Status
-	if(m_CombinedItems.size() == 1)
+	if(m_CombinedItems.size() == 0)
 	{
 		m_Status = rItem.getStatus();
 	}
