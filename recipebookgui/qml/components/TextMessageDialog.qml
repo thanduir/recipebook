@@ -9,25 +9,15 @@ Dialog {
 	y: (parent.height - height) / 2
 	width: parent.width > 380 ? 360 : parent.width - 20
 
-	property alias msgText: dlgAskLabel.text
+	property alias msgText: dlgAskLabelWarn.text
 	property bool errorIcon: false
 	property bool okOnly: false
-    
-	Label { 
-		id: dlgAskLabel
-		anchors.centerIn: parent
-		width: parent.width
-		wrapMode: Text.WordWrap
-
-		visible: !errorIcon
-	}
 
 	Item {
-		visible: errorIcon
+		id: dlgErrorLabel
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.verticalCenter: parent.verticalCenter
-		width: 360
 		implicitHeight: dlgAskLabelWarn.implicitHeight
 
 		Image {
@@ -37,17 +27,17 @@ Dialog {
 			height: 48
 			fillMode: Image.PreserveAspectFit
 			source: "qrc:/images/error-black.svg"
+
+			visible: errorIcon
 		}
 		Label { 
 			id: dlgAskLabelWarn
 			
-			anchors.left: imgWarn.right
+			anchors.left: errorIcon ? imgWarn.right : parent.left
 			anchors.right: parent.right
-			anchors.leftMargin: 24
-			anchors.verticalCenter: parent.verticalCenter
+			anchors.leftMargin: errorIcon ? 24 : 0
 
 			wrapMode: Text.WordWrap
-			text: dlgAskLabel.text
 		}
 	}
 
