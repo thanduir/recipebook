@@ -451,6 +451,38 @@ void ListModelRecipeItems::setAmountMin(int row, float amount)
 	setDataChanged(row, RecipeItemsRoles::AmountMinRole);
 }
 
+void ListModelRecipeItems::decreaseAmountMin(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+			return;
+
+		RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
+		rItem.getAmount().decreaseQuantityMin();
+	}
+
+	setDataChanged(row, RecipeItemsRoles::AmountMinRole);
+}
+
+void ListModelRecipeItems::increaseAmountMin(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+			return;
+
+		RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
+		rItem.getAmount().increaseQuantityMin();
+	}
+
+	setDataChanged(row, RecipeItemsRoles::AmountMinRole);
+}
+
 void ListModelRecipeItems::setAmountMax(int row, float amount)
 {
 	{
@@ -462,6 +494,38 @@ void ListModelRecipeItems::setAmountMax(int row, float amount)
 
         RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
 		rItem.getAmount().setQuantityMax(amount);
+	}
+
+	setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
+}
+
+void ListModelRecipeItems::decreaseAmountMax(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+			return;
+
+		RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
+		rItem.getAmount().decreaseQuantityMax();
+	}
+
+	setDataChanged(row, RecipeItemsRoles::AmountMaxRole);
+}
+
+void ListModelRecipeItems::increaseAmountMax(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		Recipe* pRecipe = getRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getRecipeItemsCount())
+			return;
+
+		RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
+		rItem.getAmount().increaseQuantityMax();
 	}
 
 	setDataChanged(row, RecipeItemsRoles::AmountMaxRole);

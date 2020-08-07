@@ -8,6 +8,26 @@ Item {
 
 	property int currentRecipe : -1
 
+	// General rounding method
+	function roundValue(value) {
+		if(Math.abs(value - Math.round(value)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 0);
+		}
+		else if(Math.abs(value*10 - Math.round(value * 10)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 1);
+		}
+		else if(Math.abs(value*100 - Math.round(value * 100)) <= 0.0001)
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 2);
+		}
+		else
+		{
+			return Number(value).toLocaleString(Qt.locale("en_US"), 'f', 3);
+		}
+	}
+
 	// Pane
 
 	RowLayout {
@@ -200,57 +220,100 @@ Item {
 						visible: amountUnit !== modelRecipeItems.indexUnitUnitless()
 						text: " "
 					}
-					RowLayout {
+					GridLayout {
 						visible: amountUnit !== modelRecipeItems.indexUnitUnitless()
-						spacing: 20
+						columns: 2
+						columnSpacing: 10
 
 						Label {
 							visible: amountIsRange
 							text: qsTr("Min.")
 						}
-						TextField {
-							Layout.preferredWidth: 32
-							selectByMouse: true
-							horizontalAlignment: TextInput.AlignRight
-							onFocusChanged: {
-								if(focus)
-									selectAll()
+
+						RowLayout {
+							RoundButton {
+								display: AbstractButton.IconOnly
+								icon.source: "qrc:/images/remove-black.svg"
+								flat: true
+
+								onClicked: modelRecipeItems.decreaseAmountMin(lvCurrentRecipe.currentIndex)
 							}
 
-							text: amountMin
-							validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-							onEditingFinished: {
-								if(amountIsRange && text > amountMax)
-								{
-									text = amountMax;
+							TextField {
+								Layout.preferredWidth: 50
+								inputMethodHints: Qt.ImhFormattedNumbersOnly
+
+								selectByMouse: true
+								horizontalAlignment: TextInput.AlignHCenter
+								onFocusChanged: {
+									if(focus)
+										selectAll()
 								}
-								amountMin = text;
+
+								text: roundValue(amountMin)
+								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+								onEditingFinished: {
+									if(amountIsRange && text > amountMax)
+									{
+										text = amountMax;
+									}
+									amountMin = text;
+								}
+							}
+
+							RoundButton {
+								display: AbstractButton.IconOnly
+								icon.source: "qrc:/images/add-black.svg"
+								flat: true
+
+								onClicked: modelRecipeItems.increaseAmountMin(lvCurrentRecipe.currentIndex)
 							}
 						}
 
 						Label {
-							visible: amountIsRange
+							visible: amountUnit !== modelRecipeItems.indexUnitUnitless() && amountIsRange
 							text: qsTr("Max.")
 						}
-						TextField {
-							Layout.preferredWidth: 32
-							visible: amountIsRange
 
-							selectByMouse: true
-							horizontalAlignment: TextInput.AlignRight
-							onFocusChanged: {
-								if(focus)
-									selectAll()
+						RowLayout {
+							visible: amountUnit !== modelRecipeItems.indexUnitUnitless() && amountIsRange
+
+							RoundButton {
+								display: AbstractButton.IconOnly
+								icon.source: "qrc:/images/remove-black.svg"
+								flat: true
+
+								onClicked: modelRecipeItems.decreaseAmountMax(lvCurrentRecipe.currentIndex)
 							}
 
-							validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-							text: amountMax
-							onEditingFinished: {
-								if(amountIsRange && text < amountMin)
-								{
-									text = amountMin;
+							TextField {
+								Layout.preferredWidth: 50
+								inputMethodHints: Qt.ImhFormattedNumbersOnly
+
+								selectByMouse: true
+								horizontalAlignment: TextInput.AlignHCenter
+								onFocusChanged: {
+									if(focus)
+										selectAll()
 								}
-								amountMax = text
+
+								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
+								text: roundValue(amountMax)
+								onEditingFinished: {
+									if(amountIsRange && text < amountMin)
+									{
+										text = amountMin;
+									}
+									amountMax = text
+								}
+							}
+
+							RoundButton {
+								display: AbstractButton.IconOnly
+								icon.source: "qrc:/images/add-black.svg"
+								flat: true
+
+								onClicked: modelRecipeItems.increaseAmountMax(lvCurrentRecipe.currentIndex)
 							}
 						}
 					}
