@@ -118,18 +118,21 @@ void recipebook::Amount::add(const Amount& other)
 		case Unit::Unitless:
 		{
 			setQuantityMin(getQuantityMin() + other.getQuantityMin());
-			if(isRange() || other.isRange())
+
+			if(isRange() && !other.isRange())
+			{
+				float value = getQuantityMax() + other.getQuantityMin();
+				setQuantityMax(value);
+			}
+			else if(isRange() && other.isRange())
+			{
+				float value = getQuantityMax() + other.getQuantityMax();
+				setQuantityMax(value);
+			}
+			else if(!isRange() && other.isRange())
 			{
 				setIsRange(true);
-				float value = getQuantityMax();
-				if(other.isRange())
-				{
-					value += other.getQuantityMax();
-				}
-				else
-				{
-					value += other.getQuantityMin();
-				}
+				float value = getQuantityMin() + other.getQuantityMax() - other.getQuantityMin();
 				setQuantityMax(value);
 			}
 			break;

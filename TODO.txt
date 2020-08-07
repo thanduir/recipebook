@@ -5,8 +5,6 @@ TODO
 	- Test everything on small screen!
 		
 		* shopping list / recipe item details: 
-			- item number (min and max) should have +/- buttons as in old app!
-				-> TODOs in shopping list!
 			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
 			- häckchen in shopping list dialog verwirrend
 				-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?

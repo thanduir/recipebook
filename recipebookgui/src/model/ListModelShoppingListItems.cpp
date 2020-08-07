@@ -475,6 +475,38 @@ void ListModelShoppingListItems::setAmountMin(int row, float amount)
 	setDataChanged(row, ShoppingListItemsRoles::AmountMinRole);
 }
 
+void ListModelShoppingListItems::decreaseAmountMin(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+			return;
+
+		ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
+		rItem.getAmount().decreaseQuantityMin();
+	}
+
+	setDataChanged(row, ShoppingListItemsRoles::AmountMinRole);
+}
+
+void ListModelShoppingListItems::increaseAmountMin(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+			return;
+
+		ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
+		rItem.getAmount().increaseQuantityMin();
+	}
+
+	setDataChanged(row, ShoppingListItemsRoles::AmountMinRole);
+}
+
 void ListModelShoppingListItems::setAmountMax(int row, float amount)
 {
 	{
@@ -486,6 +518,38 @@ void ListModelShoppingListItems::setAmountMax(int row, float amount)
 
         ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
 		rItem.getAmount().setQuantityMax(amount);
+	}
+
+	setDataChanged(row, ShoppingListItemsRoles::AmountMaxRole);
+}
+
+void ListModelShoppingListItems::decreaseAmountMax(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+			return;
+
+		ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
+		rItem.getAmount().decreaseQuantityMax();
+	}
+
+	setDataChanged(row, ShoppingListItemsRoles::AmountMaxRole);
+}
+
+void ListModelShoppingListItems::increaseAmountMax(int row)
+{
+	{
+		RBDataWriteHandle handle(m_rRBDataHandler);
+		ShoppingRecipe* pRecipe = getShoppingRecipe(handle);
+
+		if(pRecipe == nullptr || row < 0 || row >= (int)pRecipe->getItemsCount())
+			return;
+
+		ShoppingListItem& rItem = pRecipe->getItemAt((quint32)row);
+		rItem.getAmount().increaseQuantityMax();
 	}
 
 	setDataChanged(row, ShoppingListItemsRoles::AmountMaxRole);

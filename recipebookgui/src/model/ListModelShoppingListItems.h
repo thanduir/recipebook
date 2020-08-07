@@ -73,7 +73,11 @@ namespace recipebook::UI
 		void setAmountUnit(int row, quint32 uiUnit);
 		void setAmountIsRange(int row, bool bRange);
 		void setAmountMin(int row, float amount);
+		void decreaseAmountMin(int row);
+		void increaseAmountMin(int row);
 		void setAmountMax(int row, float amount);
+		void decreaseAmountMax(int row);
+		void increaseAmountMax(int row);
 		void setAdditionalInfo(int row, QString text);
 		void setSizeIndex(int row, quint32 index);
 		void setOptional(int row, bool bOptional);

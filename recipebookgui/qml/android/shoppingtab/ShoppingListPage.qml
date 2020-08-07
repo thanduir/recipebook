@@ -551,7 +551,7 @@ Item {
 												icon.source: "qrc:/images/remove-black.svg"
 												flat: true
 
-												// TODO: onClicked: modelShoppingListItems.decreaseAmountMin(lvCurrentRecipe.currentIndex)
+												onClicked: lvRecipeItems.model.decreaseAmountMin(lvRecipeItems.currentIndex)
 											}
 
 											TextField {
@@ -581,7 +581,7 @@ Item {
 												icon.source: "qrc:/images/add-black.svg"
 												flat: true
 
-												// TODO: onClicked: modelShoppingListItems.increaseAmountMin(lvCurrentRecipe.currentIndex)
+												onClicked: lvRecipeItems.model.increaseAmountMin(lvRecipeItems.currentIndex)
 											}
 										}
 
@@ -598,7 +598,7 @@ Item {
 												icon.source: "qrc:/images/remove-black.svg"
 												flat: true
 
-												// TODO: onClicked: modelRecipeItems.decreaseAmountMax(lvCurrentRecipe.currentIndex)
+												onClicked: lvRecipeItems.model.decreaseAmountMax(lvRecipeItems.currentIndex)
 											}
 
 											TextField {
@@ -628,7 +628,7 @@ Item {
 												icon.source: "qrc:/images/add-black.svg"
 												flat: true
 
-												// TODO: onClicked: modelRecipeItems.increaseAmountMax(lvCurrentRecipe.currentIndex)
+												onClicked: lvRecipeItems.model.increaseAmountMax(lvRecipeItems.currentIndex)
 											}
 										}
 									}
