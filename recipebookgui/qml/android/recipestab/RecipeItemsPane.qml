@@ -252,7 +252,7 @@ Item {
 
 								text: roundValue(amountMin)
 								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
-								onEditingFinished: {
+								onTextEdited: {
 									if(amountIsRange && text > amountMax)
 									{
 										text = amountMax;
@@ -299,7 +299,7 @@ Item {
 
 								validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
 								text: roundValue(amountMax)
-								onEditingFinished: {
+								onTextEdited: {
 									if(amountIsRange && text < amountMin)
 									{
 										text = amountMin;
@@ -344,7 +344,7 @@ Item {
 						selectByMouse: true
 
 						text: additionalInfo
-						onEditingFinished: additionalInfo = text
+						onTextEdited: additionalInfo = text
 					}
 
 					Label {

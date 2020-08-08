@@ -3,13 +3,9 @@ TODO
 
 5. RecipeBook for android
 	- Test everything on small screen!
-		
-		* shopping list / recipe item details: 
-			- clicking number field and changing the number, then directly clicking somewhere else doesn't actually save the clicked number!
-			- häckchen in shopping list dialog verwirrend
-				-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
-		* confirmation message after data load / save
-		
+		* häckchen in shopping list dialog verwirrend
+			-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
+				
 		* ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
 			- the same happens for renames! (and probably also in shopping list page for recipe items)
 			-> missing component assignment, but how to actually do this when just setting the highlighted element?
