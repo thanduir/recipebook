@@ -2,14 +2,13 @@ TODO
 ====
 
 5. RecipeBook for android
-	- Test everything on small screen!
-		* häckchen in shopping list dialog verwirrend
-			-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
+	- häckchen in shopping list dialog verwirrend
+		-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
 				
-		* ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
-			- the same happens for renames! (and probably also in shopping list page for recipe items)
-			-> missing component assignment, but how to actually do this when just setting the highlighted element?
-			-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
+	- ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
+		- the same happens for renames! (and probably also in shopping list page for recipe items)
+		-> missing component assignment, but how to actually do this when just setting the highlighted element?
+		-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
