@@ -237,7 +237,7 @@ Item {
 
 						verticalAlignment: Text.AlignVCenter
 						font.bold: isHeader
-						text: name
+						text: everythingSet ? name : name + " (*)"
 					}
 
 					SpinBox { 

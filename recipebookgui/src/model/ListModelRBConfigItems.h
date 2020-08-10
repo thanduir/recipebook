@@ -22,7 +22,8 @@ namespace recipebook::UI
 			NameRole = Qt::UserRole + 1,
 			HeaderRole,
 			HeaderLevelRole,
-			MaxHeaderLevelRole
+			MaxHeaderLevelRole,
+			EverythingSetRole
 		};
 
 	public:
@@ -39,6 +40,7 @@ namespace recipebook::UI
 
 		QString name(int row) const;
 		bool renameHeader(int row, QString newName);
+		bool isEverythingSet(int row) const;
 
 		bool isHeader(int row) const;
 

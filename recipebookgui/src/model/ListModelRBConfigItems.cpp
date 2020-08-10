@@ -4,6 +4,7 @@
 #include <data/RecipeBookConfiguration.h>
 #include <data/RecipeBookConfigItem.h>
 #include <data/RBDataHandler.h>
+#include <data/Recipe.h>
 
 using namespace recipebook::UI;
 
@@ -83,6 +84,10 @@ QVariant ListModelRBConfigItems::data(const QModelIndex& index, int iRole) const
 	{
 		return maxHeaderLevel(index.row());
 	}
+	else if(role == RBConfigItemsRoles::EverythingSetRole)
+	{
+		return isEverythingSet(index.row());
+	}
 
 	return QVariant();
 }
@@ -119,6 +124,7 @@ QHash<int, QByteArray> ListModelRBConfigItems::roleNames() const
 	roles[(int)RBConfigItemsRoles::HeaderRole] = "isHeader";
 	roles[(int)RBConfigItemsRoles::HeaderLevelRole] = "headerLevel";
 	roles[(int)RBConfigItemsRoles::MaxHeaderLevelRole] = "maxHeaderLevel";
+	roles[(int)RBConfigItemsRoles::EverythingSetRole] = "everythingSet";
 	return roles;
 }
 
@@ -158,6 +164,26 @@ QString ListModelRBConfigItems::name(int row) const
 
     const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
 	return rItem.getName();
+}
+
+bool ListModelRBConfigItems::isEverythingSet(int row) const
+{
+	RBDataReadHandle handle(m_rRBDataHandler);
+	const RecipeBookConfiguration* pConfig = getConfig(handle);
+
+	if(pConfig == nullptr || row < 0 || row >= (int)pConfig->getItemsCount())
+		return true;
+
+	const RecipeBookConfigItem& rItem = pConfig->getItemAt((quint32)row);
+	if(rItem.getRecipe() == nullptr)
+		return true;
+
+	const Recipe& rRecipe = *rItem.getRecipe();
+
+	return rRecipe.getRecipeText() != ""
+		&& rRecipe.getNumberOfPersons() > 0
+		&& !rRecipe.getCookingTime().isNull()
+		&& rRecipe.getRecipeItemsCount() > 0;
 }
 
 bool ListModelRBConfigItems::existsRecipe(QString strRecipe) const
