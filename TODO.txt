@@ -1,6 +1,8 @@
 TODO
 ====
 
+1. Add GUI controls so that the user can select the latex executable! (if possible, don't assume extension except on windows)
+
 5. RecipeBook for android
 	- häckchen in shopping list dialog verwirrend
 		-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?

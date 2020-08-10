@@ -12,7 +12,8 @@ constexpr const char* c_texOutputFolder	= "/recipeBookTemp";
 constexpr const char* c_tempTexFilename	= "/tempShoppingList.tex";
 constexpr const char* c_tempPdfFilename	= "/tempShoppingList.pdf";
 
-constexpr const char* c_PdfLatexPath	= "/../texmfs/install/miktex/bin/x64/pdflatex.exe";
+// TODO: Make this configurable!
+constexpr const char* c_PdfLatexPath	= "C:/miktex-portable/texmfs/install/miktex/bin/x64/pdflatex.exe";
 
 using namespace recipebook;
 
@@ -22,8 +23,7 @@ RBLatexExporter::RBLatexExporter()
 
 QString RBLatexExporter::pdflatexExe()
 {
-	QString filePath = QApplication::applicationDirPath();
-	filePath.append(c_PdfLatexPath);
+	QString filePath = c_PdfLatexPath;
 	if(QFile::exists(filePath))
 	{
 		return filePath;
