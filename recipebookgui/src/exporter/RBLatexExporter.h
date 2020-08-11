@@ -17,16 +17,15 @@ namespace recipebook
 		Q_OBJECT
 
 	public:
-		RBLatexExporter();
-
-		static bool exporterAvailable();
+		RBLatexExporter(QString strPdfLatexPath);
 
 		bool generatePdf(QString strLatexCode, QString strOutputFilename, const RBDialogInterface& rDlgInterface, quint32 uiCallCount = 1);
 
 	private:
 		void cleanUp();
 
-		static QString pdflatexExe();
+	private:
+		QString m_strPdfLatexPath;
 	};
 }
 

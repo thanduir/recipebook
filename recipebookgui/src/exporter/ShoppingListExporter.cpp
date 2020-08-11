@@ -27,11 +27,6 @@ QStringList ShoppingListExporter::getDlgNameFilters() const
 	return list;
 }
 
-bool ShoppingListExporter::exportAvailable() const
-{
-	return ShoppingListExporterLatex::exporterAvailable();
-}
-
 void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSortOrder)
 {
 	QString localFileName = QUrl(strFileURL).toLocalFile();
@@ -57,6 +52,6 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 
 	// Generate pdf
 
-	ShoppingListExporterLatex exporter(m_rConverter);
+	ShoppingListExporterLatex exporter(m_rConverter, m_rSettings);
 	exporter.exportShoppingList(localFileName, list, m_rDlgInterface, m_rSettings.getCurrentAppLanguage());
 }

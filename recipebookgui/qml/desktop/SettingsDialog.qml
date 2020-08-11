@@ -1,3 +1,4 @@
+import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
@@ -8,10 +9,10 @@ Dialog {
 	modal: true
 
 	x: (parent.width - width) / 2
-	y: (parent.height - height) / 2
+	y: (parent.height - height) / 2 - 25
 
 	width: 500
-	height: parent.height - 100
+	height: parent.height
 
 	TextMessageDialog {
 		id: dlgLoadDefaultData
@@ -61,7 +62,7 @@ Dialog {
 		GroupBox {
 			id: groupDefaultValues
 			anchors.top: groupSettings.bottom
-			anchors.topMargin: 24
+			anchors.topMargin: 18
 
 			title: qsTr("Default values")
 
@@ -123,7 +124,7 @@ Dialog {
 		GroupBox {
 			id: groupData
 			anchors.top: groupDefaultValues.bottom
-			anchors.topMargin: 24
+			anchors.topMargin: 18
 
 			width: groupDefaultValues.width
 
@@ -148,10 +149,68 @@ Dialog {
 			}
 		}
 
+		GroupBox {
+			id: groupPdfExport
+			anchors.top: groupData.bottom
+			anchors.topMargin: 18
+
+			width: groupDefaultValues.width
+
+			title: qsTr("PDF Export")
+
+			RowLayout {
+				anchors.fill: parent
+				spacing: 10
+
+				Label {
+					text: qsTr("PDF Latex path")
+				}
+
+				TextField {
+					id: txtPdfLatex
+					Layout.fillWidth: true
+					readOnly: true
+
+					placeholderText: "PDF Latex executable"
+					text: recipeBookSettings.getPdfLatexFile()
+
+					ToolTip.delay: 1000
+					ToolTip.timeout: 3000
+					ToolTip.visible: hovered
+					ToolTip.text: recipeBookSettings.getPdfLatexFile()
+				}
+
+				RoundButton {
+					display: AbstractButton.IconOnly
+					icon.source: "qrc:/images/folder-black.svg"
+
+					onClicked: {
+						fileDialogPdfLatex.folder = recipeBookSettings.getPdfLatexFile()
+						fileDialogPdfLatex.open()
+					}
+
+					FileDialog {
+						id: fileDialogPdfLatex
+
+						title: qsTr("Generate recipe book pdf")
+						modality: Qt.WindowModal
+						nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
+						selectExisting: true
+						selectMultiple: false
+						selectFolder: false
+						onAccepted: {
+							recipeBookSettings.setPdfLatexFile(fileUrls)
+							txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
+						}
+					}
+				}
+			}
+		}
+
 		RowLayout {
 			id: rowUID
-			anchors.top: groupData.bottom
-			anchors.topMargin: 48
+			anchors.top: groupPdfExport.bottom
+			anchors.topMargin: 18
 
 			Label { 
 				text: qsTr("Application instance UID: ")

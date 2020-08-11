@@ -1,9 +1,9 @@
 TODO
 ====
 
-1. Add GUI controls so that the user can select the latex executable! (if possible, don't assume extension except on windows)
+- RecipeBook for android
+	- shopping list: "add from recipes": make the same as "add ingredients", i.e. no ok / cancel, just close button.
 
-5. RecipeBook for android
 	- häckchen in shopping list dialog verwirrend
 		-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
 				
@@ -14,14 +14,23 @@ TODO
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
-6. Merge functionality
-	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
-7. Data exchange between app and desktop program?
-8. TODOs, UnitTests
-9. Update and finalize Design.txt!
+- look over desktop variant for usability improvements
+- TODOs, UnitTests
+- Update and finalize Design.txt!
 
-Possibilities for later:
-a. Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
-b. Add pictures to Recipe?  (How to do that with json? Or does this depend on a binary internal file format?)
-c. Drag'n'drop file load support on desktop?
-d. shopping list page: recipes sortable by due date?
+
+Possible additional features (unsorted)
+---------------------------------------
+
+- Drag'n'drop file load support on desktop?
+- add "essensplanung" functionality!
+	-> how to keep this up to date? separate file (e.g. saved on dropbox similar to current odt?)
+	-> how to sync this with shopping list? (there are things on the shopping list not present here...)
+	-> also add support for something like "Einkaufsliste.txt"
+- shopping list page: recipes sortable by due date?
+- Merge functionality
+	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
+- iPhone version
+- Add pictures to Recipes?  (How to do that with json? Or does this depend on a binary internal file format?)
+- Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
+- Data exchange between app and desktop program?

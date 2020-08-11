@@ -20,11 +20,6 @@ RecipeBookExporter::RecipeBookExporter(RBDataHandler& rRBDataHandler,
 {
 }
 
-bool RecipeBookExporter::exportAvailable() const
-{
-	return RecipeBookExporterLatex::exportAvailable();
-}
-
 QStringList RecipeBookExporter::getDlgNameFilters() const
 {
 	QStringList list;
@@ -39,7 +34,7 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 	QFileInfo fi(localFileName);
 	m_rSettings.setLastUsedRecipeBookConfigurationExportFolder(fi.absolutePath());
 
-	RecipeBookExporterLatex exporter(m_rConverter);
+	RecipeBookExporterLatex exporter(m_rConverter, m_rSettings);
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 		const RecipeBook& rRecipeBook = handle.data();

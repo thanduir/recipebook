@@ -60,5 +60,6 @@
 		<file alias="undo.svg">images/undo.svg</file>
 		<file alias="list_add.svg">images/list_add.svg</file>
 		<file alias="remove-black.svg">images/remove-black.svg</file>
+		<file alias="folder-black.svg">images/folder-black.svg</file>
     </qresource>
 </RCC>

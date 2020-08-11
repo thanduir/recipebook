@@ -7,6 +7,7 @@
 #include <data/RecipeItem.h>
 #include <data/AlternativesType.h>
 #include "../uistringconverter.h"
+#include "../RecipeBookSettings.h"
 #include "RBLatexExporter.h"
 #include "LatexLanguageManager.h"
 
@@ -93,14 +94,10 @@ namespace
 	}
 }
 
-RecipeBookExporterLatex::RecipeBookExporterLatex(const UIStringConverter& rConverter)
-:	m_rConverter(rConverter)
+RecipeBookExporterLatex::RecipeBookExporterLatex(const UIStringConverter& rConverter, const RecipeBookSettings& rSettings)
+:	m_rConverter(rConverter),
+	m_rSettings(rSettings)
 {
-}
-
-bool RecipeBookExporterLatex::exportAvailable()
-{
-	return RBLatexExporter::exporterAvailable();
 }
 
 void RecipeBookExporterLatex::exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface)
@@ -112,7 +109,7 @@ void RecipeBookExporterLatex::exportRecipeBook(QString strFilename, const RBDial
 	}
 
 	// The exporter deletes itself after generation is complete
-	RBLatexExporter* pExporter = new RBLatexExporter();
+	RBLatexExporter* pExporter = new RBLatexExporter(m_rSettings.getPdfLatexFile());
 	pExporter->generatePdf(m_Latex, strFilename, rDlgInterface, 2);
 
 	m_Latex.clear();

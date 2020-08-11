@@ -7,6 +7,7 @@ class UIStringConverter;
 
 namespace recipebook
 {
+	class RecipeBookSettings;
 	class GoShoppingListItem;
 	class SortedShoppingList;
 	class RBDialogInterface;
@@ -16,11 +17,9 @@ namespace recipebook
 		Q_OBJECT
 
 	public:
-		ShoppingListExporterLatex(const UIStringConverter& rConverter);
+		ShoppingListExporterLatex(const UIStringConverter& rConverter, const RecipeBookSettings& rSettings);
 
 		void exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode);
-
-		static bool exporterAvailable();
 
 	private:
 		QString generateLatex(const SortedShoppingList& list, QString languageCode);
@@ -30,6 +29,7 @@ namespace recipebook
 
 	private:
 		const UIStringConverter& m_rConverter;
+		const RecipeBookSettings& m_rSettings;
 	};
 }
 

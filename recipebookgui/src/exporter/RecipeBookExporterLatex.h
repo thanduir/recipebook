@@ -9,6 +9,7 @@ class UIStringConverter;
 namespace recipebook
 {
 	class RecipeBookConfiguration;
+	class RecipeBookSettings;
 	class Recipe;
 	class RBDialogInterface;
 	class LatexLanguageManager;
@@ -18,9 +19,7 @@ namespace recipebook
 		Q_OBJECT
 
 	public:
-		RecipeBookExporterLatex(const UIStringConverter& rConverter);
-
-		static bool exportAvailable();
+		RecipeBookExporterLatex(const UIStringConverter& rConverter, const RecipeBookSettings& rSettings);
 
 		void generateLatex(const RecipeBookConfiguration& rConfig, const LatexLanguageManager& rLanguageManager);
 		void exportRecipeBook(QString strFilename, const RBDialogInterface& rDlgInterface);
@@ -32,6 +31,7 @@ namespace recipebook
 	private:
 		QString m_Latex;
 		const UIStringConverter& m_rConverter;
+		const RecipeBookSettings& m_rSettings;
 	};
 }
 

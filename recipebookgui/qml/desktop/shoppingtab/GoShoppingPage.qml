@@ -157,7 +157,7 @@ Item {
 		anchors.bottom: parent.bottom
 		anchors.horizontalCenter: lvShoppingList.horizontalCenter
 
-		visible: shoppingListExporter.exportAvailable()
+		visible: recipeBookSettings.pdfLatexExporterAvailable()
 
 		font.capitalization: Font.MixedCase
 

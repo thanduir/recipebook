@@ -4,19 +4,16 @@
 #include <data/SortedShoppingList.h>
 #include <data/GoShoppingListItem.h>
 #include "../uistringconverter.h"
+#include "../RecipeBookSettings.h"
 #include "RBLatexExporter.h"
 #include "LatexLanguageManager.h"
 
 using namespace recipebook;
 
-ShoppingListExporterLatex::ShoppingListExporterLatex(const UIStringConverter& rConverter)
-:	m_rConverter(rConverter)
+ShoppingListExporterLatex::ShoppingListExporterLatex(const UIStringConverter& rConverter, const RecipeBookSettings& rSettings)
+:	m_rConverter(rConverter),
+	m_rSettings(rSettings)
 {
-}
-
-bool ShoppingListExporterLatex::exporterAvailable()
-{
-	return RBLatexExporter::exporterAvailable();
 }
 
 void ShoppingListExporterLatex::exportShoppingList(QString strFilename, const SortedShoppingList& rList, const RBDialogInterface& rDlgInterface, QString languageCode)
@@ -24,7 +21,7 @@ void ShoppingListExporterLatex::exportShoppingList(QString strFilename, const So
 	QString latexCode = generateLatex(rList, languageCode);
 
 	// The exporter deletes itself after generation is complete
-	RBLatexExporter* pExporter = new RBLatexExporter();
+	RBLatexExporter* pExporter = new RBLatexExporter(m_rSettings.getPdfLatexFile());
 	pExporter->generatePdf(latexCode, strFilename, rDlgInterface);
 }
 
