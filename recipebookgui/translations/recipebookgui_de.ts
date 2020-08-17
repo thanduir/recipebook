@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_CH">
 <context>
+    <name>AddRecipesListDialog</name>
+    <message>
+        <location filename="../qml/components/AddRecipesListDialog.qml" line="109"/>
+        <source>Close</source>
+        <translation>Schliessen</translation>
+    </message>
+</context>
+<context>
     <name>AlternativesTypesPage</name>
     <message>
         <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="11"/>
@@ -23,17 +31,17 @@
         <translation>Zutat kann nicht gelöscht werden</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="165"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="168"/>
         <source>Alternatives group &quot;%1&quot; is still in use and can&apos;t be removed.</source>
         <translation>Alternativen Gruppe &quot;%1&quot; wird noch verwendet und kann nicht gelöscht werden.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="195"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="198"/>
         <source>Alternatives group &quot;%1&quot; removed</source>
         <translation>Alternativen-Gruppe &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="200"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="203"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
@@ -102,17 +110,17 @@
         <translation>Kategorie kann nicht gelöscht werden</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="334"/>
+        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="333"/>
         <source>Category &quot;%1&quot; is still in use and can&apos;t be removed.</source>
         <translation>KaAtegorie &quot;%1&quot; wird noch verwendet und kann nicht gelöscht werden.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="364"/>
+        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="363"/>
         <source>Category &quot;%1&quot; removed</source>
         <translation>Kategorie &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="369"/>
+        <location filename="../qml/android/recipestab/CategoriesPage.qml" line="368"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
@@ -141,6 +149,14 @@
         <location filename="../qml/desktop/recipestab/CategoriesPage.qml" line="393"/>
         <source>Alternatives types</source>
         <translation>Alternativen-Gruppe</translation>
+    </message>
+</context>
+<context>
+    <name>EditItemsListDialog</name>
+    <message>
+        <location filename="../qml/components/EditItemsListDialog.qml" line="82"/>
+        <source>Close</source>
+        <translation>Schliessen</translation>
     </message>
 </context>
 <context>
@@ -267,27 +283,27 @@
         <translation>Abschnitt hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="26"/>
+        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="27"/>
         <source>Add recipe</source>
         <translation>Rezept hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="36"/>
+        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="37"/>
         <source>Rename header</source>
         <translation>Abschnitt umbenennen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="42"/>
+        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="43"/>
         <source>Remove item</source>
         <translation>Eintrag entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="300"/>
+        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="305"/>
         <source>Item &quot;%1&quot; removed</source>
         <translation>Eintrag &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="305"/>
+        <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="310"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
@@ -329,75 +345,80 @@
     <name>RbConfigPage</name>
     <message>
         <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="26"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="310"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="311"/>
         <source>Add header</source>
         <translation>Abschnitt hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="35"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="322"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="36"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="323"/>
         <source>Add recipe</source>
         <translation>Rezept hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="44"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="342"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="45"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="343"/>
         <source>Rename header</source>
         <translation>Abschnitt umbenennen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="50"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="358"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="51"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="359"/>
         <source>Remove item</source>
         <translation>Eintrag entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="66"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="67"/>
         <source>Configuration &quot;%1&quot;</source>
         <translation>Kochbuch-Konfiguration &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="84"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="85"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="93"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="94"/>
         <source>Recipe book title</source>
         <translation>Kochbuch-Titel</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="102"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="103"/>
         <source>Subtitle</source>
         <translation>Untertitel</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="111"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="112"/>
         <source>Recipe book subtitle</source>
         <translation>Kochbuch-Untertitel</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="118"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="119"/>
         <source>Font size</source>
         <translation>Schriftgrösse</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="130"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="131"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="362"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="363"/>
         <source>This will remove the item &quot;%1&quot;. Proceed?</source>
         <translation>Eintrag &quot;%1&quot; wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="398"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="402"/>
+        <source>PDF Latex path has to be set in settings first</source>
+        <translation>PDF Latex Dateipfad muss in den Einstellungen angegeben werden</translation>
+    </message>
+    <message>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="404"/>
         <source>Generate PDF</source>
         <translation>PDF erstellen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="408"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="414"/>
         <source>Generate recipe book pdf</source>
         <translation>Kochbuch-PDF erstellen</translation>
     </message>
@@ -423,62 +444,62 @@
 <context>
     <name>RecipeItemsPane</name>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="24"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="44"/>
         <source>Number of persons</source>
         <translation>Anzahl Personen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="47"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="67"/>
         <source>Rearrange recipe items</source>
         <translation>Zutaten neu anordnen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="177"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="197"/>
         <source>Amount</source>
         <translation>Menge</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="192"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="212"/>
         <source>Range</source>
         <translation>Bereich</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="209"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="230"/>
         <source>Min.</source>
         <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="233"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="275"/>
         <source>Max.</source>
         <translation>Max.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="259"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="322"/>
         <source>Size</source>
         <translation>Grösse</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="277"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="340"/>
         <source>Add. Info</source>
         <translation>Zusatzinfo</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="291"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="354"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="297"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="360"/>
         <source>Group</source>
         <translation>Gruppe</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="355"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="418"/>
         <source>Ingredient &quot;%1&quot; removed</source>
         <translation>Zutat &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="360"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="423"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
@@ -521,163 +542,163 @@
     <message>
         <location filename="../qml/android/recipestab/RecipesPage.qml" line="14"/>
         <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="14"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="198"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="199"/>
         <source>Add recipe</source>
         <translation>Rezept hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/android/recipestab/RecipesPage.qml" line="24"/>
         <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="24"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="213"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="214"/>
         <source>Copy recipe</source>
         <translation>Rezept kopieren</translation>
     </message>
     <message>
         <location filename="../qml/android/recipestab/RecipesPage.qml" line="34"/>
         <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="34"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="231"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="232"/>
         <source>Rename recipe</source>
         <translation>Rezept umbenennen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="239"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="241"/>
         <source>Recipe &quot;%1&quot; removed</source>
         <translation>Rezept &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="244"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="246"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="287"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="289"/>
         <source>Close</source>
         <translation>Schliessen</translation>
     </message>
     <message>
         <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="44"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="249"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="250"/>
         <source>Remove recipe</source>
         <translation>Rezept entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="46"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="58"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="828"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="47"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="59"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="829"/>
         <source>Edit ingredients list</source>
         <translation>Zutatenliste anpassen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="68"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="856"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="69"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="857"/>
         <source>Remove ingredient</source>
         <translation>Zutat entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="73"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="85"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="74"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="86"/>
         <source>Recipes</source>
         <translation>Rezepte</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipesPage.qml" line="111"/>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="96"/>
+        <location filename="../qml/android/recipestab/RecipesPage.qml" line="112"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="97"/>
         <source>Filter recipes</source>
         <translation>Rezepte filtern</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="253"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="254"/>
         <source>This will remove the recipe &quot;%1&quot;. Proceed?</source>
         <translation>Rezept &quot;%1&quot; wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="269"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="270"/>
         <source>Recipe &quot;%1&quot;</source>
         <translation>Rezept &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="288"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="289"/>
         <source>Number of persons</source>
         <translation>Anzahl Personen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="302"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="303"/>
         <source>Cooking time</source>
         <translation>Kochdauer</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="330"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="331"/>
         <source>Format: &quot;HH:mm&quot;</source>
         <translation>Format: &quot;HH:mm&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="350"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="351"/>
         <source>Short description</source>
         <translation>Kurzbeschreibung</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="351"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="352"/>
         <source>Recipe short description</source>
         <translation>Kurzbeschreibung des Rezepts</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="377"/>
         <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="378"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="379"/>
         <source>Recipe text</source>
         <translation>Koch-Anleitung</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="393"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="394"/>
         <source>Rearrange recipe items</source>
         <translation>Zutaten neu anordnen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="524"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="525"/>
         <source>Amount</source>
         <translation>Menge</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="539"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="540"/>
         <source>Range</source>
         <translation>Bereich</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="556"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="557"/>
         <source>Min.</source>
         <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="580"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="581"/>
         <source>Max.</source>
         <translation>Max.</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="606"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="607"/>
         <source>Size</source>
         <translation>Grösse</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="624"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="625"/>
         <source>Add. Info</source>
         <translation>Zusatzinfo</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="638"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="639"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="644"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="645"/>
         <source>Group</source>
         <translation>Gruppe</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="660"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="661"/>
         <source>Alternatives group</source>
         <translation>Alternativen-Gruppe</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="860"/>
+        <location filename="../qml/desktop/recipestab/RecipesPage.qml" line="861"/>
         <source>This will remove the ingredient &quot;%1&quot;. Proceed?</source>
         <translation>Zutat &quot;%1&quot; wirklich aus dem Rezept entfernen?</translation>
     </message>
@@ -705,87 +726,102 @@
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="23"/>
         <location filename="../qml/android/SettingsDialog.qml" line="145"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="18"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="136"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="19"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="137"/>
         <source>Load default data</source>
         <translation>Alle Daten mit Standardwerten ersetzen</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="24"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="19"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="20"/>
         <source>This will replace current data with the default data. Current data will be lost. Proceed?</source>
         <translation>Es werdeb alle Daten unwiderruflich ge löscht und mit den Standarddaten ersetzen. Fortfahren?</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="30"/>
         <location filename="../qml/android/SettingsDialog.qml" line="152"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="25"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="143"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="26"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="144"/>
         <source>Reset all data</source>
         <translation>Alle Daten zurücksetzen</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="31"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="26"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="27"/>
         <source>This will reset all data. Current data will be lost. Proceed?</source>
         <translation>Dies löscht allevorhandenen Daten unwiderruflich. Fortfahren?</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="56"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="38"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="39"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="62"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="49"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="50"/>
         <source>Current language</source>
         <translation>Aktuelle Sprache</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="80"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="66"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="67"/>
         <source>Default values</source>
         <translation>Standardwerte</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="86"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="76"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="77"/>
         <source>Default unit</source>
         <translation>Standardeinheit</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="97"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="87"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="88"/>
         <source>Default number of persons</source>
         <translation>Standard # Personen</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="110"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="100"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="101"/>
         <source>Default category</source>
         <translation>Standard-Kategorie</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="121"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="111"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="112"/>
         <source>Default sort order</source>
         <translation>Standard-Sortierreihenfolge</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="139"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="130"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="131"/>
         <source>Data</source>
         <translation>Daten</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="167"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="157"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="216"/>
         <source>Application instance UID: </source>
         <translation>Applikations-Instanz UID: </translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="178"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="159"/>
+        <source>PDF Export</source>
+        <translation>PDF Export</translation>
+    </message>
+    <message>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="166"/>
+        <source>PDF Latex path</source>
+        <translation>PDF Latex Dateipfad</translation>
+    </message>
+    <message>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="195"/>
+        <source>Generate recipe book pdf</source>
+        <translation>Kochbuch-PDF erstellen</translation>
+    </message>
+    <message>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="237"/>
         <source>Close</source>
         <translation>Schliessen</translation>
     </message>
@@ -793,164 +829,175 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="33"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="33"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="35"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="34"/>
         <source>Add existing recipes</source>
         <translation>Vorhandene Rezepte hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="38"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="43"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="40"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="44"/>
         <source>Add new recipe</source>
         <translation>Neues Rezept hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="48"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="53"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="50"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="54"/>
         <source>Rename recipe</source>
         <translation>Rezept umbenennen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="63"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="64"/>
         <source>Remove recipe</source>
         <translation>Rezept entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="60"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="74"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="62"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="75"/>
         <source>Clear shopping list</source>
         <translation>Einkaufsliste zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="81"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="98"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="88"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="107"/>
         <source>Edit ingredients list</source>
         <translation>Zutatenliste anpassen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="108"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="714"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="117"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="694"/>
         <source>Remove ingredient</source>
         <translation>Zutat entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="125"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="134"/>
         <source>Recipes</source>
         <translation>Rezepte</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="141"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="150"/>
         <source>Clear all shopping recipe</source>
         <translation>Alle Rezepte aus der Einkaufsliste löschen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="114"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="145"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="130"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="154"/>
         <source>This will remove all recipes from the list. Proceed?</source>
         <translation>Soll die aktuelle Einkaufsliste wirklich zurückgesetzt werden?</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="236"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="245"/>
         <source>Add from recipe</source>
         <translation>Vorhandenes Rezept hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="259"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="268"/>
         <source>Add new shopping recipe</source>
         <translation>Neues Rezept hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="277"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="286"/>
         <source>Rename shopping recipe</source>
         <translation>Rezept umbenennen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="293"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="302"/>
         <source>Remove shopping recipe</source>
         <translation>Rezept löschen</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="297"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="306"/>
         <source>This will remove the recipe &quot;%1&quot;. Proceed?</source>
         <translation>Rezept &quot;%1&quot; wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="313"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="322"/>
         <source>Recipe &quot;%1&quot;</source>
         <translation>Rezept &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="246"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="332"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="97"/>
+        <source>Change number of persons</source>
+        <translation>Anzahl Personen anpassen</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="284"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="341"/>
         <source>Number of persons</source>
         <translation># Personen</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="279"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="365"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="308"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="374"/>
         <source>Due date</source>
         <translation>Min. Ablaufdatum</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="469"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="551"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="313"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="379"/>
+        <source>None</source>
+        <translation>Statuslos</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="511"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="531"/>
         <source>Amount</source>
         <translation>Menge</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="484"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="566"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="526"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="546"/>
         <source>Range</source>
         <translation>Bereich</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="501"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="583"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="544"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="563"/>
         <source>Min.</source>
         <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="525"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="607"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="590"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="587"/>
         <source>Max.</source>
         <translation>Max.</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="551"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="633"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="637"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="613"/>
         <source>Size</source>
         <translation>Grösse</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="569"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="651"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="655"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="631"/>
         <source>Add. Info</source>
         <translation>Zusatzinfo</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="583"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="665"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="669"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="645"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="626"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="715"/>
         <source>Recipe item &quot;%1&quot; removed</source>
         <translation>Zutat &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="631"/>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="682"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="720"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="773"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="677"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="768"/>
         <source>Recipe &quot;%1&quot; removed</source>
         <translation>Rezept &quot;%1&quot; entfernt</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="718"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="698"/>
         <source>This will remove the ingredient &quot;%1&quot;. Proceed?</source>
         <translation>Zutat &quot;%1&quot; wirklich aus dem Rezept entfernen?</translation>
     </message>
@@ -966,6 +1013,14 @@
         <location filename="../qml/desktop/shoppingtab/ShoppingTab.qml" line="30"/>
         <source>Shopping list</source>
         <translation>Einkaufsliste</translation>
+    </message>
+</context>
+<context>
+    <name>SpinnerInputDialog</name>
+    <message>
+        <location filename="../qml/components/SpinnerInputDialog.qml" line="55"/>
+        <source>Close</source>
+        <translation>Schliessen</translation>
     </message>
 </context>
 <context>
@@ -1123,7 +1178,7 @@
     <name>recipebook</name>
     <message>
         <location filename="../qml/android/recipebook.qml" line="11"/>
-        <location filename="../qml/android/recipebook.qml" line="119"/>
+        <location filename="../qml/android/recipebook.qml" line="132"/>
         <location filename="../qml/desktop/recipebook.qml" line="13"/>
         <source>RecipeBook</source>
         <translation>Kochbuch</translation>
@@ -1141,7 +1196,7 @@
     <message>
         <location filename="../qml/android/recipebook.qml" line="42"/>
         <location filename="../qml/android/recipebook.qml" line="51"/>
-        <location filename="../qml/android/recipebook.qml" line="214"/>
+        <location filename="../qml/android/recipebook.qml" line="236"/>
         <location filename="../qml/desktop/recipebook.qml" line="21"/>
         <location filename="../qml/desktop/recipebook.qml" line="36"/>
         <location filename="../qml/desktop/recipebook.qml" line="47"/>
@@ -1155,38 +1210,43 @@
         <translation>Das Laden einer neuen Datei ersetzt die aktuellen Daten, wodurch die aktuellen Daten verloren gehen. Fortfahren?</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="141"/>
+        <location filename="../qml/android/recipebook.qml" line="159"/>
+        <location filename="../qml/android/recipebook.qml" line="334"/>
         <source>Sort orders</source>
         <translation>Sortierreihenfolgen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="148"/>
+        <location filename="../qml/android/recipebook.qml" line="166"/>
+        <location filename="../qml/android/recipebook.qml" line="342"/>
         <source>Alternatives types</source>
         <translation>Alternativen-Gruppe</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="155"/>
+        <location filename="../qml/android/recipebook.qml" line="173"/>
+        <location filename="../qml/android/recipebook.qml" line="350"/>
         <source>Ingredients</source>
         <translation>Zutaten</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="180"/>
+        <location filename="../qml/android/recipebook.qml" line="198"/>
+        <location filename="../qml/android/recipebook.qml" line="378"/>
         <source>Shopping list</source>
         <translation>Einkaufsliste</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="187"/>
+        <location filename="../qml/android/recipebook.qml" line="205"/>
+        <location filename="../qml/android/recipebook.qml" line="386"/>
         <source>Go shopping</source>
         <translation>Einkaufen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="225"/>
+        <location filename="../qml/android/recipebook.qml" line="247"/>
         <location filename="../qml/desktop/recipebook.qml" line="61"/>
         <source>Merge file</source>
         <translation>Dateien zusammenführen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="233"/>
+        <location filename="../qml/android/recipebook.qml" line="255"/>
         <location filename="../qml/desktop/recipebook.qml" line="69"/>
         <source>Export</source>
         <translation>Exportieren</translation>
@@ -1198,27 +1258,32 @@
         <translation>Daten exportieren</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="244"/>
+        <location filename="../qml/android/recipebook.qml" line="266"/>
         <location filename="../qml/desktop/recipebook.qml" line="94"/>
         <location filename="../qml/desktop/recipebook.qml" line="103"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="133"/>
-        <location filename="../qml/android/recipebook.qml" line="163"/>
+        <location filename="../qml/android/recipebook.qml" line="151"/>
+        <location filename="../qml/android/recipebook.qml" line="181"/>
+        <location filename="../qml/android/recipebook.qml" line="323"/>
+        <location filename="../qml/android/recipebook.qml" line="358"/>
         <location filename="../qml/desktop/recipebook.qml" line="112"/>
         <source>Recipes</source>
         <translation>Rezepte</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="171"/>
+        <location filename="../qml/android/recipebook.qml" line="189"/>
+        <location filename="../qml/android/recipebook.qml" line="366"/>
         <location filename="../qml/desktop/recipebook.qml" line="115"/>
         <source>Shopping</source>
         <translation>Einkaufen</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="195"/>
+        <location filename="../qml/android/recipebook.qml" line="213"/>
+        <location filename="../qml/android/recipebook.qml" line="394"/>
+        <location filename="../qml/android/recipebook.qml" line="406"/>
         <location filename="../qml/desktop/recipebook.qml" line="118"/>
         <source>Recipe books</source>
         <translation>Kochbücher</translation>
@@ -1240,15 +1305,15 @@
 <context>
     <name>recipebook::RBLatexExporter</name>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="52"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="63"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="73"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="113"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="35"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="46"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="56"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="96"/>
         <source>Pdf generation failed</source>
         <translation>Erstellung der PDF-Datei fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="52"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="35"/>
         <source>Couldn&apos;t find latex pdf generator.</source>
         <translation>Latex-Generator nicht gefunden.</translation>
     </message>
@@ -1257,27 +1322,27 @@
         <translation type="obsolete">Ordner für die temporären Dateien konnte nicht erstellt werden.</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="63"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="46"/>
         <source>Couldn&apos;t create folder for temporary files.</source>
         <translation>Ordner für die temporären Dateien konnte nicht erstellt werden.</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="73"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="56"/>
         <source>Couldn&apos;t create temporary file.</source>
         <translation>Temporäre Datei konnte nicht erstellt werden.</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="108"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="91"/>
         <source>Pdf generated</source>
         <translation>PDF erfolgreich generiert</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="108"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="91"/>
         <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
         <translation>PDF erfolgreich erstellt:&lt;br&gt;&quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="113"/>
+        <location filename="../src/exporter/RBLatexExporter.cpp" line="96"/>
         <source>Error during pdf creation.</source>
         <translation>Fehler während des Erstellens des PDFs.</translation>
     </message>
@@ -1285,7 +1350,7 @@
 <context>
     <name>recipebook::RecipeBookExporter</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="31"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="26"/>
         <source>pdf files (*.pdf)</source>
         <translation>PDF Dateien (*.pdf)</translation>
     </message>
@@ -1293,12 +1358,12 @@
 <context>
     <name>recipebook::RecipeBookExporterLatex</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="199"/>
+        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="196"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="203"/>
+        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="200"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -1314,24 +1379,24 @@
 <context>
     <name>recipebook::ShoppingListExporterLatex</name>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="60"/>
+        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="57"/>
         <source>Shopping list</source>
         <translation>Einkaufsliste</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="178"/>
+        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="175"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="193"/>
+        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="190"/>
         <source>\item %1 of those %2
 </source>
         <translation>\item %1 davon %2
 </translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="197"/>
+        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="194"/>
         <source>\item Also needed in a unitless amount
 </source>
         <translation>\item Zusätzlich in unbestimmter Menge benötigt

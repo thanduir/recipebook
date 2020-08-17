@@ -204,9 +204,10 @@ Item {
 						{
 							lvRecipes.incrementCurrentIndex();
 							lvRecipes.decrementCurrentIndex();
-							modelRecipeItems.setRecipe(lvRecipes.currentIndex);
-							recipeItems.currentRecipe = lvRecipes.currentIndex;
-							recipeDetails.currentRecipe = lvRecipes.currentIndex;
+							var recipeIndex = filterModelRecipes.getRecipeIndex(lvRecipes.currentIndex);
+							modelRecipeItems.setRecipe(recipeIndex);
+							recipeItems.currentRecipe = recipeIndex;
+							recipeDetails.currentRecipe = recipeIndex;
 						}
 					}
 				}
@@ -276,9 +277,10 @@ Item {
 					if(modelRecipes.rowCount() === 0) {
 						lvRecipes.currentIndex = -1;
 					}
-					modelRecipeItems.setRecipe(lvRecipes.currentIndex);
-					recipeItems.currentRecipe = lvRecipes.currentIndex;
-					recipeDetails.currentRecipe = lvRecipes.currentIndex;
+					var recipeIndex = filterModelRecipes.getRecipeIndex(lvRecipes.currentIndex);
+					modelRecipeItems.setRecipe(recipeIndex);
+					recipeItems.currentRecipe = recipeIndex;
+					recipeDetails.currentRecipe = recipeIndex;
 					editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded()
 				}
 			}

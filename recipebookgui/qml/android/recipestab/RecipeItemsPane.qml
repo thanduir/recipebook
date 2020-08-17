@@ -51,9 +51,9 @@ Item {
 			to: 50
 			editable: true
 			wheelEnabled: true
-			value: filterModelRecipes.numberOfPersons(currentRecipe)
+			value: modelRecipes.numberOfPersons(currentRecipe)
 
-			onValueModified: filterModelRecipes.setNumberOfPersons(currentRecipe, value)
+			onValueModified: modelRecipes.setNumberOfPersons(currentRecipe, value)
 		}
 	}
 

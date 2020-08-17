@@ -40,9 +40,9 @@ Item {
 				cookingTime = Date.fromLocaleString(locale, text, "HH:mm");
 				return cookingTime.getHours() * 60 + cookingTime.getMinutes();
 			}
-			value: filterModelRecipes.cookingTime(currentRecipe)
+			value: modelRecipes.cookingTime(currentRecipe)
 
-			onValueModified: filterModelRecipes.setCookingTime(currentRecipe, value)
+			onValueModified: modelRecipes.setCookingTime(currentRecipe, value)
 		}
 	}
 
@@ -60,8 +60,8 @@ Item {
 
 		placeholderText: qsTr("Recipe short description")
 
-		text: filterModelRecipes.shortDescription(currentRecipe)
-		onEditingFinished: filterModelRecipes.setShortDescription(currentRecipe, text)
+		text: modelRecipes.shortDescription(currentRecipe)
+		onEditingFinished: modelRecipes.setShortDescription(currentRecipe, text)
 	}
 
 	ScrollView {
@@ -81,8 +81,8 @@ Item {
 
 			placeholderText: qsTr("Recipe text")
 
-			text: filterModelRecipes.recipeText(currentRecipe)
-			onEditingFinished: filterModelRecipes.setRecipeText(currentRecipe, text)
+			text: modelRecipes.recipeText(currentRecipe)
+			onEditingFinished: modelRecipes.setRecipeText(currentRecipe, text)
 		}
 	}
 }

@@ -2,11 +2,9 @@ TODO
 ====
 
 - RecipeBook for android
-	- shopping list: "add from recipes": make the same as "add ingredients", i.e. no ok / cancel, just close button.
+	- Filter / Auswahl zum Teil aus verschiedenen Panes übernommen bzw. alte Auswahl noch vorhanden(?)
+	- Texteingabefilter (Validator) z.T. nicht korrekt
 
-	- häckchen in shopping list dialog verwirrend
-		-> "löschen per swipe" entfernen? anderes symbol? Häckchen nur noch für Gruppenelemente?
-				
 	- ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
 		- the same happens for renames! (and probably also in shopping list page for recipe items)
 		-> missing component assignment, but how to actually do this when just setting the highlighted element?
@@ -14,7 +12,7 @@ TODO
 	
 	- manifest file + icon on android! How to do this using cmake + qt creator?
 
-- look over desktop variant for usability improvements
+- look for usability improvements on desktop
 - TODOs, UnitTests
 - Update and finalize Design.txt!
 
