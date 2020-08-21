@@ -38,6 +38,10 @@ Item {
         if(visible)
         {
             headerSubpageSpace.sourceComponent = ingredientHeaderComponent;
+
+			textFilterIngredients.text = "";
+			filterModelIngredients.setFilterString("");
+			lvIngredients.currentIndex = -1
         }
     }
 

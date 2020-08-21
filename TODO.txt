@@ -2,9 +2,6 @@ TODO
 ====
 
 - RecipeBook for android
-	- Filter / Auswahl zum Teil aus verschiedenen Panes übernommen bzw. alte Auswahl noch vorhanden(?)
-	- Texteingabefilter (Validator) z.T. nicht korrekt
-
 	- ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
 		- the same happens for renames! (and probably also in shopping list page for recipe items)
 		-> missing component assignment, but how to actually do this when just setting the highlighted element?

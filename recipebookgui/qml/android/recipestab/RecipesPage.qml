@@ -12,30 +12,39 @@ Item {
 	TextInputDialog {
 		id: dlgAddRecipe
 		title: qsTr("Add recipe")
-		onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
+		onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
 		onAccepted: {
-			lvRecipes.currentIndex = filterModelRecipes.addRecipe(outputText)
-			lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
+			var recipeIndex = modelRecipes.addRecipe(outputText)
+			modelRecipeItems.setRecipe(recipeIndex);
+			recipeItems.currentRecipe = recipeIndex;
+			recipeDetails.currentRecipe = recipeIndex;
+			btnChangeCurrentRecipe.text = modelRecipes.name(recipeIndex)
 		}
 	}
 
 	TextInputDialog {
 		id: dlgCopyRecipe
 		title: qsTr("Copy recipe")
-		onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
+		onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
 		onAccepted: {
-			lvRecipes.currentIndex = filterModelRecipes.copyRecipe(lvRecipes.currentIndex, outputText)
-			lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
+			var recipeIndex = modelRecipes.copyRecipe(recipeItems.currentRecipe, outputText);
+			modelRecipeItems.setRecipe(recipeIndex);
+			recipeItems.currentRecipe = recipeIndex;
+			recipeDetails.currentRecipe = recipeIndex;
+			btnChangeCurrentRecipe.text = modelRecipes.name(recipeIndex)
 		}
 	}
 
 	TextInputDialog {
 		id: dlgRenameRecipe
 		title: qsTr("Rename recipe")
-		onCurrentTextChanged: currentTextAllowed = !filterModelRecipes.existsRecipe(outputText)
+		onCurrentTextChanged: currentTextAllowed = !modelRecipes.existsRecipe(outputText)
 		onAccepted: {
-			lvRecipes.currentIndex = filterModelRecipes.renameRecipe(lvRecipes.currentIndex, outputText)
-			lvRecipes.positionViewAtIndex(lvRecipes.currentIndex, ListView.Center)
+			var recipeIndex = modelRecipes.renameRecipe(recipeItems.currentRecipe, outputText);
+			modelRecipeItems.setRecipe(recipeIndex);
+			recipeItems.currentRecipe = recipeIndex;
+			recipeDetails.currentRecipe = recipeIndex;
+			btnChangeCurrentRecipe.text = modelRecipes.name(recipeIndex)
 		}
 	}
 
@@ -51,6 +60,43 @@ Item {
 		}
 	}
 
+	// Header Component
+
+	onVisibleChanged: {
+		if(visible)
+		{
+			headerSubpageSpace.sourceComponent = recipesHeaderComponent;
+		}
+	}
+
+	Component {
+		id: recipesHeaderComponent
+
+		RowLayout {
+			anchors.right: parent.right
+			anchors.rightMargin: 10
+
+			ToolButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/add-black.svg"
+
+				enabled: modelRecipeItems.canRecipesBeAdded()
+				onClicked: dlgAddRecipe.open()
+			}
+
+			ToolButton {
+				display: AbstractButton.IconOnly
+				icon.source: "qrc:/images/copy-black.svg"
+
+				enabled: recipeItems.currentRecipe != -1
+				onClicked: {
+					dlgCopyRecipe.initialText = modelRecipes.name(recipeItems.currentRecipe);
+					dlgCopyRecipe.open();
+				}
+			}
+		}
+	}
+
 	// Recipes list
 
 	Dialog {
@@ -61,62 +107,23 @@ Item {
 		x: (parent.width - width) / 2
 		y: (parent.height - height) / 2
 
-		RowLayout {
-			id: layoutRecipes
-
-			anchors.left: parent.left
-			anchors.right: parent.right
-			anchors.top: parent.top
-
-			Label {
-				id: labelRecipes
-
-				text: qsTr("Recipes")
-				font.bold: true
-			}
-
-			Item {
-				Layout.fillWidth: true
-			}
-
-			RoundButton {
-				id: buttonAdd
-
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/add-black.svg"
-
-				enabled: filterModelRecipes.canRecipesBeAdded()
-				onClicked: dlgAddRecipe.open()
-			}
-
-			RoundButton {
-				id: buttonCopy
-
-				display: AbstractButton.IconOnly
-				icon.source: "qrc:/images/copy-black.svg"
-
-				enabled: lvRecipes.currentIndex != -1
-				onClicked: {
-					dlgCopyRecipe.initialText = filterModelRecipes.name(lvRecipes.currentIndex);
-					dlgCopyRecipe.open();
-				}
-			}
+		onAboutToShow: {
+			lvRecipes.currentIndex = -1
+			textFilterRecipes.text = ""
+			filterModelRecipes.setFilterString("");
 		}
 
 		TextField {
 			id: textFilterRecipes
 			anchors.left: lvRecipes.left
 			anchors.right: lvRecipes.right
-			anchors.top: layoutRecipes.bottom
+			anchors.top: parent.top
 			selectByMouse: true
 			placeholderText: qsTr("Filter recipes")
 
 			onTextEdited: {
 				filterModelRecipes.setFilterString(text);
 				lvRecipes.currentIndex = -1
-				modelRecipeItems.setRecipe(-1)
-				recipeItems.currentRecipe = -1;
-				recipeDetails.currentRecipe = -1;
 				forceActiveFocus();
 			}
 
@@ -136,9 +143,6 @@ Item {
 						textFilterRecipes.text = ""
 						filterModelRecipes.setFilterString(textFilterRecipes.text);
 						lvRecipes.currentIndex = -1
-						modelRecipeItems.setRecipe(-1)
-						recipeItems.currentRecipe = -1;
-						recipeDetails.currentRecipe = -1;
 						textFilterRecipes.forceActiveFocus()
 					}
 				}
@@ -184,11 +188,8 @@ Item {
 					recipeItems.currentRecipe = recipeIndex;
 					recipeDetails.currentRecipe = recipeIndex;
 					editIngredientsListButton.enabled = modelRecipeItems.canRecipeItemsBeAdded();
+					btnChangeCurrentRecipe.text = modelRecipes.name(recipeIndex)
 					popupRecipes.close();
-				}
-				onPressAndHold: {
-					dlgRenameRecipe.initialText = filterModelRecipes.name(index);
-					dlgRenameRecipe.open();
 				}
 
 				width: lvRecipes.width - lvRecipes.leftMargin - lvRecipes.rightMargin
@@ -204,10 +205,15 @@ Item {
 						{
 							lvRecipes.incrementCurrentIndex();
 							lvRecipes.decrementCurrentIndex();
+							modelRecipeItems.setRecipe(-1);
+							recipeItems.currentRecipe = -1;
+							recipeDetails.currentRecipe = -1;
+
 							var recipeIndex = filterModelRecipes.getRecipeIndex(lvRecipes.currentIndex);
 							modelRecipeItems.setRecipe(recipeIndex);
 							recipeItems.currentRecipe = recipeIndex;
 							recipeDetails.currentRecipe = recipeIndex;
+							btnChangeCurrentRecipe.text = modelRecipes.name(recipeIndex)
 						}
 					}
 				}
@@ -310,9 +316,8 @@ Item {
 			onVisibleChanged: {
 				if(visible)
 				{
-					if(lvRecipes.currentIndex === -1 && lvRecipes.count > 0)
+					if(recipeItems.currentRecipe === -1 && lvRecipes.count > 0)
 					{
-						lvRecipes.currentIndex = 0;
 						modelRecipeItems.setRecipe(0);
 						recipeItems.currentRecipe = 0;
 						recipeDetails.currentRecipe = 0;
@@ -331,14 +336,24 @@ Item {
 		}
 
 		Button {
+			id: btnChangeCurrentRecipe
+
 			Layout.fillWidth: true
 
 			enabled: modelRecipes.rowCount() > 0
 
-			text: filterModelRecipes.name(lvRecipes.currentIndex)
+			text: modelRecipes.name(recipeItems.currentRecipe)
 			font.bold: true
 
 			onClicked: popupRecipes.open()
+
+			onPressAndHold: {
+				if(recipeItems.currentRecipe != -1)
+				{
+					dlgRenameRecipe.initialText = modelRecipes.name(recipeItems.currentRecipe);
+					dlgRenameRecipe.open();
+				}
+			}
 		}
 	}
 

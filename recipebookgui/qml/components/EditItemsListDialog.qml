@@ -88,6 +88,7 @@ Dialog {
 	onAboutToShow: {
 		textFilter.text = "";
 		allValuesFilterModel.setFilterString("");
+		lvValues.model = allValuesFilterModel;
 
 		editListModel.beginEditList();
 
