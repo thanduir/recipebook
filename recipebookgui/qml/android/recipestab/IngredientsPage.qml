@@ -11,7 +11,7 @@ Item {
 		title: qsTr("Add ingredient")
 		onCurrentTextChanged: currentTextAllowed = !filterModelIngredients.existsIngredient(outputText)
 		onAccepted: {
-			lvIngredients.currentIndex = filterModelIngredients.addIngredient(outputText)
+			changeCurrentIngredient(filterModelIngredients.addIngredient(outputText));
 			lvIngredients.positionViewAtIndex(lvIngredients.currentIndex, ListView.Center)
 		}
 	}
@@ -21,7 +21,7 @@ Item {
 		title: qsTr("Rename ingredient")
 		onCurrentTextChanged: currentTextAllowed = !filterModelIngredients.existsIngredient(outputText)
 		onAccepted: {
-			lvIngredients.currentIndex = filterModelIngredients.renameIngredient(lvIngredients.currentIndex, outputText)
+			changeCurrentIngredient(filterModelIngredients.renameIngredient(lvIngredients.currentIndex, outputText));
 			lvIngredients.positionViewAtIndex(lvIngredients.currentIndex, ListView.Center)
 		}
 	}
@@ -41,7 +41,7 @@ Item {
 
 			textFilterIngredients.text = "";
 			filterModelIngredients.setFilterString("");
-			lvIngredients.currentIndex = -1
+			changeCurrentIngredient(-1);
         }
     }
 
@@ -78,7 +78,7 @@ Item {
 
 		onTextEdited: {
 			filterModelIngredients.setFilterString(text);
-			lvIngredients.currentIndex = -1
+			changeCurrentIngredient(-1)
 			forceActiveFocus();
 		}
 
@@ -97,9 +97,33 @@ Item {
 				onClicked: {
 					textFilterIngredients.text = ""
 					filterModelIngredients.setFilterString(textFilterIngredients.text);
-					lvIngredients.currentIndex = -1
+					changeCurrentIngredient(-1);
 					textFilterIngredients.forceActiveFocus()
 				}
+			}
+		}
+	}
+
+	function changeCurrentIngredient(myIndex: int) {
+		if(lvIngredients.currentIndex === myIndex)
+		{
+			if(myIndex !== -1)
+			{
+				lvIngredients.currentItem.switchExtendedInfo(false);
+			}
+			lvIngredients.currentIndex = -1;
+		}
+		else
+		{
+			if(lvIngredients.currentIndex != -1)
+			{
+				lvIngredients.currentItem.switchExtendedInfo(false);
+			}
+
+			lvIngredients.currentIndex = myIndex;
+			if(myIndex !== -1)
+			{
+				lvIngredients.currentItem.switchExtendedInfo(true);
 			}
 		}
 	}
@@ -116,11 +140,11 @@ Item {
 		boundsBehavior: Flickable.StopAtBounds
 		ScrollIndicator.vertical: ScrollIndicator { }
 
-        Component.onCompleted: lvIngredients.currentIndex = -1
+		Component.onCompleted: changeCurrentIngredient(-1)
         Connections {
             target: modelIngredients
             function onModelReset() {
-                lvIngredients.currentIndex = -1
+				changeCurrentIngredient(-1);
             }
         }
 
@@ -144,23 +168,16 @@ Item {
             id: listIngredientsItem
             highlighted: ListView.isCurrentItem
             width: lvIngredients.width - lvIngredients.leftMargin - lvIngredients.rightMargin
-			onClicked: {
-				if(lvIngredients.currentIndex == index)
-				{
-					lvIngredients.currentIndex = -1;
-					laoderExtendedInfo.sourceComponent = undefined;
-				}
-				else
-				{
-					lvIngredients.currentIndex = index;
-					laoderExtendedInfo.sourceComponent = componentExtendedInfo;
-				}
+			onClicked: changeCurrentIngredient(index)
+
+			function switchExtendedInfo(enable: bool) {
+				loaderExtendedInfo.sourceComponent = enable ? componentExtendedInfo : undefined;
 			}
 
 			implicitHeight: listIngredientsItemGroup.implicitHeight
 			contentItem: Item {
 				id: listIngredientsItemGroup
-				implicitHeight: listItemDelegateName.height + 15 + (highlighted ? laoderExtendedInfo.height + 10 : 0)
+				implicitHeight: listItemDelegateName.height + 15 + (highlighted ? loaderExtendedInfo.height + 10 : 0)
 
                 // Ingredient name
 				Label {
@@ -271,7 +288,7 @@ Item {
 					anchors.right: parent.right
 					anchors.top: listItemDelegateName.bottom
 
-					id: laoderExtendedInfo
+					id: loaderExtendedInfo
 				}
 
 				// Extended information for active ingredient
@@ -364,7 +381,7 @@ Item {
                     undoTimer.start()
                     if(index == lvIngredients.currentIndex)
                     {
-                        lvIngredients.currentIndex = -1
+						changeCurrentIngredient(-1)
                     }
                 }
             }

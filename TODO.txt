@@ -1,31 +1,24 @@
 TODO
 ====
 
-- RecipeBook for android
-	- ingredients page (and partially also shopping list page): after adding new ingredients, its not correctly opened! (probably missing a component assignment)
-		- the same happens for renames! (and probably also in shopping list page for recipe items)
-		-> missing component assignment, but how to actually do this when just setting the highlighted element?
-		-> maybe using "onCurrentItemChanged" and "currentItem" from ListView
-	
-	- manifest file + icon on android! How to do this using cmake + qt creator?
+- Usability improvements on desktop
 
-- look for usability improvements on desktop
-- TODOs, UnitTests
-- Update and finalize Design.txt!
+- Android: manifest file + icon missing! How to do this using cmake + qt creator?
+- TODOs (depends on Qt bugfixes)
 
 
 Possible additional features (unsorted)
 ---------------------------------------
 
-- Drag'n'drop file load support on desktop?
+- shopping list page: recipes sortable by due date?
 - add "essensplanung" functionality!
 	-> how to keep this up to date? separate file (e.g. saved on dropbox similar to current odt?)
 	-> how to sync this with shopping list? (there are things on the shopping list not present here...)
 	-> also add support for something like "Einkaufsliste.txt"
-- shopping list page: recipes sortable by due date?
+- iPhone version
+- Data exchange between app and desktop program?
 - Merge functionality
 	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
-- iPhone version
+
 - Add pictures to Recipes?  (How to do that with json? Or does this depend on a binary internal file format?)
 - Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)
-- Data exchange between app and desktop program?

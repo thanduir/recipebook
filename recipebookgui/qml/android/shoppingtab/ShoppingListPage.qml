@@ -33,6 +33,10 @@ Item {
 		id: dlgAddExistingRecipes
 		useScrollBars: false
 		title: qsTr("Add existing recipes")
+
+		onListChanged: {
+			modelShoppingRecipes.onDataReset();
+		}
 	}
 
 	TextInputDialog {
@@ -342,6 +346,13 @@ Item {
 
 					keyNavigationEnabled: false
 
+					Connections {
+						target: lvRecipeItems.model
+						function onModelReset() {
+							lvRecipeItems.changeCurrentRecipeItem(-1);
+						}
+					}
+
 					remove: Transition {
 						SequentialAnimation {
 							PauseAnimation { duration: 125 }
@@ -353,6 +364,32 @@ Item {
 						SequentialAnimation {
 							PauseAnimation { duration: 125 }
 							NumberAnimation { property: "y"; easing.type: Easing.InOutQuad }
+						}
+					}
+
+					function changeCurrentRecipeItem(myIndex: int) {
+						if(lvRecipeItems.currentIndex === myIndex)
+						{
+							if(lvRecipeItems.currentItem != null)
+							{
+								lvRecipeItems.currentItem.switchExtendedInfo(false);
+							}
+							lvRecipeItems.currentIndex = -1;
+							lvRecipeItems.highlightedIndex = -1;
+						}
+						else
+						{
+							if(lvRecipeItems.currentItem != null)
+							{
+								lvRecipeItems.currentItem.switchExtendedInfo(false);
+							}
+
+							lvRecipeItems.currentIndex = myIndex;
+							lvRecipeItems.highlightedIndex = myIndex;
+							if(lvRecipeItems.currentItem != null)
+							{
+								lvRecipeItems.currentItem.switchExtendedInfo(true);
+							}
 						}
 					}
 
@@ -369,28 +406,18 @@ Item {
 						implicitHeight: listItemRecipeItemGroup.implicitHeight
 
 						Component.onCompleted: {
-							lvRecipeItems.currentIndex = -1
-							lvRecipeItems.highlightedIndex = -1
+							lvRecipeItems.changeCurrentRecipeItem(-1);
 						}
 
-						onClicked: {
-							if(lvRecipeItems.highlightedIndex == index)
-							{
-								lvRecipeItems.currentIndex = -1;
-								lvRecipeItems.highlightedIndex = -1;
-								laoderExtendedInfo.sourceComponent = undefined;
-							}
-							else
-							{
-								lvRecipeItems.currentIndex = index;
-								lvRecipeItems.highlightedIndex = index
-								laoderExtendedInfo.sourceComponent = componentExtendedInfo;
-							}
+						onClicked: lvRecipeItems.changeCurrentRecipeItem(index)
+
+						function switchExtendedInfo(enable: bool) {
+							loaderExtendedInfo.sourceComponent = enable ? componentExtendedInfo : undefined;
 						}
 
 						contentItem: Item {
 							id: listItemRecipeItemGroup
-							implicitHeight: listItemRecipeItemName.height + (highlighted ? laoderExtendedInfo.height : -20)
+							implicitHeight: listItemRecipeItemName.height + (highlighted ? loaderExtendedInfo.height : -20)
 
 							Rectangle {
 								id: groupBar
@@ -420,7 +447,7 @@ Item {
 
 									if(!checked && lvRecipeItems.currentIndex == index)
 									{
-										lvRecipeItems.currentIndex = -1;
+										lvRecipeItems.changeCurrentRecipeItem(-1);
 									}
 								}
 							}
@@ -488,7 +515,7 @@ Item {
 								anchors.right: parent.right
 								anchors.top: listItemRecipeItemName.bottom
 
-								id: laoderExtendedInfo
+								id: loaderExtendedInfo
 							}
 
 							// Extended information for active ingredient
@@ -685,7 +712,7 @@ Item {
 							undoTimerRecipeItems.start()
 							if(index === lvRecipeItems.currentIndex)
 							{
-								lvRecipeItems.currentIndex = -1
+								lvRecipeItems.changeCurrentRecipeItem(-1)
 							}
 							listItemRecipeItem.contentItem.visible = false
 							listItemRecipeItem.background.visible = false
