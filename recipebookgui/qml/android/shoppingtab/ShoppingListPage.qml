@@ -388,7 +388,7 @@ Item {
 							lvRecipeItems.highlightedIndex = myIndex;
 							if(lvRecipeItems.currentItem != null)
 							{
-								lvRecipeItems.currentItem.switchExtendedInfo(true);
+								lvRecipeItems.currentItem.switchExtendedInfo(myIndex !== -1);
 							}
 						}
 					}

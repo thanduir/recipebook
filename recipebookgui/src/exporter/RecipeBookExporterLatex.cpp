@@ -41,6 +41,8 @@ namespace
 		text.replace("ü", "\\\"u");
 		text.replace("Ü", "\\\"U");
 
+		text.replace("\"s", "\'\'s");
+
 		return text;
 	}
 

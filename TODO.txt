@@ -1,7 +1,11 @@
 TODO
 ====
 
-- Usability improvements on desktop
+- android bugs:
+	* Spinners always 0 after first change...
+	* "add recipes to shopping list": zu lange namen?
+	
+- everything should work sideways as well
 
 - Android: manifest file + icon missing! How to do this using cmake + qt creator?
 - TODOs (depends on Qt bugfixes)
