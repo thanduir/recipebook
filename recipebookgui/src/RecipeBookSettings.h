@@ -61,6 +61,7 @@ namespace recipebook
 
 	signals:
 		void loadDefaultData() const;
+		void resetAllData() const;
 
 	private:
 		QString m_AppRBFilePath;
