@@ -2,7 +2,6 @@ TODO
 ====
 
 - android bugs:
-	* Spinners always 0 after first change...
 	* "add recipes to shopping list": zu lange namen?
 	
 - everything should work sideways as well

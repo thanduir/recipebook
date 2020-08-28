@@ -595,9 +595,14 @@ Item {
 												text: roundValue(amountMin)
 												validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
 												onTextEdited: {
+													if(text === "")
+													{
+														return;
+													}
+
 													if(amountIsRange && text > amountMax)
 													{
-														text = amountMax;
+														amountMax = text;
 													}
 													amountMin = text;
 												}
@@ -642,11 +647,16 @@ Item {
 												validator: DoubleValidator { bottom: 0; top: 9999; decimals: 3; locale: "en_US" }
 												text: roundValue(amountMax)
 												onTextEdited: {
+													if(text === "")
+													{
+														return;
+													}
+
 													if(amountIsRange && text < amountMin)
 													{
-														text = amountMin;
+														amountMin = text;
 													}
-													amountMax = roundValue(text)
+													amountMax = text
 												}
 											}
 
