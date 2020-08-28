@@ -85,6 +85,8 @@ Dialog {
 						height: parent.height
 
 						font.bold: spinBoxListItem.value > 0
+
+						wrapMode: Text.Wrap
 					}
 
 					SpinBox {
