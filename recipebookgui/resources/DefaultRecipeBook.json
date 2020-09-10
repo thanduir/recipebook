@@ -36,6 +36,7 @@
     },
     "categories": {
         "list": [
+            "Apotheke",
             "Backwaren",
             "Brot",
             "Eier",
@@ -55,6 +56,7 @@
         ],
         "sortOrders": {
             "Coop-Nicole": [
+                "Apotheke",
                 "Restliches",
                 "Backwaren",
                 "Teigwaren, Reis und Kartoffelprodukte",
@@ -73,6 +75,7 @@
                 "Tiefgefrohrenes"
             ],
             "Coop-Phil": [
+				"Apotheke",
                 "Restliches",
                 "Backwaren",
                 "Teigwaren, Reis und Kartoffelprodukte",
@@ -106,7 +109,8 @@
                 "Konserven",
                 "Teigwaren, Reis und Kartoffelprodukte",
                 "Backwaren",
-                "Restliches"
+                "Restliches",
+                "Apotheke"
             ]
         }
     },
@@ -507,6 +511,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Croutons": {
+            "category": "Gewürze",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Crème Fraiche": {
             "category": "Milchprodukte",
             "default-unit": "Milliliter",
@@ -852,6 +862,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Humus": {
+            "category": "Halbfertigprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Hüttenkäse": {
             "category": "Milchprodukte",
             "default-unit": "Count",
@@ -905,8 +921,6 @@
             "category": "Tiefgefrohrenes",
             "default-unit": "Unitless",
             "unavailableProvenances": [
-                "Coop-Nicole",
-                "Coop-Phil"
             ]
         },
         "Kartoffelstock": {
@@ -966,6 +980,12 @@
         },
         "Klostein": {
             "category": "Restliches",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Knabber-Zeug": {
+            "category": "Brot",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -1131,6 +1151,12 @@
         },
         "Mayonnaise": {
             "category": "Öle und Saucen",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Medikament": {
+            "category": "Apotheke",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -1581,6 +1607,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Salat (fertig)": {
+            "category": "Halbfertigprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Salbei (frisch)": {
             "category": "Salate",
             "default-unit": "Count",
@@ -1602,6 +1634,12 @@
         "Sambal Oelek": {
             "category": "Öle und Saucen",
             "default-unit": "Teaspoon",
+            "unavailableProvenances": [
+            ]
+        },
+        "Sandwich": {
+            "category": "Halbfertigprodukte",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -2766,8 +2804,8 @@
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
-                        "max": 6,
-                        "min": 5,
+                        "max": 5,
+                        "min": 4,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -3005,6 +3043,134 @@
                         "max": -1,
                         "min": 4,
                         "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Broccoli mit Reisnudeln": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "\"Trockenes\" Curry für die Übergangszeit.",
+            "Text": "Reisnudeln al dente kochen, abgiessen und unter fliessendem heissen Wasser kurz abspülen. Sojasauce und  Zitronensaft hinzugeben, salzen.\nZwiebel und Cashews mit wenig Öl andünsten, Currypaste hinzugeben und ca. 2 Minuten braten, dann die Kokosmilch und den Zitronensaft hinzufügen und 5 Minuten leicht köcheln lassen.\nBrokkoli in Röschen schneiden und in Salzwasser ca. 5 Minuten garen und nach dem Abgiessen mit etwas Sesamöl und Salz beträufeln.\nParallel dazu Falafeln braten / im Ofen wärmen.",
+            "items": {
+                "Brokkoli": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 350,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Cashewnüsse ": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 50,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Currypaste (grün, Thai)": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Falafel": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosmilch": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Reisnudeln": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 120,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sesamöl": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sojasauce": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitronensaft": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Dessertspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -4055,6 +4221,30 @@
                 },
                 "Reiswaffeln": {
                     "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salat (fertig)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sandwich": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -6948,10 +7138,10 @@
             }
         },
         "Kräuterreis mit Auberginen-Piccata": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:50",
             "NrPersons": 2,
             "ShortDesc": "Vegetarische Reisbegleitung.",
-            "Text": "Reis im Salzwasser knapp weich kochen, abtropfen. Basilikum und Schnittlauch darunter mischen.\nAuberginen in ca. 1 cm dicke Scheiben schneiden, mit Öl, Salz / Pfeffer würzen und für 15 Minuten in den auf 180° vorgeheizten Ofen stecken, abkühlen lassen.\nMehl in einen flachen Teller geben, Ei und Käse in einem weiteren Teller zerquirlen. Auberginen nacheinander in beiden Tellern wenden.\nAuberginen portionenweise bei mittlerer Hitze in Butter beidseitig für ca. 3 Minuten braten. Zugedeckt warm halten (50° im Ofen).",
+            "Text": "Reis im Salzwasser knapp weich kochen, abtropfen. Basilikum und Schnittlauch darunter mischen.\nAuberginen in ca. 1 cm dicke Scheiben schneiden, mit Öl, Salz / Pfeffer würzen und für 20 Minuten in den auf 180° vorgeheizten Ofen stecken, abkühlen lassen.\nMehl in einen flachen Teller geben, Ei und Käse in einem weiteren Teller zerquirlen. Auberginen nacheinander in beiden Tellern wenden.\nAuberginen portionenweise bei mittlerer Hitze in Butter beidseitig für ca. 3 Minuten braten. Zugedeckt warm halten (50° im Ofen).",
             "items": {
                 "Aubergine": {
                     "_position": 3,
@@ -12204,11 +12394,23 @@
             }
         },
         "Sommerfladen": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:45",
             "NrPersons": 2,
             "ShortDesc": "Kuchen-Pizza etwas anders.",
-            "Text": "Peperoni in feine Streifen schneiden, Tomätchen halbieren.\nTeig auf ein mit Backpapier belegtes Blech legen, mit saurem Halbrahm bestreichen. Käse, Peperoni, Tomaten und Speck darauf verteilen.\n15 - 20 Min. im auf 220° vorgeheizten Ofen backen. Vor dem Servieren noch würzen.",
+            "Text": "Peperoni in feine Streifen schneiden, Tomätchen halbieren.\nTeig auf ein mit Backpapier belegtes Blech legen, mit saurem Halbrahm bestreichen. Käse, Peperoni, Tomaten und Speck darauf verteilen.\n25 Min. im auf 220° vorgeheizten Ofen backen. Vor dem Servieren noch würzen.\nSalat zubereiten.",
             "items": {
+                "Croutons": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Datteltomaten": {
                     "_position": 2,
                     "additionalInfo": "",
@@ -12227,7 +12429,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 1.5,
+                        "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -12241,6 +12443,18 @@
                         "max": -1,
                         "min": 120,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mozzarellaperlen": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -12275,7 +12489,7 @@
                     "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
-                        "min": 150,
+                        "min": 100,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -12289,6 +12503,18 @@
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salat": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -12323,7 +12549,7 @@
                     "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
-                        "min": 150,
+                        "min": 100,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -13935,7 +14161,7 @@
                 },
                 "Kokosmilch": {
                     "_position": 8,
-                    "additionalInfo": "",
+                    "additionalInfo": "Light oder Bio",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
@@ -14795,7 +15021,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 260,
+                        "min": 240,
                         "unit": "Gram"
                     },
                     "optional": false,

@@ -4,7 +4,7 @@
 <context>
     <name>AddRecipesListDialog</name>
     <message>
-        <location filename="../qml/components/AddRecipesListDialog.qml" line="109"/>
+        <location filename="../qml/components/AddRecipesListDialog.qml" line="111"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
@@ -469,37 +469,37 @@
         <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="275"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="280"/>
         <source>Max.</source>
         <translation>Max.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="322"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="332"/>
         <source>Size</source>
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="340"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="350"/>
         <source>Add. Info</source>
         <translation>Add. Info</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="354"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="364"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="360"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="370"/>
         <source>Group</source>
         <translation>Group</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="418"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="428"/>
         <source>Ingredient &quot;%1&quot; removed</source>
         <translation>Ingredient &quot;%1&quot; removed</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="423"/>
+        <location filename="../qml/android/recipestab/RecipeItemsPane.qml" line="433"/>
         <source>Undo</source>
         <translation>Undo</translation>
     </message>
@@ -956,42 +956,42 @@
         <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="617"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="622"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="587"/>
         <source>Max.</source>
         <translation>Max.</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="664"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="674"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="613"/>
         <source>Size</source>
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="682"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="692"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="631"/>
         <source>Add. Info</source>
         <translation>Add. Info</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="696"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="706"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="645"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="742"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="752"/>
         <source>Recipe item &quot;%1&quot; removed</source>
         <translation>Recipe &quot;%1&quot; removed</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="747"/>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="800"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="757"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="810"/>
         <source>Undo</source>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="795"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="805"/>
         <source>Recipe &quot;%1&quot; removed</source>
         <translation>Recipe &quot;%1&quot; removed</translation>
     </message>
