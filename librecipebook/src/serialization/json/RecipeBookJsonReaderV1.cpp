@@ -211,7 +211,6 @@ bool json::JsonReaderV1::readIngredients(const QJsonObject& rObject, RecipeBook&
 		{
 			// Bugfix for Qt 5.15: Sometimes object with similar names ("Früchte" and "Früchte-Cocktail") 
 			// seem to be confused when directly accessing the elements
-			// TODO: Try again with later Qt versions to see whether this workaround is still needed
 			QVariantMap map = rObject.toVariantMap();
 			ingredient = map.value(strIngredientName, QJsonObject()).toJsonObject();
 		}
@@ -263,7 +262,6 @@ bool json::JsonReaderV1::readRecipes(const QJsonObject& rObject, RecipeBook& rRe
 		{
 			// Bugfix for Qt 5.15: Sometimes object with similar names ("Frühlingsrisotto" and "Frühlings-Spaghetti") 
 			// seem to be confused when directly accessing the elements
-			// TODO: Try again with later Qt versions to see whether this workaround is still needed
 			QVariantMap map = rObject.toVariantMap();
 			recipe = map.value(strRecipeName, QJsonObject()).toJsonObject();
 		}

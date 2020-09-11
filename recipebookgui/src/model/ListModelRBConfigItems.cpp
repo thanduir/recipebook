@@ -143,11 +143,12 @@ qint32 ListModelRBConfigItems::getPreviousHeaderLevel(const RecipeBookConfigurat
     }
 
 	// Find correct level (the same as the previous header)
-    for (quint32 i = (quint32)row - 1; i >= 0; --i)
+    for (qint32 i = row - 1; i >= 0; --i)
 	{
-		if (rConfig.getItemAt(i).getType() == RecipeBookConfigItemType::Header)
+        quint32 ui = static_cast<quint32>(i);
+        if (rConfig.getItemAt(ui).getType() == RecipeBookConfigItemType::Header)
 		{
-            return (qint32)rConfig.getItemAt(i).getLevel();
+            return (qint32)rConfig.getItemAt(ui).getLevel();
 		}
 	}
 

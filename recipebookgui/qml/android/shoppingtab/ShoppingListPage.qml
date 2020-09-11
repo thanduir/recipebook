@@ -398,7 +398,7 @@ Item {
 
 					spacing: 0
 					model: modelShoppingRecipes.getItemsModel(index)
-					delegate: SwipeDelegate {
+					delegate: ItemDelegate {
 						id: listItemRecipeItem
 
 						highlighted: lvRecipeItems.highlightedIndex == index
@@ -709,64 +709,6 @@ Item {
 										onClicked: optional = checked
 									}
 								}
-							}
-						}
-
-						Timer {
-							id: undoTimerRecipeItems
-							interval: 2750
-							onTriggered: lvRecipeItems.model.removeItem(index)
-						}
-
-						swipe.onCompleted: {
-							undoTimerRecipeItems.start()
-							if(index === lvRecipeItems.currentIndex)
-							{
-								lvRecipeItems.changeCurrentRecipeItem(-1)
-							}
-							listItemRecipeItem.contentItem.visible = false
-							listItemRecipeItem.background.visible = false
-						}
-
-						swipe.left: Rectangle {
-							width: parent.width
-							height: parent.height
-
-							clip: true
-							color: "darkgray"
-
-							Image {
-								anchors.left: parent.left
-								anchors.leftMargin: 10
-								anchors.verticalCenter: parent.verticalCenter
-
-								visible: !listItemRecipeItem.swipe.complete
-
-								fillMode: Image.PreserveAspectFit
-								source: "qrc:/images/remove.svg"
-							}
-							Label {
-								anchors.left: parent.left
-								anchors.leftMargin: 10
-								anchors.verticalCenter: parent.verticalCenter
-								text: qsTr("Recipe item \"%1\" removed").arg(name)
-
-								visible: listItemRecipeItem.swipe.complete
-							}
-							RoundButton {
-								text: qsTr("Undo")
-
-								anchors.right: parent.right
-								anchors.verticalCenter: parent.verticalCenter
-
-								onClicked: {
-									undoTimerRecipeItems.stop()
-									listItemRecipeItem.swipe.close()
-									listItemRecipeItem.contentItem.visible = true
-									listItemRecipeItem.background.visible = true
-								}
-
-								visible: listItemRecipeItem.swipe.complete
 							}
 						}
 					}

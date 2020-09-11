@@ -310,7 +310,7 @@ int ListModelShoppingRecipes::addNewRecipe(QString strRecipe)
 
 	{
 		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		handle.data().addNewShoppingRecipe(strRecipe, m_rSettings.getDefaultRecipeNrPersons());
+        handle.data().addNewShoppingRecipe(strRecipe, static_cast<float>(m_rSettings.getDefaultRecipeNrPersons()));
 	}
 
 	endInsertRows();

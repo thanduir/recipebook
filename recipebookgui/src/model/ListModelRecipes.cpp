@@ -198,7 +198,8 @@ void ListModelRecipes::setCookingTime(int row, quint32 timeInMin)
 			return;
 
         Recipe& rRecipe = handle.data().getRecipeAt((quint32)row);
-		QTime time(timeInMin / 60, timeInMin % 60);
+        QTime time(static_cast<int>(timeInMin / 60),
+                   static_cast<int>(timeInMin % 60));
 		rRecipe.setCookingTime(time);
 	}
 

@@ -9,7 +9,7 @@ using namespace recipebook;
 
 ShoppingRecipe::ShoppingRecipe(QString strName, const Recipe& rRecipe)
 :	m_Name(strName), 
-	m_fScalingFactor(rRecipe.getNumberOfPersons())
+    m_fScalingFactor(static_cast<float>(rRecipe.getNumberOfPersons()))
 {
 	for(quint32 i = 0; i < rRecipe.getRecipeItemsCount(); ++i)
 	{

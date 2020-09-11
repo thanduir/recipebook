@@ -6,7 +6,7 @@
 
 using namespace recipebook::UI;
 
-const quint32 c_uiRowNoGroup = 0;
+const qint32 c_iRowNoGroup = 0;
 
 ListModelAlternativesGroups::ListModelAlternativesGroups(recipebook::RBDataHandler& rRBDataHandler, const UIStringConverter& rConverter)
 :	m_rRBDataHandler(rRBDataHandler),
@@ -61,7 +61,7 @@ QString ListModelAlternativesGroups::name(int row) const
 	if(row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
 		return "";
 
-	if(row == c_uiRowNoGroup)
+    if(row == c_iRowNoGroup)
 	{
 		return stringNoAlternativesGroup();
 	}
@@ -76,7 +76,7 @@ int ListModelAlternativesGroups::renameType(int row, QString newName)
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
-		if(row == c_uiRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
+        if(row == c_iRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
 			return -1;
 
 		if(handle.data().existsAlternativesType(newName))
@@ -120,7 +120,7 @@ QString ListModelAlternativesGroups::color(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
-	if(row == c_uiRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
+    if(row == c_iRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
 		return "";
 
     const AlternativesType& rType = handle.data().getAlternativesTypeAt((quint32)row - 1);
@@ -197,7 +197,7 @@ bool ListModelAlternativesGroups::canTypeBeRemoved(int row) const
 {
 	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
-	if(row == c_uiRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
+    if(row == c_iRowNoGroup || row < 0 || row >= (int)handle.data().getAlternativesTypesCount() + 1)
 	{
 		return false;
 	}
@@ -212,7 +212,7 @@ bool ListModelAlternativesGroups::removeType(int row)
 	{
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 
-		if(row == c_uiRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
+        if(row == c_iRowNoGroup || row < 0 || row >= (int) handle.data().getAlternativesTypesCount() + 1)
 		{
 			return false;
 		}

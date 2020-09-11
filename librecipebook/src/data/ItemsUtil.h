@@ -38,9 +38,9 @@ namespace recipebook::internal
 		template<class T> 
 		typename QVector<QSharedPointer<T>>::const_iterator findItemSorted(const RBElementId& idString, const QVector<QSharedPointer<T>>& allItems)
 		{
-			auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& idString) -> bool
+            auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& stringID) -> bool
 			{
-				return recipebook::helper::lessThan(rItem->getElementId(), idString);
+                return recipebook::helper::lessThan(rItem->getElementId(), stringID);
 			};
 
 			return std::lower_bound(allItems.begin(), allItems.end(), idString, comp);
@@ -49,9 +49,9 @@ namespace recipebook::internal
 		template<class T> 
 		typename QVector<QSharedPointer<T>>::iterator findItemSorted(const RBElementId& idString, QVector<QSharedPointer<T>>& allItems)
 		{
-			auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& idString) -> bool
+            auto comp = [](const QSharedPointer<T>& rItem, const RBElementId& stringID) -> bool
 			{
-				return recipebook::helper::lessThan(rItem->getElementId(), idString);
+                return recipebook::helper::lessThan(rItem->getElementId(), stringID);
 			};
 
 			return std::lower_bound(allItems.begin(), allItems.end(), idString, comp);

@@ -1,8 +1,6 @@
 TODO
 ====
 
-- no removal of items with swipe in shopping list! (unset them or remove through edit dlg)
-
 - Android: manifest file + icon missing! How to do this using cmake + qt creator?
 - TODOs (depends on Qt bugfixes)
 

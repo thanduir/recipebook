@@ -51,7 +51,7 @@ float recipebook::Amount::getChangedAmount(float quantity, bool bIncrease)
 	}
 
 	const float* fPos = std::lower_bound(valueSteps, valueSteps + valueStepsCount, quantity);
-	int position = fPos - valueSteps;
+    int position = static_cast<int>(fPos - valueSteps);
     if(bIncrease)
 	{
 		if(position == valueStepsCount - 1)

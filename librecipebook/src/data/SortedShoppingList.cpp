@@ -25,7 +25,7 @@ namespace
 			}
 		}
 		return rList.size();
-	};
+    }
 
 	int getNextItemOfType(const QVector<QSharedPointer<GoShoppingListItem>>& rList, GoShoppingListItemType type, int startPos)
 	{
@@ -37,7 +37,7 @@ namespace
 			}
 		}
 		return rList.size();
-	};
+    }
 }
 
 void SortedShoppingList::updateList(RecipeBook& rRecipeBook)
