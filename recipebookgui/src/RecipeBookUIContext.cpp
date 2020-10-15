@@ -6,7 +6,9 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QQmlContext>
+#include <QDesktopServices>
 #include "serialization/RecipeBookSerializerFactory.h"
+#include "synchronization/RecipebookDropbox.h"
 #include "data/Size.h"
 #include "data/Status.h"
 #include "data/Unit.h"
@@ -66,6 +68,7 @@ RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
 	m_DlgInterface(),
 	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
 	m_RecipeBookExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
+	m_RecipeBookSynchronization(m_RBData, m_Settings),
 	m_Engine(),
 	m_SaveLock()
 {
@@ -327,6 +330,8 @@ bool RecipeBookUIContext::setupNameLists(QQmlContext* context)
 	context->setContextProperty("recipeBookSettings", &m_Settings);
 	context->setContextProperty("RBLanguageManager", &m_Translations);
 
+	context->setContextProperty("recipeBookSynchronization", &m_RecipeBookSynchronization);
+
 	context->setContextProperty("shoppingListExporter", &m_ShoppingListExporter);
 	context->setContextProperty("recipeBookExporter", &m_RecipeBookExporter);
 
@@ -373,5 +378,6 @@ bool RecipeBookUIContext::setupConnections(QObject* pRoot)
 
 	QObject::connect(pRoot, SIGNAL(onClosingRecipeBook()),
 					 this, SLOT(slotSave()));
+
 	return true;
 }

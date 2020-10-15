@@ -1,9 +1,11 @@
-find_package(Qt5 COMPONENTS Core Gui PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
 
 set(TS_FILES translations/recipebookgui_de.ts translations/recipebookgui_en.ts)
 
 set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslationManager.cpp
                         src/RecipeBookSettings.cpp src/RecipeBookUIContext.cpp src/uistringconverter.cpp
+						src/RecipebookSynchronization.cpp
+						
                         src/model/FilterModelAlternativesTypes.cpp src/model/ListModelAlternativesGroups.cpp
                         src/model/ListModelRecipeBookConfigurations.cpp src/model/ListModelSortOrders.cpp
                         src/model/FilterModelIngredients.cpp src/model/ListModelCategories.cpp
@@ -13,7 +15,7 @@ set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslation
                         src/model/ListModelIngredients.cpp src/model/ListModelShoppingListItems.cpp
                         src/model/FilterModelUnusedRecipes.cpp src/model/ListModelRBConfigItems.cpp
                         src/model/ListModelShoppingRecipes.cpp
-
+						
                         src/exporter/LatexLanguageManager.cpp src/exporter/RBLatexExporter.cpp
                         src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
                         src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp)
@@ -22,33 +24,19 @@ qt5_create_translation(QM_FILES qml/desktop/recipebook.qml ${CMAKE_CURRENT_SOURC
 
 if(NOT ANDROID)
 
-    add_executable(RecipeBook WIN32 ${RECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
+    add_executable(RecipeBook WIN32 ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
 		                            recipebookdesktop.qrc
                                     icon/icon.rc)
 
-    target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-
-    set_target_properties(RecipeBook PROPERTIES DEBUG_POSTFIX "D")
-
-    target_link_libraries(RecipeBook librecipebook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
-
-    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
-    add_custom_command(TARGET RecipeBook POST_BUILD
-        COMMAND "${CMAKE_COMMAND}" -E
-            env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
-                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/qml"
-                    "$<TARGET_FILE:RecipeBook>"
-        COMMENT "Running windeployqt...")
+	set_target_properties(RecipeBook PROPERTIES DEBUG_POSTFIX "D")
 else()
 
     add_library(RecipeBook SHARED ${RECIPEBOOK_FILES} ${LIBRECIPEBOOK_FILES} ${TS_FILES} ${QM_FILES}
 		                    recipebookandroid.qrc)
-
-    target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-
-    target_link_libraries(RecipeBook Qt5::Core Qt5::Gui Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
-
 endif()
+
+target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
+target_link_libraries(RecipeBook Qt5::Core Qt5::Gui Qt5::Network Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
 
 foreach(file_i ${QM_FILES})
         add_custom_command(
@@ -61,3 +49,13 @@ target_compile_options(RecipeBook PRIVATE
 						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
 					$<$<CXX_COMPILER_ID:MSVC>:
 						/W4 /WX>)
+
+if(NOT ANDROID)
+	find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
+    add_custom_command(TARGET RecipeBook POST_BUILD
+        COMMAND "${CMAKE_COMMAND}" -E
+            env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
+                    --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/qml"
+                    "$<TARGET_FILE:RecipeBook>"
+        COMMENT "Running windeployqt...")
+endif()

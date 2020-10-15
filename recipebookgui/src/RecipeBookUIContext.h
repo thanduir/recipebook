@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
+#include "RecipeBookSynchronization.h"
 #include "RBTranslationManager.h"
 #include "RBDialogInterface.h"
 #include "uistringconverter.h"
@@ -93,6 +94,7 @@ namespace recipebook::UI
 		RBDialogInterface m_DlgInterface;
 		ShoppingListExporter m_ShoppingListExporter;
 		RecipeBookExporter m_RecipeBookExporter;
+		RecipeBookSynchronization m_RecipeBookSynchronization;
 
 		QQmlApplicationEngine m_Engine;
 

@@ -1,6 +1,25 @@
 TODO
 ====
 
+- Data synchronisation (sync with dropbox)
+	* Implement dropbox class and sync UI (for automatic sync at least, for now)
+	* Test it on android and windows!
+
+	* sync page:
+		-> what is needed on there? Just questions for results (which to keep)? Or anything more? Status page first (while downloading / setting things up)?
+	* merge workflow:
+		- dl current version as file and generate recipebook object from it
+		- need 3 instances: current dropbox, current app, last merged
+		- look for differences and merge automatically if possible
+		- handle non-automatic merges (i.e. ask user)
+		- replace all 3 instances with up to date version (dropbox, current app, last merged)
+	* sync page can be opened manually, but user should be asked whenever a sync might make sense! (e.g. before starting a new shopping list)
+		-> reminder instead of asking at certain points?
+
+- UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
+
+- shopping list page: recipes sortable by due date?
+
 - Android: manifest file + icon missing! How to do this using cmake + qt creator?
 - TODOs (depends on Qt bugfixes)
 
@@ -8,15 +27,17 @@ TODO
 Possible additional features (unsorted)
 ---------------------------------------
 
-- shopping list page: recipes sortable by due date?
-- add "essensplanung" functionality!
-	-> how to keep this up to date? separate file (e.g. saved on dropbox similar to current odt?)
-	-> how to sync this with shopping list? (there are things on the shopping list not present here...)
-	-> also add support for something like "Einkaufsliste.txt"
 - iPhone version
-- Data exchange between app and desktop program?
-- Merge functionality
-	-> Manuell merge (i.e. look for differences, ask user which to preserve) or also automatic merge (as much as possible anyways, using a common ancestor)
+
+- add "essensplanung" functionality!
+	* data handling between devices?
+		-> depends on data exchange between app and desktop program (and between apps)!
+		-> how to keep this up to date? separate file (e.g. saved on dropbox similar to current odt?)
+	* also add support for something like "Einkaufsliste.txt" (i.e. list of general items to be bought)
+	* where to implement this?
+		- list separated from shopping list (e.g. because there are items on the shopping list not present in "essensplanung"
+			-> shopping list gets the functionality to import a range of dates from "essensplanung"
+		- replacement (which might be used concurrently?) to "shopping list page" that directly generates a shopping list for a user-defined time period?
 
 - Add pictures to Recipes?  (How to do that with json? Or does this depend on a binary internal file format?)
 - Internal binary file format? (to speed up reading and writing and/or decrease data usage on disc)

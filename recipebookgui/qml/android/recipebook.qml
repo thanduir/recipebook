@@ -244,9 +244,9 @@ ApplicationWindow {
 		RoundButton {
 			display: AbstractButton.IconOnly
 
-			text: qsTr("Merge file")
+			text: qsTr("Sync with Server")
 			icon.source: "qrc:/images/merge.svg"
-			enabled: false
+			onClicked: recipeBookSynchronization.execute()
 		}
 
 		RoundButton {
