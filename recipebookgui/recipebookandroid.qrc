@@ -23,6 +23,7 @@
     </qresource>
 	<qresource prefix="/components">
 		<file alias="AppDlgInterface.qml">qml/components/AppDlgInterface.qml</file>
+		<file alias="AppSyncUI.qml">qml/components/AppSyncUI.qml</file>
 		<file alias="TextInputDialog.qml">qml/components/TextInputDialog.qml</file>
 		<file alias="EditItemsListDialog.qml">qml/components/EditItemsListDialog.qml</file>
 		<file alias="TextMessageDialog.qml">qml/components/TextMessageDialog.qml</file>

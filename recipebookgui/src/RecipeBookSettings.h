@@ -59,6 +59,15 @@ namespace recipebook
 		QString getPdfLatexFile() const;
 		void setPdfLatexFile(QString filePath);
 
+		QString getSyncAccessToken() const;
+		void setSyncAccessToken(QString strToken);
+
+		QString getSyncFileId() const;
+		void setSyncFileId(QString strFileId);
+
+		QString applicationRecipeBookSyncBaseFile() const;
+		QString applicationRecipeBookSyncBackupFile() const;
+
 	signals:
 		void loadDefaultData() const;
 		void resetAllData() const;

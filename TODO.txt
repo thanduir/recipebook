@@ -2,19 +2,23 @@ TODO
 ====
 
 - Data synchronisation (sync with dropbox)
-	* Implement dropbox class and sync UI (for automatic sync at least, for now)
+	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
+	
 	* Test it on android and windows!
-
-	* sync page:
-		-> what is needed on there? Just questions for results (which to keep)? Or anything more? Status page first (while downloading / setting things up)?
-	* merge workflow:
-		- dl current version as file and generate recipebook object from it
-		- need 3 instances: current dropbox, current app, last merged
-		- look for differences and merge automatically if possible
-		- handle non-automatic merges (i.e. ask user)
-		- replace all 3 instances with up to date version (dropbox, current app, last merged)
-	* sync page can be opened manually, but user should be asked whenever a sync might make sense! (e.g. before starting a new shopping list)
-		-> reminder instead of asking at certain points?
+		-> ssl missing on android...
+		-> https://doc.qt.io/qt-5/android-openssl-support.html
+	
+	* settings for sync:
+		- server file id is changeable
+			-> can be cleared or replaced with an EXISTING id (need to check on server before accepting 
+				(new method in dropbox class so that not the whole file needs to be dl'd?)!
+			-> upon changing of file id, what should happen? (user says which to keep (server or local)? Or always take server version on change?)
+		- access token should be clearable!
+		- overwrite methods (local to server, server to local)
+		- reminder
+	* reminder after X days (at startup) that a sync might be needed (configurable in settings: amount of days, 0 == no reminder)!
+	* Replace merge with a sync icon?
+			
 
 - UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
 

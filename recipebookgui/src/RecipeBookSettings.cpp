@@ -9,6 +9,8 @@
 using namespace recipebook;
 
 constexpr const char* c_strAppRBSaveFilename			= "/RecipeBook.json";
+constexpr const char* c_strAppRBSyncBaseFilename		= "/RecipeBook.syncbase.json"; 
+constexpr const char* c_strAppRBSyncBkupFilename		= "/RecipeBook.syncbkup.json";
 
 constexpr const char* c_strAppInstanceUID				= "appInstanceUID";
 
@@ -30,6 +32,9 @@ constexpr const char* c_strLastRecipeBookConfigurationExportFolder = "folders/la
 
 constexpr const char* c_strPdfLatexPath					= "export/pdflatexpath";
 constexpr const char* c_strPdfLatexExeNameFilter		= "pdflatex.exe";
+
+constexpr const char* c_strSyncAccessToken				= "sync/accesstoken";
+constexpr const char* c_strSyncFileId					= "sync/flieId";
 
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
@@ -242,4 +247,38 @@ void RecipeBookSettings::setPdfLatexFile(QString filePath)
 {
 	QSettings settings;
 	settings.setValue(c_strPdfLatexPath, filePath);
+}
+
+QString RecipeBookSettings::getSyncAccessToken() const
+{
+	QSettings settings;
+	return settings.value(c_strSyncAccessToken, "").toString();
+}
+
+void RecipeBookSettings::setSyncAccessToken(QString strToken)
+{
+	QSettings settings;
+	settings.setValue(c_strSyncAccessToken, strToken);
+}
+
+QString RecipeBookSettings::getSyncFileId() const
+{
+	QSettings settings;
+	return settings.value(c_strSyncFileId, "").toString();
+}
+
+void RecipeBookSettings::setSyncFileId(QString strFileId)
+{
+	QSettings settings;
+	settings.setValue(c_strSyncFileId, strFileId);
+}
+
+QString RecipeBookSettings::applicationRecipeBookSyncBaseFile() const
+{
+	return m_AppRBFilePath + c_strAppRBSyncBaseFilename;
+}
+
+QString RecipeBookSettings::applicationRecipeBookSyncBackupFile() const
+{
+	return m_AppRBFilePath + c_strAppRBSyncBaseFilename;
 }

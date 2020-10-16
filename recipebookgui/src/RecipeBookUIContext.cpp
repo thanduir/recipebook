@@ -68,12 +68,13 @@ RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
 	m_DlgInterface(),
 	m_ShoppingListExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
 	m_RecipeBookExporter(m_RBData, m_Settings, m_Converter, m_DlgInterface),
-	m_RecipeBookSynchronization(m_RBData, m_Settings),
+	m_RecipeBookSynchronization(m_RBData, m_Settings, m_DlgInterface),
 	m_Engine(),
 	m_SaveLock()
 {
 	m_DlgInterface.setQmlEngine(m_Engine);
 	m_Translations.setQmlEngine(m_Engine);
+	m_RecipeBookSynchronization.setQmlEngine(m_Engine);
 
 	QFile fileIn(m_Settings.applicationRecipeBookSaveFile());
 	if(fileIn.exists())

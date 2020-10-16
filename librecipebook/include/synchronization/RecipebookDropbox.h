@@ -14,22 +14,17 @@ namespace recipebook::synchronization
 	class RecipebookDropbox final
 	{
 	public:
-		enum class DownloadStatus
+		enum class Status
 		{
 			Success,
+			
 			FileNotFound,
-			ConnectionError,
-			InvalidFileId,
-			InvalidToken
-		};
-
-		enum class UploadStatus
-		{
-			Success,
 			FileChangedOnServer,
+
 			ConnectionError,
+
 			InvalidFileId,
-			InvalidToken
+			InvalidTokenOrCode
 		};
 
 	public:
@@ -45,16 +40,16 @@ namespace recipebook::synchronization
 		*/
 		static QUrl getAuthorizeUri(QString redirect_uri = QString());
 
-		bool generateAcessTokenFromCode(QString strAccessCode);
-		bool setAccessToken(QString strAccessToken);
+		Status generateAcessTokenFromCode(QString strAccessCode);
+		Status setAccessToken(QString strAccessToken);
 		QString getAccessToken() const { return m_AccessToken; }
 
 		void setFileId(QString fileId);
 		QString getFileId() const { return m_FileId; }
 
-		DownloadStatus getCurrentFileContent(QByteArray& fileContent);
+		Status getCurrentFileContent(QByteArray& fileContent);
 		// The latest version of the file needs to be fetched and merged first, otherwise this may return FileChangedOnServer.
-		UploadStatus updateFileContent(QByteArray fileContent);
+		Status updateFileContent(QByteArray fileContent);
 		QString getCurrentDropboxFileRev() const { return m_DropboxFileRev; }
 		QString getCurrentDropboxFileId() const { return m_DropboxFileId; }
 

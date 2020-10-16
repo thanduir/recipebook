@@ -57,6 +57,10 @@ ApplicationWindow {
         anchors.centerIn: parent
     }
 
+	AppSyncUI {
+		anchors.centerIn: parent
+	}
+
     signal onClosingRecipeBook()
 	onClosing: {
 		if(stackMain.currentIndex != 0)
@@ -244,7 +248,7 @@ ApplicationWindow {
 		RoundButton {
 			display: AbstractButton.IconOnly
 
-			text: qsTr("Sync with Server")
+			text: qsTr("Sync with server")
 			icon.source: "qrc:/images/merge.svg"
 			onClicked: recipeBookSynchronization.execute()
 		}

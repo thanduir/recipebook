@@ -10,9 +10,6 @@
 const QString c_strAppKey		= "wqqw42itb20sded";
 const QString c_strAppSecret	= "kx6jshoshbyh0mt";
 
-const int c_MaxSingleUpload = (150 * 1024 * 1024);
-const qint32 c_Dropbox_Http_ErrorCode = 409;
-
 const QString c_ApiUrl = "https://api.dropboxapi.com";
 const QString c_ContentUrl = "https://content.dropboxapi.com";
 const QString c_NotifyUrl = "https://notify.dropboxapi.com";
@@ -43,8 +40,13 @@ QUrl RecipebookDropbox::getAuthorizeUri(QString redirect_uri)
 	return url;
 }
 
-bool RecipebookDropbox::generateAcessTokenFromCode(QString strAccessCode)
+RecipebookDropbox::Status RecipebookDropbox::generateAcessTokenFromCode(QString strAccessCode)
 {
+	if(strAccessCode.isEmpty())
+	{
+		return Status::InvalidTokenOrCode;
+	}
+
 	QUrl url;
 	url.setUrl(c_ApiUrl);
 	url.setPath("/oauth2/token");
@@ -67,30 +69,45 @@ bool RecipebookDropbox::generateAcessTokenFromCode(QString strAccessCode)
 	QByteArray nothing2post;
 	QNetworkReply* reply = mgr.post(req, nothing2post);
 
+	Status status = Status::ConnectionError;
 	QObject::connect(reply, &QNetworkReply::finished, [&]()
 	{
 		int error_code = reply->error();
+		QByteArray data = reply->readAll();
 		switch(error_code)
 		{
 		case 0:
 			{
-				QByteArray data = reply->readAll();
 				if(!data.isEmpty())
 				{
 					QJsonDocument doc = QJsonDocument::fromJson(data);
 					QJsonObject js_in = doc.object();
 					strAccessToken = js_in["access_token"].toString();
+					status = Status::Success;
 				}
 				break;
 			}
 
+		case 302:
+			{
+				if(data.contains("code doesn't exist or has expired"))
+				{
+					errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
+					errorInfo += data;
+					status = Status::InvalidTokenOrCode;
+					break;
+				}
+
+				// Fall-through for other errors
+			}
+
 		default:
 			{
-				QByteArray data = reply->readAll();
 				errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
 				errorInfo += data;
 				errorInfo += "\n";
 				errorInfo += reply->errorString();
+				status = Status::ConnectionError;
 				break;
 			}
 		}
@@ -105,18 +122,20 @@ bool RecipebookDropbox::generateAcessTokenFromCode(QString strAccessCode)
 	{
 		qWarning() << errorInfo;
 		m_LastError = errorInfo;
-		return false;
+	}
+	else
+	{
+		m_AccessToken = strAccessToken;
 	}
 
-	m_AccessToken = strAccessToken;
-	return true;
+	return status;
 }
 
-bool RecipebookDropbox::setAccessToken(QString strAccessToken)
+RecipebookDropbox::Status RecipebookDropbox::setAccessToken(QString strAccessToken)
 {
 	if(strAccessToken.isEmpty())
 	{
-		return false;
+		return Status::InvalidTokenOrCode;
 	}
 
 	m_AccessToken = strAccessToken;
@@ -140,39 +159,59 @@ bool RecipebookDropbox::setAccessToken(QString strAccessToken)
 	QNetworkAccessManager mgr;
 	QNetworkReply* reply = mgr.post(req, postdata);
 
+	Status status = Status::ConnectionError;
 	QObject::connect(reply, &QNetworkReply::finished, [&]()
 	{
 		int error_code = reply->error();
+		QByteArray data = reply->readAll();
 		switch(error_code)
 		{
 		case 0:
-		{
-			QByteArray data = reply->readAll();
-			if(data.isEmpty())
 			{
-				errorInfo = "Verification failed: no data received!";
-			}
-			else
-			{
-				QJsonDocument doc = QJsonDocument::fromJson(data);
-				QJsonObject js_in = doc.object();
-				if(js_in["result"].toString() != "recipebook-TEST")
+				if(data.isEmpty())
 				{
-					errorInfo = "Verification failed: invalid data!";
+					errorInfo = "Verification failed: no data received!";
+					status = Status::ConnectionError;
 				}
+				else
+				{
+					QJsonDocument doc = QJsonDocument::fromJson(data);
+					QJsonObject js_in = doc.object();
+					if(js_in["result"].toString() != "recipebook-TEST")
+					{
+						errorInfo = "Verification failed: invalid data!";
+						status = Status::ConnectionError;
+					}
+					else
+					{
+						status = Status::Success;
+					}
+				}
+				break;
 			}
-			break;
-		}
+
+		case 204:
+			{
+				if(data.contains("invalid_access_token"))
+				{
+					errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
+					errorInfo += data;
+					status = Status::InvalidTokenOrCode;
+					break;
+				}
+
+				// Fall-through for other errors
+			}
 
 		default:
-		{
-			QByteArray data = reply->readAll();
-			errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
-			errorInfo += data;
-			errorInfo += "\n";
-			errorInfo += reply->errorString();
-			break;
-		}
+			{
+				errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
+				errorInfo += data;
+				errorInfo += "\n";
+				errorInfo += reply->errorString();
+				status = Status::ConnectionError;
+				break;
+			}
 		}
 
 		reply->deleteLater();
@@ -185,10 +224,9 @@ bool RecipebookDropbox::setAccessToken(QString strAccessToken)
 	{
 		qWarning() << errorInfo;
 		m_LastError = errorInfo;
-		return false;
 	}
 
-	return true;
+	return status;
 }
 
 void RecipebookDropbox::setFileId(QString fileId)
@@ -199,15 +237,15 @@ void RecipebookDropbox::setFileId(QString fileId)
 	m_DropboxFileId.clear();
 }
 
-RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByteArray& fileContent)
+RecipebookDropbox::Status RecipebookDropbox::getCurrentFileContent(QByteArray& fileContent)
 {
 	if(m_AccessToken.isEmpty())
 	{
-		return DownloadStatus::InvalidToken;
+		return Status::InvalidTokenOrCode;
 	}
 	if(m_FileId.isEmpty())
 	{
-		return DownloadStatus::InvalidFileId;
+		return Status::InvalidFileId;
 	}
 
 	fileContent.clear();
@@ -232,7 +270,7 @@ RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByte
 	QByteArray nothing2post;
 	QNetworkReply* reply = mgr.post(req, nothing2post);
 
-	DownloadStatus status = DownloadStatus::ConnectionError;
+	Status status = Status::ConnectionError;
 	QObject::connect(reply, &QNetworkReply::finished, [&]()
 	{
 		int error_code = reply->error();
@@ -249,7 +287,7 @@ RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByte
 				m_DropboxFileId = js_in["id"].toString();
 				m_DropboxFileRev = js_in["rev"].toString();
 
-				status = DownloadStatus::Success;
+				status = Status::Success;
 				break;
 			}
 
@@ -259,7 +297,7 @@ RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByte
 				{
 					errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
 					errorInfo += data;
-					status = DownloadStatus::FileNotFound;
+					status = Status::FileNotFound;
 					break;
 				}
 
@@ -270,7 +308,7 @@ RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByte
 			{
 				errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
 				errorInfo += data;
-				status = DownloadStatus::ConnectionError;
+				status = Status::ConnectionError;
 				break;
 			}
 		}
@@ -290,15 +328,15 @@ RecipebookDropbox::DownloadStatus RecipebookDropbox::getCurrentFileContent(QByte
 	return status;
 }
 
-RecipebookDropbox::UploadStatus RecipebookDropbox::updateFileContent(QByteArray fileContent)
+RecipebookDropbox::Status RecipebookDropbox::updateFileContent(QByteArray fileContent)
 {
 	if(m_AccessToken.isEmpty())
 	{
-		return UploadStatus::InvalidToken;
+		return Status::InvalidTokenOrCode;
 	}
 	if(m_FileId.isEmpty())
 	{
-		return UploadStatus::InvalidFileId;
+		return Status::InvalidFileId;
 	}
 
 	QString filename = "/" + m_FileId + ".json";
@@ -332,7 +370,7 @@ RecipebookDropbox::UploadStatus RecipebookDropbox::updateFileContent(QByteArray 
 	QNetworkAccessManager mgr;
 	QNetworkReply* reply = mgr.post(req, fileContent);
 
-	UploadStatus status = UploadStatus::ConnectionError;
+	Status status = Status::ConnectionError;
 	QObject::connect(reply, &QNetworkReply::finished, [&]()
 	{
 		int error_code = reply->error();
@@ -344,7 +382,7 @@ RecipebookDropbox::UploadStatus RecipebookDropbox::updateFileContent(QByteArray 
 				QJsonDocument doc = QJsonDocument::fromJson(data);
 				QJsonObject js_in = doc.object();
 				m_DropboxFileRev = js_in["rev"].toString();
-				status = UploadStatus::Success;
+				status = Status::Success;
 				break;
 			}
 
@@ -354,7 +392,7 @@ RecipebookDropbox::UploadStatus RecipebookDropbox::updateFileContent(QByteArray 
 				{
 					errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
 					errorInfo += data;
-					status = UploadStatus::FileChangedOnServer;
+					status = Status::FileChangedOnServer;
 					break;
 				}
 
@@ -365,7 +403,7 @@ RecipebookDropbox::UploadStatus RecipebookDropbox::updateFileContent(QByteArray 
 			{
 				errorInfo = QString("ERROR. Unexpected status %1").arg(error_code);
 				errorInfo += reply->readAll();
-				status = UploadStatus::ConnectionError;
+				status = Status::ConnectionError;
 				break;
 			}
 		}

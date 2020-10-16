@@ -58,6 +58,18 @@
     </message>
 </context>
 <context>
+    <name>AppSyncUI</name>
+    <message>
+        <source>Add recipe book configuration</source>
+        <translation type="obsolete">Add recipe book configuration</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AppSyncUI.qml" line="13"/>
+        <source>Enter Dropbox access code</source>
+        <translation>Enter Dropbox access code</translation>
+    </message>
+</context>
+<context>
     <name>CategoriesPage</name>
     <message>
         <location filename="../qml/android/recipestab/CategoriesPage.qml" line="13"/>
@@ -1175,7 +1187,7 @@
     <name>recipebook</name>
     <message>
         <location filename="../qml/android/recipebook.qml" line="11"/>
-        <location filename="../qml/android/recipebook.qml" line="132"/>
+        <location filename="../qml/android/recipebook.qml" line="136"/>
         <location filename="../qml/desktop/recipebook.qml" line="13"/>
         <source>RecipeBook</source>
         <translation>RecipeBook</translation>
@@ -1193,10 +1205,10 @@
     <message>
         <location filename="../qml/android/recipebook.qml" line="42"/>
         <location filename="../qml/android/recipebook.qml" line="51"/>
-        <location filename="../qml/android/recipebook.qml" line="236"/>
+        <location filename="../qml/android/recipebook.qml" line="240"/>
         <location filename="../qml/desktop/recipebook.qml" line="21"/>
-        <location filename="../qml/desktop/recipebook.qml" line="36"/>
-        <location filename="../qml/desktop/recipebook.qml" line="47"/>
+        <location filename="../qml/desktop/recipebook.qml" line="40"/>
+        <location filename="../qml/desktop/recipebook.qml" line="51"/>
         <source>Import file</source>
         <translation>Import file</translation>
     </message>
@@ -1207,85 +1219,89 @@
         <translation>This will load the selected file, replacing all current data irrevocably. Proceed?</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="159"/>
-        <location filename="../qml/android/recipebook.qml" line="343"/>
+        <location filename="../qml/android/recipebook.qml" line="163"/>
+        <location filename="../qml/android/recipebook.qml" line="338"/>
         <source>Sort orders</source>
         <translation>Sort orders</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="166"/>
-        <location filename="../qml/android/recipebook.qml" line="351"/>
+        <location filename="../qml/android/recipebook.qml" line="170"/>
+        <location filename="../qml/android/recipebook.qml" line="346"/>
         <source>Alternatives types</source>
         <translation>Alternatives types</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="173"/>
-        <location filename="../qml/android/recipebook.qml" line="359"/>
+        <location filename="../qml/android/recipebook.qml" line="177"/>
+        <location filename="../qml/android/recipebook.qml" line="354"/>
         <source>Ingredients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="198"/>
-        <location filename="../qml/android/recipebook.qml" line="387"/>
+        <location filename="../qml/android/recipebook.qml" line="202"/>
+        <location filename="../qml/android/recipebook.qml" line="382"/>
         <source>Shopping list</source>
         <translation>Shopping list</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="205"/>
-        <location filename="../qml/android/recipebook.qml" line="395"/>
+        <location filename="../qml/android/recipebook.qml" line="209"/>
+        <location filename="../qml/android/recipebook.qml" line="390"/>
         <source>Go shopping</source>
         <translation>Go shopping</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="256"/>
-        <location filename="../qml/desktop/recipebook.qml" line="70"/>
         <source>Sync with Server</source>
-        <translation>Sync with Server</translation>
+        <translation type="vanished">Sync with Server</translation>
     </message>
     <message>
         <source>Merge file</source>
         <translation type="vanished">Merge file</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="264"/>
-        <location filename="../qml/desktop/recipebook.qml" line="78"/>
+        <location filename="../qml/android/recipebook.qml" line="259"/>
+        <location filename="../qml/desktop/recipebook.qml" line="73"/>
         <source>Export</source>
         <translation>Export</translation>
     </message>
     <message>
         <location filename="../qml/android/recipebook.qml" line="16"/>
-        <location filename="../qml/desktop/recipebook.qml" line="89"/>
+        <location filename="../qml/desktop/recipebook.qml" line="84"/>
         <source>Export data</source>
         <translation>Export data</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="275"/>
-        <location filename="../qml/desktop/recipebook.qml" line="103"/>
-        <location filename="../qml/desktop/recipebook.qml" line="112"/>
+        <location filename="../qml/android/recipebook.qml" line="251"/>
+        <location filename="../qml/desktop/recipebook.qml" line="65"/>
+        <source>Sync with server</source>
+        <translation>Sync with server</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/recipebook.qml" line="270"/>
+        <location filename="../qml/desktop/recipebook.qml" line="98"/>
+        <location filename="../qml/desktop/recipebook.qml" line="107"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="151"/>
-        <location filename="../qml/android/recipebook.qml" line="181"/>
-        <location filename="../qml/android/recipebook.qml" line="332"/>
-        <location filename="../qml/android/recipebook.qml" line="367"/>
-        <location filename="../qml/desktop/recipebook.qml" line="121"/>
+        <location filename="../qml/android/recipebook.qml" line="155"/>
+        <location filename="../qml/android/recipebook.qml" line="185"/>
+        <location filename="../qml/android/recipebook.qml" line="327"/>
+        <location filename="../qml/android/recipebook.qml" line="362"/>
+        <location filename="../qml/desktop/recipebook.qml" line="116"/>
         <source>Recipes</source>
         <translation>Recipes</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="189"/>
-        <location filename="../qml/android/recipebook.qml" line="375"/>
-        <location filename="../qml/desktop/recipebook.qml" line="124"/>
+        <location filename="../qml/android/recipebook.qml" line="193"/>
+        <location filename="../qml/android/recipebook.qml" line="370"/>
+        <location filename="../qml/desktop/recipebook.qml" line="119"/>
         <source>Shopping</source>
         <translation>Shopping</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="213"/>
-        <location filename="../qml/android/recipebook.qml" line="403"/>
-        <location filename="../qml/android/recipebook.qml" line="415"/>
-        <location filename="../qml/desktop/recipebook.qml" line="127"/>
+        <location filename="../qml/android/recipebook.qml" line="217"/>
+        <location filename="../qml/android/recipebook.qml" line="398"/>
+        <location filename="../qml/android/recipebook.qml" line="410"/>
+        <location filename="../qml/desktop/recipebook.qml" line="122"/>
         <source>Recipe books</source>
         <translation>Recipe books</translation>
     </message>
@@ -1456,48 +1472,48 @@
         <translation>Simplified json files for app (*.app.json)</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="178"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="179"/>
         <source>Error saving current data</source>
         <translation>Error saving current data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="179"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="180"/>
         <source>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="215"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="216"/>
         <source>Error during file export</source>
         <translation>Error during file export</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="216"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="217"/>
         <source>Couldn&apos;t export to file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t export to file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="249"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="250"/>
         <source>Error during file import</source>
         <translation>Error during file import</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="250"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="251"/>
         <source>Couldn&apos;t import file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t import file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="272"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="273"/>
         <source>Error loading default data</source>
         <translation>Error loading default data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="273"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="274"/>
         <source>Couldn&apos;t load default data.</source>
         <translation>Couldn&apos;t load default data.</translation>
     </message>

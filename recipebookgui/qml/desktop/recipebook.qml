@@ -27,6 +27,10 @@ ApplicationWindow {
 		anchors.centerIn: parent
 	}
 
+	AppSyncUI {
+		anchors.centerIn: parent
+	}
+
 	signal onClosingRecipeBook()
 	onClosing: onClosingRecipeBook()
 
@@ -58,7 +62,7 @@ ApplicationWindow {
 			ToolSeparator {}
 
 			ToolButton {
-				text: qsTr("Sync with Server")
+				text: qsTr("Sync with server")
 				icon.source: "qrc:/images/merge.svg"
 				onClicked: recipeBookSynchronization.execute()
 			}
