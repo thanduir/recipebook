@@ -10,7 +10,9 @@ using namespace recipebook;
 
 constexpr const char* c_strAppRBSaveFilename			= "/RecipeBook.json";
 constexpr const char* c_strAppRBSyncBaseFilename		= "/RecipeBook.syncbase.json"; 
-constexpr const char* c_strAppRBSyncBkupFilename		= "/RecipeBook.syncbkup.json";
+constexpr const char* c_strAppRBSyncBkupCurrentFilename	= "/rbCurrent.syncbkup.json";
+constexpr const char* c_strAppRBSyncBkupBaseFilename	= "/rbBase.syncbkup.json";
+constexpr const char* c_strAppRBSyncBkupServerFilename	= "/rbServer.syncbkup.json";
 
 constexpr const char* c_strAppInstanceUID				= "appInstanceUID";
 
@@ -278,7 +280,17 @@ QString RecipeBookSettings::applicationRecipeBookSyncBaseFile() const
 	return m_AppRBFilePath + c_strAppRBSyncBaseFilename;
 }
 
-QString RecipeBookSettings::applicationRecipeBookSyncBackupFile() const
+QString RecipeBookSettings::applicationRecipeBookSyncBackupCurrentFile() const
 {
-	return m_AppRBFilePath + c_strAppRBSyncBaseFilename;
+	return m_AppRBFilePath + c_strAppRBSyncBkupCurrentFilename;
+}
+
+QString RecipeBookSettings::applicationRecipeBookSyncBackupServerFile() const
+{
+	return m_AppRBFilePath + c_strAppRBSyncBkupServerFilename;
+}
+
+QString RecipeBookSettings::applicationRecipeBookSyncBackupBaseFile() const
+{
+	return m_AppRBFilePath + c_strAppRBSyncBkupBaseFilename;
 }

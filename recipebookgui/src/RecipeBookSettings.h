@@ -66,7 +66,9 @@ namespace recipebook
 		void setSyncFileId(QString strFileId);
 
 		QString applicationRecipeBookSyncBaseFile() const;
-		QString applicationRecipeBookSyncBackupFile() const;
+		QString applicationRecipeBookSyncBackupCurrentFile() const;
+		QString applicationRecipeBookSyncBackupServerFile() const;
+		QString applicationRecipeBookSyncBackupBaseFile() const;
 
 	signals:
 		void loadDefaultData() const;

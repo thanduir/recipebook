@@ -53,6 +53,54 @@ json::JsonWriter::JsonWriter(QString strUID)
 
 bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QFile& file)
 {
+	QByteArray data;
+	serialize(rRecipeBook, data);
+
+	if(!m_bUseTempFile || !file.exists())
+	{
+		return writeFile(file, data);
+	}
+	else
+	{
+		/* Concept if the file already exists:
+			* write to filename.new
+			* delete filename.old if it already exists
+			* move existing to filename.old
+			* move filename.new to filename
+		*/
+		QString filename = file.fileName();
+
+		QFile tempFile(filename + ".new");
+		if(!writeFile(tempFile, data))
+		{
+			return false;
+		}
+
+		QFile fileOld(filename + ".old");
+		if(fileOld.exists())
+		{
+			if(!fileOld.remove())
+			{
+				return false;
+			}
+		}
+
+		if(!file.rename(fileOld.fileName()))
+		{
+			return false;
+		}
+		if(!tempFile.rename(filename))
+		{
+			fileOld.rename(filename);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QByteArray& rData)
+{
     RBMetaData metaData;
     metaData.strOrigin = json::c_strProgramType;
     metaData.strUID = m_strUID;
@@ -69,58 +117,19 @@ bool json::JsonWriter::serialize(const RecipeBook& rRecipeBook, QFile& file)
 	writeRecipeBookConfigs(rRecipeBook, rootObject);
 
     QJsonDocument jsonDoc(rootObject);
-
-	if(!m_bUseTempFile || !file.exists())
-	{
-		return writeFile(file, jsonDoc);
-	}
-	else
-	{
-		/* Concept if the file already exists:
-			* write to filename.new
-			* delete filename.old if it already exists
-			* move existing to filename.old
-			* move filename.new to filename
-		*/
-		QString filename = file.fileName();
-
-		QFile tempFile(filename + ".new");
-		if(!writeFile(tempFile, jsonDoc))
-		{
-			return false;
-		}
-
-		QFile fileOld(filename + ".old");
-        if(fileOld.exists())
-        {
-            if(!fileOld.remove())
-			{
-				return false;
-			}
-        }
-		
-        if(!file.rename(fileOld.fileName()))
-        {
-			return false;
-        }
-        if(!tempFile.rename(filename))
-        {
-            fileOld.rename(filename);
-			return false;
-        }
-	}
+	rData = jsonDoc.toJson();
 
 	return true;
 }
 
-bool json::JsonWriter::writeFile(QFile& file, const QJsonDocument& rJsonDoc)
+bool json::JsonWriter::writeFile(QFile& file, const QByteArray& rData)
 {
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 	{
         qWarning("Couldn't open save file.");
         return false;
     }
-	file.write(rJsonDoc.toJson());
+	file.write(rData);
     file.close();
 
 	return true;

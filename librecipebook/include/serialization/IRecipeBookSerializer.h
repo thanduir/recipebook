@@ -20,12 +20,14 @@ namespace recipebook::serialization
 	{
 	public:
 		virtual bool serialize(const RecipeBook& rRecipeBook, QFile& file) = 0;
+		virtual bool serialize(const RecipeBook& rRecipeBook, QByteArray& rData) = 0;
 	};
 
 	class IRBReader
 	{
 	public:
 		virtual bool serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook) = 0;
+		virtual bool serialize(QByteArray data, RBMetaData& rMetaData, RecipeBook& rRecipeBook) = 0;
 		
 		virtual void enableAlternativesGroupsSorting() = 0;
 		virtual void disableAlternativesGroupsSorting() = 0;

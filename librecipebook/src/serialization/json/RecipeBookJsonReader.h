@@ -16,6 +16,7 @@ namespace recipebook::serialization::json
     {
     public:
         virtual bool serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook) override final;
+		virtual bool serialize(QByteArray saveData, RBMetaData& rMetaData, RecipeBook& rRecipeBook) override final;
 
 		virtual void enableAlternativesGroupsSorting() override final { m_bUseAlternativesGroupsSorting = true; }
 		virtual void disableAlternativesGroupsSorting() override final { m_bUseAlternativesGroupsSorting = false; }

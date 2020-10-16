@@ -14,15 +14,20 @@ json::JsonReader::JsonReader()
 
 bool json::JsonReader::serialize(QFile& file, RBMetaData& rMetaData, RecipeBook& rRecipeBook)
 {
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+	if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
-        qWarning("Couldn't open save file.");
-        return false;
-    }
+		qWarning("Couldn't open save file.");
+		return false;
+	}
 
 	QByteArray saveData = file.readAll();
-    file.close();
+	file.close();
 
+	return serialize(saveData, rMetaData, rRecipeBook);
+}
+
+bool json::JsonReader::serialize(QByteArray saveData, RBMetaData& rMetaData, RecipeBook& rRecipeBook)
+{
 	QJsonDocument jsonDoc(QJsonDocument::fromJson(saveData));
     
     if(jsonDoc.isArray())

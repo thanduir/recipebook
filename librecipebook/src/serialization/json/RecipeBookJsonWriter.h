@@ -14,11 +14,12 @@ namespace recipebook::serialization::json
     {
     public:
         virtual bool serialize(const RecipeBook& rRecipeBook, QFile& file) override final;
+		virtual bool serialize(const RecipeBook& rRecipeBook, QByteArray& rData) override final;
 
     private:
         JsonWriter(QString strUID);
 
-		bool writeFile(QFile& file, const QJsonDocument& rJsonDoc);
+		bool writeFile(QFile& file, const QByteArray& rJsonDoc);
 
         void writeMetadata(const RBMetaData& rMetaData, QJsonObject& rRootArray);
 
