@@ -7,6 +7,7 @@
 
 namespace recipebook
 {
+	class RecipeBook;
 	class RBDataHandler;
 	class RecipeBookSettings;
 	class RBDialogInterface;
@@ -28,6 +29,11 @@ namespace recipebook
 
 	private:
 		void performMerge();
+		bool readServerFile();
+		bool readCurrentFile();
+		bool readBaseFile();
+
+		void cleanUp();
 
 		QObject* getDlgObject() const;
 
@@ -39,6 +45,10 @@ namespace recipebook
 		const QQmlApplicationEngine*		m_pEngine = nullptr;
 
 		synchronization::RecipebookDropbox	m_rbDropbox;
+
+		QSharedPointer<RecipeBook>			m_spRBServer;
+		QSharedPointer<RecipeBook>			m_spRBCurrent;
+		QSharedPointer<RecipeBook>			m_spRBBase;
 	};
 }
 

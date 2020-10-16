@@ -97,84 +97,27 @@ void RecipeBookSynchronization::setAccessCode(QString accessCode)
 
 void RecipeBookSynchronization::performMerge()
 {
-	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
-	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
-
-	// Read file from server
-
-	QString strDropfileId = m_rSettings.getSyncFileId();
-	m_rbDropbox.setFileId(strDropfileId);
-
-	QByteArray dataServerFile;
-	rbStatus status = m_rbDropbox.getCurrentFileContent(dataServerFile);
-	if(status == rbStatus::InvalidFileId)
+	if(!readServerFile())
 	{
-		// No valid file id
-		m_rSettings.setSyncFileId("");
-
-		// TODO: No valid id saved -> ask user if he wants to give id (copied from another program) or generate a new (unique) one
-		//			-> Need to test that a user provieded id actually exists!
-	}
-	else if(status != rbStatus::Success)
-	{
-		m_rDlgInterface.showMessageBox(tr("Connection problem"), tr("Please check your internet connection and try again."), RBDialogInterface::DlgType::Error);
+		cleanUp();
 		return;
 	}
 
-	RecipeBook recipeBookServer;
-	RBMetaData metaDataServer;
-	spReader->serialize(dataServerFile, metaDataServer, recipeBookServer);
-
-	// Backups of server file
-	QFile fileSyncBackupServer(m_rSettings.applicationRecipeBookSyncBackupServerFile());
-	if(!spWriter->serialize(recipeBookServer, fileSyncBackupServer))
+	if(!readCurrentFile())
 	{
-		m_rDlgInterface.showMessageBox(tr("File write problem"),
-									   tr("Couldn't write sync backup server file. Please check write access and free space for app data folder."),
-									   RBDialogInterface::DlgType::Error);
+		cleanUp();
 		return;
 	}
 
-	// Read current file
-
-	// Backups of current file
-	QFile fileSyncBackupCurrent(m_rSettings.applicationRecipeBookSyncBackupCurrentFile());
+	if(!readBaseFile())
 	{
-		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		if(!spWriter->serialize(handle.data(), fileSyncBackupCurrent))
-		{
-			m_rDlgInterface.showMessageBox(tr("File write problem"), 
-										   tr("Couldn't write sync backup current file. Please check write access and free space for app data folder."), 
-										   RBDialogInterface::DlgType::Error);
-			return;
-		}
-	}
-	RecipeBook recipeBookCurrent;
-	RBMetaData metaDataCurrent;
-	spReader->serialize(fileSyncBackupCurrent, metaDataCurrent, recipeBookCurrent);
-
-	// Read base file
-
-	QFile fileSyncBase(m_rSettings.applicationRecipeBookSyncBaseFile());
-	if(!fileSyncBase.exists())
-	{
-		// TODO: No three way sync possible as base file not present! -> What to do? Just ask user which to keep!
-		return;
-	}
-	RecipeBook recipeBookBase;
-	RBMetaData metaDataBase;
-	spReader->serialize(fileSyncBase, metaDataBase, recipeBookBase);
-
-	// Backups of base file
-	QFile fileSyncBackupBase(m_rSettings.applicationRecipeBookSyncBackupBaseFile());
-	if(!spWriter->serialize(recipeBookBase, fileSyncBackupBase))
-	{
-		m_rDlgInterface.showMessageBox(tr("File write problem"),
-									   tr("Couldn't write sync backup base file. Please check write access and free space for app data folder."),
-									   RBDialogInterface::DlgType::Error);
+		cleanUp();
 		return;
 	}
 
+	bool bThreeWayMerge = m_spRBBase != nullptr;
+
+	bThreeWayMerge;
 	// TODO: merge files
 	//		-> look for differences in the three files (-> make list for one data type (categories, ingredients etc.), look for renames etc., 
 	//			then ask user about those that can't be handled automatically!
@@ -189,4 +132,120 @@ void RecipeBookSynchronization::performMerge()
 	// m_rbDropbox.updateFileContent(strFile);
 
 	// TODO: inform user that merging has completed successfully
+
+	cleanUp();
+}
+
+bool RecipeBookSynchronization::readServerFile()
+{
+	// Read file from server
+
+	QString strDropfileId = m_rSettings.getSyncFileId();
+	m_rbDropbox.setFileId(strDropfileId);
+
+	QByteArray dataServerFile;
+	rbStatus status = m_rbDropbox.getCurrentFileContent(dataServerFile);
+	if(status == rbStatus::InvalidFileId)
+	{
+		// Invalid (or unset) file id
+		m_rSettings.setSyncFileId("");
+
+		m_rDlgInterface.showMessageBox(tr("No or invalid serer file id set"),
+									   tr("Please set correct file id or generate a new one in settings."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+	else if(status != rbStatus::Success)
+	{
+		m_rDlgInterface.showMessageBox(tr("Connection problem"), tr("Please check your internet connection and try again."), RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	m_spRBServer = QSharedPointer<RecipeBook>::create();
+
+	RBMetaData metaDataServer;
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	spReader->serialize(dataServerFile, metaDataServer, *m_spRBServer);
+
+	// Backup of server file
+
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+	QFile fileSyncBackupServer(m_rSettings.applicationRecipeBookSyncBackupServerFile());
+	if(!spWriter->serialize(*m_spRBServer, fileSyncBackupServer))
+	{
+		m_rDlgInterface.showMessageBox(tr("File write problem"),
+									   tr("Couldn't write sync backup server file. Please check write access and free space for app data folder."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	return true;
+}
+
+bool RecipeBookSynchronization::readCurrentFile()
+{
+	// Backup of current file
+	QFile fileSyncBackupCurrent(m_rSettings.applicationRecipeBookSyncBackupCurrentFile());
+	{
+		QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+
+		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+		if(!spWriter->serialize(handle.data(), fileSyncBackupCurrent))
+		{
+			m_rDlgInterface.showMessageBox(tr("File write problem"),
+										   tr("Couldn't write sync backup current file. Please check write access and free space for app data folder."),
+										   RBDialogInterface::DlgType::Error);
+			return false;
+		}
+	}
+	
+	// Read current file from backup
+
+	m_spRBCurrent = QSharedPointer<RecipeBook>::create();
+
+	RBMetaData metaDataCurrent;
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	spReader->serialize(fileSyncBackupCurrent, metaDataCurrent, *m_spRBCurrent);
+
+	return true;
+}
+
+bool RecipeBookSynchronization::readBaseFile()
+{
+	// Read base file
+
+	QFile fileSyncBase(m_rSettings.applicationRecipeBookSyncBaseFile());
+	if(!fileSyncBase.exists())
+	{
+		// No base file present. This is not an error, but no three way merge will be possible
+		m_spRBBase = nullptr;
+		return true;
+	}
+	
+	m_spRBBase = QSharedPointer<RecipeBook>::create();
+
+	RBMetaData metaDataBase;
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+	spReader->serialize(fileSyncBase, metaDataBase, *m_spRBBase);
+
+	// Backups of base file
+
+	QFile fileSyncBackupBase(m_rSettings.applicationRecipeBookSyncBackupBaseFile());
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+	if(!spWriter->serialize(*m_spRBBase, fileSyncBackupBase))
+	{
+		m_rDlgInterface.showMessageBox(tr("File write problem"),
+									   tr("Couldn't write sync backup base file. Please check write access and free space for app data folder."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	return true;
+}
+
+void RecipeBookSynchronization::cleanUp()
+{
+	m_spRBServer = nullptr;
+	m_spRBBase = nullptr;
+	m_spRBCurrent = nullptr;
 }

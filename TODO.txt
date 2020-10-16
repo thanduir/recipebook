@@ -2,21 +2,24 @@ TODO
 ====
 
 - Data synchronisation (sync with dropbox)
+	* settings for sync:
+		- server file id needs to be set / changeable
+			-> can be generated (a new one) or replaced with an EXISTING id 
+				-> verify file after setting: 
+					* if id generate: upload current state, save current state as base
+					* if id NOT generate: check existance of file, remove current base
+				-> probably need a new method in RecipebookDropbox (check file exsistance)!
+		- access token should be clearable!
+		- overwrite methods (local to server, server to local)
+		- sync reminder
+	* reminder after X days (at startup) that a sync might be needed (configurable in settings: amount of days, 0 == no reminder)!
+
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
-	
+
 	* Test it on android and windows!
 		-> ssl missing on android...
 		-> https://doc.qt.io/qt-5/android-openssl-support.html
 	
-	* settings for sync:
-		- server file id is changeable
-			-> can be cleared or replaced with an EXISTING id (need to check on server before accepting 
-				(new method in dropbox class so that not the whole file needs to be dl'd?)!
-			-> upon changing of file id, what should happen? (user says which to keep (server or local)? Or always take server version on change?)
-		- access token should be clearable!
-		- overwrite methods (local to server, server to local)
-		- reminder
-	* reminder after X days (at startup) that a sync might be needed (configurable in settings: amount of days, 0 == no reminder)!
 	* Replace merge with a sync icon?
 			
 
