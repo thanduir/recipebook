@@ -1,6 +1,7 @@
 #include "RecipeBookSynchronization.h"
 #include <QDesktopServices>
 #include <QFile>
+#include <QUuid>
 #include <data/RecipeBook.h>
 #include <data/RBDataHandler.h>
 #include "serialization/RecipeBookSerializerFactory.h"
@@ -18,6 +19,30 @@ RecipeBookSynchronization::RecipeBookSynchronization(RBDataHandler& rRBDataHandl
 	m_rSettings(rSettings),
 	m_rDlgInterface(rDlgInterface)
 {
+}
+
+void RecipeBookSynchronization::generateAndSetUniqueFileId()
+{
+	QString newID = QUuid::createUuid().toString(QUuid::WithoutBraces);
+
+	QFile fileSyncBase(m_rSettings.applicationRecipeBookSyncBaseFile());
+	if(fileSyncBase.exists())
+	{
+		fileSyncBase.remove();
+	}
+
+	m_rSettings.setSyncFileId(newID);
+}
+
+void RecipeBookSynchronization::setServerFileId(QString strId)
+{
+	QFile fileSyncBase(m_rSettings.applicationRecipeBookSyncBaseFile());
+	if(fileSyncBase.exists())
+	{
+		fileSyncBase.remove();
+	}
+
+	m_rSettings.setSyncFileId(strId);
 }
 
 QObject* RecipeBookSynchronization::getDlgObject() const
@@ -115,9 +140,11 @@ void RecipeBookSynchronization::performMerge()
 		return;
 	}
 
-	bool bThreeWayMerge = m_spRBBase != nullptr;
+    /*bool bThreeWayMerge = m_spRBBase != nullptr;
+	bool bUploadOnly = m_spRBServer == nullptr;*/
 
-	bThreeWayMerge;
+	// TODO: Cases: three-way-merge ; upload-only ; !three-way-merge (ask user in this case whether to up- or download!)
+
 	// TODO: merge files
 	//		-> look for differences in the three files (-> make list for one data type (categories, ingredients etc.), look for renames etc., 
 	//			then ask user about those that can't be handled automatically!
@@ -133,27 +160,31 @@ void RecipeBookSynchronization::performMerge()
 
 	// TODO: inform user that merging has completed successfully
 
-	cleanUp();
+    // TODO call cleanUp() at the end (probably not directly in here)
 }
 
 bool RecipeBookSynchronization::readServerFile()
 {
 	// Read file from server
 
-	QString strDropfileId = m_rSettings.getSyncFileId();
-	m_rbDropbox.setFileId(strDropfileId);
+	QString strDropboxFileId = m_rSettings.getSyncFileId();
+	if(strDropboxFileId.isEmpty())
+	{
+		m_rDlgInterface.showMessageBox(tr("No server file id set"),
+									   tr("Please set correct file id or generate a new one in settings."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	m_rbDropbox.setFileId(strDropboxFileId);
 
 	QByteArray dataServerFile;
 	rbStatus status = m_rbDropbox.getCurrentFileContent(dataServerFile);
 	if(status == rbStatus::InvalidFileId)
 	{
-		// Invalid (or unset) file id
-		m_rSettings.setSyncFileId("");
-
-		m_rDlgInterface.showMessageBox(tr("No or invalid serer file id set"),
-									   tr("Please set correct file id or generate a new one in settings."),
-									   RBDialogInterface::DlgType::Error);
-		return false;
+		// File not present yet
+		m_spRBServer = nullptr;
+		return true;
 	}
 	else if(status != rbStatus::Success)
 	{

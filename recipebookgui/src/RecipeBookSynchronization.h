@@ -27,6 +27,9 @@ namespace recipebook
 		void execute();
 		void setAccessCode(QString accessCode);
 
+		void generateAndSetUniqueFileId();
+		void setServerFileId(QString strId);
+
 	private:
 		void performMerge();
 		bool readServerFile();

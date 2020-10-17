@@ -736,9 +736,9 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="23"/>
-        <location filename="../qml/android/SettingsDialog.qml" line="145"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="235"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="19"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="137"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="157"/>
         <source>Load default data</source>
         <translation>Load default data</translation>
     </message>
@@ -750,9 +750,9 @@
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="30"/>
-        <location filename="../qml/android/SettingsDialog.qml" line="152"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="242"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="26"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="144"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="164"/>
         <source>Reset all data</source>
         <translation>Reset all data</translation>
     </message>
@@ -763,76 +763,142 @@
         <translation>This will reset all data. Current data will be lost. Proceed?</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="56"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="39"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="37"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="214"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="33"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="241"/>
+        <source>Reset Dropbox connection</source>
+        <translation>Reset Dropbox connection</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="38"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="34"/>
+        <source>This will reset the Dropbox connection. No data will be lost, but the identification process has to be done again for the next synchronization. Proceed?</source>
+        <translation>This will reset the Dropbox connection. No data will be lost, but the identification process has to be done again for the next synchronization. Proceed?</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="44"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="40"/>
+        <source>Generate new server file id</source>
+        <translation>Generate new server file id</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="45"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="41"/>
+        <source>This will generate and set a new server id. This will reset the synchronization status. Proceed?</source>
+        <translation>This will generate and set a new server id. This will reset the synchronization status. Proceed?</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="51"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="47"/>
+        <source>Set existing server file id</source>
+        <translation>Set existing server file id</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="76"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="65"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="62"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="50"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="82"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="77"/>
         <source>Current language</source>
         <translation>Current language</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="80"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="67"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="100"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="91"/>
         <source>Default values</source>
         <translation>Default values</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="86"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="77"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="106"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="101"/>
         <source>Default unit</source>
         <translation>Default unit</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="97"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="88"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="117"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="112"/>
         <source>Default number of persons</source>
         <translation>Default number of persons</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="110"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="101"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="130"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="125"/>
         <source>Default category</source>
         <translation>Default category</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="121"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="112"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="141"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="136"/>
         <source>Default sort order</source>
         <translation>Default sort order</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="139"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="131"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="165"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="190"/>
+        <source>File id on server</source>
+        <translation>File id on server</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="184"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="209"/>
+        <source>Generate new id</source>
+        <translation>Generate new id</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="193"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="218"/>
+        <source>Set existing id</source>
+        <translation>Reminder (days)</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="201"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="226"/>
+        <source>Reminder (days)</source>
+        <translation>Reminder (days)</translation>
+    </message>
+    <message>
+        <location filename="../qml/android/SettingsDialog.qml" line="229"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="149"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../qml/android/SettingsDialog.qml" line="167"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="216"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="257"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="313"/>
         <source>Application instance UID: </source>
         <translation>Application instance UID: </translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="159"/>
+        <location filename="../qml/android/SettingsDialog.qml" line="159"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="178"/>
+        <source>Synchronization</source>
+        <translation>Synchronization</translation>
+    </message>
+    <message>
+        <source>Synchronization reminder (days)</source>
+        <translation type="vanished">Synchronization reminder (days)</translation>
+    </message>
+    <message>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="251"/>
         <source>PDF Export</source>
         <translation>PDF Export</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="166"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="260"/>
         <source>PDF Latex path</source>
         <translation>PDF Latex path</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="195"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="289"/>
         <source>Generate recipe book pdf</source>
         <translation>Generate recipe book pdf</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="237"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="336"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
@@ -1379,6 +1445,65 @@
         <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="202"/>
         <source>min</source>
         <translation>min</translation>
+    </message>
+</context>
+<context>
+    <name>recipebook::RecipeBookSynchronization</name>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="84"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="119"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="191"/>
+        <source>Connection problem</source>
+        <translation>Connection problem</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="84"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="119"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="191"/>
+        <source>Please check your internet connection and try again.</source>
+        <translation>Please check your internet connection and try again.</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="115"/>
+        <source>Invalid code</source>
+        <translation>Invalid code</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="115"/>
+        <source>Code not accepted. Please try again.</source>
+        <translation>Code not accepted. Please try again.</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="173"/>
+        <source>No server file id set</source>
+        <translation>No server file id set</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="174"/>
+        <source>Please set correct file id or generate a new one in settings.</source>
+        <translation>Please set correct file id or generate a new one in settings.</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="207"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="226"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="268"/>
+        <source>File write problem</source>
+        <translation>File write problem</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="208"/>
+        <source>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</source>
+        <translation>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="227"/>
+        <source>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</source>
+        <translation>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="269"/>
+        <source>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</source>
+        <translation>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</translation>
     </message>
 </context>
 <context>

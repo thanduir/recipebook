@@ -11,8 +11,8 @@ Dialog {
 	x: (parent.width - width) / 2
 	y: (parent.height - height) / 2 - 25
 
-	width: 500
-	height: parent.height
+	width: 1000
+	height: parent.height - 75
 
 	TextMessageDialog {
 		id: dlgLoadDefaultData
@@ -28,179 +28,275 @@ Dialog {
 		onAccepted: recipeBookSettings.resetAllData()
 	}
 
+	TextMessageDialog {
+		id: dlgSyncResetAccessToken
+		title: qsTr("Reset Dropbox connection")
+		msgText: qsTr("This will reset the Dropbox connection. No data will be lost, but the identification process has to be done again for the next synchronization. Proceed?");
+		onAccepted: recipeBookSettings.setSyncAccessToken("")
+	}
+
+	TextMessageDialog {
+		id: dlgSyncGenerateNewId
+		title: qsTr("Generate new server file id")
+		msgText: qsTr("This will generate and set a new server id. This will reset the synchronization status. Proceed?");
+		onAccepted: recipeBookSynchronization.generateAndSetUniqueFileId()
+	}
+
+	TextInputDialog {
+		id: dlgSyncSetId
+		title: qsTr("Set existing server file id")
+		onAccepted: recipeBookSynchronization.setServerFileId(outputText)
+	}
+
 	Pane {
 		id: paneSettings
 
 		anchors.fill: parent
 
-		GroupBox {
-			id: groupSettings
-
-			title: qsTr("Settings")
-			width: groupDefaultValues.width
-
-			GridLayout {
-				anchors.fill: parent
-        
-				columns: 2
-				columnSpacing: 50
-				rowSpacing: 10
-
-				Label { 
-					text: qsTr("Current language")
-				}
-				ComboBox { 
-					id: cbxLanguages
-					Layout.fillWidth: true
-					model: RBLanguageManager.availableLanguages()
-
-					onActivated: RBLanguageManager.setCurrentLanguageIndex(currentIndex)
-				}
-			}
-		}
-
-		GroupBox {
-			id: groupDefaultValues
-			anchors.top: groupSettings.bottom
-			anchors.topMargin: 18
-
-			title: qsTr("Default values")
-
-			GridLayout {
-				anchors.fill: parent
-        
-				columns: 2
-				columnSpacing: 50
-				rowSpacing: 10
-
-				Label { 
-					text: qsTr("Default unit")
-				}
-				ComboBox { 
-					id: cbxDefaultUnit
-					Layout.fillWidth: true
-					model: uiStrings.getAllUnitNames()
-
-					onActivated: recipeBookSettings.setDefaultUnit(currentIndex)
-				}
-
-				Label { 
-					text: qsTr("Default number of persons")
-				}
-				SpinBox { 
-					id: spinDefaultNrPersons
-					from: 1
-					to: 50
-					editable: true
-					wheelEnabled: true
-                    
-					onValueModified: recipeBookSettings.setDefaultRecipeNrPersons(value)
-				}
-
-				Label { 
-					text: qsTr("Default category")
-				}
-				ComboBox { 
-					id: cbxDefaulCategory
-					Layout.fillWidth: true
-					model: modelCategories
- 
-					onActivated: recipeBookSettings.setDefaultCategory(currentText)
-				}
-
-				Label { 
-					text: qsTr("Default sort order")
-				}
-				ComboBox { 
-					id: cbxDefaultSortOrder
-					Layout.fillWidth: true
-					model: modelSortOrders
-
-					onActivated: recipeBookSettings.setDefaultSortOrder(currentText)
-				}
-			}
-		}
-
-		GroupBox {
-			id: groupData
-			anchors.top: groupDefaultValues.bottom
-			anchors.topMargin: 18
-
-			width: groupDefaultValues.width
-
-			title: qsTr("Data")
+		RowLayout {
+			id: gridSettings
+			anchors.fill: parent
 
 			ColumnLayout {
-				anchors.centerIn: parent
+				spacing: 30
+				Layout.alignment: Qt.AlignTop
 
-				Button {
-					text: qsTr("Load default data")
-					font.capitalization: Font.MixedCase
-					Layout.alignment: Qt.AlignHCenter
-					onClicked: dlgLoadDefaultData.open()
+				GroupBox {
+					title: qsTr("Settings")
+					
+					implicitWidth: groupDefaultValues.implicitWidth
+
+					GridLayout {
+						anchors.fill: parent
+        
+						columns: 2
+						columnSpacing: 50
+						rowSpacing: 10
+
+						Label { 
+							text: qsTr("Current language")
+						}
+						ComboBox { 
+							id: cbxLanguages
+							Layout.fillWidth: true
+							model: RBLanguageManager.availableLanguages()
+
+							onActivated: RBLanguageManager.setCurrentLanguageIndex(currentIndex)
+						}
+					}
 				}
 
-				Button {
-					text: qsTr("Reset all data")
-					font.capitalization: Font.MixedCase
-					Layout.alignment: Qt.AlignHCenter
-					onClicked: dlgResetData.open()
+				GroupBox {
+					id: groupDefaultValues
+					title: qsTr("Default values")
+
+					GridLayout {
+						anchors.fill: parent
+        
+						columns: 2
+						columnSpacing: 50
+						rowSpacing: 10
+
+						Label { 
+							text: qsTr("Default unit")
+						}
+						ComboBox { 
+							id: cbxDefaultUnit
+							Layout.fillWidth: true
+							model: uiStrings.getAllUnitNames()
+
+							onActivated: recipeBookSettings.setDefaultUnit(currentIndex)
+						}
+
+						Label { 
+							text: qsTr("Default number of persons")
+						}
+						SpinBox { 
+							id: spinDefaultNrPersons
+							from: 1
+							to: 50
+							editable: true
+							wheelEnabled: true
+                    
+							onValueModified: recipeBookSettings.setDefaultRecipeNrPersons(value)
+						}
+
+						Label { 
+							text: qsTr("Default category")
+						}
+						ComboBox { 
+							id: cbxDefaulCategory
+							Layout.fillWidth: true
+							model: modelCategories
+ 
+							onActivated: recipeBookSettings.setDefaultCategory(currentText)
+						}
+
+						Label { 
+							text: qsTr("Default sort order")
+						}
+						ComboBox { 
+							id: cbxDefaultSortOrder
+							Layout.fillWidth: true
+							model: modelSortOrders
+
+							onActivated: recipeBookSettings.setDefaultSortOrder(currentText)
+						}
+					}
+				}
+
+				GroupBox {
+					title: qsTr("Data")
+
+					implicitWidth: groupDefaultValues.implicitWidth
+
+					ColumnLayout {
+						anchors.centerIn: parent
+
+						Button {
+							text: qsTr("Load default data")
+							font.capitalization: Font.MixedCase
+							Layout.alignment: Qt.AlignHCenter
+							onClicked: dlgLoadDefaultData.open()
+						}
+
+						Button {
+							text: qsTr("Reset all data")
+							font.capitalization: Font.MixedCase
+							Layout.alignment: Qt.AlignHCenter
+							onClicked: dlgResetData.open()
+						}
+					}
 				}
 			}
-		}
 
-		GroupBox {
-			id: groupPdfExport
-			anchors.top: groupData.bottom
-			anchors.topMargin: 18
+			ColumnLayout {
+				spacing: 30
+				Layout.alignment: Qt.AlignTop
 
-			width: groupDefaultValues.width
+				GroupBox {
+					title: qsTr("Synchronization")
 
-			title: qsTr("PDF Export")
+					implicitWidth: groupDefaultValues.implicitWidth
 
-			RowLayout {
-				anchors.fill: parent
-				spacing: 10
+					GridLayout {
+						anchors.fill: parent
+        
+						columns: 2
+						columnSpacing: 50
+						rowSpacing: 10
 
-				Label {
-					text: qsTr("PDF Latex path")
-				}
+						Label {
+							text: qsTr("File id on server")
+						}
 
-				TextField {
-					id: txtPdfLatex
-					Layout.fillWidth: true
-					readOnly: true
+						TextField {
+							id: txtSyncFileId
+							Layout.fillWidth: true
+							readOnly: true
 
-					placeholderText: "PDF Latex executable"
-					text: recipeBookSettings.getPdfLatexFile()
+							placeholderText: "Set id to enable synchronization"
+							text: recipeBookSettings.getSyncFileId()
+						}
 
-					ToolTip.delay: 1000
-					ToolTip.timeout: 3000
-					ToolTip.visible: hovered
-					ToolTip.text: recipeBookSettings.getPdfLatexFile()
-				}
+						Label {
+						}
+						RowLayout {
+							spacing: 10
+							Layout.alignment: Qt.AlignHCenter
 
-				RoundButton {
-					display: AbstractButton.IconOnly
-					icon.source: "qrc:/images/folder-black.svg"
+							Button {
+								text: qsTr("Generate new id")
+								font.capitalization: Font.MixedCase
 
-					onClicked: {
-						fileDialogPdfLatex.folder = recipeBookSettings.getPdfLatexFile()
-						fileDialogPdfLatex.open()
+								onClicked: dlgSyncGenerateNewId.open()
+							}
+
+							Button {
+								Layout.columnSpan: 2
+
+								text: qsTr("Set existing id")
+								font.capitalization: Font.MixedCase
+								
+								onClicked: dlgSyncSetId.open()
+							}
+						}
+
+						Label { 
+							text: qsTr("Reminder (days)")
+						}
+						SpinBox { 
+							id: spinSyncReminder
+							from: 0
+							to: 30
+							editable: true
+							wheelEnabled: true
+                    
+							onValueModified: recipeBookSettings.setSyncReminderInterval(value)
+						}
+
+						Button {
+							Layout.columnSpan: 2
+
+							text: qsTr("Reset Dropbox connection")
+							font.capitalization: Font.MixedCase
+							Layout.alignment: Qt.AlignHCenter
+
+							onClicked: dlgSyncResetAccessToken.open()
+						}
 					}
+				}
 
-					FileDialog {
-						id: fileDialogPdfLatex
+				GroupBox {
+					title: qsTr("PDF Export")
 
-						title: qsTr("Generate recipe book pdf")
-						modality: Qt.WindowModal
-						nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
-						selectExisting: true
-						selectMultiple: false
-						selectFolder: false
-						onAccepted: {
-							recipeBookSettings.setPdfLatexFile(fileUrls)
-							txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
+					implicitWidth: groupDefaultValues.implicitWidth
+
+					RowLayout {
+						anchors.fill: parent
+						spacing: 10
+
+						Label {
+							text: qsTr("PDF Latex path")
+						}
+
+						TextField {
+							id: txtPdfLatex
+							Layout.fillWidth: true
+							readOnly: true
+
+							placeholderText: "PDF Latex executable"
+							text: recipeBookSettings.getPdfLatexFile()
+
+							ToolTip.delay: 1000
+							ToolTip.timeout: 3000
+							ToolTip.visible: hovered
+							ToolTip.text: recipeBookSettings.getPdfLatexFile()
+						}
+
+						RoundButton {
+							display: AbstractButton.IconOnly
+							icon.source: "qrc:/images/folder-black.svg"
+
+							onClicked: {
+								fileDialogPdfLatex.folder = recipeBookSettings.getPdfLatexFile()
+								fileDialogPdfLatex.open()
+							}
+
+							FileDialog {
+								id: fileDialogPdfLatex
+
+								title: qsTr("Generate recipe book pdf")
+								modality: Qt.WindowModal
+								nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
+								selectExisting: true
+								selectMultiple: false
+								selectFolder: false
+								onAccepted: {
+									recipeBookSettings.setPdfLatexFile(fileUrls)
+									txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
+								}
+							}
 						}
 					}
 				}
@@ -209,8 +305,9 @@ Dialog {
 
 		RowLayout {
 			id: rowUID
-			anchors.top: groupPdfExport.bottom
+			anchors.top: gridSettings.bottom
 			anchors.topMargin: 18
+			anchors.horizontalCenter: parent.horizontalCenter
 
 			Label { 
 				text: qsTr("Application instance UID: ")
@@ -230,6 +327,8 @@ Dialog {
 		cbxDefaultSortOrder.currentIndex = cbxDefaultSortOrder.indexOfValue(recipeBookSettings.getDefaultSortOrder());
 
 		cbxLanguages.currentIndex = cbxLanguages.indexOfValue(RBLanguageManager.getCurrentLanguageName());
+
+		spinSyncReminder.value = recipeBookSettings.getSyncReminderInterval();
 	}
 
 	footer: DialogButtonBox {

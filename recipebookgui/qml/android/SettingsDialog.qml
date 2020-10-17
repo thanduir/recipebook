@@ -32,6 +32,26 @@ Item {
 		onAccepted: recipeBookSettings.resetAllData()
     }
 
+	TextMessageDialog {
+		id: dlgSyncResetAccessToken
+		title: qsTr("Reset Dropbox connection")
+		msgText: qsTr("This will reset the Dropbox connection. No data will be lost, but the identification process has to be done again for the next synchronization. Proceed?");
+		onAccepted: recipeBookSettings.setSyncAccessToken("")
+	}
+
+	TextMessageDialog {
+		id: dlgSyncGenerateNewId
+		title: qsTr("Generate new server file id")
+		msgText: qsTr("This will generate and set a new server id. This will reset the synchronization status. Proceed?");
+		onAccepted: recipeBookSynchronization.generateAndSetUniqueFileId()
+	}
+
+	TextInputDialog {
+		id: dlgSyncSetId
+		title: qsTr("Set existing server file id")
+		onAccepted: recipeBookSynchronization.setServerFileId(outputText)
+	}
+
     Flickable {
 		anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
@@ -47,7 +67,7 @@ Item {
             anchors.top: parent.top
 			anchors.horizontalCenter: parent.horizontalCenter
 			width: groupDefaultValues.width + 12
-			height: groupSettings.height + groupDefaultValues.height + groupData.height + rowUID.height + 48 + 12 + 36
+			height: groupSettings.height + groupDefaultValues.height + groupSynchronization.height + groupData.height + rowUID.height + 48 + 12 + 36 + 24
 
             GroupBox {
                 id: groupSettings
@@ -130,9 +150,79 @@ Item {
                 }
             }
 
+			GroupBox {
+				id: groupSynchronization
+				anchors.top: groupDefaultValues.bottom
+				anchors.topMargin: 24
+				anchors.horizontalCenter: parent.horizontalCenter
+
+				title: qsTr("Synchronization")
+
+				ColumnLayout {
+					anchors.fill: parent
+
+					Label {
+						text: qsTr("File id on server")
+					}
+
+					TextField {
+						id: txtSyncFileId
+						Layout.fillWidth: true
+						readOnly: true
+
+						placeholderText: "Set id to enable synchronization"
+						text: recipeBookSettings.getSyncFileId()
+					}
+
+					Label {
+					}
+					RowLayout {
+						spacing: 10
+						Layout.alignment: Qt.AlignHCenter
+
+						Button {
+							text: qsTr("Generate new id")
+							font.capitalization: Font.MixedCase
+
+							onClicked: dlgSyncGenerateNewId.open()
+						}
+
+						Button {
+							Layout.columnSpan: 2
+
+							text: qsTr("Set existing id")
+							font.capitalization: Font.MixedCase
+								
+							onClicked: dlgSyncSetId.open()
+						}
+					}
+
+					Label { 
+						text: qsTr("Reminder (days)")
+					}
+					SpinBox { 
+						id: spinSyncReminder
+						from: 0
+						to: 30
+						editable: true
+						wheelEnabled: true
+                    
+						onValueModified: recipeBookSettings.setSyncReminderInterval(value)
+					}
+
+					Button {
+						text: qsTr("Reset Dropbox connection")
+						font.capitalization: Font.MixedCase
+						Layout.alignment: Qt.AlignHCenter
+
+						onClicked: dlgSyncResetAccessToken.open()
+					}
+				}
+			}
+
             GroupBox {
                 id: groupData
-                anchors.top: groupDefaultValues.bottom
+                anchors.top: groupSynchronization.bottom
 				anchors.topMargin: 24
 				anchors.horizontalCenter: parent.horizontalCenter
 

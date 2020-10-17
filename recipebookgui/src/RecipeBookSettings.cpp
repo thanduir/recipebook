@@ -37,6 +37,7 @@ constexpr const char* c_strPdfLatexExeNameFilter		= "pdflatex.exe";
 
 constexpr const char* c_strSyncAccessToken				= "sync/accesstoken";
 constexpr const char* c_strSyncFileId					= "sync/flieId";
+constexpr const char* c_strSyncReminderInterval			= "sync/reminderInterval";
 
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
@@ -273,6 +274,18 @@ void RecipeBookSettings::setSyncFileId(QString strFileId)
 {
 	QSettings settings;
 	settings.setValue(c_strSyncFileId, strFileId);
+}
+
+quint32 RecipeBookSettings::getSyncReminderInterval() const
+{
+	QSettings settings;
+	return settings.value(c_strSyncReminderInterval, 7).toUInt();
+}
+
+void RecipeBookSettings::setSyncReminderInterval(quint32 uiInterval)
+{
+	QSettings settings;
+	settings.setValue(c_strSyncReminderInterval, uiInterval);
 }
 
 QString RecipeBookSettings::applicationRecipeBookSyncBaseFile() const
