@@ -45,6 +45,29 @@ void RecipeBookSynchronization::setServerFileId(QString strId)
 	m_rSettings.setSyncFileId(strId);
 }
 
+void RecipeBookSynchronization::checkSyncReminder()
+{
+	quint32 uiInterval = m_rSettings.getSyncReminderInterval();
+	if(uiInterval == 0)
+	{
+		return;
+	}
+
+	QDate dateLastChecked = m_rSettings.getDateLastSync();
+	QDate dateNow = QDate::currentDate();
+
+	if(dateLastChecked.isNull() || dateLastChecked.addDays(uiInterval) <= dateNow)
+	{
+		// Show reminder!
+		QObject* dlgObject = getDlgObject();
+		if(dlgObject == nullptr)
+		{
+			return;
+		}
+		QMetaObject::invokeMethod(dlgObject, "askForSync");
+	}
+}
+
 QObject* RecipeBookSynchronization::getDlgObject() const
 {
 	if(!m_pEngine)
@@ -159,6 +182,8 @@ void RecipeBookSynchronization::performMerge()
 	// m_rbDropbox.updateFileContent(strFile);
 
 	// TODO: inform user that merging has completed successfully
+	
+	// TODO: Call m_rSettings.setDateLastSyncNow() whereever appropriate
 
     // TODO call cleanUp() at the end (probably not directly in here)
 }

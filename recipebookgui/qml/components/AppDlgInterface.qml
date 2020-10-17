@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 
 Item {
 	objectName: "appDlgInterface"
+	anchors.fill: parent
 
 	function showMessageBox(title: string, msg: string, bErrorIcon: bool) {
         dlgMsgBox.msgText = msg;

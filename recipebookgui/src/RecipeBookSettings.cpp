@@ -5,6 +5,7 @@
 #include <QUuid>
 #include <QDir>
 #include <QUrl>
+#include <QDate>
 
 using namespace recipebook;
 
@@ -38,6 +39,7 @@ constexpr const char* c_strPdfLatexExeNameFilter		= "pdflatex.exe";
 constexpr const char* c_strSyncAccessToken				= "sync/accesstoken";
 constexpr const char* c_strSyncFileId					= "sync/flieId";
 constexpr const char* c_strSyncReminderInterval			= "sync/reminderInterval";
+constexpr const char* c_strDateLastSync					= "sync/datelastsync";
 
 // On windows this should save to HKEY_CURRENT_USER\Software\phwidmer.ch\RecipeBook
 
@@ -286,6 +288,18 @@ void RecipeBookSettings::setSyncReminderInterval(quint32 uiInterval)
 {
 	QSettings settings;
 	settings.setValue(c_strSyncReminderInterval, uiInterval);
+}
+
+QDate RecipeBookSettings::getDateLastSync() const
+{
+	QSettings settings;
+	return settings.value(c_strDateLastSync, QDate::currentDate()).toDate();
+}
+
+void RecipeBookSettings::setDateLastSyncNow()
+{
+	QSettings settings;
+	settings.setValue(c_strDateLastSync, QDate::currentDate());
 }
 
 QString RecipeBookSettings::applicationRecipeBookSyncBaseFile() const

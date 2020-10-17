@@ -73,6 +73,10 @@ namespace recipebook
 		QString applicationRecipeBookSyncBackupServerFile() const;
 		QString applicationRecipeBookSyncBackupBaseFile() const;
 
+	public:
+		QDate getDateLastSync() const;
+		void setDateLastSyncNow();
+
 	signals:
 		void loadDefaultData() const;
 		void resetAllData() const;

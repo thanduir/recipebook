@@ -2,11 +2,9 @@ TODO
 ====
 
 - Data synchronisation (sync with dropbox)
-	
-	* reminder after X days (at startup) that a sync might be needed (configurable in settings: amount of days, 0 == no reminder)!
-	* error messages while sync'ing are not always shown correctly (no background).
-
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
+	
+	* translations
 	
 	* Test it on android and windows!
 		-> ssl missing on android...

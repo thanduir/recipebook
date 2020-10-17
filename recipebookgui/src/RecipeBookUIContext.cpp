@@ -146,6 +146,8 @@ RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
 	connect(pTimer, SIGNAL(timeout()), this, SLOT(slotSave()));
 	const int saveIntervalSeconds = m_bOnAndroid ? c_SaveIntervalAndroidSeconds : c_SaveIntervalDesktopSeconds;
 	pTimer->start(saveIntervalSeconds * 1000);
+
+	QTimer::singleShot(1000, [this]{ m_RecipeBookSynchronization.checkSyncReminder(); });
 }
 
 void RecipeBookUIContext::slotSave()

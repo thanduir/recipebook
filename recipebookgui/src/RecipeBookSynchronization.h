@@ -30,6 +30,8 @@ namespace recipebook
 		void generateAndSetUniqueFileId();
 		void setServerFileId(QString strId);
 
+		void checkSyncReminder();
+
 	private:
 		void performMerge();
 		bool readServerFile();

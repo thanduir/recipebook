@@ -64,9 +64,24 @@
         <translation type="obsolete">Add recipe book configuration</translation>
     </message>
     <message>
-        <location filename="../qml/components/AppSyncUI.qml" line="13"/>
+        <location filename="../qml/components/AppSyncUI.qml" line="14"/>
         <source>Enter Dropbox access code</source>
         <translation>Enter Dropbox access code</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AppSyncUI.qml" line="25"/>
+        <source>Synchronization reminder</source>
+        <translation>Synchronization reminder</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AppSyncUI.qml" line="26"/>
+        <source>It&apos;s time for another synchronization. Do this now?</source>
+        <translation>It&apos;s time for another synchronization. Do this now?</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AppSyncUI.qml" line="24"/>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1450,58 +1465,58 @@
 <context>
     <name>recipebook::RecipeBookSynchronization</name>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="84"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="119"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="191"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="216"/>
         <source>Connection problem</source>
         <translation>Connection problem</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="84"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="119"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="191"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="216"/>
         <source>Please check your internet connection and try again.</source>
         <translation>Please check your internet connection and try again.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="115"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="138"/>
         <source>Invalid code</source>
         <translation>Invalid code</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="115"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="138"/>
         <source>Code not accepted. Please try again.</source>
         <translation>Code not accepted. Please try again.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="173"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="198"/>
         <source>No server file id set</source>
         <translation>No server file id set</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="174"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="199"/>
         <source>Please set correct file id or generate a new one in settings.</source>
         <translation>Please set correct file id or generate a new one in settings.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="207"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="226"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="268"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="232"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="251"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="293"/>
         <source>File write problem</source>
         <translation>File write problem</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="208"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="233"/>
         <source>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</source>
         <translation>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="227"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="252"/>
         <source>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</source>
         <translation>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="269"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="294"/>
         <source>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</source>
         <translation>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</translation>
     </message>
@@ -1597,48 +1612,48 @@
         <translation>Simplified json files for app (*.app.json)</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="179"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="181"/>
         <source>Error saving current data</source>
         <translation>Error saving current data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="180"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="182"/>
         <source>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="216"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="218"/>
         <source>Error during file export</source>
         <translation>Error during file export</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="217"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="219"/>
         <source>Couldn&apos;t export to file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t export to file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="250"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="252"/>
         <source>Error during file import</source>
         <translation>Error during file import</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="251"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="253"/>
         <source>Couldn&apos;t import file:
 &quot;%1&quot;</source>
         <translation>Couldn&apos;t import file:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="273"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="275"/>
         <source>Error loading default data</source>
         <translation>Error loading default data</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="274"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="276"/>
         <source>Couldn&apos;t load default data.</source>
         <translation>Couldn&apos;t load default data.</translation>
     </message>
