@@ -29,4 +29,20 @@ Item {
 
 		onAccepted: recipeBookSynchronization.execute()
 	}
+
+	function askWhichFileToKeep() {
+        dlgWhichFileToKeep.open();
+    }
+
+	TextMessageDialog {
+		id: dlgWhichFileToKeep
+
+		title: qsTr("Which data should be kept?");
+		msgText: qsTr("No merge possible. Which dataset should be kept? The other one will be replaced.<br>Keep one from the server (yes) or the local one (no)?");
+		okOnly: false
+		errorIcon: false
+
+		onAccepted: recipeBookSynchronization.performTwoWayMerge(true)
+		onRejected: recipeBookSynchronization.performTwoWayMerge(false)
+	}
 }

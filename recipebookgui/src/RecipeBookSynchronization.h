@@ -32,11 +32,22 @@ namespace recipebook
 
 		void checkSyncReminder();
 
+		void performTwoWayMerge(bool bKeepServerSide);
+
+	signals:
+		void signalCurrentDataUpdated();
+
 	private:
-		void performMerge();
+		void performMerge();		
+		void performThreeWayMerge();
+
 		bool readServerFile();
 		bool readCurrentFile();
 		bool readBaseFile();
+
+		bool uploadFile(QSharedPointer<RecipeBook> spFile);
+		bool updateBase(QSharedPointer<RecipeBook> spFile);
+		bool updateCurrent(QSharedPointer<RecipeBook> spFile);
 
 		void cleanUp();
 

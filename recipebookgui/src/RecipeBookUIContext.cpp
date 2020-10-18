@@ -141,6 +141,9 @@ RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelConfigurations, SLOT(onDataReset()));
 
+	connect(&m_RecipeBookSynchronization, SIGNAL(signalCurrentDataUpdated()),
+			this, SIGNAL(signalDataReset()));
+
 	// Enable periodic saving routine
 	QTimer *pTimer = new QTimer(this);
 	connect(pTimer, SIGNAL(timeout()), this, SLOT(slotSave()));

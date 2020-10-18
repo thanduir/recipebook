@@ -58,7 +58,7 @@ void RecipeBookSynchronization::checkSyncReminder()
 
 	if(dateLastChecked.isNull() || dateLastChecked.addDays(uiInterval) <= dateNow)
 	{
-		// Show reminder!
+		// Show reminder
 		QObject* dlgObject = getDlgObject();
 		if(dlgObject == nullptr)
 		{
@@ -163,11 +163,91 @@ void RecipeBookSynchronization::performMerge()
 		return;
 	}
 
-    /*bool bThreeWayMerge = m_spRBBase != nullptr;
-	bool bUploadOnly = m_spRBServer == nullptr;*/
+    bool bNoMergeBase = m_spRBBase != nullptr;
+	bool bUploadOnly = m_spRBServer == nullptr;
+	if(bUploadOnly)
+	{
+		if(!uploadFile(m_spRBCurrent))
+		{
+			cleanUp();
+			return;
+		}
 
-	// TODO: Cases: three-way-merge ; upload-only ; !three-way-merge (ask user in this case whether to up- or download!)
+		if(!updateBase(m_spRBCurrent))
+		{
+			cleanUp();
+			return;
+		}
 
+		m_rSettings.setDateLastSyncNow();
+		cleanUp();
+
+		m_rDlgInterface.showMessageBox(tr("Synchronization successful"),
+									   tr("Current state successfully synchronized with server (no changes to local data)."),
+									   RBDialogInterface::DlgType::Information);
+	}
+	else if(!bNoMergeBase)
+	{
+		// No merge base exists -> Ask user which file to keep -> this then calls twoWayMerge
+		QObject* dlgObject = getDlgObject();
+		if(dlgObject == nullptr)
+		{
+			return;
+		}
+		QMetaObject::invokeMethod(dlgObject, "askWhichFileToKeep");
+	}
+	else
+	{
+		performThreeWayMerge();
+	}
+}
+
+void RecipeBookSynchronization::performTwoWayMerge(bool bKeepServerSide)
+{
+	QString msg;
+	if(bKeepServerSide)
+	{
+		if(!updateCurrent(m_spRBServer))
+		{
+			cleanUp();
+			return;
+		}
+
+		if(!updateBase(m_spRBServer))
+		{
+			cleanUp();
+			return;
+		}
+
+		msg = tr("Successfully updated current local data with the current server data.");
+	}
+	else
+	{
+		if(!uploadFile(m_spRBCurrent))
+		{
+			cleanUp();
+			return;
+		}
+
+		if(!updateBase(m_spRBCurrent))
+		{
+			cleanUp();
+			return;
+		}
+
+		msg = tr("Successfully updated current server data with the current local data.");
+	}
+
+	m_rSettings.setDateLastSyncNow();
+	cleanUp();
+
+	m_rDlgInterface.showMessageBox(tr("Synchronization successful"),
+								   msg,
+								   RBDialogInterface::DlgType::Information);
+}
+
+void RecipeBookSynchronization::performThreeWayMerge()
+{
 	// TODO: merge files
 	//		-> look for differences in the three files (-> make list for one data type (categories, ingredients etc.), look for renames etc., 
 	//			then ask user about those that can't be handled automatically!
@@ -176,16 +256,8 @@ void RecipeBookSynchronization::performMerge()
 
 	// TODO: Show all / summary of changes to user and ask for confirmation! (how to do that? keeping track of changes or use copy of original data?)
 
-	// TODO: upload file
-	//		-> upload merged version and save new sync base as well as new "current" state!
-	// QByteArray strFile;
-	// m_rbDropbox.updateFileContent(strFile);
-
 	// TODO: inform user that merging has completed successfully
-	
-	// TODO: Call m_rSettings.setDateLastSyncNow() whereever appropriate
-
-    // TODO call cleanUp() at the end (probably not directly in here)
+	// TODO: Call m_rSettings.setDateLastSyncNow() and cleanUp() whereever appropriate
 }
 
 bool RecipeBookSynchronization::readServerFile()
@@ -295,6 +367,84 @@ bool RecipeBookSynchronization::readBaseFile()
 									   RBDialogInterface::DlgType::Error);
 		return false;
 	}
+
+	return true;
+}
+
+bool RecipeBookSynchronization::uploadFile(QSharedPointer<RecipeBook> spFile)
+{
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+
+	QByteArray dataFile;
+	if(!spWriter->serialize(*spFile, dataFile))
+	{
+		// Generelles Problem, sollte eigentlich gar nicht auftreten.
+		m_rDlgInterface.showMessageBox(tr("Unspecified problem"),
+									   tr("Could not save current state to file."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+	
+	rbStatus status = m_rbDropbox.updateFileContent(dataFile);
+	if(status == rbStatus::InvalidFileId || status == rbStatus::FileChangedOnServer)
+	{
+		// Generelles Problem, sollte eigentlich gar nicht auftreten.
+		m_rDlgInterface.showMessageBox(tr("Unspecified problem"),
+									   tr("Invalid file on server."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+	else
+	{
+		// Connection problem
+		m_rDlgInterface.showMessageBox(tr("Connection problem"), tr("Please check your internet connection and try again."), RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	return true;
+}
+
+bool RecipeBookSynchronization::updateBase(QSharedPointer<RecipeBook> spFile)
+{
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+
+	QFile fileSyncBase(m_rSettings.applicationRecipeBookSyncBaseFile());
+	if(!spWriter->serialize(*spFile, fileSyncBase))
+	{
+		m_rDlgInterface.showMessageBox(tr("Unspecified problem"),
+									   tr("Could not save state to sync base file."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	return true;
+}
+
+bool RecipeBookSynchronization::updateCurrent(QSharedPointer<RecipeBook> spFile)
+{
+	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
+	QByteArray data;
+	if(!spWriter->serialize(*spFile, data))
+	{
+		m_rDlgInterface.showMessageBox(tr("File write problem"),
+									   tr("Couldn't read updated data."),
+									   RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
+
+	recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+	RBMetaData metaData;
+	if(!spReader->serialize(data, metaData, handle.data()))
+	{
+		m_rDlgInterface.showMessageBox(tr("File write problem"),
+										tr("Couldn't update current data."),
+										RBDialogInterface::DlgType::Error);
+		return false;
+	}
+
+	emit signalCurrentDataUpdated();
 
 	return true;
 }

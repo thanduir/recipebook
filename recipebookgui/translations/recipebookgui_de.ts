@@ -60,10 +60,6 @@
 <context>
     <name>AppSyncUI</name>
     <message>
-        <source>Add recipe book configuration</source>
-        <translation type="obsolete">Kochbuch-Konfiguration hinzufügen</translation>
-    </message>
-    <message>
         <location filename="../qml/components/AppSyncUI.qml" line="14"/>
         <source>Enter Dropbox access code</source>
         <translation>Dropbox Zugangscode eingeben</translation>
@@ -79,9 +75,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/AppSyncUI.qml" line="24"/>
-        <source></source>
-        <translation></translation>
+        <location filename="../qml/components/AppSyncUI.qml" line="40"/>
+        <source>Which data should be kept?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AppSyncUI.qml" line="41"/>
+        <source>No merge possible. Which dataset should be kept? The other one will be replaced.&lt;br&gt;Keep one from the server (yes) or the local one (no)?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1412,10 +1413,6 @@
         <translation>Latex-Generator nicht gefunden.</translation>
     </message>
     <message>
-        <source>Couldn&apos;t create folder for temporary files</source>
-        <translation type="obsolete">Ordner für die temporären Dateien konnte nicht erstellt werden.</translation>
-    </message>
-    <message>
         <location filename="../src/exporter/RBLatexExporter.cpp" line="46"/>
         <source>Couldn&apos;t create folder for temporary files.</source>
         <translation>Ordner für die temporären Dateien konnte nicht erstellt werden.</translation>
@@ -1467,14 +1464,16 @@
     <message>
         <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
         <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="216"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="288"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="400"/>
         <source>Connection problem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
         <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="216"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="288"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="400"/>
         <source>Please check your internet connection and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1489,35 +1488,90 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="198"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="185"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="244"/>
+        <source>Synchronization successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="186"/>
+        <source>Current state successfully synchronized with server (no changes to local data).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="222"/>
+        <source>Successfully updated current local data with the current server data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="238"/>
+        <source>Successfully updated current server data with the current local data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="270"/>
         <source>No server file id set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="199"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="271"/>
         <source>Please set correct file id or generate a new one in settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="232"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="251"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="293"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="304"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="323"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="365"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="429"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="441"/>
         <source>File write problem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="233"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="305"/>
         <source>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="252"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="324"/>
         <source>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="294"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="366"/>
         <source>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="382"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="392"/>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="414"/>
+        <source>Unspecified problem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="383"/>
+        <source>Could not save current state to file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="393"/>
+        <source>Invalid file on server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="415"/>
+        <source>Could not save state to sync base file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="430"/>
+        <source>Couldn&apos;t read updated data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/RecipeBookSynchronization.cpp" line="442"/>
+        <source>Couldn&apos;t update current data.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1612,48 +1666,48 @@
         <translation>Vereinfachte Json Datei für Apps (*.app.json)</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="181"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="184"/>
         <source>Error saving current data</source>
         <translation>Fehler beim Speichern</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="182"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="185"/>
         <source>Couldn&apos;t write recipe book file:
 &quot;%1&quot;</source>
         <translation>Kochbuch-Datei konnte nicht geschrieben werden:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="218"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="221"/>
         <source>Error during file export</source>
         <translation>Fehler während des Exportierens</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="219"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="222"/>
         <source>Couldn&apos;t export to file:
 &quot;%1&quot;</source>
         <translation>Datei konnte nicht exportiert werden:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="252"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="255"/>
         <source>Error during file import</source>
         <translation>Fehler während des Importierens</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="253"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="256"/>
         <source>Couldn&apos;t import file:
 &quot;%1&quot;</source>
         <translation>Datei konnte nicht importiert werden:
 &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="275"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="278"/>
         <source>Error loading default data</source>
         <translation>Fehler beim Laden der Standardwerte</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookUIContext.cpp" line="276"/>
+        <location filename="../src/RecipeBookUIContext.cpp" line="279"/>
         <source>Couldn&apos;t load default data.</source>
         <translation>Standardwerte konnten nicht geladen werden.</translation>
     </message>

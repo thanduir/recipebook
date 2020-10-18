@@ -3,10 +3,9 @@ TODO
 
 - Data synchronisation (sync with dropbox)
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
-	
 	* translations
 	
-	* Test it on android and windows!
+	* Test every code path on windows and android!
 		-> ssl missing on android...
 		-> https://doc.qt.io/qt-5/android-openssl-support.html
 	
