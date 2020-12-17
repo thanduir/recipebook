@@ -40,3 +40,28 @@ quint32 recipebook::SortOrder::getIndex(const Category& category) const
 
 	return 0;
 }
+
+bool recipebook::SortOrder::operator==(const SortOrder& rOther) const
+{
+	if(m_Name != rOther.m_Name)
+	{
+		return false;
+	}
+
+	if(m_Categories.size() != rOther.m_Categories.size())
+	{
+		return false;
+	}
+
+	for(int i = 0; i < m_Categories.size(); ++i)
+	{
+		const Category* pCategory1 = m_Categories.at(i);
+		const Category* pCategory2 = rOther.m_Categories.at(i);
+		if(*pCategory1 != *pCategory2)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}

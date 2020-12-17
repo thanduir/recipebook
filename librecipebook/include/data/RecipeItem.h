@@ -38,6 +38,9 @@ namespace recipebook
 		void resetAlternativesGroup() { m_pAlternativesGroup = nullptr; }
 		void setAlternativesGroup(const AlternativesType& rGroup) { m_pAlternativesGroup = &rGroup; }
 
+		bool operator!=(const RecipeItem& rOther) const { return !(*this == rOther); }
+		bool operator==(const RecipeItem& rOther) const;
+
 	private:
 		explicit RecipeItem(const Ingredient& rIngredient) : m_pIngredient(&rIngredient) { m_Amount.setUnit(rIngredient.getDefaultUnit()); }
 		RecipeItem(const RecipeItem& rOther);

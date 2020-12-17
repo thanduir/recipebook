@@ -23,6 +23,9 @@ namespace recipebook
 
 		quint32 getIndex(const Category& category) const;
 
+		bool operator!=(const SortOrder& rOther) const { return !(*this == rOther); }
+		bool operator==(const SortOrder& rOther) const;
+
 	private:
 		SortOrder(QString strName, const QVector<QSharedPointer<Category>>& rCategories);
 

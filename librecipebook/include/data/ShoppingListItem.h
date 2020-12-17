@@ -50,6 +50,9 @@ namespace recipebook
 
 		QString getParentRecipeName() const;
 
+		bool operator!=(const ShoppingListItem& rOther) const { return !(*this == rOther); }
+		bool operator==(const ShoppingListItem& rOther) const;
+
 	private:
 		ShoppingListItem(ShoppingRecipe& rParent, const Ingredient& rIngredient) : m_rParent(rParent), m_pIngredient(&rIngredient) {}
 		ShoppingListItem(ShoppingRecipe& rParent, const RecipeItem& rRecipeItem);

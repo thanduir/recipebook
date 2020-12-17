@@ -158,3 +158,36 @@ void ShoppingRecipe::onItemIdStringChanged()
 {
 	internal::helper::sort(m_Items);
 }
+
+bool ShoppingRecipe::operator==(const ShoppingRecipe& rOther) const
+{
+	if(m_Name != rOther.m_Name)
+	{
+		return false;
+	}
+
+	if(m_fScalingFactor != rOther.m_fScalingFactor)
+	{
+		return false;
+	}
+
+	if(m_DueDate != rOther.m_DueDate)
+	{
+		return false;
+	}
+
+	if(m_Items.size() != rOther.m_Items.size())
+	{
+		return false;
+	}
+
+	for(int i = 0; i < m_Items.size(); ++i)
+	{
+		if(*m_Items[i] != *rOther.m_Items[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}

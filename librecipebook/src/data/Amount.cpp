@@ -284,3 +284,28 @@ bool recipebook::Amount::canBeAddedUp(const Amount& m1, const Amount& m2)
 			throw QException();
 	}
 }
+
+bool recipebook::Amount::operator==(const Amount& rOther) const
+{
+	if(m_Unit != rOther.m_Unit)
+	{
+		return false;
+	}
+
+	if(m_bRange != rOther.m_bRange)
+	{
+		return false;
+	}
+
+	if(m_fQuantityMin != rOther.m_fQuantityMin)
+	{
+		return false;
+	}
+
+	if(m_fQuantityMax != rOther.m_fQuantityMax)
+	{
+		return false;
+	}
+
+	return true;
+}

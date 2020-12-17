@@ -42,6 +42,9 @@ namespace recipebook
 		const ShoppingListItem& getItemAt(quint32 i) const;
 		quint32 getItemIndex(const Ingredient& rIngredient) const;
 
+		bool operator!=(const ShoppingRecipe& rOther) const { return !(*this == rOther); }
+		bool operator==(const ShoppingRecipe& rOther) const;
+
 	private:
 		explicit ShoppingRecipe(QString strName, float fScalingFactor) 
 			: m_Name(strName), m_fScalingFactor(fScalingFactor), m_DueDate(QDate::currentDate()) {}

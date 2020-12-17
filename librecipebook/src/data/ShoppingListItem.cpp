@@ -80,3 +80,55 @@ QString ShoppingListItem::getParentRecipeName() const
 {
 	return m_rParent.getName();
 }
+
+bool ShoppingListItem::operator==(const ShoppingListItem& rOther) const
+{
+	if(getName() != rOther.getName())
+	{
+		return false;
+	}
+
+	if(m_rParent.getName() != rOther.m_rParent.getName())
+	{
+		return false;
+	}
+	
+	if(m_Amount != rOther.m_Amount)
+	{
+		return false;
+	}
+
+	if(m_AdditionalInfo != rOther.m_AdditionalInfo)
+	{
+		return false;
+	}
+
+	if(m_Size != rOther.m_Size)
+	{
+		return false;
+	}
+
+	if(m_bOptional != rOther.m_bOptional)
+	{
+		return false;
+	}
+
+	if(m_Status != rOther.m_Status)
+	{
+		return false;
+	}
+
+	if(m_bItemEnabled != rOther.m_bItemEnabled)
+	{
+		return false;
+	}
+
+	if(m_pAlternativesGroup == nullptr || rOther.m_pAlternativesGroup == nullptr)
+	{
+		return m_pAlternativesGroup == rOther.m_pAlternativesGroup;
+	}
+	else
+	{
+		return *m_pAlternativesGroup == *rOther.m_pAlternativesGroup;
+	}
+}

@@ -45,7 +45,10 @@ namespace recipebook
         int getRecipeItemIndex(QString strName) const;
 
 		// Returns true if this is already the case
-		bool moveGroupItemsTogether();
+		bool moveGroupItemsTogether(); 
+		
+		bool operator!=(const Recipe& rOther) const { return !(*this == rOther); }
+		bool operator==(const Recipe& rOther) const;
 
 	private:
         explicit Recipe(QString strName, quint32 uiNrPersons) : m_Name(strName), m_NrPersons(uiNrPersons), m_CookingTime(0, 30) {}

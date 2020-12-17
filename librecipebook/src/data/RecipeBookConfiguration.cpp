@@ -121,3 +121,46 @@ void RecipeBookConfiguration::moveItem(const RecipeBookConfigItem& rItem, quint3
 	}
     m_Items.move(oldPos, (int)newPos);
 }
+
+bool RecipeBookConfiguration::operator==(const RecipeBookConfiguration& rOther) const
+{
+	if(m_Name != rOther.m_Name)
+	{
+		return false;
+	}
+
+	if(m_Title != rOther.m_Title)
+	{
+		return false;
+	}
+
+	if(m_Subtitle != rOther.m_Subtitle)
+	{
+		return false;
+	}
+
+	if(m_FontSize != rOther.m_FontSize)
+	{
+		return false;
+	}
+
+	if(m_LangCode != rOther.m_LangCode)
+	{
+		return false;
+	}
+
+	if(m_Items.size() != rOther.m_Items.size())
+	{
+		return false;
+	}
+
+	for(int i = 0; i < m_Items.size(); ++i)
+	{
+		if(*m_Items[i] != *rOther.m_Items[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}

@@ -85,3 +85,26 @@ bool RecipeBookConfigItem::rename(QString newName)
 	m_HeaderName = newName;
 	return true;
 }
+
+bool RecipeBookConfigItem::operator==(const RecipeBookConfigItem& rOther) const
+{
+	if(m_Type != rOther.m_Type)
+	{
+		return false;
+	}
+
+	if(getName() != rOther.getName())
+	{
+		return false;
+	}
+	if(m_HeaderIdBase != rOther.m_HeaderIdBase)
+	{
+		return false;
+	}
+	if(m_uiLevel != rOther.m_uiLevel)
+	{
+		return false;
+	}
+
+	return true;
+}

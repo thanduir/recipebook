@@ -43,6 +43,9 @@ namespace recipebook
 		RecipeBookConfigItem& getItemAt(quint32 i);
 		const RecipeBookConfigItem& getItemAt(quint32 i) const;
 		void moveItem(const RecipeBookConfigItem& rItem, quint32 newPos);
+		
+		bool operator!=(const RecipeBookConfiguration& rOther) const { return !(*this == rOther); }
+		bool operator==(const RecipeBookConfiguration& rOther) const;
 
 	private:
 		RecipeBookConfiguration(QString strName, const RecipeBook* pRecipeBook = nullptr);

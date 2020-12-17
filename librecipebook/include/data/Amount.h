@@ -33,6 +33,9 @@ namespace recipebook
 
 		static bool canBeAddedUp(const Amount& m1, const Amount& m2);
 
+		bool operator!=(const Amount& rOther) const { return !(*this == rOther); }
+		bool operator==(const Amount& rOther) const;
+
 	private:
 		Unit m_Unit          = Unit::Count;
 		bool m_bRange        = false;

@@ -28,6 +28,9 @@ namespace recipebook
 		qint32 getLevel() const { return m_uiLevel; }
 		void setLevel(qint32 uiLevel) { m_uiLevel = uiLevel; }
 
+		bool operator!=(const RecipeBookConfigItem& rOther) const { return !(*this == rOther); }
+		bool operator==(const RecipeBookConfigItem& rOther) const;
+
 	private:
 		explicit RecipeBookConfigItem(const Recipe& rRecipe);
         RecipeBookConfigItem(QString strHeaderName, QString strElementIdBase, qint32 uiLevel);

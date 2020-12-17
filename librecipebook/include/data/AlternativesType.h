@@ -16,6 +16,9 @@ namespace recipebook
 		QColor getColor() const { return m_Color; }
 		void setColor(QColor color) { m_Color = color; }
 
+		bool operator!=(const AlternativesType& rOther) const { return !(*this == rOther); }
+		bool operator==(const AlternativesType& rOther) const { return m_Name == rOther.m_Name && m_Color == rOther.m_Color; }
+
 	private:
 		explicit AlternativesType(QString strName) : m_Name(strName), m_Color(Qt::blue) {}      
 

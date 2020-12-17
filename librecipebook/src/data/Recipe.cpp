@@ -149,3 +149,46 @@ bool Recipe::moveGroupItemsTogether()
 
 	return bAlreadyCorrectlyOrdered;
 }
+
+bool Recipe::operator==(const Recipe& rOther) const
+{
+	if(m_Name != rOther.m_Name)
+	{
+		return false;
+	}
+
+	if(m_NrPersons != rOther.m_NrPersons)
+	{
+		return false;
+	}
+
+	if(m_ShortDescription != rOther.m_ShortDescription)
+	{
+		return false;
+	}
+
+	if(m_RecipeText != rOther.m_RecipeText)
+	{
+		return false;
+	}
+
+	if(m_CookingTime != rOther.m_CookingTime)
+	{
+		return false;
+	}
+
+	if(m_RecipeItems.size() != rOther.m_RecipeItems.size())
+	{
+		return false;
+	}
+
+	for(int i = 0; i < m_RecipeItems.size(); ++i)
+	{
+		if(m_RecipeItems[i] != rOther.m_RecipeItems[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}

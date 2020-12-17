@@ -12,6 +12,9 @@ namespace recipebook
 		QString getName() const { return m_Name; }
 		RBElementId getElementId() const { return getElementId(getName()); }
 
+		bool operator!=(const Category& rOther) const { return !(*this == rOther); }
+		bool operator==(const Category& rOther) const { return m_Name == rOther.m_Name; }
+
 	private:
 		explicit Category(QString strName) : m_Name(strName) {}      
 

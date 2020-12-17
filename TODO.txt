@@ -3,6 +3,9 @@ TODO
 
 - Data synchronisation (sync with dropbox)
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
+	* Unittest for compare/merge algorithm(s)!
+	* TODOs
+
 	* translations
 	
 	* Test every code path on windows and android!
@@ -13,10 +16,10 @@ TODO
 
 - UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
 
-
 - shopping list page: recipes sortable by due date?
 
-- Android: manifest file + icon missing! How to do this using cmake + qt creator?
+- Qt6 (if all relevant modules available and probably after a few bugfix releases)
+- Android: manifest file + icon missing! How to do this using cmake + qt creator? 
 - TODOs (depends on Qt bugfixes)
 
 

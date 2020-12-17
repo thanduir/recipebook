@@ -26,6 +26,9 @@ namespace recipebook
 		Unit getDefaultUnit() const { return m_DefaultUnit; }
 		void setDefaultUnit(Unit unit) { m_DefaultUnit = unit; }
 
+		bool operator!=(const Ingredient& rOther) const { return !(*this == rOther); }
+		bool operator==(const Ingredient& rOther) const;
+
 	private:
 		Ingredient(QString strName, const Category& rCategory, Unit defaultUnit);
 
