@@ -307,7 +307,7 @@ QString RecipeBookSettings::applicationRecipeBookSyncBaseFile() const
 	return m_AppRBFilePath + c_strAppRBSyncBaseFilename;
 }
 
-QString RecipeBookSettings::applicationRecipeBookSyncBackupCurrentFile() const
+QString RecipeBookSettings::applicationRecipeBookSyncBackupLocalFile() const
 {
 	return m_AppRBFilePath + c_strAppRBSyncBkupCurrentFilename;
 }

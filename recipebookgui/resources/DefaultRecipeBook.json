@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
+        "origin-uid": "df2f3907-53a2-43a6-9593-05a7fc6318d3",
         "version": 2
     },
     "alternativesTypes": {
@@ -48,11 +48,11 @@
             "Halbfertigprodukte",
             "Konserven",
             "Milchprodukte",
-            "Öle und Saucen",
             "Restliches",
             "Salate",
             "Teigwaren, Reis und Kartoffelprodukte",
-            "Tiefgefrohrenes"
+            "Tiefgefrohrenes",
+            "Öle und Saucen"
         ],
         "sortOrders": {
             "Coop-Nicole": [
@@ -65,17 +65,17 @@
                 "Konserven",
                 "Getränke",
                 "Früchte und Gemüse",
-                "Milchprodukte",
-                "Fleisch und Fisch",
-                "Halbfertigprodukte",
-                "Eier",
-                "Fertigteig",
                 "Salate",
                 "Brot",
+                "Halbfertigprodukte",
+                "Fertigteig",
+                "Fleisch und Fisch",
+                "Milchprodukte",
+                "Eier",
                 "Tiefgefrohrenes"
             ],
             "Coop-Phil": [
-				"Apotheke",
+                "Apotheke",
                 "Restliches",
                 "Backwaren",
                 "Teigwaren, Reis und Kartoffelprodukte",
@@ -578,6 +578,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Edamame": {
+            "category": "Halbfertigprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Edamame-Noodles": {
             "category": "Teigwaren, Reis und Kartoffelprodukte",
             "default-unit": "Gram",
@@ -648,6 +654,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Fertig-Pasta": {
+            "category": "Halbfertigprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Fertig-Pizza": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Count",
@@ -668,6 +680,12 @@
         },
         "Fischsticks": {
             "category": "Fleisch und Fisch",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Fischstäbchen": {
+            "category": "Tiefgefrohrenes",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -741,6 +759,12 @@
         "Gnocchi": {
             "category": "Halbfertigprodukte",
             "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Grand Marnier": {
+            "category": "Getränke",
+            "default-unit": "Dessertspoon",
             "unavailableProvenances": [
             ]
         },
@@ -880,11 +904,23 @@
             "unavailableProvenances": [
             ]
         },
+        "Kaffebohnen (Schokolade)": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Kaffee": {
             "category": "Konserven",
             "default-unit": "Count",
             "unavailableProvenances": [
                 "Migros"
+            ]
+        },
+        "Kakaopulver": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
             ]
         },
         "Kalbsgeschnetzeltes": {
@@ -960,6 +996,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Kirsch": {
+            "category": "Getränke",
+            "default-unit": "Dessertspoon",
+            "unavailableProvenances": [
+            ]
+        },
         "Kirschen": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
@@ -1010,9 +1052,15 @@
             "unavailableProvenances": [
             ]
         },
-        "Kokosmilch": {
+        "Kokosmilch (Light)": {
             "category": "Öle und Saucen",
             "default-unit": "Milliliter",
+            "unavailableProvenances": [
+            ]
+        },
+        "Kokosraspeln": {
+            "category": "Backwaren",
+            "default-unit": "Gram",
             "unavailableProvenances": [
             ]
         },
@@ -1703,7 +1751,25 @@
             "unavailableProvenances": [
             ]
         },
-        "Schokolade": {
+        "Schokolade (Milch)": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Schokolade (schwarz)": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Schokolade (weiss)": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Schokostreusel": {
             "category": "Backwaren",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -3103,7 +3169,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4103,7 +4169,7 @@
                     "optional": false,
                     "size": "Small"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4174,7 +4240,7 @@
                 "Apfel": {
                     "_position": 0,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Gemüse",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -4184,7 +4250,7 @@
                     "size": "Normal"
                 },
                 "Fertig-Essen": {
-                    "_position": 1,
+                    "_position": 2,
                     "additionalInfo": "Pasta",
                     "alternativesGroup": "",
                     "amount": {
@@ -4195,8 +4261,44 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Humus": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Karotte": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Knabber-Zeug": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Milch": {
-                    "_position": 2,
+                    "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -4208,7 +4310,7 @@
                     "size": "Normal"
                 },
                 "Mokka Joghurt": {
-                    "_position": 3,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -4220,9 +4322,9 @@
                     "size": "Normal"
                 },
                 "Reiswaffeln": {
-                    "_position": 4,
+                    "_position": 6,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Kohlenhydrate",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -4232,18 +4334,6 @@
                     "size": "Normal"
                 },
                 "Salat (fertig)": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Sandwich": {
                     "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -4255,8 +4345,32 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Sandwich": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schoggi Joghurt": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Tomatensauce (Nature)": {
-                    "_position": 5,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -4268,9 +4382,9 @@
                     "size": "Normal"
                 },
                 "YoQua (Mocca)": {
-                    "_position": 6,
+                    "_position": 10,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -6947,7 +7061,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -7247,6 +7361,74 @@
                         "max": -1,
                         "min": 0,
                         "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Käseschnitten": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "Brot": {
+                    "_position": 2,
+                    "additionalInfo": "Z.B. St. Galler",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Fleischtomate": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Gruyère": {
+                    "_position": 0,
+                    "additionalInfo": "Block",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Milch": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Raclettekäse": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -7662,10 +7844,10 @@
             }
         },
         "Lauch-Pilz-Lasagne": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:55",
             "NrPersons": 2,
             "ShortDesc": "Grüne Version der klassischen Lasagne. Gibt Reste.",
-            "Text": "Lauch in Streifen schneiden und vordünsten.\nPilze kleinschneiden und in Butter anbraten, bis sie ihr Wasser verlieren, mit dem Lauch vermischen.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Béchamelsosse hinein geben und auf dem Boden der Form verteilen. Abwechselnd eine Lage Lasagneplatten und Pilz-Lauch-Mischung einfüllen, mit Sauce abschliessen. Mozzarella darauf verteilen.\nBei 200° für 45 Minuten im Ofen backen.",
+            "Text": "Lauch in Streifen schneiden und vordünsten.\nPilze kleinschneiden und in Butter anbraten, bis sie ihr Wasser verlieren, würzen, mit dem Lauch vermischen.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Béchamelsosse hinein geben und auf dem Boden der Form verteilen. Abwechselnd eine Lage Lasagneplatten (3x) und Pilz-Lauch-Mischung (2x) einfüllen, mit Sauce abschliessen. Mozzarella dünn (3mm) scheibeln und darauf verteilen.\nBei 200° für 35 Minuten im vorgeheizten Ofen backen.",
             "items": {
                 "Béchamelsauce": {
                     "_position": 3,
@@ -7697,7 +7879,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 10,
+                        "min": 9,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -7726,6 +7908,42 @@
                     },
                     "optional": false,
                     "size": "Large"
+                },
+                "Paprika": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Petersilie": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
                 }
             }
         },
@@ -8151,6 +8369,18 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Birchermüesli": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Frucht": {
                     "_position": 2,
                     "additionalInfo": "",
@@ -8170,6 +8400,18 @@
                     "amount": {
                         "max": -1,
                         "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schoggiwürfeli": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -10169,7 +10411,7 @@
                 },
                 "Thon": {
                     "_position": 4,
-                    "additionalInfo": "Nature, Nettogewicht",
+                    "additionalInfo": "Nature (ohne Öl), Nettogewicht",
                     "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
@@ -10431,6 +10673,18 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Peperoni": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Small"
+                },
                 "Pfeffer (weiss)": {
                     "_position": 8,
                     "additionalInfo": "",
@@ -10457,7 +10711,7 @@
                 },
                 "Pouletflügel": {
                     "_position": 0,
-                    "additionalInfo": "",
+                    "additionalInfo": "oder anderes Poulet",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
@@ -10506,6 +10760,182 @@
                 "Zitrone": {
                     "_position": 10,
                     "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Pralinen": {
+            "CookingTime": "00:30",
+            "NrPersons": 1,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "Butter": {
+                    "_position": 1,
+                    "additionalInfo": "3x190g+160g",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 730,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Grand Marnier": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kaffebohnen (Schokolade)": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kaffee": {
+                    "_position": 13,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kakaopulver": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kirsch": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosraspeln": {
+                    "_position": 7,
+                    "additionalInfo": "100g+Deko",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mandeln (gemahlen)": {
+                    "_position": 8,
+                    "additionalInfo": "weiss / geschält",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 90,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Orange": {
+                    "_position": 12,
+                    "additionalInfo": "Bio!",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Puderzucker": {
+                    "_position": 0,
+                    "additionalInfo": "3x220g",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 660,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schokolade (Milch)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 260,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schokolade (schwarz)": {
+                    "_position": 4,
+                    "additionalInfo": "2x260g",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 520,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schokolade (weiss)": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 260,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schokostreusel": {
+                    "_position": 6,
+                    "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
@@ -11309,7 +11739,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 200,
+                        "min": 250,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -11401,7 +11831,7 @@
                 },
                 "Tomaten (getrocknet)": {
                     "_position": 2,
-                    "additionalInfo": "285g in Öl",
+                    "additionalInfo": "285g in Flüssigkeit (besser ohne Öl)",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
@@ -11437,8 +11867,8 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 4,
-                        "unit": "Count"
+                        "min": 500,
+                        "unit": "Gram"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -11449,7 +11879,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 2,
+                        "min": 3,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -11664,7 +12094,7 @@
             "Text": "Kartoffeln in Schnitze (8el) schneiden, Rosenkohl vierteln / Lauch in Scheiben zerteilen, Zwiebel hacken.\nSpeckwürfeli ohne Fett anbraten, Kartoffeln beigeben und nach 5 Minuten noch das Gemüse kurz mitdämpfen.\nBouillon und Rahm, sowie Safran beigeben und ca. 15 Minuten köcheln lassen, würzen.",
             "items": {
                 "Bouillon (Gemüse)": {
-                    "_position": 6,
+                    "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11676,7 +12106,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
-                    "_position": 5,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11712,7 +12142,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
-                    "_position": 9,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11736,7 +12166,7 @@
                     "size": "Normal"
                 },
                 "Safran": {
-                    "_position": 7,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11748,7 +12178,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
-                    "_position": 8,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11760,25 +12190,13 @@
                     "size": "Normal"
                 },
                 "Speckwürfel": {
-                    "_position": 4,
+                    "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 200,
                         "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zwiebel": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -13867,7 +14285,7 @@
                     "optional": false,
                     "size": "Large"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 5,
                     "additionalInfo": "Light",
                     "alternativesGroup": "",
@@ -13995,7 +14413,7 @@
                     "optional": false,
                     "size": "Large"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 5,
                     "additionalInfo": "Light",
                     "alternativesGroup": "",
@@ -14159,7 +14577,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Kokosmilch": {
+                "Kokosmilch (Light)": {
                     "_position": 8,
                     "additionalInfo": "Light oder Bio",
                     "alternativesGroup": "",
@@ -14265,7 +14683,7 @@
                 },
                 "Schinken": {
                     "_position": 1,
-                    "additionalInfo": "= 1.33 Päckchen",
+                    "additionalInfo": "= 2.33 Päckchen",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
@@ -14891,7 +15309,7 @@
         },
         "Älplermagronen": {
             "CookingTime": "00:30",
-            "NrPersons": 2,
+            "NrPersons": 3,
             "ShortDesc": "Kartoffel-Pasta-Gericht mit Käse und Speckwürfelchen. Gibt Reste.",
             "Text": "Kartoffeln (und Äpfel) in Würfel schneiden.\nSpeck anbraten. Bouillon und Rahm dazu giessen, aufkochen.\nKartoffeln, (Apfel) und Teigwaren beigeben und bei mittlerer Hitze ca. 10 Minuten al dente kochen.\nKäse, Speck und Gewürz darunter mischen.\nAllenfalls Salat dazu servieren.",
             "items": {
@@ -14913,8 +15331,8 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 7,
-                        "unit": "Deciliter"
+                        "min": 650,
+                        "unit": "Milliliter"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -14937,8 +15355,8 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 3,
-                        "unit": "Deciliter"
+                        "min": 250,
+                        "unit": "Milliliter"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -14949,8 +15367,8 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 0.5,
-                        "unit": "Kilogram"
+                        "min": 460,
+                        "unit": "Gram"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -15021,7 +15439,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 240,
+                        "min": 220,
                         "unit": "Gram"
                     },
                     "optional": false,

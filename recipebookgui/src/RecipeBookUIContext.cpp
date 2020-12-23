@@ -141,7 +141,7 @@ RecipeBookUIContext::RecipeBookUIContext(bool bOnAndroid)
 	connect(this, SIGNAL(signalDataReset()),
 			&m_ModelConfigurations, SLOT(onDataReset()));
 
-	connect(&m_RecipeBookSynchronization, SIGNAL(signalCurrentDataUpdated()),
+	connect(&m_RecipeBookSynchronization, SIGNAL(signalLocalDataUpdated()),
 			this, SIGNAL(signalDataReset()));
 
 	// Enable periodic saving routine

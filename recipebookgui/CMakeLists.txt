@@ -4,8 +4,7 @@ set(TS_FILES translations/recipebookgui_de.ts translations/recipebookgui_en.ts)
 
 set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslationManager.cpp
                         src/RecipeBookSettings.cpp src/RecipeBookUIContext.cpp src/uistringconverter.cpp
-						src/RecipebookSynchronization.cpp
-						
+												
                         src/model/FilterModelAlternativesTypes.cpp src/model/ListModelAlternativesGroups.cpp
                         src/model/ListModelRecipeBookConfigurations.cpp src/model/ListModelSortOrders.cpp
                         src/model/FilterModelIngredients.cpp src/model/ListModelCategories.cpp
@@ -15,6 +14,10 @@ set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslation
                         src/model/ListModelIngredients.cpp src/model/ListModelShoppingListItems.cpp
                         src/model/FilterModelUnusedRecipes.cpp src/model/ListModelRBConfigItems.cpp
                         src/model/ListModelShoppingRecipes.cpp
+						
+						src/synchronization/RecipebookSynchronization.cpp
+						src/synchronization/RecipeBookChanges.cpp
+						src/synchronization/RecipeBookConflicts.cpp
 						
                         src/exporter/LatexLanguageManager.cpp src/exporter/RBLatexExporter.cpp
                         src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp

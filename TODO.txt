@@ -3,6 +3,7 @@ TODO
 
 - Data synchronisation (sync with dropbox)
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
+	* compile test with qt creator
 	* Unittest for compare/merge algorithm(s)!
 	* TODOs
 

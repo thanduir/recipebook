@@ -2,15 +2,18 @@
 #include <QDesktopServices>
 #include <QFile>
 #include <QUuid>
+#include <QException>
 #include <data/RecipeBook.h>
 #include <data/RBDataHandler.h>
 #include "serialization/RecipeBookSerializerFactory.h"
-#include "RecipeBookSettings.h"
-#include "RBDialogInterface.h"
+#include "../RecipeBookSettings.h"
+#include "../RBDialogInterface.h"
 
 using namespace recipebook;
 using namespace recipebook::serialization;
 using rbStatus = synchronization::RecipebookDropbox::Status;
+
+// TODO: Sicherstellen, dass ShoppingList NICHT geändert wird! Or do i need to clear them anyways for consistency reasons?
 
 RecipeBookSynchronization::RecipeBookSynchronization(RBDataHandler& rRBDataHandler,
 													 RecipeBookSettings& rSettings,
@@ -151,7 +154,7 @@ void RecipeBookSynchronization::performMerge()
 		return;
 	}
 
-	if(!readCurrentFile())
+	if(!readLocalFile())
 	{
 		cleanUp();
 		return;
@@ -167,13 +170,13 @@ void RecipeBookSynchronization::performMerge()
 	bool bUploadOnly = m_spRBServer == nullptr;
 	if(bUploadOnly)
 	{
-		if(!uploadFile(m_spRBCurrent))
+		if(!uploadFile(m_spRBLocal))
 		{
 			cleanUp();
 			return;
 		}
 
-		if(!updateBase(m_spRBCurrent))
+		if(!updateBase(m_spRBLocal))
 		{
 			cleanUp();
 			return;
@@ -183,7 +186,7 @@ void RecipeBookSynchronization::performMerge()
 		cleanUp();
 
 		m_rDlgInterface.showMessageBox(tr("Synchronization successful"),
-									   tr("Current state successfully synchronized with server (no changes to local data)."),
+									   tr("Local state successfully synchronized with server (no changes to local data)."),
 									   RBDialogInterface::DlgType::Information);
 	}
 	else if(!bNoMergeBase)
@@ -207,7 +210,7 @@ void RecipeBookSynchronization::performTwoWayMerge(bool bKeepServerSide)
 	QString msg;
 	if(bKeepServerSide)
 	{
-		if(!updateCurrent(m_spRBServer))
+		if(!updateLocal(m_spRBServer))
 		{
 			cleanUp();
 			return;
@@ -219,23 +222,23 @@ void RecipeBookSynchronization::performTwoWayMerge(bool bKeepServerSide)
 			return;
 		}
 
-		msg = tr("Successfully updated current local data with the current server data.");
+		msg = tr("Successfully updated current local data with current server data.");
 	}
 	else
 	{
-		if(!uploadFile(m_spRBCurrent))
+		if(!uploadFile(m_spRBLocal))
 		{
 			cleanUp();
 			return;
 		}
 
-		if(!updateBase(m_spRBCurrent))
+		if(!updateBase(m_spRBLocal))
 		{
 			cleanUp();
 			return;
 		}
 
-		msg = tr("Successfully updated current server data with the current local data.");
+		msg = tr("Successfully updated current server data with current local data.");
 	}
 
 	m_rSettings.setDateLastSyncNow();
@@ -248,16 +251,17 @@ void RecipeBookSynchronization::performTwoWayMerge(bool bKeepServerSide)
 
 void RecipeBookSynchronization::performThreeWayMerge()
 {
-	// TODO: merge files
-	//		-> look for differences in the three files (-> make list for one data type (categories, ingredients etc.), look for renames etc., 
-	//			then ask user about those that can't be handled automatically!
-	//		-> merge in all 3 files after a change is accepted
-	//		-> HOW TO SAVE DATA AND CURRENT STATE BETWEEN QUESTIONS FOR USER? AND HOW TO SEND THIS DATA TO THE USER?
+	m_changesLocal.compare(m_spRBBase, m_spRBLocal);
+	m_changesServer.compare(m_spRBBase, m_spRBServer);
 
-	// TODO: Show all / summary of changes to user and ask for confirmation! (how to do that? keeping track of changes or use copy of original data?)
+	m_Conflicts.findConflicts(m_spRBBase, m_spRBLocal, m_changesLocal, m_spRBServer, m_changesServer);
+	// TODO: Find conflicts that need user input!
+	//		-> Show all / summary of changes to user and ask for confirmation!
+	//			(force decision from user for all conflicts!)	
 
-	// TODO: inform user that merging has completed successfully
+	// TODO: Update files where necessairy!
 	// TODO: Call m_rSettings.setDateLastSyncNow() and cleanUp() whereever appropriate
+	// TODO: inform user that merging has completed successfully
 }
 
 bool RecipeBookSynchronization::readServerFile()
@@ -310,30 +314,30 @@ bool RecipeBookSynchronization::readServerFile()
 	return true;
 }
 
-bool RecipeBookSynchronization::readCurrentFile()
+bool RecipeBookSynchronization::readLocalFile()
 {
-	// Backup of current file
-	QFile fileSyncBackupCurrent(m_rSettings.applicationRecipeBookSyncBackupCurrentFile());
+	// Backup of local file
+	QFile fileSyncBackupLocal(m_rSettings.applicationRecipeBookSyncBackupLocalFile());
 	{
 		QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
 
 		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		if(!spWriter->serialize(handle.data(), fileSyncBackupCurrent))
+		if(!spWriter->serialize(handle.data(), fileSyncBackupLocal))
 		{
 			m_rDlgInterface.showMessageBox(tr("File write problem"),
-										   tr("Couldn't write sync backup current file. Please check write access and free space for app data folder."),
+										   tr("Couldn't write sync backup local file. Please check write access and free space for app data folder."),
 										   RBDialogInterface::DlgType::Error);
 			return false;
 		}
 	}
 	
-	// Read current file from backup
+	// Read local file from backup
 
-	m_spRBCurrent = QSharedPointer<RecipeBook>::create();
+	m_spRBLocal = QSharedPointer<RecipeBook>::create();
 
-	RBMetaData metaDataCurrent;
+	RBMetaData metaDataLocal;
 	QSharedPointer<IRBReader> spReader = SerializerFactory::getReader(FileFormat::Json);
-	spReader->serialize(fileSyncBackupCurrent, metaDataCurrent, *m_spRBCurrent);
+	spReader->serialize(fileSyncBackupLocal, metaDataLocal, *m_spRBLocal);
 
 	return true;
 }
@@ -420,7 +424,7 @@ bool RecipeBookSynchronization::updateBase(QSharedPointer<RecipeBook> spFile)
 	return true;
 }
 
-bool RecipeBookSynchronization::updateCurrent(QSharedPointer<RecipeBook> spFile)
+bool RecipeBookSynchronization::updateLocal(QSharedPointer<RecipeBook> spFile)
 {
 	QSharedPointer<IRBWriter> spWriter = SerializerFactory::getWriter(FileFormat::Json, m_rSettings.getApplicationInstanceUID());
 	QByteArray data;
@@ -439,12 +443,12 @@ bool RecipeBookSynchronization::updateCurrent(QSharedPointer<RecipeBook> spFile)
 	if(!spReader->serialize(data, metaData, handle.data()))
 	{
 		m_rDlgInterface.showMessageBox(tr("File write problem"),
-										tr("Couldn't update current data."),
+										tr("Couldn't update local data."),
 										RBDialogInterface::DlgType::Error);
 		return false;
 	}
 
-	emit signalCurrentDataUpdated();
+	emit signalLocalDataUpdated();
 
 	return true;
 }
@@ -453,5 +457,5 @@ void RecipeBookSynchronization::cleanUp()
 {
 	m_spRBServer = nullptr;
 	m_spRBBase = nullptr;
-	m_spRBCurrent = nullptr;
+	m_spRBLocal = nullptr;
 }

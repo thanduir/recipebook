@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <synchronization/RecipebookDropbox.h>
+#include "RecipeBookChanges.h"
+#include "RecipeBookConflicts.h"
 
 namespace recipebook
 {
@@ -35,19 +37,19 @@ namespace recipebook
 		void performTwoWayMerge(bool bKeepServerSide);
 
 	signals:
-		void signalCurrentDataUpdated();
+		void signalLocalDataUpdated();
 
 	private:
 		void performMerge();		
 		void performThreeWayMerge();
 
 		bool readServerFile();
-		bool readCurrentFile();
+		bool readLocalFile();
 		bool readBaseFile();
 
 		bool uploadFile(QSharedPointer<RecipeBook> spFile);
 		bool updateBase(QSharedPointer<RecipeBook> spFile);
-		bool updateCurrent(QSharedPointer<RecipeBook> spFile);
+		bool updateLocal(QSharedPointer<RecipeBook> spFile);
 
 		void cleanUp();
 
@@ -63,8 +65,12 @@ namespace recipebook
 		synchronization::RecipebookDropbox	m_rbDropbox;
 
 		QSharedPointer<RecipeBook>			m_spRBServer;
-		QSharedPointer<RecipeBook>			m_spRBCurrent;
+		QSharedPointer<RecipeBook>			m_spRBLocal;
 		QSharedPointer<RecipeBook>			m_spRBBase;
+
+		RecipeBookChanges					m_changesLocal;
+		RecipeBookChanges					m_changesServer;
+		RecipeBookConflicts					m_Conflicts;
 	};
 }
 

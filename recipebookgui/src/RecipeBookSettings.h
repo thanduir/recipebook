@@ -69,7 +69,7 @@ namespace recipebook
 		void setSyncReminderInterval(quint32 uiInterval);
 
 		QString applicationRecipeBookSyncBaseFile() const;
-		QString applicationRecipeBookSyncBackupCurrentFile() const;
+		QString applicationRecipeBookSyncBackupLocalFile() const;
 		QString applicationRecipeBookSyncBackupServerFile() const;
 		QString applicationRecipeBookSyncBackupBaseFile() const;
 

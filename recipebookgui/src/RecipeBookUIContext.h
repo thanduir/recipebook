@@ -5,7 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <data/RBDataHandler.h>
 #include "RecipeBookSettings.h"
-#include "RecipeBookSynchronization.h"
+#include "synchronization/RecipeBookSynchronization.h"
 #include "RBTranslationManager.h"
 #include "RBDialogInterface.h"
 #include "uistringconverter.h"
