@@ -7,6 +7,8 @@
 namespace recipebook
 {
 	class RecipeBook;
+	class Recipe;
+	class RecipeBookConfiguration;
 	class RecipeBookChanges;
 
 	class RecipeBookConflicts final : public QObject
@@ -26,9 +28,10 @@ namespace recipebook
 		{
 			QString			m_strElement;
 			ConflictType	m_Type;
+			QString			m_strParent;
 
-			Conflict(QString strElement, ConflictType type)
-			: m_strElement(strElement), m_Type(type) {}
+			Conflict(QString strElement, ConflictType type, QString strParent = QString())
+			: m_strElement(strElement), m_Type(type), m_strParent(strParent) {}
 		};
 
 	public:
@@ -40,6 +43,7 @@ namespace recipebook
 						   const QSharedPointer<RecipeBook> spServer,
 						   const RecipeBookChanges& rChangesServer);
 
+		bool hasConflicts();
 		void clear();
 
 	private:
@@ -57,24 +61,35 @@ namespace recipebook
 									  const RecipeBookChanges::ItemChanges& rChangesLocal,
 									  const QSharedPointer<RecipeBook> spServer,
 									  const RecipeBookChanges::ItemChanges& rChangesServer);
-		void findRecipesConflicts(const QSharedPointer<RecipeBook> spBase, 
+		
+		void findRecipesConflicts(const QSharedPointer<RecipeBook> spBase,
 								  const QSharedPointer<RecipeBook> spLocal,
-								  const RecipeBookChanges::ItemChanges& rChangesLocal,
+								  const RecipeBookChanges& rChangesLocal,
 								  const QSharedPointer<RecipeBook> spServer,
-								  const RecipeBookChanges::ItemChanges& rChangesServer);
+								  const RecipeBookChanges& rChangesServer);
+
+		void findRecipeItemConflicts(const Recipe& rBase,
+									 const Recipe& rLocal,
+									 const RecipeBookChanges::ItemChanges& rChangesLocal,
+									 const Recipe& rServer,
+									 const RecipeBookChanges::ItemChanges& rChangesServer);
+
 		void findRBConfigurationsConflicts(const QSharedPointer<RecipeBook> spBase, 
 										   const QSharedPointer<RecipeBook> spLocal,
-										   const RecipeBookChanges::ItemChanges& rChangesLocal,
+										   const RecipeBookChanges& rChangesLocal,
 										   const QSharedPointer<RecipeBook> spServer,
-										   const RecipeBookChanges::ItemChanges& rChangesServer);
+										   const RecipeBookChanges& rChangesServer);
 
 
 	private:
 		QVector<Conflict>	m_CategoryConflicts;
 		QVector<Conflict>	m_SortOrderConflicts;
 		QVector<Conflict>	m_AlternativesTypesConflicts;
-		QVector<Conflict>	m_IngredientsConflicts;
+		QVector<Conflict>	m_IngredientsConflicts;	
+
 		QVector<Conflict>	m_RecipesConflicts;
+		QVector<Conflict>	m_RecipeItemConflicts;
+
 		QVector<Conflict>	m_RBConfigurationsConflicts;
 	};
 }
