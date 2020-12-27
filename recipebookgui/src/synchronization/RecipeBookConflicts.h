@@ -28,11 +28,12 @@ namespace recipebook
 		{
 			QString			m_strElement;
 			ConflictType	m_Type;
-			QString			m_strParent;
 
-			Conflict(QString strElement, ConflictType type, QString strParent = QString())
-			: m_strElement(strElement), m_Type(type), m_strParent(strParent) {}
+			Conflict(QString strElement, ConflictType type)
+			: m_strElement(strElement), m_Type(type) {}
 		};
+
+		typedef QVector<Conflict> ConflictList;
 
 	public:
 		RecipeBookConflicts();
@@ -42,12 +43,25 @@ namespace recipebook
 						   const RecipeBookChanges& rChangesLocal, 
 						   const QSharedPointer<RecipeBook> spServer,
 						   const RecipeBookChanges& rChangesServer);
-
-		bool hasConflicts();
+		
 		void clear();
 
+	public slots:
+		bool hasConflicts();
+
+		const ConflictList getCategoryConflicts() const { return m_CategoryConflicts; }
+		const ConflictList getSortOderConflicts() const { return m_SortOrderConflicts; }
+		const ConflictList getAlternativeTypeConflicts() const { return m_AlternativesTypesConflicts; }
+		const ConflictList getIngredientConflicts() const { return m_IngredientsConflicts; }
+
+		const ConflictList getRecipeConflicts() const { return m_RecipesConflicts; }
+		const QMap<QString, ConflictList> getRecipeItemConflicts() const { return m_RecipeItemConflicts; }
+		
+		const ConflictList getRBConfigurationConflicts() const { return m_RBConfigurationsConflicts; }
+
 	private:
-		void findCategoryConflicts(const RecipeBookChanges::ItemChanges& rChangesLocal, const RecipeBookChanges::ItemChanges& rChangesServer);
+		void findCategoryConflicts(const RecipeBookChanges::ItemChanges& rChangesLocal, 
+								   const RecipeBookChanges::ItemChanges& rChangesServer);
 		void findSortOrderConflicts(const QSharedPointer<RecipeBook> spLocal,
 									const RecipeBookChanges::ItemChanges& rChangesLocal,
 									const QSharedPointer<RecipeBook> spServer,
@@ -82,15 +96,15 @@ namespace recipebook
 
 
 	private:
-		QVector<Conflict>	m_CategoryConflicts;
-		QVector<Conflict>	m_SortOrderConflicts;
-		QVector<Conflict>	m_AlternativesTypesConflicts;
-		QVector<Conflict>	m_IngredientsConflicts;	
+		ConflictList				m_CategoryConflicts;
+		ConflictList				m_SortOrderConflicts;
+		ConflictList				m_AlternativesTypesConflicts;
+		ConflictList				m_IngredientsConflicts;
 
-		QVector<Conflict>	m_RecipesConflicts;
-		QVector<Conflict>	m_RecipeItemConflicts;
+		ConflictList				m_RecipesConflicts;
+		QMap<QString, ConflictList>	m_RecipeItemConflicts;
 
-		QVector<Conflict>	m_RBConfigurationsConflicts;
+		ConflictList				m_RBConfigurationsConflicts;
 	};
 }
 

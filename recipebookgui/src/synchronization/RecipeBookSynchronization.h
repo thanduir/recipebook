@@ -47,6 +47,8 @@ namespace recipebook
 		bool readLocalFile();
 		bool readBaseFile();
 
+		void clearShoppingLists();
+
 		bool uploadFile(QSharedPointer<RecipeBook> spFile);
 		bool updateBase(QSharedPointer<RecipeBook> spFile);
 		bool updateLocal(QSharedPointer<RecipeBook> spFile);

@@ -28,7 +28,6 @@ namespace recipebook
 
 		void compare(const QSharedPointer<RecipeBook> spBase, const QSharedPointer<RecipeBook> spChanged);
 
-	// TODO: Needed as slots?
 	public slots:
 		const ItemChanges& getCategoryChanges() const { return m_CategoryChanges; }
 		const ItemChanges& getSortOrderChanges() const { return m_SortOrderChanges; }

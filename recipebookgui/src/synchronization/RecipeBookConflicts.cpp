@@ -3,6 +3,7 @@
 #include "data/Category.h"
 #include "data/AlternativesType.h"
 #include "data/Ingredient.h"
+#include "data/SortOrder.h"
 #include "data/Recipe.h"
 #include "data/RecipeItem.h"
 #include "data/RecipeBookConfiguration.h"
@@ -26,7 +27,52 @@ namespace
 			return true;
 		}
 
-		// TODO: PROVENANCES!
+		// For now, provenances can't conflict
+
+		return false;
+	}
+
+	bool sortOrderChangeConflicting(const QSharedPointer<RecipeBook> spLocal,
+									const SortOrder& rOrderLocal,
+									const QSharedPointer<RecipeBook> spServer,
+									const SortOrder& rOrderServer)
+	{
+		int iServer = 0;
+		for(int iLocal = 0; iLocal < (int)rOrderLocal.getItemsCount(); ++iLocal)
+		{
+			const Category& rCatLocal = rOrderLocal.getItemAt(iLocal);
+			if(iServer >= (int)rOrderServer.getItemsCount())
+			{
+				if(spServer->existsCategory(rCatLocal.getName()))
+				{
+					return true;
+				}
+			}
+			else if(spServer->existsCategory(rCatLocal.getName()))
+			{
+				const Category& rCatServer = rOrderServer.getItemAt(iServer);
+
+				if(!spLocal->existsCategory(rCatServer.getName()))
+				{
+					--iLocal;
+				}
+				else if(rCatServer != rCatLocal)
+				{
+					return true;
+				}
+
+				++iServer;
+			}
+		}
+
+		for(; iServer < (int)rOrderServer.getItemsCount(); ++iServer)
+		{
+			const Category& rCatServerLocal = rOrderLocal.getItemAt(iServer);
+			if(spLocal->existsCategory(rCatServerLocal.getName()))
+			{
+				return true;
+			}
+		}
 
 		return false;
 	}
@@ -208,9 +254,12 @@ void RecipeBookConflicts::findSortOrderConflicts(const QSharedPointer<RecipeBook
 		}
 		else if(rChangesServer.m_Changed.contains(strElement))
 		{
-			// TODO: Verify that the changes are actually conflicting! (e.g. if the sortorders are not equal. Anything else possible here? Maybe newly added categories inserted at different positions?)
-			//		-> test equality up to newly added elements (unless the added element are the same, then they need to be at the same position)
-			m_SortOrderConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedBoth));
+			const SortOrder& rOrderLocal = spLocal->getSortOrder(strElement);
+			const SortOrder& rOrderServer = spServer->getSortOrder(strElement);
+			if(sortOrderChangeConflicting(spLocal, rOrderLocal, spServer, rOrderServer))
+			{
+				m_SortOrderConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedBoth));
+			}
 		}
 	}
 
@@ -219,9 +268,12 @@ void RecipeBookConflicts::findSortOrderConflicts(const QSharedPointer<RecipeBook
 	{
 		if(rChangesServer.m_Added.contains(strElement))
 		{
-			// TODO: Verify that the changes are actually conflicting! (e.g. if the sortorders are not equal. Anything else possible here? Maybe newly added categories inserted at different positions?)
-			//		-> test equality up to newly added elements (unless the added element are the same, then they need to be at the same position)
-			m_SortOrderConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::AddedBothDifferingValues));
+			const SortOrder& rOrderLocal = spLocal->getSortOrder(strElement);
+			const SortOrder& rOrderServer = spServer->getSortOrder(strElement);
+			if(sortOrderChangeConflicting(spLocal, rOrderLocal, spServer, rOrderServer))
+			{
+				m_SortOrderConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::AddedBothDifferingValues));
+			}
 		}
 	}
 }
@@ -380,7 +432,7 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 	{
 		if(rChangesServer.m_Changed.contains(strElement))
 		{
-			m_RecipeItemConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::RemovedLocal_ChangedServer, strRecipe));
+			m_RecipeItemConflicts[strRecipe].append(Conflict(strElement, RecipeBookConflicts::ConflictType::RemovedLocal_ChangedServer));
 		}
 	}
 
@@ -389,7 +441,7 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 	{
 		if(rChangesServer.m_Removed.contains(strElement))
 		{
-			m_RecipeItemConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedLocal_RemovedServer, strRecipe));
+			m_RecipeItemConflicts[strRecipe].append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedLocal_RemovedServer));
 		}
 		else if(rChangesServer.m_Changed.contains(strElement))
 		{
@@ -402,7 +454,7 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 			const RecipeItem& rItemBase = rBase.getRecipeItemAt(indexBase);
 			if(recipeItemChangeConflicting(rItemLocal, rItemServer, rItemBase))
 			{
-				m_RecipeItemConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedBoth, strRecipe));
+				m_RecipeItemConflicts[strRecipe].append(Conflict(strElement, RecipeBookConflicts::ConflictType::ChangedBoth));
 			}
 		}
 	}
@@ -417,7 +469,7 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 		if(rChangesServer.m_Added.contains(strElement)
 		   && rLocal.getRecipeItemAt(indexLocal) != rServer.getRecipeItemAt(indexServer))
 		{
-			m_RecipeItemConflicts.append(Conflict(strElement, RecipeBookConflicts::ConflictType::AddedBothDifferingValues, strRecipe));
+			m_RecipeItemConflicts[strRecipe].append(Conflict(strElement, RecipeBookConflicts::ConflictType::AddedBothDifferingValues));
 		}
 	}
 }

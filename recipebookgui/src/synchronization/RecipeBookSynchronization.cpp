@@ -13,7 +13,7 @@ using namespace recipebook;
 using namespace recipebook::serialization;
 using rbStatus = synchronization::RecipebookDropbox::Status;
 
-// TODO: Sicherstellen, dass ShoppingList NICHT geändert wird! Or do i need to clear them anyways for consistency reasons?
+// TODO: Warn user that shoppinglist is cleared during synchronization!
 
 RecipeBookSynchronization::RecipeBookSynchronization(RBDataHandler& rRBDataHandler,
 													 RecipeBookSettings& rSettings,
@@ -165,6 +165,8 @@ void RecipeBookSynchronization::performMerge()
 		cleanUp();
 		return;
 	}
+
+	clearShoppingLists();
 
     bool bNoMergeBase = m_spRBBase != nullptr;
 	bool bUploadOnly = m_spRBServer == nullptr;
@@ -373,6 +375,24 @@ bool RecipeBookSynchronization::readBaseFile()
 	}
 
 	return true;
+}
+
+void RecipeBookSynchronization::clearShoppingLists()
+{
+	if(m_spRBBase != nullptr)
+	{
+		m_spRBBase->clearShoppingList();
+	}
+
+	if(m_spRBServer != nullptr)
+	{
+		m_spRBServer->clearShoppingList();
+	}
+
+	if(m_spRBLocal != nullptr)
+	{
+		m_spRBLocal->clearShoppingList();
+	}
 }
 
 bool RecipeBookSynchronization::uploadFile(QSharedPointer<RecipeBook> spFile)
