@@ -37,11 +37,11 @@ namespace
 									const QSharedPointer<RecipeBook> spServer,
 									const SortOrder& rOrderServer)
 	{
-		int iServer = 0;
-		for(int iLocal = 0; iLocal < (int)rOrderLocal.getItemsCount(); ++iLocal)
+        quint32 iServer = 0;
+        for(quint32 iLocal = 0; iLocal < rOrderLocal.getItemsCount(); ++iLocal)
 		{
 			const Category& rCatLocal = rOrderLocal.getItemAt(iLocal);
-			if(iServer >= (int)rOrderServer.getItemsCount())
+            if(iServer >= rOrderServer.getItemsCount())
 			{
 				if(spServer->existsCategory(rCatLocal.getName()))
 				{
@@ -65,7 +65,7 @@ namespace
 			}
 		}
 
-		for(; iServer < (int)rOrderServer.getItemsCount(); ++iServer)
+        for(; iServer < rOrderServer.getItemsCount(); ++iServer)
 		{
 			const Category& rCatServerLocal = rOrderLocal.getItemAt(iServer);
 			if(spLocal->existsCategory(rCatServerLocal.getName()))
@@ -445,9 +445,9 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 		}
 		else if(rChangesServer.m_Changed.contains(strElement))
 		{
-			int indexLocal = rLocal.getRecipeItemIndex(strElement);
-			int indexServer = rServer.getRecipeItemIndex(strElement);
-			int indexBase = rBase.getRecipeItemIndex(strElement);
+            quint32 indexLocal = (quint32)rLocal.getRecipeItemIndex(strElement);
+            quint32 indexServer = (quint32)rServer.getRecipeItemIndex(strElement);
+            quint32 indexBase = (quint32)rBase.getRecipeItemIndex(strElement);
 
 			const RecipeItem& rItemLocal = rLocal.getRecipeItemAt(indexLocal);
 			const RecipeItem& rItemServer = rServer.getRecipeItemAt(indexServer);
@@ -462,8 +462,8 @@ void RecipeBookConflicts::findRecipeItemConflicts(const Recipe& rBase,
 	// AddedBothDifferingValues
 	for(QString strElement : rChangesLocal.m_Added)
 	{
-		int indexLocal = rLocal.getRecipeItemIndex(strElement);
-		int indexServer = rServer.getRecipeItemIndex(strElement);
+        quint32 indexLocal = (quint32)rLocal.getRecipeItemIndex(strElement);
+        quint32 indexServer = (quint32)rServer.getRecipeItemIndex(strElement);
 
 		// No conflict if the added types are equal
 		if(rChangesServer.m_Added.contains(strElement)
@@ -480,6 +480,8 @@ void RecipeBookConflicts::findRBConfigurationsConflicts(const QSharedPointer<Rec
 														const QSharedPointer<RecipeBook> spServer,
 														const RecipeBookChanges& rChangesServer)
 {
+    Q_UNUSED(spBase);
+
 	// RemovedLocal_ChangedServer
 	for(QString strElement : rChangesLocal.getRBConfigurationsChanges().m_Removed)
 	{

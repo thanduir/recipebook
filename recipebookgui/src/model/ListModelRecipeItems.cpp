@@ -443,12 +443,12 @@ void ListModelRecipeItems::setAmountMin(int row, float amount)
 
 		if(pRecipe == nullptr || row < 0 || row >= (int) pRecipe->getRecipeItemsCount())
 			return;
-
+        Q_UNUSED(amount);
         RecipeItem& rItem = pRecipe->getRecipeItemAt((quint32)row);
-		rItem.getAmount().setQuantityMin(amount);
+        rItem.getAmount().setQuantityMin(amount);
 	}
 
-	setDataChanged(row, RecipeItemsRoles::AmountMinRole);
+    //setDataChanged(row, RecipeItemsRoles::AmountMinRole);
 }
 
 void ListModelRecipeItems::decreaseAmountMin(int row)

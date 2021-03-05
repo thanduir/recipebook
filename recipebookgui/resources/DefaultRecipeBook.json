@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "df2f3907-53a2-43a6-9593-05a7fc6318d3",
+        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
         "version": 2
     },
     "alternativesTypes": {
@@ -48,11 +48,11 @@
             "Halbfertigprodukte",
             "Konserven",
             "Milchprodukte",
+            "Öle und Saucen",
             "Restliches",
             "Salate",
             "Teigwaren, Reis und Kartoffelprodukte",
-            "Tiefgefrohrenes",
-            "Öle und Saucen"
+            "Tiefgefrohrenes"
         ],
         "sortOrders": {
             "Coop-Nicole": [
@@ -1064,6 +1064,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Kokoswasser": {
+            "category": "Getränke",
+            "default-unit": "Deciliter",
+            "unavailableProvenances": [
+            ]
+        },
         "Koriander": {
             "category": "Gewürze",
             "default-unit": "Count",
@@ -1131,9 +1137,21 @@
             "unavailableProvenances": [
             ]
         },
+        "Lattich": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Lauch": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Limette": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -1206,6 +1224,12 @@
         "Medikament": {
             "category": "Apotheke",
             "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Meeresfrucht": {
+            "category": "Fleisch und Fisch",
+            "default-unit": "Gram",
             "unavailableProvenances": [
             ]
         },
@@ -1416,6 +1440,12 @@
         "Pommes Frites": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Poulet (ganz)": {
+            "category": "Fleisch und Fisch",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -2006,6 +2036,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Thai-Basilikum": {
+            "category": "Gewürze",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Thon": {
             "category": "Konserven",
             "default-unit": "Count",
@@ -2225,6 +2261,12 @@
         },
         "Zitrone": {
             "category": "Früchte und Gemüse",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Zitronengras": {
+            "category": "Gewürze",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -3652,7 +3694,7 @@
             }
         },
         "Bünder Gratin": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:50",
             "NrPersons": 2,
             "ShortDesc": "Capuns in schnell.",
             "Text": "Krautstiel in Streifen schneiden und in der siedenden Bouillon kurz köcheln lassen. Abgiessen und dabei 1dl Bouillon beiseite stellen, abkühlen lassen. \nDie Hälfte des Krautstiels in eine ausgefettete, ofenfeste Form geben.\nMehl, Milch, Eier und Muskatnuss verrühren. Salsiz und Käse in Würfelchen schneiden, alles mit Schnittlauch unter die Masse mischen und diese in die Form geben.\nRestlichen Krautstiel darauf verteilen, die Bouillon mit dem Saucenhalbrahm verrühren und mit dem restlichen Käse darüber geben.\nCa. 25 Min. in der Mitte des auf 220° vorgeheizten Ofens backen.",
@@ -3698,8 +3740,8 @@
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
-                        "max": 600,
-                        "min": 500,
+                        "max": 400,
+                        "min": 350,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -3711,7 +3753,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 220,
+                        "min": 180,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -3758,8 +3800,8 @@
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
-                        "max": -1,
-                        "min": 200,
+                        "max": 200,
+                        "min": 150,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -4115,6 +4157,122 @@
                 }
             }
         },
+        "Croque Madame": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Ofen auf 220° vorheizen.\n\nKäse und Apfel grob raffeln, mischen.\n\n4 Toastscheiben mit Béchamelsauce bestreichen, Schinken darauf legen. Hälfte der Käse-Apfel-Mischung auf den Toasts verteilen. Mit den anderen 4 Toasts bedecken, andrücken.\n\nRestliche Sauce und Käse-Apfel-Mischung darauf verteilen.\n\nca. 10 Minuten in der Mitte des Ofens backen.\n\nSpiegeleier braten, auf den Toasts anrichten.",
+            "items": {
+                "Apfel": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Butter": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 20,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Béchamelsauce": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Bündner Bergkäse": {
+                    "_position": 4,
+                    "additionalInfo": "oder anderer halbhart Käse",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 120,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Ei": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 4,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Toast": {
+                    "_position": 1,
+                    "additionalInfo": "Scheiben",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 8,
+                        "min": 6,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Toastschinken": {
+                    "_position": 3,
+                    "additionalInfo": "Tranchen",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 8,
+                        "min": 3,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Curry Classic": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -4261,6 +4419,18 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Frucht": {
+                    "_position": 13,
+                    "additionalInfo": "zu Cornflakes",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Humus": {
                     "_position": 9,
                     "additionalInfo": "",
@@ -4359,6 +4529,18 @@
                 },
                 "Schoggi Joghurt": {
                     "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Spinatplätzli": {
+                    "_position": 14,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -5355,6 +5537,110 @@
                 }
             }
         },
+        "Fusilli al Spinaci": {
+            "CookingTime": "00:25",
+            "NrPersons": 2,
+            "ShortDesc": "Spiralen mit Huhn",
+            "Text": "Pasta al dente kochen und abgiessen. 2dl Kochwasser beiseite stellen. Pasta zurück in die Pfanne geben, Zitronenschale darüber reiben, Saft aus pressen und mit den Pasta verrühren.\n\nFrühlingszwiebeln in Ringe schneiden, in etwas Öl anbraten und abschliessen den Jungspinat darunter mischen, alles zusammen mit dem Kochwasser und den Pasta vermischen.\n\nFeta zerbröckenln und darüber geben.",
+            "items": {
+                "Feta": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Frühlingszwiebeln": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 2,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Rapsöl": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Spinat (frisch, jung)": {
+                    "_position": 4,
+                    "additionalInfo": "oder gefrohren",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 350,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Teigwaren (Fusilli)": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitrone": {
+                    "_position": 5,
+                    "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Gefüllte Peperoni": {
             "CookingTime": "01:20",
             "NrPersons": 2,
@@ -5579,7 +5865,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Tofu in Scheiben schneiden, mit Zitronensaft und Sojasauce marinieren.\n\nReis mit Sultaninen im Salzwasser kochen.\n\nKarotte in dünne Scheibchen und Lauch in Ringe schneiden. Chilis kleinschneiden. Alles Gemüse zusammen anbraten und mit Sojasauce ablöschen.\n\nTofu separat braten.\n\n",
             "items": {
                 "Chili-Schote (rot)": {
                     "_position": 0,
@@ -7251,6 +7537,122 @@
                 }
             }
         },
+        "Krautstiel-Pizza": {
+            "CookingTime": "00:40",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Ofen auf 240° vorheizen.\n\nKrautstiel in Streifen schneiden, Zwiebel in Shcnitze schneiden, mit Öl und Salz in einer Schüssel mischen.\n\nTeig auf einem mit Backpapier belegtem Blech auslegen. Crème Fraîche und Speckwürfelchen darauf verteilen, Gemüse darüber streuchen und mit Käse abschliessen.\n\n30 Min. auf der untersten Rille backen. Würzen.",
+            "items": {
+                "Crème Fraiche": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Fertig-Pizza": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Krautstiel": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Parmesan": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 80,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Rapsöl": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Speckwürfel": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zwiebel": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Kräuterreis mit Auberginen-Piccata": {
             "CookingTime": "00:50",
             "NrPersons": 2,
@@ -8539,7 +8941,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Schalotte und Nüsse fein hacken.\n\nÖl in einer Pfanne erhitzen, Schalotte und Reis dazu geben, bis dieser glasig ist, mit Wein ablöschen. Bouillon dazu geben und 20 Min köcheln lasssen.\nRosmarin, Butter, Parmesan und Nüsse unter den Risotto rühren.\n\nBrie in Scheiben schneiden und darauf verteilen.\n\nSalat oder Gemüse dazu servieren.",
             "items": {
                 "Bouillon (Gemüse)": {
                     "_position": 0,
@@ -8561,6 +8963,18 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Gemüse": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -8617,6 +9031,18 @@
                     "_position": 6,
                     "additionalInfo": "frisch",
                     "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salat": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -8720,10 +9146,10 @@
             }
         },
         "Ofen-Kartoffel-Gemüse mit Poulet": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:50",
             "NrPersons": 2,
             "ShortDesc": "Grosses Blech mit Allem.",
-            "Text": "Ofen auf 220° vorheizen. Kartoffeln halbieren, Gemüse in Streifen schneiden und dann mit Öl, Salbei, Salz und Pfeffer in einer Schüssel mischen, anschliessend auf einem Blech verteilen. Zitrone in Schnitzen darüber verteilen. Für ca. 10 Minuten in der Mitte das Ofens backen.\nPouletbrüstchen flach drücken, Käse und Salbei darauf legen und mit Rohschinken umwickeln.\nPouletbrüstchen zum Rest auf das Blech legen und nochmals für 20 Minuten fertig backen.",
+            "Text": "Ofen auf 220° vorheizen. \n\nKartoffeln halbieren, Gemüse in Streifen schneiden und dann mit Öl, Salbei, Salz und Pfeffer in einer Schüssel mischen, anschliessend auf einem Blech verteilen. Zitrone in Schnitzen darüber verteilen. \n\nFür ca. 10 Minuten in der Mitte das Ofens backen.\n\nPouletbrüstchen flach drücken, Käse und Salbei darauf legen und mit Rohschinken umwickeln.\nPouletbrüstchen zum Rest auf das Blech legen und nochmals für 20 Minuten fertig backen.\n\nODER: ganzes Poulet kalt abspülen und danach trocken tupfen. Neben dem Rückenknochen durchtrennen, damit es sich flach drücken lässt. Paprika, Salz, Pfeffer und Öl mischen, Poulet damit bestreichen und neben dem Gemüse auf das Blech legen - für die vollen 30 Minuten mitbacken.",
             "items": {
                 "Karotte": {
                     "_position": 2,
@@ -8747,6 +9173,18 @@
                         "unit": "Gram"
                     },
                     "optional": false,
+                    "size": "Normal"
+                },
+                "Paprika": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": true,
                     "size": "Normal"
                 },
                 "Peperoni": {
@@ -8773,10 +9211,22 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Poulet (ganz)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Pouletbrust": {
                     "_position": 9,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -8786,9 +9236,9 @@
                     "size": "Normal"
                 },
                 "Raclettekäse": {
-                    "_position": 8,
+                    "_position": 10,
                     "additionalInfo": "Scheiben",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
                         "min": 4,
@@ -8810,9 +9260,9 @@
                     "size": "Normal"
                 },
                 "Rohschinken": {
-                    "_position": 10,
+                    "_position": 11,
                     "additionalInfo": "Tranchen",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
                         "min": 4,
@@ -10516,10 +10966,10 @@
             }
         },
         "Poulet-Blech mit (Süss-)Kartoffeln": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "",
+            "Text": "Ofen auf 200° vorheizen.\n\nKartoffeln und Kohlrabi in Schnitze schneiden, mit Öl, Salz und Pfeffer in einer Schüssel mischen und danach auf dem mit Backpapier belegten Blech verteilen. Für 15 Minuten in der Mitte des Ofens backen.\n\nFrühlingszwiebeln fein schneiden. Honig und Sojasauce vermischen, das Poulet damit marinieren.\n\nNach erster Backphase Fleisch und Zwiebeln auf das Blech dazu legen, nochmals 15 Minuten im Ofen lassen.",
             "items": {
                 "Frühlingszwiebeln": {
                     "_position": 0,
@@ -11331,6 +11781,98 @@
                 }
             }
         },
+        "Raclette-Kartoffeln": {
+            "CookingTime": "00:50",
+            "NrPersons": 1,
+            "ShortDesc": "Schweizer Klassiker im Ofen",
+            "Text": "Ofen auf 220° vorheizen.\n\nKartoffeln kreuzweise ca. 2cm tief einschneiden, in eine eingefettete Form legen. 30 Minuten in der unteren Hälfte des Ofens backen.\n\nLattich in Streifen schneiden. Form aus dem Ofen nehmen, Kartoffeln etwas aufbrechen. Gemüse derum verteilen, würzen. Käse auf den kartoffeln verteilen, Thymian und grob gehackte Nüsse darüber geben.\n\nNochmals 10 Minuten in der oberen Hälfte des Ofens backen, mit Paprika würzen.",
+            "items": {
+                "Haselnüsse (geschält)": {
+                    "_position": 6,
+                    "additionalInfo": "ungeschält auch ok",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 100,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kartoffeln": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Lattich": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Paprika": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Raclettekäse": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 300,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Thymian": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Ratatouille": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -11384,6 +11926,170 @@
                     },
                     "optional": false,
                     "size": "Small"
+                }
+            }
+        },
+        "Reis mit asiatischem Hackfleisch": {
+            "CookingTime": "00:25",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Zitronenschale abreiben, mit dem Saft, dem Zucker, der Sojasauce und dem Wasser vermischen. Zitronengras fein schneiden und evenfalls in die Sauce geben.\n\nHackfleisch anbraten und würzen, Sauce dazugiessen, zugedeckt 15 Min köcheln lassen, dann den Spinat darunter mischen.\n\nReis parallel dazu kochen.\n\nAllenfalls mit Thai-Basilikum und Cashew-Nüssen garnieren.",
+            "items": {
+                "Cashewnüsse ": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 40,
+                        "unit": "Gram"
+                    },
+                    "optional": true,
+                    "size": "Normal"
+                },
+                "Erdnussöl": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Hackfleisch (Rind)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 350,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Reis (Basmati)": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sojasauce": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Spinat (frisch, jung)": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 300,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Thai-Basilikum": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": true,
+                    "size": "Normal"
+                },
+                "Wasser": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitrone": {
+                    "_position": 0,
+                    "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitronengras": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zucker": {
+                    "_position": 1,
+                    "additionalInfo": "Rohzucker",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
                 }
             }
         },
@@ -12197,6 +12903,158 @@
                         "max": -1,
                         "min": 200,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Rotes Thai-Curry mit Crevetten": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Reis abspülen, danach im Kokoswasser kochen. Häfte des Ingwers ins Kochwasser dazu reiben.\n\nAnanas, Pak Choi und Rest des Ingwers klein schneiden. 3 Minuten mit etwas Öl rührbraten.\n\nCurrypaste andämpfen, Limettensaft dazugiessen und einkochen lassen. Kokosmilch und etwas Wasser dazu geben, salzen und ca. 10 Min köcheln lassen. Abschliessend Gemüse zum warm werden wieder beigeben.\n\nMeeresfrüchte und Fleisch separat in Öl braten, alles vermischen.",
+            "items": {
+                "Ananas": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Small"
+                },
+                "Currypaste (rot)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Erdnussöl": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Ingwer": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 40,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosmilch (Light)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokoswasser": {
+                    "_position": 1,
+                    "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 4,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Limette": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Meeresfrucht": {
+                    "_position": 10,
+                    "additionalInfo": "Crevetten oder Jakosbmuscheln",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pak Choi": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 350,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pouletgeschnetzeltes": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Reis (Basmati)": {
+                    "_position": 0,
+                    "additionalInfo": "oder Perfüm",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -13334,7 +14192,7 @@
             "Text": "Spaghetti knapp al dente kochen.\nSchinkenwürfelchen (und Peperoni) in einer Pfanne knusprig braten (und 8 Min. dämpfen).\nPfanne von der Platte nehmen; Pasta, Eier, Rahm, Pfeffer und Salz dazu geben und kräftig verrühren. Parmesan darunter mischen.\nEntweder Salat dazu servieren, oder dünne Peperonistreifchen mit den Schinkenwürfelchen weich dämpfen und zu den Spaghetti mischen.",
             "items": {
                 "Ei": {
-                    "_position": 2,
+                    "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13346,7 +14204,7 @@
                     "size": "Normal"
                 },
                 "Halbrahm": {
-                    "_position": 3,
+                    "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13358,7 +14216,7 @@
                     "size": "Normal"
                 },
                 "Parmesan": {
-                    "_position": 4,
+                    "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13370,7 +14228,7 @@
                     "size": "Normal"
                 },
                 "Peperoni": {
-                    "_position": 7,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13382,7 +14240,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
-                    "_position": 5,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13394,7 +14252,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
-                    "_position": 6,
+                    "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13406,7 +14264,7 @@
                     "size": "Normal"
                 },
                 "Schinkenwürfelchen": {
-                    "_position": 1,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -13425,6 +14283,122 @@
                         "max": -1,
                         "min": 200,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Spaghetti Carbonara (light)": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "Carbonara etwas anders.",
+            "Text": "Spaghetti knapp al dente kochen und ca. 1dl Salzwasser beiseite stellen.\n\nSchinken und Lauch in Streifen schneiden, für ca. 5 Minuten mit Öl andämpfen.\n\nFrischkäse, Pastawasser, Eier, (Parmesan) und Zitronenschale verrühren, würzen, zu den Pasta geben und gut mischen.",
+            "items": {
+                "Ei": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Frischkäse": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 150,
+                        "min": 100,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Lauch": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Parmesan": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 50,
+                        "unit": "Gram"
+                    },
+                    "optional": true,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schinken": {
+                    "_position": 8,
+                    "additionalInfo": "\"Rauchhamme\" (dick)",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Spaghetti": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitrone": {
+                    "_position": 7,
+                    "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -13840,6 +14814,98 @@
                     "amount": {
                         "max": -1,
                         "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Spätzli mit Wirz-Lauch": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "Etwas flexibles Anderes.",
+            "Text": "(Quark-)Spätzli goldbraun braten.\n\nLauch längs halbieren, waschen und in Ringe schneiden. Wirz vierteln und ebenfalls in Streifen schneiden. In einer Bratpfanne im Butter andämpfen. Apfelwein und Sojasauce dazu geben, zugedeckt 5 Minuten köcheln lassen.\n\nSpeck ohne Fett langsam knusprig braten, Spätzli in derselben Pfanne nochmals kurz warm werden lassen. Alles mischen und servieren.",
+            "items": {
+                "Butter": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Lauch": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sojasauce": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Speck": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 220,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Spätzli": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Suure Moscht": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Wirz": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -15458,7 +16524,7 @@
             "Title": "Das Kochbuch",
             "items": {
                 "Asia Nudeln": {
-                    "_position": 42,
+                    "_position": 44,
                     "type": "Recipe"
                 },
                 "Auberginen-Auflauf": {
@@ -15466,7 +16532,7 @@
                     "type": "Recipe"
                 },
                 "Auberginen-Zitronen-Risotto": {
-                    "_position": 56,
+                    "_position": 59,
                     "type": "Recipe"
                 },
                 "Berner-Rösti mit Salat": {
@@ -15474,7 +16540,7 @@
                     "type": "Recipe"
                 },
                 "Bibimbap": {
-                    "_position": 73,
+                    "_position": 78,
                     "type": "Recipe"
                 },
                 "Birnen-Nuss-Wähe": {
@@ -15482,43 +16548,47 @@
                     "type": "Recipe"
                 },
                 "Blumenkohl-Wraps": {
-                    "_position": 85,
+                    "_position": 93,
                     "type": "Recipe"
                 },
                 "Broccoli-Couscous mit Grillkäse": {
-                    "_position": 101,
+                    "_position": 110,
                     "type": "Recipe"
                 },
                 "Broccoli-Peperoni-Nudeln": {
-                    "_position": 36,
+                    "_position": 37,
                     "type": "Recipe"
                 },
                 "Burger mit Brötchen mit Salat": {
-                    "_position": 98,
+                    "_position": 107,
                     "type": "Recipe"
                 },
                 "Bünder Gratin": {
-                    "_position": 88,
-                    "type": "Recipe"
-                },
-                "Chatschapuri": {
                     "_position": 96,
                     "type": "Recipe"
                 },
+                "Chatschapuri": {
+                    "_position": 105,
+                    "type": "Recipe"
+                },
                 "China-Gemüse mit sweet Tofu": {
-                    "_position": 68,
+                    "_position": 71,
                     "type": "Recipe"
                 },
                 "Clafuti": {
                     "_position": 1,
                     "type": "Recipe"
                 },
+                "Croque Madame": {
+                    "_position": 90,
+                    "type": "Recipe"
+                },
                 "Curry Classic": {
-                    "_position": 70,
+                    "_position": 73,
                     "type": "Recipe"
                 },
                 "Edamame-Noodles mit Pesto": {
-                    "_position": 82,
+                    "_position": 88,
                     "type": "Recipe"
                 },
                 "Fotzelschnitten": {
@@ -15530,39 +16600,43 @@
                     "type": "Recipe"
                 },
                 "Frühlings-Spaghetti": {
-                    "_position": 46,
+                    "_position": 48,
                     "type": "Recipe"
                 },
                 "Frühlingsrisotto": {
-                    "_position": 58,
+                    "_position": 61,
                     "type": "Recipe"
                 },
                 "Fusilli al Pollo": {
-                    "_position": 41,
+                    "_position": 42,
+                    "type": "Recipe"
+                },
+                "Fusilli al Spinaci": {
+                    "_position": 43,
                     "type": "Recipe"
                 },
                 "Gefüllte Peperoni": {
-                    "_position": 69,
+                    "_position": 72,
                     "type": "Recipe"
                 },
                 "Gemüsepfanne mit Reis": {
-                    "_position": 66,
+                    "_position": 69,
                     "type": "Recipe"
                 },
                 "Gemüsereis mit Tofu": {
-                    "_position": 67,
+                    "_position": 70,
                     "type": "Recipe"
                 },
                 "Gnocchi mit Krautstiel": {
-                    "_position": 89,
+                    "_position": 97,
                     "type": "Recipe"
                 },
                 "Gnocchi-Pilz-Pfanne": {
-                    "_position": 91,
+                    "_position": 99,
                     "type": "Recipe"
                 },
                 "Gnocchi-Tomaten-Pfanne": {
-                    "_position": 90,
+                    "_position": 98,
                     "type": "Recipe"
                 },
                 "Header_Brunch - Diverses": {
@@ -15572,7 +16646,7 @@
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Diverses": {
-                    "_position": 76,
+                    "_position": 81,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Diverses",
                     "type": "Header"
@@ -15584,25 +16658,25 @@
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Pasta": {
-                    "_position": 32,
+                    "_position": 33,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Pasta",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Reis": {
-                    "_position": 54,
+                    "_position": 57,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Reis",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Sommersalate": {
-                    "_position": 99,
+                    "_position": 108,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Sommersalate",
                     "type": "Header"
                 },
                 "Header_Wechsel-Grünzeug": {
-                    "_position": 106,
+                    "_position": 115,
                     "headerLevel": 0,
                     "name": "Wechsel-Grünzeug",
                     "type": "Header"
@@ -15612,11 +16686,11 @@
                     "type": "Recipe"
                 },
                 "Hörnli mit Gehacktem": {
-                    "_position": 44,
+                    "_position": 46,
                     "type": "Recipe"
                 },
                 "Hörnli-Auflauf": {
-                    "_position": 53,
+                    "_position": 56,
                     "type": "Recipe"
                 },
                 "Kaiserschmarn": {
@@ -15632,19 +16706,27 @@
                     "type": "Recipe"
                 },
                 "Kartoffel-Salat": {
-                    "_position": 104,
+                    "_position": 113,
                     "type": "Recipe"
                 },
                 "Kokos-Rind One-Pot": {
-                    "_position": 72,
+                    "_position": 77,
                     "type": "Recipe"
                 },
                 "Krautstiel Wok Nudeln": {
-                    "_position": 40,
+                    "_position": 41,
+                    "type": "Recipe"
+                },
+                "Krautstiel-Pizza": {
+                    "_position": 83,
                     "type": "Recipe"
                 },
                 "Kräuterreis mit Auberginen-Piccata": {
-                    "_position": 63,
+                    "_position": 66,
+                    "type": "Recipe"
+                },
+                "Käseschnitten": {
+                    "_position": 91,
                     "type": "Recipe"
                 },
                 "Lachs mit Salzkartoffeln": {
@@ -15652,19 +16734,19 @@
                     "type": "Recipe"
                 },
                 "Lachs-Käse-Wähe mit Salat": {
-                    "_position": 80,
+                    "_position": 86,
                     "type": "Recipe"
                 },
                 "Lasagne Classic": {
-                    "_position": 49,
+                    "_position": 52,
                     "type": "Recipe"
                 },
                 "Lauch-Pilz-Lasagne": {
-                    "_position": 51,
+                    "_position": 54,
                     "type": "Recipe"
                 },
                 "Lauchrisotto mit Fleisch": {
-                    "_position": 59,
+                    "_position": 62,
                     "type": "Recipe"
                 },
                 "Moussaka": {
@@ -15676,11 +16758,11 @@
                     "type": "Recipe"
                 },
                 "Nudel-Vogelnester": {
-                    "_position": 33,
+                    "_position": 34,
                     "type": "Recipe"
                 },
                 "Nussrisotto mit Brie": {
-                    "_position": 62,
+                    "_position": 65,
                     "type": "Recipe"
                 },
                 "Ofen-Kartoffel-Gemüse mit Cipollata": {
@@ -15692,11 +16774,11 @@
                     "type": "Recipe"
                 },
                 "Ofen-Tortillas": {
-                    "_position": 86,
+                    "_position": 94,
                     "type": "Recipe"
                 },
                 "Ofengemüse": {
-                    "_position": 107,
+                    "_position": 116,
                     "type": "Recipe"
                 },
                 "Omelette": {
@@ -15704,11 +16786,11 @@
                     "type": "Recipe"
                 },
                 "One-Pot-Pasta": {
-                    "_position": 43,
+                    "_position": 45,
                     "type": "Recipe"
                 },
                 "Paella": {
-                    "_position": 55,
+                    "_position": 58,
                     "type": "Recipe"
                 },
                 "Pancakes": {
@@ -15716,31 +16798,31 @@
                     "type": "Recipe"
                 },
                 "Pasta mit Fleisch": {
-                    "_position": 45,
+                    "_position": 47,
                     "type": "Recipe"
                 },
                 "Pasta mit Rahmspinat und Champignons": {
-                    "_position": 38,
-                    "type": "Recipe"
-                },
-                "Pastete Italiana": {
-                    "_position": 81,
-                    "type": "Recipe"
-                },
-                "Pastetli mit Tofu und Champignons": {
-                    "_position": 94,
-                    "type": "Recipe"
-                },
-                "Penne mit Lachs und Spargel": {
                     "_position": 39,
                     "type": "Recipe"
                 },
+                "Pastete Italiana": {
+                    "_position": 87,
+                    "type": "Recipe"
+                },
+                "Pastetli mit Tofu und Champignons": {
+                    "_position": 103,
+                    "type": "Recipe"
+                },
+                "Penne mit Lachs und Spargel": {
+                    "_position": 40,
+                    "type": "Recipe"
+                },
                 "Pilz-Risotto": {
-                    "_position": 57,
+                    "_position": 60,
                     "type": "Recipe"
                 },
                 "Pizza": {
-                    "_position": 77,
+                    "_position": 82,
                     "type": "Recipe"
                 },
                 "Pommes und Cordon bleu": {
@@ -15756,43 +16838,55 @@
                     "type": "Recipe"
                 },
                 "Quiche Lorraine": {
-                    "_position": 79,
+                    "_position": 85,
                     "type": "Recipe"
                 },
                 "Quinoa-Salat": {
-                    "_position": 103,
+                    "_position": 112,
                     "type": "Recipe"
                 },
                 "Raclette": {
+                    "_position": 32,
+                    "type": "Recipe"
+                },
+                "Raclette-Kartoffeln": {
                     "_position": 31,
                     "type": "Recipe"
                 },
                 "Ratatouille": {
-                    "_position": 108,
+                    "_position": 117,
+                    "type": "Recipe"
+                },
+                "Reis mit asiatischem Hackfleisch": {
+                    "_position": 76,
                     "type": "Recipe"
                 },
                 "Reis- oder Hörnlisalat": {
-                    "_position": 102,
+                    "_position": 111,
                     "type": "Recipe"
                 },
                 "Reispfanne italiana": {
-                    "_position": 65,
+                    "_position": 68,
                     "type": "Recipe"
                 },
                 "Ricotta-Spinat-Penne": {
-                    "_position": 37,
+                    "_position": 38,
                     "type": "Recipe"
                 },
                 "Risotto mit Chicorée-Piccata": {
-                    "_position": 61,
+                    "_position": 64,
                     "type": "Recipe"
                 },
                 "Riz Casimir": {
-                    "_position": 74,
+                    "_position": 79,
                     "type": "Recipe"
                 },
                 "Rosenkohl-Lauch-Kartoffeln": {
                     "_position": 18,
+                    "type": "Recipe"
+                },
+                "Rotes Thai-Curry mit Crevetten": {
+                    "_position": 75,
                     "type": "Recipe"
                 },
                 "Rösti mit Bratwurst": {
@@ -15800,7 +16894,7 @@
                     "type": "Recipe"
                 },
                 "Salat": {
-                    "_position": 109,
+                    "_position": 118,
                     "type": "Recipe"
                 },
                 "Salzkartoffeln mit Fleisch": {
@@ -15816,43 +16910,51 @@
                     "type": "Recipe"
                 },
                 "Schupfnudeln mit Spargeln": {
-                    "_position": 93,
+                    "_position": 102,
                     "type": "Recipe"
                 },
                 "Shakshuka": {
-                    "_position": 97,
+                    "_position": 106,
                     "type": "Recipe"
                 },
                 "Sommerfladen": {
-                    "_position": 87,
-                    "type": "Recipe"
-                },
-                "Sommerwähe": {
-                    "_position": 78,
-                    "type": "Recipe"
-                },
-                "Spaghetti Bolognese": {
-                    "_position": 47,
-                    "type": "Recipe"
-                },
-                "Spaghetti Carbonara": {
-                    "_position": 48,
-                    "type": "Recipe"
-                },
-                "Spargel-Erdbeer-Salat": {
-                    "_position": 105,
-                    "type": "Recipe"
-                },
-                "Spinat-Pilz Lasagne": {
-                    "_position": 50,
-                    "type": "Recipe"
-                },
-                "Spinat-Tomaten-Brotauflauf": {
                     "_position": 95,
                     "type": "Recipe"
                 },
+                "Sommerwähe": {
+                    "_position": 84,
+                    "type": "Recipe"
+                },
+                "Spaghetti Bolognese": {
+                    "_position": 49,
+                    "type": "Recipe"
+                },
+                "Spaghetti Carbonara": {
+                    "_position": 50,
+                    "type": "Recipe"
+                },
+                "Spaghetti Carbonara (light)": {
+                    "_position": 51,
+                    "type": "Recipe"
+                },
+                "Spargel-Erdbeer-Salat": {
+                    "_position": 114,
+                    "type": "Recipe"
+                },
+                "Spinat-Pilz Lasagne": {
+                    "_position": 53,
+                    "type": "Recipe"
+                },
+                "Spinat-Tomaten-Brotauflauf": {
+                    "_position": 104,
+                    "type": "Recipe"
+                },
                 "Spätzli mit Rahm-Geschnetzeltem": {
-                    "_position": 92,
+                    "_position": 100,
+                    "type": "Recipe"
+                },
+                "Spätzli mit Wirz-Lauch": {
+                    "_position": 101,
                     "type": "Recipe"
                 },
                 "Stocki mit Plätzli": {
@@ -15860,43 +16962,43 @@
                     "type": "Recipe"
                 },
                 "Süss-Sauer": {
-                    "_position": 75,
+                    "_position": 80,
                     "type": "Recipe"
                 },
                 "Taboulé": {
-                    "_position": 100,
+                    "_position": 109,
                     "type": "Recipe"
                 },
                 "Thai Pasta Light a la Metaldays": {
-                    "_position": 35,
+                    "_position": 36,
                     "type": "Recipe"
                 },
                 "Thai Pasta a la Metaldays": {
-                    "_position": 34,
+                    "_position": 35,
                     "type": "Recipe"
                 },
                 "Thai-Curry": {
-                    "_position": 71,
+                    "_position": 74,
                     "type": "Recipe"
                 },
                 "Toast Hawaii": {
-                    "_position": 83,
+                    "_position": 89,
                     "type": "Recipe"
                 },
                 "Tomatenrisotto mit Fleisch": {
-                    "_position": 60,
+                    "_position": 63,
                     "type": "Recipe"
                 },
                 "Trockenreis mit Lachs und Dill-Sauce": {
-                    "_position": 64,
+                    "_position": 67,
                     "type": "Recipe"
                 },
                 "Wraps": {
-                    "_position": 84,
+                    "_position": 92,
                     "type": "Recipe"
                 },
                 "Zitronen-Lasagne": {
-                    "_position": 52,
+                    "_position": 55,
                     "type": "Recipe"
                 },
                 "Zopf mit Brie und Confiture": {
