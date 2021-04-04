@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.18)
 
 project(RecipeBook VERSION 0.5)
 
 # Qt path
 if(ANDROID)
-    set(MY_QT_PATH "C:/Qt/5.15.2/android")
+    set(MY_QT_PATH "C:/Qt/6.0.3/android")
 else()
-    set(MY_QT_PATH "C:/Qt/5.15.2/msvc2019_64")
+    set(MY_QT_PATH "C:/Qt/6.0.3/msvc2019_64")
 endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})

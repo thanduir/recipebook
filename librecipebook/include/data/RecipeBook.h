@@ -1,7 +1,6 @@
 #ifndef RECIPEBOOK_RECIPEBOOK_H
 #define RECIPEBOOK_RECIPEBOOK_H
 
-#include <QLinkedList>
 #include <QSharedPointer>
 #include <QString>
 #include "Unit.h"

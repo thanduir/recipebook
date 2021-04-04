@@ -2,8 +2,9 @@ import QtQml 2.15
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import Qt.labs.calendar 1.0
+//import Qt.labs.calendar 1.0
 
+// TODO: THIS!
 Dialog {
 	id: dlgCalendar
 	modal: true
@@ -59,7 +60,7 @@ Dialog {
 
 		property date selectedDate: new Date()
 
-		delegate: GridLayout {
+		/*delegate: GridLayout {
 			width: listview.width
 			height: listview.height
 			visible: index == listview.currentIndex
@@ -115,12 +116,12 @@ Dialog {
 					}
 				}
 			}
-		}
+		}*/
 
 		ScrollIndicator.horizontal: ScrollIndicator { }
 	}
 
-	Component {
+	/*Component {
 		id: calendarModelComponent
 		CalendarModel {
 			id: calendarModel
@@ -131,7 +132,7 @@ Dialog {
 
 	onAboutToShow: {
 		listview.model = calendarModelComponent.createObject(parent);
-	}
+	}*/
 
 	footer: DialogButtonBox {
 		id: buttons

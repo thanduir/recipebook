@@ -1,4 +1,4 @@
-find_package(Qt5 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
 
 set(TS_FILES translations/recipebookgui_de.ts translations/recipebookgui_en.ts)
 
@@ -23,7 +23,7 @@ set(RECIPEBOOK_FILES    src/main.cpp src/RBDialogInterface.cpp src/RBTranslation
                         src/exporter/RecipeBookExporter.cpp src/exporter/RecipeBookExporterLatex.cpp
                         src/exporter/ShoppingListExporter.cpp src/exporter/ShoppingListExporterLatex.cpp)
 
-qt5_create_translation(QM_FILES qml/desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
+qt6_create_translation(QM_FILES qml/desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES})
 
 if(NOT ANDROID)
 
@@ -39,7 +39,7 @@ else()
 endif()
 
 target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-target_link_libraries(RecipeBook Qt5::Core Qt5::Gui Qt5::Network Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
+target_link_libraries(RecipeBook Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
 foreach(file_i ${QM_FILES})
         add_custom_command(

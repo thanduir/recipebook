@@ -1,13 +1,13 @@
-import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
+import Qt.labs.platform 1.1
 
 import "components"
 
-Dialog {
+Popup {
 	modal: true
-
+	
 	x: (parent.width - width) / 2
 	y: (parent.height - height) / 2 - 25
 
@@ -47,6 +47,8 @@ Dialog {
 		title: qsTr("Set existing server file id")
 		onAccepted: recipeBookSynchronization.setServerFileId(outputText)
 	}
+
+	// TODO: title: qsTr("Settings")
 
 	Pane {
 		id: paneSettings
@@ -289,9 +291,7 @@ Dialog {
 								title: qsTr("Generate recipe book pdf")
 								modality: Qt.WindowModal
 								nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
-								selectExisting: true
-								selectMultiple: false
-								selectFolder: false
+								fileMode: FileDialog.OpenFile
 								onAccepted: {
 									recipeBookSettings.setPdfLatexFile(fileUrls)
 									txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
@@ -331,11 +331,13 @@ Dialog {
 		spinSyncReminder.value = recipeBookSettings.getSyncReminderInterval();
 	}
 
-	footer: DialogButtonBox {
-		Button {
-			text: qsTr("Close")
-			DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
-			flat: true
-		}
+	Button {
+		anchors.right: parent.right
+		anchors.bottom: parent.bottom
+
+		text: qsTr("Close")
+
+		flat: true
+		onClicked: close()
 	}
 }

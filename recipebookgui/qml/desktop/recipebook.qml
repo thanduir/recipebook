@@ -1,8 +1,8 @@
-import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Window 2.14
 import QtQuick.Layouts 1.14
+import Qt.labs.platform 1.1
 
 import "components"
 
@@ -51,9 +51,7 @@ ApplicationWindow {
 					title: qsTr("Import file")
 					modality: Qt.WindowModal
 					nameFilters: importExportFilters
-					selectExisting: true
-					selectMultiple: false
-					selectFolder: false
+					fileMode: FileDialog.OpenFile
 					signal onImport(filename: string)
 					onAccepted: dlgConfirmImportFile.open()
 				}
@@ -84,9 +82,7 @@ ApplicationWindow {
 					title: qsTr("Export data")
 					modality: Qt.WindowModal
 					nameFilters: importExportFilters
-					selectExisting: false
-					selectMultiple: false
-					selectFolder: false
+					fileMode: FileDialog.SaveFile
 					signal onExport(filename: string)
 					onAccepted: onExport(fileDialogExport.fileUrls)
 				}
@@ -104,7 +100,6 @@ ApplicationWindow {
 
 	SettingsDialog {
 		id: dlgSettings
-		title: qsTr("Settings")
 	}
 
 	TabBar {

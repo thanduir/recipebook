@@ -1,6 +1,6 @@
-import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import Qt.labs.platform 1.1
 
 Item {
 	onVisibleChanged: {
@@ -174,9 +174,7 @@ Item {
 			title: qsTr("Export shopping list")
 			modality: Qt.WindowModal
 			nameFilters: shoppingListExporter.getDlgNameFilters()
-			selectExisting: false
-			selectMultiple: false
-			selectFolder: false
+			fileMode: FileDialog.SaveFile
 			onAccepted: shoppingListExporter.exportShoppingList(fileUrls, cbxSortOrder.currentText)
 		}
 	}

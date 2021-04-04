@@ -88,8 +88,8 @@
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
    <value type="QString" key="DeviceType">Android.Device.Type</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android Qt 5.15.2 Clang Multi-Abi</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android Qt 5.15.2 Clang Multi-Abi</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android Qt 6.0.2 Clang Multi-Abi</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android Qt 6.0.2 Clang Multi-Abi</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{31960427-0380-4154-82b3-a32a91f2e9ab}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
@@ -108,7 +108,7 @@
 -DANDROID_SDK:PATH=C:/Users/phil/AppData/Local/Android/sdk
 -DANDROID_STL:STRING=c++_shared
 -DCMAKE_FIND_ROOT_PATH:PATH=%{Qt:QT_INSTALL_PREFIX}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_5_15_2_Clang_Multi_Abi-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_6_0_2_Clang_Multi_Abi-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
@@ -163,7 +163,7 @@
 -DANDROID_SDK:PATH=C:/Users/phil/AppData/Local/Android/sdk
 -DANDROID_STL:STRING=c++_shared
 -DCMAKE_FIND_ROOT_PATH:PATH=%{Qt:QT_INSTALL_PREFIX}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_5_15_2_Clang_Multi_Abi-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_6_0_2_Clang_Multi_Abi-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
@@ -220,7 +220,7 @@
 -DANDROID_SDK:PATH=C:/Users/phil/AppData/Local/Android/sdk
 -DANDROID_STL:STRING=c++_shared
 -DCMAKE_FIND_ROOT_PATH:PATH=%{Qt:QT_INSTALL_PREFIX}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_5_15_2_Clang_Multi_Abi-RelWithDebInfo</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_6_0_2_Clang_Multi_Abi-RelWithDebInfo</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
@@ -275,7 +275,7 @@
 -DANDROID_SDK:PATH=C:/Users/phil/AppData/Local/Android/sdk
 -DANDROID_STL:STRING=c++_shared
 -DCMAKE_FIND_ROOT_PATH:PATH=%{Qt:QT_INSTALL_PREFIX}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_5_15_2_Clang_Multi_Abi-MinSizeRel</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\programming\RecipeBook\..\build-RecipeBook-Android_Qt_6_0_2_Clang_Multi_Abi-MinSizeRel</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">

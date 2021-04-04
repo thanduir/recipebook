@@ -1,4 +1,4 @@
-find_package(Qt5 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools Test REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools Test REQUIRED)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin_unittests)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_SOURCE_DIR}/bin_unittests)
@@ -11,7 +11,7 @@ add_test(NAME rbunittests COMMAND rbunittests)
 
 target_include_directories(rbunittests PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 
-target_link_libraries(rbunittests PRIVATE Qt5::Test Qt5::Core Qt5::Gui Qt5::Network Qt5::PrintSupport Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Svg)
+target_link_libraries(rbunittests PRIVATE Qt6::Test Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
 find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
 add_custom_command(TARGET rbunittests POST_BUILD

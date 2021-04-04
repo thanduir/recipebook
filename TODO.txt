@@ -1,7 +1,12 @@
 TODO
 ====
 
-- Qt6 (if all relevant modules available and probably after a few bugfix releases)
+- Qt6
+	* TODOs im Code
+	* Find bugs
+
+	* qt uses "-deployment-settings.json" files for android settings. Is there something similar
+		i could use for icons + manifest file (cf. below)
 
 - Bug: Punkte in Zahlen(amount)
 	-> might need Qt 6 to be solved (hopefully)

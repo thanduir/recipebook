@@ -1,7 +1,7 @@
-import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
+import Qt.labs.platform 1.1
 
 import "components"
 
@@ -35,7 +35,8 @@ Item {
 		}
 	}
 
-	ColorDialog {
+	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets at the moment, however)
+	/*ColorDialog {
 		id: colorDialog
 		title: "Choose alternatives group color"
 		modality: Qt.WindowModal
@@ -43,7 +44,7 @@ Item {
 		onAccepted: {
 			alternativesTypes.setColor(currentIndex, colorDialog.color)
 		}
-	}
+	}*/
 
 	ListView {
 		id: lvValues
@@ -101,14 +102,15 @@ Item {
 
 					color: typeColor
 
-					MouseArea {
+					// TODO
+					/*MouseArea {
 						anchors.fill: parent
 						onClicked: { 
 							colorDialog.currentColor = typeColor
 							colorDialog.currentIndex = index
 							colorDialog.open();
 						}
-					}
+					}*/
 				}
 			}
 		}

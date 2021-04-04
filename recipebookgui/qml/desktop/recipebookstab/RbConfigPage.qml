@@ -1,8 +1,8 @@
-import QtQuick.Dialogs 1.3
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQml.Models 2.1
+import Qt.labs.platform 1.1
 
 import "components"
 
@@ -414,9 +414,7 @@ Item {
 				title: qsTr("Generate recipe book pdf")
 				modality: Qt.WindowModal
 				nameFilters: recipeBookExporter.getDlgNameFilters()
-				selectExisting: false
-				selectMultiple: false
-				selectFolder: false
+				fileMode: FileDialog.OpenFile
 				onAccepted: recipeBookExporter.exportRecipeBook(fileUrls, currentConfig)
 			}
 		}
