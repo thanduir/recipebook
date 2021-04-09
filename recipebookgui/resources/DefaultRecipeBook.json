@@ -1019,6 +1019,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Kalbsschnitzel": {
+            "category": "Fleisch und Fisch",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Karotte": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
@@ -1285,6 +1291,14 @@
             "category": "Gewürze",
             "default-unit": "Unitless",
             "unavailableProvenances": [
+            ]
+        },
+        "Lyonerwurst": {
+            "category": "Fleisch und Fisch",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+                "Coop-Nicole",
+                "Coop-Phil"
             ]
         },
         "Magermilchpulver": {
@@ -1991,6 +2005,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Schwarzwurzel": {
+            "category": "Konserven",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Schweinsgeschnetzeltes": {
             "category": "Fleisch und Fisch",
             "default-unit": "Gram",
@@ -2289,19 +2309,19 @@
             ]
         },
         "Tomatenpüree": {
-            "category": "Konserven",
+            "category": "Öle und Saucen",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
         "Tomatensauce (Bollo)": {
-            "category": "Konserven",
+            "category": "Öle und Saucen",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
         "Tomatensauce (Nature)": {
-            "category": "Konserven",
+            "category": "Öle und Saucen",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -2468,6 +2488,12 @@
             "default-unit": "Count",
             "unavailableProvenances": [
                 "Migros"
+            ]
+        },
+        "Zahnstocher": {
+            "category": "Restliches",
+            "default-unit": "Unitless",
+            "unavailableProvenances": [
             ]
         },
         "Zimt": {
@@ -5164,6 +5190,74 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Fischstäbchen mit Rissolé Kartoffeln": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "Fischstäbchen": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 16,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Gemüse": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kartoffeln-Rissolées": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Ketchup": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mayonnaise": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -9708,6 +9802,50 @@
                         "max": -1,
                         "min": 20,
                         "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Lyoner-Dingsda": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "Lyonerwurst": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 380,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Teigwaren (Hörnli)": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Tomatensauce (Nature)": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -14811,6 +14949,158 @@
                     "amount": {
                         "max": -1,
                         "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Saltimbocca mit Safran-Risotto": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "Bouillon (Huhn)": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kalbsschnitzel": {
+                    "_position": 0,
+                    "additionalInfo": "Dünn",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 300,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Olivenöl": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Parmesan": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 25,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Risotto": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Rohschinken": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 80,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Safran": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salbei (frisch)": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zahnstocher": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zwiebel": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
