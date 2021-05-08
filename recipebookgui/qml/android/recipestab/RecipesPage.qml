@@ -344,6 +344,7 @@ Item {
 
 			text: modelRecipes.name(recipeItems.currentRecipe)
 			font.bold: true
+			font.capitalization: Font.Capitalize
 
 			onClicked: popupRecipes.open()
 

@@ -1,15 +1,11 @@
 TODO
 ====
 
-- Qt6
-	* TODOs im Code
-	* Find bugs
+- TODOs im Code
+- Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
+- qt uses "-deployment-settings.json" files for android settings. Is there something similar
+	i could use for icons + manifest file (cf. below)
 
-	* qt uses "-deployment-settings.json" files for android settings. Is there something similar
-		i could use for icons + manifest file (cf. below)
-
-- Bug: Punkte in Zahlen(amount)
-	-> might need Qt 6 to be solved (hopefully)
 
 - Data synchronisation (sync with dropbox)
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)

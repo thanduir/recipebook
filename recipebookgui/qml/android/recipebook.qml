@@ -159,6 +159,7 @@ ApplicationWindow {
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Sort orders")
 
 				onClicked: selectPage(6, text)
@@ -166,6 +167,7 @@ ApplicationWindow {
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Alternatives types")
 
 				onClicked: selectPage(5, text)
@@ -173,6 +175,7 @@ ApplicationWindow {
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Ingredients")
 
 				onClicked: selectPage(4, text)
@@ -181,6 +184,7 @@ ApplicationWindow {
                 id: pageRecipes
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Recipes")
 
 				onClicked: selectPage(3, text)
@@ -198,6 +202,7 @@ ApplicationWindow {
                 id: pageShoppingList
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Shopping list")
 
 				onClicked: selectPage(1, text)
@@ -205,6 +210,7 @@ ApplicationWindow {
             ItemDelegate {
                 Layout.fillWidth: true
                 Layout.leftMargin: 24
+				font.bold: false
                 text: qsTr("Go shopping")
 
 				onClicked: selectPage(2, text)
@@ -249,6 +255,7 @@ ApplicationWindow {
 
 			text: qsTr("Sync with server")
 			icon.source: "qrc:/images/merge.svg"
+			enabled: false
 			onClicked: recipeBookSynchronization.execute()
 		}
 
@@ -335,6 +342,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Sort orders")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(6, text)
 					}
@@ -343,6 +351,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Alternatives types")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(5, text)
 					}
@@ -351,6 +360,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Ingredients")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(4, text)
 					}
@@ -359,6 +369,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Recipes")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(3, text)
 					}
@@ -379,6 +390,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Shopping list")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(1, text)
 					}
@@ -387,6 +399,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Go shopping")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(2, text)
 					}
@@ -407,6 +420,7 @@ ApplicationWindow {
 						display: AbstractButton.TextOnly
 						font.bold: false
 						text: qsTr("Recipe books")
+						font.capitalization: Font.Capitalize
 
 						onClicked: selectPage(7, text)
 					}

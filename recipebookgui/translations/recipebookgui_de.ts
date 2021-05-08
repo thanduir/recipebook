@@ -1285,7 +1285,7 @@
     <message>
         <location filename="../qml/android/recipebook.qml" line="41"/>
         <location filename="../qml/android/recipebook.qml" line="50"/>
-        <location filename="../qml/android/recipebook.qml" line="239"/>
+        <location filename="../qml/android/recipebook.qml" line="245"/>
         <location filename="../qml/desktop/recipebook.qml" line="21"/>
         <location filename="../qml/desktop/recipebook.qml" line="40"/>
         <location filename="../qml/desktop/recipebook.qml" line="51"/>
@@ -1300,72 +1300,72 @@
     </message>
     <message>
         <location filename="../qml/android/recipebook.qml" line="154"/>
-        <location filename="../qml/android/recipebook.qml" line="184"/>
-        <location filename="../qml/android/recipebook.qml" line="326"/>
-        <location filename="../qml/android/recipebook.qml" line="361"/>
+        <location filename="../qml/android/recipebook.qml" line="188"/>
+        <location filename="../qml/android/recipebook.qml" line="333"/>
+        <location filename="../qml/android/recipebook.qml" line="371"/>
         <location filename="../qml/desktop/recipebook.qml" line="111"/>
         <source>Recipes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="162"/>
-        <location filename="../qml/android/recipebook.qml" line="337"/>
+        <location filename="../qml/android/recipebook.qml" line="163"/>
+        <location filename="../qml/android/recipebook.qml" line="344"/>
         <source>Sort orders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="169"/>
-        <location filename="../qml/android/recipebook.qml" line="345"/>
+        <location filename="../qml/android/recipebook.qml" line="171"/>
+        <location filename="../qml/android/recipebook.qml" line="353"/>
         <source>Alternatives types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="176"/>
-        <location filename="../qml/android/recipebook.qml" line="353"/>
+        <location filename="../qml/android/recipebook.qml" line="179"/>
+        <location filename="../qml/android/recipebook.qml" line="362"/>
         <source>Ingredients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="192"/>
-        <location filename="../qml/android/recipebook.qml" line="369"/>
+        <location filename="../qml/android/recipebook.qml" line="196"/>
+        <location filename="../qml/android/recipebook.qml" line="380"/>
         <location filename="../qml/desktop/recipebook.qml" line="114"/>
         <source>Shopping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="201"/>
-        <location filename="../qml/android/recipebook.qml" line="381"/>
+        <location filename="../qml/android/recipebook.qml" line="206"/>
+        <location filename="../qml/android/recipebook.qml" line="392"/>
         <source>Shopping list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="208"/>
-        <location filename="../qml/android/recipebook.qml" line="389"/>
+        <location filename="../qml/android/recipebook.qml" line="214"/>
+        <location filename="../qml/android/recipebook.qml" line="401"/>
         <source>Go shopping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="216"/>
-        <location filename="../qml/android/recipebook.qml" line="397"/>
-        <location filename="../qml/android/recipebook.qml" line="409"/>
+        <location filename="../qml/android/recipebook.qml" line="222"/>
+        <location filename="../qml/android/recipebook.qml" line="410"/>
+        <location filename="../qml/android/recipebook.qml" line="422"/>
         <location filename="../qml/desktop/recipebook.qml" line="117"/>
         <source>Recipe books</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="250"/>
+        <location filename="../qml/android/recipebook.qml" line="256"/>
         <location filename="../qml/desktop/recipebook.qml" line="63"/>
         <source>Sync with server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="258"/>
+        <location filename="../qml/android/recipebook.qml" line="265"/>
         <location filename="../qml/desktop/recipebook.qml" line="71"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="269"/>
+        <location filename="../qml/android/recipebook.qml" line="276"/>
         <location filename="../qml/desktop/recipebook.qml" line="94"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
