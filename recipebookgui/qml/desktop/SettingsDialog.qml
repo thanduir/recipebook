@@ -293,7 +293,7 @@ Popup {
 								nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
 								fileMode: FileDialog.OpenFile
 								onAccepted: {
-									recipeBookSettings.setPdfLatexFile(fileUrls)
+									recipeBookSettings.setPdfLatexFile(file)
 									txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
 								}
 							}

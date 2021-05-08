@@ -175,7 +175,7 @@ Item {
 			modality: Qt.WindowModal
 			nameFilters: shoppingListExporter.getDlgNameFilters()
 			fileMode: FileDialog.SaveFile
-			onAccepted: shoppingListExporter.exportShoppingList(fileUrls, cbxSortOrder.currentText)
+			onAccepted: shoppingListExporter.exportShoppingList(file, cbxSortOrder.currentText)
 		}
 	}
 }

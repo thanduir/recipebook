@@ -20,7 +20,7 @@ ApplicationWindow {
 		id: dlgConfirmImportFile
 		title: qsTr("Import file")
 		msgText: qsTr("This will load the selected file, replacing all current data irrevocably. Proceed?");
-		onAccepted: fileDialogImport.onImport(fileDialogImport.fileUrls)
+		onAccepted: fileDialogImport.onImport(fileDialogImport.file)
 	}
 
 	AppDlgInterface {
@@ -84,7 +84,7 @@ ApplicationWindow {
 					nameFilters: importExportFilters
 					fileMode: FileDialog.SaveFile
 					signal onExport(filename: string)
-					onAccepted: onExport(fileDialogExport.fileUrls)
+					onAccepted: onExport(fileDialogExport.file)
 				}
 			}
 

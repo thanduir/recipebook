@@ -414,8 +414,8 @@ Item {
 				title: qsTr("Generate recipe book pdf")
 				modality: Qt.WindowModal
 				nameFilters: recipeBookExporter.getDlgNameFilters()
-				fileMode: FileDialog.OpenFile
-				onAccepted: recipeBookExporter.exportRecipeBook(fileUrls, currentConfig)
+				fileMode: FileDialog.SaveFile
+				onAccepted: recipeBookExporter.exportRecipeBook(file, currentConfig)
 			}
 		}
 	}

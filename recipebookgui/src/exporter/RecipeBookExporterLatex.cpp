@@ -124,7 +124,7 @@ void RecipeBookExporterLatex::generateLatex(const RecipeBookConfiguration& rConf
 
 	stream << "\\documentclass[a4paper,oneside," << rConfig.getFontSize() << "pt]{extbook}\n";
 	stream << "\\usepackage[utf8]{inputenc}\n";
-	stream << rLanguageManager.getBabelStringFromLangCode(rConfig.getLanguageCode());;
+	stream << rLanguageManager.getBabelStringFromLangCode(rConfig.getLanguageCode());
 	stream << "\\usepackage{a4wide}\n";
 	stream << "\\usepackage{amssymb}\n";
 	stream << "\\usepackage{multicol}\n";

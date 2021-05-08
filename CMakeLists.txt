@@ -118,11 +118,11 @@ else()
 	find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg REQUIRED)
 endif()
 
-qt_add_executable(RecipeBook MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
-		                                            ${LIBRECIPEBOOK_FILES}
-													${TS_FILES}
-													${QM_FILES}
-													${QRC_FILES})
+qt_add_executable(RecipeBook WIN32 MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
+														${LIBRECIPEBOOK_FILES}
+														${TS_FILES}
+														${QM_FILES}
+														${QRC_FILES})
 
 target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)

@@ -1,6 +1,9 @@
 TODO
 ====
 
+- Write new recipebook exporter (called from RecipeBookExporter) using QTextDocument and QTextTableFormat etc. OR HTML
+	-> remove latex exporter, if the alternative works fine (-> settings)
+
 - TODOs im Code
 - Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
 - qt uses "-deployment-settings.json" files for android settings. Is there something similar
@@ -23,6 +26,7 @@ TODO
 
 - UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
 
+- Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?
 - items to choose one from during shopping (instead of before shopping)?
 
