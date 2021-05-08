@@ -28,7 +28,7 @@ namespace recipebook
 
 		QStringList availableLanguages() const { return m_Languages.availableLanguages(); }
 		QString getCodeFromLanguageName(QString langName) const { return m_Languages.getLanguageCode(langName); }
-		int getIndexFromLanguageCode(QString langCode) const { return m_Languages.getIndexFromLanguageCode(langCode); }
+        qsizetype getIndexFromLanguageCode(QString langCode) const { return m_Languages.getIndexFromLanguageCode(langCode); }
 
 	private:
 		RBDataHandler&				m_rRBDataHandler;

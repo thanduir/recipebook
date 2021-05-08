@@ -12,47 +12,47 @@
 <context>
     <name>AlternativesTypesPage</name>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="11"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="10"/>
         <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="11"/>
-        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="134"/>
+        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="136"/>
         <source>Add alternatives group</source>
         <translation>Add alternatives group</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="21"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="20"/>
         <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="21"/>
-        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="147"/>
+        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="149"/>
         <source>Rename alternatives group</source>
         <translation>Rename alternatives group</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="31"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="30"/>
         <source>Ingredient can&apos;t be removed</source>
         <translation>Ingredient can&apos;t be removed</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="168"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="167"/>
         <source>Alternatives group &quot;%1&quot; is still in use and can&apos;t be removed.</source>
         <translation>Alternatives group &quot;%1&quot; is still in use and can&apos;t be removed.</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="198"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="197"/>
         <source>Alternatives group &quot;%1&quot; removed</source>
         <translation>Alternatives group &quot;%1&quot; removed</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="203"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="202"/>
         <source>Undo</source>
         <translation>Undo</translation>
     </message>
     <message>
         <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="31"/>
-        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="163"/>
+        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="165"/>
         <source>Remove alternatives group</source>
         <translation>Remove alternatives group</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="167"/>
+        <location filename="../qml/desktop/recipestab/AlternativesTypesPage.qml" line="169"/>
         <source>This will remove the alternatives group &quot;%1&quot;. Proceed?</source>
         <translation>This will remove the alternatives group &quot;%1&quot;. Proceed?</translation>
     </message>
@@ -190,7 +190,7 @@
 <context>
     <name>GoShoppingPage</name>
     <message>
-        <location filename="../qml/android/shoppingtab/GoShoppingPage.qml" line="64"/>
+        <location filename="../qml/android/shoppingtab/GoShoppingPage.qml" line="63"/>
         <location filename="../qml/desktop/shoppingtab/GoShoppingPage.qml" line="58"/>
         <source>List collected items separately</source>
         <translation>List collected items separately</translation>
@@ -754,7 +754,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="23"/>
         <location filename="../qml/android/SettingsDialog.qml" line="235"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="19"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="157"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="159"/>
         <source>Load default data</source>
         <translation>Load default data</translation>
     </message>
@@ -768,7 +768,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="30"/>
         <location filename="../qml/android/SettingsDialog.qml" line="242"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="26"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="164"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="166"/>
         <source>Reset all data</source>
         <translation>Reset all data</translation>
     </message>
@@ -782,7 +782,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="37"/>
         <location filename="../qml/android/SettingsDialog.qml" line="214"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="33"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="241"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="243"/>
         <source>Reset Dropbox connection</source>
         <translation>Reset Dropbox connection</translation>
     </message>
@@ -812,73 +812,73 @@
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="76"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="65"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="67"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="82"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="77"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="79"/>
         <source>Current language</source>
         <translation>Current language</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="100"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="91"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="93"/>
         <source>Default values</source>
         <translation>Default values</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="106"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="101"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="103"/>
         <source>Default unit</source>
         <translation>Default unit</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="117"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="112"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="114"/>
         <source>Default number of persons</source>
         <translation>Default number of persons</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="130"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="125"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="127"/>
         <source>Default category</source>
         <translation>Default category</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="141"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="136"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="138"/>
         <source>Default sort order</source>
         <translation>Default sort order</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="165"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="190"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="192"/>
         <source>File id on server</source>
         <translation>File id on server</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="184"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="209"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="211"/>
         <source>Generate new id</source>
         <translation>Generate new id</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="193"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="218"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="220"/>
         <source>Set existing id</source>
         <translation>Reminder (days)</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="201"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="226"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="228"/>
         <source>Reminder (days)</source>
         <translation>Reminder (days)</translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="229"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="149"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="151"/>
         <source>Data</source>
         <translation>Data</translation>
     </message>
@@ -890,31 +890,27 @@
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="159"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="178"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="180"/>
         <source>Synchronization</source>
         <translation>Synchronization</translation>
     </message>
     <message>
-        <source>Synchronization reminder (days)</source>
-        <translation type="vanished">Synchronization reminder (days)</translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="251"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="253"/>
         <source>PDF Export</source>
         <translation>PDF Export</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="260"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="262"/>
         <source>PDF Latex path</source>
         <translation>PDF Latex path</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="289"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="291"/>
         <source>Generate recipe book pdf</source>
         <translation>Generate recipe book pdf</translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="336"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="338"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
@@ -1072,10 +1068,6 @@
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="645"/>
         <source>Optional</source>
         <translation>Optional</translation>
-    </message>
-    <message>
-        <source>Recipe item &quot;%1&quot; removed</source>
-        <translation type="vanished">Recipe &quot;%1&quot; removed</translation>
     </message>
     <message>
         <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="752"/>
@@ -1268,26 +1260,26 @@
 <context>
     <name>recipebook</name>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="11"/>
-        <location filename="../qml/android/recipebook.qml" line="136"/>
+        <location filename="../qml/android/recipebook.qml" line="10"/>
+        <location filename="../qml/android/recipebook.qml" line="135"/>
         <location filename="../qml/desktop/recipebook.qml" line="13"/>
         <source>RecipeBook</source>
         <translation>RecipeBook</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="33"/>
+        <location filename="../qml/android/recipebook.qml" line="32"/>
         <source>Export file</source>
         <translation>Export file</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="34"/>
+        <location filename="../qml/android/recipebook.qml" line="33"/>
         <source>The file &quot;%1&quot; already exists. Overwrite?</source>
         <translation>The file &quot;%1&quot; already exists. Overwrite?</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="42"/>
-        <location filename="../qml/android/recipebook.qml" line="51"/>
-        <location filename="../qml/android/recipebook.qml" line="240"/>
+        <location filename="../qml/android/recipebook.qml" line="41"/>
+        <location filename="../qml/android/recipebook.qml" line="50"/>
+        <location filename="../qml/android/recipebook.qml" line="239"/>
         <location filename="../qml/desktop/recipebook.qml" line="21"/>
         <location filename="../qml/desktop/recipebook.qml" line="40"/>
         <location filename="../qml/desktop/recipebook.qml" line="51"/>
@@ -1295,95 +1287,86 @@
         <translation>Import file</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="52"/>
+        <location filename="../qml/android/recipebook.qml" line="51"/>
         <location filename="../qml/desktop/recipebook.qml" line="22"/>
         <source>This will load the selected file, replacing all current data irrevocably. Proceed?</source>
         <translation>This will load the selected file, replacing all current data irrevocably. Proceed?</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="163"/>
-        <location filename="../qml/android/recipebook.qml" line="338"/>
+        <location filename="../qml/android/recipebook.qml" line="162"/>
+        <location filename="../qml/android/recipebook.qml" line="337"/>
         <source>Sort orders</source>
         <translation>Sort orders</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="170"/>
-        <location filename="../qml/android/recipebook.qml" line="346"/>
+        <location filename="../qml/android/recipebook.qml" line="169"/>
+        <location filename="../qml/android/recipebook.qml" line="345"/>
         <source>Alternatives types</source>
         <translation>Alternatives types</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="177"/>
-        <location filename="../qml/android/recipebook.qml" line="354"/>
+        <location filename="../qml/android/recipebook.qml" line="176"/>
+        <location filename="../qml/android/recipebook.qml" line="353"/>
         <source>Ingredients</source>
         <translation>Ingredients</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="202"/>
-        <location filename="../qml/android/recipebook.qml" line="382"/>
+        <location filename="../qml/android/recipebook.qml" line="201"/>
+        <location filename="../qml/android/recipebook.qml" line="381"/>
         <source>Shopping list</source>
         <translation>Shopping list</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="209"/>
-        <location filename="../qml/android/recipebook.qml" line="390"/>
+        <location filename="../qml/android/recipebook.qml" line="208"/>
+        <location filename="../qml/android/recipebook.qml" line="389"/>
         <source>Go shopping</source>
         <translation>Go shopping</translation>
     </message>
     <message>
-        <source>Sync with Server</source>
-        <translation type="vanished">Sync with Server</translation>
-    </message>
-    <message>
-        <source>Merge file</source>
-        <translation type="vanished">Merge file</translation>
-    </message>
-    <message>
-        <location filename="../qml/android/recipebook.qml" line="259"/>
-        <location filename="../qml/desktop/recipebook.qml" line="73"/>
+        <location filename="../qml/android/recipebook.qml" line="258"/>
+        <location filename="../qml/desktop/recipebook.qml" line="71"/>
         <source>Export</source>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="16"/>
-        <location filename="../qml/desktop/recipebook.qml" line="84"/>
+        <location filename="../qml/android/recipebook.qml" line="15"/>
+        <location filename="../qml/desktop/recipebook.qml" line="82"/>
         <source>Export data</source>
         <translation>Export data</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="251"/>
-        <location filename="../qml/desktop/recipebook.qml" line="65"/>
+        <location filename="../qml/android/recipebook.qml" line="250"/>
+        <location filename="../qml/desktop/recipebook.qml" line="63"/>
         <source>Sync with server</source>
         <translation>Sync with server</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="270"/>
-        <location filename="../qml/desktop/recipebook.qml" line="98"/>
-        <location filename="../qml/desktop/recipebook.qml" line="107"/>
+        <location filename="../qml/android/recipebook.qml" line="269"/>
+        <location filename="../qml/desktop/recipebook.qml" line="94"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="155"/>
-        <location filename="../qml/android/recipebook.qml" line="185"/>
-        <location filename="../qml/android/recipebook.qml" line="327"/>
-        <location filename="../qml/android/recipebook.qml" line="362"/>
-        <location filename="../qml/desktop/recipebook.qml" line="116"/>
+        <location filename="../qml/android/recipebook.qml" line="154"/>
+        <location filename="../qml/android/recipebook.qml" line="184"/>
+        <location filename="../qml/android/recipebook.qml" line="326"/>
+        <location filename="../qml/android/recipebook.qml" line="361"/>
+        <location filename="../qml/desktop/recipebook.qml" line="111"/>
         <source>Recipes</source>
         <translation>Recipes</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="193"/>
-        <location filename="../qml/android/recipebook.qml" line="370"/>
-        <location filename="../qml/desktop/recipebook.qml" line="119"/>
+        <location filename="../qml/android/recipebook.qml" line="192"/>
+        <location filename="../qml/android/recipebook.qml" line="369"/>
+        <location filename="../qml/desktop/recipebook.qml" line="114"/>
         <source>Shopping</source>
         <translation>Shopping</translation>
     </message>
     <message>
-        <location filename="../qml/android/recipebook.qml" line="217"/>
-        <location filename="../qml/android/recipebook.qml" line="398"/>
-        <location filename="../qml/android/recipebook.qml" line="410"/>
-        <location filename="../qml/desktop/recipebook.qml" line="122"/>
+        <location filename="../qml/android/recipebook.qml" line="216"/>
+        <location filename="../qml/android/recipebook.qml" line="397"/>
+        <location filename="../qml/android/recipebook.qml" line="409"/>
+        <location filename="../qml/desktop/recipebook.qml" line="117"/>
         <source>Recipe books</source>
         <translation>Recipe books</translation>
     </message>
@@ -1466,117 +1449,117 @@
 <context>
     <name>recipebook::RecipeBookSynchronization</name>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="288"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="400"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="110"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="145"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="294"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="424"/>
         <source>Connection problem</source>
         <translation>Connection problem</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="107"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="142"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="288"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="400"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="110"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="145"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="294"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="424"/>
         <source>Please check your internet connection and try again.</source>
         <translation>Please check your internet connection and try again.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="138"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="141"/>
         <source>Invalid code</source>
         <translation>Invalid code</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="138"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="141"/>
         <source>Code not accepted. Please try again.</source>
         <translation>Code not accepted. Please try again.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="185"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="244"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="190"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="249"/>
         <source>Synchronization successful</source>
         <translation>Synchronization successful</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="186"/>
-        <source>Current state successfully synchronized with server (no changes to local data).</source>
-        <translation>Current state successfully synchronized with server (no changes to local data).</translation>
-    </message>
-    <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="222"/>
-        <source>Successfully updated current local data with the current server data.</source>
-        <translation>Successfully updated current local data with the current server data.</translation>
-    </message>
-    <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="238"/>
-        <source>Successfully updated current server data with the current local data.</source>
-        <translation>Successfully updated current server data with the current local data.</translation>
-    </message>
-    <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="270"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="276"/>
         <source>No server file id set</source>
         <translation>No server file id set</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="271"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="277"/>
         <source>Please set correct file id or generate a new one in settings.</source>
         <translation>Please set correct file id or generate a new one in settings.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="304"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="323"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="365"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="429"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="441"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="310"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="329"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="371"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="453"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="465"/>
         <source>File write problem</source>
         <translation>File write problem</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="305"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="311"/>
         <source>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</source>
         <translation>Couldn&apos;t write sync backup server file. Please check write access and free space for app data folder.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="324"/>
-        <source>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</source>
-        <translation>Couldn&apos;t write sync backup current file. Please check write access and free space for app data folder.</translation>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="191"/>
+        <source>Local state successfully synchronized with server (no changes to local data).</source>
+        <translation>Local state successfully synchronized with server (no changes to local data).</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="366"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="227"/>
+        <source>Successfully updated current local data with current server data.</source>
+        <translation>Successfully updated current local data with current server data.</translation>
+    </message>
+    <message>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="243"/>
+        <source>Successfully updated current server data with current local data.</source>
+        <translation>Successfully updated current server data with current local data.</translation>
+    </message>
+    <message>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="330"/>
+        <source>Couldn&apos;t write sync backup local file. Please check write access and free space for app data folder.</source>
+        <translation>Couldn&apos;t write sync backup local file. Please check write access and free space for app data folder.</translation>
+    </message>
+    <message>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="372"/>
         <source>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</source>
         <translation>Couldn&apos;t write sync backup base file. Please check write access and free space for app data folder.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="382"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="392"/>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="414"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="406"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="416"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="438"/>
         <source>Unspecified problem</source>
         <translation>Unspecified problem</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="383"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="407"/>
         <source>Could not save current state to file.</source>
         <translation>Could not save current state to file.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="393"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="417"/>
         <source>Invalid file on server.</source>
         <translation>Invalid file on server.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="415"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="439"/>
         <source>Could not save state to sync base file.</source>
         <translation>Could not save state to sync base file.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="430"/>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="454"/>
         <source>Couldn&apos;t read updated data.</source>
         <translation>Could not save state to sync base file.</translation>
     </message>
     <message>
-        <location filename="../src/RecipeBookSynchronization.cpp" line="442"/>
-        <source>Couldn&apos;t update current data.</source>
-        <translation>Couldn&apos;t update current data.</translation>
+        <location filename="../src/synchronization/RecipeBookSynchronization.cpp" line="466"/>
+        <source>Couldn&apos;t update local data.</source>
+        <translation>Couldn&apos;t update local data.</translation>
     </message>
 </context>
 <context>

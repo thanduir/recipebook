@@ -84,7 +84,7 @@ QString RBTranslationManager::getCurrentLanguageName() const
 	QString lang = getCurrentLanguage();
 	if(m_AvailableLanguages.contains(lang))
 	{
-		int index = m_AvailableLanguages.indexOf(lang);
+        qsizetype index = m_AvailableLanguages.indexOf(lang);
 		return m_NamesOfAvailableLanguages[index];
 	}
 	

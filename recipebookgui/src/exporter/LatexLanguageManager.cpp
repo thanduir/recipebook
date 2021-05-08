@@ -16,7 +16,7 @@ LatexLanguageManager::LatexLanguageManager()
 
 QString LatexLanguageManager::getBabelStringFromLangCode(QString code) const
 {
-	int index = m_LanguageCodes.indexOf(code);
+    qsizetype index = m_LanguageCodes.indexOf(code);
 	if(m_LanguageLatexNames[index].isEmpty())
 	{
 		return "";
@@ -37,11 +37,11 @@ QString LatexLanguageManager::getLanguageCode(QString langName) const
 		return "en";
 	}
 
-	int index = m_LanguageNames.indexOf(langName);
+    qsizetype index = m_LanguageNames.indexOf(langName);
 	return m_LanguageCodes[index];
 }
 
-int LatexLanguageManager::getIndexFromLanguageCode(QString langCode) const
+qsizetype LatexLanguageManager::getIndexFromLanguageCode(QString langCode) const
 {
 	if(!m_LanguageCodes.contains(langCode))
 	{

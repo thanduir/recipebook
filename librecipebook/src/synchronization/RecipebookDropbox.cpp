@@ -98,7 +98,8 @@ RecipebookDropbox::Status RecipebookDropbox::generateAcessTokenFromCode(QString 
 					break;
 				}
 
-				// Fall-through for other errors
+                // Fall-through for other errors
+                Q_FALLTHROUGH();
 			}
 
 		default:
@@ -200,7 +201,8 @@ RecipebookDropbox::Status RecipebookDropbox::setAccessToken(QString strAccessTok
 					break;
 				}
 
-				// Fall-through for other errors
+                // Fall-through for other errors
+                Q_FALLTHROUGH();
 			}
 
 		default:
@@ -302,6 +304,7 @@ RecipebookDropbox::Status RecipebookDropbox::getCurrentFileContent(QByteArray& f
 				}
 
 				// Fall-through for other errors
+                Q_FALLTHROUGH();
 			}
 
 			default:
@@ -397,6 +400,7 @@ RecipebookDropbox::Status RecipebookDropbox::updateFileContent(QByteArray fileCo
 				}
 
 				// Fall-through for other errors
+                Q_FALLTHROUGH();
 			}
 
 			default:

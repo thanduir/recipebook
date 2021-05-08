@@ -25,7 +25,7 @@ namespace recipebook
 	public slots:
 		QStringList availableLanguages() const;
 		QString getLanguageCode(QString langName) const;
-		int getIndexFromLanguageCode(QString langCode) const;
+        qsizetype getIndexFromLanguageCode(QString langCode) const;
 
 	private:
 		QStringList m_LanguageNames;

@@ -14,9 +14,9 @@ using namespace recipebook;
 
 namespace
 {
-	int getItemIndex(QString strName, GoShoppingListItemType type, const QVector<QSharedPointer<GoShoppingListItem>>& rList)
+    qsizetype getItemIndex(QString strName, GoShoppingListItemType type, const QVector<QSharedPointer<GoShoppingListItem>>& rList)
 	{
-		for(int i = 0; i < rList.size(); ++i)
+        for(qsizetype i = 0; i < rList.size(); ++i)
 		{
 			const QSharedPointer<GoShoppingListItem> spElement = rList.at(i);
 			if(spElement->getName() == strName && spElement->getType() == type)
@@ -27,9 +27,9 @@ namespace
 		return rList.size();
     }
 
-	int getNextItemOfType(const QVector<QSharedPointer<GoShoppingListItem>>& rList, GoShoppingListItemType type, int startPos)
+    qsizetype getNextItemOfType(const QVector<QSharedPointer<GoShoppingListItem>>& rList, GoShoppingListItemType type, qsizetype startPos)
 	{
-		for(int i = startPos; i < rList.size(); ++i)
+        for(qsizetype i = startPos; i < rList.size(); ++i)
 		{
 			if(rList.at(i)->getType() == type)
 			{
@@ -205,7 +205,7 @@ const GoShoppingListItem& SortedShoppingList::getItemAt(quint32 i) const
 
 void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iItem, Status status, ListChangeCallback* pCallback)
 {
-	quint32 currentItemPos = iItem;
+    quint32 currentItemPos = iItem;
 	GoShoppingListItem& rItem = getItemAt(currentItemPos);
 	
 	if(rItem.getType() != GoShoppingListItemType::IngredientListItem || rItem.getStatus() == status)
@@ -245,7 +245,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
                 pCallback->beginRemoveItem((int)currentItemPos - 1);
 			}
 
-            int posToRemove = (int)currentItemPos - 1;
+            qsizetype posToRemove = (int)currentItemPos - 1;
 			if(posToRemove < m_SortedListChecked.size())
 			{
 				m_SortedListChecked.removeAt(posToRemove);
@@ -279,7 +279,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 
 			quint32 posInSortOrder = m_pSortOrder->getIndex(handle.data().getCategory(strCategory));
 
-			int nextPos = getNextItemOfType(rNewList, type, 0);
+            qsizetype nextPos = getNextItemOfType(rNewList, type, 0);
 			bool bFound = false;
 			while(nextPos < rNewList.size())
 			{
@@ -352,7 +352,7 @@ void SortedShoppingList::updateStatus(RBDataHandler& rRBDataHandler, quint32 iIt
 	}
 	if(pCallback)
 	{
-        int delta = bChecked ? 0 : m_SortedListChecked.size();
-        pCallback->itemChanged((int)newItemPos + delta);
+        qsizetype delta = bChecked ? 0 : m_SortedListChecked.size();
+        pCallback->itemChanged(static_cast<int>(newItemPos + delta));
 	}
 }

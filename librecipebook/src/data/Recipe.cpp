@@ -92,7 +92,7 @@ int Recipe::getRecipeItemIndex(QString strName) const
 bool Recipe::moveGroupItemsTogether()
 {
 	bool bAlreadyCorrectlyOrdered = true;
-	for(int i = 0; i < m_RecipeItems.count(); ++i)
+    for(qsizetype i = 0; i < m_RecipeItems.count(); ++i)
 	{
 		QSharedPointer<RecipeItem> spItem = m_RecipeItems.at(i);
 		if(!spItem->hasAlternativesGroup())
@@ -103,8 +103,8 @@ bool Recipe::moveGroupItemsTogether()
 		const AlternativesType& rCurrentGroup = spItem->getAlternativesGroup();
 
 		// Find first element after group
-		int firstAfterGroup = m_RecipeItems.count();
-		for(int j = i + 1; j < m_RecipeItems.count(); ++j)
+        qsizetype firstAfterGroup = m_RecipeItems.count();
+        for(qsizetype j = i + 1; j < m_RecipeItems.count(); ++j)
 		{
 			QSharedPointer<RecipeItem> spCurrentItem = m_RecipeItems.at(j);
 			if(!spCurrentItem->hasAlternativesGroup() || &spCurrentItem->getAlternativesGroup() != &rCurrentGroup)
@@ -123,14 +123,14 @@ bool Recipe::moveGroupItemsTogether()
 		}
 
 		// Sort further group items
-		for(int j = firstAfterGroup + 1; j < m_RecipeItems.count(); ++j)
+        for(qsizetype j = firstAfterGroup + 1; j < m_RecipeItems.count(); ++j)
 		{
 			QSharedPointer<RecipeItem> spCurrentItem = m_RecipeItems.at(j);
 			if(spCurrentItem->hasAlternativesGroup() && &spCurrentItem->getAlternativesGroup() == &rCurrentGroup)
 			{
 				// Insert alphabetically
-				int newPos = firstAfterGroup;
-				for(int z = i; z < firstAfterGroup; ++z)
+                qsizetype newPos = firstAfterGroup;
+                for(qsizetype z = i; z < firstAfterGroup; ++z)
 				{
 					QSharedPointer<RecipeItem> spCurrentGroupItem = m_RecipeItems.at(z);
 					if(recipebook::helper::lessThan(spCurrentItem->getElementId(), spCurrentGroupItem->getElementId()))
