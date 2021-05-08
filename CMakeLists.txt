@@ -98,6 +98,13 @@ set(RECIPEBOOK_FILES    recipebookgui/src/main.cpp
 set(TS_FILES			recipebookgui/translations/recipebookgui_de.ts
 	                    recipebookgui/translations/recipebookgui_en.ts)
 
+if(NOT ANDROID)
+	set(QRC_FILES		recipebookgui/recipebookdesktop.qrc
+						recipebookgui/icon/icon.rc)
+else()
+	set(QRC_FILES		recipebookgui/recipebookandroid.qrc)
+endif()
+
 #######################################################################################
 # RecipeBook
 #######################################################################################
@@ -115,8 +122,7 @@ qt_add_executable(RecipeBook MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
 		                                            ${LIBRECIPEBOOK_FILES}
 													${TS_FILES}
 													${QM_FILES}
-													recipebookgui/recipebookandroid.qrc
-													recipebookgui/icon/icon.rc)
+													${QRC_FILES})
 
 target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
 target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
