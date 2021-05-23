@@ -34,6 +34,8 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 	QFileInfo fi(localFileName);
 	m_rSettings.setLastUsedShoppingListExportFolder(fi.absolutePath());
 
+	// TODO: Replace with podofo-based exporter
+	 
 	// Read list
 
 	SortedShoppingList list;

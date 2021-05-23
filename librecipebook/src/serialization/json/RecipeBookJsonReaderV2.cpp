@@ -312,13 +312,11 @@ bool json::JsonReaderV2::readRecipeBookConfigs(const QJsonObject& rObject, Recip
 		QString strTitle = config[json::c_strConfigTitle].toString();
 		QString strSubtitle = config[json::c_strConfigSubtitle].toString();
         quint32 fontSize = (quint32)config[json::c_strConfigFontSize].toInt();
-		QString langCode = config[json::c_strConfigLanguageCode].toString();
 
 		RecipeBookConfiguration& rConfig = rRecipeBook.addConfiguration(strConfigName, false);
 		rConfig.setBookTitle(strTitle);
 		rConfig.setBookSubtitle(strSubtitle);
 		rConfig.setFontSize(fontSize);
-		rConfig.setLanguageCode(langCode);
 
 		QJsonObject items = config[json::c_strConfigItems].toObject();
 		QMap<int, RecipeBookConfigItem*> indexMap;

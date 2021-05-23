@@ -20,8 +20,7 @@ namespace recipebook::UI
 			NameRole = Qt::UserRole + 1,
 			TitleRole,
 			SubtitleRole,
-			FontSizeRole,
-			LanguageCodeRole
+			FontSizeRole
 		};
     
 	public:
@@ -37,12 +36,10 @@ namespace recipebook::UI
 		QString title(int row) const;
 		QString subtitle(int row) const;
 		quint32 fontSize(int row) const;
-		QString languageCode(int row) const;
 
 		void setTitle(int row, QString strTitle);
 		void setSubtitle(int row, QString strSubtitle);
 		void setFontSize(int row, quint32 fontSize);
-		void setLanguageCode(int row, QString strCode);
 
 		bool canConfigurationBeAdded() const;
 		int addConfiguration(QString strConfig);

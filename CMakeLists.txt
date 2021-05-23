@@ -91,7 +91,6 @@ set(RECIPEBOOK_FILES    recipebookgui/src/main.cpp
 						recipebookgui/src/exporter/LatexLanguageManager.cpp
 						recipebookgui/src/exporter/RBLatexExporter.cpp
 						recipebookgui/src/exporter/RecipeBookExporter.cpp
-						recipebookgui/src/exporter/RecipeBookExporterLatex.cpp
 						recipebookgui/src/exporter/ShoppingListExporter.cpp
 						recipebookgui/src/exporter/ShoppingListExporterLatex.cpp)
 
@@ -109,6 +108,18 @@ endif()
 # RecipeBook
 #######################################################################################
 
+# Add PoDoFo only on windows
+if(NOT ANDROID)
+	set(MY_PODOFO_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/src" "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release")
+	INCLUDE_DIRECTORIES(${MY_PODOFO_INCLUDE_PATH})
+
+	set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp)
+
+	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo")
+	link_directories(${MY_PODOFO_LIB_PATH})
+	set(ADDITIONAL_LIBS podofo)
+endif()
+
 # TODO: Remove as soon as LinguistTools are available again on android
 if(NOT ANDROID)
 	find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
@@ -120,12 +131,13 @@ endif()
 
 qt_add_executable(RecipeBook WIN32 MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
 														${LIBRECIPEBOOK_FILES}
+														${ADDITONAL_FILES_PODOFO}
 														${TS_FILES}
 														${QM_FILES}
 														${QRC_FILES})
 
 target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
+target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg ${ADDITIONAL_LIBS})
 
 foreach(file_i ${QM_FILES})
 	    add_custom_command(

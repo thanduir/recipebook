@@ -141,6 +141,7 @@ Item {
 
 					color: typeColor
 
+					// TODO
 					/*MouseArea {
 						anchors.fill: parent
 						onClicked: { 

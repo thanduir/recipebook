@@ -2,10 +2,12 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QException>
+#include <QThread>
 #include <data/RBDataHandler.h>
 #include "../RecipeBookSettings.h"
 #include "../uistringconverter.h"
-#include "RecipeBookExporterLatex.h"
+#include "../RBDialogInterface.h"
+#include "RecipeBookExporterPodofo.h"
 
 using namespace recipebook;
 
@@ -34,18 +36,37 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 	QFileInfo fi(localFileName);
 	m_rSettings.setLastUsedRecipeBookConfigurationExportFolder(fi.absolutePath());
 
-	RecipeBookExporterLatex exporter(m_rConverter, m_rSettings);
+	QThread* thread = QThread::create([this, uiConfiguration, localFileName]
 	{
-		recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-		const RecipeBook& rRecipeBook = handle.data();
+		m_rDlgInterface.lockUI();
 
-		if(uiConfiguration >= rRecipeBook.getConfigurationsCount())
+		bool bSuccess = false;
+		RecipeBookExporterPodofo exporter(m_rConverter);
 		{
-			throw QException();
+			recipebook::RBDataReadHandle handle(m_rRBDataHandler);
+			const RecipeBook& rRecipeBook = handle.data();
+
+			if(uiConfiguration >= rRecipeBook.getConfigurationsCount())
+			{
+				throw QException();
+			}
+
+			bSuccess = exporter.writeDocument(rRecipeBook.getConfigurationAt(uiConfiguration), localFileName);
 		}
 
-		exporter.generateLatex(rRecipeBook.getConfigurationAt(uiConfiguration), m_Languages);
-	}
-
-	exporter.exportRecipeBook(localFileName, m_rDlgInterface);
+		m_rDlgInterface.unlockUI();
+		if(bSuccess)
+		{
+			m_rDlgInterface.showMessageBox(tr("Pdf generated"),
+											tr("Pdf successfully exported to<br>\"%1\"").arg(localFileName),
+											RBDialogInterface::DlgType::Information);
+		}
+		else
+		{
+			m_rDlgInterface.showMessageBox(tr("Pdf generation failed"),
+											tr("Error during pdf creation. Is the file already opened?"),
+											RBDialogInterface::DlgType::Error);
+		}
+	});
+	thread->start();
 }

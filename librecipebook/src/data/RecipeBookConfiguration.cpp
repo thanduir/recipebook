@@ -24,8 +24,7 @@ RecipeBookConfiguration::RecipeBookConfiguration(QString strName, const RecipeBo
 :	m_Name(strName),
 	m_Title(rOther.getBookTitle()),
 	m_Subtitle(rOther.getBookSubtitle()),
-	m_FontSize(rOther.getFontSize()),
-	m_LangCode(rOther.getLanguageCode())
+	m_FontSize(rOther.getFontSize())
 {
 	for(quint32 i = 0; i < rOther.getItemsCount(); ++i)
 	{
@@ -140,11 +139,6 @@ bool RecipeBookConfiguration::operator==(const RecipeBookConfiguration& rOther) 
 	}
 
 	if(m_FontSize != rOther.m_FontSize)
-	{
-		return false;
-	}
-
-	if(m_LangCode != rOther.m_LangCode)
 	{
 		return false;
 	}

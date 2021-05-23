@@ -36,10 +36,6 @@ QVariant ListModelRecipeBookConfigurations::data(const QModelIndex& index, int i
 	{
 		return fontSize(index.row());
 	}
-	else if(role == RBConfigurationsRoles::LanguageCodeRole)
-	{
-		return languageCode(index.row());
-	}
 
 	return QVariant();
 }
@@ -51,7 +47,6 @@ QHash<int, QByteArray> ListModelRecipeBookConfigurations::roleNames() const
 	roles[(int)RBConfigurationsRoles::TitleRole] = "title";
 	roles[(int)RBConfigurationsRoles::SubtitleRole] = "subtitle";
 	roles[(int)RBConfigurationsRoles::FontSizeRole] = "fontSize";
-	roles[(int)RBConfigurationsRoles::LanguageCodeRole] = "languageCode";
 	return roles;
 }
 
@@ -143,17 +138,6 @@ quint32 ListModelRecipeBookConfigurations::fontSize(int row) const
 	return rConfig.getFontSize();
 }
 
-QString ListModelRecipeBookConfigurations::languageCode(int row) const
-{
-	recipebook::RBDataReadHandle handle(m_rRBDataHandler);
-
-	if(row < 0 || row >= (int)handle.data().getConfigurationsCount())
-		return 0;
-
-    const RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
-	return rConfig.getLanguageCode();
-}
-
 
 void ListModelRecipeBookConfigurations::setDataChanged(int row, RBConfigurationsRoles role)
 {
@@ -205,21 +189,6 @@ void ListModelRecipeBookConfigurations::setFontSize(int row, quint32 fontSize)
 	}
 
 	setDataChanged(row, RBConfigurationsRoles::FontSizeRole);
-}
-
-void ListModelRecipeBookConfigurations::setLanguageCode(int row, QString strCode)
-{
-	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-
-		if(row < 0 || row >= (int)handle.data().getConfigurationsCount())
-			return;
-
-        RecipeBookConfiguration& rConfig = handle.data().getConfigurationAt((quint32)row);
-		rConfig.setLanguageCode(strCode);
-	}
-
-	setDataChanged(row, RBConfigurationsRoles::LanguageCodeRole);
 }
 
 bool ListModelRecipeBookConfigurations::canConfigurationBeAdded() const

@@ -301,7 +301,6 @@ void json::JsonWriter::writeRecipeBookConfigs(const RecipeBook& rRecipeBook, QJs
 		configObject[json::c_strConfigTitle] = rConfig.getBookTitle();
 		configObject[json::c_strConfigSubtitle] = rConfig.getBookSubtitle();
 		configObject[json::c_strConfigFontSize] = (int)rConfig.getFontSize();
-		configObject[json::c_strConfigLanguageCode] = rConfig.getLanguageCode();
 
 		QJsonObject itemsObject;
 		for(quint32 i = 0; i < rConfig.getItemsCount(); ++i)

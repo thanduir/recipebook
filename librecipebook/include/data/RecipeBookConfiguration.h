@@ -25,9 +25,6 @@ namespace recipebook
 
 		quint32 getFontSize() const { return m_FontSize; }
 		void setFontSize(quint32 fontSize) { m_FontSize = fontSize; }
-
-		QString getLanguageCode() const { return m_LangCode; }
-		void setLanguageCode(QString langCode) { m_LangCode = langCode; }
 		
 		// Items
 
@@ -62,7 +59,6 @@ namespace recipebook
 		QString m_Title;
 		QString m_Subtitle;
 		quint32 m_FontSize = 10;
-		QString m_LangCode = "en";
 
 		QVector<QSharedPointer<RecipeBookConfigItem>> m_Items;
 

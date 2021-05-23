@@ -65,16 +65,5 @@ Item {
 			value: modelRecipeBookConfigurations.fontSize(currentConfig)
 			onValueModified: modelRecipeBookConfigurations.setFontSize(currentConfig, value)
 		}
-
-		Label { 
-			text: qsTr("Language") 
-		}
-		ComboBox { 
-			Layout.fillWidth: true
-			model: recipeBookExporter.availableLanguages()
-
-			currentIndex: recipeBookExporter.getIndexFromLanguageCode(modelRecipeBookConfigurations.languageCode(currentConfig))
-			onActivated: modelRecipeBookConfigurations.setLanguageCode(currentConfig, recipeBookExporter.getCodeFromLanguageName(currentText))
-		}
 	}	
 }

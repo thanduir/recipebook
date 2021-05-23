@@ -31,17 +31,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="167"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="168"/>
         <source>Alternatives group &quot;%1&quot; is still in use and can&apos;t be removed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="197"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="198"/>
         <source>Alternatives group &quot;%1&quot; removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="202"/>
+        <location filename="../qml/android/recipestab/AlternativesTypesPage.qml" line="203"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -304,6 +304,19 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="204"/>
+        <source>h</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="208"/>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RbConfigContentPage</name>
     <message>
         <location filename="../qml/android/recipebookstab/RbConfigContentPage.qml" line="17"/>
@@ -363,35 +376,30 @@
         <source>Font size</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/android/recipebookstab/RbConfigDetailsPage.qml" line="70"/>
-        <source>Language</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>RbConfigPage</name>
     <message>
         <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="26"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="311"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="300"/>
         <source>Add header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="36"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="323"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="312"/>
         <source>Add recipe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="45"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="343"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="332"/>
         <source>Rename header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="51"/>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="359"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="348"/>
         <source>Remove item</source>
         <translation type="unfinished"></translation>
     </message>
@@ -426,27 +434,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="131"/>
-        <source>Language</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="363"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="352"/>
         <source>This will remove the item &quot;%1&quot;. Proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="402"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="391"/>
         <source>PDF Latex path has to be set in settings first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="404"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="393"/>
         <source>Generate PDF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="414"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="403"/>
         <source>Generate recipe book pdf</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1428,21 +1431,36 @@
 <context>
     <name>recipebook::RecipeBookExporter</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="26"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="28"/>
         <source>pdf files (*.pdf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="60"/>
+        <source>Pdf generated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="61"/>
+        <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="66"/>
+        <source>Pdf generation failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="67"/>
+        <source>Error during pdf creation. Is the file already opened?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>recipebook::RecipeBookExporterLatex</name>
+    <name>recipebook::RecipeBookExporterPodofo</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="198"/>
-        <source>h</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RecipeBookExporterLatex.cpp" line="202"/>
-        <source>min</source>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="403"/>
+        <source>Table of contents</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

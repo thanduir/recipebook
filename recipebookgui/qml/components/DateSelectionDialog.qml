@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 //import Qt.labs.calendar 1.0
 
-// TODO: THIS!
+// TODO: NEW DATE SELECTION DIALOG!
 Dialog {
 	id: dlgCalendar
 	modal: true

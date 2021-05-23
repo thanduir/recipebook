@@ -1,14 +1,18 @@
 TODO
 ====
 
-- Write new recipebook exporter (called from RecipeBookExporter) using QTextDocument and QTextTableFormat etc. OR HTML
-	-> remove latex exporter, if the alternative works fine (-> settings)
+- Write new podofo based recipebook exporter
+	- TODOs in RecipeBookExporterPodofo.cpp
+	- change ShoppingListExporter to also use this
+	- remove latex exporter (-> don't forget about settings)
+	- commit
 
 - TODOs im Code
 - Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
 - qt uses "-deployment-settings.json" files for android settings. Is there something similar
-	i could use for icons + manifest file (cf. below)
+	i could use for icons + manifest file? (cf. below)
 
+- UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
 
 - Data synchronisation (sync with dropbox)
 	* Implement RecipeBookSynchronization and sync UI (where to user gets asked which change to keep in case of problems)
@@ -23,8 +27,6 @@ TODO
 		-> https://doc.qt.io/qt-5/android-openssl-support.html
 	
 	* Replace merge with a sync icon?
-
-- UPDATE PHONES WITH RELEASE VERSION! (might be slower because of this atm...)
 
 - Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?
