@@ -2,7 +2,6 @@ TODO
 ====
 
 - Write new podofo based recipebook exporter
-	- TODOs in RecipeBookExporterPodofo.cpp
 	- change ShoppingListExporter to also use this
 	- remove latex exporter (-> don't forget about settings)
 	- commit

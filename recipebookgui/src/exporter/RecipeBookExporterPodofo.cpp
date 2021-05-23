@@ -1,5 +1,6 @@
 #include "RecipeBookExporterPodofo.h"
 #include <QException>
+#include <QFile>
 #include <data/RecipeBookConfiguration.h>
 #include <data/RecipeBookConfigItem.h>
 #include <data/Recipe.h>
@@ -58,13 +59,20 @@ bool RecipeBookExporterPodofo::writeDocument(const RecipeBookConfiguration& rCon
 		m_pCurrentParentOutlineItem = pOutlineRoot;
 
 		// Images
-		// TODO: Can i load the pngs from qt resources?
+
+		auto readImage = [](QString strFilename, std::unique_ptr<PdfImage>& spImage)
+		{
+			QFile f(strFilename);
+			f.open(QIODevice::ReadOnly);
+			QByteArray ba = f.readAll();
+			spImage->LoadFromData(reinterpret_cast<const unsigned char*>(ba.constData()), ba.length());
+		};
 
 		m_spImgPersons = std::make_unique<PdfImage>(m_spDocument.get());
-		m_spImgPersons->LoadFromPng("pdf-pngs/persons.png");
-
+		readImage(":/export-images/persons.png", m_spImgPersons);
+		
 		m_spImgDuration = std::make_unique<PdfImage>(m_spDocument.get());
-		m_spImgDuration->LoadFromPng("pdf-pngs/duration.png");
+		readImage(":/export-images/duration.png", m_spImgDuration);
 
 		// Pages
 		

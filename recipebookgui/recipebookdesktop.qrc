@@ -63,4 +63,8 @@
 		<file alias="remove-black.svg">images/remove-black.svg</file>
 		<file alias="folder-black.svg">images/folder-black.svg</file>
     </qresource>
+	<qresource prefix="/export-images">
+        <file alias="duration.png">export-images/duration.png</file>
+		<file alias="persons.png">export-images/persons.png</file>
+    </qresource>
 </RCC>
