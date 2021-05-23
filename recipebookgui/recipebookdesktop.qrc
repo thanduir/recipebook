@@ -66,5 +66,6 @@
 	<qresource prefix="/export-images">
         <file alias="duration.png">export-images/duration.png</file>
 		<file alias="persons.png">export-images/persons.png</file>
+		<file alias="square.png">export-images/square.png</file>
     </qresource>
 </RCC>

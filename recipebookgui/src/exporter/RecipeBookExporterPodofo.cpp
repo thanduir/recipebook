@@ -468,7 +468,7 @@ PdfFont* RecipeBookExporterPodofo::createFont(float fSize, bool bBold, bool bIta
 											  bBold, 
 											  bItalic, 
 											  false, 
-											  /*PdfEncodingFactory::GlobalIdentityEncodingInstance()*/ PdfEncodingFactory::GlobalWin1250EncodingInstance());
+											  PdfEncodingFactory::GlobalWin1250EncodingInstance());
 
 	if(pFont == nullptr)
 	{

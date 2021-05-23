@@ -1,11 +1,13 @@
 #include "ShoppingListExporter.h"
 #include <QUrl>
 #include <QFileInfo>
+#include <QThread>
 #include <data/SortedShoppingList.h>
 #include <data/RBDataHandler.h>
 #include "../RecipeBookSettings.h"
 #include "../uistringconverter.h"
-#include "ShoppingListExporterLatex.h"
+#include "../RBDialogInterface.h"
+#include "ShoppingListExporterPodofo.h"
 
 using namespace recipebook;
 
@@ -34,26 +36,45 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 	QFileInfo fi(localFileName);
 	m_rSettings.setLastUsedShoppingListExportFolder(fi.absolutePath());
 
-	// TODO: Replace with podofo-based exporter
-	 
-	// Read list
-
-	SortedShoppingList list;
+	QThread* thread = QThread::create([this, strSortOrder, localFileName]
 	{
-		recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
-		const RecipeBook& rRecipeBook = handle.data();
+		m_rDlgInterface.lockUI();
 
-		if(!rRecipeBook.existsSortOrder(strSortOrder))
+		// Read list
+
+		SortedShoppingList list;
 		{
-			return;
+			recipebook::RBDataWriteHandle handle(m_rRBDataHandler);
+			const RecipeBook& rRecipeBook = handle.data();
+
+			if(!rRecipeBook.existsSortOrder(strSortOrder))
+			{
+				return;
+			}
+
+			list.updateList(handle.data());
+			list.changeSortOrder(handle.data().getSortOrder(strSortOrder), SortedShoppingListOrdering::Combined);
 		}
 
-		list.updateList(handle.data());
-		list.changeSortOrder(handle.data().getSortOrder(strSortOrder), SortedShoppingListOrdering::Combined);
-	}
+		// Generate pdf
 
-	// Generate pdf
+		ShoppingListExporterPodofo exporter(m_rConverter);
+		bool bSuccess = exporter.writeDocument(localFileName, list);
 
-	ShoppingListExporterLatex exporter(m_rConverter, m_rSettings);
-	exporter.exportShoppingList(localFileName, list, m_rDlgInterface, m_rSettings.getCurrentAppLanguage());
+		m_rDlgInterface.unlockUI();
+		if(bSuccess)
+		{
+			m_rDlgInterface.showMessageBox(tr("Pdf generated"),
+											tr("Pdf successfully exported to<br>\"%1\"").arg(localFileName),
+											RBDialogInterface::DlgType::Information);
+		}
+		else
+		{
+			m_rDlgInterface.showMessageBox(tr("Pdf generation failed"),
+											tr("Error during pdf creation. Is the file already opened?"),
+											RBDialogInterface::DlgType::Error);
+		}
+	});
+	thread->start();
+	
 }

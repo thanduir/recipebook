@@ -92,7 +92,8 @@ set(RECIPEBOOK_FILES    recipebookgui/src/main.cpp
 						recipebookgui/src/exporter/RBLatexExporter.cpp
 						recipebookgui/src/exporter/RecipeBookExporter.cpp
 						recipebookgui/src/exporter/ShoppingListExporter.cpp
-						recipebookgui/src/exporter/ShoppingListExporterLatex.cpp)
+						recipebookgui/src/exporter/ShoppingListExporterLatex.cpp
+						recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
 
 set(TS_FILES			recipebookgui/translations/recipebookgui_de.ts
 	                    recipebookgui/translations/recipebookgui_en.ts)

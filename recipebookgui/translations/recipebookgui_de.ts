@@ -306,12 +306,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="214"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="212"/>
         <source>h</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="218"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="216"/>
         <source>min</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1459,7 +1459,7 @@
 <context>
     <name>recipebook::RecipeBookExporterPodofo</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="413"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="411"/>
         <source>Table of contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1583,8 +1583,28 @@
 <context>
     <name>recipebook::ShoppingListExporter</name>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="26"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="28"/>
         <source>pdf files (*.pdf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="67"/>
+        <source>Pdf generated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="68"/>
+        <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="73"/>
+        <source>Pdf generation failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="74"/>
+        <source>Error during pdf creation. Is the file already opened?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1610,6 +1630,30 @@
         <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="194"/>
         <source>\item Also needed in a unitless amount
 </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>recipebook::ShoppingListExporterPodofo</name>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="49"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="90"/>
+        <source>Shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="221"/>
+        <source>Optional</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="236"/>
+        <source>- %1 of those %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="240"/>
+        <source>- Also needed in a unitless amount</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
