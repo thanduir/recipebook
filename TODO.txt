@@ -1,10 +1,6 @@
 TODO
 ====
 
-- Write new podofo based recipebook exporter
-	- remove latex exporter (-> don't forget about settings)
-	- commit
-
 - TODOs im Code
 - Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
 - qt uses "-deployment-settings.json" files for android settings. Is there something similar

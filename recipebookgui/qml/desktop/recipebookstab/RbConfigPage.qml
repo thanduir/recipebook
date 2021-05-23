@@ -383,13 +383,6 @@ Item {
 
 			font.capitalization: Font.MixedCase
 
-			enabled: recipeBookSettings.pdfLatexExporterAvailable()
-
-			ToolTip.delay: 1000
-			ToolTip.timeout: 3000
-			ToolTip.visible: hovered && !enabled
-			ToolTip.text: qsTr("PDF Latex path has to be set in settings first")
-
 			text: qsTr("Generate PDF")
 
 			onClicked: {

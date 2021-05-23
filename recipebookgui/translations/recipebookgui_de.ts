@@ -196,7 +196,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/GoShoppingPage.qml" line="174"/>
+        <location filename="../qml/desktop/shoppingtab/GoShoppingPage.qml" line="172"/>
         <source>Export shopping list</source>
         <translation type="unfinished"></translation>
     </message>
@@ -439,17 +439,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="391"/>
-        <source>PDF Latex path has to be set in settings first</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="393"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="386"/>
         <source>Generate PDF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="403"/>
+        <location filename="../qml/desktop/recipebookstab/RbConfigPage.qml" line="396"/>
         <source>Generate recipe book pdf</source>
         <translation type="unfinished"></translation>
     </message>
@@ -893,27 +888,12 @@
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="257"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="313"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="261"/>
         <source>Application instance UID: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="253"/>
-        <source>PDF Export</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="262"/>
-        <source>PDF Latex path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="291"/>
-        <source>Generate recipe book pdf</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="338"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="286"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1375,60 +1355,6 @@
     </message>
 </context>
 <context>
-    <name>recipebook::LatexLanguageManager</name>
-    <message>
-        <location filename="../src/exporter/LatexLanguageManager.cpp" line="7"/>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/LatexLanguageManager.cpp" line="8"/>
-        <source>German</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>recipebook::RBLatexExporter</name>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="35"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="46"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="56"/>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="96"/>
-        <source>Pdf generation failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="35"/>
-        <source>Couldn&apos;t find latex pdf generator.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="46"/>
-        <source>Couldn&apos;t create folder for temporary files.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="56"/>
-        <source>Couldn&apos;t create temporary file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="91"/>
-        <source>Pdf generated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="91"/>
-        <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/RBLatexExporter.cpp" line="96"/>
-        <source>Error during pdf creation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>recipebook::RecipeBookExporter</name>
     <message>
         <location filename="../src/exporter/RecipeBookExporter.cpp" line="28"/>
@@ -1605,31 +1531,6 @@
     <message>
         <location filename="../src/exporter/ShoppingListExporter.cpp" line="74"/>
         <source>Error during pdf creation. Is the file already opened?</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>recipebook::ShoppingListExporterLatex</name>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="57"/>
-        <source>Shopping list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="175"/>
-        <source>Optional</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="190"/>
-        <source>\item %1 of those %2
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterLatex.cpp" line="194"/>
-        <source>\item Also needed in a unitless amount
-</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

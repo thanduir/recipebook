@@ -33,9 +33,6 @@ constexpr const char* c_strLastImportFolder				= "folders/lastimportfolder";
 constexpr const char* c_strLastShoppingListExportFolder	= "folders/lastshoppinglistexportfolder";
 constexpr const char* c_strLastRecipeBookConfigurationExportFolder = "folders/lastrecipebookconfigexportfolder";
 
-constexpr const char* c_strPdfLatexPath					= "export/pdflatexpath";
-constexpr const char* c_strPdfLatexExeNameFilter		= "pdflatex.exe";
-
 constexpr const char* c_strSyncAccessToken				= "sync/accesstoken";
 constexpr const char* c_strSyncFileId					= "sync/flieId";
 constexpr const char* c_strSyncReminderInterval			= "sync/reminderInterval";
@@ -229,29 +226,6 @@ void RecipeBookSettings::setActiveListOrderingGoShopping(QString strSortOrder)
 {
 	QSettings settings;
 	settings.setValue(c_strActiveListOrderingGoShopping, strSortOrder);
-}
-
-bool RecipeBookSettings::pdfLatexExporterAvailable() const
-{
-	QString filePath = QUrl(getPdfLatexFile()).toLocalFile();
-	return QFile::exists(filePath);
-}
-
-QString RecipeBookSettings::getPdfLatexExeNameFilter() const
-{
-	return c_strPdfLatexExeNameFilter;
-}
-
-QString RecipeBookSettings::getPdfLatexFile() const
-{
-	QSettings settings;
-	return settings.value(c_strPdfLatexPath, "").toString();
-}
-
-void RecipeBookSettings::setPdfLatexFile(QString filePath)
-{
-	QSettings settings;
-	settings.setValue(c_strPdfLatexPath, filePath);
 }
 
 QString RecipeBookSettings::getSyncAccessToken() const

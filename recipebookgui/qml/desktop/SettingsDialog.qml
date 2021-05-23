@@ -248,58 +248,6 @@ Popup {
 						}
 					}
 				}
-
-				GroupBox {
-					title: qsTr("PDF Export")
-
-					implicitWidth: groupDefaultValues.implicitWidth
-
-					RowLayout {
-						anchors.fill: parent
-						spacing: 10
-
-						Label {
-							text: qsTr("PDF Latex path")
-						}
-
-						TextField {
-							id: txtPdfLatex
-							Layout.fillWidth: true
-							readOnly: true
-
-							placeholderText: "PDF Latex executable"
-							text: recipeBookSettings.getPdfLatexFile()
-
-							ToolTip.delay: 1000
-							ToolTip.timeout: 3000
-							ToolTip.visible: hovered
-							ToolTip.text: recipeBookSettings.getPdfLatexFile()
-						}
-
-						RoundButton {
-							display: AbstractButton.IconOnly
-							icon.source: "qrc:/images/folder-black.svg"
-
-							onClicked: {
-								fileDialogPdfLatex.folder = recipeBookSettings.getPdfLatexFile()
-								fileDialogPdfLatex.open()
-							}
-
-							FileDialog {
-								id: fileDialogPdfLatex
-
-								title: qsTr("Generate recipe book pdf")
-								modality: Qt.WindowModal
-								nameFilters: recipeBookSettings.getPdfLatexExeNameFilter()
-								fileMode: FileDialog.OpenFile
-								onAccepted: {
-									recipeBookSettings.setPdfLatexFile(file)
-									txtPdfLatex.text = recipeBookSettings.getPdfLatexFile()
-								}
-							}
-						}
-					}
-				}
 			}
 		}
 

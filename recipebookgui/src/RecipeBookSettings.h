@@ -54,11 +54,6 @@ namespace recipebook
 		QString getActiveListOrderingGoShopping() const;
 		void setActiveListOrderingGoShopping(QString strSortOrder);
 
-		bool pdfLatexExporterAvailable() const;
-		QString getPdfLatexExeNameFilter() const;
-		QString getPdfLatexFile() const;
-		void setPdfLatexFile(QString filePath);
-
 		QString getSyncAccessToken() const;
 		void setSyncAccessToken(QString strToken);
 
