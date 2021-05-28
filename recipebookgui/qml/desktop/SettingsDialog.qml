@@ -48,8 +48,6 @@ Popup {
 		onAccepted: recipeBookSynchronization.setServerFileId(outputText)
 	}
 
-	// TODO: title: qsTr("Settings")
-
 	Pane {
 		id: paneSettings
 

@@ -109,7 +109,7 @@ Item {
 	// Header Component
 
 	Component.onCompleted: {
-		onVisibleChanged(true)
+		onVisibleChanged()
 	}
 
 	onVisibleChanged: {
@@ -323,8 +323,7 @@ Item {
 							onClicked: {
 								var currentDate = new Date();
 								var selDate = modelShoppingRecipes.dueDate(index);
-								dlgDateSelection.minimumDate = selDate < currentDate ? selDate : currentDate;
-								dlgDateSelection.selectedDate = selDate;
+								dlgDateSelection.selectedDate = modelShoppingRecipes.isDueDateSet(index) ? selDate : currentDate;
 								dlgDateSelection.myIndex = index;
 								dlgDateSelection.open();
 							}

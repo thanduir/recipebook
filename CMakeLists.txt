@@ -89,8 +89,7 @@ set(RECIPEBOOK_FILES    recipebookgui/src/main.cpp
 						recipebookgui/src/synchronization/RecipeBookConflicts.cpp
 
 						recipebookgui/src/exporter/RecipeBookExporter.cpp
-						recipebookgui/src/exporter/ShoppingListExporter.cpp
-						recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
+						recipebookgui/src/exporter/ShoppingListExporter.cpp)
 
 set(TS_FILES			recipebookgui/translations/recipebookgui_de.ts
 	                    recipebookgui/translations/recipebookgui_en.ts)
@@ -111,7 +110,7 @@ if(NOT ANDROID)
 	set(MY_PODOFO_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/src" "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release")
 	INCLUDE_DIRECTORIES(${MY_PODOFO_INCLUDE_PATH})
 
-	set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp)
+	set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
 
 	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo")
 	link_directories(${MY_PODOFO_LIB_PATH})

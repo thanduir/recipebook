@@ -385,8 +385,7 @@ Item {
 				onClicked: {
 					var currentDate = new Date();
 					var selDate = modelShoppingRecipes.dueDate(lvRecipes.currentIndex);
-					dlgDateSelection.minimumDate = selDate < currentDate ? selDate : currentDate;
-					dlgDateSelection.selectedDate = selDate;
+					dlgDateSelection.selectedDate = modelShoppingRecipes.isDueDateSet(lvRecipes.currentIndex) ? selDate : currentDate;
 					dlgDateSelection.open();
 				}
 			}

@@ -7,7 +7,9 @@
 #include "../RecipeBookSettings.h"
 #include "../uistringconverter.h"
 #include "../RBDialogInterface.h"
+#ifndef Q_OS_ANDROID
 #include "ShoppingListExporterPodofo.h"
+#endif
 
 using namespace recipebook;
 
@@ -31,6 +33,10 @@ QStringList ShoppingListExporter::getDlgNameFilters() const
 
 void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSortOrder)
 {
+#ifdef Q_OS_ANDROID
+    Q_UNUSED(strFileURL);
+    Q_UNUSED(strSortOrder);
+#else
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
 	QFileInfo fi(localFileName);
@@ -76,5 +82,5 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 		}
 	});
 	thread->start();
-	
+#endif
 }

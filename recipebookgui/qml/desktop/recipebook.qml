@@ -62,6 +62,7 @@ ApplicationWindow {
 			ToolButton {
 				text: qsTr("Sync with server")
 				icon.source: "qrc:/images/merge.svg"
+				enabled: false
 				onClicked: recipeBookSynchronization.execute()
 			}
 

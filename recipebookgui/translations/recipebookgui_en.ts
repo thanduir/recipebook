@@ -960,54 +960,54 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="538"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="531"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="536"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="530"/>
         <source>Amount</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="553"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="546"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="551"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="545"/>
         <source>Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="571"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="563"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="569"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="562"/>
         <source>Min.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="622"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="587"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="620"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="586"/>
         <source>Max.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="674"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="613"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="672"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="612"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="692"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="631"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="690"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="630"/>
         <source>Add. Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="706"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="645"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="704"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="644"/>
         <source>Optional</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="747"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="745"/>
         <source>Recipe &quot;%1&quot; removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="752"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="750"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1018,7 +1018,7 @@
     </message>
     <message>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="117"/>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="694"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="693"/>
         <source>Remove ingredient</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1063,7 +1063,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="698"/>
+        <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="697"/>
         <source>This will remove the ingredient &quot;%1&quot;. Proceed?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1251,7 +1251,7 @@
     </message>
     <message>
         <location filename="../qml/android/recipebook.qml" line="15"/>
-        <location filename="../qml/desktop/recipebook.qml" line="82"/>
+        <location filename="../qml/desktop/recipebook.qml" line="83"/>
         <source>Export data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1286,7 +1286,7 @@
         <location filename="../qml/android/recipebook.qml" line="188"/>
         <location filename="../qml/android/recipebook.qml" line="333"/>
         <location filename="../qml/android/recipebook.qml" line="371"/>
-        <location filename="../qml/desktop/recipebook.qml" line="111"/>
+        <location filename="../qml/desktop/recipebook.qml" line="112"/>
         <source>Recipes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1311,7 +1311,7 @@
     <message>
         <location filename="../qml/android/recipebook.qml" line="196"/>
         <location filename="../qml/android/recipebook.qml" line="380"/>
-        <location filename="../qml/desktop/recipebook.qml" line="114"/>
+        <location filename="../qml/desktop/recipebook.qml" line="115"/>
         <source>Shopping</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1331,7 +1331,7 @@
         <location filename="../qml/android/recipebook.qml" line="222"/>
         <location filename="../qml/android/recipebook.qml" line="410"/>
         <location filename="../qml/android/recipebook.qml" line="422"/>
-        <location filename="../qml/desktop/recipebook.qml" line="117"/>
+        <location filename="../qml/desktop/recipebook.qml" line="118"/>
         <source>Recipe books</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1343,13 +1343,13 @@
     </message>
     <message>
         <location filename="../qml/android/recipebook.qml" line="265"/>
-        <location filename="../qml/desktop/recipebook.qml" line="71"/>
+        <location filename="../qml/desktop/recipebook.qml" line="72"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/recipebook.qml" line="276"/>
-        <location filename="../qml/desktop/recipebook.qml" line="94"/>
+        <location filename="../qml/desktop/recipebook.qml" line="95"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1357,27 +1357,27 @@
 <context>
     <name>recipebook::RecipeBookExporter</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="28"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="30"/>
         <source>pdf files (*.pdf)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="60"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="66"/>
         <source>Pdf generated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="61"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="67"/>
         <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="66"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="72"/>
         <source>Pdf generation failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="67"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="73"/>
         <source>Error during pdf creation. Is the file already opened?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1509,27 +1509,27 @@
 <context>
     <name>recipebook::ShoppingListExporter</name>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="28"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="30"/>
         <source>pdf files (*.pdf)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="67"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="73"/>
         <source>Pdf generated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="68"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="74"/>
         <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="73"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="79"/>
         <source>Pdf generation failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="74"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="80"/>
         <source>Error during pdf creation. Is the file already opened?</source>
         <translation type="unfinished"></translation>
     </message>

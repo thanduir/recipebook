@@ -31,6 +31,7 @@
 		<file alias="DateSelectionDialog.qml">qml/components/DateSelectionDialog.qml</file>
 		<file alias="InputFromListDialog.qml">qml/components/InputFromListDialog.qml</file>
 		<file alias="SpinnerInputDialog.qml">qml/components/SpinnerInputDialog.qml</file>
+		<file alias="DatePicker.qml">qml/components/DatePicker.qml</file>
     </qresource>
 	<qresource prefix="/files">
 		<file alias="DefaultRecipeBook.json">resources/DefaultRecipeBook.json</file>

@@ -7,7 +7,9 @@
 #include "../RecipeBookSettings.h"
 #include "../uistringconverter.h"
 #include "../RBDialogInterface.h"
+#ifndef Q_OS_ANDROID
 #include "RecipeBookExporterPodofo.h"
+#endif
 
 using namespace recipebook;
 
@@ -31,6 +33,10 @@ QStringList RecipeBookExporter::getDlgNameFilters() const
 
 void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfiguration)
 {
+#ifdef Q_OS_ANDROID
+    Q_UNUSED(strFileURL);
+    Q_UNUSED(uiConfiguration);
+#else
 	QString localFileName = QUrl(strFileURL).toLocalFile();
 
 	QFileInfo fi(localFileName);
@@ -69,4 +75,5 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 		}
 	});
 	thread->start();
+#endif
 }
