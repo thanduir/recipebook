@@ -1,7 +1,6 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import Qt.labs.platform 1.1
 
 import "components"
 
@@ -35,7 +34,7 @@ Item {
 		}
 	}
 
-	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets at the moment, however)
+	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets and doesn't work correctly on android at the moment, however)
 	/*ColorDialog {
 		id: colorDialog
 		title: "Choose alternatives group color"
@@ -102,7 +101,7 @@ Item {
 
 					color: typeColor
 
-					// TODO
+					// TODO: Reactivate when ColorDialog is available again
 					/*MouseArea {
 						anchors.fill: parent
 						onClicked: { 

@@ -31,7 +31,7 @@ Item {
 		okOnly: true
 	}
 
-	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets at the moment, however)
+	// TODO: Use alternative dialog when it is available (qt labs variant needs Qt widgets and doesn't work correctly on android at the moment, however)
 	/*ColorDialog {
 		id: colorDialog
 
@@ -141,7 +141,7 @@ Item {
 
 					color: typeColor
 
-					// TODO
+					// TODO: Reactivate when ColorDialog is available again
 					/*MouseArea {
 						anchors.fill: parent
 						onClicked: { 

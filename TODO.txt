@@ -1,7 +1,6 @@
 TODO
 ====
 
-- TODOs im Code: ColorDialog in AlternativesTypesPage
 - Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
 - qt uses "-deployment-settings.json" files for android settings. Is there something similar
 	i could use for icons + manifest file? (cf. below)

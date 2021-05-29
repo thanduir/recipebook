@@ -752,7 +752,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="23"/>
         <location filename="../qml/android/SettingsDialog.qml" line="235"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="19"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="159"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="157"/>
         <source>Load default data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -766,7 +766,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="30"/>
         <location filename="../qml/android/SettingsDialog.qml" line="242"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="26"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="166"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="164"/>
         <source>Reset all data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -780,7 +780,7 @@
         <location filename="../qml/android/SettingsDialog.qml" line="37"/>
         <location filename="../qml/android/SettingsDialog.qml" line="214"/>
         <location filename="../qml/desktop/SettingsDialog.qml" line="33"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="243"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="241"/>
         <source>Reset Dropbox connection</source>
         <translation type="unfinished"></translation>
     </message>
@@ -810,90 +810,90 @@
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="76"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="67"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="65"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="82"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="79"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="77"/>
         <source>Current language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="100"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="93"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="91"/>
         <source>Default values</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="106"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="103"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="101"/>
         <source>Default unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="117"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="114"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="112"/>
         <source>Default number of persons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="130"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="127"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="125"/>
         <source>Default category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="141"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="138"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="136"/>
         <source>Default sort order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="159"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="180"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="178"/>
         <source>Synchronization</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="165"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="192"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="190"/>
         <source>File id on server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="184"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="211"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="209"/>
         <source>Generate new id</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="193"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="220"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="218"/>
         <source>Set existing id</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="201"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="228"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="226"/>
         <source>Reminder (days)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="229"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="151"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="149"/>
         <source>Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/android/SettingsDialog.qml" line="257"/>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="261"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="259"/>
         <source>Application instance UID: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/desktop/SettingsDialog.qml" line="286"/>
+        <location filename="../qml/desktop/SettingsDialog.qml" line="284"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -960,54 +960,54 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="536"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="537"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="530"/>
         <source>Amount</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="551"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="552"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="545"/>
         <source>Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="569"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="570"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="562"/>
         <source>Min.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="620"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="621"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="586"/>
         <source>Max.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="672"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="673"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="612"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="690"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="691"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="630"/>
         <source>Add. Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="704"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="705"/>
         <location filename="../qml/desktop/shoppingtab/ShoppingListPage.qml" line="644"/>
         <source>Optional</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="745"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="746"/>
         <source>Recipe &quot;%1&quot; removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="750"/>
+        <location filename="../qml/android/shoppingtab/ShoppingListPage.qml" line="751"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
