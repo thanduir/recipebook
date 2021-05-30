@@ -2,9 +2,6 @@ TODO
 ====
 
 - Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
-- qt uses "-deployment-settings.json" files for android settings. Is there something similar
-	i could use for icons + manifest file? (cf. below)
-	* Android: manifest file + icon missing! How to do this using cmake + qt creator? 
 
 - Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?

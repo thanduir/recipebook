@@ -158,6 +158,9 @@ if(NOT ANDROID)
 			        --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/recipebookgui/qml"
 					"$<TARGET_FILE:RecipeBook>"
 					COMMENT "Running windeployqt...")
+else()
+	set_target_properties(RecipeBook PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
+		    )
 endif()
 
 qt_import_qml_plugins(RecipeBook)

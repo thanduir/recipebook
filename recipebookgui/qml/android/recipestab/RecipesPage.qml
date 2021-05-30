@@ -80,7 +80,7 @@ Item {
 				display: AbstractButton.IconOnly
 				icon.source: "qrc:/images/add-black.svg"
 
-				enabled: modelRecipeItems.canRecipesBeAdded()
+				enabled: filterModelRecipes.canRecipesBeAdded()
 				onClicked: dlgAddRecipe.open()
 			}
 
