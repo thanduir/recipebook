@@ -122,6 +122,7 @@ if(NOT ANDROID)
 	find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg LinguistTools REQUIRED)
 
 	qt6_create_translation(QM_FILES recipebookgui/qml/desktop/recipebook.qml ${CMAKE_CURRENT_SOURCE_DIR}/recipebookgui ${TS_FILES})
+	qt_add_translation(${TS_FILES})
 else()
 	find_package(Qt6 COMPONENTS Core Gui Network PrintSupport Qml Quick QuickControls2 Svg REQUIRED)
 endif()

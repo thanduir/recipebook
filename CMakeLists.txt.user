@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.15.0, 2021-05-30T11:37:12. -->
+<!-- Written by QtCreator 4.15.0, 2021-05-30T15:14:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -180,6 +180,7 @@
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
        <value type="QString">all</value>
+       <value type="QString">RecipeBook_prepare_apk_dir</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Build</value>
@@ -361,8 +362,8 @@
      <value type="QString">armeabi-v7a</value>
      <value type="QString">armeabi</value>
     </valuelist>
-    <value type="QString" key="AndroidDeviceSerialNumber">2DKNU18C24120967</value>
-    <value type="int" key="AndroidVersion.ApiLevel">26</value>
+    <value type="QString" key="AndroidDeviceSerialNumber">R58M44HWK6H</value>
+    <value type="int" key="AndroidVersion.ApiLevel">30</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.0">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
