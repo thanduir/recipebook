@@ -1128,6 +1128,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Knoblauchzehe": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Kochwein (rot)": {
             "category": "Getränke",
             "default-unit": "Deciliter",
@@ -8142,6 +8148,98 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Kartoffelgratin": {
+            "CookingTime": "01:10",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Ofen auf 180 Grad vorheizen. Knoblauch längs halbieren, Form damit ausreiben.\n\nKartoffeln schälen, in dünne Scheiben hobeln, in eine Schüssel geben, würzen (Salz und Pfeffer). Kartoffeln lagenweise in die vorbereitete Form schichten.\n\nMilch, Hälfte des Rahms, Salz und Muskat gut verrühren, über die Kartoffeln giessen.\n\nBacken: ca. 50 Min. in der Mitte des Ofens.\n\nRahm über den Gratin giessen. Fertig backen: ca. 20 Minuten.",
+            "items": {
+                "Halbrahm": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kartoffeln": {
+                    "_position": 1,
+                    "additionalInfo": "mehlig-kochend",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 800,
+                        "unit": "Kilogram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Knoblauchzehe": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Milch": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 4,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Muskatnuss": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Small"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Small"
+                },
+                "Salz": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Teaspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -19246,7 +19344,6 @@
     "z_recipebookconfig": {
         "Standard": {
             "FontSize": 12,
-            "LanguageCode": "de",
             "Subtitle": "von Nicole & Philippe",
             "Title": "Das Kochbuch",
             "items": {
@@ -19343,7 +19440,7 @@
                     "type": "Recipe"
                 },
                 "Fruchtsalat / Kompott": {
-                    "_position": 143,
+                    "_position": 144,
                     "type": "Recipe"
                 },
                 "Fruchtwähe": {
@@ -19351,7 +19448,7 @@
                     "type": "Recipe"
                 },
                 "Fruity Black Velvet Cocktail": {
-                    "_position": 148,
+                    "_position": 149,
                     "type": "Recipe"
                 },
                 "Frühlings-Spaghetti": {
@@ -19409,13 +19506,13 @@
                     "type": "Header"
                 },
                 "Header_Dessert": {
-                    "_position": 149,
+                    "_position": 150,
                     "headerLevel": 0,
                     "name": "Dessert",
                     "type": "Header"
                 },
                 "Header_Drinks": {
-                    "_position": 146,
+                    "_position": 147,
                     "headerLevel": 0,
                     "name": "Drinks",
                     "type": "Header"
@@ -19463,11 +19560,11 @@
                     "type": "Header"
                 },
                 "Himbeer-Quark": {
-                    "_position": 144,
+                    "_position": 145,
                     "type": "Recipe"
                 },
                 "Holländischer Spinatauflauf": {
-                    "_position": 138,
+                    "_position": 139,
                     "type": "Recipe"
                 },
                 "Honig-Apfelwähe": {
@@ -19483,7 +19580,7 @@
                     "type": "Recipe"
                 },
                 "Hüttenkäse": {
-                    "_position": 145,
+                    "_position": 146,
                     "type": "Recipe"
                 },
                 "Kaiserschmarn": {
@@ -19500,6 +19597,10 @@
                 },
                 "Kartoffel-Salat": {
                     "_position": 128,
+                    "type": "Recipe"
+                },
+                "Kartoffelgratin": {
+                    "_position": 138,
                     "type": "Recipe"
                 },
                 "Kichererbsensalat": {
@@ -19531,7 +19632,7 @@
                     "type": "Recipe"
                 },
                 "Lachs im Blätterteig": {
-                    "_position": 141,
+                    "_position": 142,
                     "type": "Recipe"
                 },
                 "Lachs mit Salzkartoffeln": {
@@ -19555,7 +19656,7 @@
                     "type": "Recipe"
                 },
                 "Long Island Ice Tea": {
-                    "_position": 147,
+                    "_position": 148,
                     "type": "Recipe"
                 },
                 "Lyoner-Dingsda": {
@@ -19567,7 +19668,7 @@
                     "type": "Recipe"
                 },
                 "Mozzarella + Tomaten": {
-                    "_position": 142,
+                    "_position": 143,
                     "type": "Recipe"
                 },
                 "Müesli": {
@@ -19667,7 +19768,7 @@
                     "type": "Recipe"
                 },
                 "Pralinen": {
-                    "_position": 150,
+                    "_position": 151,
                     "type": "Recipe"
                 },
                 "Quiche Lorraine": {
@@ -19707,7 +19808,7 @@
                     "type": "Recipe"
                 },
                 "Rindshuftsteaks im Blätterteig": {
-                    "_position": 140,
+                    "_position": 141,
                     "type": "Recipe"
                 },
                 "Risotto mit Chicorée-Piccata": {
@@ -19759,7 +19860,7 @@
                     "type": "Recipe"
                 },
                 "Schoko-Brownies (mit Caramel-Topping)": {
-                    "_position": 151,
+                    "_position": 152,
                     "type": "Recipe"
                 },
                 "Schupfnudeln mit Spargeln": {
@@ -19803,7 +19904,7 @@
                     "type": "Recipe"
                 },
                 "Spinatgratin": {
-                    "_position": 139,
+                    "_position": 140,
                     "type": "Recipe"
                 },
                 "Spätzli mit Rahm-Geschnetzeltem": {
@@ -19859,7 +19960,7 @@
                     "type": "Recipe"
                 },
                 "Warmes Schokoladenküchlein": {
-                    "_position": 152,
+                    "_position": 153,
                     "type": "Recipe"
                 },
                 "Wraps": {
