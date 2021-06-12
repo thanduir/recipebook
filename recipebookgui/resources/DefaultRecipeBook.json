@@ -65,19 +65,19 @@
                 "Apotheke",
                 "Restliches",
                 "Backwaren",
-                "Teigwaren, Reis und Kartoffelprodukte",
                 "Gewürze",
                 "Öle und Saucen",
+                "Teigwaren, Reis und Kartoffelprodukte",
                 "Konserven",
                 "Getränke",
-                "Früchte und Gemüse",
+                "Milchprodukte",
+                "Eier",
                 "Salate",
+                "Früchte und Gemüse",
+                "Fleisch und Fisch",
                 "Brot",
                 "Halbfertigprodukte",
                 "Fertigteig",
-                "Fleisch und Fisch",
-                "Milchprodukte",
-                "Eier",
                 "Tiefgefrohrenes"
             ],
             "Coop-Phil": [
@@ -14936,12 +14936,48 @@
             "ShortDesc": "",
             "Text": "Pasta kochen, danach noch kurz mit Kräuterbutter und Safran in einer Bratpfanne anbraten.\n\n\n\nDazu passt Mozarella-Tomaten Salat.",
             "items": {
+                "Aceto Balsamico": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Kräuterbutter": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": 2,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mozzarella": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Large"
+                },
+                "Olivenöl": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
@@ -15004,6 +15040,18 @@
                         "max": -1,
                         "min": 220,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Tomate": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -17562,7 +17610,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 6,
+                        "min": 12,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -17574,7 +17622,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 60,
+                        "min": 100,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -17597,8 +17645,8 @@
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
-                        "max": -1,
-                        "min": 100,
+                        "max": 300,
+                        "min": 200,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -17634,7 +17682,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 3,
+                        "min": 5,
                         "unit": "Deciliter"
                     },
                     "optional": false,
