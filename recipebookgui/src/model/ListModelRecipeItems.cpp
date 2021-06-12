@@ -448,7 +448,7 @@ void ListModelRecipeItems::setAmountMin(int row, float amount)
         rItem.getAmount().setQuantityMin(amount);
 	}
 
-    //setDataChanged(row, RecipeItemsRoles::AmountMinRole);
+    setDataChanged(row, RecipeItemsRoles::AmountMinRole);
 }
 
 void ListModelRecipeItems::decreaseAmountMin(int row)

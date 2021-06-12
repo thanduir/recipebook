@@ -1,8 +1,6 @@
 TODO
 ====
 
-- Bug: Punkte in Zahlen(amount) -> seems to work again, but not updated correctly
-
 - Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?
 - items to choose one from during shopping (instead of before shopping)?
