@@ -278,7 +278,7 @@ QString ListModelGoShopping::itemAdditionalText(int row) const
 			}
 			else if(rItem.getAmount(i).getUnit() == Unit::Unitless)
 			{
-				lines += "<li>Also needed in a unitless amount</li>";
+				lines += QString(tr("<li>Unitless amount for \"%1\"</li>")).arg(rItem.getRecipeInfos()[i].m_RecipeName);
 			}
 				 
 		}

@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
+        "origin-uid": "4b1fe8fb-d604-42c4-a141-0aa88080d03d",
         "version": 2
     },
     "alternativesTypes": {
@@ -54,11 +54,11 @@
             "Halbfertigprodukte",
             "Konserven",
             "Milchprodukte",
-            "Öle und Saucen",
             "Restliches",
             "Salate",
             "Teigwaren, Reis und Kartoffelprodukte",
-            "Tiefgefrohrenes"
+            "Tiefgefrohrenes",
+            "Öle und Saucen"
         ],
         "sortOrders": {
             "Coop-Nicole": [
@@ -92,11 +92,11 @@
                 "Eier",
                 "Milchprodukte",
                 "Halbfertigprodukte",
-                "Fleisch und Fisch",
-                "Fertigteig",
-                "Brot",
                 "Früchte und Gemüse",
                 "Salate",
+                "Fleisch und Fisch",
+                "Brot",
+                "Fertigteig",
                 "Tiefgefrohrenes"
             ],
             "Migros": [
@@ -1451,6 +1451,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Natron": {
+            "category": "Backwaren",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Nature Joghurt": {
             "category": "Milchprodukte",
             "default-unit": "Count",
@@ -2379,6 +2385,12 @@
         "Trauben (weiss)": {
             "category": "Früchte und Gemüse",
             "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Vanillestängel": {
+            "category": "Backwaren",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -7042,6 +7054,158 @@
                 }
             }
         },
+        "Heidelbeerkuchen": {
+            "CookingTime": "01:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Ofen auf 180° vorheizen.\n\nVanille auskratzen, mit Butter, Zucker und Salz vermengen (Mixer). Eier und Zitonenschale beigeben.\n\nMehl, Kakao, Backpulver, Natron mischen, Heidelbeeren (aufgetaut) plus Saft daruntermischen. In die Springform füllen und frische Beeren darauf verteilen.\n\n1 Stunde in der unteren Hälfte backen, abkühlen lassen und bestäuben.",
+            "items": {
+                "Backpulver": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Butter": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Ei": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 4,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Heidelbeeren": {
+                    "_position": 8,
+                    "additionalInfo": "350 davon tiefgekühlt",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 600,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kakaopulver": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mehl (weiss)": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 250,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Natron": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 0.5,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Puderzucker": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 2,
+                    "additionalInfo": "Prise",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Vanillestängel": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitrone": {
+                    "_position": 4,
+                    "additionalInfo": "Bio",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zucker": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Himbeer-Quark": {
             "CookingTime": "00:30",
             "NrPersons": 1,
@@ -11686,6 +11850,110 @@
                 }
             }
         },
+        "Pasta mit gebackenem Feta und Tomaten": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Ofen auf 220° vorheizen.\n\nTomaten halbieren, in die ausgeölte Form geben. Zwiebeln und Feta schneiden, darauf verteilen und würzen.\n25 Min in der Mitte des Ofens lassen.\n\nTeigwaren separat kochen, unter die Platte mischen und Petersilie darüber geben.",
+            "items": {
+                "Cherry-Tomaten": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Feta": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Frühlingszwiebeln": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Olivenöl": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Petersilie": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Teigwaren (Fusilli)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Pasta-Salat": {
             "CookingTime": "00:30",
             "NrPersons": 1,
@@ -12730,6 +12998,218 @@
                 }
             }
         },
+        "Poulet-Geschnetzeltes an Pilzsauce": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Peperoni, Zwiebel und Pilze schneiden.\n\nPoulet mit Paprika+ und Mehl würzen, anbraten.\n\nGemüse und Pilze dazu geben, rührbraten für 5 Min, danach Flüssigkeit und Thymian beigeben.\n\nDazu passt Rösti (o.A.).",
+            "items": {
+                "Bouillon (Huhn)": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Butter": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Champignon": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Halbrahm": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kartoffel-Kroketten": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kartoffeln": {
+                    "_position": 13,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mehl (weiss)": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Paprika": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Peperoni": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pouletgeschnetzeltes": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 300,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Reis": {
+                    "_position": 14,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Rösti": {
+                    "_position": 15,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Teigwaren (Fusilli)": {
+                    "_position": 16,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Kohlenhydrate",
+                    "amount": {
+                        "max": -1,
+                        "min": 180,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Thymian": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zwiebel": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Pouletflügeli mit Kichererbsen": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -13606,7 +14086,7 @@
             "CookingTime": "00:25",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Zitronenschale abreiben, mit dem Saft, dem Zucker, der Sojasauce und dem Wasser vermischen. Zitronengras fein schneiden und evenfalls in die Sauce geben.\n\nHackfleisch anbraten und würzen, Sauce dazugiessen, zugedeckt 15 Min köcheln lassen, dann den Spinat darunter mischen.\n\nReis parallel dazu kochen.\n\nAllenfalls mit Thai-Basilikum und Cashew-Nüssen garnieren.",
+            "Text": "Zitronenschale abreiben, mit dem Saft, dem Zucker, der Sojasauce und dem Wasser vermischen. Zitronengras fein schneiden und evenfalls in die Sauce geben.\n\nHackfleisch anbraten und würzen, Sauce dazugiessen, zugedeckt 15 Min köcheln lassen, dann den Spinat darunter mischen.\n\nReis parallel dazu kochen (nicht salzen).\n\nAllenfalls mit Thai-Basilikum und Cashew-Nüssen garnieren.",
             "items": {
                 "Cashewnüsse ": {
                     "_position": 11,
@@ -15279,7 +15759,7 @@
                     "amount": {
                         "max": -1,
                         "min": 600,
-                        "unit": "Kilogram"
+                        "unit": "Gram"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -16922,7 +17402,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "Grüne Version der klassischen Lasagne. Gibt Reste.",
-            "Text": "Spinat auftauen lassen, vorkochen.\nPilze kleinschneiden und in Butter anbraten, bis sie ihr Wasser verlieren.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Béchamelsosse hinein geben und auf dem Boden der Form verteilen. Erste Schicht Lasagneplatten anordnen und mit einer Schicht Spinat bedecken. Zweite Schicht Lasagneplatten darüber anordnen und ½ der Béchamelsosse darüber geben. Pilze in einer Schicht darüber geben, abschliessend  eine dritte Schicht Lasagneplatten anordnen und mit dem Rest der Béchamelsosse bedecken. Mozzarellascheiben und Parmesan darüber verteilen.\nBei 180° für 45 Minuten im Ofen backen.",
+            "Text": "Spinat auftauen lassen, vorkochen.\nPilze kleinschneiden und in Butter anbraten, mit Wein ablöschen und köcheln lassen, bis sie ihr Wasser verlieren.\nEine grosse ofenfeste Form ausölen. Zuerst wenig Béchamelsosse hinein geben und auf dem Boden der Form verteilen. Erste Schicht Lasagneplatten anordnen und mit einer Schicht Spinat bedecken. Zweite Schicht Lasagneplatten darüber anordnen und ½ der Béchamelsosse darüber geben. Pilze in einer Schicht darüber geben, abschliessend  eine dritte Schicht Lasagneplatten anordnen und mit dem Rest der Béchamelsosse bedecken. Mozzarellascheiben und Parmesan darüber verteilen.\nBei 180° für 45 Minuten im Ofen backen.",
             "items": {
                 "Béchamelsauce": {
                     "_position": 3,
@@ -16944,6 +17424,18 @@
                         "max": -1,
                         "min": 500,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kochwein (weiss)": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Deciliter"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -16990,8 +17482,20 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 600,
+                        "min": 450,
                         "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zwiebel": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"

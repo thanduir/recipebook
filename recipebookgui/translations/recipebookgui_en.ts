@@ -1555,8 +1555,8 @@
     </message>
     <message>
         <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="240"/>
-        <source>- Also needed in a unitless amount</source>
-        <translation>- Also needed in a unitless amount</translation>
+        <source>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</source>
+        <translation>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</translation>
     </message>
 </context>
 <context>
@@ -1580,6 +1580,11 @@
         <location filename="../src/model/ListModelGoShopping.cpp" line="277"/>
         <source>&lt;li&gt;%1 of those %2&lt;/li&gt;</source>
         <translation>&lt;li&gt;%1 of those %2&lt;/li&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/model/ListModelGoShopping.cpp" line="281"/>
+        <source>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</source>
+        <translation>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</translation>
     </message>
     <message>
         <location filename="../src/model/ListModelGoShopping.cpp" line="334"/>

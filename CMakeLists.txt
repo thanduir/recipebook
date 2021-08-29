@@ -8,9 +8,9 @@ project(RecipeBook VERSION 0.5 LANGUAGES CXX)
 
 # Qt path
 if(ANDROID)
-    set(MY_QT_PATH "C:/Qt/6.1.1/android_arm64_v8a")
+    set(MY_QT_PATH "C:/Qt/6.1.2/android_arm64_v8a")
 else()
-    set(MY_QT_PATH "C:/Qt/6.1.1/msvc2019_64")
+    set(MY_QT_PATH "C:/Qt/6.1.2/msvc2019_64")
 endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})

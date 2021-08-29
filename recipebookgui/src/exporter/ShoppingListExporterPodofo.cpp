@@ -237,7 +237,7 @@ void ShoppingListExporterPodofo::addItemAdditionalText(const GoShoppingListItem&
 			}
 			else if(rItem.getAmount(i).getUnit() == Unit::Unitless)
 			{
-				strText = tr("- Also needed in a unitless amount");
+				strText = QString(tr("<li>Unitless amount for \"%1\"</li>")).arg(rItem.getRecipeInfos()[i].m_RecipeName);
 			}
 
 			if(!strText.isEmpty())

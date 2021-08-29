@@ -278,7 +278,7 @@ bool recipebook::Amount::canBeAddedUp(const Amount& m1, const Amount& m2)
 			return m2.getUnit() == Unit::Teaspoon;
 
 		case Unit::Unitless:
-			return m2.getUnit() == Unit::Unitless;
+			return false;
 
 		default:
 			throw QException();
