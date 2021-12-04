@@ -39,7 +39,7 @@ namespace recipebook
 
 	private:
 		void addTitlePage(QString title, QString subtitle);
-		void addChapterHeader(QString strTitle);
+		void addChapterHeader(QString strTitle, qint32 level);
 		void addRecipePage(const Recipe& rRecipe);
 		void addRecipeItems(PoDoFo::PdfPainter& rPainter,
 							double minX,
@@ -55,10 +55,11 @@ namespace recipebook
 		{
 			QString						m_strName;
 			RecipeBookConfigItemType	m_Type;
+			qint32						m_Level;
 			PoDoFo::PdfDestination		m_Destination;
 
-			TocItem(QString strName, RecipeBookConfigItemType type, PoDoFo::PdfDestination& rDestination)
-				: m_strName(strName), m_Type(type), m_Destination(rDestination) {}
+			TocItem(QString strName, RecipeBookConfigItemType type, qint32 level, PoDoFo::PdfDestination& rDestination)
+				: m_strName(strName), m_Type(type), m_Level(level), m_Destination(rDestination) {}
 		};
 
 	private:

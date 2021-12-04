@@ -91,7 +91,7 @@ bool RecipeBookExporterPodofo::writeDocument(const RecipeBookConfiguration& rCon
 					m_pCurrentParentOutlineItem = pOutlineRoot;
 				}
 
-				addChapterHeader(rItem.getName());
+				addChapterHeader(rItem.getName(), rItem.getLevel());
 
 				break;
 			}
@@ -150,13 +150,15 @@ void RecipeBookExporterPodofo::addTitlePage(QString title, QString subtitle)
 	painter.FinishPage();
 }
 
-void RecipeBookExporterPodofo::addChapterHeader(QString strTitle)
+void RecipeBookExporterPodofo::addChapterHeader(QString strTitle, qint32 level)
 {
 	PdfPage* pPage = m_spDocument->CreatePage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4));
 	if(pPage == nullptr)
 	{
 		throw QException();
 	}
+
+	// TODO: Adjust to level
 
 	PdfPainter painter;
 	painter.SetPage(pPage);
@@ -172,7 +174,7 @@ void RecipeBookExporterPodofo::addChapterHeader(QString strTitle)
 
 	PdfDestination outlineDest(pPage);
 	m_pCurrentParentOutlineItem = m_pCurrentParentOutlineItem->CreateChild(pdfTitle, outlineDest);
-	m_TocItems.append(TocItem(strTitle, RecipeBookConfigItemType::Header, outlineDest));
+	m_TocItems.append(TocItem(strTitle, RecipeBookConfigItemType::Header, level, outlineDest));
 }
 
 void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
@@ -289,7 +291,7 @@ void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
 
 	PdfDestination outlineDest(pPage, ePdfDestinationFit_FitB);
 	m_pCurrentParentOutlineItem->CreateChild(pdfTitle, outlineDest);
-	m_TocItems.append(TocItem(rRecipe.getName(), RecipeBookConfigItemType::Recipe, outlineDest));
+	m_TocItems.append(TocItem(rRecipe.getName(), RecipeBookConfigItemType::Recipe, -1, outlineDest));
 }
 
 void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
@@ -414,6 +416,7 @@ void RecipeBookExporterPodofo::addTOC()
 
 	currentY -= m_dLineHeight;
 
+	qint32 currentLevel = 0;
 	PdfFont* pBoldFont = createFont(m_pTextFont->GetFontSize(), true, false);
 	for(const TocItem& rItem : m_TocItems)
 	{
@@ -427,9 +430,16 @@ void RecipeBookExporterPodofo::addTOC()
 		}
 		else
 		{
-			currentY -= m_dLineHeight / 3;
+			currentLevel = rItem.m_Level;
+			
+			if(currentLevel == 0)
+			{
+				currentY -= m_dLineHeight / 3;
+			}
 			painter.SetFont(pBoldFont);
 		}
+
+		startX += currentLevel * m_dIndentLength;
 
 		painter.DrawText(startX, currentY, pdfTitle);
 
