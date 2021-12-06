@@ -4360,18 +4360,6 @@
             "ShortDesc": "Kuchen-Pizza etwas anders.",
             "Text": "Peperoni in feine Streifen schneiden, Tomätchen halbieren.\nTeig auf ein mit Backpapier belegtes Blech legen, mit saurem Halbrahm bestreichen. Käse, Peperoni, Tomaten und Speck darauf verteilen.\n25 Min. im auf 220° vorgeheizten Ofen backen. Vor dem Servieren noch würzen.\nSalat zubereiten.",
             "items": {
-                "Croutons": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
                 "Datteltomaten": {
                     "_position": 2,
                     "additionalInfo": "",
@@ -4380,18 +4368,6 @@
                         "max": -1,
                         "min": 250,
                         "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Edamame": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -4416,18 +4392,6 @@
                         "max": -1,
                         "min": 120,
                         "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mozzarellaperlen": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -4481,7 +4445,7 @@
                     "size": "Normal"
                 },
                 "Salat": {
-                    "_position": 10,
+                    "_position": 9,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9124,6 +9088,18 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Champignon": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 150,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Datteltomaten": {
                     "_position": 5,
                     "additionalInfo": "",
@@ -9136,8 +9112,20 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Halbrahm": {
-                    "_position": 6,
+                "Edamame": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 100,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosmilch (Light)": {
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9158,7 +9146,7 @@
                         "unit": "Count"
                     },
                     "optional": false,
-                    "size": "Large"
+                    "size": "Small"
                 },
                 "Peperoni": {
                     "_position": 4,
@@ -9173,7 +9161,7 @@
                     "size": "Normal"
                 },
                 "Spinat (frisch, jung)": {
-                    "_position": 7,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -15108,7 +15096,7 @@
             "Title": "Das Kochbuch",
             "items": {
                 "Asia Nudeln": {
-                    "_position": 54,
+                    "_position": 55,
                     "type": "Recipe"
                 },
                 "Auberginen-Auflauf": {
@@ -15144,7 +15132,7 @@
                     "type": "Recipe"
                 },
                 "Burger mit Brötchen mit Salat": {
-                    "_position": 104,
+                    "_position": 103,
                     "type": "Recipe"
                 },
                 "China-Gemüse mit sweet Tofu": {
@@ -15164,7 +15152,7 @@
                     "type": "Recipe"
                 },
                 "Flammkuchen": {
-                    "_position": 102,
+                    "_position": 106,
                     "type": "Recipe"
                 },
                 "Fotzelschnitten": {
@@ -15184,7 +15172,7 @@
                     "type": "Recipe"
                 },
                 "Frühlings-Spaghetti": {
-                    "_position": 49,
+                    "_position": 50,
                     "type": "Recipe"
                 },
                 "Frühlingsrisotto": {
@@ -15192,7 +15180,7 @@
                     "type": "Recipe"
                 },
                 "Fusilli al Pollo": {
-                    "_position": 53,
+                    "_position": 54,
                     "type": "Recipe"
                 },
                 "Fusilli al Spinaci": {
@@ -15216,7 +15204,7 @@
                     "type": "Recipe"
                 },
                 "Gnocchi mit Krautstiel": {
-                    "_position": 103,
+                    "_position": 102,
                     "type": "Recipe"
                 },
                 "Gnocchi-Pilz-Pfanne": {
@@ -15240,7 +15228,7 @@
                     "type": "Header"
                 },
                 "Header_Akzeptabel.2": {
-                    "_position": 51,
+                    "_position": 52,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
@@ -15282,7 +15270,7 @@
                     "type": "Header"
                 },
                 "Header_Ausnahmen.4": {
-                    "_position": 105,
+                    "_position": 104,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
@@ -15410,7 +15398,7 @@
                     "type": "Recipe"
                 },
                 "Knusprige Pappardelle": {
-                    "_position": 47,
+                    "_position": 48,
                     "type": "Recipe"
                 },
                 "Kokos-Rind One-Pot": {
@@ -15418,7 +15406,7 @@
                     "type": "Recipe"
                 },
                 "Krautstiel Wok Nudeln": {
-                    "_position": 52,
+                    "_position": 53,
                     "type": "Recipe"
                 },
                 "Kräuterreis mit Auberginen-Piccata": {
@@ -15478,7 +15466,7 @@
                     "type": "Recipe"
                 },
                 "One-Pot-Pasta": {
-                    "_position": 55,
+                    "_position": 47,
                     "type": "Recipe"
                 },
                 "Orientalisches Lamm-Pilaw": {
@@ -15494,7 +15482,7 @@
                     "type": "Recipe"
                 },
                 "Pasta mit Fleisch": {
-                    "_position": 48,
+                    "_position": 49,
                     "type": "Recipe"
                 },
                 "Pasta mit Rahmspinat und Champignons": {
@@ -15510,7 +15498,7 @@
                     "type": "Recipe"
                 },
                 "Pizza": {
-                    "_position": 106,
+                    "_position": 105,
                     "type": "Recipe"
                 },
                 "Pommes und Cordon bleu": {
@@ -15598,7 +15586,7 @@
                     "type": "Recipe"
                 },
                 "Spaghetti Bolognese": {
-                    "_position": 50,
+                    "_position": 51,
                     "type": "Recipe"
                 },
                 "Spaghetti Carbonara": {
