@@ -293,6 +293,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Blaubeeren": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Blumenkohl": {
             "category": "Tiefgefrohrenes",
             "default-unit": "Gram",
@@ -457,6 +463,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Chiasamen": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Chicken-Nuggets": {
             "category": "Fleisch und Fisch",
             "default-unit": "Unitless",
@@ -601,6 +613,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Datteln": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Datteltomaten": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
@@ -617,6 +635,12 @@
         "Dill": {
             "category": "Gewürze",
             "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Dinkelmehl": {
+            "category": "Backwaren",
+            "default-unit": "Gram",
             "unavailableProvenances": [
             ]
         },
@@ -994,6 +1018,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Joghurt (Kokos)": {
+            "category": "Milchprodukte",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Johannisbeeren": {
             "category": "Früchte und Gemüse",
             "default-unit": "Count",
@@ -1098,6 +1128,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Kichererbsenmehl": {
+            "category": "Backwaren",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Kirsch": {
             "category": "Getränke",
             "default-unit": "Dessertspoon",
@@ -1175,6 +1211,18 @@
         "Kokoswasser": {
             "category": "Getränke",
             "default-unit": "Deciliter",
+            "unavailableProvenances": [
+            ]
+        },
+        "Kokoszucker": {
+            "category": "Backwaren",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Kokosöl": {
+            "category": "Öle und Saucen",
+            "default-unit": "Gram",
             "unavailableProvenances": [
             ]
         },
@@ -1409,6 +1457,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Milch (Mandel)": {
+            "category": "Milchprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Mini-Tupperware": {
             "category": "Restliches",
             "default-unit": "Count",
@@ -1429,6 +1483,12 @@
         },
         "Mozzarellaperlen": {
             "category": "Milchprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Muffinförmchen (Papier)": {
+            "category": "Backwaren",
             "default-unit": "Count",
             "unavailableProvenances": [
             ]
@@ -1584,6 +1644,18 @@
             ]
         },
         "Petersilie": {
+            "category": "Gewürze",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Petersilie (frisch)": {
+            "category": "Früchte und Gemüse",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Pfeffer (Schwarz)": {
             "category": "Gewürze",
             "default-unit": "Count",
             "unavailableProvenances": [
@@ -2198,6 +2270,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Süsskartoffeln": {
+            "category": "Teigwaren, Reis und Kartoffelprodukte",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Tee": {
             "category": "Gewürze",
             "default-unit": "Count",
@@ -2594,6 +2672,134 @@
         }
     },
     "recipes": {
+        "Apfel-Bananen-Dinkelmuffins": {
+            "CookingTime": "00:40",
+            "NrPersons": 4,
+            "ShortDesc": "",
+            "Text": "Backofen auf 200°C vorheizen. Papierförmchen in eine Muffinform mit 12 Mulden setzen.\n\nEinen der Äpfel schälen, entkenen, in kleine Stücke schneiden und beseitestellen. In einer Schüssel die Bananen zerdrücken, dann Kokosmilch und Öl dazugeben und alles gut verrühren.\n\nSeparat Dinkelmehl, Kokoszucker, Natron, Backpulver und Zimt in einer grossen Schüssel vermischen. Jetzt die Bananenmasse und die Apfelstücke unter die trocknene Zutaten rühren. Die Teigmischung gleichmässig in die Muffinmulden füllen.\n\nVor dem Backen den zweiten Apfel halbieren, entkernen und jede Hälfte in dünne Schnitze schneiden. Die Muffins mit jeweils drei Apfelschnitzen garnieren und mit Zimt bestreuen. Die Muffins für 25 Minuten goldbraun backen. Für die Garprobe mit einem Messer in einen Muffin stecken. Wenn beim Herausziehen kein Teig mehr daran klebt, ist der Muffin fertig gebacken. Nach dem Backen die Muffins min. 10 Minuten auskühlen und festwerden lassen.",
+            "items": {
+                "Apfel (rot) ": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Backpulver": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 0.5,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Banane": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Dinkelmehl": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 230,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosmilch (Light)": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3.5,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokoszucker": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosöl": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 3,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Muffinförmchen (Papier)": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 12,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Natron": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zimt": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Asia Nudeln": {
             "CookingTime": "00:25",
             "NrPersons": 2,
@@ -3714,7 +3920,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "\n\n",
+            "Text": "",
             "items": {
                 "BBQ-Sauce": {
                     "_position": 0,
@@ -4348,6 +4554,170 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+		"Einfache Blaubeermuffins": {
+            "CookingTime": "00:30",
+            "NrPersons": 4,
+            "ShortDesc": "",
+            "Text": "Backofen auf 200°C vorheizen. Papierförmchen in eine Muffinform mit 12 Mulden setzen.\n\nDie trockenen Zutaten in einer grossen Schüssel vermengen. Dann die feuchten Zutaten in einer weiteren Schüssel verquirlen, zur MEhlmischung geben und alles zu einem dicken Teig verrühren. Danach die Blaubeeren unterheben.\n\nDie Muffins mit Mandelstifte bestreuten und für 25 Minuten goldbraun backen. Für die Garprobe mit einem Messer in einen Muffin stecken. Wenn beim Herausziehen kein Teig mehr daran klebt, ist der Muffin fertig gebacken. Nach dem Backen die Muffins min. 10 Minuten auskühlen und festwerden lassen.",
+            "items": {
+                "Ahornsirup": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 170,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Apfelessig": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Backpulver": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Blaubeeren": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 100,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Chiasamen": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Dinkelmehl": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokoszucker": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 100,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Mandeln (Stifte)": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Milch (Mandel)": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 100,
+                        "unit": "Milliliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Muffinförmchen (Papier)": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Natron": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (Schwarz)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Rapsöl": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 50,
+                        "unit": "Milliliter"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -9974,6 +10344,194 @@
                 }
             }
         },
+		"Pikante Süsskartoffeln mit Erdnussdressing": {
+            "CookingTime": "01:00",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Backofen auf 240°C (Umluft 220°C) vorheizen.\n\nDie Süsskartoffeln auf ein grosses Backblech geben und mit Olivenöl beträufeln, Gewürze und etwas Salz und Pfeffer dazugeben und vermischen, bis alles bedeckt ist. Ungefähr 45 bis 50 Minuten backen, bis die Süsskartoffeln schön weich sind.\n\nInzwischen für das Dressing in einer Schüssel Ahornsirup, Sesamöl, Erdnussbutter und Zitronensaft mit etwas Salz zu einer glatten Sauce verrühren.\n\nDann Petersilie, Datteln und Sesame-Samen in eine grosse Schüssel geben. Die fertigen Süsskartoffeln hinzufügen, das Dressing drübergiessen und alles gut vermischen. Mit den gerösteten Erdnüssen (falls vorhanden) garnieren und geniessen.",
+            "items": {
+                "Ahornsirup": {
+                    "_position": 10,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Datteln": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 45,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Erdnussbutter": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Erdnüsse": {
+                    "_position": 13,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": true,
+                    "size": "Normal"
+                },
+                "Ingwer": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kreuzkümmel": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Olivenöl": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Petersilie (frisch)": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (Schwarz)": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sesam-Samen": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Sesamöl": {
+                    "_position": 11,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Süsskartoffeln": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Large"
+                },
+                "Zimt": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitronensaft": {
+                    "_position": 14,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Pilz-Risotto": {
             "CookingTime": "00:40",
             "NrPersons": 2,
@@ -13640,6 +14198,122 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Süsskartoffel-Falafeln": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Backofen auf 220°C vorheizen.\n\nSüsskartoffeln schälen und in mundgerechete Stücke schneiden, auf einem Backblech verteilen, mit Olivenöl beträufeln und mit Salz und Pfeffer bestreuen, dann 40 bis 45 Minuten weich backen. Aus dem Ofen nehmen und abkühlen lassen.\n\nNachmde Abkühlen die Süsskartoffeln mit Kichererbsenmehl, Knoblauchzehen (geröstet) und den Gewürzen in der Kpchenmaschine zu einer glatten Masse mixen.\n\nMit einem Eisportionierer Kugeln aus der Masse abstechen, diese mit den Händen eventuell noch etwas formen und auf ein mit Backpapier ausgelegtes Blech setzen. Ungefähr 30 Minuten backen. Für die Garprobe mit einem Messer in die Mitte der Kugel stechen. Klebt noch Teig daran, die Falafeln ein bisschen länger bakcen.",
+            "items": {
+                "Kichererbsen": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kichererbsenmehl": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Knoblauchzehe": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kreuzkümmel": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Olivenöl": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Paprika": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (weiss)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Süsskartoffeln": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 300,
+                        "unit": "Gram"
                     },
                     "optional": false,
                     "size": "Normal"
