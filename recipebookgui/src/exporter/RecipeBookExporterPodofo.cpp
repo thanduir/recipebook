@@ -148,6 +148,8 @@ void RecipeBookExporterPodofo::addTitlePage(QString title, QString subtitle)
 	painter.DrawText(pPage->GetPageSize().GetWidth() / 2.0 - getLength(pFont, pdfSubTitle) / 2, pPage->GetPageSize().GetHeight() / 2.0, pdfSubTitle);
 
 	painter.FinishPage();
+	
+	m_spDestinationTitlePage = std::make_unique<PdfDestination>(pPage, ePdfDestinationFit_Fit);
 }
 
 void RecipeBookExporterPodofo::addChapterHeader(QString strTitle, qint32 level)
@@ -197,6 +199,14 @@ void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
 	painter.SetFont(pTitleFont);
 	PdfString pdfTitle(convertString(rRecipe.getName()));
 	painter.DrawText(c_dBorder, currentY, pdfTitle);
+
+	if(m_spDestinationTitlePage != nullptr)
+	{
+		PdfRect rect(c_dBorder, currentY, getLength(painter.GetFont(), pdfTitle), painter.GetFont()->GetFontSize());
+		PdfAnnotation* pAnnotation = pPage->CreateAnnotation(ePdfAnnotation_Link, rect);
+		pAnnotation->SetDestination(*m_spDestinationTitlePage);
+		pAnnotation->SetBorderStyle(0, 0, 0);
+	}
 
 	currentY -= m_dLineHeight * 2;
 	painter.SetFont(m_pTextFont);

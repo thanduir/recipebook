@@ -67,15 +67,16 @@ namespace recipebook
 
 		std::unique_ptr<PoDoFo::PdfStreamedDocument> m_spDocument = nullptr;
 		
-		PoDoFo::PdfFont*					m_pTextFont = nullptr;
-		double								m_dIndentLength = 0.0;
-		double								m_dLineHeight = 0.0;
+		PoDoFo::PdfFont*						m_pTextFont = nullptr;
+		double									m_dIndentLength = 0.0;
+		double									m_dLineHeight = 0.0;
 
-		PoDoFo::PdfOutlineItem*				m_pCurrentParentOutlineItem = nullptr;
-		QList<TocItem>						m_TocItems;
+		PoDoFo::PdfOutlineItem*					m_pCurrentParentOutlineItem = nullptr;
+		QList<TocItem>							m_TocItems;
+		std::unique_ptr<PoDoFo::PdfDestination>	m_spDestinationTitlePage = nullptr;
 
-		std::unique_ptr<PoDoFo::PdfImage>	m_spImgPersons = nullptr;
-		std::unique_ptr<PoDoFo::PdfImage>	m_spImgDuration = nullptr;
+		std::unique_ptr<PoDoFo::PdfImage>		m_spImgPersons = nullptr;
+		std::unique_ptr<PoDoFo::PdfImage>		m_spImgDuration = nullptr;
 	};
 }
 

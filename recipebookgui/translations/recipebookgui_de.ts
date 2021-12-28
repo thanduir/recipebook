@@ -306,12 +306,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="214"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="224"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="218"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="228"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -1385,7 +1385,7 @@
 <context>
     <name>recipebook::RecipeBookExporterPodofo</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="413"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="423"/>
         <source>Table of contents</source>
         <translation>Inhaltsverzeichnis</translation>
     </message>
