@@ -8,9 +8,9 @@ project(RecipeBook VERSION 0.5 LANGUAGES CXX)
 
 # Qt path
 if(ANDROID)
-    set(MY_QT_PATH "C:/Qt/6.1.2/android_arm64_v8a")
+    set(MY_QT_PATH "C:/Qt/6.1.3/android_arm64_v8a")
 else()
-    set(MY_QT_PATH "C:/Qt/6.1.2/msvc2019_64")
+    set(MY_QT_PATH "C:/Qt/6.1.3/msvc2019_64")
 endif()
 
 list(APPEND CMAKE_PREFIX_PATH ${MY_QT_PATH})
@@ -166,6 +166,16 @@ endif()
 
 qt_import_qml_plugins(RecipeBook)
 qt_finalize_executable(RecipeBook)
+
+# Temporarily fix lib not copied to the correct folder (qt bug?)
+if(ANDROID)
+	file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/")
+	add_custom_command(
+		TARGET ${PROJECT_NAME}
+		POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/lib${PROJECT_NAME}_${ANDROID_ABI}.so" "${CMAKE_CURRENT_BINARY_DIR}/android-build/libs/${ANDROID_ABI}/"
+	)
+endif()
 
 #######################################################################################
 # RBUnitTests

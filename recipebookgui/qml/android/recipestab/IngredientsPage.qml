@@ -378,7 +378,7 @@ Item {
                 }
                 else
                 {
-                    undoTimer.start()
+					undoTimer.start()
                     if(index == lvIngredients.currentIndex)
                     {
 						changeCurrentIngredient(-1)
@@ -417,13 +417,13 @@ Item {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
 
-                    onClicked: {
-                        undoTimer.stop()
+					SwipeDelegate.onClicked: {
+						undoTimer.stop()
                         listIngredientsItem.swipe.close()
-                    }
+					}
 
                     visible: listIngredientsItem.swipe.complete
-                }
+				}
 			}
         }
 	}
