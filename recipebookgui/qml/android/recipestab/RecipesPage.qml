@@ -255,7 +255,7 @@ Item {
 						anchors.right: parent.right
 						anchors.verticalCenter: parent.verticalCenter
 
-						onClicked: {
+						SwipeDelegate.onClicked: {
 							undoTimer.stop()
 							listItemRecipe.swipe.close()
 							listItemRecipe.contentItem.visible = true

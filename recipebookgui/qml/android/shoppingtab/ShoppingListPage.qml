@@ -753,7 +753,7 @@ Item {
 					anchors.right: parent.right
 					anchors.verticalCenter: parent.verticalCenter
 
-					onClicked: {
+					SwipeDelegate.onClicked: {
 						undoTimerRecipes.stop()
 						listRecipeItem.swipe.close()
 					}
