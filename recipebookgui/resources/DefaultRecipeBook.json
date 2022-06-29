@@ -57,11 +57,11 @@
             "Halbfertigprodukte",
             "Konserven",
             "Milchprodukte",
-            "Öle und Saucen",
             "Restliches",
             "Salate",
             "Teigwaren, Reis und Kartoffelprodukte",
-            "Tiefgefrohrenes"
+            "Tiefgefrohrenes",
+            "Öle und Saucen"
         ],
         "sortOrders": {
             "Coop-Nicole": [
@@ -383,6 +383,12 @@
         "Brot": {
             "category": "Brot",
             "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
+        "Brotaufstrich (vegan)": {
+            "category": "Konserven",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -718,8 +724,6 @@
             "category": "Restliches",
             "default-unit": "Count",
             "unavailableProvenances": [
-                "Coop-Nicole",
-                "Coop-Phil"
             ]
         },
         "Erdnussöl": {
@@ -1079,7 +1083,13 @@
         },
         "Joghurt (Kokos)": {
             "category": "Milchprodukte",
-            "default-unit": "Gram",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
+        "Joghurt (Soya)": {
+            "category": "Milchprodukte",
+            "default-unit": "Count",
             "unavailableProvenances": [
             ]
         },
@@ -5523,7 +5533,7 @@
             "CookingTime": "00:10",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "15 g Margarine in einem Topf schmelzen.\n\nMit einem Schneebesen 20 g Mehl einrühren und  sofort nach und nach 250-280 ml Pflanzendrink aufgiessen. Dabei immer wieder rühren. \n\nWürzen mit 1 kl. TL Senf, 15 g Hefeflocken, 1/2 TL Knoblauchgranulat, 1-2 TL Sojasoße und mit Salz abshcmecken.",
+            "Text": "15 g Margarine in einem Topf schmelzen.\n\nMit einem Schneebesen 20 g Mehl einrühren und  sofort nach und nach 250-280 ml Pflanzendrink aufgiessen. Dabei immer wieder rühren. \n\nWürzen mit 1 kl. TL Senf, 15 g Hefeflocken, 1/2 TL Knoblauchgranulat, 1-2 TL Sojasoße und mit Salz abschmecken.",
             "items": {
                 "Knoblauchpulver": {
                     "_position": 5,
@@ -5817,6 +5827,18 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Krautstiel": {
+                    "_position": 16,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Milch (Mandel)": {
                     "_position": 12,
                     "additionalInfo": "",
@@ -5878,7 +5900,7 @@
                     "size": "Normal"
                 },
                 "Risotto": {
-                    "_position": 8,
+                    "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -5914,9 +5936,9 @@
                     "size": "Normal"
                 },
                 "Stangensellerie": {
-                    "_position": 5,
+                    "_position": 8,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Gemüse (grün)",
                     "amount": {
                         "max": -1,
                         "min": 2,
@@ -7447,20 +7469,8 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "Kreative vegetarische Spaghetti.",
-            "Text": "Kohlrabi schälen und in kleine Würfelchen schneiden. (Frühlingszwiebeln in Ringe schneiden.)\n\nButter in einer Bratpfanne schmelzen lassen, Gemüse 5 Minuten dämpfen, Kokosmilch dazu giessen und nochmals 5 Minuten köcheln lassen.\n\nSpaghetti parallel dazu al dente kochen, über den Spinat abgiessen und ca. 1dl Kochwasser auffangen.\n\nSpaghetti, Spinat und Kochwasser zum Kohlrabi geben, Käse darüber streuen und mischen, zuletzt Mandelstifte darüber geben.",
+            "Text": "Kohlrabi schälen und in kleine Würfelchen schneiden. (Frühlingszwiebeln in Ringe schneiden.)\n\nMargarine in einer Bratpfanne schmelzen lassen, Gemüse 5 Minuten dämpfen, Seidentofu und Mandelmus dazu geben, mit Kochwasser verdünnen und nochmals 5 Minuten köcheln lassen.\n\nSpaghetti parallel dazu al dente kochen, über den Spinat abgiessen und ca. 1dl Kochwasser auffangen.\n\nSpaghetti, Spinat und Kochwasser zum Kohlrabi geben und mischen, zuletzt Mandelstifte darüber geben.",
             "items": {
-                "Butter": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
                 "Frühlingszwiebeln": {
                     "_position": 3,
                     "additionalInfo": "",
@@ -7485,14 +7495,14 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Kokosmilch": {
-                    "_position": 9,
+                "Mandelmus": {
+                    "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
-                        "unit": "Deciliter"
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -7509,8 +7519,20 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Margarine": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Parmesan": {
-                    "_position": 8,
+                    "_position": 10,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -7518,11 +7540,11 @@
                         "min": 0,
                         "unit": "Unitless"
                     },
-                    "optional": false,
+                    "optional": true,
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
-                    "_position": 7,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -7534,7 +7556,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
-                    "_position": 6,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -7545,13 +7567,25 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Seiden-Tofu": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Spaghetti": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 180,
+                        "min": 240,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -9827,10 +9861,10 @@
             "CookingTime": "01:30",
             "NrPersons": 2,
             "ShortDesc": "Scheibchen Kuscheln",
-            "Text": "Kartoffeln und Kohlrabiviertel in 3 mm dünne Scheiben schneiden. Für ca. 8 Minuten in Salzwasser vorgaren.\n\nMozzarella in Scheiben schneiden.\n\nStreifen von Kohlrabi, Kartoffeln und Mozzarella dachziegelartig in eine ausgebutterte, feuerfeste Form geben, \"Rahm\"-Bouillon-Gewürz-Mischung darüber giessen. Mit Sonnenblumenkernen bestreuen.\n\nFür 45 Minuten in der Mitte des Ofens bei 180° backen (10 Minuten weniger bei vorgeheiztem Ofen).",
+            "Text": "Ofen auf 180° vorheizen.\n\nMozzarella, Kartoffeln und Kohlrabiviertel in 3 mm dünne Scheiben schneiden.\n\nKohlrabi, Kartoffeln und Mozzarella dachziegelartig (oder wild) in eine ausgeölte, feuerfeste Form geben, \"Rahm\"-Bouillon-Gewürz-Mischung darüber giessen. Mit Sonnenblumenkernen bestreuen.\n\nFür 50 Minuten in der Mitte des Ofens bei 180° backen, dann die Kokosmilch darüber geben und nochmals 20 Minuten weiterbacken.",
             "items": {
                 "Ahornsirup": {
-                    "_position": 4,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9842,7 +9876,7 @@
                     "size": "Normal"
                 },
                 "Bouillon (Gemüse)": {
-                    "_position": 3,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9878,12 +9912,24 @@
                     "size": "Normal"
                 },
                 "Kokosmilch": {
-                    "_position": 9,
+                    "_position": 11,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1.25,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Milch (Soya)": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 4,
                         "unit": "Deciliter"
                     },
                     "optional": false,
@@ -9901,8 +9947,20 @@
                     "optional": false,
                     "size": "Large"
                 },
+                "Muskatnuss": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Petersilie": {
-                    "_position": 6,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9914,7 +9972,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
-                    "_position": 8,
+                    "_position": 10,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9926,7 +9984,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
-                    "_position": 7,
+                    "_position": 9,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -9938,7 +9996,7 @@
                     "size": "Normal"
                 },
                 "Sonnenblumenkerne": {
-                    "_position": 5,
+                    "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -11748,7 +11806,7 @@
                     "amount": {
                         "max": -1,
                         "min": 1,
-                        "unit": "Count"
+                        "unit": "Dessertspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -11759,8 +11817,8 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 1,
-                        "unit": "Count"
+                        "min": 2,
+                        "unit": "Dessertspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -11783,7 +11841,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 1,
+                        "min": 30,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -11796,7 +11854,7 @@
                     "amount": {
                         "max": -1,
                         "min": 1,
-                        "unit": "Count"
+                        "unit": "Dessertspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -12075,7 +12133,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 250,
+                        "min": 500,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -15939,7 +15997,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 400,
+                        "min": 600,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -16360,10 +16418,10 @@
             }
         },
         "Quinoa-Kornflakes": {
-            "CookingTime": "00:30",
+            "CookingTime": "00:40",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Quinoa nach Anleitung kochen, abgiessen. Kakaopulver und Ahornsirup daruntermischen. Stehen lassen für 5 Minuten.\n\nMilch erwärmen und Birnenschnitze darin köcheln lassen, zusammen mit dem Quinoa servieren.",
+            "Text": "Quinoa ca. 30 Min bei kleiner Hitze im Salzwasser kochen, abgiessen. Kakaopulver und Ahornsirup daruntermischen. Stehen lassen für 5 Minuten.\n\nParallel dazu Milch sanft erwärmen und Birnenschnitze darin köcheln lassen, zusammen mit dem Quinoa servieren.",
             "items": {
                 "Ahornsirup": {
                     "_position": 2,
@@ -16373,6 +16431,18 @@
                         "max": -1,
                         "min": 3,
                         "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Banane": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -16387,7 +16457,7 @@
                         "unit": "Count"
                     },
                     "optional": false,
-                    "size": "Normal"
+                    "size": "Large"
                 },
                 "Kakaopulver": {
                     "_position": 1,
@@ -16419,7 +16489,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 250,
+                        "min": 180,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -16989,8 +17059,20 @@
             "ShortDesc": "Vegetarische Reisbegleitung zum Zweiten.",
             "Text": "Pilze einweichen.\nAuberginen in ca. 1 cm dicke Scheiben schneiden, mit Öl, Salz / Pfeffer würzen und für 20 Minuten in den auf 180° vorgeheizten Ofen stecken, abkühlen lassen.\n\nRisotto in einer Bratpfanne andämpfen, mit Pilzen und Bouillon kochen und bei Koch-Halbzeit Weisswein dazu geben. Mit Gewürz abschmecken.\n\nPiccata-Teig mischen: Milch, Mineralwasser, Mehl, geriebene Mandeln, Cashewcreme, Hefe, Salz und Knoblauchpulver vermengen. Auberginen darin wenden.\n\nAuberginen portionenweise bei mittlerer Hitze in Kokosöl beidseitig für ca. 3 Minuten braten. Zugedeckt warm halten (50° im Ofen).",
             "items": {
+                "Aubergine": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Large"
+                },
                 "Cashewcreme": {
-                    "_position": 7,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17014,7 +17096,7 @@
                     "size": "Normal"
                 },
                 "Knoblauchpulver": {
-                    "_position": 9,
+                    "_position": 10,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17026,7 +17108,7 @@
                     "size": "Normal"
                 },
                 "Mandeln (gemahlen)": {
-                    "_position": 6,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17038,7 +17120,7 @@
                     "size": "Normal"
                 },
                 "Mehl (Kichererbsen)": {
-                    "_position": 5,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17050,18 +17132,6 @@
                     "size": "Normal"
                 },
                 "Milch (Soya)": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1.5,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mineralwasser": {
                     "_position": 11,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -17073,8 +17143,20 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Mineralwasser": {
+                    "_position": 12,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1.5,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Nährhefe": {
-                    "_position": 8,
+                    "_position": 9,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17086,7 +17168,7 @@
                     "size": "Normal"
                 },
                 "Pfeffer (weiss)": {
-                    "_position": 4,
+                    "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17110,7 +17192,7 @@
                     "size": "Normal"
                 },
                 "Salz": {
-                    "_position": 3,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17122,7 +17204,7 @@
                     "size": "Normal"
                 },
                 "Wein (weiss)": {
-                    "_position": 2,
+                    "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17253,6 +17335,98 @@
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
+        "Rohkost": {
+            "CookingTime": "00:30",
+            "NrPersons": 1,
+            "ShortDesc": "",
+            "Text": "",
+            "items": {
+                "BBQ-Sauce": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Brot": {
+                    "_position": 2,
+                    "additionalInfo": "oder Cracker",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Curry": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Fenchel": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 2,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Joghurt (Soya)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Karotte": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": 2,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zitronensaft": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
                     "amount": {
                         "max": -1,
                         "min": 1,
@@ -17635,7 +17809,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Ofen auf 220° vorheizen.\n\nKartoffeln und Gemüse raffeln; möglichst auswringen (z.B. mit Hilfe ines Küchentuchs).\n\nMehl, Backpulver, Pfeffer mischen, zum Gemüsen egeben und mischen.\n\nPlätzchen formen, in eine Bratpfanne geben und für 12 Minuten braten.",
+            "Text": "Kartoffeln und Gemüse raffeln; möglichst auswringen (z.B. mit Hilfe ines Küchentuchs).\n\nMehl, Backpulver, Pfeffer mischen, zum Gemüse geben und mischen.\n\nPlätzchen formen, in eine Bratpfanne geben und für 12 Minuten braten.\nODER: Ofen auf 220° vorheizen, Teigmischung auf ein Backpapier geben und für 15 Minuten backen.",
             "items": {
                 "Backpulver": {
                     "_position": 4,
@@ -17946,7 +18120,7 @@
             "Text": "",
             "items": {
                 "Brot": {
-                    "_position": 5,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -17957,31 +18131,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Butter": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Frucht": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": 2,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Hummus": {
+                "Brotaufstrich (vegan)": {
                     "_position": 0,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
@@ -17993,19 +18143,43 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Putenbrust (Scheiben)": {
+                "Butter": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Frucht": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
+                    "amount": {
+                        "max": 2,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Hummus": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
                     "amount": {
                         "max": -1,
                         "min": 1,
-                        "unit": "Unitless"
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
                 },
-                "Rohschinken": {
+                "Putenbrust (Scheiben)": {
                     "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
@@ -18017,7 +18191,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Salami": {
+                "Rohschinken": {
                     "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
@@ -18029,19 +18203,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Salat (fertig)": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Schinken": {
+                "Salami": {
                     "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "Eiweiss",
@@ -18053,8 +18215,32 @@
                     "optional": false,
                     "size": "Normal"
                 },
+                "Salat (fertig)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Gemüse",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Schinken": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Eiweiss",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Senf": {
-                    "_position": 9,
+                    "_position": 10,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -18071,7 +18257,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Ofen auf 80° vorheizen.\n\nMehl, Kakaopulver, Leinsamen, Schokowürfelchen, Salz mischen.\nMilch, Ahornsirup, Vanilla, Essig mischen.\nAlles mit dem Apfelmus kombinieren.\n\nTeig ziehen lassen.\n\nBratpfanne erhitzen, Löffel voll Teig hinein geben und verteilen, braten bis goldbraun.\n\nDazu Himbeeren (oder Kompott / Smoothie) servieren.",
+            "Text": "Ofen auf 80° vorheizen.\n\nMehl, Kakaopulver, Leinsamen, Schokowürfelchen, Salz mischen.\nMilch, Ahornsirup, Vanilla, Essig mischen.\nAlles mit dem Apfelmus kombinieren.\n\nTeig ziehen lassen.\n\nBratpfanne erhitzen, Löffel voll Teig hinein geben und verteilen, braten bis goldbraun.\nODER: Ofen auf 200° vorheizen, Teigmischung auf ein Backpapier geben und für 15 Minuten backen.\n\nDazu Himbeeren (oder Kompott / Smoothie) servieren.",
             "items": {
                 "Ahornsirup": {
                     "_position": 5,
@@ -21467,7 +21653,7 @@
             "CookingTime": "00:30",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Ofen auf 80° vorheizen.\n\nMehl, Haferflocken, Backpulver, Zimt mischen, Milch, Ahornsirup, Essig und Vanille hizugeben. Leicht mischen und Teig ziehen lassen für 5 Minuten.\n\nBratpfann erhitzen, Löffel voll Teig hinein geben und verteilen, braten bis goldbraun.\n\nDazu Kompott oder Smoothie servieren.",
+            "Text": "Ofen auf 80° vorheizen.\n\nMehl, Haferflocken, Backpulver, Zimt mischen, Milch, Ahornsirup, Essig und Vanille hizugeben. Leicht mischen und Teig ziehen lassen für 5 Minuten.\n\nBratpfann erhitzen, Löffel voll Teig hinein geben und verteilen, braten bis goldbraun.\nODER: Ofen auf 200° vorheizen, Teigmischung auf ein Backpapier geben und für 15 Minuten backen.\n\nDazu Kompott oder Smoothie servieren.",
             "items": {
                 "Ahornsirup": {
                     "_position": 5,
