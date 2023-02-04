@@ -5,6 +5,7 @@ TODO
 - shopping list page: recipes sortable by due date?
 - items to choose one from during shopping (instead of before shopping)?
 - Qt 6.2
+- https://www.qt.io/blog/deploying-to-linux-with-cmake
 - https://www.qt.io/blog/introduction-to-the-qml-cmake-api
 
 - Data synchronisation (sync with dropbox)
