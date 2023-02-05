@@ -149,14 +149,14 @@ void recipebook::Amount::add(const Amount& other)
 			if(isRange() || other.isRange())
 			{
 				setIsRange(true);
-				float value = getUnit() == Unit::Kilogram ? getQuantityMax() * 1000.0f : getQuantityMax();
+                quantityMax = getUnit() == Unit::Kilogram ? getQuantityMax() * 1000.0f : getQuantityMax();
 				if(other.isRange())
 				{
-					value += other.getUnit() == Unit::Kilogram ? other.getQuantityMax() * 1000.0f : other.getQuantityMax();
+                    quantityMax += other.getUnit() == Unit::Kilogram ? other.getQuantityMax() * 1000.0f : other.getQuantityMax();
 				}
 				else
 				{
-					value += other.getUnit() == Unit::Kilogram ? other.getQuantityMin() * 1000.0f : other.getQuantityMin();
+                    quantityMax += other.getUnit() == Unit::Kilogram ? other.getQuantityMin() * 1000.0f : other.getQuantityMin();
 				}
 			}
 
@@ -205,18 +205,18 @@ void recipebook::Amount::add(const Amount& other)
 			float value2 = convertValue(other.getUnit(), other.getQuantityMin());
 			float quantityMin = value1 + value2;
 
-			float quantityMax = 0.0f;
+            float quantityMax = 0.0f;
 			if(isRange() || other.isRange())
 			{
 				setIsRange(true);
-				float value = convertValue(getUnit(), getQuantityMax());
+                quantityMax = convertValue(getUnit(), getQuantityMax());
 				if(other.isRange())
 				{
-					value += convertValue(other.getUnit(), other.getQuantityMax());
+                    quantityMax += convertValue(other.getUnit(), other.getQuantityMax());
 				}
 				else
 				{
-					value += convertValue(other.getUnit(), other.getQuantityMin());
+                    quantityMax += convertValue(other.getUnit(), other.getQuantityMin());
 				}
 			}
 
