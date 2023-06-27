@@ -2,7 +2,7 @@
     "Metadata": {
         "id": "ch.phwidmer.einkaufsliste",
         "origin-sw": "windows",
-        "origin-uid": "3e5fdcc9-2ba1-4759-92c0-48c04c7d613c",
+        "origin-uid": "9f120411-0748-42d7-b52c-5baabef01adb",
         "version": 2
     },
     "alternativesTypes": {
@@ -57,11 +57,11 @@
             "Halbfertigprodukte",
             "Konserven",
             "Milchprodukte",
+            "Öle und Saucen",
             "Restliches",
             "Salate",
             "Teigwaren, Reis und Kartoffelprodukte",
-            "Tiefgefrohrenes",
-            "Öle und Saucen"
+            "Tiefgefrohrenes"
         ],
         "sortOrders": {
             "Coop-Nicole": [
@@ -278,6 +278,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Beeren (gefroren)": {
+            "category": "Tiefgefrohrenes",
+            "default-unit": "Gram",
+            "unavailableProvenances": [
+            ]
+        },
         "Beyond Burger": {
             "category": "Halbfertigprodukte",
             "default-unit": "Count",
@@ -392,6 +398,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Brotschnitten": {
+            "category": "Brot",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Brownie": {
             "category": "Brot",
             "default-unit": "Count",
@@ -410,6 +422,12 @@
             "default-unit": "Count",
             "unavailableProvenances": [
                 "Migros"
+            ]
+        },
+        "Burrata": {
+            "category": "Milchprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
             ]
         },
         "Butter": {
@@ -1508,6 +1526,12 @@
             "unavailableProvenances": [
             ]
         },
+        "Majoran (getrocknet)": {
+            "category": "Gewürze",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+            ]
+        },
         "Mandelmus": {
             "category": "Konserven",
             "default-unit": "Count",
@@ -2428,6 +2452,13 @@
             "unavailableProvenances": [
             ]
         },
+        "Skyr (Nature)": {
+            "category": "Milchprodukte",
+            "default-unit": "Count",
+            "unavailableProvenances": [
+                "Migros"
+            ]
+        },
         "Sojasauce": {
             "category": "Öle und Saucen",
             "default-unit": "Dessertspoon",
@@ -2918,13 +2949,6 @@
                 "Migros"
             ]
         },
-        "YoQua (Nature)": {
-            "category": "Milchprodukte",
-            "default-unit": "Count",
-            "unavailableProvenances": [
-                "Migros"
-            ]
-        },
         "Zahnstocher": {
             "category": "Restliches",
             "default-unit": "Unitless",
@@ -3273,170 +3297,6 @@
                 }
             }
         },
-        "Artischocken-Kartoffel-Pasta-Salat": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Kartoffeln kochen und schneiden.\n\nPasta kochen, zu dne Kartoffeln in eine Schüssel geben.\n\nArtischocken- und Palmherzen, Tomätchen, Zwiebeln und Dill zu den Kartoffel-Pasta mischen.\n\nIm Mixer Tofu, Essig, Knoblauch, Senf und Gewürz zu einer Sauce verarbeiten.\n\nSauce über die Kartoffel-Pasta geben; vor dem Servieren etwas Pflanzenmilch dazu geben.",
-            "items": {
-                "Artischocken-Herzen": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 200,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cherry-Tomaten": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 150,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Dill": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Frühlingszwiebeln": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kartoffeln": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 300,
-                        "unit": "Kilogram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchzehe": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Kokos)": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Palmherzen": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 50,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Seiden-Tofu": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 160,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Senf": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Teigwaren (Hörnli)": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Weissweinessig": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1.5,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
         "Asia Nudeln": {
             "CookingTime": "00:25",
             "NrPersons": 2,
@@ -3754,158 +3614,6 @@
                     "amount": {
                         "max": -1,
                         "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
-        "Auberginen-Brokkoli-Salat mit Misodressing": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Backofen auf 240°C (Umluft 220°C) vorheizen.\n\nFür das Dressing die Misopaste mit Limettensaft, Essig, Sesamöl, Ingwer (gerieben) und etwas Salz und Pfeffer im Mixer zu einer glatten Sauce pürieren. \n\nAuberginen in mundgerechte Stücke schneiden und diese auf einem grossen Backblech verteilen, mit dem Misodressing gut vermischen und 30 bis 35 Minuten backen. Das Blech aus dem Ofen nehmen und die Brokkolirösschen unter die Auberginen mischen. Jetzt die Grillfunktion einschalten und das Blech für weitere 10 Minuten in den Ofen schieben, bis die Brokkolirösschen an den Rändern leicht schwarz und die Auberginen schön weich und goldbraun sind.\n\nZum Schluss alles auf einer Servierplatte anrichten, Koriander und Sesamsamen und nach belieben Chiliringe darüberstreuen.",
-            "items": {
-                "Aubergine": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Brokkoli": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Large"
-                },
-                "Chilli-Schote (rot)": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Ingwer": {
-                    "_position": 4,
-                    "additionalInfo": "Daumen-gross",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Koriander (frisch)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Limettensaft": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Miso": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 4,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (weiss)": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Reisessig": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Sesam-Samen": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Sesamöl": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 3,
                         "unit": "Dessertspoon"
                     },
                     "optional": false,
@@ -4669,182 +4377,6 @@
                 }
             }
         },
-        "Blumenkohl-Kichererbsen-Salat": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Backofen auf 240°C (Umluft 220°C) vorheizen.\n\nBrokkoli- und Blumenkohlrösschen auf einem grossen Backblech verteilen, mit etwas Olivenöl beträufeln und mit Salz und Pfeffer bestreuen. Champignons (geviertelt) und Kichererbsen dazugeben, alles vermengen und im Backofen 10 bis 15 Minuten backen, bis der Brokkoli aussen leicht schwarz geworden ist. Aus dem Ofen nehmen, beiseitestellen und abkühlen lassen.\n\nFür das Dressing Joghurt mit Öl, Knoblauch, Apfelessig und Ahornsirup in einer Schüssel zu einer glatten Sauce verrühren. Die Pinienkerne in einer trockenen Pfanne bei mittlerer Hitze ungefähr 2 Minuten goldbraun anrösten. Achtung: ständig umrühren, denn sie brennen leicht an! Sobald sie fertig sind, aus der heissen Pfanne schütten, damit sie nicht weiterrösten.\n\nDas abgekühlte Gemüse in einer Schüssel mit Petersilie (grob gehackt) und Estragon (grob gehackt) vermischen. Das Dressing unterrühren und mit den Pinienkernen und restlichen Petersilie garnieren.",
-            "items": {
-                "Ahornsirup": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Apfelessig": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Blumenkohl": {
-                    "_position": 1,
-                    "additionalInfo": "farbig",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Small"
-                },
-                "Champignon": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 150,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Estragon": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Joghurt (Kokos)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Large"
-                },
-                "Kichererbsen": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 400,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchzehe": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Olivenöl": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Petersilie (frisch)": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 10,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (weiss)": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pinienkerne": {
-                    "_position": 13,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 40,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Romanescou": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
         "Broccoli mit Chinanudeln": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -5167,158 +4699,6 @@
                         "max": -1,
                         "min": 80,
                         "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
-        "Brokkoli-Kohlrabi-Salat": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Backofen auf 220°C vorheizen.\n\nKohlrabi in dünne Scheiben schneiden und diese auf ein Backblech geben, mit Olivenöl beträufeln und mit Salz und Pfeffer bestreuen, dann 25 Minuten backen. Brokkoli, 1 Knoblauchzehe (gehackt) und fein geschnittene Chili-Schoten dazugeben und weitere 10 Minuten backen. Sobald das Gemüse weich ist, aus dem Ofen nehmen und auskühlen lassen.\n\nDie schwarzen Bohnen und das gebackene Gemüse in einer grossen Schüssel vermischen.\n\nFür das Dressing in einer Schüssel das Mandelmus mit Sesamöl, den gehackten Knoblauchzehen und Zitronensaft verrühren, mit etwas Salz und Pfeffer würzen und über den Salat giessen. Den Salat gut durchmischen und mit den gerösteten Mandeln garnieren.",
-            "items": {
-                "Brokkoli": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 300,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Chilli-Schote (rot)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Grüne Bohnen": {
-                    "_position": 5,
-                    "additionalInfo": "schwarz",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 400,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchzehe": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 3,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kohlrabi": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mandelmus": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mandeln (Stifte)": {
-                    "_position": 11,
-                    "additionalInfo": "geröstet",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Olivenöl": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (weiss)": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Sesamöl": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zitronensaft": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -6284,7 +5664,7 @@
             "Text": "",
             "items": {
                 "Cornflakes (Nicole)": {
-                    "_position": 4,
+                    "_position": 2,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -6295,7 +5675,7 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Cornflakes (Phil)": {
+                "Erdnüsse": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6307,13 +5687,13 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Frucht": {
-                    "_position": 3,
-                    "additionalInfo": "zu Cornflakes",
+                "Guetzli (gesund)": {
+                    "_position": 4,
+                    "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 2,
+                        "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
@@ -6332,18 +5712,6 @@
                     "size": "Normal"
                 },
                 "Schoggi Joghurt": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "YoQua (Mocca)": {
                     "_position": 1,
                     "additionalInfo": "",
                     "alternativesGroup": "",
@@ -6354,6 +5722,18 @@
                     },
                     "optional": false,
                     "size": "Normal"
+                },
+                "Skyr (Nature)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Small"
                 }
             }
         },
@@ -6583,8 +5963,20 @@
             "ShortDesc": "",
             "Text": "Früchte schneiden.\n\nMilch zum kochen bringe, Haferflocken, Rahbarber und Datteln unterrühren. Ca. 5 Min köcheln lassen. Mit Salz abschmecken.\n\nMit Erdbeeren anrichten, weitere Milch dazu geben nach Bedarf.",
             "items": {
+                "Beeren (gefroren)": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "Beeren",
+                    "amount": {
+                        "max": -1,
+                        "min": 500,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
                 "Datteln": {
-                    "_position": 5,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -6598,7 +5990,7 @@
                 "Erdbeeren": {
                     "_position": 4,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Beeren",
                     "amount": {
                         "max": -1,
                         "min": 200,
@@ -6613,7 +6005,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 200,
+                        "min": 140,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -6632,12 +6024,12 @@
                     "size": "Normal"
                 },
                 "Rhabarber": {
-                    "_position": 3,
+                    "_position": 5,
                     "additionalInfo": "",
-                    "alternativesGroup": "",
+                    "alternativesGroup": "Beeren",
                     "amount": {
                         "max": -1,
-                        "min": 150,
+                        "min": 250,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -8153,218 +7545,6 @@
                 }
             }
         },
-        "Gemüse-Kichererbsen-Omelette": {
-            "CookingTime": "00:50",
-            "NrPersons": 2,
-            "ShortDesc": "Restenverwertung von Gemüse.",
-            "Text": "Gemüse und Avocado schneiden.\n\nKichererbsenmehl, Zwiebelpulver, Knoblauchpulver, Cayenne-Pfeffer, Nährhefe, Salz und Backpulver mischen, Milch, Zitronensaft und etwas Wasser zugeben und rühren bis der Teig glatt ist, dann den Spinat hineinrühren.\n\nBratpfanne erhitzen, Hälfte des Teigs eingiessen, 5-7 Minuten bei mittlerer Hitze braten. Parallel dazu Gemüse kochen: gekochtes gemüse in die Omelette fühllen und mit Avocadowürfeln garnieren.",
-            "items": {
-                "Aubergine": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Avocado": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Backpulver": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cayenne-Pfeffer": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kartoffeln": {
-                    "_position": 13,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchpulver": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kohlrabi": {
-                    "_position": 14,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Kichererbsen)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 120,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Mandel)": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Nährhefe": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Spinat (gehackt, gefrohren)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 70,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Tomate": {
-                    "_position": 15,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Wasser": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zitronensaft": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zucchetti": {
-                    "_position": 16,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Gemüse",
-                    "amount": {
-                        "max": -1,
-                        "min": 100,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zwiebelpulver": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
         "Gemüsereis mit Tofu": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -9817,170 +8997,6 @@
                 }
             }
         },
-        "Kartoffelfladen": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Ofen auf 200° vorheizen.\n\nKartoffeln kochen und in dünne Scheiben schneiden.\n\nTofu in einer Schüssel zerbröseln, Mehle, Kurkuma und Kichererbsen-Wasser zugeben.\n\nZwiebeln, Knoblauch anbraten und mit 1ds Wasser ablöschen, Peperoni, Petersilie, Salz und Pfeffer beigeben, für 10 Min köcheln lassen.\n\nAlles in eine Ofenfeste form geben, 30 Minuten backen.\n\nFrucht zum Dessert servieren.",
-            "items": {
-                "Dessert-Frucht": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kartoffeln": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 800,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kichererbsen-Wasser": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1.5,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchzehe": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kurkuma": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Kichererbsen)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (dunkel)": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Peperoni": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Petersilie (frisch)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 3,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (Schwarz)": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Tofu": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 260,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zwiebel": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
         "Kartoffelgratin": {
             "CookingTime": "01:10",
             "NrPersons": 2,
@@ -10067,158 +9083,6 @@
                         "max": -1,
                         "min": 2,
                         "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
-        "Kichererbsen-Omelette": {
-            "CookingTime": "00:50",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Zuerst Pilze schneiden und dünsten. Parallel Tomatensauce zubreiten, Spinat kochen.\n\nKichererbsenmehl, Zwiebelpulver, Knoblauchpulver, Pfeffer, Nährhefe, Backpulver mischen, Wasser zugeben und rühren bis der Teig glatt ist.\n\nBratpfanne erhitzen, Portion des Teigs eingiessen, Frühlingszwiebeln und Pilze dazu streuen, Omelette wenden bis es braun ist.",
-            "items": {
-                "Backpulver": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cayenne-Pfeffer": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Champignon": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 120,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Frühlingszwiebeln": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 3,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchpulver": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Kichererbsen)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 140,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Nährhefe": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 35,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pelati": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Small"
-                },
-                "Pfeffer (Schwarz)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (weiss)": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Spinat (Blatt, gefrohren)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 250,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zwiebelpulver": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Dessertspoon"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -10744,7 +9608,7 @@
                     "size": "Normal"
                 },
                 "Curry": {
-                    "_position": 5,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -10787,6 +9651,18 @@
                         "max": -1,
                         "min": 1,
                         "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Kokosmilch": {
+                    "_position": 5,
+                    "additionalInfo": "oder Oatly Halbrahm",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Deciliter"
                     },
                     "optional": false,
                     "size": "Normal"
@@ -10839,20 +9715,8 @@
                     "optional": false,
                     "size": "Normal"
                 },
-                "Seiden-Tofu": {
-                    "_position": 7,
-                    "additionalInfo": "oder Saucen-Halbrahm",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
                 "Wasser": {
-                    "_position": 6,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -12092,7 +10956,7 @@
                     "size": "Normal"
                 },
                 "Birchermüesli": {
-                    "_position": 3,
+                    "_position": 4,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
@@ -12104,7 +10968,7 @@
                     "size": "Normal"
                 },
                 "Erdbeeren": {
-                    "_position": 5,
+                    "_position": 6,
                     "additionalInfo": "",
                     "alternativesGroup": "3. Frucht",
                     "amount": {
@@ -12116,7 +10980,7 @@
                     "size": "Normal"
                 },
                 "Frucht": {
-                    "_position": 6,
+                    "_position": 7,
                     "additionalInfo": "",
                     "alternativesGroup": "3. Frucht",
                     "amount": {
@@ -12133,14 +10997,14 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 2,
+                        "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
-                    "size": "Normal"
+                    "size": "Large"
                 },
                 "Orange": {
-                    "_position": 7,
+                    "_position": 8,
                     "additionalInfo": "",
                     "alternativesGroup": "3. Frucht",
                     "amount": {
@@ -12152,216 +11016,28 @@
                     "size": "Normal"
                 },
                 "Schoggiwürfeli": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
-        "Nicht-Käse-Pasta": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Pasta kochen.\n\nMilch, Chilli, Hefe, Mehl, Essig, Senf, Knoblauchpulver mixern und mit Salz / Pfeffer würzen.\nZu den Pasta geben und mischen.\n\nPankomehl mit Miso und etwas Hefe vermischen.\n\nDazu Salat servieren.",
-            "items": {
-                "Chilli-Schote (rot)": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchpulver": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.25,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Hafer)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Kartoffel)": {
                     "_position": 5,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 30,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Kokos)": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
                         "min": 1,
-                        "unit": "Deciliter"
+                        "unit": "Count"
                     },
                     "optional": false,
                     "size": "Normal"
                 },
-                "Miso": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Nährhefe": {
+                "Skyr (Nature)": {
                     "_position": 3,
                     "additionalInfo": "",
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 40,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pankomehl": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
                         "min": 1,
                         "unit": "Count"
                     },
                     "optional": false,
-                    "size": "Normal"
-                },
-                "Peperoni": {
-                    "_position": 14,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 0.5,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (Schwarz)": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salat": {
-                    "_position": 13,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Senf": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Teigwaren (Älplermagronen)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 220,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Tomate": {
-                    "_position": 15,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Weissweinessig": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
+                    "size": "Large"
                 }
             }
         },
@@ -13549,6 +12225,134 @@
                 }
             }
         },
+        "Pasta mit Zucchinisauce": {
+            "CookingTime": "00:30",
+            "NrPersons": 2,
+            "ShortDesc": "",
+            "Text": "Teigwaren im siedenden Salzwasser al dente kochen. Ca. 1 dl Kochwasser beiseite stellen, Teigwaren abtropfen.\n\nZucchini längs vierteln, in ca. 1 cm grosse Stücke schneiden. Zwiebel und Knoblauch schälen, beides in Stücke schneiden. Öl in einer Pfanne warm werden lassen. Zucchini, Zwiebel und Knoblauch beigeben, würzen, unter gelegentlichem Rühren ca. 10 Min. dämpfen. \nCa. ¼ von den Zucchini herausnehmen, beiseite stellen.\n\nRestliche Zucchini mit dem Saucen-Halbrahm und dem beiseite gestellten Kochwasser pürieren. Teigwaren und beiseite gestellte Zucchini wieder beigeben, heiss werden lassen, anrichten.\nBurrata halbieren, beides auf den Teigwaren anrichten, würzen.\n",
+            "items": {
+                "Burrata": {
+                    "_position": 2,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Knoblauchpulver": {
+                    "_position": 5,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Majoran (getrocknet)": {
+                    "_position": 9,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Teaspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Olivenöl": {
+                    "_position": 6,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 2,
+                        "unit": "Dessertspoon"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Pfeffer (Schwarz)": {
+                    "_position": 8,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Salz": {
+                    "_position": 7,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Unitless"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Saucen-Halbrahm": {
+                    "_position": 3,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Deciliter"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Teigwaren (Fusilli)": {
+                    "_position": 0,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 200,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zucchetti": {
+                    "_position": 1,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 400,
+                        "unit": "Gram"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                },
+                "Zwiebel": {
+                    "_position": 4,
+                    "additionalInfo": "",
+                    "alternativesGroup": "",
+                    "amount": {
+                        "max": -1,
+                        "min": 1,
+                        "unit": "Count"
+                    },
+                    "optional": false,
+                    "size": "Normal"
+                }
+            }
+        },
         "Pasta mit gebackenem Feta und Tomaten": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -13858,146 +12662,6 @@
                     },
                     "optional": false,
                     "size": "Small"
-                }
-            }
-        },
-        "Pesto-Pasta": {
-            "CookingTime": "01:10",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "(Bohnen für 60 Minuten kochen.)\n\nPasta kochen.\n\nPesto: Basilikum, Pinien- oder Cashewkerne, Knoblauchpulver, 2el Zitronensaft, Salz, 170g Seiden-Tofu und Hefe mixern.\n\nPasta, Bohnen und Pesto vermengen, nochmals heiss werden lassen.",
-            "items": {
-                "Basilikum (frisch)": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cashewnüsse": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Fette",
-                    "amount": {
-                        "max": -1,
-                        "min": 40,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Dessert-Frucht": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": 2,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchpulver": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Nährhefe": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 20,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pinienkerne": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "Fette",
-                    "amount": {
-                        "max": -1,
-                        "min": 40,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Seiden-Tofu": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 170,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Teigwaren (Tagliatelle)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 220,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Weisse Bohnen": {
-                    "_position": 9,
-                    "additionalInfo": "(oder 150 trocken)",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 200,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zitronensaft": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
                 }
             }
         },
@@ -16817,7 +15481,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 100,
+                        "min": 140,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -17334,134 +15998,6 @@
                     },
                     "optional": false,
                     "size": "Normal"
-                }
-            }
-        },
-        "Sellerie-Pasta": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Knollensellerie, Zwiebel und Knoblauch kochen. \n\nIn den Mixer geben, mit Cashews, Milch und Hefe zu Sauce verrbeiten. Salzen.\n\nPasta kochen. Brokkoli am Schluss dazu geben, abgiessen und zurück in die Pfanne geben.\n\nSauce darüber giessen; mit mehr Hefe und Pfeffer würzen.",
-            "items": {
-                "Brokkoli": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 200,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cashewnüsse": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 40,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knoblauchzehe": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Knollensellerie": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Soya)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Nährhefe": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (Schwarz)": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Teigwaren (Protein)": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 250,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zwiebel": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Small"
                 }
             }
         },
@@ -20149,110 +18685,6 @@
                 }
             }
         },
-        "Vegan Pancakes": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Ofen auf 80° vorheizen.\n\nMehl, Haferflocken, Backpulver, Zimt mischen, Milch, Ahornsirup, Essig und Vanille hizugeben. Leicht mischen und Teig ziehen lassen für 5 Minuten.\n\nBratpfann erhitzen, Löffel voll Teig hinein geben und verteilen, braten bis goldbraun.\nODER: Ofen auf 200° vorheizen, Teigmischung auf ein Backpapier geben und für 15 Minuten backen.\n\nDazu Kompott oder Smoothie servieren.",
-            "items": {
-                "Ahornsirup": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 70,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Apfelessig": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Backpulver": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Haferflocken": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 50,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (dunkel)": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 230,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Mandel)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 3,
-                        "unit": "Deciliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Vanille-Aroma": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zimt": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
         "Vegane Crepes": {
             "CookingTime": "00:30",
             "NrPersons": 2,
@@ -21641,223 +20073,11 @@
                 }
             }
         },
-        "Zucchini-Paprika-Muffins": {
-            "CookingTime": "00:30",
+        "Zucchini-Rösti mit Feta-Dip": {
+            "CookingTime": "00:50",
             "NrPersons": 2,
             "ShortDesc": "",
-            "Text": "Backofen auf 200°C vorheizen.\n\nZucchetti rapseln, Peperoni würfeln, Basilikum hacken.\n\nZuerst alle trockenen Zutaten in einer grossen Schüssel vermengen. In einer weiteren Schüssel die feuchten Zutaten verrühren, dann die geraspelten Zucchetti, die Peperoniwürfel und das gehackte Basilikum untermischen.\n\nJetzt die feuchten Zutaten unter die trockenen Zutaten mischen und zu einem glatten Teigverrühren.\n\nDen Teig gleichmässig in die Muffinformen füllen und die Muffins im Backofen ungefähr 25 bis 30 Minuten backen. Für die Garprobe mit einem Messer in einen Muffin stecken. Wenn beim Herausziehen kein Teig mehr daran klebt, ist der Muffin fertig gebacken. Nach dem Backen die Muffins min. 10 Minuten auskühlen und festwerden lassen. Mit Basilikumblättchen garnieren.",
-            "items": {
-                "Apfelessig": {
-                    "_position": 15,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Dessertspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Backpulver": {
-                    "_position": 5,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Basilikum (frisch)": {
-                    "_position": 2,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Cayenne-Pfeffer": {
-                    "_position": 10,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Koriander": {
-                    "_position": 7,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Kreuzkümmel": {
-                    "_position": 8,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (Dinkel)": {
-                    "_position": 3,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 250,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Mehl (dunkel)": {
-                    "_position": 4,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 50,
-                        "unit": "Gram"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Milch (Mandel)": {
-                    "_position": 13,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 280,
-                        "unit": "Milliliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Muffinförmchen (Papier)": {
-                    "_position": 16,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Natron": {
-                    "_position": 6,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Paprika": {
-                    "_position": 9,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Teaspoon"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Peperoni": {
-                    "_position": 1,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Pfeffer (weiss)": {
-                    "_position": 12,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Rapsöl": {
-                    "_position": 14,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 65,
-                        "unit": "Milliliter"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Salz": {
-                    "_position": 11,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 1,
-                        "unit": "Unitless"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                },
-                "Zucchetti": {
-                    "_position": 0,
-                    "additionalInfo": "",
-                    "alternativesGroup": "",
-                    "amount": {
-                        "max": -1,
-                        "min": 2,
-                        "unit": "Count"
-                    },
-                    "optional": false,
-                    "size": "Normal"
-                }
-            }
-        },
-        "Zucchini-Tätschli mit Feta-Dip": {
-            "CookingTime": "00:30",
-            "NrPersons": 2,
-            "ShortDesc": "",
-            "Text": "Ofen auf 60° vorheizen.\n\nKartoffeln, Zwiebel, Zucchetti raffeln, salzen, mischen und 20 Min stehen lassen.\n\nFeta und Milch pürieren, würzen, beiseitestellen.\n\nGemüse ausdrücken (Sieb), dann mit Ei, Panko, Sambal Oelek mischen, zu Tätschli formen. Diese beidseitig ca. 4 Min. braten, warmstellen.",
+            "Text": "Kartoffeln, Zwiebel, Zucchetti raffeln, salzen, mischen und 20 Min stehen lassen.\n\nFeta und Milch pürieren, würzen, beiseitestellen.\n\nGemüse ausdrücken (Sieb), dann mit Ei, Panko, Sambal Oelek mischen und in zwei Bratpfannen verteilen. 15-20 Minuten unter gelegentlichem Mischen braten.",
             "items": {
                 "Ei": {
                     "_position": 9,
@@ -21889,7 +20109,7 @@
                     "alternativesGroup": "",
                     "amount": {
                         "max": -1,
-                        "min": 400,
+                        "min": 500,
                         "unit": "Gram"
                     },
                     "optional": false,
@@ -22174,32 +20394,24 @@
                     "_position": 7,
                     "type": "Recipe"
                 },
-                "Artischocken-Kartoffel-Pasta-Salat": {
-                    "_position": 144,
-                    "type": "Recipe"
-                },
                 "Asia Nudeln": {
-                    "_position": 94,
+                    "_position": 86,
                     "type": "Recipe"
                 },
                 "Asiatische Kräuterseitlinge": {
-                    "_position": 111,
+                    "_position": 103,
                     "type": "Recipe"
                 },
                 "Auberginen-Auflauf": {
-                    "_position": 50,
-                    "type": "Recipe"
-                },
-                "Auberginen-Brokkoli-Salat mit Misodressing": {
-                    "_position": 155,
+                    "_position": 45,
                     "type": "Recipe"
                 },
                 "Auberginen-Zitronen-Risotto": {
-                    "_position": 107,
+                    "_position": 99,
                     "type": "Recipe"
                 },
                 "Bananen-Schokolade Pancakes": {
-                    "_position": 17,
+                    "_position": 14,
                     "type": "Recipe"
                 },
                 "Bananenbrot": {
@@ -22207,31 +20419,23 @@
                     "type": "Recipe"
                 },
                 "Berner-Rösti mit Salat": {
-                    "_position": 60,
+                    "_position": 55,
                     "type": "Recipe"
                 },
                 "Bibimbap": {
-                    "_position": 123,
+                    "_position": 115,
                     "type": "Recipe"
                 },
                 "Birnen-Nuss-Wähe": {
-                    "_position": 27,
-                    "type": "Recipe"
-                },
-                "Blumenkohl-Kichererbsen-Salat": {
-                    "_position": 156,
+                    "_position": 23,
                     "type": "Recipe"
                 },
                 "Broccoli mit Chinanudeln": {
-                    "_position": 70,
+                    "_position": 65,
                     "type": "Recipe"
                 },
                 "Broccoli-Peperoni-Nudeln": {
-                    "_position": 69,
-                    "type": "Recipe"
-                },
-                "Brokkoli-Kohlrabi-Salat": {
-                    "_position": 154,
+                    "_position": 64,
                     "type": "Recipe"
                 },
                 "Buchweizen-Kirsch-Bowl": {
@@ -22239,31 +20443,31 @@
                     "type": "Recipe"
                 },
                 "Buchweizenpfannkuchen mit heisser Schokosauce": {
-                    "_position": 18,
+                    "_position": 15,
                     "type": "Recipe"
                 },
                 "Burger mit Brötchen mit Salat": {
-                    "_position": 137,
+                    "_position": 129,
                     "type": "Recipe"
                 },
                 "Béchamel": {
-                    "_position": 158,
+                    "_position": 146,
                     "type": "Recipe"
                 },
                 "Champignon-Blumenkohl-Risotto": {
-                    "_position": 108,
+                    "_position": 100,
                     "type": "Recipe"
                 },
                 "China-Gemüse mit sweet Tofu": {
-                    "_position": 113,
+                    "_position": 105,
                     "type": "Recipe"
                 },
                 "Clafuti": {
-                    "_position": 25,
+                    "_position": 21,
                     "type": "Recipe"
                 },
                 "Curry Classic": {
-                    "_position": 115,
+                    "_position": 107,
                     "type": "Recipe"
                 },
                 "Einfache Blaubeermuffins": {
@@ -22275,137 +20479,133 @@
                     "type": "Recipe"
                 },
                 "Fischstäbchen mit Rissolé Kartoffeln": {
-                    "_position": 59,
+                    "_position": 54,
                     "type": "Recipe"
                 },
                 "Flammkuchen": {
-                    "_position": 140,
+                    "_position": 132,
                     "type": "Recipe"
                 },
                 "Fotzelschnitten": {
-                    "_position": 26,
+                    "_position": 22,
                     "type": "Recipe"
                 },
                 "Fruchtsalat / Kompott": {
-                    "_position": 169,
+                    "_position": 157,
                     "type": "Recipe"
                 },
                 "Fruchtwähe": {
-                    "_position": 28,
+                    "_position": 24,
                     "type": "Recipe"
                 },
                 "Frühlings-Spaghetti": {
-                    "_position": 83,
+                    "_position": 76,
                     "type": "Recipe"
                 },
                 "Frühlingsrisotto": {
-                    "_position": 105,
+                    "_position": 97,
                     "type": "Recipe"
                 },
                 "Fusilli al Pollo": {
-                    "_position": 93,
+                    "_position": 85,
                     "type": "Recipe"
                 },
                 "Fusilli al Spinaci": {
-                    "_position": 72,
+                    "_position": 67,
                     "type": "Recipe"
                 },
                 "Gebackene Harissa-Auberginen": {
-                    "_position": 153,
+                    "_position": 144,
                     "type": "Recipe"
                 },
                 "Gebackene Tomaten-Falafeln": {
-                    "_position": 163,
+                    "_position": 151,
                     "type": "Recipe"
                 },
                 "Gebratener Chinareis": {
-                    "_position": 117,
+                    "_position": 109,
                     "type": "Recipe"
                 },
                 "Gefüllte Peperoni": {
-                    "_position": 114,
-                    "type": "Recipe"
-                },
-                "Gemüse-Kichererbsen-Omelette": {
-                    "_position": 15,
+                    "_position": 106,
                     "type": "Recipe"
                 },
                 "Gemüsereis mit Tofu": {
-                    "_position": 112,
+                    "_position": 104,
                     "type": "Recipe"
                 },
                 "Gnocchi mit Krautstiel": {
-                    "_position": 136,
+                    "_position": 128,
                     "type": "Recipe"
                 },
                 "Gnocchi-Pilz-Pfanne": {
-                    "_position": 131,
+                    "_position": 123,
                     "type": "Recipe"
                 },
                 "Gnocchi-Tomaten-Pfanne": {
-                    "_position": 130,
+                    "_position": 122,
                     "type": "Recipe"
                 },
                 "Grüne Pasta mit Pesto": {
-                    "_position": 78,
+                    "_position": 73,
                     "type": "Recipe"
                 },
                 "Header_Akzeptabel": {
-                    "_position": 24,
+                    "_position": 20,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
                 },
                 "Header_Akzeptabel.1": {
-                    "_position": 49,
+                    "_position": 44,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
                 },
                 "Header_Akzeptabel.2": {
-                    "_position": 90,
+                    "_position": 82,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
                 },
                 "Header_Akzeptabel.3": {
-                    "_position": 121,
+                    "_position": 113,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
                 },
                 "Header_Akzeptabel.4": {
-                    "_position": 134,
+                    "_position": 126,
                     "headerLevel": 1,
                     "name": "Akzeptabel",
                     "type": "Header"
                 },
                 "Header_Ausnahmen": {
-                    "_position": 29,
+                    "_position": 25,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
                 },
                 "Header_Ausnahmen.1": {
-                    "_position": 55,
+                    "_position": 50,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
                 },
                 "Header_Ausnahmen.2": {
-                    "_position": 95,
+                    "_position": 87,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
                 },
                 "Header_Ausnahmen.3": {
-                    "_position": 124,
+                    "_position": 116,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
                 },
                 "Header_Ausnahmen.4": {
-                    "_position": 138,
+                    "_position": 130,
                     "headerLevel": 1,
                     "name": "Ausnahmen",
                     "type": "Header"
@@ -22417,43 +20617,43 @@
                     "type": "Header"
                 },
                 "Header_Dessert": {
-                    "_position": 168,
+                    "_position": 156,
                     "headerLevel": 0,
                     "name": "Dessert",
                     "type": "Header"
                 },
                 "Header_Drinks": {
-                    "_position": 166,
+                    "_position": 154,
                     "headerLevel": 0,
                     "name": "Drinks",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Diverses": {
-                    "_position": 127,
+                    "_position": 119,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Diverses",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Kartoffeln": {
-                    "_position": 36,
+                    "_position": 32,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Kartoffeln",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Pasta": {
-                    "_position": 63,
+                    "_position": 58,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Pasta",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Reis": {
-                    "_position": 101,
+                    "_position": 93,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Reis",
                     "type": "Header"
                 },
                 "Header_Hauptgerichte - Sommersalate": {
-                    "_position": 143,
+                    "_position": 135,
                     "headerLevel": 0,
                     "name": "Hauptgerichte - Sommersalate",
                     "type": "Header"
@@ -22465,243 +20665,227 @@
                     "type": "Header"
                 },
                 "Header_Plant-Based.1": {
-                    "_position": 37,
+                    "_position": 33,
                     "headerLevel": 1,
                     "name": "Plant-Based",
                     "type": "Header"
                 },
                 "Header_Plant-Based.2": {
-                    "_position": 64,
+                    "_position": 59,
                     "headerLevel": 1,
                     "name": "Plant-Based",
                     "type": "Header"
                 },
                 "Header_Plant-Based.3": {
-                    "_position": 102,
+                    "_position": 94,
                     "headerLevel": 1,
                     "name": "Plant-Based",
                     "type": "Header"
                 },
                 "Header_Plant-Based.4": {
-                    "_position": 128,
+                    "_position": 120,
                     "headerLevel": 1,
                     "name": "Plant-Based",
                     "type": "Header"
                 },
                 "Header_Rezept-Komponenten": {
-                    "_position": 157,
+                    "_position": 145,
                     "headerLevel": 0,
                     "name": "Rezept-Komponenten",
                     "type": "Header"
                 },
                 "Header_Wechsel-Grünzeug": {
-                    "_position": 149,
+                    "_position": 140,
                     "headerLevel": 0,
                     "name": "Wechsel-Grünzeug",
                     "type": "Header"
                 },
                 "Honig-Apfelwähe": {
-                    "_position": 31,
+                    "_position": 27,
                     "type": "Recipe"
                 },
                 "Hörnli mit Gehacktem": {
-                    "_position": 97,
+                    "_position": 89,
                     "type": "Recipe"
                 },
                 "Hörnli-Auflauf": {
-                    "_position": 99,
+                    "_position": 91,
                     "type": "Recipe"
                 },
                 "Kaiserschmarn": {
-                    "_position": 30,
+                    "_position": 26,
                     "type": "Recipe"
                 },
                 "Kartoffel Blech": {
-                    "_position": 44,
+                    "_position": 40,
                     "type": "Recipe"
                 },
                 "Kartoffel-Kohlrabi Auflauf": {
-                    "_position": 38,
+                    "_position": 34,
                     "type": "Recipe"
                 },
                 "Kartoffel-Zucchetti-Gratin": {
-                    "_position": 39,
-                    "type": "Recipe"
-                },
-                "Kartoffelfladen": {
-                    "_position": 45,
+                    "_position": 35,
                     "type": "Recipe"
                 },
                 "Kartoffelgratin": {
-                    "_position": 165,
-                    "type": "Recipe"
-                },
-                "Kichererbsen-Omelette": {
-                    "_position": 16,
+                    "_position": 153,
                     "type": "Recipe"
                 },
                 "Kichererbsensalat": {
-                    "_position": 145,
+                    "_position": 136,
                     "type": "Recipe"
                 },
                 "Knusprige Pappardelle": {
-                    "_position": 74,
+                    "_position": 69,
                     "type": "Recipe"
                 },
                 "Kokos-Rind One-Pot": {
-                    "_position": 122,
+                    "_position": 114,
                     "type": "Recipe"
                 },
                 "Krautstiel Wok Nudeln": {
-                    "_position": 92,
+                    "_position": 84,
                     "type": "Recipe"
                 },
                 "Kürbis-Kartoffel-Curry": {
-                    "_position": 52,
+                    "_position": 47,
                     "type": "Recipe"
                 },
                 "Lasagne Classic (Béchamel fehlt)": {
-                    "_position": 86,
+                    "_position": 78,
                     "type": "Recipe"
                 },
                 "Lauch-Pilz-Lasagne (Béchamel fehlt)": {
-                    "_position": 88,
+                    "_position": 80,
                     "type": "Recipe"
                 },
                 "Lauchrisotto mit Fleisch": {
-                    "_position": 103,
+                    "_position": 95,
                     "type": "Recipe"
                 },
                 "Limabohnen-Falafeln mit Blumenkohl": {
-                    "_position": 162,
+                    "_position": 150,
                     "type": "Recipe"
                 },
                 "Linsen-Kartoffel-Eintopf": {
-                    "_position": 46,
+                    "_position": 41,
                     "type": "Recipe"
                 },
                 "Linsen-Pasta mit Shiitake": {
-                    "_position": 75,
+                    "_position": 70,
                     "type": "Recipe"
                 },
                 "Long Island Ice Tea": {
-                    "_position": 167,
+                    "_position": 155,
                     "type": "Recipe"
                 },
                 "Lyoner-Dingsda": {
-                    "_position": 100,
+                    "_position": 92,
                     "type": "Recipe"
                 },
                 "Moussaka": {
-                    "_position": 56,
+                    "_position": 51,
                     "type": "Recipe"
                 },
                 "Mozzarella + Tomaten": {
-                    "_position": 164,
+                    "_position": 152,
                     "type": "Recipe"
                 },
                 "Müesli": {
                     "_position": 2,
                     "type": "Recipe"
                 },
-                "Nicht-Käse-Pasta": {
-                    "_position": 84,
-                    "type": "Recipe"
-                },
                 "Ofen-Kartoffel-Gemüse mit Poulet": {
-                    "_position": 51,
+                    "_position": 46,
                     "type": "Recipe"
                 },
                 "Ofen-Tortillas": {
-                    "_position": 135,
+                    "_position": 127,
                     "type": "Recipe"
                 },
                 "Ofengemüse": {
-                    "_position": 151,
+                    "_position": 142,
                     "type": "Recipe"
                 },
                 "Omelette": {
-                    "_position": 32,
+                    "_position": 28,
                     "type": "Recipe"
                 },
                 "One-Pot-Pasta": {
-                    "_position": 73,
+                    "_position": 68,
                     "type": "Recipe"
                 },
                 "Orientalisches Pilaw": {
-                    "_position": 120,
+                    "_position": 112,
                     "type": "Recipe"
                 },
                 "Paella": {
-                    "_position": 109,
+                    "_position": 101,
                     "type": "Recipe"
                 },
                 "Pancakes": {
-                    "_position": 33,
+                    "_position": 29,
                     "type": "Recipe"
                 },
                 "Pasta mit Fleisch": {
-                    "_position": 65,
+                    "_position": 60,
                     "type": "Recipe"
                 },
                 "Pasta mit Rahmspinat und Champignons": {
-                    "_position": 71,
+                    "_position": 66,
                     "type": "Recipe"
                 },
                 "Pasta mit gebackenem Feta und Tomaten": {
-                    "_position": 91,
+                    "_position": 83,
                     "type": "Recipe"
                 },
                 "Pasta-Salat": {
-                    "_position": 146,
+                    "_position": 137,
                     "type": "Recipe"
                 },
                 "Penne mit Tomaten-Pilz Sauce": {
-                    "_position": 76,
-                    "type": "Recipe"
-                },
-                "Pesto-Pasta": {
-                    "_position": 79,
+                    "_position": 71,
                     "type": "Recipe"
                 },
                 "Pesto-Penne": {
-                    "_position": 80,
+                    "_position": 74,
                     "type": "Recipe"
                 },
                 "Pikante Süsskartoffeln mit Erdnussdressing": {
-                    "_position": 161,
+                    "_position": 149,
                     "type": "Recipe"
                 },
                 "Pilz Stroganoff Pasta": {
-                    "_position": 77,
+                    "_position": 72,
                     "type": "Recipe"
                 },
                 "Pilz-Risotto": {
-                    "_position": 106,
+                    "_position": 98,
                     "type": "Recipe"
                 },
                 "Pilz-nicht-Käse-Schnitten": {
-                    "_position": 133,
+                    "_position": 125,
                     "type": "Recipe"
                 },
                 "Pizza": {
-                    "_position": 139,
+                    "_position": 131,
                     "type": "Recipe"
                 },
                 "Pommes und Cordon bleu": {
-                    "_position": 58,
+                    "_position": 53,
                     "type": "Recipe"
                 },
                 "Poulet-Blech mit (Süss-)Kartoffeln": {
-                    "_position": 43,
+                    "_position": 39,
                     "type": "Recipe"
                 },
                 "Pouletflügeli mit Kichererbsen": {
-                    "_position": 42,
+                    "_position": 38,
                     "type": "Recipe"
                 },
                 "Pralinen": {
-                    "_position": 170,
+                    "_position": 158,
                     "type": "Recipe"
                 },
                 "Quinoa-Kornflakes": {
@@ -22709,43 +20893,43 @@
                     "type": "Recipe"
                 },
                 "Raclette": {
-                    "_position": 62,
+                    "_position": 57,
                     "type": "Recipe"
                 },
                 "Ratatouille": {
-                    "_position": 152,
+                    "_position": 143,
                     "type": "Recipe"
                 },
                 "Reis mit asiatischem Hackfleisch": {
-                    "_position": 126,
-                    "type": "Recipe"
-                },
-                "Reispfanne italiana": {
-                    "_position": 110,
-                    "type": "Recipe"
-                },
-                "Ricotta-Spinat-Penne": {
-                    "_position": 96,
-                    "type": "Recipe"
-                },
-                "Riz Casimir": {
                     "_position": 118,
                     "type": "Recipe"
                 },
+                "Reispfanne italiana": {
+                    "_position": 102,
+                    "type": "Recipe"
+                },
+                "Ricotta-Spinat-Penne": {
+                    "_position": 88,
+                    "type": "Recipe"
+                },
+                "Riz Casimir": {
+                    "_position": 110,
+                    "type": "Recipe"
+                },
                 "Rosenkohl-Lauch-Kartoffeln": {
-                    "_position": 40,
+                    "_position": 36,
                     "type": "Recipe"
                 },
                 "Rösti mit Bratwurst": {
-                    "_position": 61,
+                    "_position": 56,
                     "type": "Recipe"
                 },
                 "Salat": {
-                    "_position": 150,
+                    "_position": 141,
                     "type": "Recipe"
                 },
                 "Saltimbocca mit Safran-Risotto": {
-                    "_position": 125,
+                    "_position": 117,
                     "type": "Recipe"
                 },
                 "Salziger Porridge": {
@@ -22753,7 +20937,7 @@
                     "type": "Recipe"
                 },
                 "Salzkartoffeln mit Fleisch": {
-                    "_position": 41,
+                    "_position": 37,
                     "type": "Recipe"
                 },
                 "Sandwiches": {
@@ -22761,43 +20945,39 @@
                     "type": "Recipe"
                 },
                 "Schoko Pancakes": {
-                    "_position": 19,
-                    "type": "Recipe"
-                },
-                "Sellerie-Pasta": {
-                    "_position": 81,
+                    "_position": 16,
                     "type": "Recipe"
                 },
                 "Shakshuka": {
-                    "_position": 132,
+                    "_position": 124,
                     "type": "Recipe"
                 },
                 "Sommerwähe": {
-                    "_position": 141,
+                    "_position": 133,
                     "type": "Recipe"
                 },
                 "Spaghetti Bolognese": {
-                    "_position": 85,
+                    "_position": 77,
                     "type": "Recipe"
                 },
                 "Spaghetti Carbonara": {
-                    "_position": 98,
+                    "_position": 90,
                     "type": "Recipe"
                 },
                 "Spargel-Erdbeer-Salat": {
-                    "_position": 147,
+                    "_position": 138,
                     "type": "Recipe"
                 },
                 "Spinat-Pilz Lasagne (Béchamel fehlt)": {
-                    "_position": 87,
+                    "_position": 79,
                     "type": "Recipe"
                 },
                 "Stocki mit Plätzli": {
-                    "_position": 54,
+                    "_position": 49,
                     "type": "Recipe"
                 },
                 "Süss-Sauer": {
-                    "_position": 119,
+                    "_position": 111,
                     "type": "Recipe"
                 },
                 "Süsses Hirseplättli": {
@@ -22805,99 +20985,91 @@
                     "type": "Recipe"
                 },
                 "Süsskartoffel-Falafeln": {
-                    "_position": 160,
+                    "_position": 148,
                     "type": "Recipe"
                 },
                 "Süsskartoffel-Wedges": {
-                    "_position": 159,
+                    "_position": 147,
                     "type": "Recipe"
                 },
                 "Süsskartoffel-Zucchini-Eintopf": {
-                    "_position": 47,
+                    "_position": 42,
                     "type": "Recipe"
                 },
                 "Thai Pasta Light a la Metaldays": {
-                    "_position": 68,
+                    "_position": 63,
                     "type": "Recipe"
                 },
                 "Thai Pasta a la Metaldays": {
-                    "_position": 67,
+                    "_position": 62,
                     "type": "Recipe"
                 },
                 "Thai-Curry": {
-                    "_position": 116,
+                    "_position": 108,
                     "type": "Recipe"
                 },
                 "Toast Hawaii": {
-                    "_position": 142,
+                    "_position": 134,
                     "type": "Recipe"
                 },
                 "Tofu-Gemüse-Frittata": {
-                    "_position": 22,
+                    "_position": 18,
                     "type": "Recipe"
                 },
                 "Tomatenrisotto mit Fleisch": {
-                    "_position": 104,
+                    "_position": 96,
                     "type": "Recipe"
                 },
                 "Toskanischer Bohnen-Tomaten-Eintopf": {
-                    "_position": 48,
-                    "type": "Recipe"
-                },
-                "Vegan Pancakes": {
-                    "_position": 20,
+                    "_position": 43,
                     "type": "Recipe"
                 },
                 "Vegane Crepes": {
-                    "_position": 21,
+                    "_position": 17,
                     "type": "Recipe"
                 },
                 "Wirz-Nudeln": {
-                    "_position": 66,
+                    "_position": 61,
                     "type": "Recipe"
                 },
                 "Wraps": {
-                    "_position": 129,
+                    "_position": 121,
                     "type": "Recipe"
                 },
                 "Zitronen-Hummus-Pasta": {
-                    "_position": 82,
+                    "_position": 75,
                     "type": "Recipe"
                 },
                 "Zitronen-Lasagne": {
-                    "_position": 89,
+                    "_position": 81,
                     "type": "Recipe"
                 },
                 "Zopf mit Brie und Confiture": {
-                    "_position": 35,
+                    "_position": 31,
                     "type": "Recipe"
                 },
                 "Zopf mit Rührei u. Aufstrich": {
-                    "_position": 23,
+                    "_position": 19,
                     "type": "Recipe"
                 },
                 "Zopf mit Spiegeleiern und Speck": {
-                    "_position": 34,
+                    "_position": 30,
                     "type": "Recipe"
                 },
                 "Zucchetti-Sellerie-Nudeln mit Erdnüssen": {
-                    "_position": 148,
+                    "_position": 139,
                     "type": "Recipe"
                 },
                 "Zucchettibrot": {
                     "_position": 9,
                     "type": "Recipe"
                 },
-                "Zucchini-Paprika-Muffins": {
-                    "_position": 14,
-                    "type": "Recipe"
-                },
-                "Zucchini-Tätschli mit Feta-Dip": {
-                    "_position": 53,
+                "Zucchini-Rösti mit Feta-Dip": {
+                    "_position": 48,
                     "type": "Recipe"
                 },
                 "Älplermagronen": {
-                    "_position": 57,
+                    "_position": 52,
                     "type": "Recipe"
                 }
             }
