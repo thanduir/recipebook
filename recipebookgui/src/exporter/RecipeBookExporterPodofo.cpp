@@ -16,13 +16,35 @@ namespace
 	const QString c_Author = "RecipeBook";
 
 	const double c_dBorder = 56.69;
-	const char* c_DefaultFont = "Calibri";
 
 	const QChar c_bulletChar(0x2022);
 
-	double getLength(PdfFont* pFont, PdfString strText)
+	double getLength(PdfFont* pFont, PdfString strText, double fontSize)
 	{
-		return pFont->GetFontMetrics()->StringWidth(strText);
+		PdfTextState state;
+		state.Font = pFont;
+		state.FontSize = fontSize;
+		return pFont->GetStringLength(strText, state);
+	}
+
+	PdfStandard14FontType getFontType(bool bBold, bool bItalic)
+	{
+		if(bBold && bItalic)
+		{
+			return PdfStandard14FontType::HelveticaBoldOblique;
+		}
+		else if(bBold)
+		{
+			return PdfStandard14FontType::HelveticaBold;
+		}
+		else if(bItalic)
+		{
+			return PdfStandard14FontType::HelveticaOblique;
+		}
+		else
+		{
+			return PdfStandard14FontType::Helvetica;
+		}
 	}
 }
 
@@ -39,39 +61,41 @@ bool RecipeBookExporterPodofo::writeDocument(const RecipeBookConfiguration& rCon
 {
 	try 
 	{
-		m_spDocument = std::make_unique<PdfStreamedDocument>(strFilename.toUtf8(), ePdfVersion_1_5);
-
+		m_spDocument = std::make_unique<PdfMemDocument>();
+		
 		// Metainformation
 		if(m_spDocument->GetInfo() != nullptr)
 		{
-			m_spDocument->GetInfo()->SetCreator(convertString(c_Author));
-			m_spDocument->GetInfo()->SetAuthor(convertString(rConfig.getBookSubtitle()));
-			m_spDocument->GetInfo()->SetTitle(convertString(rConfig.getBookTitle()));
+			m_spDocument->GetMetadata().SetCreator(convertString(c_Author));
+			m_spDocument->GetMetadata().SetAuthor(convertString(rConfig.getBookSubtitle()));
+			m_spDocument->GetMetadata().SetTitle(convertString(rConfig.getBookTitle()));
 		}
 
+		m_FontSize = rConfig.getFontSize();
+
 		m_dIndentLength = rConfig.getFontSize();
-		m_dLineHeight = 2 * m_dIndentLength;
+		m_dLineHeight = 2.5 * m_dIndentLength;
 
 		// Default fonts
-		m_pTextFont = createFont(rConfig.getFontSize(), false, false);
+		m_pTextFont = createFont(false, false);
 		
-		PdfOutlineItem* pOutlineRoot = m_spDocument->GetOutlines()->CreateRoot(convertString(rConfig.getBookTitle()));
+		PdfOutlineItem* pOutlineRoot = m_spDocument->GetOrCreateOutlines().CreateRoot(convertString(rConfig.getBookTitle()));
 		m_pCurrentParentOutlineItem = pOutlineRoot;
 
 		// Images
 
-		auto readImage = [](QString strFilename, std::unique_ptr<PdfImage>& spImage)
+		auto readImage = [](QString _strFilename, std::unique_ptr<PdfImage>& spImage)
 		{
-			QFile f(strFilename);
+			QFile f(_strFilename);
 			f.open(QIODevice::ReadOnly);
 			QByteArray ba = f.readAll();
-			spImage->LoadFromData(reinterpret_cast<const unsigned char*>(ba.constData()), ba.length());
+			spImage->LoadFromBuffer({ba.data(), static_cast<std::size_t>(ba.size())});
 		};
 
-		m_spImgPersons = std::make_unique<PdfImage>(m_spDocument.get());
+		m_spImgPersons = m_spDocument->CreateImage();
 		readImage(":/export-images/persons.png", m_spImgPersons);
 		
-		m_spImgDuration = std::make_unique<PdfImage>(m_spDocument.get());
+		m_spImgDuration = m_spDocument->CreateImage();
 		readImage(":/export-images/duration.png", m_spImgDuration);
 
 		// Pages
@@ -111,7 +135,7 @@ bool RecipeBookExporterPodofo::writeDocument(const RecipeBookConfiguration& rCon
 
 		addTOC();
 
-		m_spDocument->Close();
+		m_spDocument->Save(std::string(strFilename.toUtf8()));
 	}
 	catch(PdfError& eCode) 
 	{
@@ -124,92 +148,87 @@ bool RecipeBookExporterPodofo::writeDocument(const RecipeBookConfiguration& rCon
 
 void RecipeBookExporterPodofo::addTitlePage(QString title, QString subtitle)
 {
-	PdfPage* pPage = m_spDocument->CreatePage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4));
-	if(pPage == nullptr)
-	{
-		throw QException();
-	}
+	PdfPage& rPage = m_spDocument->GetPages().CreatePage(PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
-	PdfFont* pFont = createFont(m_pTextFont->GetFontSize() * 2, true, false);
+	double fontSize = m_FontSize * 1.6;
+	PdfFont* pFont = createFont(true, false);
 
-	m_pCurrentParentOutlineItem->SetDestination(pPage);
+	auto destination = std::make_shared<PdfDestination>(rPage);
+	m_pCurrentParentOutlineItem->SetDestination(destination);
 
 	PdfPainter painter;
-	painter.SetPage(pPage);
-	painter.SetFont(pFont);
+	painter.SetCanvas(rPage);
+	painter.TextState.SetFont(*pFont, fontSize);
+	painter.TextState.SetWordSpacing(-12);	
 
 	// Page layout
 
 	PdfString pdfTitle(convertString(title));
-	painter.DrawText(pPage->GetPageSize().GetWidth() / 2.0 - getLength(pFont, pdfTitle) / 2, pPage->GetPageSize().GetHeight() / 2.0 + c_dBorder, pdfTitle);
+	painter.DrawText(pdfTitle, rPage.GetRect().Width / 2.0 - getLength(pFont, pdfTitle, fontSize) / 2.0, rPage.GetRect().Height / 2.0 + c_dBorder);
 
-	pFont->SetFontSize(pFont->GetFontSize() * 0.8);
+	painter.TextState.SetFont(*pFont, 1.3 * m_FontSize);
 	PdfString pdfSubTitle(convertString(subtitle));
-	painter.DrawText(pPage->GetPageSize().GetWidth() / 2.0 - getLength(pFont, pdfSubTitle) / 2, pPage->GetPageSize().GetHeight() / 2.0, pdfSubTitle);
+	painter.DrawText(pdfSubTitle, rPage.GetRect().Width / 2.0 - getLength(pFont, pdfSubTitle, 1.3 * m_FontSize) / 2.0, rPage.GetRect().Height / 2.0);
 
-	painter.FinishPage();
+	painter.FinishDrawing();
 	
-	m_spDestinationTitlePage = std::make_unique<PdfDestination>(pPage, ePdfDestinationFit_Fit);
+	m_spDestinationTitlePage = std::make_shared<PdfDestination>(rPage, PdfDestinationFit::Fit);
 }
 
 void RecipeBookExporterPodofo::addChapterHeader(QString strTitle, qint32 level)
 {
-	PdfPage* pPage = m_spDocument->CreatePage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4));
-	if(pPage == nullptr)
-	{
-		throw QException();
-	}
+	PdfPage& rPage = m_spDocument->GetPages().CreatePage(PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
 	// TODO: Adjust to level
 
 	PdfPainter painter;
-	painter.SetPage(pPage);
-	PdfFont* pTitleFont = createFont(4.0 * m_pTextFont->GetFontSize() / 3.0, true, false);
-	painter.SetFont(pTitleFont);
+	painter.SetCanvas(rPage);
+	PdfFont* pTitleFont = createFont(true, false);
+	painter.TextState.SetFont(*pTitleFont, 4.0 * m_FontSize / 3.0);
+	painter.TextState.SetWordSpacing(-12);
 
 	// Define page
 
 	PdfString pdfTitle(convertString(strTitle));
-	painter.DrawText(c_dBorder, pPage->GetPageSize().GetHeight() - 2.0 * c_dBorder, pdfTitle);
+	painter.DrawText(pdfTitle, c_dBorder, rPage.GetRect().Height - 2.0 * c_dBorder);
 
-	painter.FinishPage();
+	painter.FinishDrawing();
 
-	PdfDestination outlineDest(pPage);
+	auto outlineDest = std::make_shared<PdfDestination>(rPage);
 	m_pCurrentParentOutlineItem = m_pCurrentParentOutlineItem->CreateChild(pdfTitle, outlineDest);
 	m_TocItems.append(TocItem(strTitle, RecipeBookConfigItemType::Header, level, outlineDest));
 }
 
 void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
 {
-	PdfPage* pPage = m_spDocument->CreatePage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4));
-	if(pPage == nullptr)
-	{
-		throw QException();
-	}
+	PdfPage& rPage = m_spDocument->GetPages().CreatePage(PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
 	PdfPainter painter;
-	painter.SetPage(pPage);
+	painter.SetCanvas(rPage);
 
 	// Define page
 
-	double currentY = pPage->GetPageSize().GetHeight() - 2.0 * c_dBorder;
+	double currentY = rPage.GetRect().Height - 2.0 * c_dBorder;
 
 	// Header
-	PdfFont* pTitleFont = createFont(4.0 * m_pTextFont->GetFontSize() / 3.0, true, false);
-	painter.SetFont(pTitleFont);
+	PdfFont* pTitleFont = createFont(true, false);
+	double titleFontSize = 4.0 * m_FontSize / 3.0;
+	painter.TextState.SetFont(*pTitleFont, titleFontSize);
+	painter.TextState.SetWordSpacing(-12);
 	PdfString pdfTitle(convertString(rRecipe.getName()));
-	painter.DrawText(c_dBorder, currentY, pdfTitle);
+	painter.DrawText(pdfTitle, c_dBorder, currentY);
 
 	if(m_spDestinationTitlePage != nullptr)
 	{
-		PdfRect rect(c_dBorder, currentY, getLength(painter.GetFont(), pdfTitle), painter.GetFont()->GetFontSize());
-		PdfAnnotation* pAnnotation = pPage->CreateAnnotation(ePdfAnnotation_Link, rect);
-		pAnnotation->SetDestination(*m_spDestinationTitlePage);
-		pAnnotation->SetBorderStyle(0, 0, 0);
+		Rect rect(c_dBorder, currentY, getLength(pTitleFont, pdfTitle, m_FontSize), titleFontSize);
+		PdfAnnotation& annotation = rPage.GetAnnotations().CreateAnnot(PdfAnnotationType::Link, rect);
+		static_cast<PdfAnnotationLink&>(annotation).SetDestination(m_spDestinationTitlePage);
+		annotation.SetBorderStyle(0, 0, 0);
 	}
 
 	currentY -= m_dLineHeight * 2;
-	painter.SetFont(m_pTextFont);
+	painter.TextState.SetFont(*m_pTextFont, m_FontSize);
+	painter.TextState.SetWordSpacing(-1);
 
 	// Short desc, number of persons and duration
 
@@ -229,53 +248,57 @@ void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
 		}
 	}
 
-	float scalePersons = 1.1 * m_dIndentLength / m_spImgPersons->GetHeight();
+	double scalePersons = 1.1 * m_dIndentLength / m_spImgPersons->GetHeight();
 	QString strTextPersons = QString("%1").arg(rRecipe.getNumberOfPersons());
 	PdfString pdfTextPersons(convertString(strTextPersons));
 
-	float scaleDuration = 1.1 * m_dIndentLength / m_spImgDuration->GetHeight();
+	double scaleDuration = 1.1 * m_dIndentLength / m_spImgDuration->GetHeight();
 	QString strTextDuration = QString("%1").arg(strDuration);
 	PdfString pdfTextDuration(convertString(strTextDuration));
 
-	double topRightLength = m_spImgDuration->GetWidth() * scaleDuration + getLength(m_pTextFont, pdfTextDuration);
+	double topRightLength = m_spImgDuration->GetWidth() * scaleDuration + getLength(m_pTextFont, pdfTextDuration, m_FontSize);
 	double twoRowHeight = 1.5 * m_dLineHeight;
 
+	PdfDrawTextMultiLineParams multilineParams;
+	multilineParams.SkipSpaces = false;
+
 	// Short desc
-	painter.DrawMultiLineText(c_dBorder,
+	painter.DrawTextMultiLine(pdfShortDesc,
+							  c_dBorder,
 							  currentY - twoRowHeight / 2.0,
-							  pPage->GetPageSize().GetWidth() - 2.0 * c_dBorder - topRightLength,
+							  rPage.GetRect().Width - 2.0 * c_dBorder - topRightLength,
 							  twoRowHeight,
-							  pdfShortDesc);
+							  multilineParams);
 
 	// Nr persons
-	double startX = pPage->GetPageSize().GetWidth() - c_dBorder - topRightLength;
+	double startX = rPage.GetRect().Width - c_dBorder - topRightLength;
 	double startY = currentY + 0.5 * m_dIndentLength;
-	painter.DrawImage(startX,
+	painter.DrawImage(*m_spImgPersons,
+					  startX,
 					  startY,
-					  m_spImgPersons.get(),
 					  scalePersons, 
 					  scalePersons);
-	painter.DrawText(startX + m_spImgPersons->GetWidth() * scalePersons + m_dIndentLength * 0.5,
-					 startY + 0.25 * m_dIndentLength,
-					 pdfTextPersons);
+	painter.DrawText(pdfTextPersons,
+					 startX + m_spImgPersons->GetWidth() * scalePersons + m_dIndentLength * 0.5,
+					 startY + 0.25 * m_dIndentLength);
 
 	// Duration
 	double yDuration = startY - 1.25 * m_spImgPersons->GetHeight() * scalePersons;
-	painter.DrawImage(startX,
+	painter.DrawImage(*m_spImgDuration,
+					  startX,
 					  yDuration,
-					  m_spImgDuration.get(),
 					  scaleDuration,
 					  scaleDuration);
-	painter.DrawText(startX + m_spImgDuration->GetWidth() * scaleDuration + m_dIndentLength * 0.5,
-					 yDuration + 0.25 * m_dIndentLength,
-					 pdfTextDuration);
+	painter.DrawText(pdfTextDuration,
+					 startX + m_spImgDuration->GetWidth() * scaleDuration + m_dIndentLength * 0.5,
+					 yDuration + 0.25 * m_dIndentLength);
 		
 	currentY -= m_dLineHeight;
 
 	// Horizontal line
-	painter.DrawLine(pPage->GetPageSize().GetWidth() / 6.0,
+	painter.DrawLine(rPage.GetRect().Width / 6.0,
 					 currentY,
-					 5 * pPage->GetPageSize().GetWidth() / 6.0,
+					 5 * rPage.GetRect().Width / 6.0,
 					 currentY);
 	currentY -= m_dLineHeight;
 
@@ -283,23 +306,25 @@ void RecipeBookExporterPodofo::addRecipePage(const Recipe& rRecipe)
 	addRecipeItems(painter, c_dBorder, currentY - 12, rRecipe);
 
 	// Middle line
-	painter.DrawLine(pPage->GetPageSize().GetWidth() / 2.0,
+	painter.DrawLine(rPage.GetRect().Width / 2.0,
 					 currentY,
-					 pPage->GetPageSize().GetWidth() / 2.0,
+					 rPage.GetRect().Width / 2.0,
 					 c_dBorder);
 
 
 	PdfString pdfText(convertString(rRecipe.getRecipeText()));
 	double textHeight = currentY - c_dBorder;
-	painter.DrawMultiLineText(pPage->GetPageSize().GetWidth() / 2.0 + m_dIndentLength,
+
+	painter.DrawTextMultiLine(pdfText,
+							  rPage.GetRect().Width / 2.0 + m_dIndentLength,
 							  c_dBorder,
-							  pPage->GetPageSize().GetWidth() / 2.0 - m_dIndentLength - c_dBorder,
+							  rPage.GetRect().Width / 2.0 - m_dIndentLength - c_dBorder,
 							  textHeight,
-							  pdfText);
+							  multilineParams);
 
-	painter.FinishPage();
+	painter.FinishDrawing();
 
-	PdfDestination outlineDest(pPage, ePdfDestinationFit_FitB);
+	auto outlineDest = std::make_shared<PdfDestination>(rPage, PdfDestinationFit::FitB);
 	m_pCurrentParentOutlineItem->CreateChild(pdfTitle, outlineDest);
 	m_TocItems.append(TocItem(rRecipe.getName(), RecipeBookConfigItemType::Recipe, -1, outlineDest));
 }
@@ -309,9 +334,9 @@ void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
 											  double currentY,
 											  const Recipe& rRecipe)
 {
-	PdfFont* pBold = createFont(m_pTextFont->GetFontSize(), true, false);
-	PdfFont* pItalic = createFont(m_pTextFont->GetFontSize(), false, true);
-	PdfFont* pDefault = rPainter.GetFont();
+	PdfFont* pBold = createFont(true, false);
+	PdfFont* pItalic = createFont(false, true);
+	PdfFont* pDefault = m_pTextFont;
 
 	double x = minX;
 	double y = currentY;
@@ -335,10 +360,11 @@ void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
 		{
 			currentGroup = rItem.getAlternativesGroup().getName();
 
-			rPainter.SetFont(pBold);
+			rPainter.TextState.SetFont(*pBold, m_FontSize);
+			rPainter.TextState.SetWordSpacing(-9);
 			QString strGroup = QString("%1 %2").arg(c_bulletChar).arg(rItem.getAlternativesGroup().getName());
 			PdfString str(convertString(strGroup));
-			rPainter.DrawText(x, y, str);
+			rPainter.DrawText(str, x, y);
 
 			x += m_dIndentLength;
 			y -= m_dLineHeight;
@@ -355,16 +381,19 @@ void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
 		PdfString strItemText(convertString(itemText));
 		if(rItem.isOptional())
 		{
-			rPainter.SetFont(pItalic);
-			rPainter.DrawText(x, y, strItemText);
+			rPainter.TextState.SetFont(*pItalic, m_FontSize);
+			rPainter.TextState.SetWordSpacing(-1);
+			rPainter.DrawText(strItemText, x, y);
 		}
 		else
 		{
-			rPainter.SetFont(pBold);
-			rPainter.DrawText(x, y, strItemText);
+			rPainter.TextState.SetFont(*pBold, m_FontSize);
+			rPainter.TextState.SetWordSpacing(-9);
+			rPainter.DrawText(strItemText, x, y);
 		}
 
-		rPainter.SetFont(pDefault);
+		rPainter.TextState.SetFont(*pDefault, m_FontSize);
+		rPainter.TextState.SetWordSpacing(-1);
 
 		QString addText;
 		if(rItem.getSize() != Size::Normal)
@@ -384,16 +413,16 @@ void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
 			QString text = " (" + addText + ")";
 			PdfString strAddText(convertString(text));
 
-			double itemTextLength = getLength(rItem.isOptional() ? pItalic : pBold, strItemText);
-			double addTextLength = getLength(pDefault, strAddText);
+			double itemTextLength = getLength(rItem.isOptional() ? pItalic : pBold, strItemText, m_FontSize);
+			double addTextLength = getLength(pDefault, strAddText, m_FontSize);
 
-			if(itemTextLength + addTextLength < rPainter.GetPage()->GetPageSize().GetWidth() / 2.0 - minX)
+			if(itemTextLength + addTextLength < rPainter.GetCanvas()->GetRectRaw().Width / 2.0 - minX)
 			{
-				rPainter.DrawText(x + itemTextLength, y, strAddText);
+				rPainter.DrawText(strAddText, x + itemTextLength, y);
 			}
 			else
 			{
-				rPainter.DrawText(x + m_dIndentLength, y - 1.25 * m_dIndentLength, strAddText);
+				rPainter.DrawText(strAddText, x + m_dIndentLength, y - 1.25 * m_dIndentLength);
 				y -= 1.25 * m_dIndentLength;
 			}
 		}
@@ -404,30 +433,27 @@ void RecipeBookExporterPodofo::addRecipeItems(PdfPainter& rPainter,
 
 void RecipeBookExporterPodofo::addTOC()
 {
-	int currentPageIndex = 1;
-	PdfPage* pPage = m_spDocument->InsertPage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4), currentPageIndex);
-	if(pPage == nullptr)
-	{
-		throw QException();
-	}
+	unsigned int currentPageIndex = 1;
+	PdfPage* pPage = &m_spDocument->GetPages().CreatePageAt(currentPageIndex, PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
-	double currentY = pPage->GetPageSize().GetHeight() - 2.0 * c_dBorder;
+	double currentY = pPage->GetRect().Height - 2.0 * c_dBorder;
 
 	PdfPainter painter;
-	painter.SetPage(pPage);
+	painter.SetCanvas(*pPage);
 	
 	// Header
-	PdfFont* pTitleFont = createFont(4.0 * m_pTextFont->GetFontSize() / 3.0, true, false);
-	painter.SetFont(pTitleFont);
+	PdfFont* pTitleFont = createFont(true, false);
+	painter.TextState.SetFont(*pTitleFont, 4.0 * m_FontSize / 3.0);
+	painter.TextState.SetWordSpacing(-12);
 
 	QString tocTitle = tr("Table of contents");
 	PdfString pdfTocTitle(convertString(tocTitle));
-	painter.DrawText(c_dBorder, currentY, pdfTocTitle);
+	painter.DrawText(pdfTocTitle, c_dBorder, currentY);
 
 	currentY -= m_dLineHeight;
 
 	qint32 currentLevel = 0;
-	PdfFont* pBoldFont = createFont(m_pTextFont->GetFontSize(), true, false);
+	PdfFont* pBoldFont = createFont(true, false);
 	for(const TocItem& rItem : m_TocItems)
 	{
 		PdfString pdfTitle(convertString(rItem.m_strName));
@@ -436,7 +462,8 @@ void RecipeBookExporterPodofo::addTOC()
 		if(rItem.m_Type == RecipeBookConfigItemType::Recipe)
 		{
 			startX += m_dIndentLength;
-			painter.SetFont(m_pTextFont);
+			painter.TextState.SetFont(*m_pTextFont, m_FontSize);
+			painter.TextState.SetWordSpacing(-1);
 		}
 		else
 		{
@@ -446,17 +473,18 @@ void RecipeBookExporterPodofo::addTOC()
 			{
 				currentY -= m_dLineHeight / 3;
 			}
-			painter.SetFont(pBoldFont);
+			painter.TextState.SetFont(*pBoldFont, m_FontSize);
+			painter.TextState.SetWordSpacing(-9);
 		}
 
 		startX += currentLevel * m_dIndentLength;
 
-		painter.DrawText(startX, currentY, pdfTitle);
+		painter.DrawText(pdfTitle, startX, currentY);
 
-		PdfRect rect(startX, currentY, getLength(painter.GetFont(), pdfTitle), painter.GetFont()->GetFontSize());
-		PdfAnnotation* pAnnotation = pPage->CreateAnnotation(ePdfAnnotation_Link, rect);
-		pAnnotation->SetDestination(rItem.m_Destination);
-		pAnnotation->SetBorderStyle(0, 0, 0);
+		Rect rect(startX, currentY, getLength(m_pTextFont, pdfTitle, m_FontSize), m_FontSize);
+		PdfAnnotation& annotation = pPage->GetAnnotations().CreateAnnot(PdfAnnotationType::Link, rect);
+		static_cast<PdfAnnotationLink&>(annotation).SetDestination(rItem.m_Destination);
+		annotation.SetBorderStyle(0, 0, 0);
 
 		currentY -= 2 * m_dLineHeight / 3;
 
@@ -464,41 +492,34 @@ void RecipeBookExporterPodofo::addTOC()
 		{
 			// Add new page
 
-			painter.FinishPage();
+			painter.FinishDrawing();
 			++currentPageIndex;
 
-			pPage = m_spDocument->InsertPage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4), currentPageIndex);
-			if(pPage == nullptr)
-			{
-				throw QException();
-			}
+			pPage = &m_spDocument->GetPages().CreatePageAt(currentPageIndex, PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
-			painter.SetPage(pPage);
+			painter.SetCanvas(*pPage);
 
-			currentY = pPage->GetPageSize().GetHeight() - 2.0 * c_dBorder;
+			currentY = pPage->GetRect().Height - 2.0 * c_dBorder;
 		}
 	}
 
-	painter.FinishPage();
+	painter.FinishDrawing();
 }
 
-PdfFont* RecipeBookExporterPodofo::createFont(float fSize, bool bBold, bool bItalic)
+PdfFont* RecipeBookExporterPodofo::createFont(bool bBold, bool bItalic)
 {
-	PdfFont* pFont = m_spDocument->CreateFont(c_DefaultFont, 
-											  bBold, 
-											  bItalic, 
-											  false, 
-											  PdfEncodingFactory::GlobalWin1250EncodingInstance());
-
+	PdfFontCreateParams createParams;
+	createParams.Encoding = PdfEncodingFactory::CreateWinAnsiEncoding();
+	PdfFont* pFont = &m_spDocument->GetFonts().GetStandard14Font(getFontType(bBold, bItalic), createParams);
 	if(pFont == nullptr)
 	{
 		throw QException();
 	}
-	pFont->SetFontSize(fSize);
+
 	return pFont;
 }
 
 PdfString RecipeBookExporterPodofo::convertString(QString strString)
 {
-	return PdfString(strString.toLocal8Bit(), PdfEncodingFactory::GlobalWin1250EncodingInstance());
+	return PdfString(strString.replace("\n\n", "\n \n").toLocal8Bit());
 }

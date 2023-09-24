@@ -2,5 +2,10 @@
 /bin/Debug
 /bin/Release
 /bin_unittests
+/bin/RecipeBook
+/build
 /.vs
 **/out/
+/.kdev4
+recipebook.kdev4
+/.vscode

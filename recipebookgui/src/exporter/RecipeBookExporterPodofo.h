@@ -4,16 +4,13 @@
 #include <memory>
 #include <QObject>
 
-#pragma warning( push )
-#pragma warning( disable : 4996 )
-#include <podofo/podofo.h>
-#pragma warning( pop )
+#include "podofo.h"
 
 class UIStringConverter;
 
 namespace PoDoFo
 {
-	class PdfStreamedDocument;
+	class PdfMemDocument;
 	class PdfFont;
 	class PdfOutlineItem;
 	class PdfPainter;
@@ -47,33 +44,34 @@ namespace recipebook
 							const Recipe& rRecipe);
 		void addTOC();
 
-		PoDoFo::PdfFont* createFont(float fSize, bool bBold, bool bItalic = false);
+		PoDoFo::PdfFont* createFont(bool bBold, bool bItalic = false);
 		PoDoFo::PdfString convertString(QString strString);
 
 	private:
 		struct TocItem
 		{
-			QString						m_strName;
-			RecipeBookConfigItemType	m_Type;
-			qint32						m_Level;
-			PoDoFo::PdfDestination		m_Destination;
+			QString									m_strName;
+			RecipeBookConfigItemType				m_Type;
+			qint32									m_Level;
+			std::shared_ptr<PoDoFo::PdfDestination>	m_Destination;
 
-			TocItem(QString strName, RecipeBookConfigItemType type, qint32 level, PoDoFo::PdfDestination& rDestination)
-				: m_strName(strName), m_Type(type), m_Level(level), m_Destination(rDestination) {}
+			TocItem(QString strName, RecipeBookConfigItemType type, qint32 level, std::shared_ptr<PoDoFo::PdfDestination> destination)
+				: m_strName(strName), m_Type(type), m_Level(level), m_Destination(destination) {}
 		};
 
 	private:
 		const UIStringConverter& m_rConverter;
 
-		std::unique_ptr<PoDoFo::PdfStreamedDocument> m_spDocument = nullptr;
+		std::unique_ptr<PoDoFo::PdfMemDocument> m_spDocument = nullptr;
 		
+		double									m_FontSize = 0.0;
 		PoDoFo::PdfFont*						m_pTextFont = nullptr;
 		double									m_dIndentLength = 0.0;
 		double									m_dLineHeight = 0.0;
 
 		PoDoFo::PdfOutlineItem*					m_pCurrentParentOutlineItem = nullptr;
 		QList<TocItem>							m_TocItems;
-		std::unique_ptr<PoDoFo::PdfDestination>	m_spDestinationTitlePage = nullptr;
+		std::shared_ptr<PoDoFo::PdfDestination>	m_spDestinationTitlePage = nullptr;
 
 		std::unique_ptr<PoDoFo::PdfImage>		m_spImgPersons = nullptr;
 		std::unique_ptr<PoDoFo::PdfImage>		m_spImgDuration = nullptr;

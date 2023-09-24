@@ -47,7 +47,6 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 		m_rDlgInterface.lockUI();
 
 		bool bSuccess = false;
-		RecipeBookExporterPodofo exporter(m_rConverter);
 		{
 			recipebook::RBDataReadHandle handle(m_rRBDataHandler);
 			const RecipeBook& rRecipeBook = handle.data();
@@ -57,6 +56,7 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 				throw QException();
 			}
 
+			RecipeBookExporterPodofo exporter(m_rConverter);
 			bSuccess = exporter.writeDocument(rRecipeBook.getConfigurationAt(uiConfiguration), localFileName);
 		}
 

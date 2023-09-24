@@ -306,12 +306,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="224"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="260"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="228"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="264"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -1385,7 +1385,7 @@
 <context>
     <name>recipebook::RecipeBookExporterPodofo</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="423"/>
+        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="466"/>
         <source>Table of contents</source>
         <translation>Inhaltsverzeichnis</translation>
     </message>
@@ -1537,23 +1537,23 @@
 <context>
     <name>recipebook::ShoppingListExporterPodofo</name>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="49"/>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="90"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="67"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="104"/>
         <source>Shopping list</source>
         <translation>Einkaufsliste</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="221"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="235"/>
         <source>Optional</source>
         <translation>Optional</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="236"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="250"/>
         <source>- %1 of those %2</source>
         <translation>- %1 davon %2</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="240"/>
+        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="254"/>
         <source>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</source>
         <translation type="unfinished"></translation>
     </message>

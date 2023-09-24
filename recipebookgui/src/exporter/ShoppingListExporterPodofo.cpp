@@ -5,10 +5,7 @@
 #include <data/SortedShoppingList.h>
 #include "../uistringconverter.h"
 
-#pragma warning( push )
-#pragma warning( disable : 4996 )
-#include <podofo/podofo.h>
-#pragma warning( pop )
+#include "podofo.h"
 
 using namespace recipebook;
 using namespace PoDoFo;
@@ -19,11 +16,32 @@ namespace
 
 	const double c_dFontSize = 10;
 	const double c_dBorder = 56.69;
-	const char* c_DefaultFont = "Calibri";
 
 	double getLength(PdfFont* pFont, PdfString strText)
 	{
-		return pFont->GetFontMetrics()->StringWidth(strText);
+		PdfTextState state;
+		state.FontSize = c_dFontSize;
+		return pFont->GetStringLength(strText, state);
+	}
+
+	PdfStandard14FontType getFontType(bool bBold, bool bItalic)
+	{
+		if(bBold && bItalic)
+		{
+			return PdfStandard14FontType::HelveticaBoldOblique;
+		}
+		else if(bBold)
+		{
+			return PdfStandard14FontType::HelveticaBoldOblique;
+		}
+		else if(bItalic)
+		{
+			return PdfStandard14FontType::HelveticaOblique;
+		}
+		else
+		{
+			return PdfStandard14FontType::Helvetica;
+		}
 	}
 }
 
@@ -40,63 +58,59 @@ bool ShoppingListExporterPodofo::writeDocument(QString strFilename, const Sorted
 {
 	try 
 	{
-		m_spDocument = std::make_unique<PdfStreamedDocument>(strFilename.toUtf8(), ePdfVersion_1_5);
+		m_spDocument = std::make_unique<PdfMemDocument>();
 
 		// Metainformation
 		if(m_spDocument->GetInfo() != nullptr)
 		{
-			m_spDocument->GetInfo()->SetCreator(convertString(c_Author));
-			m_spDocument->GetInfo()->SetTitle(convertString(tr("Shopping list")));
+			m_spDocument->GetMetadata().SetCreator(convertString(c_Author));
+			m_spDocument->GetMetadata().SetTitle(convertString(tr("Shopping list")));
 		}
 
 		m_dIndentLength = c_dFontSize;
 		m_dLineHeight = 1.5 * m_dIndentLength;
 
 		// Default fonts
-		m_pTextFont = createFont(c_dFontSize, false, false);
+		m_pTextFont = createFont(false, false);
 		
 		// Images
 
-		auto readImage = [](QString strFilename, PdfImage& rImage)
+		auto readImage = [](QString _strFilename, PdfImage* image)
 		{
-			QFile f(strFilename);
+			QFile f(_strFilename);
 			f.open(QIODevice::ReadOnly);
 			QByteArray ba = f.readAll();
-			rImage.LoadFromData(reinterpret_cast<const unsigned char*>(ba.constData()), ba.length());
+			image->LoadFromBuffer(ba);
 		};
 
-		PdfImage imgSquare(m_spDocument.get());
-		readImage(":/export-images/square.png", imgSquare);
-		float scaleSquare = m_dIndentLength / imgSquare.GetHeight();
+		auto imgSquare = m_spDocument->CreateImage();
+		readImage(":/export-images/square.png", imgSquare.get());
+		double scaleSquare = m_dIndentLength / imgSquare->GetHeight();
 
 		// Pages
 		
-		int currentPageIndex = 1;
-		PdfPage* pPage = m_spDocument->InsertPage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4), currentPageIndex);
-		if(pPage == nullptr)
-		{
-			throw QException();
-		}
+		unsigned int currentPageIndex = 1;
+		PdfPage* pPage = &m_spDocument->GetPages().CreatePageAt(currentPageIndex, PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 
-		double currentY = pPage->GetPageSize().GetHeight() - c_dBorder;
+		double currentY = pPage->GetRect().Width - c_dBorder;
 
 		PdfPainter painter;
-		painter.SetPage(pPage);
+		painter.SetCanvas(*pPage);
 
 		// Header
-		PdfFont* pTitleFont = createFont(4.0 * m_pTextFont->GetFontSize() / 3.0, true, false);
-		painter.SetFont(pTitleFont);
+		PdfFont* pTitleFont = createFont(true, false);
+		painter.TextState.SetFont(*pTitleFont, 4.0 * c_dFontSize / 3.0);
 
 		QString tocTitle = tr("Shopping list");
 		PdfString pdfTocTitle(convertString(tocTitle));
-		painter.DrawText(c_dBorder, currentY, pdfTocTitle);
+		painter.DrawText(pdfTocTitle, c_dBorder, currentY);
 
 		currentY -= m_dLineHeight;
 
 		// Current row starting position on the page
 		double currentX = 0.0;
 
-		PdfFont* pBoldFont = createFont(m_pTextFont->GetFontSize(), true, false);
+		PdfFont* pBoldFont = createFont(true, false);
 		for(quint32 i = 0; i < rList.getItemsCount(); ++i)
 		{
 			const GoShoppingListItem& rItem = rList.getItemAt(i);
@@ -108,40 +122,40 @@ bool ShoppingListExporterPodofo::writeDocument(QString strFilename, const Sorted
 			if(rItem.getType() == GoShoppingListItemType::Category_Header)
 			{
 				currentY -= m_dLineHeight / 3;
-				painter.SetFont(pBoldFont);
+				painter.TextState.SetFont(*pBoldFont, c_dFontSize);
 
 				strTitle = rItem.getName();
 			}
 			else
 			{
 				startX += m_dIndentLength;
-				painter.SetFont(m_pTextFont);
+				painter.TextState.SetFont(*m_pTextFont, c_dFontSize);
 
-				painter.DrawImage(currentX + startX,
+				painter.DrawImage(*imgSquare,
+								  currentX + startX,
 								  currentY - 0.2 * m_dIndentLength,
-								  &imgSquare,
 								  scaleSquare,
 								  scaleSquare);
-				deltaX += imgSquare.GetWidth() * scaleSquare;
+				deltaX += imgSquare->GetWidth() * scaleSquare;
 
 				strTitle = formatItem(rItem);
 			}
 
 			PdfString pdfTitle(convertString(strTitle));
 
-			painter.DrawText(currentX + startX + deltaX, currentY, pdfTitle);
+			painter.DrawText(pdfTitle, currentX + startX + deltaX, currentY);
 
 			double titleLength = getLength(m_pTextFont, pdfTitle) + deltaX;
-			addItemAdditionalText(rItem, pPage, painter, startX, currentX, currentY, titleLength);
+			addItemAdditionalText(rItem, &pPage, painter, startX, currentX, currentY, titleLength);
 
 			currentY -= 2 * m_dLineHeight / 3;
 
-			addPageIfNeeded(pPage, painter, currentX, currentY);
+			addPageIfNeeded(&pPage, painter, currentX, currentY);
 		}
 
-		painter.FinishPage();
+		painter.FinishDrawing();
 
-		m_spDocument->Close();
+		m_spDocument->Save(std::string(strFilename.toUtf8()));
 	}
 	catch(PdfError& eCode) 
 	{
@@ -153,14 +167,14 @@ bool ShoppingListExporterPodofo::writeDocument(QString strFilename, const Sorted
 }
 
 void ShoppingListExporterPodofo::addItemAdditionalText(const GoShoppingListItem& rItem, 
-													   PdfPage*& pPage,
+													   PdfPage** pPage,
 													   PdfPainter& rPainter, 
 													   double startX, 
 													   double& currentX,
 													   double& currentY, 
 													   double titleLength)
 {
-	rPainter.SetGray(0.5);
+	rPainter.GraphicsState.SetFillColor(PdfColor(0.5));
 
 	if(rItem.getCombinedItemsCount() == 1)
 	{
@@ -185,13 +199,13 @@ void ShoppingListExporterPodofo::addItemAdditionalText(const GoShoppingListItem&
 
 			double addTextLength = getLength(m_pTextFont, strAddText);
 
-			if(titleLength + addTextLength < rPainter.GetPage()->GetPageSize().GetWidth() / 2.0 - startX)
+			if(titleLength + addTextLength < rPainter.GetCanvas()->GetRectRaw().Width / 2.0 - startX)
 			{
-				rPainter.DrawText(currentX + startX + titleLength, currentY, strAddText);
+				rPainter.DrawText(strAddText, currentX + startX + titleLength, currentY);
 			}
 			else
 			{
-				rPainter.DrawText(currentX + startX + 1.5 * m_dIndentLength, currentY - 2 * m_dLineHeight / 3, strAddText);
+				rPainter.DrawText(strAddText, currentX + startX + 1.5 * m_dIndentLength, currentY - 2 * m_dLineHeight / 3);
 				currentY -= 2 * m_dLineHeight / 3;
 
 				addPageIfNeeded(pPage, rPainter, currentX, currentY);
@@ -243,7 +257,7 @@ void ShoppingListExporterPodofo::addItemAdditionalText(const GoShoppingListItem&
 			if(!strText.isEmpty())
 			{
 				PdfString strAddText(convertString(strText));
-				rPainter.DrawText(currentX + startX + 1.5 * m_dIndentLength, currentY - 2 * m_dLineHeight / 3, strAddText);
+				rPainter.DrawText(strAddText, currentX + startX + 1.5 * m_dIndentLength, currentY - 2 * m_dLineHeight / 3);
 				currentY -= 2 * m_dLineHeight / 3;
 
 				addPageIfNeeded(pPage, rPainter, currentX, currentY);
@@ -251,10 +265,10 @@ void ShoppingListExporterPodofo::addItemAdditionalText(const GoShoppingListItem&
 		}
 	}
 
-	rPainter.SetGray(0.0);
+	rPainter.GraphicsState.SetFillColor(PdfColor(0.0));
 }
 
-void ShoppingListExporterPodofo::addPageIfNeeded(PdfPage*& pPage, PdfPainter& rPainter, double& currentX, double& rCurrentY)
+void ShoppingListExporterPodofo::addPageIfNeeded(PdfPage** pPage, PdfPainter& rPainter, double& currentX, double& rCurrentY)
 {
 	if(rCurrentY <= c_dBorder)
 	{
@@ -262,25 +276,25 @@ void ShoppingListExporterPodofo::addPageIfNeeded(PdfPage*& pPage, PdfPainter& rP
 		{
 			// Add new page
 
-			rPainter.FinishPage();
+			rPainter.FinishDrawing();
 
-			pPage = m_spDocument->CreatePage(PdfPage::CreateStandardPageSize(ePdfPageSize_A4));
+			*pPage = &m_spDocument->GetPages().CreatePage(PdfPage::CreateStandardPageSize(PdfPageSize::A4));
 			if(pPage == nullptr)
 			{
 				throw QException();
 			}
 
-			rPainter.SetPage(pPage);
+			rPainter.SetCanvas(**pPage);
 
 			currentX = 0.0;
 		}
 		else
 		{
 			// Second column
-			currentX = pPage->GetPageSize().GetWidth() / 2.0;
+			currentX = (*pPage)->GetRectRaw().Width / 2.0;
 		}
 
-		rCurrentY = pPage->GetPageSize().GetHeight() - c_dBorder;
+		rCurrentY = (*pPage)->GetRectRaw().Height - c_dBorder;
 	}
 }
 
@@ -316,23 +330,22 @@ QString ShoppingListExporterPodofo::formatItem(const GoShoppingListItem& rItem) 
 	return "";
 }
 
-PdfFont* ShoppingListExporterPodofo::createFont(float fSize, bool bBold, bool bItalic)
+PdfFont* ShoppingListExporterPodofo::createFont(bool bBold, bool bItalic)
 {
-	PdfFont* pFont = m_spDocument->CreateFont(c_DefaultFont, 
-											  bBold, 
-											  bItalic, 
-											  false, 
-											  PdfEncodingFactory::GlobalWin1250EncodingInstance());
-
+	// TODO: Needed?
+	//PdfFontCreateParams createParams;
+	//createParams.Encoding = PdfEncodingFactory::CreateWinAnsiEncoding();
+	PdfFont* pFont = &m_spDocument->GetFonts().GetStandard14Font(getFontType(bBold, bItalic));
 	if(pFont == nullptr)
 	{
 		throw QException();
 	}
-	pFont->SetFontSize(fSize);
+	
 	return pFont;
 }
 
 PdfString ShoppingListExporterPodofo::convertString(QString strString)
 {
-	return PdfString(strString.toLocal8Bit(), PdfEncodingFactory::GlobalWin1250EncodingInstance());
+	// TODO: encoding?
+	return PdfString(strString.toLocal8Bit());
 }

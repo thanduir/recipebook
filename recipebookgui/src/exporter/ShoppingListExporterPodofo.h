@@ -4,13 +4,13 @@
 #include <memory>
 #include <QObject>
 
-
+#include "podofo.h"
 
 class UIStringConverter;
 
 namespace PoDoFo
 {
-	class PdfStreamedDocument;
+	class PdfMemDocument;
 	class PdfPage;
 	class PdfFont;
 	class PdfPainter;
@@ -34,7 +34,7 @@ namespace recipebook
 
 	private:
 		void addItemAdditionalText(const GoShoppingListItem& rItem, 
-								   PoDoFo::PdfPage*& pPage, 
+								   PoDoFo::PdfPage** pPage,
 								   PoDoFo::PdfPainter& rPainter, 
 								   double startX, 
 								   double& currentX,
@@ -42,18 +42,18 @@ namespace recipebook
 								   double titleLength);
 		QString formatItem(const GoShoppingListItem& rItem) const;
 
-		void addPageIfNeeded(PoDoFo::PdfPage*& pPage, 
+		void addPageIfNeeded(PoDoFo::PdfPage** pPage,
 							 PoDoFo::PdfPainter& rPainter, 
 							 double& currentX,
 							 double& rCurrentY);
 		
-		PoDoFo::PdfFont* createFont(float fSize, bool bBold, bool bItalic = false);
+		PoDoFo::PdfFont* createFont(bool bBold, bool bItalic = false);
 		PoDoFo::PdfString convertString(QString strString);
 
 	private:
 		const UIStringConverter& m_rConverter;
 
-		std::unique_ptr<PoDoFo::PdfStreamedDocument> m_spDocument = nullptr;
+		std::unique_ptr<PoDoFo::PdfMemDocument> m_spDocument = nullptr;
 		
 		PoDoFo::PdfFont*					m_pTextFont = nullptr;
 		double								m_dIndentLength = 0.0;

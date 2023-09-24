@@ -1,11 +1,15 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include "RecipeBookUIContext.h"
 
 #include <QFont>
 
 int main(int argc, char *argv[])
 {
+#ifndef Q_OS_ANDROID
+	QApplication app(argc, argv);
+#else
 	QGuiApplication app(argc, argv);
+#endif
 
 	bool bAndroid = false;
 #ifdef Q_OS_ANDROID

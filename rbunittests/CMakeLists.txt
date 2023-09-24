@@ -13,12 +13,14 @@ target_include_directories(rbunittests PRIVATE "${PROJECT_SOURCE_DIR}/librecipeb
 
 target_link_libraries(rbunittests PRIVATE Qt6::Test Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
-find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
-add_custom_command(TARGET rbunittests POST_BUILD
-    COMMAND "${CMAKE_COMMAND}" -E
-        env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}" 
-		"$<TARGET_FILE:rbunittests>"
-    COMMENT "Running windeployqt...")
+if(WIN32)
+	find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
+	add_custom_command(TARGET rbunittests POST_BUILD
+		COMMAND "${CMAKE_COMMAND}" -E
+			env PATH="${MY_QT_PATH}/bin" "${WINDEPLOYQT_EXECUTABLE}"
+			"$<TARGET_FILE:rbunittests>"
+		COMMENT "Running windeployqt...")
+endif()
 
 target_compile_options(rbunittests PRIVATE 
 					$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:

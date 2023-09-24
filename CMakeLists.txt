@@ -84,7 +84,7 @@ set(RECIPEBOOK_FILES    recipebookgui/src/main.cpp
 						recipebookgui/src/model/ListModelRBConfigItems.cpp
 						recipebookgui/src/model/ListModelShoppingRecipes.cpp
 
-						recipebookgui/src/synchronization/RecipebookSynchronization.cpp
+						recipebookgui/src/synchronization/RecipeBookSynchronization.cpp
 						recipebookgui/src/synchronization/RecipeBookChanges.cpp
 						recipebookgui/src/synchronization/RecipeBookConflicts.cpp
 
@@ -106,15 +106,23 @@ endif()
 #######################################################################################
 
 # Add PoDoFo only on windows
-if(NOT ANDROID)
-	set(MY_PODOFO_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/src" "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release")
+if(WIN32)
+	set(MY_PODOFO_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/src"
+							   "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release")
 	INCLUDE_DIRECTORIES(${MY_PODOFO_INCLUDE_PATH})
 
 	set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
 
-	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo")
+	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo"
+						   "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/build/src/podofo")
 	link_directories(${MY_PODOFO_LIB_PATH})
 	set(ADDITIONAL_LIBS podofo)
+else()
+	if(NOT ANDROID)
+		set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
+
+		set(ADDITIONAL_LIBS podofo z png)
+	endif()
 endif()
 
 # TODO: Remove as soon as LinguistTools are available again on android
@@ -135,7 +143,7 @@ qt_add_executable(RecipeBook WIN32 MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
 														${QRC_FILES})
 
 target_include_directories(RecipeBook PRIVATE "${PROJECT_SOURCE_DIR}/librecipebook/include")
-target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Svg ${ADDITIONAL_LIBS})
+target_link_libraries(RecipeBook PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::PrintSupport Qt6::Qml Qt6::Widgets Qt6::Quick Qt6::QuickControls2 Qt6::Svg ${ADDITIONAL_LIBS})
 
 foreach(file_i ${QM_FILES})
 	    add_custom_command(
@@ -145,11 +153,11 @@ endforeach(file_i)
 
 target_compile_options(RecipeBook PRIVATE
 	                $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-					    -Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
+						-fno-limit-debug-info -Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
 					$<$<CXX_COMPILER_ID:MSVC>:
 					    /W4 /WX>)
 
-if(NOT ANDROID)
+if(WIN32)
 	set_target_properties(RecipeBook PROPERTIES DEBUG_POSTFIX "D")
 
 	find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${MY_QT_PATH}/bin")
@@ -159,7 +167,7 @@ if(NOT ANDROID)
 			        --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/recipebookgui/qml"
 					"$<TARGET_FILE:RecipeBook>"
 					COMMENT "Running windeployqt...")
-else()
+elif(ANDROID)
 	set_target_properties(RecipeBook PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
 		    )
 endif()

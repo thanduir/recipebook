@@ -1,6 +1,10 @@
 TODO
 ====
 
+- Replace 3rdpartylibs with installed versions on linux!
+	-> what about windows? It would probably make more sense to use separate version there as well...
+- Mutliline problem: Is this the same on windows? If so, split string by myself!
+
 - Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?
 - items to choose one from during shopping (instead of before shopping)?
