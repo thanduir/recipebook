@@ -1,8 +1,7 @@
 TODO
 ====
 
-- update recipebook on windows
-- recipebook android: compile and deploy successfully on linux -> try with tablet!
+- recipebook android: compile and deploy successfully on linux -> try with tablet first!
 
 - Recipe books tab: better UI (-> desktop only)
 - shopping list page: recipes sortable by due date?
