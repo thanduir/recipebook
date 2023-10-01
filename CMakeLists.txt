@@ -105,21 +105,17 @@ endif()
 # RecipeBook
 #######################################################################################
 
-# Add PoDoFo only on windows
+# Add libharu only on desktop builds
 if(WIN32)
-	set(MY_PODOFO_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/src"
-							   "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release")
-	INCLUDE_DIRECTORIES(${MY_PODOFO_INCLUDE_PATH})
+	INCLUDE_DIRECTORIES("C:/vcpkg/packages/libharu_x64-windows/include")
 
-	set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
+	set(ADDITONAL_FILES_LIBHARU recipebookgui/src/exporter/RecipeBookExporterLibHaru.cpp recipebookgui/src/exporter/ShoppingListExporterLibHaru.cpp)
 
-	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo"
-						   "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/build/src/podofo")
-	link_directories(${MY_PODOFO_LIB_PATH})
+	link_directories("C:/vcpkg/packages/libharu_x64-windows/lib")
 	set(ADDITIONAL_LIBS hpdf)
 else()
 	if(NOT ANDROID)
-		set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterLibHaru.cpp recipebookgui/src/exporter/ShoppingListExporterLibHaru.cpp)
+		set(ADDITONAL_FILES_LIBHARU recipebookgui/src/exporter/RecipeBookExporterLibHaru.cpp recipebookgui/src/exporter/ShoppingListExporterLibHaru.cpp)
 
 		set(ADDITIONAL_LIBS hpdf)
 	endif()
@@ -137,7 +133,7 @@ endif()
 
 qt_add_executable(RecipeBook WIN32 MANUAL_FINALIZATION	${RECIPEBOOK_FILES}
 														${LIBRECIPEBOOK_FILES}
-														${ADDITONAL_FILES_PODOFO}
+														${ADDITONAL_FILES_LIBHARU}
 														${TS_FILES}
 														${QM_FILES}
 														${QRC_FILES})
