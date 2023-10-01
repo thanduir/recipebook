@@ -1,27 +1,7 @@
-#ifndef RECIPEBOOK_SHOPPINGLIST_EXPORTER_PODOFO_H
-#define RECIPEBOOK_SHOPPINGLIST_EXPORTER_PODOFO_H
-
-#include <memory>
-#include <QObject>
-
-#include "podofo.h"
-
-class UIStringConverter;
-
-namespace PoDoFo
-{
-	class PdfMemDocument;
-	class PdfPage;
-	class PdfFont;
-	class PdfPainter;
-	class PdfString;
-}
+#if 0
 
 namespace recipebook
 {
-	class SortedShoppingList;
-	class GoShoppingListItem;
-	
 	class ShoppingListExporterPodofo : public QObject
 	{
 		Q_OBJECT
@@ -62,3 +42,17 @@ namespace recipebook
 }
 
 #endif
+
+#pragma once
+
+#include <memory>
+#include <QObject>
+
+class UIStringConverter;
+
+namespace recipebook
+{
+	class SortedShoppingList;
+
+	bool exportShoppingListLibHaru(const UIStringConverter& converter, const SortedShoppingList& config, QString filename);
+}

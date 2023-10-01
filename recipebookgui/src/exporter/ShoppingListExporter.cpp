@@ -8,7 +8,7 @@
 #include "../uistringconverter.h"
 #include "../RBDialogInterface.h"
 #ifndef Q_OS_ANDROID
-#include "ShoppingListExporterPodofo.h"
+#include "ShoppingListExporterLibHaru.h"
 #endif
 
 using namespace recipebook;
@@ -64,8 +64,7 @@ void ShoppingListExporter::exportShoppingList(QString strFileURL, QString strSor
 
 		// Generate pdf
 
-		ShoppingListExporterPodofo exporter(m_rConverter);
-		bool bSuccess = exporter.writeDocument(localFileName, list);
+		bool bSuccess = exportShoppingListLibHaru(m_rConverter, list, localFileName);
 
 		m_rDlgInterface.unlockUI();
 		if(bSuccess)

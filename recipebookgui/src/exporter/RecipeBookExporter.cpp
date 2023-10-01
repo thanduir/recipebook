@@ -8,7 +8,7 @@
 #include "../uistringconverter.h"
 #include "../RBDialogInterface.h"
 #ifndef Q_OS_ANDROID
-#include "RecipeBookExporterPodofo.h"
+#include "RecipeBookExporterLibHaru.h"
 #endif
 
 using namespace recipebook;
@@ -56,8 +56,7 @@ void RecipeBookExporter::exportRecipeBook(QString strFileURL, quint32 uiConfigur
 				throw QException();
 			}
 
-			RecipeBookExporterPodofo exporter(m_rConverter);
-			bSuccess = exporter.writeDocument(rRecipeBook.getConfigurationAt(uiConfiguration), localFileName);
+			bSuccess = exportRecipeBookLibHaru(m_rConverter, rRecipeBook.getConfigurationAt(uiConfiguration), localFileName);
 		}
 
 		m_rDlgInterface.unlockUI();

@@ -116,12 +116,12 @@ if(WIN32)
 	set(MY_PODOFO_LIB_PATH "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/out/build/x64-Release/src/podofo"
 						   "${PROJECT_SOURCE_DIR}/3rdparty/podofo-0.9.7/build/src/podofo")
 	link_directories(${MY_PODOFO_LIB_PATH})
-	set(ADDITIONAL_LIBS podofo)
+	set(ADDITIONAL_LIBS hpdf)
 else()
 	if(NOT ANDROID)
-		set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterPodofo.cpp recipebookgui/src/exporter/ShoppingListExporterPodofo.cpp)
+		set(ADDITONAL_FILES_PODOFO recipebookgui/src/exporter/RecipeBookExporterLibHaru.cpp recipebookgui/src/exporter/ShoppingListExporterLibHaru.cpp)
 
-		set(ADDITIONAL_LIBS podofo z png)
+		set(ADDITIONAL_LIBS hpdf)
 	endif()
 endif()
 
@@ -153,7 +153,7 @@ endforeach(file_i)
 
 target_compile_options(RecipeBook PRIVATE
 	                $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-						-fno-limit-debug-info -Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
+						-Wshadow -Wall -Wextra -Wsign-conversion -Wconversion -pedantic -Werror>
 					$<$<CXX_COMPILER_ID:MSVC>:
 					    /W4 /WX>)
 
@@ -167,7 +167,7 @@ if(WIN32)
 			        --qmldir "${CMAKE_CURRENT_SOURCE_DIR}/recipebookgui/qml"
 					"$<TARGET_FILE:RecipeBook>"
 					COMMENT "Running windeployqt...")
-elif(ANDROID)
+elseif(ANDROID)
 	set_target_properties(RecipeBook PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android"
 		    )
 endif()

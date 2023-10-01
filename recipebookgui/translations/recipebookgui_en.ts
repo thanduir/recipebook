@@ -306,14 +306,40 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="260"/>
+        <location filename="../src/exporter/RecipeBookExporterLibHaru.cpp" line="269"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="264"/>
+        <location filename="../src/exporter/RecipeBookExporterLibHaru.cpp" line="273"/>
         <source>min</source>
         <translation>min</translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/RecipeBookExporterLibHaru.cpp" line="391"/>
+        <source>Table of contents</source>
+        <translation>Table of contents</translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterLibHaru.cpp" line="154"/>
+        <source>Optional</source>
+        <translation>Optional</translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterLibHaru.cpp" line="169"/>
+        <source>- %1 of those %2</source>
+        <translation>- %1 of those %2</translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterLibHaru.cpp" line="173"/>
+        <source>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</source>
+        <translation>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/exporter/ShoppingListExporterLibHaru.cpp" line="210"/>
+        <location filename="../src/exporter/ShoppingListExporterLibHaru.cpp" line="244"/>
+        <source>Shopping list</source>
+        <translation>Shopping list</translation>
     </message>
 </context>
 <context>
@@ -1362,32 +1388,24 @@
         <translation>pdf files (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="66"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="65"/>
         <source>Pdf generated</source>
         <translation>Pdf generated</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="67"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="66"/>
         <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
         <translation>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="72"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="71"/>
         <source>Pdf generation failed</source>
         <translation>Pdf generation</translation>
     </message>
     <message>
-        <location filename="../src/exporter/RecipeBookExporter.cpp" line="73"/>
+        <location filename="../src/exporter/RecipeBookExporter.cpp" line="72"/>
         <source>Error during pdf creation. Is the file already opened?</source>
         <translation>Error during pdf creation. Is the file already opened?</translation>
-    </message>
-</context>
-<context>
-    <name>recipebook::RecipeBookExporterPodofo</name>
-    <message>
-        <location filename="../src/exporter/RecipeBookExporterPodofo.cpp" line="466"/>
-        <source>Table of contents</source>
-        <translation>Table of contents</translation>
     </message>
 </context>
 <context>
@@ -1514,49 +1532,25 @@
         <translation>pdf files (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="73"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="72"/>
         <source>Pdf generated</source>
         <translatorcomment>Pdf generated</translatorcomment>
         <translation>Pdf generated</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="74"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="73"/>
         <source>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</source>
         <translation>Pdf successfully exported to&lt;br&gt;&quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="79"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="78"/>
         <source>Pdf generation failed</source>
         <translation>Pdf generation</translation>
     </message>
     <message>
-        <location filename="../src/exporter/ShoppingListExporter.cpp" line="80"/>
+        <location filename="../src/exporter/ShoppingListExporter.cpp" line="79"/>
         <source>Error during pdf creation. Is the file already opened?</source>
         <translation>Error during pdf creation. Is the file already opened?</translation>
-    </message>
-</context>
-<context>
-    <name>recipebook::ShoppingListExporterPodofo</name>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="67"/>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="104"/>
-        <source>Shopping list</source>
-        <translation>Shopping list</translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="235"/>
-        <source>Optional</source>
-        <translation>Optional</translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="250"/>
-        <source>- %1 of those %2</source>
-        <translation>- %1 of those %2</translation>
-    </message>
-    <message>
-        <location filename="../src/exporter/ShoppingListExporterPodofo.cpp" line="254"/>
-        <source>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</source>
-        <translation>&lt;li&gt;Unitless amount for &quot;%1&quot;&lt;/li&gt;</translation>
     </message>
 </context>
 <context>
