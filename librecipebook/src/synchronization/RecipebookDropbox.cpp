@@ -7,8 +7,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-const QString c_strAppKey		= "wqqw42itb20sded";
-const QString c_strAppSecret	= "kx6jshoshbyh0mt";
+const QString c_strAppKey		= ""; // TODO: App key and secret should be stored somewhere else
+const QString c_strAppSecret	= "";
 
 const QString c_ApiUrl = "https://api.dropboxapi.com";
 const QString c_ContentUrl = "https://content.dropboxapi.com";
