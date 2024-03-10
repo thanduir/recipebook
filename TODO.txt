@@ -1,6 +1,8 @@
 TODO
 ====
 
+- previuosly used font "Calibri". Should I find a ttf of it and use it again?
+	-> not free. Use "Carlito" from google? Or something else?
 - recipebook android: compile and deploy successfully on linux -> try with tablet first!
 
 - Recipe books tab: better UI (-> desktop only)

@@ -94,10 +94,10 @@ namespace
 		auto dst = HPDF_Page_CreateDestination(page);
 		HPDF_Destination_SetXYZ(dst, 0, HPDF_Page_GetHeight(page), 1);
 
-		currentParentOutlineItem = HPDF_CreateOutline(document, currentParentOutlineItem, strTitle, NULL);
+		currentParentOutlineItem = HPDF_CreateOutline(document, currentParentOutlineItem, strTitle.data(), NULL);
 		HPDF_Outline_SetDestination(currentParentOutlineItem, dst);
 
-		tocItems.append(TocItem(strTitle, RecipeBookConfigItemType::Header, level, dst));
+		tocItems.append(TocItem(title, RecipeBookConfigItemType::Header, level, dst));
 	}
 
 	void addRecipeItems(HPDF_Doc document,
